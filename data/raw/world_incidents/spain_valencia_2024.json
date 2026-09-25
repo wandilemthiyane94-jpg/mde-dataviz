@@ -1,0 +1,153 @@
+{
+  "incident": "Valencia DANA flash floods (Horta Sud, Paiporta, Barranco/Rambla del Poyo, Magro and Turia basins)",
+  "country": "Spain",
+  "dates": "29 October 2024 (flash flood peak in the evening, ~18:30-20:30 in Horta Sud); state of emergency / body recovery 30 Oct-11 Nov 2024",
+  "basics": {
+    "deaths": "229 in Valencia province per the Catarroja investigating court (228 people plus the unborn child of an 8-month-pregnant victim); national total ~237 (229 Valencia, 7 Castilla-La Mancha, 1 Andalusia). Other tallies cite 232 (judicial count incl. later deaths).",
+    "missing": "~2,000 missing reports initially, down to 23 by 11 Nov 2024 (Wikipedia); 3 persons still missing/declared (court summary reporting, Feb 2025)",
+    "affected": "306,000 people affected; 75 municipalities / ~553 km2 flooded (103 municipalities in Generalitat damage diagnosis)",
+    "displaced": "Dec 2024: 2,227 residents of Valencia province still unable to return home; 492 dwellings evacuated for structural problems, 1,698 declared uninhabitable, 160 needing demolition; 126 people in Generalitat shelters (98 CATE + 28 Antigua Fe)",
+    "damage_usd": "EUR 17.8 billion direct damage (Generalitat Recovery Plan diagnosis, 21 Mar 2025); total with reconstruction/adaptation could exceed EUR 29 billion. No official USD figure; not converted here.",
+    "insured_share": "Consorcio de Compensacion de Seguros: 251,813 claims, 212,533 paid for EUR 4.484 billion by 5 June 2026, estimated final cost ~EUR 4.8 billion; i.e. roughly 25-27% of the EUR 17.8bn damage estimate (computed ratio, not an official figure). Wikipedia cites EUR 3.5bn insured of EUR 10.7bn total (earlier estimate).",
+    "rainfall": "Turis (Mas de Calabarra) 771.8 mm in ~14 h with Spanish record 184.6 mm in 1 hour; Chiva 491 mm in 8 h (AEMET); AEMET red-warning forecast was >200 mm; catchment-scale return periods estimated >10,000 years (Rombeek et al. 2025, HESS)",
+    "sources": [
+      "https://www.eldiario.es/comunitat-valenciana/jueza-dana-sube-229-vidas-perdidas-incluir-nonato-embarazada_1_12599264.html",
+      "https://www.plataformamedia.com/en/2025/10/29/state-funeral-for-237-victims-in-valencia-one-year-after-tragedy/",
+      "https://en.wikipedia.org/wiki/2024_Spanish_floods",
+      "https://euroweeklynews.com/2025/10/28/one-year-after-the-dana-floods-229-lives-lost-billions-in-damages-and-a-region-still-in-shock/",
+      "https://www.elespanol.com/valencia/reconstruir-valencia/20250321/generalitat-estima-danos-dana-millones-euros-enfrentamos-desafio-sin-precedentes/930907092_0.html",
+      "https://theobjective.com/espana/comunidad-valenciana/2025-03-21/numeros-dana-millones-coches-viviendas/",
+      "https://www.eldebate.com/espana/comunidad-valenciana/20241208/subida-alquileres-60000-casas-afectadas-consecuencias-dana-mercado-inmobiliario_250632.html",
+      "https://segurosnews.com/news/el-consorcio-aumenta-sus-indemnizaciones-por-la-dana-hasta-los-4-484-millones",
+      "https://www.rmets.org/metmatters/cut-lows-cold-drops-and-dana",
+      "https://hess.copernicus.org/articles/29/6715/2025/",
+      "https://www.eldiarioalerta.com/articulo/comunidad-valenciana/sumario-dana-valencia-mayoria-victimas-murieron-bajos-garajes-antes-alerta-oficial/20250226175103553097.html"
+    ]
+  },
+  "indicators": {
+    "I01_governing_party_and_help": {
+      "finding": "Split control: Generalitat Valenciana led by PP (Carlos Mazon, governing with Vox support) held emergency command (kept emergency at level 2, never requested national level 3); national government PSOE-led (Pedro Sanchez). Help flowed but blame became partisan: on 2 Nov Sanchez said 'si necesita mas recursos, que los pida', criticised as conditioning aid on regional requests; ministers denied the paraphrase. Government stresses the alert was a regional competence; Consell says state coordination/information (CHJ, AEMET) failed. UME requested only at 20:36 on 29 Oct; ~10,000 troops deployed from 2 Nov. PP+Vox-controlled Corts inquiry (2026) exonerated the Generalitat and shifted blame to the central government.",
+      "value": "Regional PP vs national PSOE; no national emergency declared; 'si necesita mas recursos, que los pida' (2 Nov 2024)",
+      "url": "https://www.newtral.es/si-quieren-ayuda-que-la-pidan-pedro-sanchez/20241115/",
+      "confidence": "high"
+    },
+    "I02_election_effect": {
+      "finding": "No regional election held yet (due by 27 June 2027, likely 23 May 2027). PP support fell in polls after the DANA; Mazon resigned 3 Nov 2025 and was replaced by PP's Juanfran Perez Llorca (invested 27 Nov 2025 with Vox support). Sept 2026 poll vs 2023 result: PP 35.7% -> 29.7%, Vox 12.6% -> 17.5%, Compromis 14.5% -> 17.1%, PSPV 28.7% -> 27.5%; PP+Vox still near majority, gains going to Vox. ~130,000 protested in Valencia on 9 Nov 2024 demanding Mazon's resignation.",
+      "value": "PP -6 pts, Vox +4.9 pts (Sept 2026 poll vs 2023)",
+      "url": "https://en.wikipedia.org/wiki/Next_Valencian_regional_election",
+      "confidence": "medium"
+    },
+    "I03_election_timing_and_visits": {
+      "finding": "Sanchez visited the CECOPI in Valencia on 31 Oct 2024. On 3 Nov 2024 King Felipe VI, Queen Letizia, Sanchez and Mazon visited Paiporta; crowds threw mud and objects shouting 'Murderers!' and 'Get out!'. Sanchez and Mazon were whisked away by security; the royals stayed about an hour talking to residents. Mazon was at a long lunch at El Ventorrillo restaurant on 29 Oct, leaving ~18:00 and arriving at CECOPI ~19:30 (per Wikipedia), a central controversy.",
+      "value": "Paiporta visit 3 Nov 2024 (5 days after); PM CECOPI visit 31 Oct",
+      "url": "https://www.aljazeera.com/news/2024/11/3/crowd-hurls-mud-and-insults-at-spain-royals-pm-on-visit-to-flood-hit-town",
+      "confidence": "high"
+    },
+    "I04_declaration_threshold_and_funds": {
+      "finding": "Generalitat raised the emergency to level 2 (regional command); level 3 (national interest) never declared. Council of Ministers on 5 Nov 2024 declared the area 'zona afectada gravemente por una emergencia de proteccion civil' and approved Real Decreto-ley 6/2024 (BOE 6 Nov): direct aid regardless of income, EUR 20,640-60,480 for damaged homes, up to EUR 72,000 for death/disability, EUR 5,000 flat to self-employed, up to EUR 5bn ICO-type guarantees; first package ~EUR 10.6bn. By 12 Jan 2026 the state had mobilised EUR 16.6bn and used EUR 9.09bn (EUR 7.61bn paid in aid and subsidies). Follow-up RDL 12/2025 (28 Oct 2025).",
+      "value": "RDL 6/2024 within 7 days; EUR 16.6bn mobilised, EUR 9.09bn used by Jan 2026",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2024-22928",
+      "confidence": "high"
+    },
+    "I05_infrastructure_repair_and_accountability": {
+      "finding": "Metrovalencia lines through Horta Sud closed from 29 Oct 2024; EUR 130m reconstruction, Torrent stations back in service end of June 2025 (~8 months). CV-33 partially reopened 12-13 Nov 2024; >EUR 28m for CV-403/CV-36/CV-33. EUR 438.6m for water-cycle infrastructure by Jan 2026. 232 km of rail/road links needed repair. Political fallout: Mazon resigned as president 3 Nov 2025 (kept seat/immunity); ex-Emergencies councillor Salome Pradas and ex-secretary Emilio Argueso investigated for negligent homicide.",
+      "value": "Metro ~8 months; Mazon resigned after 1 year",
+      "url": "https://comunica.gva.es/es/detalle?id=387675044&site=373409432",
+      "confidence": "medium"
+    },
+    "I06_health_facility_disruption": {
+      "finding": "Initially 29 health centres/consultorios closed and operations cancelled (hospitals limited to emergencies); in total 57 primary-care centres affected, 53 reopened by mid-Nov 2024; Catarroja, Aldaia, Alaquas and Picanya centres stayed closed longer. Extraordinary care points set up. Savia nursing home Paiporta flooded (6 residents died); 95 residents relocated; affected residences housed 8,198 dependent people.",
+      "value": "57 health centres affected; 29 closed initially; 53/57 reopened by mid-Nov",
+      "url": "https://gacetamedica.com/politica/valencia-reabre-53-centros-salud-dana-valencia/",
+      "confidence": "high"
+    },
+    "I07_birth_or_maternal_outcomes": {
+      "finding": "Janine Mercado Rodriguez, a Bolivian woman 8 months pregnant, died; in June 2025 the Catarroja judge counted her unborn child as victim no. 229 (Civil Registry rule for deaths after 6 months' gestation). No systematic data found on births, prematurity or maternal service disruption.",
+      "value": "1 pregnant victim (unborn child counted as victim 229); population birth outcomes not found",
+      "url": "https://www.eldiario.es/comunitat-valenciana/jueza-dana-sube-229-vidas-perdidas-incluir-nonato-embarazada_1_12599264.html",
+      "confidence": "low"
+    },
+    "I08_waterborne_disease": {
+      "finding": "Ministry of Health and Conselleria de Sanitat ran daily epidemiological surveillance from 5 Nov 2024. At least 3 confirmed human leptospirosis cases reported in Nov 2024 (some earlier suspected cases tested negative). Internists (FESEMI) describe 'an exceptional epidemiological scenario' with unusual wound infections and a rise in bacterial gastroenteritis; an opinion piece in Gaceta Medica cites ~20% rise in waterborne disease cases (not an official figure). No large outbreak reported.",
+      "value": ">=3 leptospirosis cases; no major outbreak",
+      "url": "https://gacetamedica.com/politica/detectado-tercer-caso-leptospirosis-dana/",
+      "confidence": "medium"
+    },
+    "I09_displacement_shelter_and_mental_health": {
+      "finding": "Dec 2024: 2,227 people still out of their homes; 1,698 homes uninhabitable; 126 in Generalitat shelters (most displaced stayed with family/friends). Generalitat rent aid up to EUR 800/month for those forced out. Mental health: EAE Business School analysis reported PTSD cases +147% and anxiety diagnoses +63% in affected municipalities; Ministry of Health/ISCIII/Conselleria launched a 3-year mental-health surveillance study (Jan 2026).",
+      "value": "2,227 displaced (Dec 2024); PTSD +147%, anxiety +63%",
+      "url": "https://isanidad.com/348685/la-dana-aumento-un-147-los-casos-de-estres-postraumatico-y-un-63-los-diagnosticos-de-ansiedad/",
+      "confidence": "medium"
+    },
+    "I10_child_deaths_and_timing": {
+      "finding": "Nine minors among the dead in Valencia (7 aged 10 or under, 2 aged 11-17); nearly half of victims aged 70+. Deaths concentrated in the evening, mostly between ~19:00 and 20:00 as the Poyo flood wave hit Horta Sud, i.e. before the 20:11 ES-Alert. Court summary: the alert came 'cuando ya se habian producido la mayoria de las muertes'.",
+      "value": "9 children; most deaths 19:00-20:00, before 20:11 alert",
+      "url": "https://www.newtral.es/victimas-dana-valencia-menores/20241114/",
+      "confidence": "high"
+    },
+    "I11_property_value_effects": {
+      "finding": "Prices ROSE in affected zones due to reduced supply and relocation demand: Valencia Plaza reports +17% sale and +5% rent; Gloval study (Oct 2024-Jan 2025) found sale prices in l'Horta Sud +4% vs ~2% rest of province (Albal, Massanassa ~10%); rents in affected municipalities +5.76% in a year to EUR 12.28/m2/month, ~20% in Alzira and Catarroja. >92,500 properties in Horta Sud (50% of stock) affected.",
+      "value": "Rents +5.76%; sale prices +4% (Horta Sud) to +17%",
+      "url": "https://valenciaplaza.com/valenciaplaza/plaza-inmobiliaria/la-dana-sacude-la-vivienda-los-precios-suben-un-17-en-venta-y-un-5-en-alquiler-en-las-zonas-afectadas",
+      "confidence": "medium"
+    },
+    "I12_recovery_speed_nightlights_or_rebuild": {
+      "finding": "CaixaBank Research (card data): resident spending fell 47% in the first week (82% for low-income vs 40% high-income households) and normalised within a month; business turnover fell 83% and took 8 months to align with national pace; small firms fell 98% and remained >10% below year-earlier levels after one year, while large firms recovered by Sept 2025. Nighttime-light change maps showed activity halts in industrial zones (Pista de Silla, Riba-roja, Aldaia, Quart). Media report ~85% of industrial firms reopened after one year; ~70% of urban shops operating.",
+      "value": "Spending normal in ~1 month; commerce 8 months; small firms still -10% at 1 year",
+      "url": "https://www.caixabank.com/en/headlines/news/caixabank-research-detects-uneven-recovery-in-household-spending-and-commercial-activity-one-year-after-the-dana-in-valencia",
+      "confidence": "medium"
+    },
+    "I13_income_employment_loss": {
+      "finding": "Early Dec 2024: 2,882 companies had 30,417 workers on force-majeure ERTE (100% social-security exemption) and ~4,000 self-employed on cessation-of-activity benefit; in total 33,736 workers placed on DANA ERTEs, 92.4% back at work by June 2025. Social Security DANA measures protected >85,000 people in the first month. Ministry reports EUR 44.0m ERTE payments by Jan 2026.",
+      "value": "33,736 workers on ERTE; 92.4% returned by mid-2025",
+      "url": "https://www.eldiario.es/comunitat-valenciana/92-4-33-736-trabajadores-afectados-dana-acogidos-ertes-fuerza-mayor-vuelto-puesto_1_12360433.html",
+      "confidence": "high"
+    },
+    "I14_relief_grants_uptake": {
+      "finding": "Government data 12 Jan 2026: housing/household-goods/death aid EUR 249.8m paid across 41,678 registered applications (33,044 resolved favourably per earlier tally); Plan Reinicia Auto+ 43,155 applications, EUR 208.6m; direct aid EUR 342.1m to 16,007 self-employed and 10,936 companies; EUR 76.9m to 9,136 farmers; employment plan 3,122 hires in 74 municipalities. Generalitat flat EUR 6,000 per damaged home. Irregular migrants (Oxfam est. 28,000-41,000) initially excluded; one-year regularisation for ~25,000.",
+      "value": "41,678 housing aid applications, EUR 249.8m paid; 26,943 firms/self-employed aided",
+      "url": "https://www.lamoncloa.gob.es/info-dana/paginas/2026/120126-datos-seguimiento-actuaciones-gobierno.aspx",
+      "confidence": "high"
+    },
+    "I15_insured_vs_uninsured": {
+      "finding": "Spain's Consorcio covers flood for any holder of a property/vehicle policy, so insured losses were paid via the public pool: 251,813 claims (95.4% in Valencia province), 212,533 paid, EUR 4.484bn by 5 June 2026; estimated total ~EUR 4.8bn - largest loss in its 70+ year history. Against EUR 17.8bn direct damage this is ~27% (computed). Uninsured gaps: public infrastructure, uninsured vehicles/homes, and irregular migrants in substandard housing; state aid (RDL 6/2024) paid regardless of income and complemented insurance.",
+      "value": "EUR 4.484bn paid on 212,533 claims (June 2026); ~27% of damage",
+      "url": "https://segurosnews.com/news/el-consorcio-aumenta-sus-indemnizaciones-por-la-dana-hasta-los-4-484-millones",
+      "confidence": "high"
+    },
+    "I16_observation_radar_forecast_quality": {
+      "finding": "AEMET flagged a possible DANA 6 days ahead (23 Oct), issued its first red warning of 2024 in the Valencian Community at 07:31/07:36 on 29 Oct (forecasting >200 mm); observed up to 771.8 mm (Turis) - roughly four times the worst forecast. Experts: 'es imposible predecir si van a caer 700 l/m2 en seis u ocho horas en una localizacion concreta'; red levels do not pinpoint where catastrophic flooding will occur. ~225 personal weather stations (7x denser than AEMET gauges) recorded 200-300 mm by early afternoon; several stopped 15:10-16:15 (power/flood). CHJ SAIH gauge data on the Poyo had a gap 16:13-18:43.",
+      "value": "Red warning 07:36, ~12.5 h before ES-Alert; forecast >200 mm vs 771.8 mm observed",
+      "url": "https://www.elespanol.com/ciencia/meteorologia/20251029/necesitamos-avisos-claros-precisos-dia-dana-cuadruplico-peores-previsiones-aemet/1003743988936_0.html",
+      "confidence": "high"
+    },
+    "I17_community_warning_systems": {
+      "finding": "No siren or local flood-warning system reached downstream Horta Sud residents. Signals existed: 112 calls from the Poyo basin from 16:40; CHJ automatic SAIH rainfall alert 17:02 and flow alert 18:43 (1,686 m3/s, rising); regional forest firefighters monitoring the Poyo were withdrawn at 14:30. Paiporta local police watched the ravine and closed bridges but it was not raining in Paiporta; the mayor told the delegation around 19:00 that 'in Paiporta people are drowning'. Savia Paiporta nursing home: 'No les llego ningun aviso del agua'.",
+      "value": "112 calls 16:40; CHJ flow alert 18:43; no local warning to Horta Sud",
+      "url": "https://www.eldiario.es/comunitat-valenciana/cinco-senales-riesgo-barranco-poyo-generalitat-ignoro-cecopi-dia-dana_1_12222510.html",
+      "confidence": "high"
+    },
+    "I18_power_telecom_outage_during_warning": {
+      "finding": "~180,000 i-DE (Iberdrola) electricity customers lost supply in l'Horta Sud, Catadau-Carlet and Requena-Utiel-Bunol; restored 99-100% within ~72 h (Iberdrola). Telecom: ~220,000 fixed and 250,000-300,000 mobile customers affected; by 31 Oct only 45% fixed and 30% mobile restored. Forensic teams reported 'Telephone lines are down' on 30 Oct. Savia residence lost power shortly after water entered (~19:30). Personal weather stations went offline 15:10-16:15. Disability barometer attributes 37 deaths of people with disabilities to failed telecare (teleasistencia) services.",
+      "value": "~180,000 power customers; 250-300k mobile customers cut",
+      "url": "https://valenciaplaza.com/valenciaplaza/se-restablece-45-comunicaciones-servicio-fijo-30-moviles-zonas-dana",
+      "confidence": "medium"
+    },
+    "I19_warning_language_and_accessibility": {
+      "finding": "ES-Alert at 20:11 sent in Spanish and Valencian: 'Provincia de Valencia. Por las fuertes lluvias y como medida preventiva se debe evitar cualquier tipo de desplazamiento en la provincia de Valencia. Esten atentos a futuros avisos a traves de este canal y de fuentes oficiales en Twitter GVA 112 y A Punt.' It did not tell people to go to upper floors (corrected at 20:57); a Spanish/English draft ('707') was not the one sent. Sound-based warnings were 'completamente ineficaces para las 450 personas sordas identificadas' in the worst-hit areas (Barometro de Catastrofes / Fundacion ONCE, CERMI CV). 53 deaths of people with disabilities; nearly half of all victims 70+. 17 foreign nationals died; 28,000-41,000 irregular migrants affected (Oxfam) with barriers to aid.",
+      "value": "Spanish+Valencian only (no English); no 'go upstairs' instruction; 450 deaf people unreached",
+      "url": "https://www.elperiodic.com/pvalencia/recibido-aviso-movil-alerta-proteccion-civil-recomienda-evitar-cualquier-tipo-desplazamiento-carretera-valencia_986334/amp",
+      "confidence": "medium"
+    },
+    "I20_warning_system_design_change_after": {
+      "finding": "Generalitat now issues preventive ES-Alerts when a red warning is active (policy: send with red level), but was again criticised for a late 22:08 ES-Alert on 16-17 Sept 2026, over an hour into torrential rain; victims' association: 'No queremos otro 29-O'. National Council of Ministers (April 2026) approved civil-protection reform/four state plans (floods, extreme weather) making ES-Alert 'una pieza central' and allowing access restrictions, suspension of activities or preventive evacuations based on AEMET warnings. Opposition in Congress still seeks a unified alert protocol. CERMI/ONCE call for a mandatory inclusive emergency plan.",
+      "value": "Preventive ES-Alerts on red warnings; national civil-protection plans April 2026; no unified protocol yet",
+      "url": "https://www.elespanol.com/valencia/comunitat/20260917/victimas-dana-consideran-tardanza-envio-es-alert-miercoles-no-queremos/1003744386843_0.html",
+      "confidence": "medium"
+    }
+  },
+  "who_died": "Most victims drowned in their own homes, garages and basements in Horta Sud, many going down to move cars. CID data on 221 identified victims: 68 found in their homes (ground floors), 30 in garages, 5 in basements, 27 in the street, plus 11 in residential facilities (5 Paiporta, 6 Picanya) - 103 (nearly half) in homes/garages/basements (El Espanol, 27 Nov 2024: https://www.elespanol.com/valencia/20241127/victimas-dana-valencia-mitad-murieron-ahogados-casas-sotanos-garajes/904409826_0.html). Many others died in vehicles on roads/motorways (V-31, A-7, CV-33) and fields; ~40,000 cars totalled. Nearly half of the dead were 70+, nine were minors (Newtral: https://www.newtral.es/victimas-dana-valencia-menores/20241114/); half aged 60+, 65% male, 17 foreign nationals (Wikipedia: https://en.wikipedia.org/wiki/2024_Spanish_floods). Six residents of the Savia nursing home in Paiporta died on the flooded ground floor after water rose to waist height in ~15 minutes around 19:30 with no warning (https://www.eldiario.es/comunitat-valenciana/informe-residencia-paiporta-hubo-seis-muertos-dana-desvela-avisos-erroneos-generalitat_1_12271919.html). 53 people with disabilities died (Barometro de Catastrofes: https://gndiario.com/DANA-danos-personas-con-discapacidad). Most deaths occurred ~19:00-20:00, before the 20:11 alert (https://www.eldiarioalerta.com/articulo/comunidad-valenciana/sumario-dana-valencia-mayoria-victimas-murieron-bajos-garajes-antes-alerta-oficial/20250226175103553097.html). Forensic institute recovered 62 bodies on day 1, 88 on day 2, 195 in week 1 and 212 in 12 days (Rodero Astaburuaga 2025, Rev Esp Med Legal, https://doi.org/10.1016/j.remle.2025.500457).",
+  "blame_framing": "Regional president Mazon claimed an 'apagon informativo' (information blackout) by the state's Confederacion Hidrografica del Jucar (no Poyo flow data 16:13-18:43), saying the CHJ 'avisó con el Poyo ya desbordado' (https://okdiario.com/comunidad-valenciana/mazon-denuncia-apagon-informativo-confederacion-del-jucar-aviso-poyo-ya-desbordado-13822379); the Generalitat stated the CHJ was the only body obliged to warn of ravine overflow and that AEMET did not send its own rain-gauge data (https://comunica.gva.es/es/detalle?id=387770485&site=373410423). Mazon ruled out a relationship between the ES-Alert timing and the number of deaths (https://en.ara.cat/politics/mazon-rules-out-relationship-between-the-sending-of-alert-and-the-number-of-deaths-from-the-dana-in-valencia_1_5837755.html). At 13:00 on 29 Oct he said the storm would ease by ~18:00. The national government and media stressed the Generalitat reacted ~10 hours late to AEMET's red warning (https://www.eldiario.es/comunitat-valenciana/valencia/gobierno-mazon-reacciono-10-horas-tarde-aviso-aemet-pese-nivel-rojo-2024_1_12260157.html) and that the ES-Alert is a regional competence. The investigating judge described 'negligent inactivity', an 'unbearable delay in alerting the public' and an 'erroneous' alert (https://en.ara.cat/politics/audio-this-is-how-the-alert-arrived-the-day-of-the-dana-storm_1_5569724.html). Residents in Paiporta shouted 'Murderers!' at officials (Al Jazeera). Scientific framing: extreme, locally unpredictable rainfall amplified by climate change (World Weather Attribution: https://www.worldweatherattribution.org/extreme-downpours-increasing-in-southern-spain-as-fossil-fuel-emissions-heat-the-climate/).",
+  "inquiries_and_consequences": "Criminal: Catarroja Court of Instruction no. 3 (Judge Nuria Ruiz Tobarra) investigates negligent homicide and injuries for 228-229 deaths; ex-councillor for Justice and Interior Salome Pradas and ex-Emergencies secretary Emilio Argueso are the investigated officials. In Feb-Mar 2026 the judge sent a reasoned exposition to the TSJCV seeking to charge Mazon (protected by his seat), saying that for the Presidency 'de facto la emergencia se detuvo' when he entered the restaurant's private dining room; the TSJCV found 'poco o nada' could be said criminally about the lunch and criticised 'conjeturas', making his indictment unlikely (https://www.elespanol.com/valencia/20260317/dureza-tsj-valenciano-conjeturas-jueza-dana-dificultan-seguir-investigando-mazon/1003744171812_0.html). On 22 Sept 2026 the CGPJ archived Pradas/Argueso complaints against the judge; the criminal case continues (https://www.ultimahora.es/noticias/comunidades/2026/09/22/2713935/cgpj-archiva-quejas-pradas-argueso-contra-jueza-dana.html). Political: Mazon resigned as president on 3 Nov 2025 admitting errors about his schedule but denying bad faith, keeping his Corts seat; Juanfran Perez Llorca (PP) invested 27 Nov 2025 with Vox (https://www.eunews.it/en/2025/11/03/the-president-of-valencia-region-resigned-one-year-after-dana-storm-tragedy/). Parliamentary: the Corts Valencianes inquiry was closed by PP and Vox (May-June 2026) with 126-page conclusions exonerating the Consell and blaming the central government, with 64 of 96 summoned not appearing; PSPV appealed to the Constitutional Court (Sept 2026); Congress and Senate inquiries remain open (https://www.eldiario.es/comunitat-valenciana/corts-valencianes-entierran-comision-dana-jueza-congreso-senado-siguen-investigando_1_13210855.html). Reforms: RDL 6/2024 and RDL 12/2025 aid and prevention packages; April 2026 national civil-protection plans; state funeral held 29 Oct 2025.",
+  "notes": "Death toll varies by source and date: 222-224 (Valencia, Nov 2024 CID), 228/229 (Catarroja court incl. unborn), 232 (judicial figure used by some outlets), 237 national (state funeral). Timeline 29 Oct 2024: AEMET red 07:31/07:36; Mazon press remark 13:00; 112 Poyo calls from 16:40; CECOPI met 17:00; CHJ flow alert 18:43; Mazon arrives CECOPI ~19:30 (disputed, some sources later); ES-Alert 20:11; corrective message 20:57; UME requested 20:36. Some figures (EAE mental-health %, 85%/70% business reopening, 20% gastroenteritis rise, 37 telecare deaths) come from secondary/non-official sources and are flagged medium/low. Damage not converted to USD to avoid inventing an exchange rate (EUR 17.8bn at ~1.08 USD/EUR would be roughly USD 19bn - indicative only). Valencian regional election not yet held as of Sept 2026."
+}

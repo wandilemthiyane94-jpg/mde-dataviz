@@ -1,0 +1,151 @@
+{
+  "incident": "July 2021 floods from low-pressure system 'Bernd': Ahr valley (district of Ahrweiler, Rhineland-Palatinate) and North Rhine-Westphalia (Euskirchen, Erftstadt and others)",
+  "country": "Germany",
+  "dates": "12-15 July 2021 rainfall; Ahr flood night of 14-15 July 2021, with the peak in the worst-hit areas around 01:00-02:00 local time on 15 July",
+  "basics": {
+    "deaths": "About 184-190 in Germany. 134 in the Ahr valley (NHESS 2025: 190 across the event, 134 of them in the Ahr valley). Wikipedia gives 135 in Rhineland-Palatinate (all in Ahrweiler district), 47 in NRW and 2 in Bavaria. 766 people injured in the Ahr valley (deutschland.de).",
+    "missing": "About 1,300 were first reported missing on 16 July, mostly because mobile networks were down. At least 150 were still being searched for on 19 July (Wikipedia).",
+    "affected": "Ahr valley: 42,000 of 56,000 residents affected; about 3,000 of the 4,200 buildings along the Ahr damaged (deutschland.de, Dec 2021).",
+    "displaced": "'at least 17,000 either lost their homes and belongings or suffered considerable damage' (deutschland.de). In a PTSD survey, over 40% of respondents had to leave their homes and 14.4% could still not return one year later (NHESS 2024).",
+    "damage_usd": "EUR 33 billion economic loss in Germany (Munich Re, via Milliman); EUR 46 billion across Europe. About USD 39 billion at mid-2021 rates. This conversion is our approximation, not from a source.",
+    "insured_share": "GDV: EUR 8.2 billion insured loss (EUR 7.7bn property, contents and business, plus EUR 450m motor), about 25% of EUR 33bn. GDV (2026): settled claims about EUR 8.75bn. Before the flood, only 37% of Rhineland-Palatinate homes had natural-hazard cover; 59% by end-2025.",
+    "rainfall": "100-150 mm in 24h widely across south NRW and north Rhineland-Palatinate; 207 mm in 9h at Reifferscheid; 154 mm in 24h in Cologne. The Altenahr gauge was destroyed at 332 m3/s (19:15, 14 July), against a previous record of 236 m3/s. WWA: climate change made the event 1.2-9 times more likely and 3-19% more intense.",
+    "sources": [
+      "https://nhess.copernicus.org/articles/25/581/2025/",
+      "https://en.wikipedia.org/wiki/2021_European_floods",
+      "https://www.deutschland.de/en/topic/environment/catastrophic-flooding-in-germany-rebuilding-in-the-ahr-valley",
+      "https://nhess.copernicus.org/articles/24/2837/2024/",
+      "https://www.milliman.com/en/insight/germany-2021-extreme-weather-events",
+      "https://www.reinsurancene.ws/2021-the-costliest-year-of-natural-catastrophes-in-germany-says-the-gdv/",
+      "https://www.gdv.de/gdv-en/media/five-years-after-the-ahr-valley-floods-insurers-warn-against-a-false-sense-of-security-203598",
+      "https://ui.adsabs.harvard.edu/abs/2021AGUFM.H45V1461S/abstract",
+      "https://www.worldweatherattribution.org/heavy-rainfall-which-led-to-severe-flooding-in-western-europe-made-more-likely-by-climate-change/"
+    ]
+  },
+  "indicators": {
+    "I01_governing_party_and_help": {
+      "finding": "The two worst-hit states had premiers from rival parties: NRW under Armin Laschet (CDU, also the CDU/CSU chancellor candidate) and Rhineland-Palatinate under Malu Dreyer (SPD). The federal CDU-SPD government under Merkel ran aid for both on the same formula. Federal emergency aid matched state aid one euro for one euro (up to EUR 400m federal, EUR 800m combined), and the EUR 30bn 'Aufbauhilfe 2021' fund covered all affected states. Merkel visited both states: Schuld (RLP) with Dreyer on 18 July, plus NRW. We found no evidence that party alignment changed aid allocations. Pink and Schmidt (2023) find voters rewarded the parties of their state premiers.",
+      "value": "Federal share up to EUR 400m of EUR 800m emergency aid, matched 1:1; EUR 30bn reconstruction fund",
+      "url": "https://www.bundesregierung.de/breg-en/service/archive/federal-flood-aid-1944466",
+      "confidence": "medium"
+    },
+    "I02_election_effect": {
+      "finding": "Federal election on 26 Sept 2021, about 10 weeks after the flood. (1) Garside and Zhai 2022 (Research & Politics), difference-in-differences: flood-affected voters were 'marginally (0.4-1.6 percentage points) more likely to vote for the Greens'. Affected voters generally punished the incumbent CDU/CSU, but the CDU appears to have gained in affected parts of NRW. They find no rise in climate issue priority. (2) Pink and Schmidt 2023 (Zeitschrift fuer Politikwissenschaft), using municipal results and satellite damage data: heavily affected voters favoured the party of their state premier by 'up to 6.6 percentage points', with more support for the Greens. (3) Ahrweiler constituency: CDU second-vote share fell from 40.6% (2017) to 28.5% (2021); SPD rose from 22.7% to 28.8%; Greens rose from 6.7% to 12.0%. CDU first vote (Heil) fell from 42.8% to 34.3%. These swings also reflect the national trend and are not isolated flood effects.",
+      "value": "Greens +0.4-1.6 pp (DiD); state-premier party up to +6.6 pp; Ahrweiler CDU second vote -12.1 pp",
+      "url": "https://journals.sagepub.com/doi/10.1177/20531680221141523",
+      "confidence": "high"
+    },
+    "I03_election_timing_and_visits": {
+      "finding": "The flood hit 10 weeks before the 26 Sept 2021 federal election. On 17 July in Erftstadt, Laschet was filmed laughing while President Steinmeier spoke to flood victims. He said: 'It was stupid and shouldn't have happened and I regret it.' Euronews reported the gaffe hit his ratings, and Olesen (2024) links the images to his collapse from front-runner and the CDU defeat. Merkel toured Schuld with Dreyer on 18 July, calling the scene 'surreal, ghostly'. Finance Minister Scholz (SPD candidate, later chancellor) announced the aid package.",
+      "value": "Visits within 2-4 days; election 73 days after the flood",
+      "url": "https://www.euronews.com/2021/07/25/us-germany-politics-laschet",
+      "confidence": "high"
+    },
+    "I04_declaration_threshold_and_funds": {
+      "finding": "The declarations were local. Altenahr's state of emergency and evacuation order (50 m either side of the Ahr) came at 23:09 on 14 July, when the water was already dangerously high. Funding: (a) Cabinet emergency aid on 21 July 2021, one week after the flood: up to EUR 400m federal, matched 1:1 by the states. (b) RLP 'Soforthilfe' for households in Ahrweiler district: about 17,100 applications, over 12,300 approved, EUR 24.5m paid (about EUR 1,992 each on average), with 'durchschnittliche Bearbeitungsdauer ... zwei Tagen' (average two days to payment), status 10 Sept 2021. (c) The Bundestag approved the EUR 30bn 'Aufbauhilfe 2021' fund on 7 Sept 2021, about 15 billion of it for RLP. By 30 June 2026 only about EUR 6.2bn had been paid out, 'gut einem Fuenftel' (just over a fifth) of the fund (ZDF, 14 July 2026). RLP 2.5bn, NRW 2.6bn; about EUR 2.4bn paid in the Ahr valley against about EUR 3.72bn approved. (d) EU Solidarity Fund: over EUR 612m for Germany (Dec 2022).",
+      "value": "EUR 800m emergency; EUR 30bn fund; about EUR 6.2bn (about 21%) paid after 5 years",
+      "url": "https://www.zdfheute.de/politik/deutschland/ahrtal-flutkatastrophe-hochwasser-wiederaufbau-hilfe-finanzministerium-100.html",
+      "confidence": "high"
+    },
+    "I05_infrastructure_repair_and_accountability": {
+      "finding": "'Of the 112 bridges in the flooded 40 km of the Ahr valley (Rhineland-Palatinate), 62 bridges were destroyed.' The Ahr Valley Railway reopened in phases from Nov 2021 and fully on 14 Dec 2025, after a EUR 590m rebuild (22 bridges, 5 tunnels, 10 stations). As of July 2026, several municipal bridges (e.g. Bachemer and Landgrafenbruecke) are due only at end-2026. Are-Gymnasium: 880 students still in containers, completion expected end-2027. Political fallout came from the warning and response failures, not the repair pace. RLP Interior Minister Lewentz resigned (Oct 2022), and Anne Spiegel resigned as federal family minister (Apr 2022). Victims have complained about slow aid payment.",
+      "value": "62/112 Ahr bridges destroyed; rail fully restored after 4.4 years",
+      "url": "https://nhess.copernicus.org/articles/22/3831/2022/",
+      "confidence": "high"
+    },
+    "I06_health_facility_disruption": {
+      "finding": "NHESS critical-infrastructure note: 'An estimated 180 general-practitioner practices have been affected' in Germany and 'Approximately 68 hospitals have been affected' in NRW, several needing at least 1.5 years to rebuild. Krankenhaus Maria Hilf in Bad Neuenahr was cut off on the flood night ('Die Situation glich einem Blackout', the situation was like a blackout). It 'war ... fast einen Monat lang geschlossen' (was closed for almost a month) and reopened about four weeks after the flood. Also 19 daycare centres and 17 schools were damaged in RLP, affecting more than 8,000 students.",
+      "value": "about 180 GP practices; about 68 NRW hospitals affected; Bad Neuenahr hospital closed about 4 weeks",
+      "url": "https://nhess.copernicus.org/articles/22/3831/2022/",
+      "confidence": "high"
+    },
+    "I07_birth_or_maternal_outcomes": {
+      "finding": "We found no study of births or pregnancy outcomes after the 2021 German floods. The only item is an anecdote: in 2026 Dernau's mayor spoke of a 'regelrechten Babyboom' (a real baby boom) in the village (ZDF). It is not evidence of a flood effect.",
+      "value": "",
+      "url": "https://www.zdfheute.de/politik/deutschland/ahrtal-flut-hochwasser-wiederaufbau-5-jahre-danach-100.html",
+      "confidence": "not_found"
+    },
+    "I08_waterborne_disease": {
+      "finding": "We found no documented outbreak. The ECDC rapid risk assessment rated the risk very low/low for tetanus and hepatitis A, and intermediate/high for SARS-CoV-2, E. coli, Salmonella, Cryptosporidium and norovirus. Drinking water: chlorination and an urgent boil-water advisory across Bad Neuenahr-Ahrweiler, Altenahr and Adenau. Mobile tetanus vaccination was provided. The head of the public-health physicians' association said there were signs of diarrhoeal illness 'aber zum Glueck nicht auf echte Seuchen' (but luckily no real epidemics). Aerztezeitung headline: 'Keine Seuchengefahr mehr im Flutgebiet' (no more epidemic risk in the flood area).",
+      "value": "No outbreak documented",
+      "url": "https://www.ecdc.europa.eu/en/publications-data/rapid-risk-assessment-extreme-rainfall-and-catastrophic-floods-western-europe",
+      "confidence": "medium"
+    },
+    "I09_displacement_shelter_and_mental_health": {
+      "finding": "At least 17,000 people in the Ahr valley lost homes or had considerable damage. Among survey respondents one year on (n=516, 411 usable), over 40% had to vacate, 14.4% still could not return, and 90% had not fully repaired. PTSD: '28.2 %' showed PTSD indications about one year after the flood, 36% of women against 22% of men (NHESS 2024). Older adults (65+) three years after: 47% anxiety, 38% depression, 39% PTSD (ScienceDirect 2025). Temporary housing included 25 tiny houses in Grafschaft for about 100 people. Some residents were still rebuilding five years later.",
+      "value": "PTSD 28.2% at 1 year; 14.4% still displaced at 1 year",
+      "url": "https://nhess.copernicus.org/articles/24/2837/2024/",
+      "confidence": "high"
+    },
+    "I10_child_deaths_and_timing": {
+      "finding": "AP via Gulf News: 'The oldest victim was 97, the youngest was 4. Most of those killed were over 60, but three children, 12 residents of an assisted living facility and a volunteer firefighter were also among the dead.' Timing: a weekday night (Wednesday 14 to Thursday 15 July, during school summer holidays in RLP). The peak in the deadliest areas was around 01:00-02:00, so most people were at home and many were asleep.",
+      "value": "3 children among Ahr dead; youngest aged 4; night-time peak 01:00-02:00",
+      "url": "https://gulfnews.com/photos/news/photos-scars-remain-in-german-region-year-after-floods-1.1657708349073",
+      "confidence": "medium"
+    },
+    "I11_property_value_effects": {
+      "finding": "Gruhl, Brehm, Ghosh, Breidenbach and aus dem Moore (2025), 'Adjusting to the New Normal: River Flood Risk and the Real Estate Market', Environmental & Resource Economics 88(9). A hedonic difference-in-differences study using the July 2021 flood as a shock. Flood-prone areas near the flood, or with stronger climate-change beliefs, saw house price declines; other flood risk zones showed no significant effect. We could not access the size of the effect.",
+      "value": "Price declines only in nearby or high-climate-belief flood zones (magnitude not retrieved)",
+      "url": "https://link.springer.com/article/10.1007/s10640-025-00995-x",
+      "confidence": "medium"
+    },
+    "I12_recovery_speed_nightlights_or_rebuild": {
+      "finding": "We found no night-lights study of the Ahr. Rebuild indicators: power was about 50% restored within two days, and no emergency generators were needed after eight weeks (NHESS 2022). RLP state portal (1 July 2026): about 20,800 complete aid applications, over 20,000 approved, EUR 3.72bn approved, and 'Ueber 1.000 Wohngebaeude' (over 1,000 homes) fully rebuilt. Only about a fifth of the EUR 30bn fund had been paid after five years. Some schools, Kitas and bridges are still due in 2026-2027.",
+      "value": "about 21% of fund paid at 5 years; >1,000 homes fully rebuilt (RLP, 2026)",
+      "url": "https://www.rlp.de/ministerium/unser-land/wiederaufbau-nach-der-flut",
+      "confidence": "medium"
+    },
+    "I13_income_employment_loss": {
+      "finding": "Odersky and Loeffler (IZA DP 16540 / J. Economic Inequality): 'Average household income is around 1,500 euros or three percent lower in flood-affected neighborhoods than in non-affected neighborhoods nearby', meaning poorer households were more exposed. The main local sectors, viticulture and tourism, were hit hard, with over 38 wineries losing facilities and stock. We found no study quantifying job or income loss. The labour agency reports Ahrweiler unemployment at 4.1% in May 2026, with no flood attribution.",
+      "value": "Flood-hit neighbourhoods 3% (about EUR 1,500) poorer; job loss not quantified",
+      "url": "https://ideas.repec.org/p/iza/izadps/dp16540.html",
+      "confidence": "low"
+    },
+    "I14_relief_grants_uptake": {
+      "finding": "Soforthilfe in Ahrweiler district: about 17,100 applications (about 4,100 duplicates), over 12,300 approved, about 580 rejected, EUR 24.5m paid by 10 Sept 2021. Aufbauhilfe (ISB RLP, deadline 30 June 2026, extended from 2023): 18,140 complete applications and EUR 1.5bn approved. Household contents: 12,006 approved, EUR 146m. Private buildings: 4,045 approved, EUR 682m. Businesses: 819 approved, EUR 698m. 713 rejected. About EUR 14bn was earmarked for the Ahr valley. Private households got up to 80% of damage covered, up to 100% in hardship cases.",
+      "value": "12,300 Soforthilfe payments; 18,140 reconstruction applications; EUR 1.5bn approved (ISB)",
+      "url": "https://www.ak-kurier.de/akkurier/www/artikel/172883-ahrtal-flut--antragsschluss-fuer-wiederaufbauhilfe---wer-profitierte-",
+      "confidence": "high"
+    },
+    "I15_insured_vs_uninsured": {
+      "finding": "The insured loss of EUR 8.2bn (GDV) was about 25% of the EUR 33bn economic loss. Only 37% of RLP homes had natural-hazard (Elementar) cover before the flood, rising to 59% by end-2025. The state fund covered uninsured owners at 80% of damage (up to 100% in hardship cases), with insurance payouts deducted. The subsidy was reduced to 90% for insurable property where no cover was later taken out. In the PTSD survey, 10.1% said their insurer did not acknowledge the damage or pay.",
+      "value": "about 25% insured; 37% RLP coverage before (59% by 2025)",
+      "url": "https://www.gdv.de/gdv-en/media/five-years-after-the-ahr-valley-floods-insurers-warn-against-a-false-sense-of-security-203598",
+      "confidence": "high"
+    },
+    "I16_observation_radar_forecast_quality": {
+      "finding": "Forecasts were good; getting them to people failed. EFAS sent a first informal notice on 10 July and more than 25 warnings for Rhine/Meuse regions by 14 July. The ECMWF Extreme Forecast Index flagged the event on 12 July, and DWD issued heavy-rain warnings on 13 July. RLP's LfU issued ten forecasts for Altenahr on 14 July, and at 19:35 forecast a level above 5 m. The Altenahr gauge was destroyed at 332 m3/s, above the 236 m3/s record, so real-time observation was lost. Hannah Cloke (EFAS co-designer) called it 'a monumental failure of the system'. The first warning came about 13 h before the upstream peak, but only 17.5% of those affected got a warning with evacuation instructions (NHESS 2025).",
+      "value": "Warning lead about 13 h; gauge destroyed; only 17.5% got evacuation instructions",
+      "url": "https://nhess.copernicus.org/articles/25/1501/2025/",
+      "confidence": "high"
+    },
+    "I17_community_warning_systems": {
+      "finding": "Survey of 1,315 residents: '35 % of the respondents from NW and 29 % from RP did not receive any warning'. Of those warned, '85 % did not expect very severe flooding', and 46% lacked knowledge of protective behaviour. About 20% in Ahrweiler got a KATWARN warning. Many survivors heard from family and neighbours instead. Ahrweiler district issued a KATWARN warning in the early afternoon of 14 July, but the district-level disaster declaration and evacuation came around 23:00.",
+      "value": "29% (RLP) and 35% (NRW) got no warning; 85% of those warned did not expect severe flooding",
+      "url": "https://nhess.copernicus.org/articles/23/973/2023/",
+      "confidence": "high"
+    },
+    "I18_power_telecom_outage_during_warning": {
+      "finding": "'At the peak of the event, around 200 000 people experienced power outages in Germany.' 'In Germany, all severely affected areas experienced disruption of mobile network services' (NHESS 2022). The 1,300 initial 'missing' reports were largely due to downed mobile networks. Warning chains failed partly because digital broadcasting, mobile and radio all depended on electricity. Some NINA warnings arrived late. Deutsche Telekom reported great damage to infrastructure in the Ahr valley and Eifel.",
+      "value": "about 200,000 without power; mobile disruption across all severely affected areas",
+      "url": "https://nhess.copernicus.org/articles/22/3831/2022/",
+      "confidence": "high"
+    },
+    "I19_warning_language_and_accessibility": {
+      "finding": "Disability: 12 residents with severe disabilities drowned on the ground floor of a Lebenshilfe home in Sinzig, where one night carer was responsible for both houses. 16% of Ahr victims had disabilities (7 with mobility impairments, 14 with cognitive impairments), and 78-80% were over 60 (NHESS 2025). Language: a study of older adults found 'persistent language barriers, especially for older adults with migrant backgrounds' limiting access to information. Warnings were app- and German-language based. We found no study specifically on deaf or blind access to warnings in 2021.",
+      "value": "12 disabled care-home residents died; 16% of victims disabled; about 80% aged 60+",
+      "url": "https://nhess.copernicus.org/articles/25/581/2025/",
+      "confidence": "medium"
+    },
+    "I20_warning_system_design_change_after": {
+      "finding": "(1) Cell Broadcast: announced Aug 2021, telecoms law amended, first national test on Warntag 8 Dec 2022, regular operation from Feb 2023. (2) Siren programme 1.0: EUR 88m (up to EUR 86m for states in 2021-22, EUR 2m for MoWaS control), later a EUR 30m 'Sirenenfoerderprogramm 2.0'. (3) RLP: new State Office for Fire and Disaster Protection (Koblenz) from 1 Jan 2025. A new fire and disaster protection law requires municipal alarm and response plans, regular exercises, a full-time inspector in each district and a 'Voralarm' (pre-alarm).",
+      "value": "Cell broadcast live Feb 2023; EUR 88m sirens; new RLP disaster agency 2025",
+      "url": "https://en.wikipedia.org/wiki/Wireless_Emergency_Alerts_in_Germany",
+      "confidence": "high"
+    }
+  },
+  "who_died": "Ahr valley (134 deaths; NHESS 2025, https://nhess.copernicus.org/articles/25/581/2025/): about 78-80% were 60 or older, with no gender difference (49% male, 51% female). 65% died indoors: 37% on ground floors, 11% in cellars, 3% in basement flats, 5% on higher floors. 18% died outdoors on streets. 16% had disabilities. 75% of deaths were outside mapped hazard zones. The peak came around 01:00-02:00. Twelve residents of the Lebenshilfe home for disabled people in Sinzig drowned on the ground floor with one night carer on duty (https://news.yahoo.com/tragedy-12-care-home-residents-143750619.html). Three children died, the youngest aged 4 (oldest 97), as did a volunteer firefighter (AP via https://gulfnews.com/photos/news/photos-scars-remain-in-german-region-year-after-floods-1.1657708349073). Poorer neighbourhoods were more exposed: incomes about 3% lower in flood-hit areas (https://ideas.repec.org/p/iza/izadps/dp16540.html).",
+  "blame_framing": "Climate: Merkel said the storms had 'something to do with climate change' and 'We have to hurry, we have to get faster in the fight against climate change' (https://www.npr.org/2021/07/18/1017577280/the-death-toll-from-flooding-in-western-europe-has-crossed-180-as-rescuers-dig-i). WWA found the rain was 1.2-9 times more likely and 3-19% heavier (https://www.worldweatherattribution.org/heavy-rainfall-which-led-to-severe-flooding-in-western-europe-made-more-likely-by-climate-change/). Warnings: officials first defended the system. Merkel said Germany had a 'very good warning system', and federal civil-protection officials were quoted: 'Our warnings, our entire warning infrastructure, worked completely.' DWD said it 'passed warnings on to local authorities' and is 'not responsible for initiating evacuations'. Hannah Cloke called it 'a monumental failure of the system' (https://www.thelocal.de/20210720/german-authorities-under-fire-over-flood-warnings-amid-mammoth-clean-up/). Unforeseeability: Koblenz prosecutors called the flood 'subjectively unimaginable for residents, those affected, emergency services and those responsible for operations alike', while admitting 'quite considerable deficiencies' (https://www.thelocal.de/20240418/german-prosecutors-drop-investigation-into-unforeseeable-flood-disaster). Science stressed underestimated hazard maps (75% of deaths outside mapped zones) and warnings that 'failed to credibly communicate the magnitude' (NHESS 2023/2025). Residents' location was not a major official framing. Far-right groups spread disinformation in affected areas (https://www.codastory.com/disinformation/germany-flood-disinformation/).",
+  "inquiries_and_consequences": "RLP Landtag Untersuchungsausschuss 18/1 'Flutkatastrophe': set up 1 Oct 2021, 47 sessions, 226 witnesses and 23 experts. Its roughly 2,100-page final report was published 2 Aug 2024 and debated 20 Sept 2024 (https://landtag-rlp.de/de/parlament/ausschuesse-und-gremien/sonstige-ausschuesse-kommis/untersuchungsausschuss-181-f.htm). NRW also held a parliamentary inquiry (not researched in detail). Resignations: Anne Spiegel (Greens; RLP environment minister during the flood) quit as federal family minister in April 2022 after it emerged she took a long family holiday about 10 days after the flood. Roger Lewentz (SPD, RLP interior minister) resigned on 12 Oct 2022 after a police helicopter video from the flood night surfaced, 'taking the political responsibility for mistakes' (https://www.irishexaminer.com/world/arid-40981910.html). Prosecution: Koblenz prosecutors investigated ex-district administrator Juergen Pfoehler (CDU) and a crisis-team member for negligent homicide in 135 cases from Aug 2021 (over 300 witnesses, 20+ TB of data). The case was dropped on 18 April 2024 for lack of criminal liability; survivors filed complaints. Reforms: Cell Broadcast (2023), a EUR 88m siren programme, the RLP State Office for Fire and Disaster Protection (2025) and a new RLP disaster protection law with pre-alarms, mandatory plans and district inspectors.",
+  "notes": "Death totals differ by source and date (Ahr 134 vs 135; Germany 184-190). NHESS 2025 (134) is used as the main Ahr figure. The USD conversion of damage is our approximation. The quote 'Our warnings, our entire warning infrastructure, worked completely' is attributed in The Local's article to federal civil-protection leadership; the exact speaker (BBK chief Armin Schuster vs Interior Minister Seehofer) should be checked against the original. Paywalled or blocked pages (Sage, Springer, ScienceDirect) were cited from abstracts and search snippets, so their confidence is lower. Weak or not found: I07 (births), I12 (night lights), I13 (job loss not quantified), and I11 effect size. Comparison notes for KZN 2022: KZN also peaked at night, but Germany's deaths were mostly elderly people on ground floors and in cellars, not informal settlements or landslides. Germany had forecasts but failed at last-mile delivery and evacuation orders."
+}

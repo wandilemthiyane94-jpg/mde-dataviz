@@ -1,0 +1,148 @@
+{
+  "incident": "Tropical Cyclone Idai and associated river floods (Beira, Buzi, Nhamatanda, Dondo; Sofala and Manica provinces)",
+  "country": "Mozambique",
+  "dates": "Landfall near Beira on the night of 14-15 March 2019; 'more than 200 mm of torrential rain fell in 24 hours' on 16-17 March, flooding the Buzi, Pungwe and Save rivers (International IDEA); national emergency declared 19 March 2019",
+  "basics": {
+    "deaths": "603 official deaths in Mozambique (OCHA figure cited by UNICEF Sitrep #12); PDNA (May 2019): 'more than 600 people died' and 'over 1600 injured' in Sofala, Manica, Zambezia and Tete",
+    "missing": "not_found (no final official missing figure located)",
+    "affected": "PDNA: 'more than 1.5 million have been affected' (1,514,662; Sofala alone 1,190,596 = 52.7% of province population); OCHA: about 1.85 million people in need of humanitarian assistance",
+    "displaced": "PDNA: 'As of the end of April, 400,000 had been displaced, of which 160,927 were sheltering in 164 temporary accommodation centers'; 237,789 families displaced; 240,000 houses partially or totally destroyed",
+    "damage_usd": "PDNA: damage USD 1,409.8 million (public 748.9 / private 660.9) + losses USD 1,385.8 million; recovery needs USD 2.9 billion (4 provinces), USD 3.2 billion incl. Inhambane and Cyclone Kenneth. Munich Re: 'Overall losses came to US$ 2.3bn' and 'correspond to about a tenth of its GDP'",
+    "insured_share": "Munich Re (Jan 2020): 'Almost nothing was insured.' No precise insured percentage found in a primary source.",
+    "rainfall": "PDNA: winds '180 – 220 km per hour' and 'heavy rain (more than 200 mm in 24 hours)', flood waters 'reportedly rising above 10 meters'; storm surge estimated at 2.5 m (WMO); 715,378 ha of cultivated land flooded (PDNA)",
+    "sources": [
+      "https://www.undp.org/sites/g/files/zskgke326/files/publications/PDNA%20Mozambique%20Cyclone%20Idai%20-%20Post-Disaster%20Needs%20Assessment_Executive%20Summary.pdf",
+      "https://www.gfdrr.org/en/publication/mozambique-cyclone-idai-post-disaster-needs-assessment-full-report-2019",
+      "https://reliefweb.int/report/mozambique/unicef-mozambique-cyclones-idai-and-kenneth-situation-report-12-march-july-2019",
+      "https://www.munichre.com/en/company/media-relations/media-information-and-corporate-news/media-information/2020/causing-billions-in-losses-dominate-nat-cat-picture-2019.html",
+      "https://wmo.int/media/news/tropical-cyclone-idai-hits-mozambique",
+      "https://www.idea.int/sites/default/files/2023-10/cyclones-and-their-effects-on-the-2019-elections-in-mozambique-en.pdf"
+    ]
+  },
+  "indicators": {
+    "I01_governing_party_and_help": {
+      "finding": "Beira (Sofala capital) was governed by the opposition MDM (mayor Daviz Simango) while the national and provincial governments were FRELIMO. Schubert (2024, Buildings & Cities) reports 'the municipal and the national government were jockeying for money and influence in the reconstruction process' and that residents accused FRELIMO of trying to economically 'strangle' the opposition-run city; reconstruction was centralised in a national office (GREPOC) supervised by the Minister of Public Works (PDNA). International IDEA (Rosario 2022) states that in resettlement/accommodation centres 'The distribution of supplies in these centres also became a political tool' and 'queuing for food assistance ... became a way to garner or buy votes for those who held power in the state administration'. The Beira Municipal plan in the PDNA notes 'The Beira Municipality has very few resources' and appeals to national government and donors. No quantitative study of aid allocation by party alignment found.",
+      "value": "Qualitative evidence of partisan contestation over reconstruction funds and alleged politicised food aid; no quantified aid-by-alignment estimate",
+      "url": "https://journal-buildingscities.org/articles/10.5334/bc.378",
+      "confidence": "medium"
+    },
+    "I02_election_effect": {
+      "finding": "The 15 October 2019 general election (7 months after Idai) was held without postponement beyond a 15-day delay to voter registration (Council of Ministers, 26 March 2019). International IDEA case study (Rosario, 2022): 'over 160,000 people forced to shelter in 164 collective, temporary accommodation centres ... lost their identity documents, which are required to register to vote'; voter registration in Sofala reached only 79.92% of target (1,028,374 of 1,286,737) and Manica 83.98%. Yet abstention FELL in cyclone provinces: Sofala 49.61% (2014) -> 42.39% (2019); Manica 54.00% -> 39.28%. FRELIMO won every province including Sofala, 'where RENAMO had nearly always received a majority', and 'received the most votes in all 161 districts of Mozambique, which had never happened before'. IDEA concludes: 'The cyclones undoubtedly benefited the ruling party and had a direct impact on electoral performance, in particular of the opposition parties', while also noting 'there is no direct or obvious causal relationship' and that 'most of the accommodation centres were set up to house people in their original constituencies, so the electoral results ... were not significantly affected.' No econometric study isolating Idai's effect was found. RENAMO and MDM rejected the results alleging fraud.",
+      "value": "Sofala abstention 49.61% (2014) -> 42.39% (2019); Sofala registration 79.92% of target; FRELIMO won all provinces/all 161 districts; national FRELIMO ~71%, Nyusi ~73%",
+      "url": "https://www.idea.int/sites/default/files/2023-10/cyclones-and-their-effects-on-the-2019-elections-in-mozambique-en.pdf",
+      "confidence": "medium"
+    },
+    "I03_election_timing_and_visits": {
+      "finding": "President Nyusi made an aerial survey within days: 'Waters from the rivers Pungue and Buzi have broken their banks, wiping out entire villages, isolating communities and we could see, as we flew above, bodies floating' and 'everything indicates that we can have a record of more than 1,000 dead' (18 March 2019). He chaired a Cabinet meeting in Beira on 19 March, declaring a national emergency and three days of national mourning from 20 March. Nyusi also met Beira's MDM mayor Daviz Simango in Beira (Club of Mozambique). Timeline: landfall 14 March; registration postponement 26 March; registration 15 April-30 May; campaign 31 August-12 October; election 15 October 2019 (IDEA Table 3). IDEA: the ruling party, 'accompanied by the state military apparatus, was able to enter areas affected by the cyclones ... that were inaccessible to the opposition parties'; opposition said 'people are always in meetings organized by administration officials ... the food assistance is forcing people to be in meetings all the time.'",
+      "value": "Presidential flyover ~18 March 2019; Cabinet in Beira 19 March; election 15 October 2019 (~7 months later)",
+      "url": "https://www.business-standard.com/article/news-ani/cyclone-idai-president-nyusi-says-over-1-000-people-may-have-died-in-mozambique-119031900136_1.html",
+      "confidence": "medium"
+    },
+    "I04_declaration_threshold_and_funds": {
+      "finding": "PDNA: Government 'Declared a National Sate of Emergency on 19th March 2019', established the post-Cyclone Idai Recovery Program (PREPOC) on 26 March and the Post-Cyclone Reconstruction Office (Decree 26/2019, 11 April 2019). UN international appeal: USD 281.7 million. Beira International Pledging Conference (31 May-1 June 2019) mobilised pledges of USD 1.2 billion against PDNA needs of USD 3.2 billion (Idai + Kenneth). By 21 August 2024 the government reported USD 704 million spent, '56 percent compliance' with PREPOC, and USD 526.77 million 'to be spent by 2026' (govt spokesperson Filimao Suaze). Fiscal note: PDNA says total needs 'represent around 22% of the country's GDP'. No automatic declaration threshold (e.g., % of GDP or deaths) found.",
+      "value": "Emergency declared 19 Mar 2019 (5 days after landfall); pledges USD 1.2 bn vs needs USD 3.2 bn; USD 704 m spent by Aug 2024 (56% of programme)",
+      "url": "https://clubofmozambique.com/news/mozambique-704-million-dollars-so-far-spent-on-reconstruction-post-cyclone-idai-264765/",
+      "confidence": "high"
+    },
+    "I05_infrastructure_repair_and_accountability": {
+      "finding": "PDNA damage: 3,490 km national roads (29% of total), 20 bridges, 1,345 km transmission lines, 10,216 km distribution lines, 30 substations, ~4,000 transformers, 4,219 classrooms. Government progress reports: by Aug 2024, 5,750 new homes, 3,269 of 4,745 classrooms, 4,154 km road and 28 bridges, 1,066 of 1,352 km transmission lines restored (Club of Mozambique); by Nov 2025 AIM reported 'more than 90 per cent' of Idai-damaged infrastructure rebuilt, incl. 11,457 homes and 3,514 classrooms. Fallout: Schubert (2024) found four years on 'very limited visible results' and a common refrain that 'All the money for Idai reconstruction has been stolen'; Beira residents of Ndunda chased away GREPOC technicians in 2023 (Integrity Magazine). PDNA promised 'independent annual audit' of programme resources; no published audit or prosecutions found.",
+      "value": "56% of PREPOC by Aug 2024; >90% of damaged infrastructure by Nov 2025 (govt claim)",
+      "url": "https://aimnews.org/2025/11/11/prepoc-reconstroi-mais-de-90-por-cento-das-infra-estruturas-danificadas-pelo-ciclone-idai/",
+      "confidence": "medium"
+    },
+    "I06_health_facility_disruption": {
+      "finding": "PDNA: '89 health facilities partially destroyed', '3 health facilities completely destroyed', '2 health training facilities were partially destroyed'; health damage USD 81.5 m and losses USD 108.9 m; 'a 50% decrease in HIV consultations'. Peer-reviewed ITS study (Global Health: Science and Practice, PMC9476482): '90 health facilities and 3,145 health workers' homes' damaged; first antenatal visits fell 23% and measles vaccinations 25% in March 2019; 'within 3 months post-cyclone, almost all districts recovered to pre-Idai levels'. WHO AFRO: 'More than 50 health facilities across Sofala Province ... suffered serious damage', including Buzi District Hospital (89 beds). Government reported 36 health units rehabilitated and 54 under reconstruction by Nov 2025 (AIM).",
+      "value": "89 partially + 3 completely destroyed health facilities (PDNA); services recovered within ~3 months",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9476482/",
+      "confidence": "high"
+    },
+    "I07_birth_or_maternal_outcomes": {
+      "finding": "PDNA/UNFPA: '75,000 pregnant women among the affected, and 45,000 live births are expected in the next 6 months', '7,000 of those could experience life-threatening complications'; 'Almost 8,000 pregnant women affected by the cyclone are HIV+'; '83,000 affected women are lactating'. ITS study (PMC9476482): first ANC visits declined 23% (95% CI 0.62-0.96) in March 2019 and institutional deliveries showed a ~20% relative loss in highly affected districts, recovering within 3 months; Buzi showed a rebound (+22% ANC) by May. No study of birth weight, preterm birth or maternal deaths attributable to Idai found.",
+      "value": "75,000 pregnant women affected; ANC first visits -23% in March 2019; institutional deliveries ~-20% in highly affected districts",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9476482/",
+      "confidence": "medium"
+    },
+    "I08_waterborne_disease": {
+      "finding": "Cholera outbreak declared 27 March 2019 in Sofala; first acute diarrhoea cases reported 27 March and 'Within approximately a week, 1,428 suspected cholera cases were reported' (PMC6838597). WHO (5 April): 'more than 2430 cases and 3 deaths'. PDNA: '6,627 cases of cholera reported thus far'. Final tallies reported in the literature: 6,768 suspected cases by 21 April 2019, CFR 0.12% (~8 deaths), concentrated in Beira, Dondo, Nhamatanda and Buzi (Infectious Diseases of Poverty 2020). OCV: 'almost 900 000 doses' arrived in Beira on 2 April (WHO/UNICEF, Gavi-funded); six-day campaign reached >800,000 people in four districts (803,125; 98.6% of target). UNICEF: 'Five hundred beds in seven cholera treatment centres'. Malaria also surged: 14,863 cases per PDNA; WHO/OCHA reported 26,787 cases in Sofala by 9 May.",
+      "value": "~6,768 suspected cholera cases, ~8 deaths (CFR 0.12%); ~803,000 vaccinated (98.6% coverage) within ~3 weeks of landfall",
+      "url": "https://who.int/news-room/feature-stories/detail/combating-cholera-in-mozambique",
+      "confidence": "high"
+    },
+    "I09_displacement_shelter_and_mental_health": {
+      "finding": "400,000 displaced; 160,927 in 164 temporary accommodation centres (PDNA, end April). Jacobs & Almeida (Refugee Survey Quarterly, 2020): 'the government resettled around 88,000 individuals from affected areas to new sites' and 'INGC ... created 66 resettlement sites'; in November 2019 people were 'still living in the tents' and 'Many others were still struggling to find new livelihoods and continued to depend on aid'. IOM DTM (Dec 2019): 93,516 people in 76 resettlement sites. Oxfam (March 2020): 'over 100,000 people in Mozambique are still living in temporary shelters'. PDNA: 49% of assessed locations reported increased personal-safety concerns; 'At least 7,000 women in reproductive age are at risk of suffering rape'. Mental health: no Mozambique prevalence survey found; Beira psychiatrist Vasco Cumbe: 'what we know of the prevalence of common mental illness in general is very limited' (Mail & Guardian, 2026).",
+      "value": "400,000 displaced; ~88,000 resettled in 66 sites; >100,000 still in temporary shelter at 1 year; mental-health prevalence not measured",
+      "url": "https://academic.oup.com/rsq/article/40/2/239/6048241",
+      "confidence": "medium"
+    },
+    "I10_child_deaths_and_timing": {
+      "finding": "No age-disaggregated death count for Mozambique found. Timing: landfall 'on the night of 14 to 15 March' (PDNA), followed by river flooding 16-17 March that submerged Buzi district; Nyusi saw 'bodies floating' from the air. PDNA: 254,000 children under 18 among 750,000 in urgent need. UNICEF (Sitrep #12) covers ~1 million affected children but gives no child death count.",
+      "value": "not_found (children share of deaths); landfall at night 14-15 March, main flood killing 16-17 March",
+      "url": "https://www.undp.org/sites/g/files/zskgke326/files/publications/PDNA%20Mozambique%20Cyclone%20Idai%20-%20Post-Disaster%20Needs%20Assessment_Executive%20Summary.pdf",
+      "confidence": "low"
+    },
+    "I11_property_value_effects": {
+      "finding": "No study of property or land price effects found. Related evidence: Beira municipal plan (PDNA Annex 1) says 'approximately 70% of houses destroyed partially (63.506 units) or totally (23.833 units)' with 'The biggest destruction ... in the poorest neighborhoods'. PDNA warns 'Relocated families are at risk of losing access to their land', especially female-headed households. In Mozambique land is state-owned (DUAT use rights) so a formal land-price market is limited.",
+      "value": "not_found",
+      "url": "https://www.undp.org/sites/g/files/zskgke326/files/publications/PDNA%20Mozambique%20Cyclone%20Idai%20-%20Post-Disaster%20Needs%20Assessment_Executive%20Summary.pdf",
+      "confidence": "not_found"
+    },
+    "I12_recovery_speed_nightlights_or_rebuild": {
+      "finding": "NASA Earth Observatory VIIRS night-lights (9 vs 24 March 2019) show Beira largely dark; 'As of March 20, an estimated 1 million people were without electricity' and 'Nearly all electricity and internet went out, except near the airport'. No published Idai-specific night-light recovery duration found (IOP 2025 global study does not report it). EDM estimated 'Two weeks to fully restore electricity to all Beira neighbourhoods' (Club of Mozambique). Rebuild: 56% of reconstruction programme after ~5.4 years (Aug 2024); >90% of infrastructure claimed by Nov 2025. PDNA projected GDP growth cut from 4.7% planned to 2.5% in 2019, assuming a 'fall of more than 60% of the productive capacity' in the central region.",
+      "value": "~1 million without power (20 Mar 2019); reconstruction 56% complete after 5+ years",
+      "url": "https://science.nasa.gov/earth/earth-observatory/darkness-in-the-wake-of-idai-144743/",
+      "confidence": "medium"
+    },
+    "I13_income_employment_loss": {
+      "finding": "PDNA: 'Over USD 39 million in income was lost due to unemployment'; agriculture losses USD 512.6 m (largest loss sector) and industry & commerce losses USD 470.1 m; 715,378 ha of cultivated land flooded; '433,056 farming families require seed starter kits, equivalent to 2.1 million people'; 2,044 fishing vessels destroyed; 9,710 animal deaths; 'Food consumption of staples has been reduced by over 50%'; poverty rate 'may rise to 79% in affected areas, up from 64%'. Agriculture employs 71% of the labour force.",
+      "value": "USD 39 m wage income lost; USD 513 m agricultural losses; 715,378 ha crops flooded",
+      "url": "https://www.undp.org/sites/g/files/zskgke326/files/publications/PDNA%20Mozambique%20Cyclone%20Idai%20-%20Post-Disaster%20Needs%20Assessment_Executive%20Summary.pdf",
+      "confidence": "high"
+    },
+    "I14_relief_grants_uptake": {
+      "finding": "WFP (Country Brief April 2019): with local authorities and partners it 'assisted 1.37 million people in four disaster-affected provinces through in-kind food distributions and commodity vouchers', with 330,000 planned for value/commodity vouchers in Beira, Dondo and Nhamatanda. WFP-UNICEF joint voucher programme (Aug-Oct 2019): 100,000 people per month in Dondo and Nhamatanda, monthly voucher of 2,670 meticais (US$44). Government SME subsidy agreements: 600 enterprises, 475 million meticais (~US$7.4 m) (AIM 2025). PDNA: 1,359,159 individuals required emergency food assistance. No government cash-grant uptake rate found.",
+      "value": "1.37 million reached with food/vouchers (WFP, by ~April 2019); vouchers US$44/month to 100,000 people",
+      "url": "https://reliefweb.int/report/mozambique/wfp-and-unicef-launch-joint-voucher-programme-support-communities-affected-cyclone",
+      "confidence": "medium"
+    },
+    "I15_insured_vs_uninsured": {
+      "finding": "Munich Re: 'Overall losses came to US$ 2.3bn. Almost nothing was insured.' PDNA damage split: private damage USD 660.9 m (housing USD 410.5 m entirely private) vs public USD 748.9 m; private losses USD 1,205.8 m - implying most household losses were borne uninsured. No precise insured share or household insurance-coverage survey found.",
+      "value": "Insured share ~0 ('Almost nothing was insured')",
+      "url": "https://www.munichre.com/en/company/media-relations/media-information-and-corporate-news/media-information/2020/causing-billions-in-losses-dominate-nat-cat-picture-2019.html",
+      "confidence": "medium"
+    },
+    "I16_observation_radar_forecast_quality": {
+      "finding": "ISET-International (March 2020, 'Learning from Cyclone Idai and Cyclone Kenneth to Strengthen Early Warning Systems in Mozambique') reports that the landfall location and wind speeds were accurately known several days ahead via regional/global forecasting, and INAM projected track and intensity about 3 days before landfall; but it notes there was no working weather radar in Mozambique - per WMO, INAM's two radars installed in 2004 at Xai-Xai and Beira had not been operational for years - and flood forecasting and uptake were 'less successful'. RSMC La Reunion (Meteo France) had described Idai as 'extremely dangerous', especially if storm surge coincided with high tide (WMO). Note: ISET text accessed only through search excerpts (ReliefWeb page returned 403), so wording is paraphrased.",
+      "value": "Track/intensity forecast ~3 days ahead; 0 operational radars (Beira and Xai-Xai radars defunct); flood forecasting weak",
+      "url": "https://reliefweb.int/report/mozambique/learning-cyclone-idai-and-cyclone-kenneth-strengthen-early-warning-systems",
+      "confidence": "medium"
+    },
+    "I17_community_warning_systems": {
+      "finding": "Local Disaster Risk Management Committees (CLGRC) in Buzi, trained by a Munich Re Foundation project (2005-2012), 'spread the warning within a few hours with megaphones and whistles in their communities and helped particularly vulnerable people to reach the few safe places', then 'provided rescue and first aid measures'; a survivor from Chicumba: 'Without the committee I would not exist anymore.' Community radios in Sofala broadcast warnings 'every hour for 36 hours' before landfall (WFP USA); a municipal official said 'the warnings saved lives, and many of them.' Conversely, Beira mayor Simango said rural areas at risk were not warned.",
+      "value": "Buzi CLGRCs warned within hours via megaphones/whistles; community radios warned hourly for 36 hours",
+      "url": "https://www.munichre-foundation.org/en/climate-adaptation/archive/DRR_Mozambique.html",
+      "confidence": "medium"
+    },
+    "I18_power_telecom_outage_during_warning": {
+      "finding": "Community radio stations in Sofala (Radio Beira, Dondo, Aguia, Buzi, Nhamatanda) broadcast warnings 'until the power was cut and everything went black' and were then damaged (WFP USA). NASA: 'Nearly all electricity and internet went out, except near the airport'; ~1 million without electricity on 20 March; the storm also cut transmission lines carrying power to South Africa. PDNA: port of Beira 'paralyzed for a few days' and 'transportation and communications services were interrupted'; energy damage USD 133.5 m. IDEA: power outages later prevented biometric voter registration in affected rural areas.",
+      "value": "Near-total power and internet loss in Beira at landfall; ~1 million without power; radios off air",
+      "url": "https://wfpusa.org/news/radios-saved-lives-before-cylone-idai/",
+      "confidence": "high"
+    },
+    "I19_warning_language_and_accessibility": {
+      "finding": "Translators without Borders survey (April 2019, Beira relocation sites): '41% of people do not understand written Portuguese, the main language of humanitarian communication'; 'local languages like Sena, Ndau, and Chwabo are the most widely used and understood languages'; '44% of women do not understand spoken Portuguese' and '65% of women of all ages ... do not understand written information in any language'; '33% of people surveyed ... lack the information they need ... in a language they understand'. PDNA: national illiteracy 39% (females 49%); 111,000 people with disabilities directly affected. IDEA noted no mechanism was used to tell voters polling stations had moved and recommended community radio. No study of the language of the pre-landfall warnings themselves found.",
+      "value": "41% do not understand written Portuguese; 44% of women do not understand spoken Portuguese",
+      "url": "https://translatorswithoutborders.org/survivors-of-cyclone-idai-33-do-not-have-information-they-understand/",
+      "confidence": "high"
+    },
+    "I20_warning_system_design_change_after": {
+      "finding": "Post-Idai changes: World Bank-supported Disaster Risk Management and Resilience Program (US$265 m) and a revised EWS in which INAM issues alerts and the Institute of Social Communication disseminates via '70 community radios and trained community brigades', plus SMS mass warnings (World Bank, Sept 2023); new meteorological radar inaugurated by President Nyusi in Beira in April 2023 (AfDB/WMO/INAM), under the Master Plan for Disaster Risk Reduction 2021-2030 (UNDRR). Outcome in Cyclone Freddy (Feb-Mar 2023): World Bank says 'the relatively low number of fatalities ... reflects the success of this approach'; Nyusi reported 53 deaths and nearly 50,000 displaced as of 15-16 March 2023 (VOA), versus 603 for Idai; later tallies of ~200 Freddy deaths in Mozambique reported by UNDRR (not independently verified here). International IDEA resubmitted its Electoral Risk Management tool, which the CNE agreed in principle to implement in 2022.",
+      "value": "Beira radar restored April 2023; Freddy deaths 53 (early official) to ~200 (UNDRR) vs Idai 603",
+      "url": "https://www.worldbank.org/en/news/feature/2023/09/11/early-warning-system-saves-lives-in-afe-mozambique",
+      "confidence": "medium"
+    }
+  },
+  "who_died": "Most deaths occurred outside Beira city in rural, low-lying flood plains of the Buzi and Pungwe rivers (Buzi, Nhamatanda districts) during the river flooding of 16-17 March, not from wind at landfall. Beira mayor Simango (29 March 2019): Beira recorded about 20 deaths despite ~80% destruction, with higher rural death rates attributed to lack of warning (IOL/AFP). Nyusi, after an aerial survey: 'Waters from the rivers Pungue and Buzi have broken their banks, wiping out entire villages ... we could see, as we flew above, bodies floating.' Satellite images showed Buzi district 'completely submerged' (IDEA citing SIC Noticias). No official age/sex or cause-of-death breakdown found. Sources: https://iol.co.za/news/africa/2019-03-29-beira-mayor-blames-mozambique-government-for-cycloneidai-deaths/ ; https://www.business-standard.com/article/news-ani/cyclone-idai-president-nyusi-says-over-1-000-people-may-have-died-in-mozambique-119031900136_1.html ; https://www.idea.int/sites/default/files/2023-10/cyclones-and-their-effects-on-the-2019-elections-in-mozambique-en.pdf",
+  "blame_framing": "Opposition/municipal framing: MDM mayor Daviz Simango blamed the central government: 'the central alarm system did not work – people were not warned in the areas at risk'; 'there was profound negligence in how the red alert was managed'; 'Mozambique was not prepared. There were no boats, there were no helicopters, no means of saving lives' (IOL/AFP, 29 Mar 2019). Media/analysts: New African argued Meteo France relayed 'timely and constant advisories' to INAM but 'the warnings were never broadcast appropriately and on time to millions of citizens', and that Beira coastal-protection/mangrove recommendations were ignored. Government/PDNA framing emphasised climate change and extreme hazard: 'The negative impact of climate change is now a growing reality for Mozambique' and 'The Government is aware that it cannot avoid the occurrence of these extreme weather events'. Candidates in the 2019 campaign blamed climate change as 'the main cause of the cyclones' (IDEA). Sources: https://iol.co.za/news/africa/2019-03-29-beira-mayor-blames-mozambique-government-for-cycloneidai-deaths/ ; https://newafricanmagazine.com/opinion/picking-up-the-pieces-but-were-cyclone-idai-warnings-ignored/ ; https://www.undp.org/sites/g/files/zskgke326/files/publications/PDNA%20Mozambique%20Cyclone%20Idai%20-%20Post-Disaster%20Needs%20Assessment_Executive%20Summary.pdf",
+  "inquiries_and_consequences": "No formal public inquiry, commission or ministerial resignation linked to Idai deaths was found. Institutional responses: Post-Cyclone Reconstruction Office (GREPOC) created by Decree 26/2019 (11 April 2019), HQ in Beira, with PREPOC programme and a commitment to 'independent annual audit' (PDNA) - no published audit found; INGC later restructured as INGD (National Institute for Disaster Risk Management and Reduction, referenced by IDEA and OCHA 2023); Master Plan for DRR 2021-2030; Beira radar rebuilt (2023); community-radio/brigade EWS expanded. Political consequence: FRELIMO swept the October 2019 election including Sofala; RENAMO and MDM rejected results (IDEA). Popular accountability claims: 'All the money for Idai reconstruction has been stolen' (resident quoted by Schubert 2024). Sources: https://www.undp.org/sites/g/files/zskgke326/files/publications/PDNA%20Mozambique%20Cyclone%20Idai%20-%20Post-Disaster%20Needs%20Assessment_Executive%20Summary.pdf ; https://journal-buildingscities.org/articles/10.5334/bc.378 ; https://www.worldbank.org/en/news/feature/2023/09/11/early-warning-system-saves-lives-in-afe-mozambique",
+  "notes": "Compiled 25 Sept 2026. Many ReliefWeb/OCHA/UNDRR pages returned HTTP 403 to the fetch tool, so some figures (WFP 1.37 million reached; final cholera count 6,768 / CFR 0.12%; ISET early-warning findings; Beira pledging total USD 1.2 bn; Freddy ~200 deaths) rest on search-result excerpts of those pages rather than full-text reads; confidence is set accordingly. Death totals vary by source: 603 (OCHA official), 'more than 600' (PDNA), 598 (New African), and Munich Re's '>1,000' covers the whole region. The PDNA figures come from the Conference Version (May 2019), which covers Sofala, Manica, Tete and Zambezia. A CIP figure (USD 661.55 m of USD 700 m pledges disbursed by end-2020) appeared in a search summary but could not be traced to a verifiable primary document, so it is excluded. Comparison hooks for KZN 2022: an opposition-run city (Beira/MDM) versus the ruling party nationally; an election 7 months later; near-zero insurance; radar gap; language barriers (Sena/Ndau)."
+}

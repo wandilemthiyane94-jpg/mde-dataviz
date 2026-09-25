@@ -1,0 +1,154 @@
+{
+  "incident": "Texas Hill Country flash floods (Guadalupe River, Kerr County, Camp Mystic)",
+  "country": "United States of America (Texas)",
+  "dates": "Overnight 3-4 July 2025 (Independence Day holiday weekend); FEMA DR-4879 incident period 'July 2, 2025, and continuing'. Main Guadalupe River surge in the pre-dawn hours of 4 July. A second damaging flood hit Kerr County on 16-18 July 2026.",
+  "basics": {
+    "deaths": "Kerr County: 117 identified dead as of 8 Aug 2025 (78 adults, 39 children), later reported as 119 in Kerr County. Texas statewide totals are reported between 135 and 139 depending on source and date (PBS/AP: at least 135; Wikipedia: 136; Texas Tribune May 2026: 137 across five counties; KWTX July 2026: 139). Camp Mystic: 27 campers and counselors plus the camp owner/director (28).",
+    "missing": "Over 160 initially unaccounted for in Kerr County; 3 still missing in late July 2025; 2 still missing as of 8 Aug 2025 and Jan 2026.",
+    "affected": "More than 2,000 structures damaged in Kerr County (Texas Tribune, Aug 2025). 3,228 FEMA Individuals and Households Program applications from Kerr County as of 11 Oct 2025. The FEMA declaration eventually covered Kerr plus other counties (Burnet, Guadalupe, Kimble, McCulloch, Menard, San Saba, Tom Green, Travis, Williamson were eligible for Disaster Unemployment Assistance).",
+    "displaced": "not_found (no official count of displaced people or shelter population located; FEMA housing assistance was offered and local nonprofits funded RVs and homes)",
+    "damage_usd": "About $1.1 billion estimated damage (Wikipedia; Texas Tribune). AccuWeather preliminary estimate of total damage and economic loss: $18-22 billion (7 July 2025). Kerr Central Appraisal District: lost appraised value may exceed $240 million.",
+    "insured_share": "About 2.5% of Kerr County homeowners had NFIP flood insurance (national rate cited as 6%). Fewer than 150 of nearly 3,000 residential properties in the 100-year floodplain were NFIP-insured on 4 July (less than 5%). Houston Chronicle: most Kerr County homes hit on July 4 had no flood insurance.",
+    "rainfall": "Maximum 20.33 inches (516 mm) near Mason; 10-12+ inches over Kerr County overnight. Guadalupe River at Hunt rose 26 ft in about 45 minutes and crested at a record 37.52 ft (previous record 36.60 ft in 1932). Peak at Hunt exceeded the 500-year return-period level (EGUsphere preprint).",
+    "sources": [
+      "https://www.ksat.com/news/local/2025/08/08/117-kerr-county-flood-victims-identified-by-local-officials/",
+      "https://www.pbs.org/newshour/amp/nation/officials-say-3-people-still-missing-from-deadly-july-4-texas-floods-down-from-nearly-100",
+      "https://en.wikipedia.org/wiki/July_2025_Central_Texas_floods",
+      "https://www.texastribune.org/2026/05/06/texas-legislature-flood-protection-bills-failed-july-4/",
+      "https://www.texastribune.org/2026/07/01/kerr-county-guadalupe-flood-one-year-anniversary-rebuilding/",
+      "https://www.texastribune.org/2025/08/11/texas-hill-country-floods-rebuilding-kerr-county/",
+      "https://www.texastribune.org/2025/10/16/texas-floods-fema-aid-kerr-county-nonprofits/",
+      "https://www.accuweather.com/en/press/independence-day-flash-flood-tragedy-in-texas-causes-an-estimated-18-billion-to-22-billion-in-total-damage-and-economic-loss/1792253",
+      "https://www.dallasnews.com/opinion/commentary/2025/08/02/curran-only-25-of-kerr-county-had-flood-insurance/",
+      "https://www.houstonchronicle.com/politics/texas/article/kerr-county-flood-insurance-20761656.php",
+      "https://egusphere.copernicus.org/preprints/2026/egusphere-2026-1847/",
+      "https://www.kwtx.com/2026/07/06/texas-hill-country-floods-new-laws-bring-warning-sirens-camp-safety-rules/"
+    ]
+  },
+  "indicators": {
+    "I01_governing_party_and_help": {
+      "finding": "Fully aligned Republican chain: Republican President (Trump), Republican Governor (Abbott), Republican Lt. Gov. (Patrick), and a Republican-run county. Alignment did not prevent federal friction: DHS Secretary Kristi Noem's rule requiring her personal sign-off on contracts/grants over $100,000 was reported by CNN to have delayed deployment of FEMA Urban Search and Rescue teams until Monday, 'more than 72 hours after the flooding began', and FEMA call-center contracts had lapsed so many calls went unanswered; DHS denied the delay mattered. The federal major disaster declaration was nevertheless granted within ~2 days (6 July 2025), and Trump and Abbott toured Kerrville together on 11 July.",
+      "value": "Aligned (R federal, R state, R county); declaration in 2 days; USAR deployment reportedly >72 hours",
+      "url": "https://www.cnn.com/2025/07/09/politics/fema-texas-flood-noem",
+      "confidence": "medium"
+    },
+    "I02_election_effect": {
+      "finding": "No general election has yet tested the flood (Texas general election is November 2026). In the 3 March 2026 Republican primary, Kerr County Judge Rob Kelly did not run (he said he decided before the flood not to seek a third term); Tom Jones won the Republican nomination for county judge 6,483 to 3,643 over James 'Jack' Stewart. A Houston Chronicle one-year review reported Kerrville-area leaders 'remain unchanged'; Emergency Management Coordinator W.B. 'Dub' Thomas announced his retirement in March 2026. No statewide polling effect on Abbott attributable to the flood was found.",
+      "value": "Local turnover limited; county judge open seat (incumbent not running); EM coordinator retired March 2026",
+      "url": "https://kerrcountylead.com/jones-walters-harris-among-primary-winners-two-kerr-county-races-headed-to-may-runoff/",
+      "confidence": "low"
+    },
+    "I03_election_timing_and_visits": {
+      "finding": "Governor Abbott issued a state disaster declaration on 4 July and visited Kerr County in the first days. President Trump and First Lady Melania Trump visited Kerrville on Friday 11 July 2025 (7 days after the flood) with Abbott, meeting responders at Louise Hays Park and holding a roundtable at the Hill Country Youth Event Center. Trump: \"It's hard to believe the devastation - trees that are 100 years old just ripped out of the ground - I've never seen anything like it.\" Not in an election period (midterm/state elections Nov 2026).",
+      "value": "Presidential visit day 7 (11 July 2025)",
+      "url": "https://tdem.texas.gov/press-release/7-11-25-potus",
+      "confidence": "high"
+    },
+    "I04_declaration_threshold_and_funds": {
+      "finding": "Trump approved Major Disaster Declaration DR-4879-TX on 6 July 2025 (about 2 days after the flood), initially for Kerr County with Individual Assistance, later expanded (10 counties added 30 July). As of 11 Oct 2025 FEMA had referred only 46% of Kerr County's 3,228 IHP applications to the next stage; 704 (22%) were found eligible and 775 denied, versus a 39% historical approval rate across 170 disasters (2015-May 2024). FEMA had approved $37 million in IHP aid across Central Texas. By Jan 2026 FEMA told NPR it had provided more than $33 million for emergency work plus $39 million to cover uninsured losses. Contrast: the July 2026 flood waited six-plus weeks for a major declaration (Public Assistance only, $50.5M, approved ~2 Sept 2026; Individual Assistance undecided).",
+      "value": "Declaration day 2; 22% of Kerr IHP applicants eligible (Oct 2025); ~$37-39M individual aid; ~$33M emergency work",
+      "url": "https://www.texastribune.org/2025/10/16/texas-floods-fema-aid-kerr-county-nonprofits/",
+      "confidence": "high"
+    },
+    "I05_infrastructure_repair_and_accountability": {
+      "finding": "Kerrville declared a water supply emergency after its water treatment plant (Nimitz Lake) was damaged; Hunt's water system required restoration with a boil-water order. Accountability: Lt. Gov. Dan Patrick publicly criticized County Judge Rob Kelly at a Kerrville legislative hearing; Sheriff Larry Leitha and EMC Dub Thomas acknowledged being asleep when the flood began. The joint legislative General Investigating Committee report (June 2026) focused on Camp Mystic failures. Kerr County raised property taxes to pay for recovery. Texas Rangers opened a criminal investigation of Camp Mystic (manslaughter, criminally negligent homicide etc.) with 14 search warrants in Sept 2026.",
+      "value": "Water plant emergency; officials criticized but remained in office; criminal probe of camp (Sept 2026)",
+      "url": "https://www.houstonchronicle.com/politics/texas/article/dan-patrick-kerr-county-judge-20796598.php",
+      "confidence": "medium"
+    },
+    "I06_health_facility_disruption": {
+      "finding": "No hospital closure found. Peterson Regional Medical Center (Kerrville) activated its emergency operations center at 6:30 a.m. on 4 July and handled its first-ever mass casualty event (\"Truck after truck started coming through the ER\"). Texas HHSC awarded over $1.9 million in emergency grants to rural hospitals in Kerrville and Llano to repair damage and equipment, provide staffing support and address operational issues.",
+      "value": "No closure; mass-casualty surge; $1.9M hospital grants",
+      "url": "https://www.kxxv.com/news/texas-news/nearly-2m-in-emergency-grants-awarded-to-rural-hospitals-impacted-by-texas-flooding",
+      "confidence": "medium"
+    },
+    "I07_birth_or_maternal_outcomes": {
+      "finding": "No data or studies on births, pregnancy or maternal outcomes found; only anecdotal news stories of pregnant residents evacuating.",
+      "value": "not_found",
+      "url": "",
+      "confidence": "not_found"
+    },
+    "I08_waterborne_disease": {
+      "finding": "No outbreak reported. Preventive measures only: boil-water notice for Hunt water system; Kerrville water supply emergency; Peterson Health and DSHS ran free Hepatitis A and tetanus vaccine clinics for first responders and volunteers because floodwater may carry sewage; warnings about Aeromonas wound infections.",
+      "value": "No outbreak found; boil-water notice; Hep A/tetanus clinics",
+      "url": "https://www.ksat.com/news/local/2025/07/18/free-vaccine-clinic-for-first-responders-and-volunteers-involved-with-flood-response/",
+      "confidence": "medium"
+    },
+    "I09_displacement_shelter_and_mental_health": {
+      "finding": "No official displacement count found. More than 2,000 structures damaged in Kerr County. FEMA temporary housing assistance and nonprofit aid (Community Foundation of the Texas Hill Country raised ~$100M; Airbnb.org $1.6M housing fund). Mental health: SAMHSA Disaster Distress Helpline activated; 24/7 Central Texas Flooding Emotional Support Line (833-812-2480); Hill Country Hearts and a Hill Country Emotional Support Center in Kerrville still open in July 2026. A post-flood study projected PTSD cases in Kerr County growing to about 8,000 (reported by KSAT). Undocumented families reported fear of seeking aid and PTSD symptoms.",
+      "value": "2,000+ structures damaged; projected ~8,000 PTSD cases in Kerr County",
+      "url": "https://www.ksat.com/news/local/2026/05/21/mental-health-support-expands-following-deadly-floods-in-texas-hill-country/",
+      "confidence": "medium"
+    },
+    "I10_child_deaths_and_timing": {
+      "finding": "39 of 117 identified Kerr County dead were children (under 18), youngest aged 1 (KSAT, 8 Aug 2025). At Camp Mystic, 25 girl campers, 2 teenage counselors and owner/director Dick Eastland died. Timing: overnight on the 4 July national holiday; NWS flash flood warning at 1:14 a.m., the camp director called for help around 3 a.m., and the river swept through communities 'before sunrise'. Holiday crowds at riverside camps and RV parks raised exposure: 40+ people died in two Kerr County RV campgrounds.",
+      "value": "39 children of 117 Kerr dead (33%); 27 at Camp Mystic; overnight holiday",
+      "url": "https://www.ksat.com/news/local/2025/08/08/117-kerr-county-flood-victims-identified-by-local-officials/",
+      "confidence": "high"
+    },
+    "I11_property_value_effects": {
+      "finding": "Kerr Central Appraisal District reported lost property value may exceed $240 million from flood damage; Kerr County and Kerrville raised tax rates citing disaster costs and lost values (Kerrville raised again in 2026 after the second flood). Kerr ranks 8th among Texas counties for share of buildings in dangerous flood zones; about 1,300+ properties are in the 100-year floodplain. Repairs under 50% of structure value need no code upgrades. No peer-reviewed sale-price study found.",
+      "value": "Appraisal loss > $240M",
+      "url": "https://www.kerrcountytx.gov/blog/tax-rate-consideration-due-to-disaster-efforts-lost-values",
+      "confidence": "medium"
+    },
+    "I12_recovery_speed_nightlights_or_rebuild": {
+      "finding": "No nightlights study found. At one year (July 2026): some businesses reopened (Crider's, Howdy's), some homes rebuilt, others (River Inn, expected 2028; Hunt Store) still closed; Camp Mystic shut and filed Chapter 11 bankruptcy (June 2026). Community Foundation CEO Austin Dickson: \"We are not recovered. We are in recovery, and there is much more work to be done.\" Recovery was reset by the 16 July 2026 flood (384 Kerr homes destroyed or majorly damaged; 9 of 11 bridges damaged).",
+      "value": "Partial rebuild at 12 months; set back by July 2026 flood",
+      "url": "https://www.texastribune.org/2026/07/01/kerr-county-guadalupe-flood-one-year-anniversary-rebuilding/",
+      "confidence": "medium"
+    },
+    "I13_income_employment_loss": {
+      "finding": "Disaster Unemployment Assistance under DR-4879 opened for workers and self-employed in Burnet, Kerr, Guadalupe, Kimble, McCulloch, Menard, San Saba, Tom Green, Travis and Williamson counties; deadline extended to 29 Sept 2025. No count of DUA claims or jobs lost found. Over 300 businesses required assistance (Texas Tribune). AccuWeather's $18-22B estimate includes tourism and commerce losses.",
+      "value": "DUA offered; job-loss count not_found",
+      "url": "https://www.twc.texas.gov/news/application-deadline-extended-disaster-unemployment-assistance-applications-hill-country",
+      "confidence": "low"
+    },
+    "I14_relief_grants_uptake": {
+      "finding": "Kerr County: 3,228 FEMA IHP applications; as of 11 Oct 2025 1,479 (46%) reviewed, 704 eligible (22% of applicants), 775 denied, 1,749 not yet reviewed. Approval rate well below the 39% historical average. Private philanthropy filled gaps: Community Foundation of Texas Hill Country ~$100M raised, $11.9M distributed to local nonprofits by end of July; typical early family assistance $5,000. Undocumented families hesitated to apply for fear of immigration enforcement.",
+      "value": "22% of applicants eligible (Oct 2025); $37M FEMA IHP approved",
+      "url": "https://www.texastribune.org/2025/10/16/texas-floods-fema-aid-kerr-county-nonprofits/",
+      "confidence": "high"
+    },
+    "I15_insured_vs_uninsured": {
+      "finding": "Only about 2.5% of Kerr County homeowners had flood insurance (national rate 6%). Fewer than 150 of nearly 3,000 residential properties in the FEMA 100-year floodplain were NFIP-insured on 4 July (<5%). Houston Chronicle: most Kerr homes hit had no flood insurance. FEMA said it provided $39 million to cover uninsured losses (Jan 2026). No NFIP claims totals for the event were found.",
+      "value": "~2.5% NFIP take-up; <5% in 100-year floodplain",
+      "url": "https://www.dallasnews.com/opinion/commentary/2025/08/02/curran-only-25-of-kerr-county-had-flood-insurance/",
+      "confidence": "medium"
+    },
+    "I16_observation_radar_forecast_quality": {
+      "finding": "NWS issued a flood watch on 3 July (1:18 p.m.) and a flash flood warning at 1:14 a.m. on 4 July, sent to phones via IPAWS. Commerce OIG (Report OIG-26-017-I, 9 Apr 2026): 'Although staffing vacancies existed at the WFO, staff asserted that the vacancies did not affect their ability to forecast, issue flood alerts, and provide support to Kerr County officials.' OIG lead times: about 106 minutes at Hunt but effectively 26 minutes at Kerrville, versus a 65-minute goal; forecasters' calls to the county EMC and sheriff went unanswered; no river gauges upstream of Hunt on the South Fork. Austin/San Antonio WFO had 6 vacancies including the warning coordination meteorologist. The forecast underpredicted rain: TDEM chief Nim Kidd said 'the amount of rain that fell in this specific location was never in any of those forecasts.' A preprint notes HRRR QPF displacement errors of ~100-150 km in warm-season convection.",
+      "value": "Warning lead time 106 min (Hunt) / 26 min (Kerrville) vs 65-min goal; 6 WFO vacancies",
+      "url": "https://www.oig.doc.gov/wp-content/OIGPublications/Highlights_OIG-26-017-I-SECURED.pdf",
+      "confidence": "high"
+    },
+    "I17_community_warning_systems": {
+      "finding": "Kerr County had no outdoor sirens or dedicated flood warning system. Plans since 2016 (former commissioner Tom Moser) stalled over >$1M cost and failed grants; a $731,413 FEMA grant application (for $976,000 of upgrades) was denied by TDEM for lack of a current hazard mitigation plan; ARPA funds went unused. Downstream Comfort had sirens. The county's opt-in CodeRED system was slow: a volunteer firefighter asked at 4:22 a.m. \"Is there any way we can send a CodeRED out to our Hunt residents asking them to find higher ground or stay home?\"; alerts went out about 90 minutes later and some residents got them hours later. FEMA records show the county did not use IPAWS to send its own alerts to all phones during critical hours.",
+      "value": "No sirens; CodeRED ~90 min after request; no local IPAWS alert",
+      "url": "https://www.nbcdfw.com/investigations/fema-records-kerr-county-didnt-send-eas-flood-warnings-phones/3882922/",
+      "confidence": "high"
+    },
+    "I18_power_telecom_outage_during_warning": {
+      "finding": "Power outages hit thousands of Kerr County customers on 4 July, worst on the South Fork between Hunt and Ingram. Cell coverage along the upper Guadalupe was poor; the legislative report found Camp Mystic had taken counselors' cellphones without supplying radios, so leaders could not reach cabins. SB 1 (2025) now requires camps to keep redundant communications (e.g., dual broadband). No quantified telecom outage data found.",
+      "value": "Power outage (thousands of customers); counselors without phones/radios",
+      "url": "https://www.texastribune.org/2026/06/18/texas-july-4-flood-legislative-commitee-report-camp-mystic/",
+      "confidence": "medium"
+    },
+    "I19_warning_language_and_accessibility": {
+      "finding": "Hispanic/Latino people make up more than 25% of Kerr County's ~52,600 residents (CNN). Reports said help for Latino families was delayed partly by a lack of rescue and recovery information in Spanish, and undocumented families avoided FEMA over immigration fears (\"I'm afraid people are afraid to come out and get supplies\" - Lisa Weinstein, ESL teacher in Hunt). No analysis of warning-message language (Spanish WEA/CodeRED) was found.",
+      "value": ">25% Hispanic; Spanish info gaps reported; warning-language data not_found",
+      "url": "https://www.cnn.com/2025/08/12/us/undocumented-immigrants-floods-fear-asking-aid-hnk-dst",
+      "confidence": "low"
+    },
+    "I20_warning_system_design_change_after": {
+      "finding": "Second special session (signed 5 Sept 2025): SB 1 'Heaven's 27 Camp Safety Act' and HB 1 (camps in floodplains need emergency plans, evacuation protocols, redundant communications; cabin location limits); SB 3 funding outdoor warning sirens in flash-flood-prone areas; SB 5 appropriated $294M from the Rainy Day Fund ($50M for sirens/gauges in July 4 counties, $200M FEMA match, $24M forecasting). Kerr County formed a Flood Warning System Project Team (Aug 2025). By July 2026: 6 state-funded sirens in Kerr County with ~28 more planned, plus 90-100+ privately funded River Sentry sirens along the Guadalupe. July 2026 test: in the 16-18 July 2026 flood, Kerr County sent 4 wireless emergency alerts, Kerrville 1, NWS 38; new sirens sounded; at least 2 died regionally (1 in Kerr per Texas Tribune). A resident: \"Last year, we got no alarms. We had no idea what was going on. This year, very different.\" Gaps persisted in Uvalde County (no local WEAs recorded).",
+      "value": "Laws passed Sept 2025; $294M package; 6 state + ~100 private sirens; 2026 flood deaths fell to ~1-2",
+      "url": "https://www.pbs.org/newshour/nation/texas-hill-country-floods-test-new-warning-systems-after-last-years-deadly-disaster",
+      "confidence": "high"
+    }
+  },
+  "who_died": "Most deaths happened in Kerr County along the Guadalupe River before dawn on 4 July 2025 (holiday), in riverside camps, RV parks, cabins and homes in Hunt, Ingram, Center Point and Kerrville. Camp Mystic (Hunt): 25 girl campers, 2 teenage counselors and owner/director Dick Eastland (28), with cabins in the floodway and 'shelter in place' the only posted instruction (Texas Tribune, 18 June 2026: https://www.texastribune.org/2026/06/18/texas-july-4-flood-legislative-commitee-report-camp-mystic/). More than 40 people died in two Kerr County RV campgrounds, including HTR TX Hill Country RV Park where the most missing came from (https://www.texastribune.org/2026/08/24/texas-floods-kerr-county/; https://kerrcountylead.com/kerrvilles-htr-rv-park-is-where-the-most-missing-are-from-at-least-26/). Of 117 identified Kerr dead, 39 were children, ages 1 to 91; many were visitors from Houston and other states (https://www.ksat.com/news/local/2025/08/08/117-kerr-county-flood-victims-identified-by-local-officials/). About half of those who died were in the FEMA-mapped floodway (Texas Tribune). Other deaths occurred in Travis (10), Burnet (5), Williamson (3), Tom Green (1) and Kendall counties (https://en.wikipedia.org/wiki/July_2025_Central_Texas_floods).",
+  "blame_framing": "(1) 'No one knew': Kerr County Judge Rob Kelly said \"We didn't know this flood was coming\" and \"Rest assured, no one knew this kind of flood was coming,\" even though a flood watch had been issued on 3 July (https://www.nbcnews.com/news/us-news/questions-mount-texas-floods-key-decision-maker-remains-silent-rcna218264). TDEM chief Nim Kidd blamed forecasts: 'the amount of rain that fell in this specific location was never in any of those forecasts' (as quoted in https://en.wikipedia.org/wiki/July_2025_Central_Texas_floods; see also https://time.com/7300310/texas-floods-national-weather-service-warnings-debate-staffing-cuts/). (2) NWS staffing cuts debate: Democrats (Casar, Crockett, Lofgren) linked Trump/DOGE cuts and vacancies (6 of ~27 posts vacant at Austin/San Antonio, no warning coordination meteorologist) to the disaster; the NWS union and the Commerce OIG found the offices had extra staff that night and issued timely warnings (https://www.factcheck.org/2025/07/staffing-cuts-at-nws-and-the-tragic-flooding-in-texas; https://www.oig.doc.gov/wp-content/OIGPublications/Highlights_OIG-26-017-I-SECURED.pdf). Trump called a reporter who asked about warnings 'evil' and said 'everyone did an incredible job under the circumstances' (https://www.statesman.com/story/news/politics/state/2025/07/11/in-flood-ravaged-central-texas-trump-vows-to-fully-fund-recovery/84658788007/). (3) County sirens/fiscal conservatism: media focused on Kerr County's repeated failure to fund sirens (cost, rejected grants, unused ARPA money over fears of federal mandates) and the delayed CodeRED alert, with top officials asleep or out of town (https://www.texastribune.org/2025/07/10/texas-kerr-county-commissioners-flooding-warning/; https://www.texastribune.org/2025/07/31/kerr-county-emergency-plan/). State leaders (Lt. Gov. Patrick) blamed Kelly, while a Dec 2025 Texas Tribune analysis showed many other communities had also rejected state flood grants (https://www.texastribune.org/2025/12/03/texas-kerr-county-state-grants-flood-warning-system/). (4) FEMA/Noem: reports that Noem's $100K sign-off rule delayed search and rescue teams and that call centers went unstaffed; Noem called the reports 'fake news' (https://www.cnn.com/2025/07/09/politics/fema-texas-flood-noem). (5) Camp operator: the June 2026 legislative report put primary blame on Camp Mystic's lack of emergency plans and late evacuation ('This was a fatal error' - investigator Michael Massengale). (6) Conspiracy theories about cloud seeding and 'weather control' spread, and a KWTV radar site was vandalized (Wikipedia).",
+  "inquiries_and_consequences": "Investigations: Texas Legislature joint General Investigating Committee on the July 2025 Flooding Events (House and Senate; ~140-150 witness interviews; hearings incl. Kerrville and 27-28 April 2026; 115-page 'Report on the Camp Mystic Flood Disaster of July 4, 2025' adopted unanimously and released 18 June 2026: https://www.house.texas.gov/pdfs/committees/355/Report-on-the-Camp-Mystic-Flood-Disaster-of-July-4-2025.pdf?d=06182026). U.S. Commerce OIG review of NWS actions (OIG-26-017-I, 9 Apr 2026). DHS OIG review of FEMA's response to the July 2025 Central Texas floods announced (https://www.oig.dhs.gov/node/7186). Texas Rangers criminal investigation of Camp Mystic leaders for manslaughter, criminally negligent homicide, injury to a child, abandoning/endangering a child and deadly conduct (14 search warrants, Sept 2026: https://www.kut.org/crime-justice/2026-09-22/camp-mystic-criminal-investigation-texas-rangers). Laws: SB 1 Heaven's 27 Camp Safety Act and HB 1 Youth CAMPER Act (camp siting, emergency plans, communications), SB 3 flood warning sirens, SB 5 $294M appropriation, signed 5 Sept 2025 (https://www.cnn.com/2025/09/05/us/texas-heavens-27-camp-safety-act; https://www.texaspolicyresearch.com/bills/89th-legislature-2nd-special-session-sb-5/). The report says the Legislature addressed all but one deficiency (reaching camp owners in emergencies), promised for the January 2027 session. Stricter floodway building rules again failed (Texas Tribune, May 2026). Lawsuits: at least five wrongful-death suits representing 15 families against Camp Mystic and the Eastland family (filed Travis County from Nov 2025); a judge ordered the camp's flood site preserved (Apr 2026); Camp Mystic filed Chapter 11 in June 2026 and sought to stay suits against family members (https://www.lanierlawfirm.com/news/families-of-six-girls-file-wrongful-death-lawsuit-against-camp-mystic-following-deadly-july-flood/; https://news.bloomberglaw.com/bankruptcy-law/camp-mystic-aims-to-stop-family-lawsuits-against-leaders-owners). Personnel: Kerr County EMC Dub Thomas announced retirement (March 2026); Judge Kelly did not seek re-election; the sheriff remained in office.",
+  "notes": "Death tolls differ by source and date (Kerr 107 -> 117 identified -> 119; statewide 135-139); use Kerr 117 identified (39 children) as of 8 Aug 2025, and 119 as the later Kerr figure. The ~$1.1B damage figure (Wikipedia/Texas Tribune) and AccuWeather's $18-22B total economic loss estimate measure different things. Important for the comparison: a second flood on 16-18 July 2026 hit the same area; it provides a 'natural experiment' on the new warning systems (far fewer deaths) but also showed slower federal aid (6+ weeks for a declaration, Public Assistance only). FEMA IHP figures are as of 11 Oct 2025; no later county-level IHP totals were found. Houston Chronicle, AccuWeather, KXAN and CNN pages could not be fetched directly (403/451); their figures come from search summaries and syndicated reports (Dallas News, Texas Tribune), so confidence is medium. Not found: displaced/shelter counts, maternal/birth outcomes, disease outbreak (none reported), DUA claim counts, NFIP claim payouts, nightlights studies, analysis of Spanish-language warnings, statewide electoral effect (the Nov 2026 election has not yet happened)."
+}
