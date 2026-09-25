@@ -1,0 +1,261 @@
+{
+  "summary_verdict": "The claim is only partly accurate and needs rewording. (1) Where it comes from: the sentence 'South Africa has 12 official languages, but disaster warnings are still sent out almost entirely in English and Afrikaans' is taken from Mokhele & Mvanyashe's Conversation article (16 June 2026). In that article it is background framing, not a finding of their Walmer Airport Valley survey, and they cite no source for it. (2) English is right. SAWS impact-based warnings, SAWS media releases, NDMC and provincial statements (Limpopo, Buffalo City, Garden Route and others checked) come out in English. The SAWS website is served as lang=\"en\" and no SAWS language policy or translation programme turned up. (3) Afrikaans is NOT verified as an official warning language. No SAWS, NDMC or municipal warning issued in Afrikaans was found. The Afrikaans warning text that does circulate comes from Afrikaans news outlets (Maroela Media, Nuusflits) rewriting SAWS warnings. The City of Cape Town's language policy commits it to English, Afrikaans and isiXhosa, but no trilingual weather warnings were verified. (4) The claim leaves out official warnings in African languages. eThekwini Municipality publishes full isiZulu newsflashes relaying SAWS warnings (e.g. 'Isexwayiso Ngesimo Sezulu', 27 June 2023). KZN district municipalities post bilingual English/isiZulu warning headings relaying Provincial CoGTA. isiZulu newspapers (Isolezwe) and SABC and community radio carry warnings in local languages. These relays exist, but they are ad hoc and depend on each intermediary, with no national translation standard. A defensible rewording: 'Official early warnings in South Africa are issued primarily in English by SAWS, with translation into African languages left to municipalities, broadcasters and community intermediaries; this is uneven and not systematic.'",
+  "issuers": [
+    {
+      "issuer": "SAWS (South African Weather Service)",
+      "channels": ["weathersa.co.za warnings page", "WeatherSmart / SAWS app", "X account @SAWeatherServic (note: handle is truncated, not @SAWeatherService)", "Facebook", "media releases, relayed via SAnews"],
+      "languages_observed": ["English"],
+      "translation_evidence": "Found no SAWS-issued warning in any language other than English. weathersa.co.za/home/warnings is a JavaScript single-page app whose HTML shell declares lang=\"en\", and there is no language selector in the source. A search summary of the WeatherSmart app store listing said the app 'currently supports English' (not independently verified). No SAWS language policy found by search, even though UOLA s4 requires national public entities to adopt one. The only non-English SAWS material found was research: an isiXhosa weather-forecast corpus that a UCT academic translated from SAWS English forecasts (WRC/SciELO research context, not operational). The May 2026 SAWS–Santam partnership mentions 'community radio programmes in local languages in high-risk areas' (an education campaign, not translated warnings).",
+      "evidence_urls": [
+        "https://www.weathersa.co.za/home/warnings",
+        "https://www.sanews.gov.za/south-africa/saws-issues-weather-warnings-disruptive-rain-severe-thunderstorms",
+        "https://www.sanews.gov.za/south-africa/saws-partners-santam-enhance-disaster-risk-management",
+        "https://x.com/SAWeatherServic"
+      ],
+      "confidence": "medium (English-only is well supported; absence of any translated product cannot be proven exhaustively)"
+    },
+    {
+      "issuer": "NDMC (National Disaster Management Centre, CoGTA)",
+      "channels": ["ndmc.gov.za media statements", "'Receive Early Warning' registration portal (contacts.ndmc.gov.za)", "ministerial media statements on gov.za"],
+      "languages_observed": ["English"],
+      "translation_evidence": "Found no NDMC warnings in other languages. The EW4All roadmap launch statement (13 Oct 2025) says nothing about languages or translation. The EW4All roadmap PDF on weathersa.co.za could not be retrieved (404 / certificate error), so its content on language is unverified.",
+      "evidence_urls": [
+        "https://www.ndmc.gov.za/Data/ExtractedData/8",
+        "http://contacts.ndmc.gov.za/",
+        "https://www.gov.za/news/media-statements/minister-velenkosini-hlabisa-cautions-public-about-potential-impact-severe"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "issuer": "KZN Provincial CoGTA / KZN district municipalities",
+      "channels": ["kzncogta.gov.za", "Facebook", "Instagram", "X", "YouTube", "TikTok", "WhatsApp", "radio and TV"],
+      "languages_observed": ["English", "isiZulu (bilingual headings on district relays)"],
+      "translation_evidence": "The kzncogta.gov.za 'Weather Warnings and Safety Tips' page has an English/Zulu/Afrikaans language selector, but the safety-tip content seen was English only. The iLembe District Municipality's Facebook post of a Provincial CoGTA warning carries a bilingual heading; the post URL slug reads 'weather-warning-isexwayiso-ngesimo-sezulu-esingesihle provincial-cogta-has-issued'. The post body could not be retrieved, so only the heading is verified.",
+      "evidence_urls": [
+        "https://www.kzncogta.gov.za/weather-warnings-and-safety-tips/",
+        "https://www.facebook.com/ilembe.districtmunicipal/photos/weather-warning-isexwayiso-ngesimo-sezulu-esingesihleprovincial-cogta-has-issued/1049833003840528/"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "issuer": "eThekwini Metropolitan Municipality (Durban)",
+      "channels": ["durban.gov.za press statements / 'eThekwini Newsflash'", "Facebook", "X", "Instagram", "TikTok", "SMS to residents (per ICAT report summary)", "FEWS (Forecast Early Warning System) advisories via technical and community WhatsApp groups"],
+      "languages_observed": ["English", "isiZulu"],
+      "translation_evidence": "Confirmed isiZulu official warning: an eThekwini Newsflash titled 'Isexwayiso Ngesimo Sezulu' (27 June 2023), fully in isiZulu, relaying a SAWS heavy-rain warning. Most recent statements (e.g. the Level 6 warning of 28 July 2026) are English. The ICAT EWS methods report (per search summary) says the FEWS team 'translates each warning to a local level', which means localising impacts, not language translation.",
+      "evidence_urls": [
+        "https://www.durban.gov.za/press-statement/Isexwayiso+Ngesimo+Sezulu",
+        "https://www.durban.gov.za/press-statement/level-6-weather-warning-high-impact-thunderstorms-approach-ethekwini",
+        "https://climateactiontransparency.org/wp-content/uploads/2023/04/First-set-of-refined-tools-and-methodologies-for-Early-Warning-Systems-ME.pdf"
+      ],
+      "confidence": "high (isiZulu warning exists); low (how often isiZulu versions are issued)"
+    },
+    {
+      "issuer": "City of Cape Town Disaster Risk Management Centre",
+      "channels": ["X @CityofCT", "Facebook", "capetown.gov.za media releases", "corporate call centre 0860 103 089"],
+      "languages_observed": ["English (verified)"],
+      "translation_evidence": "The City's Language Policy (Nov 2021, per Social TV report) says 'residents may communicate with the municipality in English, Xhosa or Afrikaans'. It covers by-laws, notices and public-participation material; no disaster clause was found. The warning posts found were English (e.g. X post of 10 May 2026: 'The South African Weather Service advised the Disaster Risk Management Centre of the following weather warning...'). No Afrikaans or isiXhosa warning versions were verified. The policy PDF was unreachable (ECONNREFUSED).",
+      "evidence_urls": [
+        "https://x.com/CityofCT/status/2052710558160322826",
+        "https://social-tv.co.za/moretopstories/city-promotes-multilingual-access-and-inclusion/",
+        "https://resource.capetown.gov.za/documentcentre/Documents/Bylaws%20and%20policies/Language%20Policy%20-%20(Policy%20number%2050554)%20approved%20on%2025%20April%202018.pdf"
+      ],
+      "confidence": "low-medium"
+    },
+    {
+      "issuer": "Buffalo City Metropolitan Municipality",
+      "channels": ["buffalocity.gov.za statements", "advises residents to use radio/TV"],
+      "languages_observed": ["English"],
+      "translation_evidence": "The severe weather alert of 1 Oct 2020 is English only and says: 'Listen to the radio or TV for warnings and obey the instructions from disaster management officers.'",
+      "evidence_urls": ["https://www.buffalocity.gov.za/statement.php?id=48"],
+      "confidence": "medium (single sample)"
+    },
+    {
+      "issuer": "Limpopo provincial government (Dept of Transport & Community Safety; CoGHSTA) and local municipalities (e.g. Collins Chabane)",
+      "channels": ["media statements (limpopo.gov.za)", "social media", "local radio stations"],
+      "languages_observed": ["English"],
+      "translation_evidence": "The 'FLOOD ALERT: Vhembe District, Limpopo' (3 March 2026) is English only, even for Tshivenda-speaking Vhembe. Per Daily Maverick, the Collins Chabane mayor said the municipality 'communicated warnings from the South African Weather Service through platforms such as social media and local radio stations'. The language used on those radio relays is not documented.",
+      "evidence_urls": [
+        "https://www.limpopo.gov.za/wp-content/uploads/2026/03/Flood-Alert-Vhembe-District-Limpopo.pdf",
+        "https://www.dailymaverick.co.za/article/2026-02-16-anatomy-of-a-disaster-how-sas-warning-systems-stalled-during-the-floods/"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "issuer": "Garden Route District Municipality (Western Cape)",
+      "channels": ["gardenroute.gov.za 'Severe Weather Alert' category"],
+      "languages_observed": ["English"],
+      "translation_evidence": "All alerts on the category page are in English, with no Afrikaans or isiXhosa, although Afrikaans is a majority language in the district.",
+      "evidence_urls": ["https://www.gardenroute.gov.za/category/severe-weather-alert/"],
+      "confidence": "medium"
+    },
+    {
+      "issuer": "Afrikaans and isiZulu news media (not official issuers)",
+      "channels": ["Maroela Media", "Nuusflits", "Netwerk24/Son", "Isolezwe (isiZulu daily)"],
+      "languages_observed": ["Afrikaans", "isiZulu"],
+      "translation_evidence": "Afrikaans versions of SAWS warnings come from Afrikaans news outlets. Nuusflits (10 July 2024): ''n Vlak 8-weerwaarskuwing is vir die Wes-Kaap uitgereik...' citing 'Saws' as a source. Isolezwe (16 Sep 2026) relays in isiZulu: 'Isixwayiso sezinga lesi-4 esikhishwe yi-South African Weather Service mayelana nemvula enamandla'. This media-layer translation probably explains why Afrikaans looks like a 'warning language'.",
+      "evidence_urls": [
+        "https://nuusflits.com/vlak-8-weerwaarskuwing-vir-wes-kaap-uitgereik/",
+        "https://maroelamedia.co.za/nuus/sa-nuus/ernstige-waarskuwing-vir-swaar-reen-uitgereik/",
+        "https://isolezwe.co.za/isolezwe/izindaba/2026-09-16-isexwayiso-ngesimo-sezulu-esingesihle-ekzn/"
+      ],
+      "confidence": "high"
+    },
+    {
+      "issuer": "Nelson Mandela Bay Metro / OR Tambo / KSD (Mthatha) / Johannesburg / Tshwane / Vhembe District",
+      "channels": ["not verified"],
+      "languages_observed": [],
+      "translation_evidence": "No primary warning documents found. Nelson Mandela Bay coverage (SAnews, EWN, The Herald, 2026) says warnings were 'disseminated across internal and external platforms' but does not name languages. Mokhele & Mvanyashe found Walmer Airport Valley residents (all isiXhosa speakers) mostly never received municipal warnings; 210 of 270 surveyed had never received one.",
+      "evidence_urls": [
+        "https://www.sanews.gov.za/south-africa/nelson-mandela-bay-braces-severe-level-8-storms",
+        "https://theconversation.com/language-matters-for-disaster-warnings-this-community-didnt-get-useful-flood-alerts-284723"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "radio_relay": [
+    {
+      "broadcaster": "SABC African-language public radio stations (Ukhozi FM – isiZulu; Umhlobo Wenene – isiXhosa; Thobela FM – Sepedi; Phalaphala FM – Tshivenda; Munghana Lonene – Xitsonga)",
+      "evidence": "Station profiles confirm weather is part of regular programming (e.g. Ukhozi FM programming includes 'weather, and traffic'; Umhlobo Wenene carries 'traffic and weather updates'). No document found showing a formal SAWS–SABC protocol for translating warnings, or who translates them (newsroom staff vs SAWS). The translation workflow is unverified.",
+      "urls": ["https://en.wikipedia.org/wiki/Ukhozi_FM", "https://en.wikipedia.org/wiki/UMhlobo_Wenene_FM", "https://en.wikipedia.org/wiki/Phalaphala_FM", "https://en.wikipedia.org/wiki/Munghana_Lonene_FM", "https://en.wikipedia.org/wiki/Thobela_FM"],
+      "confidence": "low for warning relay specifically"
+    },
+    {
+      "broadcaster": "Community radio, Gqeberha (Walmer Airport Valley)",
+      "evidence": "Verbatim (The Conversation, 16 June 2026): 'Community radio, by contrast, was trusted by 264 of the 300 people we interviewed. As the broadcasts are in isiXhosa and widely listened to, this proved the most effective way to warn people.' The authors recommend that 'community radio must become a formal pillar of South Africa's early warning system.'",
+      "urls": ["https://theconversation.com/language-matters-for-disaster-warnings-this-community-didnt-get-useful-flood-alerts-284723"],
+      "confidence": "high (for this site)"
+    },
+    {
+      "broadcaster": "Local radio, Limpopo (Collins Chabane LM), Jan 2026",
+      "evidence": "The mayor said SAWS warnings were relayed 'through platforms such as social media and local radio stations' (Daily Maverick, 16 Feb 2026). Stations and languages are not named.",
+      "urls": ["https://www.dailymaverick.co.za/article/2026-02-16-anatomy-of-a-disaster-how-sas-warning-systems-stalled-during-the-floods/"],
+      "confidence": "medium"
+    },
+    {
+      "broadcaster": "SAWS–Santam partnership (May 2026)",
+      "evidence": "SAnews (8 May 2026) says the partnership includes 'targeted education campaigns, school-based initiatives and community radio programmes in local languages in high-risk areas.' This is education and awareness, not a translated operational warning feed.",
+      "urls": ["https://www.sanews.gov.za/south-africa/saws-partners-santam-enhance-disaster-risk-management"],
+      "confidence": "high"
+    }
+  ],
+  "cell_broadcast_status": {
+    "national_public_cell_broadcast_system": "None operational found as of Sept 2026. No ICASA regulation mandating public-warning cell broadcast was found.",
+    "evidence": [
+      "Mukange T., Mokoto B., Moipolai T., Ndamase Z. (2024), 'Accelerating the use of mobile phone capabilities to maximise the effectiveness of public emergency alerts in South Africa', ICEGOV 2024 (doi:10.1145/3680127.3680144). Per search-engine abstract snippets (full text 403): South Africa relies on TV, radio, websites, apps and social media; there is 'no integrated Emergency Alert System (EAS)', each authority runs its own mechanisms, and using cell broadcast and location-based SMS 'is still an area of improvement'. The snippets also say MTN and Vodacom have cell broadcast capability on 'Channel 50' for local area information. These are unverified paraphrases, since the full text could not be retrieved.",
+      "NDMC runs an opt-in 'Receive Early Warning' registration portal (contacts.ndmc.gov.za). This is subscription-based, not geo-targeted broadcast.",
+      "Mokhele & Mvanyashe (The Conversation, 2026) call for 'free emergency alerts' to 'reach all phones'. This suggests no universal push system reached the Walmer residents; only 90 of 258 phone owners had ever received a warning on their device."
+    ],
+    "jan_2026_limpopo_last_mile": "Coverage frames the failure as last-mile interpretation and action rather than forecasting. Daily Maverick: 'in many flood-hit villages, people did not understand the gravity of the warnings' and 'very few had an idea of what this meant' (Level 10). Mugari (The Conversation, 28 Jan 2026) recommends warnings 'via radio, loudspeakers, SMS, WhatsApp, and local volunteers or disaster management committees.' No source found that ties the Limpopo failure explicitly to language (Tshivenda/Xitsonga) or to a missing cell-broadcast system.",
+    "urls": ["https://dl.acm.org/doi/10.1145/3680127.3680144", "http://contacts.ndmc.gov.za/", "https://www.dailymaverick.co.za/article/2026-02-16-anatomy-of-a-disaster-how-sas-warning-systems-stalled-during-the-floods/", "https://theconversation.com/south-africas-floods-turned-deadly-because-limpopo-wasnt-prepared-how-to-prevent-a-repeat-274287"],
+    "confidence": "medium"
+  },
+  "policy": [
+    {
+      "instrument": "Use of Official Languages Act 12 of 2012 (applies to national departments, national public entities incl. SAWS, and national public enterprises)",
+      "what_it_requires": "Verbatim s4(2): a language policy must '(b) identify at least three official languages that the national department, national public entity or national public enterprise will use for government purposes; (c) stipulate how official languages will be used, amongst other things, in effectively communicating with the public, official notices, government publications...'. s4(3) requires taking into account 'its obligation to take practical and positive measures to elevate the status and advance the use of indigenous languages'. s7 requires a language unit, and s9 annual reports to the Minister and PanSALB. No SAWS or CoGTA/NDMC language policy was found online.",
+      "url": "https://www.gov.za/sites/default/files/gcis_document/201409/35742gon8010.pdf"
+    },
+    {
+      "instrument": "Disaster Management Act 57 of 2002",
+      "what_it_requires": "No language provision. Verbatim s17(1)(d): the National Centre must 'take steps to disseminate such information, especially to communities that are vulnerable to disasters'. s17(2)(e) requires database information on 'early warning systems'. s30(1)(j) (provincial) and s44(1)(j) (municipal) centres 'may give advice and guidance by disseminating information regarding disaster management ..., especially to communities that are vulnerable to disasters'. s53(2)(k)(v) requires municipal plans to provide for 'the dissemination of information'. s7(2)(j) requires the framework to 'take into account indigenous knowledge relating to disaster management'.",
+      "url": "https://faolex.fao.org/docs/pdf/saf53166.pdf"
+    },
+    {
+      "instrument": "PanSALB compliance assessment of UOLA (press statement, 20 March 2024)",
+      "what_it_requires": "Finding (verbatim): 'a majority underperform, struggling with legal compliance and accountability'. Language services accessibility 'notably deficient'. Covered 22 national departments and 18 entities. SAWS, CoGTA and NDMC are not named in the press statement.",
+      "url": "https://www.pansalb.org/pansalb-report-finds-national-departments-entities-non-compliant-with-the-use-of-official-languages-act-12-of-2012/"
+    },
+    {
+      "instrument": "City of Cape Town Language Policy (approved Nov 2021; Western Cape Provincial Languages Act)",
+      "what_it_requires": "Per news report: 'residents may communicate with the municipality in English, Xhosa or Afrikaans'. Key documents, notices and public-participation materials are made available in all three. No emergency-communication clause verified.",
+      "url": "https://social-tv.co.za/moretopstories/city-promotes-multilingual-access-and-inclusion/"
+    },
+    {
+      "instrument": "South Africa EW4All Roadmap 2025–2029 (SAWS/NDMC, launched Oct–Nov 2025)",
+      "what_it_requires": "Content on language or translation could not be verified; the roadmap PDF was not retrievable.",
+      "url": "https://www.weathersa.co.za/Documents/Corporate/ROADMAP_BOOKLET_FINAL_WEB_VERSION.pdf"
+    }
+  ],
+  "studies": [
+    {
+      "citation": "Mokhele, M.O. & Mvanyashe, A. (2025). The role of language as a catalyst in communicating early warning messages: a case study in Walmer Airport Valley informal settlement, Gqeberha, South Africa. International Journal of Disaster Risk Reduction. doi:10.1016/j.ijdrr.2025.105573 (ScienceDirect PII S2212420925003978). Popular version: The Conversation, 16 June 2026.",
+      "finding": "Of 270 surveyed, '210 said they had never received an early warning message'. Of 258 phone owners, 'only 90 had ever received a warning through their device'. isiXhosa community radio trusted by 264 of 300. Calls for 'simple, direct translations of terms like 'flooding' or 'evacuation' into isiXhosa'. The 'almost entirely in English and Afrikaans' line appears in the Conversation piece as unsourced background, not as a survey result. The IJDRR full text was not accessible (403), so whether the journal article contains the same claim is unverified.",
+      "url": "https://theconversation.com/language-matters-for-disaster-warnings-this-community-didnt-get-useful-flood-alerts-284723"
+    },
+    {
+      "citation": "Uekusa, S. (2019). Disaster linguicism: Linguistic minorities in disasters. Language in Society 48(3).",
+      "finding": "Defines linguicism as language-based discrimination at structural and interpersonal levels that increases linguistic minorities' disaster vulnerability. Based on interviews in Canterbury (NZ) and Miyagi (Japan), not South Africa. Useful as the conceptual frame; in SA the linguistically excluded are often majority-language speakers (isiZulu, isiXhosa, Tshivenda) rather than minorities.",
+      "url": "https://www.cambridge.org/core/journals/language-in-society/article/disaster-linguicism-linguistic-minorities-in-disasters/64F90D7B92E953BC719B0080986DD821"
+    },
+    {
+      "citation": "Daily Maverick (7 June 2022). KZN floods: Early warnings not enough; climate crisis literacy saves lives – experts.",
+      "finding": "Quarry Road West (Durban): 'City officials, UKZN and NGOS liaise with community leaders on WhatsApp groups who have systems in place to disperse alerts to residents.' Also: 'If the community doesn't get involved in understanding the risks and understanding the language related to risk, the information of risk warnings is very difficult for them to respond to.' Here 'language' means risk vocabulary, not a named language.",
+      "url": "https://www.dailymaverick.co.za/article/2022-06-07-kzn-floods-early-warning-not-enough-climate-hazard-literacy-key-experts/"
+    },
+    {
+      "citation": "CLARE programme, Story of Change: Strengthening and scaling community-based flood early warning systems in Durban (Quarry Road West; UKZN/eThekwini FEWS).",
+      "finding": "Two-tier system: 'flood advisories from the municipal Forecast Early Warning System (FEWS) sent to a local technical WhatsApp group, which is then communicated by intermediaries, with contextual and scientific knowledge, to a community WhatsApp group.' The language used in the community group is not specified in the retrieved text.",
+      "url": "https://clareprogramme.org/impact/strengthening-and-scaling-community-based-flood-early-warning-systems-in-durban-south-africa/"
+    },
+    {
+      "citation": "Muhame, C., Ncube, A. & Bahta, Y.T. (2024). Dissemination and participation in early warnings and disaster risk reduction in South Africa. Jàmbá 16(1).",
+      "finding": "Preferred channels: 'the church, school, WhatsApp, Facebook, Twitter and Instagram were the preferred modes of communication for early warnings of disaster information.' Language not addressed in the abstract.",
+      "url": "https://jamba.org.za/index.php/jamba/article/view/1566"
+    },
+    {
+      "citation": "Mukange, T., Mokoto, B., Moipolai, T., Ndamase, Z. (2024). Accelerating the use of mobile phone capabilities to maximise the effectiveness of public emergency alerts in South Africa. ICEGOV '24, ACM.",
+      "finding": "Advocates adopting cell broadcast and location-based SMS; per search abstract snippets, SA has no integrated Emergency Alert System. Full text not retrieved.",
+      "url": "https://dl.acm.org/doi/10.1145/3680127.3680144"
+    },
+    {
+      "citation": "Mugari, E. (28 Jan 2026). South Africa's floods turned deadly because Limpopo wasn't prepared – how to prevent a repeat. The Conversation.",
+      "finding": "'Impact-based early warnings of floods must be sent out via radio, loudspeakers, SMS, WhatsApp, and local volunteers or disaster management committees.' Language is not discussed.",
+      "url": "https://theconversation.com/south-africas-floods-turned-deadly-because-limpopo-wasnt-prepared-how-to-prevent-a-repeat-274287"
+    }
+  ],
+  "event_specific_language_evidence": [
+    {
+      "event": "Walmer Airport Valley, Gqeberha – flood early warnings (survey context)",
+      "date": "published 2025 (IJDRR); popular article 16 June 2026",
+      "quote": "When a flood comes, the difference between a plain warning in isiXhosa and a jargon-filled English message can be the difference between reaching higher ground and losing everything.",
+      "url": "https://theconversation.com/language-matters-for-disaster-warnings-this-community-didnt-get-useful-flood-alerts-284723"
+    },
+    {
+      "event": "eThekwini heavy rain warning – official isiZulu newsflash",
+      "date": "2023-06-27",
+      "quote": "Kunxuswa umphakathi ukuba uqaphele isexwayiso sesimo sezulu esikhishwe yiSouth African Weather Services (SAWS) ebikezele ukuthi kuzoba nemvula enamandla ezingxenyeni ezahlukene zeTheku.",
+      "url": "https://www.durban.gov.za/press-statement/Isexwayiso+Ngesimo+Sezulu"
+    },
+    {
+      "event": "Limpopo floods (Level 10 warning), January 2026",
+      "date": "2026-01 (reported 2026-02-16)",
+      "quote": "Although some of them may have heard about the level 10 weather warning in the lead-up to the disaster, very few had an idea of what this meant.",
+      "url": "https://www.dailymaverick.co.za/article/2026-02-16-anatomy-of-a-disaster-how-sas-warning-systems-stalled-during-the-floods/"
+    },
+    {
+      "event": "Vhembe District flooding – provincial flood alert issued in English only",
+      "date": "2026-03-03",
+      "quote": "The Limpopo Department of Transport and Community Safety has issued a flood warning for the Vhembe District due to heavy downpours causing widespread flooding.",
+      "url": "https://www.limpopo.gov.za/wp-content/uploads/2026/03/Flood-Alert-Vhembe-District-Limpopo.pdf"
+    },
+    {
+      "event": "KZN Level 4 warning relayed in isiZulu by Isolezwe",
+      "date": "2026-09-16",
+      "quote": "Isixwayiso sezinga lesi-4 esikhishwe yi-South African Weather Service mayelana nemvula enamandla",
+      "url": "https://isolezwe.co.za/isolezwe/izindaba/2026-09-16-isexwayiso-ngesimo-sezulu-esingesihle-ekzn/"
+    },
+    {
+      "event": "Western Cape Level 8 warning relayed in Afrikaans by news media (not by SAWS)",
+      "date": "2024-07-10",
+      "quote": "'n Vlak 8-weerwaarskuwing is vir die Wes-Kaap uitgereik. Erge reën en wind word voorspel en grondverskuiwings kan voorkom.",
+      "url": "https://nuusflits.com/vlak-8-weerwaarskuwing-vir-wes-kaap-uitgereik/"
+    },
+    {
+      "event": "KZN April 2022 floods – Quarry Road West",
+      "date": "2022-04 (reported 2022-06-07)",
+      "quote": "If the community doesn't get involved in understanding the risks and understanding the language related to risk, the information of risk warnings is very difficult for them to respond to.",
+      "url": "https://www.dailymaverick.co.za/article/2022-06-07-kzn-floods-early-warning-not-enough-climate-hazard-literacy-key-experts/"
+    }
+  ],
+  "gaps": "(1) Could not access the full texts of Mokhele & Mvanyashe (IJDRR, 403) or Mukange et al. (ACM, 403). Their abstract-level content comes from search snippets and The Conversation. (2) The SAWS EW4All roadmap PDF could not be retrieved (404 or certificate error), so what it says about language is unknown. (3) No SAWS, DFFE or CoGTA/NDMC language policy under UOLA was found online; its existence is unconfirmed either way. (4) No documentary evidence of how SABC African-language stations (Ukhozi, Umhlobo Wenene, Thobela, Phalaphala, Munghana Lonene) receive and translate SAWS warnings, or who translates them. (5) City of Cape Town: trilingual policy confirmed by secondary source, but no Afrikaans or isiXhosa warning post verified, and the policy PDF was unreachable. (6) No primary warning samples for Nelson Mandela Bay, OR Tambo/KSD, Johannesburg, Tshwane or Vhembe District Municipality. (7) No ICASA regulation, parliamentary question, SAHRC or PanSALB finding found that specifically concerns the language of disaster warnings. (8) No study found of the Jan 2026 Limpopo warnings that analyses language (Tshivenda/Xitsonga/Sepedi) specifically. (9) Several quotes came through a web-fetch summariser. They are marked verbatim, but should be spot-checked against the live pages before publication. Direct HTML retrieval confirmed the eThekwini isiZulu newsflash, the Limpopo PDF and the UOLA and DMA gazette text."
+}

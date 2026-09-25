@@ -1,0 +1,2293 @@
+[
+    {
+        "url":  "https://abcnews.go.com/International/wireStory/south-africa-declares-national-disaster-flooding-severe-weather-129326963",
+        "title":  "South Africa declares a national disaster over flooding and severe weather",
+        "publisher":  "ABC News (AP)",
+        "date":  "2026-01-18",
+        "used_by":  [
+                        "2026-01-limpopo-mpumalanga-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.africanews.com/2016/11/10/south-africa-flash-floods-kill-six-people-in-johannesburg/",
+        "title":  "South Africa: Flash floods kill six people in Johannesburg",
+        "publisher":  "Africanews",
+        "date":  "2016-11-10",
+        "used_by":  [
+                        "2016-11-johannesburg-flash-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.africanews.com/2023/12/31/south-africa-flash-floods-kill-21-people-in-coastal-province-of-kwazulu-natal/",
+        "title":  "South Africa: Flash floods kill 21 people in coastal province of KwaZulu-Natal",
+        "publisher":  "Africanews",
+        "date":  "2023-12-31",
+        "used_by":  [
+                        "2023-12-ladysmith-christmas-eve"
+                    ]
+    },
+    {
+        "url":  "https://www.aljazeera.com/news/2026/1/17/floods-kill-more-than-100-across-southern-africa-as-rains-intensify",
+        "title":  "Floods kill more than 100 across southern Africa as rains intensify",
+        "publisher":  "Al Jazeera",
+        "date":  "2026-01-17",
+        "used_by":  [
+                        "2026-01-limpopo-mpumalanga-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.aljazeera.com/news/2023/6/29/four-dead-one-missing-after-heavy-rain-tornado-in-south-africa",
+        "title":  "Seven dead, others missing after South Africa rains, tornado",
+        "publisher":  "Al Jazeera",
+        "date":  "2023-06-29",
+        "used_by":  [
+                        "2023-06-kzn-ethekwini-landspout"
+                    ]
+    },
+    {
+        "url":  "https://www.aljazeera.com/amp/news/2016/7/26/winter-cold-brings-floods-and-snow-to-south-africa",
+        "title":  "Winter cold brings floods and snow to South Africa",
+        "publisher":  "Al Jazeera",
+        "date":  "2016-07-26",
+        "used_by":  [
+                        "2016-07-cape-kzn-winter-storm"
+                    ]
+    },
+    {
+        "url":  "https://www.aljazeera.com/news/2019/4/24/more-than-60-dead-in-south-africa-floods",
+        "title":  "More than 60 dead in South Africa floods",
+        "publisher":  "Al Jazeera",
+        "date":  "2019-04-24",
+        "used_by":  [
+                        "2019-04-easter-floods-kzn-ec"
+                    ]
+    },
+    {
+        "url":  "https://www.aljazeera.com/amp/news/2017/6/8/storm-kills-several-displaces-thousands-in-cape-town",
+        "title":  "Storm kills several, displaces thousands in Cape Town",
+        "publisher":  "Al Jazeera",
+        "date":  "2017-06-08",
+        "used_by":  [
+                        "2017-06-cape-storm"
+                    ]
+    },
+    {
+        "url":  "https://www.algoafm.co.za/local/nmb-flood-toll-climbs-and-more-rain-is-coming",
+        "title":  "NMB flood toll climbs and more rain is coming",
+        "publisher":  "Algoa FM",
+        "date":  "2024-06-03",
+        "used_by":  [
+                        "2024-06-eastern-cape-floods"
+                    ]
+    },
+    {
+        "url":  "https://allafrica.com/stories/202503030054.html",
+        "title":  "South Africa: KwaZulu-Natal Hit by More Floods",
+        "publisher":  "AllAfrica",
+        "date":  "2025-03-03",
+        "used_by":  [
+                        "2025-03-kzn-further-floods"
+                    ]
+    },
+    {
+        "url":  "https://allafrica.com/stories/202412230033.html",
+        "title":  "South Africa: Motorcyclist, Motorist Die in Centurion Floods - Region Braces for More Storms",
+        "publisher":  "AllAfrica",
+        "date":  "2024-12-23",
+        "used_by":  [
+                        "2024-12-centurion-flash-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.amnesty.org",
+        "title":  "Flooded and Forgotten (p.51)",
+        "publisher":  "Amnesty International",
+        "date":  "2025-11",
+        "used_by":  [
+                        "2024-12-cato-manor-enkanini-wall-collapse"
+                    ]
+    },
+    {
+        "url":  "https://doi.org/10.1007/978-3-031-43059-6_14",
+        "title":  "The Preparedness Plans and Early Warning Systems During Flood Disasters in South Africa",
+        "publisher":  "Bethuel Sibongiseni Ngcamu; Gail Abrahams",
+        "date":  "2024",
+        "used_by":  [
+                        "reference"
+                    ]
+    },
+    {
+        "url":  "https://www.bloomberg.com/news/articles/2017-06-08/cape-town-mops-up-after-most-devastating-storm-in-three-decades",
+        "title":  "Cape Town Mops Up After Most Devastating Storm in 30 Years",
+        "publisher":  "Bloomberg",
+        "date":  "2017-06-08",
+        "used_by":  [
+                        "2017-06-cape-storm"
+                    ]
+    },
+    {
+        "url":  "https://briefly.co.za/south-africa/253657-kwazulu-natal-heavy-rain-death-destruction-mudslides-destroy-homes-crashes-kill-4/",
+        "title":  "KwaZulu-Natal Heavy Rain Causes Death and Destruction as Mudslides Destroy Homes, Crashes Kill 4",
+        "publisher":  "Briefly News",
+        "date":  "2026-09-18",
+        "used_by":  [
+                        "2026-09-kzn-heavy-rain"
+                    ]
+    },
+    {
+        "url":  "https://www.capetownetc.com/news/one-death-in-garden-route-flooding-as-western-cape-issues-warning/",
+        "title":  "One dead in Garden Route flooding as Western Cape issues warning",
+        "publisher":  "Cape Town ETC",
+        "date":  "2026-06-06",
+        "used_by":  [
+                        "2026-06-garden-route-karoo-kouga-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.capetownetc.com/news/saws-issues-orange-level-8-warning-as-storm-approaches-western-cape/",
+        "title":  "SAWS issues orange level 8 warning as storm approaches Western Cape",
+        "publisher":  "Cape Town ETC",
+        "date":  null,
+        "used_by":  [
+                        "2024-07-western-cape-storms"
+                    ]
+    },
+    {
+        "url":  "https://doi.org/10.5194/egusphere-egu23-14921",
+        "title":  "The April 2022 South Africa Flood event",
+        "publisher":  "Carlotta Scudeler; Giulia Giani; Alexandra Tsioulou",
+        "date":  "2023",
+        "used_by":  [
+                        "reference"
+                    ]
+    },
+    {
+        "url":  "https://clubofmozambique.com/news/south-africa-search-operations-in-mpumalanga-under-way-after-8-people-drowned-5-missing-183746/",
+        "title":  "South Africa: Search operations in Mpumalanga under way after 8 people drowned, 5 missing",
+        "publisher":  "Club of Mozambique",
+        "date":  "2021-02-08",
+        "used_by":  [
+                        "2021-02-mpumalanga-kzn-limpopo-floods"
+                    ]
+    },
+    {
+        "url":  "https://data.humdata.org/dataset/emdat-country-profiles-zaf",
+        "title":  "EM-DAT - Country Profiles, South Africa",
+        "publisher":  "CRED / UCLouvain (EM-DAT), via HDX",
+        "date":  "2026",
+        "used_by":  [
+                        "reference"
+                    ]
+    },
+    {
+        "url":  "https://www.dailydispatch.co.za/news/2021-12-13-death-toll-now-six-after-mthatha-storm/",
+        "title":  "Death toll now six after Mthatha storm",
+        "publisher":  "Daily Dispatch",
+        "date":  "2021-12-13",
+        "used_by":  [
+                        "2021-12-mthatha-or-tambo-storms"
+                    ]
+    },
+    {
+        "url":  "https://www.dailydispatch.co.za/news/2026-06-23-saws-draws-global-praise-for-life-saving-mthatha-flood-warnings/",
+        "title":  "SAWS draws global praise for life-saving Mthatha flood warnings",
+        "publisher":  "Daily Dispatch",
+        "date":  "2026-06-23",
+        "used_by":  [
+                        "2025-06-eastern-cape-mthatha-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2025-11-24-floods-bring-death-and-devastation-to-community-of-new-hanover-in-kzn/",
+        "title":  "Floods bring death and devastation to community of New Hanover in KZN",
+        "publisher":  "Daily Maverick",
+        "date":  "2025-11-24",
+        "used_by":  [
+                        "2025-11-umshwathi-new-hanover-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2024-06-09-death-toll-10-after-nelson-mandela-bay-flood/",
+        "title":  "Death toll 10 after Nelson Mandela Bay flood",
+        "publisher":  "Daily Maverick",
+        "date":  "2024-06-09",
+        "used_by":  [
+                        "2024-06-western-cape-cutofflow-floods",
+                        "2024-06-eastern-cape-floods",
+                        "2024-06-kzn-tornadoes-storm"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2023-03-01-farms-and-lodges-along-the-lower-orange-river-brace-for-further-wipeouts-as-floodwaters-rise/",
+        "title":  "Farms and lodges along the lower Orange River brace for further wipeouts as floodwaters rise",
+        "publisher":  "Daily Maverick",
+        "date":  "2023-03-01",
+        "used_by":  [
+                        "2023-02-northern-cape-orange-river"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2022-04-12-tragedy-in-kzn-as-floods-cause-devastation-mostly-for-the-poor-in-informal-settlements/",
+        "title":  "Tragedy in KZN as floods cause devastation, mostly for the poor in informal settlements",
+        "publisher":  "Daily Maverick",
+        "date":  "2022-04-12",
+        "used_by":  [
+                        "2022-04-kzn-megaflood"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2022-04-18-weathering-the-climate-crisis-in-flood-prone-durban-tough-lessons-from-the-rain-bomb/",
+        "title":  "Weathering the climate crisis in flood-prone Durban — tough lessons from the \u0027rain bomb\u0027",
+        "publisher":  "Daily Maverick",
+        "date":  "2022-04-18",
+        "used_by":  [
+                        "2019-04-easter-floods-kzn-ec"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2025-06-19-eaastern-cape-floods-why-sas-disaster-management-and-legislation-failed/",
+        "title":  "Eastern Cape floods: Why SA\u0027s disaster management and legislation failed",
+        "publisher":  "Daily Maverick",
+        "date":  "2025-06-19",
+        "used_by":  [
+                        "2025-06-eastern-cape-mthatha-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2026-06-03-garden-route-braces-for-more-flooding-as-second-major-storm-hits-in-a-month/",
+        "title":  "Garden Route braces for more flooding as second major storm hits in a month",
+        "publisher":  "Daily Maverick",
+        "date":  "2026-06-03",
+        "used_by":  [
+                        "2026-06-garden-route-karoo-kouga-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2025-02-20-heavy-rain-batters-kzn-killing-3-in-landslide-amid-flooding/",
+        "title":  "Heavy rain batters KZN – 6 people die, 3 in landslide, amid flooding",
+        "publisher":  "Daily Maverick",
+        "date":  "2025-02-20",
+        "used_by":  [
+                        "2025-02-ethekwini-storm-wall-collapses"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2024-10-23-nelson-mandela-bay-counts-flooding-costs-three-dead-3000-displaced-electricity-and-sewage-systems-down/",
+        "title":  "Nelson Mandela Bay floods — three dead, 3,000 people displaced",
+        "publisher":  "Daily Maverick",
+        "date":  "2024-10-23",
+        "used_by":  [
+                        "2024-10-eastern-cape-nmb-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2023-09-17-two-dead-after-high-winds-and-wild-seas-wreak-havoc-on-eastern-and-western-cape-coasts/",
+        "title":  "Perfect storm: Two dead after high winds and wild seas wreak havoc on SA\u0027s Eastern and Western Cape coasts",
+        "publisher":  "Daily Maverick",
+        "date":  "2023-09-17",
+        "used_by":  [
+                        "2023-09-cape-coast-storm-surge"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2026-05-11-cold-fronts-lash-western-cape-one-dead-communities-flooded-and-schools-shut/",
+        "title":  "Cold fronts lash Western Cape – one dead, communities flooded and schools shut",
+        "publisher":  "Daily Maverick",
+        "date":  "2026-05-11",
+        "used_by":  [
+                        "2026-05-cutofflow-cold-fronts-national-disaster"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2022-04-14-devastated-kzn-communities-search-for-family-members-swept-away-by-floodwaters/",
+        "title":  "Devastated KZN communities search for family members swept away by floodwaters",
+        "publisher":  "Daily Maverick",
+        "date":  "2022-04-14",
+        "used_by":  [
+                        "2022-04-kzn-megaflood"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2023-03-30-port-st-johns-flood-crisis-leaves-more-than-1000-displaced-and-waterworks-bridges-destroyed/",
+        "title":  "Port St Johns flood crisis leaves more than 1,000 displaced and waterworks, bridges destroyed",
+        "publisher":  "Daily Maverick",
+        "date":  "2023-03-30",
+        "used_by":  [
+                        "2023-03-port-st-johns-ingquza"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2025-12-22-severe-weather-claims-two-lives-as-relief-operations-across-sa-kick-into-gear/",
+        "title":  "Severe weather: Death toll rises to 5 as relief operations across SA kick into gear",
+        "publisher":  "Daily Maverick",
+        "date":  "2025-12-22",
+        "used_by":  [
+                        "2025-12-festive-storms-kzn-ec-gauteng"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2023-03-24-it-was-scary-say-residents-as-the-eastern-cape-is-lashed-by-yet-more-rain/",
+        "title":  "\u0027It was scary,\u0027 say residents as the Eastern Cape is lashed by yet more rain",
+        "publisher":  "Daily Maverick",
+        "date":  "2023-03-24",
+        "used_by":  [
+                        "2023-03-port-st-johns-ingquza"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2022-01-19-search-continues-for-teen-boy-as-rain-battered-ladysmith-counts-cost-of-floods/",
+        "title":  "Search continues for teen boy as rain-battered Ladysmith counts cost of floods",
+        "publisher":  "Daily Maverick",
+        "date":  "2022-01-19",
+        "used_by":  [
+                        "2022-01-kzn-ladysmith-vaal"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2022-01-12-eastern-cape-officials-still-counting-losses-after-floods-kill-14-and-displace-hundreds/",
+        "title":  "Eastern Cape officials still counting losses after floods kill 14 and displace hundreds",
+        "publisher":  "Daily Maverick",
+        "date":  "2022-01-12",
+        "used_by":  [
+                        "2022-01-eastern-cape-mdantsane"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2022-06-07-kzn-floods-early-warning-not-enough-climate-hazard-literacy-key-experts/",
+        "title":  "KZN floods: Early warnings not enough; climate crisis literacy saves lives - experts",
+        "publisher":  "Daily Maverick",
+        "date":  "2022-06-07",
+        "used_by":  [
+                        "2022-04-kzn-megaflood"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2025-06-18-deadly-mthatha-flood-underscores-worsening-factors-increasing-risks-for-sa/",
+        "title":  "Deadly Mthatha flood underscores worsening factors increasing risks for SA",
+        "publisher":  "Daily Maverick",
+        "date":  "2025-06-18",
+        "used_by":  [
+                        "2025-06-eastern-cape-mthatha-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2023-02-28-northern-cape-floods-uncertainty-hunger-as-waters-rise/",
+        "title":  "Riverside Northern Cape residents face uncertainty and hunger as floodwaters rise",
+        "publisher":  "Daily Maverick",
+        "date":  "2023-02-28",
+        "used_by":  [
+                        "2023-02-northern-cape-orange-river"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2023-02-14-flood-disaster-provinces-record-mounting-death-destruction/",
+        "title":  "Flood disaster: provinces record mounting death, destruction",
+        "publisher":  "Daily Maverick",
+        "date":  "2023-02-14",
+        "used_by":  [
+                        "2023-02-national-disaster-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2024-10-08-year-of-disasters-leaves-western-cape-with-multibillion-rand-shortfall/",
+        "title":  "Series of disasters leaves Western Cape with multibillion-rand shortfall",
+        "publisher":  "Daily Maverick",
+        "date":  "2024-10-08",
+        "used_by":  [
+                        "2024-07-western-cape-storms"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2022-12-09-kliptown-residents-scream-for-their-lives-as-floods-hit/",
+        "title":  "Kliptown residents \u0027scream for their lives\u0027 as floods hit",
+        "publisher":  "Daily Maverick",
+        "date":  "2022-12-09",
+        "used_by":  [
+                        "2022-12-gauteng-northwest-soweto"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2022-12-06-bad-weather-stalls-search-for-alexandra-churchgoers-believed-drowned-in-flash-flood/",
+        "title":  "Bad weather stalls search for Alexandra churchgoers believed drowned in flash flood",
+        "publisher":  "Daily Maverick",
+        "date":  "2022-12-06",
+        "used_by":  [
+                        "2022-12-jukskei-baptism"
+                    ]
+    },
+    {
+        "url":  "https://www.dailymaverick.co.za/article/2022-04-12-could-the-kzn-flooding-disaster-have-been-mitigated-by-a-better-early-warning-system/",
+        "title":  "Could the KZN flooding disaster have been mitigated by a better early warning system?",
+        "publisher":  "Daily Maverick",
+        "date":  "2022-04-12",
+        "used_by":  [
+                        "2022-04-kzn-megaflood"
+                    ]
+    },
+    {
+        "url":  "https://floodobservatory.colorado.edu/wiki/South_Africa",
+        "title":  "Global Active Archive of Large Flood Events - DFO flood records (country page: South Africa)",
+        "publisher":  "Dartmouth Flood Observatory (DFO), University of Colorado",
+        "date":  "",
+        "used_by":  [
+                        "reference"
+                    ]
+    },
+    {
+        "url":  "https://www.ecr.co.za/news/news/new-hanover-flood-damage-made-worse-flouting-bylaws/",
+        "title":  "New Hanover flood damage \u0027made worse\u0027 by flouting of bylaws, says MEC",
+        "publisher":  "East Coast Radio",
+        "date":  "2025-11",
+        "used_by":  [
+                        "2025-11-umshwathi-new-hanover-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.ecr.co.za/news/news/kzn-storm-claims-five-lives-mec-visits-victims/",
+        "title":  "KZN storm claims five lives, MEC visits victims",
+        "publisher":  "East Coast Radio",
+        "date":  "2023-10",
+        "used_by":  [
+                        "2023-10-kzn-mtubatuba-storm"
+                    ]
+    },
+    {
+        "url":  "https://doi.org/10.1016/j.ijdrr.2023.104122",
+        "title":  "Disaster management \u0027deeds\u0027 in the context of April 2022 KwaZulu-Natal floods: A scoping review",
+        "publisher":  "Elmon Mudefi",
+        "date":  "2023",
+        "used_by":  [
+                        "reference"
+                    ]
+    },
+    {
+        "url":  "https://www.enca.com/news-top-stories/western-cape-storms-leave-thousands-affected",
+        "title":  "Western Cape storms leave thousands affected",
+        "publisher":  "eNCA",
+        "date":  "2025-07-06",
+        "used_by":  [
+                        "2025-07-cape-town-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.enca.com/news/eastern-cape-floods-three-dead-and-thousands-displaced",
+        "title":  "Eastern Cape floods | Three dead and thousands displaced",
+        "publisher":  "eNCA",
+        "date":  "2024-10-23",
+        "used_by":  [
+                        "2024-10-eastern-cape-nmb-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.engineeringnews.co.za/article/south-africa-declares-national-disaster-after-floods-storms-2024-11-13",
+        "title":  "South Africa declares national disaster after floods, storms",
+        "publisher":  "Engineering News",
+        "date":  "2024-11-13",
+        "used_by":  [
+                        "2024-10-eastern-cape-nmb-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.durban.gov.za/press-statement/Four+fatalities+reported+and+mop-up+operations+continue+following+heavy+rains",
+        "title":  "Four fatalities reported and mop-up operations continue following heavy rains",
+        "publisher":  "eThekwini Municipality",
+        "date":  "2025-02-20",
+        "used_by":  [
+                        "2025-02-ethekwini-storm-wall-collapses"
+                    ]
+    },
+    {
+        "url":  "https://www.ewn.co.za/2025/11/25/kzn-municipalities-urged-to-enforce-by-laws-to-prevent-disaster-deaths",
+        "title":  "KZN municipalities urged to enforce by-laws to prevent disaster deaths",
+        "publisher":  "EWN",
+        "date":  "2025-11-25",
+        "used_by":  [
+                        "2025-11-umshwathi-new-hanover-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.ewn.co.za/2025/02/27/lamontville-flood-victims-to-be-moved-to-community-shelters",
+        "title":  "Lamontville flood victims to be moved to community shelters",
+        "publisher":  "EWN",
+        "date":  "2025-02-27",
+        "used_by":  [
+                        "2025-02-lamontville-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.ewn.co.za/2026/01/15/level-10-warning-issued-extreme-flood-risk-for-limpopo-and-mpumalanga",
+        "title":  "Level 10 warning issued: Extreme flood risk for Limpopo and Mpumalanga",
+        "publisher":  "EWN",
+        "date":  "2026-01-15",
+        "used_by":  [
+                        "2026-01-limpopo-mpumalanga-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.ewn.co.za/2026/05/15/wc-govt-wants-recent-destructive-floods-declared-a-national-disaster",
+        "title":  "WC govt wants recent destructive floods declared a national disaster",
+        "publisher":  "EWN",
+        "date":  "2026-05-15",
+        "used_by":  [
+                        "2026-05-cutofflow-cold-fronts-national-disaster"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-flooding-eastern-cape-mpumalanga-february-2023",
+        "title":  "South Africa – Flooding Displaces Hundreds in Eastern Cape, Fatalities Reported in Mpumalanga",
+        "publisher":  "FloodList",
+        "date":  "2023-02-10",
+        "used_by":  [
+                        "2023-02-national-disaster-floods"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-johannesburg-december-2022",
+        "title":  "South Africa – 9 Dead, 8 Missing After Flash Floods in Johannesburg",
+        "publisher":  "FloodList",
+        "date":  "2022-12-04",
+        "used_by":  [
+                        "2022-12-jukskei-baptism"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/southafrica-zimbabwe-floods-musina-beitbridge-february-2021",
+        "title":  "South Africa and Zimbabwe – Flash Floods in Border Towns of Musina and Beitbridge",
+        "publisher":  "FloodList",
+        "date":  "2021-02-23",
+        "used_by":  [
+                        "2021-02-musina-floods"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/floods-tembisa-gauteng-south-africa-february-2022",
+        "title":  "South Africa – 1 Dead, 3 Missing After Floods in Gauteng",
+        "publisher":  "FloodList",
+        "date":  "2022-02-21",
+        "used_by":  [
+                        "2022-02-tembisa-ivory-park"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-mining-dam-jagersfontein-september-2022",
+        "title":  "South Africa – Mining Dam in Jagersfontein Collapses, 3 Dead, 4 Missing",
+        "publisher":  "FloodList",
+        "date":  "2022-09-12",
+        "used_by":  [
+                        "2022-09-jagersfontein-tailings"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-january-february-2021",
+        "title":  "South Africa – Over 30 Fatalities Reported After Weeks of Flooding",
+        "publisher":  "FloodList",
+        "date":  "2021-02-14",
+        "used_by":  [
+                        "2021-01-eloise-limpopo-mpumalanga",
+                        "2021-01-northern-cape-floods",
+                        "2021-02-mpumalanga-kzn-limpopo-floods"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-february-2017",
+        "title":  "South Africa – Floods in North and East Leave 3 Dead, 2 Missing",
+        "publisher":  "FloodList",
+        "date":  "2017-02-24",
+        "used_by":  [
+                        "2017-02-ex-dineo-floods"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-kwazulunatal-gauteng-november-2020",
+        "title":  "South Africa – Flash Floods in KwaZulu-Natal and Gauteng",
+        "publisher":  "FloodList",
+        "date":  "2020-11-23",
+        "used_by":  [
+                        "2020-11-umlazi-hammanskraal"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-kzn-eastern-cape-april-2019",
+        "title":  "South Africa – Deadly Floods and Landslides Hit KZN and Eastern Cape",
+        "publisher":  "FloodList",
+        "date":  "2019-04-23",
+        "used_by":  [
+                        "2019-04-easter-floods-kzn-ec"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-gauteng-floods-march-2018",
+        "title":  "South Africa – Floods in Gauteng After a Month of Rain Falls in One Day",
+        "publisher":  "FloodList",
+        "date":  "2018-03-23",
+        "used_by":  [
+                        "2018-03-gauteng-floods"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-state-of-disaster-flods-february-2023",
+        "title":  "South Africa – Government Declares National State of Disaster Over Floods",
+        "publisher":  "FloodList",
+        "date":  "2023-02-14",
+        "used_by":  [
+                        "2023-02-national-disaster-floods"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-cape-town-june-2022",
+        "title":  "South Africa – Flood Chaos in Cape Town After Days of Heavy Rain",
+        "publisher":  "FloodList",
+        "date":  "2022-06-15",
+        "used_by":  [
+                        "2022-06-cape-town"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-johannesburg-gauteng-february-2020",
+        "title":  "South Africa – Floods Cause Havoc in Johannesburg and Gauteng",
+        "publisher":  "FloodList",
+        "date":  "2020-02-08",
+        "used_by":  [
+                        "2020-02-johannesburg-floods"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-western-cape-may-2021",
+        "title":  "South Africa – Evacuations and Rescues After Storm Triggers Floods in Western Cape",
+        "publisher":  "FloodList",
+        "date":  "2021-05-06",
+        "used_by":  [
+                        "2021-05-western-cape-overberg"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/storm-eloise-floods-mozambique-zimbabwe-southafrica-january-2021",
+        "title":  "Southern Africa – Tropical Cyclone Eloise Triggers Floods in Mozambique, Zimbabwe and South Africa",
+        "publisher":  "FloodList",
+        "date":  "2021-01-25",
+        "used_by":  [
+                        "2021-01-eloise-limpopo-mpumalanga"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-gauteng-floods-november-2016",
+        "title":  "South Africa – Gauteng Premier to Declare Disaster Following Floods, 6 Fatalities Confirmed",
+        "publisher":  "FloodList",
+        "date":  "2016-11-12",
+        "used_by":  [
+                        "2016-11-johannesburg-flash-floods"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-durban-november-2019",
+        "title":  "South Africa – 4 Dead After Storms and Floods in KwaZulu-Natal",
+        "publisher":  "FloodList",
+        "date":  "2019-11-13",
+        "used_by":  [
+                        "2019-11-durban-mpolweni-storms"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-kwazulu-natal-march-2019",
+        "title":  "South Africa – Deadly Flash Floods in KwaZulu-Natal Province",
+        "publisher":  "FloodList",
+        "date":  "2019-03-12",
+        "used_by":  [
+                        "2019-03-durban-inanda"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-gauteng-december-2019",
+        "title":  "South Africa – Hundreds Rescued From Floods in Gauteng",
+        "publisher":  "FloodList",
+        "date":  "2019-12-10",
+        "used_by":  [
+                        "2019-12-tshwane-mamelodi"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-kwazulu-natal-june-2023",
+        "title":  "South Africa – Homes Destroyed, Lives Lost After Floods in KwaZulu-Natal Province",
+        "publisher":  "FloodList",
+        "date":  "2023-06-30",
+        "used_by":  [
+                        "2023-06-kzn-ethekwini-landspout"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/kwazulu-natal-durban-flood-october-2017",
+        "title":  "South Africa – Storm Leaves 8 Dead, Record Rain in Durban",
+        "publisher":  "FloodList",
+        "date":  "2017-10-11",
+        "used_by":  [
+                        "2017-10-durban-supercell-storm"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-cape-town-durban-july-2016",
+        "title":  "Updated: South Africa – 7 Dead, Thousands Affected by Floods in Cape Town and Durban",
+        "publisher":  "FloodList",
+        "date":  "2016-07-28",
+        "used_by":  [
+                        "2016-07-cape-kzn-winter-storm"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-lash-floods-kwazulunatal-february-2020",
+        "title":  "South Africa – Deadly Flash Floods in KwaZulu-Natal",
+        "publisher":  "FloodList",
+        "date":  "2020-02-24",
+        "used_by":  [
+                        "2020-02-kzn-nonoti"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-kwazulu-natal-floods-april-2022",
+        "title":  "South Africa – Death Toll in KwaZulu-Natal Floods Over 300",
+        "publisher":  "FloodList",
+        "date":  "2022-04-14",
+        "used_by":  [
+                        "2022-04-kzn-megaflood"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-kzn-north-west-province-january-2022",
+        "title":  "South Africa – Dozens Evacuate Floods in KZN",
+        "publisher":  "FloodList",
+        "date":  "2022-01-19",
+        "used_by":  [
+                        "2022-01-kzn-ladysmith-vaal"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-update-feberuary-2023",
+        "title":  "South Africa – More Floods Leave 2 Dead, 5 Missing",
+        "publisher":  "FloodList",
+        "date":  "2023-02-20",
+        "used_by":  [
+                        "2023-02-national-disaster-floods",
+                        "2023-02-northern-cape-orange-river"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-eastern-cape-january-2022",
+        "title":  "South Africa – Deadly Floods Hit Eastern Cape",
+        "publisher":  "FloodList",
+        "date":  "2022-01-10",
+        "used_by":  [
+                        "2022-01-eastern-cape-mdantsane"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-limpopo-mpumalanga-january-2017",
+        "title":  "South Africa – Deadly Flash Floods in Limpopo and Mpumalanga",
+        "publisher":  "FloodList",
+        "date":  "2017-01-09",
+        "used_by":  [
+                        "2017-01-limpopo-mpumalanga-flash-floods"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-western-cape-september-2023",
+        "title":  "South Africa – Evacuations, Rescues and Road Chaos After Storms and Floods in Western Cape",
+        "publisher":  "FloodList",
+        "date":  "2023-09-26",
+        "used_by":  [
+                        "2023-09-western-cape-cutoff-low"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-deadly-flash-floods-hit-johannesburg",
+        "title":  "South Africa – Deadly Flash Floods Hit Johannesburg",
+        "publisher":  "FloodList",
+        "date":  "2016-11-10",
+        "used_by":  [
+                        "2016-11-johannesburg-flash-floods"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-eastern-cape-late-march-2023",
+        "title":  "South Africa – Deadly Floods Hit Eastern Cape",
+        "publisher":  "FloodList",
+        "date":  "2023-03-27",
+        "used_by":  [
+                        "2023-03-port-st-johns-ingquza"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floodi-kwazulu-natal-may-2022",
+        "title":  "South Africa – Evacuations After More Flooding in KwaZulu-Natal",
+        "publisher":  "FloodList",
+        "date":  "2022-05-23",
+        "used_by":  [
+                        "2022-05-kzn-repeat"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-gauteng-kwazulunatal-february-2022",
+        "title":  "South Africa – 3 Missing, Dozens Evacuated After Floods in Gauteng and KwaZulu-Natal",
+        "publisher":  "FloodList",
+        "date":  "2022-02-06",
+        "used_by":  [
+                        "2022-02-gauteng-kzn-feb4"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-kwazulu-natal-may-2017",
+        "title":  "South Africa – Hundreds Evacuated, 1 Feared Dead After Floods in KwaZulu-Natal",
+        "publisher":  "FloodList",
+        "date":  "2017-05-16",
+        "used_by":  [
+                        "2017-05-kzn-floods"
+                    ]
+    },
+    {
+        "url":  "https://floodlist.com/africa/south-africa-floods-astern-cape-february-2020",
+        "title":  "South Africa – Heavy Rain Triggers Flash Floods in Eastern Cape",
+        "publisher":  "FloodList",
+        "date":  "2020-02-02",
+        "used_by":  [
+                        "2020-02-alice-amathole"
+                    ]
+    },
+    {
+        "url":  "https://www.forafrika.org/south-africa/storms-and-flash-floods-in-kwazulu-natal-gauteng-free-state-north-west-and-limpopo/",
+        "title":  "Storms and flash floods in KwaZulu-Natal, Gauteng, Free State, North West, and Limpopo",
+        "publisher":  "ForAfrika",
+        "date":  "2025-02-27",
+        "used_by":  [
+                        "2025-02-lamontville-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.georgeherald.com/News/Article/National-News/garden-route-battered-by-up-to-200mm-of-rain-as-n1-closes-and-rivers-flood-202606041227",
+        "title":  "Garden Route battered by up to 200mm of rain as N1 closes and rivers flood",
+        "publisher":  "George Herald",
+        "date":  "2026-06-04",
+        "used_by":  [
+                        "2026-06-garden-route-karoo-kouga-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.georgeherald.com/News/Article/Local-News/garden-route-flood-danger-remains-despite-improving-weather-as-1-death-confirmed-202606051223",
+        "title":  "Garden Route flood danger remains despite improving weather as 1 death confirmed",
+        "publisher":  "George Herald",
+        "date":  "2026-06-05",
+        "used_by":  [
+                        "2026-06-garden-route-karoo-kouga-floods"
+                    ]
+    },
+    {
+        "url":  "https://glidenumber.net/glide/public/search/search.jsp",
+        "title":  "GLIDE OT-2021-000210-ZAF (South Africa: Severe Thunderstorms - Dec 2021)",
+        "publisher":  "GLIDEnumber / ADRC",
+        "date":  "2021-12",
+        "used_by":  [
+                        "2021-12-mthatha-or-tambo-storms"
+                    ]
+    },
+    {
+        "url":  "https://www.gdacs.org/gdacsapi/api/events/geteventlist/SEARCH?eventlist=FL\u0026fromDate=2016-01-01\u0026toDate=2026-09-24\u0026alertlevel=Green;Orange;Red\u0026country=South%20Africa",
+        "title":  "GDACS event list API (floods, South Africa)",
+        "publisher":  "Global Disaster Alert and Coordination System (EC JRC / UN OCHA)",
+        "date":  "2026",
+        "used_by":  [
+                        "reference"
+                    ]
+    },
+    {
+        "url":  "https://groundup.org.za/article/storm-wreaks-havoc-across-the-cape-three-deaths-reported-as-emergency-teams-respond-to-hundreds-of-calls/",
+        "title":  "In photos: Cape storm wreaks havoc",
+        "publisher":  "GroundUp",
+        "date":  "2026-05-11",
+        "used_by":  [
+                        "2026-05-cutofflow-cold-fronts-national-disaster"
+                    ]
+    },
+    {
+        "url":  "https://groundup.org.za/article/western-cape-storms-worst-still-to-come/",
+        "title":  "Western Cape storms: \u0027worse is still to come\u0027",
+        "publisher":  "GroundUp",
+        "date":  "2024-07-10",
+        "used_by":  [
+                        "2024-07-western-cape-storms"
+                    ]
+    },
+    {
+        "url":  "https://groundup.org.za/article/thousands-of-homes-flooded-as-violent-storm-batters-western-cape/",
+        "title":  "Thousands of homes flooded as violent storm batters Western Cape",
+        "publisher":  "GroundUp",
+        "date":  "2024-07-09",
+        "used_by":  [
+                        "2024-07-western-cape-storms"
+                    ]
+    },
+    {
+        "url":  "https://groundup.org.za/article/protest-after-informal-settlement-flooded-durban/",
+        "title":  "Protest after informal settlement flooded in Durban",
+        "publisher":  "GroundUp",
+        "date":  "2019-04-24",
+        "used_by":  [
+                        "2019-04-easter-floods-kzn-ec"
+                    ]
+    },
+    {
+        "url":  "https://www.groundup.org.za/article/photos-cape-town-flooded/",
+        "title":  "In photos: Cape Town flooded",
+        "publisher":  "GroundUp",
+        "date":  "2020-06-11",
+        "used_by":  [
+                        "2020-06-cape-town-hail-floods"
+                    ]
+    },
+    {
+        "url":  "https://groundup.org.za/article/townships-left-flooded-after-cape-rains/",
+        "title":  "Shacks flooded after week of Cape rains",
+        "publisher":  "GroundUp",
+        "date":  "2018-06-22",
+        "used_by":  [
+                        "2018-06-cape-town-informal-settlement-floods"
+                    ]
+    },
+    {
+        "url":  "https://groundup.org.za/article/storm-in-tongaat/",
+        "title":  "Deadly storm creates havoc from Gqeberha to Tongaat",
+        "publisher":  "GroundUp",
+        "date":  "2024-06-04",
+        "used_by":  [
+                        "2024-06-eastern-cape-floods",
+                        "2024-06-kzn-tornadoes-storm"
+                    ]
+    },
+    {
+        "url":  "https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/",
+        "title":  "Some Durban flood victims have been moved four times",
+        "publisher":  "GroundUp",
+        "date":  "2022-06-08",
+        "used_by":  [
+                        "2019-04-easter-floods-kzn-ec"
+                    ]
+    },
+    {
+        "url":  "https://groundup.org.za/article/hundreds-flee-flooded-homes-as-storms-batter-western-cape/",
+        "title":  "Hundreds flee flooded homes as storms batter Western Cape",
+        "publisher":  "GroundUp",
+        "date":  "2023-09-25",
+        "used_by":  [
+                        "2023-09-western-cape-cutoff-low"
+                    ]
+    },
+    {
+        "url":  "https://reliefweb.int/report/south-africa/south-africa-gauteng-and-north-west-floods-december-2022-dref-application-mdrza013",
+        "title":  "South Africa: Gauteng and North West Floods, December 2022, DREF Application (MDRZA013)",
+        "publisher":  "IFRC via ReliefWeb",
+        "date":  "2022-12",
+        "used_by":  [
+                        "2022-12-gauteng-northwest-soweto"
+                    ]
+    },
+    {
+        "url":  "https://reliefweb.int/report/south-africa/south-africa-storm-surge-dref-operation-n-mdrza007",
+        "title":  "South Africa: Storm Surge DREF Operation n° MDRZA007",
+        "publisher":  "IFRC via ReliefWeb",
+        "date":  "2017-06-19",
+        "used_by":  [
+                        "2017-06-cape-storm"
+                    ]
+    },
+    {
+        "url":  "https://insidemetros.co.za/2026/02/16/storms-leave-three-dead-families-homeless-in-or-tambo/",
+        "title":  "Storms leave three dead, families homeless in OR Tambo",
+        "publisher":  "Inside Metros",
+        "date":  "2026-02-16",
+        "used_by":  [
+                        "2026-02-mthatha-or-tambo-storm"
+                    ]
+    },
+    {
+        "url":  "https://insidepolitic.co.za/gallery-four-killed-on-kzn-roads-as-heavy-rain-floods-settlements-and-swells-rivers/",
+        "title":  "Gallery: Four killed on KZN roads as heavy rain floods settlements and swells rivers",
+        "publisher":  "Inside Politics",
+        "date":  "2026-09-18",
+        "used_by":  [
+                        "2026-09-kzn-heavy-rain"
+                    ]
+    },
+    {
+        "url":  "https://www.insurancejournal.com/news/international/2024/11/13/800944.htm",
+        "title":  "South Africa Declares National Disaster After Floods, Storms",
+        "publisher":  "Insurance Journal (Bloomberg)",
+        "date":  "2024-11-13",
+        "used_by":  [
+                        "2024-10-eastern-cape-nmb-floods"
+                    ]
+    },
+    {
+        "url":  "https://iol.co.za/news/south-africa/2026-01-26-limpopo-floods-death-toll-rises-to-22-as-seven-remain-missing/",
+        "title":  "Limpopo Floods: Death toll rises to 22 as seven remain missing",
+        "publisher":  "IOL",
+        "date":  "2026-01-26",
+        "used_by":  [
+                        "2026-01-limpopo-mpumalanga-floods"
+                    ]
+    },
+    {
+        "url":  "https://iol.co.za/news/environment/2026-05-14-western-cape-flood-disaster-10-dead-nearly-90000-displaced/",
+        "title":  "Western Cape Flood Disaster: 10 dead, nearly 90,000 displaced",
+        "publisher":  "IOL",
+        "date":  "2026-05-14",
+        "used_by":  [
+                        "2026-05-cutofflow-cold-fronts-national-disaster"
+                    ]
+    },
+    {
+        "url":  "https://iol.co.za/news/weather/2025-12-24-devastating-floods-in-kwazulu-natal-and-eastern-cape-a-year-of-loss-and-recovery/",
+        "title":  "Devastating floods in KwaZulu-Natal and Eastern Cape: A year of loss and recovery",
+        "publisher":  "IOL",
+        "date":  "2025-12-24",
+        "used_by":  [
+                        "2025-02-lamontville-floods",
+                        "2025-06-eastern-cape-mthatha-floods",
+                        "2025-11-umshwathi-new-hanover-floods",
+                        "2025-12-festive-storms-kzn-ec-gauteng"
+                    ]
+    },
+    {
+        "url":  "https://iol.co.za/news/south-africa/western-cape/2020-07-13-watch-downpours-and-gale-force-winds-swamp-informal-settlements-in-cape-town/",
+        "title":  "WATCH: Downpours and gale force winds swamp informal settlements in Cape Town",
+        "publisher":  "IOL",
+        "date":  "2020-07-13",
+        "used_by":  [
+                        "2020-07-cape-town-storms"
+                    ]
+    },
+    {
+        "url":  "https://iol.co.za/news/south-africa/2026-09-19-kzn-heavy-rain-tests-whether-flood-warnings-reach-vulnerable-communities/",
+        "title":  "KZN heavy rain tests whether flood warnings reach vulnerable communities",
+        "publisher":  "IOL",
+        "date":  "2026-09-19",
+        "used_by":  [
+                        "2026-09-kzn-heavy-rain"
+                    ]
+    },
+    {
+        "url":  "https://iol.co.za/news/south-africa/2026-01-16-death-toll-rises-to-nine-almost-2000-homes-destroyed-as-limpopo-floods-wreak-havoc/",
+        "title":  "Death toll rises to nine, almost 2,000 homes destroyed as Limpopo floods wreak havoc",
+        "publisher":  "IOL",
+        "date":  "2026-01-16",
+        "used_by":  [
+                        "2026-01-limpopo-mpumalanga-floods"
+                    ]
+    },
+    {
+        "url":  "https://iol.co.za/news/environment/2026-06-05-emergency-services-on-high-alert-as-flooding-hits-garden-route-and-central-karoo/",
+        "title":  "Emergency services on high alert as flooding hits Garden Route and Central Karoo",
+        "publisher":  "IOL",
+        "date":  "2026-06-05",
+        "used_by":  [
+                        "2026-06-garden-route-karoo-kouga-floods"
+                    ]
+    },
+    {
+        "url":  "https://iol.co.za/dailynews/news/2025-02-26-tragedy-strikes-lamontville-as-heavy-rains-claim-lives-amid-previous-community-warnings/",
+        "title":  "Tragedy strikes Lamontville as heavy rains claim lives amid previous community warnings",
+        "publisher":  "IOL / Daily News",
+        "date":  "2025-02-26",
+        "used_by":  [
+                        "2025-02-lamontville-floods"
+                    ]
+    },
+    {
+        "url":  "https://iol.co.za/mercury/2025-03-02-flash-flooding-affects-parts-of-ethekwini-municipality-damage-being-assessed/",
+        "title":  "Flash flooding affects parts of eThekwini Municipality, damage being assessed",
+        "publisher":  "IOL / The Mercury",
+        "date":  "2025-03-02",
+        "used_by":  [
+                        "2025-03-kzn-further-floods"
+                    ]
+    },
+    {
+        "url":  "https://iol.co.za/mercury/news/2025-02-20-six-lives-lost-as-heavy-rains-hit-ethekwini-municipality/",
+        "title":  "Six lives lost as heavy rains hit eThekwini Municipality",
+        "publisher":  "IOL / The Mercury",
+        "date":  "2025-02-20",
+        "used_by":  [
+                        "2025-02-ethekwini-storm-wall-collapses"
+                    ]
+    },
+    {
+        "url":  "https://www.joburgetc.com/news/four-die-kzn-crashes-heavy-rain/",
+        "title":  "Heavy rain linked to four fatal crashes in KwaZulu-Natal as province issues weather warnings",
+        "publisher":  "Joburg ETC",
+        "date":  "2026-09",
+        "used_by":  [
+                        "2026-09-kzn-heavy-rain"
+                    ]
+    },
+    {
+        "url":  "https://www.knysnaplettherald.com/News/Article/National-News/tornadoes-explained-tongaat-tornado-rated-ef3-202406121259",
+        "title":  "Tornadoes explained - Tongaat tornado rated EF3",
+        "publisher":  "Knysna-Plett Herald",
+        "date":  "2024-06-12",
+        "used_by":  [
+                        "2024-06-kzn-tornadoes-storm"
+                    ]
+    },
+    {
+        "url":  "https://mg.co.za/news/2020-07-22-wet-worries-for-cape-towns-poorest-a-perennial-issue",
+        "title":  "Wet worries for Cape Town\u0027s poorest a perennial issue",
+        "publisher":  "Mail \u0026 Guardian",
+        "date":  "2020-07-22",
+        "used_by":  [
+                        "2020-07-cape-town-storms"
+                    ]
+    },
+    {
+        "url":  "https://mg.co.za/article/2017-06-13-climate-change-evident-in-cape-storm-and-knysna-fires/",
+        "title":  "Climate change evident in Cape storm and Knysna fires",
+        "publisher":  "Mail \u0026 Guardian",
+        "date":  "2017-06-13",
+        "used_by":  [
+                        "2017-06-cape-storm"
+                    ]
+    },
+    {
+        "url":  "https://mg.co.za/the-green-guardian/2026-05-12-cape-town-storm-floods-26-informal-settlements-and-damages-more-than-10-000-structures/",
+        "title":  "Cape Town storm floods 26 informal settlements and damages more than 10 000 structures",
+        "publisher":  "Mail \u0026 Guardian",
+        "date":  "2026-05-12",
+        "used_by":  [
+                        "2026-05-cutofflow-cold-fronts-national-disaster"
+                    ]
+    },
+    {
+        "url":  "https://doi.org/10.1016/j.ijdrr.2025.105573",
+        "title":  "The role of language as a catalyst in communicating early warning messages: a case study in Walmer Airport Valley informal settlement, Gqeberha, South Africa",
+        "publisher":  "Mosekama Osia Mokhele; Andiswa Mvanyashe",
+        "date":  "2025",
+        "used_by":  [
+                        "reference"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/southafrica/news/national-disaster-declared-for-kzn-eastern-cape-free-state-in-wake-of-severe-weather-20240612",
+        "title":  "National disaster declared for KZN, Eastern Cape, Free State in wake of severe weather",
+        "publisher":  "News24",
+        "date":  "2024-06-12",
+        "used_by":  [
+                        "2024-06-eastern-cape-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/southafrica/news/five-dead-at-least-11-others-missing-after-ladysmith-flash-flood-on-christmas-eve-20231225",
+        "title":  "Five dead, at least 11 others missing after Ladysmith flash flood on Christmas Eve",
+        "publisher":  "News24",
+        "date":  "2023-12-25",
+        "used_by":  [
+                        "2023-12-ladysmith-christmas-eve"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/amp/news24/southafrica/news/8-dead-five-missing-in-devastating-mpumalanga-floods-20210207",
+        "title":  "8 dead, five missing in devastating Mpumalanga floods",
+        "publisher":  "News24",
+        "date":  "2021-02-07",
+        "used_by":  [
+                        "2021-02-mpumalanga-kzn-limpopo-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/southafrica/news/pics-4-people-killed-70-houses-destroyed-and-infrastructure-pummelled-in-kzn-hailstorm-20231022",
+        "title":  "PICS | 4 people killed, 70 houses destroyed and infrastructure pummelled in KZN hailstorm",
+        "publisher":  "News24",
+        "date":  "2023-10-22",
+        "used_by":  [
+                        "2023-10-kzn-mtubatuba-storm"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/southafrica/weather/eastern-cape-floods-force-evacuations-and-widespread-road-closures-20260604-0580",
+        "title":  "Eastern Cape floods force evacuations and widespread road closures",
+        "publisher":  "News24",
+        "date":  "2026-06-04",
+        "used_by":  [
+                        "2026-06-garden-route-karoo-kouga-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/southafrica/news/govt-declares-national-disaster-as-severe-storms-floods-and-snow-batter-several-provinces-20260510-0648",
+        "title":  "Govt declares national disaster as severe storms, floods and snow batter several provinces",
+        "publisher":  "News24",
+        "date":  "2026-05-10",
+        "used_by":  [
+                        "2026-05-cutofflow-cold-fronts-national-disaster"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/southafrica/news/western-cape-gets-disaster-declaration-but-is-still-counting-the-cost-of-flooding-20240715",
+        "title":  "Western Cape gets disaster declaration, but is still counting the cost of flooding",
+        "publisher":  "News24",
+        "date":  "2024-07-15",
+        "used_by":  [
+                        "2024-07-western-cape-storms"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/southafrica/news/live-weather-update-on-storms-over-gauteng-and-durban-20171012",
+        "title":  "#SAStorms: Light thunderstorms expected for KZN - AS IT HAPPENED",
+        "publisher":  "News24",
+        "date":  "2017-10-12",
+        "used_by":  [
+                        "2017-10-durban-supercell-storm"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/southafrica/news/gauteng-floods-police-chopper-rescues-klipspruit-residents-clutching-on-to-tree-branches-20221210",
+        "title":  "Gauteng floods: Police chopper rescues Klipspruit residents clutching on to tree branches",
+        "publisher":  "News24",
+        "date":  "2022-12-10",
+        "used_by":  [
+                        "2022-12-gauteng-northwest-soweto"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/pics-heavy-rain-flooding-as-ex-dineo-sweeps-over-sa-20170217",
+        "title":  "PICS: Heavy rain, flooding as ex-Dineo sweeps over SA",
+        "publisher":  "News24",
+        "date":  "2017-02-17",
+        "used_by":  [
+                        "2017-02-ex-dineo-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/news24/southafrica/news/mop-up-operations-begin-after-mdantsane-in-eastern-cape-flooding-one-dead-20220109",
+        "title":  "Mop up operations begin after Mdantsane in Eastern Cape flooding - one dead",
+        "publisher":  "News24",
+        "date":  "2022-01-09",
+        "used_by":  [
+                        "2022-01-eastern-cape-mdantsane"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/southafrica/news/ethekwini-floods-municipality-under-fire-as-death-toll-rises-to-12-one-person-still-missing-20250227",
+        "title":  "eThekwini floods: Municipality under fire as death toll rises to 12, one person still missing",
+        "publisher":  "News24",
+        "date":  "2025-02-27",
+        "used_by":  [
+                        "2025-02-lamontville-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/news24/southafrica/news/flash-floods-heavy-rains-leave-one-dead-187-homeless-3-missing-in-ivory-park-20220219",
+        "title":  "Flash floods, heavy rains leave one dead, 187 homeless, 3 missing in Ivory Park",
+        "publisher":  "News24",
+        "date":  "2022-02-19",
+        "used_by":  [
+                        "2022-02-tembisa-ivory-park"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/southafrica/news/kzn-floods-even-if-we-had-systems-in-place-we-are-merely-human-beings-says-premier-zikalala-20220421",
+        "title":  "KZN floods: \u0027Even if we had systems in place… we are merely human beings,\u0027 says Premier Zikalala",
+        "publisher":  "News24",
+        "date":  "2022-04-21",
+        "used_by":  [
+                        "2022-04-kzn-megaflood"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/southafrica/news/kzn-flooding-death-toll-rises-to-7-20230630",
+        "title":  "KZN floods: Death toll rises to 7, another 7 people still missing following heavy rains",
+        "publisher":  "News24",
+        "date":  "2023-06-30",
+        "used_by":  [
+                        "2023-06-kzn-ethekwini-landspout"
+                    ]
+    },
+    {
+        "url":  "https://www.news24.com/news24/community-newspaper/mthathaexpress/two-high-school-learners-drowned-in-rivers-on-their-way-home-20231017",
+        "title":  "Two learners drowned in rivers on their way home",
+        "publisher":  "News24 (Mthatha Express)",
+        "date":  "2023-10-17",
+        "used_by":  [
+                        "2023-10-or-tambo-floods"
+                    ]
+    },
+    {
+        "url":  "http://www.northern-cape.gov.za/index.php/about-us/nc-dg/151-media-room/office-of-the-premier/press-releases/420-statement-on-the-floods-and-rains-causing-a-disaster-in-the-province",
+        "title":  "Statement on the Floods and Rains causing a Disaster in the Province",
+        "publisher":  "Northern Cape Provincial Government (Office of the Premier)",
+        "date":  null,
+        "used_by":  [
+                        "2021-01-northern-cape-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.parliament.gov.za/news/port-st-johns-prone-flood-disasters-committee-hears",
+        "title":  "Port St Johns Is Prone to Flood Disasters, Committee Hears",
+        "publisher":  "Parliament of South Africa",
+        "date":  null,
+        "used_by":  [
+                        "2023-03-port-st-johns-ingquza"
+                    ]
+    },
+    {
+        "url":  "https://pmg.org.za/committee-meeting/32747/",
+        "title":  "Effects of Tropical Storm Eloise \u0026 recent flooding in Provinces; with Ministers",
+        "publisher":  "Parliamentary Monitoring Group",
+        "date":  "2021-04-29",
+        "used_by":  [
+                        "2021-01-eloise-limpopo-mpumalanga",
+                        "2021-02-mpumalanga-kzn-limpopo-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.polity.org.za/article/da-calls-for-an-independent-investigation-following-ladysmith-flooding-2022-01-18",
+        "title":  "DA calls for an independent investigation following Ladysmith flooding",
+        "publisher":  "Polity",
+        "date":  "2022-01-18",
+        "used_by":  [
+                        "2022-01-kzn-ladysmith-vaal"
+                    ]
+    },
+    {
+        "url":  "https://www.polity.org.za/article/kzn-floods-in-durban-2019-04-23",
+        "title":  "KZN: Floods in Durban (statement by the Provincial Government of KZN)",
+        "publisher":  "Polity.org.za",
+        "date":  "2019-04-23",
+        "used_by":  [
+                        "2019-04-easter-floods-kzn-ec"
+                    ]
+    },
+    {
+        "url":  "https://arxiv.org/abs/2602.17726",
+        "title":  "Closing Africa\u0027s Early Warning Gap: AI Weather Forecasting for Disaster Prevention",
+        "publisher":  "Qness Ndlovu",
+        "date":  "2026",
+        "used_by":  [
+                        "reference"
+                    ]
+    },
+    {
+        "url":  "https://reliefweb.int/disaster/ot-2021-000210-zaf",
+        "title":  "South Africa: Severe Thunderstorms - Dec 2021",
+        "publisher":  "ReliefWeb",
+        "date":  "2021-12",
+        "used_by":  [
+                        "2021-12-mthatha-or-tambo-storms"
+                    ]
+    },
+    {
+        "url":  "https://reliefweb.int/report/south-africa/south-africa-flood-04-2024-floods-2024-04-18",
+        "title":  "South Africa: Flood - 04-2024 - Floods (2024-04-18)",
+        "publisher":  "ReliefWeb",
+        "date":  "2024-04-18",
+        "used_by":  [
+                        "2024-04-kzn-south-coast-floods"
+                    ]
+    },
+    {
+        "url":  "https://reliefweb.int/disaster/fl-2024-000008-zaf",
+        "title":  "South Africa: Floods - Jan 2024",
+        "publisher":  "ReliefWeb",
+        "date":  "2024-01",
+        "used_by":  [
+                        "2024-01-kzn-freestate-floods"
+                    ]
+    },
+    {
+        "url":  "https://reliefweb.int/report/south-africa/south-africa-floods-weather-south-africa-floodlist-media-echo-daily-flash-16-june-2022",
+        "title":  "South Africa - Floods (Weather South Africa, FloodList, media) (ECHO Daily Flash of 16 June 2022)",
+        "publisher":  "ReliefWeb / ECHO",
+        "date":  "2022-06-16",
+        "used_by":  [
+                        "2022-06-cape-town"
+                    ]
+    },
+    {
+        "url":  "https://reliefweb.int/report/south-africa/south-africa-severe-weather-and-floods-catnat-media-south-african-weather-service-echo-daily-flash-24-october-2023",
+        "title":  "South Africa - Severe weather and floods (CatNat, media, South African Weather Service) (ECHO Daily Flash of 24 October 2023)",
+        "publisher":  "ReliefWeb / ECHO",
+        "date":  "2023-10-24",
+        "used_by":  [
+                        "2023-10-kzn-mtubatuba-storm"
+                    ]
+    },
+    {
+        "url":  "https://reliefweb.int/report/south-africa/south-africa-floods-south-africa-news-agency-south-africa-weather-service-echo-daily-flash-21-december-2023",
+        "title":  "South Africa - Floods (South Africa News Agency, South Africa Weather Service) (ECHO Daily Flash of 21 December 2023)",
+        "publisher":  "ReliefWeb / ECHO",
+        "date":  "2023-12-21",
+        "used_by":  [
+                        "2023-12-dundee-storm"
+                    ]
+    },
+    {
+        "url":  "https://reliefweb.int/report/south-africa/south-africa-severe-weather-and-floods-saws-media-echo-daily-flash-20-october-2023",
+        "title":  "South Africa - Severe weather and floods (SAWS, media) (ECHO Daily Flash of 20 October 2023)",
+        "publisher":  "ReliefWeb / ECHO",
+        "date":  "2023-10-20",
+        "used_by":  [
+                        "2023-10-or-tambo-floods"
+                    ]
+    },
+    {
+        "url":  "https://reliefweb.int/report/south-africa/south-africa-floods-dws-weather-south-africa-floodlist-media-echo-daily-flash-20",
+        "title":  "South Africa - Floods (DWS, Weather South Africa, FloodList, media) (ECHO Daily Flash of 20 January 2022)",
+        "publisher":  "ReliefWeb / ECHO",
+        "date":  "2022-01-20",
+        "used_by":  [
+                        "2022-01-kzn-ladysmith-vaal"
+                    ]
+    },
+    {
+        "url":  "https://reliefweb.int/report/south-africa/south-africa-floods-dg-echo-weather-south-africa-floodlist-media-echo-daily",
+        "title":  "South Africa - Floods (DG ECHO, Weather South Africa, FloodList, media) (ECHO Daily Flash of 07 February 2022)",
+        "publisher":  "ReliefWeb / ECHO",
+        "date":  "2022-02-07",
+        "used_by":  [
+                        "2022-02-gauteng-kzn-feb4"
+                    ]
+    },
+    {
+        "url":  "https://reliefweb.int/report/south-africa/red-cross-aids-flash-floods-johannesburg",
+        "title":  "Red Cross Aids Flash Floods in Johannesburg",
+        "publisher":  "ReliefWeb / SA Red Cross",
+        "date":  null,
+        "used_by":  [
+                        "2016-11-johannesburg-flash-floods"
+                    ]
+    },
+    {
+        "url":  "https://doi.org/10.1080/03736245.2023.2193758",
+        "title":  "A new flood chronology for KwaZulu-Natal (1836-2022): the April 2022 Durban floods in historical context",
+        "publisher":  "S.W. Grab; David J. Nash",
+        "date":  "2023",
+        "used_by":  [
+                        "reference"
+                    ]
+    },
+    {
+        "url":  "https://www.sabcnews.com/sabcnews/floods-claim-37-lives-across-mpumalanga-limpopo/",
+        "title":  "Floods claim 37 lives across Mpumalanga, Limpopo",
+        "publisher":  "SABC News",
+        "date":  "2026-01-19",
+        "used_by":  [
+                        "2026-01-limpopo-mpumalanga-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.sabcnews.com/sabcnews/gauteng-floods-claim-two-lives-leave-hundreds-stranded/",
+        "title":  "Gauteng floods claim two lives, leave hundreds stranded",
+        "publisher":  "SABC News",
+        "date":  "2020-02-10",
+        "used_by":  [
+                        "2020-02-johannesburg-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.sabcnews.com/sabcnews/death-toll-rises-to-six-following-heavy-hailstorm-in-mthatha-villages/",
+        "title":  "Death toll rises to six following heavy hailstorm in Mthatha villages",
+        "publisher":  "SABC News",
+        "date":  "2021-12",
+        "used_by":  [
+                        "2021-12-mthatha-or-tambo-storms"
+                    ]
+    },
+    {
+        "url":  "https://www.sabcnews.com/sabcnews/three-dead-in-cape-town-as-severe-winds-and-rainfall-lash-region/",
+        "title":  "Three dead in Cape Town as severe winds and rainfall lash region",
+        "publisher":  "SABC News",
+        "date":  "2026-05-12",
+        "used_by":  [
+                        "2026-05-cutofflow-cold-fronts-national-disaster"
+                    ]
+    },
+    {
+        "url":  "https://www.sabcnews.com/sabcnews/western-cape-expecting-severe-storm-residents-urged-to-stay-indoors/",
+        "title":  "Western Cape expecting severe storm, residents urged to stay indoors",
+        "publisher":  "SABC News",
+        "date":  "2020-07-12",
+        "used_by":  [
+                        "2020-07-cape-town-storms"
+                    ]
+    },
+    {
+        "url":  "https://www.sabcnews.com/sabcnews/910874-2/",
+        "title":  "Recommended measures to reduce flooding in Ladysmith not implemented",
+        "publisher":  "SABC News",
+        "date":  "2024-01-16",
+        "used_by":  [
+                        "2023-12-ladysmith-christmas-eve"
+                    ]
+    },
+    {
+        "url":  "https://www.sabcnews.com/sabcnews/western-cape-saw-severe-damaging-weather-in-2024/",
+        "title":  "Western Cape saw severe damaging weather in 2024",
+        "publisher":  "SABC News",
+        "date":  "2025-01-07",
+        "used_by":  [
+                        "2024-07-western-cape-storms"
+                    ]
+    },
+    {
+        "url":  "https://www.sabcnews.com/sabcnews/city-of-cape-town-appeals-to-residents-in-informal-settlements-to-move-structures-out-of-floodplain/",
+        "title":  "City of Cape Town appeals to residents in informal settlements to move structures out of floodplain",
+        "publisher":  "SABC News",
+        "date":  "2020-07-11",
+        "used_by":  [
+                        "2020-07-cape-town-storms"
+                    ]
+    },
+    {
+        "url":  "https://www.sanews.gov.za/south-africa/joburg-flash-floods-aftermath",
+        "title":  "Joburg flash floods: the aftermath",
+        "publisher":  "SAnews",
+        "date":  "2016-11-10",
+        "used_by":  [
+                        "2016-11-johannesburg-flash-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.sanews.gov.za/south-africa/several-parts-kzn-classified-disaster-areas-following-floods",
+        "title":  "Several parts of KZN classified disaster areas following floods",
+        "publisher":  "SAnews",
+        "date":  "2024-01-22",
+        "used_by":  [
+                        "2024-01-kzn-freestate-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.sanews.gov.za/south-africa/heavy-rains-kzn-claim-21-lives",
+        "title":  "Heavy rains in KZN claim 21 lives",
+        "publisher":  "SAnews",
+        "date":  "2019-04-23",
+        "used_by":  [
+                        "2019-04-easter-floods-kzn-ec"
+                    ]
+    },
+    {
+        "url":  "https://www.sanews.gov.za/south-africa/disaster-teams-respond-dundee-flood-victims",
+        "title":  "Disaster teams respond to Dundee flood victims",
+        "publisher":  "SAnews",
+        "date":  "2023-12-20",
+        "used_by":  [
+                        "2023-12-dundee-storm"
+                    ]
+    },
+    {
+        "url":  "https://www.sanews.gov.za/south-africa/ethekwini-heavy-rains-claim-four-lives",
+        "title":  "eThekwini heavy rains claim four lives",
+        "publisher":  "SAnews",
+        "date":  "2025-02-20",
+        "used_by":  [
+                        "2025-02-ethekwini-storm-wall-collapses"
+                    ]
+    },
+    {
+        "url":  "https://www.sanews.gov.za/south-africa/families-relocated-after-floods-nkomazi",
+        "title":  "Families relocated after floods in Nkomazi",
+        "publisher":  "SAnews",
+        "date":  "2023-02",
+        "used_by":  [
+                        "2023-02-national-disaster-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.sanews.gov.za/south-africa/provincial-disaster-declared-flood-stricken-kzn",
+        "title":  "Provincial disaster declared in flood-stricken KZN",
+        "publisher":  "SAnews",
+        "date":  "2019-05-03",
+        "used_by":  [
+                        "2019-04-easter-floods-kzn-ec"
+                    ]
+    },
+    {
+        "url":  "https://www.sanews.gov.za/south-africa/buffalo-city-search-and-rescue-operations-continue",
+        "title":  "Buffalo City search and rescue operations continue",
+        "publisher":  "SAnews",
+        "date":  "2024-06-03",
+        "used_by":  [
+                        "2024-06-eastern-cape-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.savethechildren.org/us/about-us/media-and-news/2022-press-releases/floods-hit-south-africa-kwazula-natal-second-time",
+        "title":  "Floods and Torrential Rains Hit South Africa\u0027s KwaZulu-Natal for the Second Time in Two Months",
+        "publisher":  "Save the Children",
+        "date":  "2022-05",
+        "used_by":  [
+                        "2022-05-kzn-repeat"
+                    ]
+    },
+    {
+        "url":  "https://allafrica.com/stories/202602160359.html",
+        "title":  "South Africa: Weekend Storm Kills Seven and Destroys 106 Homes in OR Tambo",
+        "publisher":  "Scrolla via allAfrica",
+        "date":  "2026-02-16",
+        "used_by":  [
+                        "2026-02-mthatha-or-tambo-storm"
+                    ]
+    },
+    {
+        "url":  "https://doi.org/10.1017/s0047404519000150",
+        "title":  "Disaster linguicism: Linguistic minorities in disasters",
+        "publisher":  "Shinya Uekusa",
+        "date":  "2019",
+        "used_by":  [
+                        "reference"
+                    ]
+    },
+    {
+        "url":  "https://snowreport.co.za/disruptive-weather-warnings-for-south-africa-cut-off-low-24-september-2023/",
+        "title":  "SAWS issues disruptive rainfall warnings for South Africa as cut-off low intensifies",
+        "publisher":  "Snow Report SA",
+        "date":  "2023-09-24",
+        "used_by":  [
+                        "2023-09-western-cape-cutoff-low"
+                    ]
+    },
+    {
+        "url":  "https://www.gov.za/speeches/government-calls-communities-be-high-alert-ahead-arrival-tropical-cyclone-dineo-15-feb-2017",
+        "title":  "Government calls communities to be on high alert ahead of arrival of Tropical Cyclone Dineo",
+        "publisher":  "South African Government (Dept of Cooperative Governance)",
+        "date":  "2017-02-15",
+        "used_by":  [
+                        "2017-02-ex-dineo-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.gov.za/news/media-statements/eastern-cape-provincial-government-floods-update-status-update-30-june-2025",
+        "title":  "Eastern Cape Provincial Government on floods update status update as of 30 June 2025",
+        "publisher":  "South African Government (gov.za)",
+        "date":  "2025-06-30",
+        "used_by":  [
+                        "2025-06-eastern-cape-mthatha-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.gov.za/news/media-statements/kwazulu-natal-provides-update-latest-storms-and-floods-23-may-2022",
+        "title":  "KwaZulu-Natal provides an update on latest storms and floods",
+        "publisher":  "South African Government (gov.za)",
+        "date":  "2022-05-23",
+        "used_by":  [
+                        "2022-05-kzn-repeat"
+                    ]
+    },
+    {
+        "url":  "https://www.gov.za/speeches/national-disaster-classification-7-nov-2023-0000",
+        "title":  "Western Cape September floods receive National Disaster classification",
+        "publisher":  "South African Government (gov.za)",
+        "date":  "2023-11-07",
+        "used_by":  [
+                        "2023-09-western-cape-cutoff-low"
+                    ]
+    },
+    {
+        "url":  "https://www.gov.za/news/media-statements/kwazulu-natal-impact-mega-storm-11-oct-2017",
+        "title":  "KwaZulu-Natal on impact of mega-storm",
+        "publisher":  "South African Government (KZN)",
+        "date":  "2017-10-11",
+        "used_by":  [
+                        "2017-10-durban-supercell-storm"
+                    ]
+    },
+    {
+        "url":  "https://redcross.org.za/national-disaster-declared-floods-severe-weather-18-january-2026/",
+        "title":  "NATIONAL DISASTER DECLARED | FLOODS \u0026 SEVERE WEATHER – 18 JANUARY 2026",
+        "publisher":  "South African Red Cross Society",
+        "date":  "2026-01-18",
+        "used_by":  [
+                        "2026-01-limpopo-mpumalanga-floods"
+                    ]
+    },
+    {
+        "url":  "https://redcross.org.za/severe-weather-devastation-hits-umgungundlovu-and-ladysmith/",
+        "title":  "Severe Weather Devastation Hits uMgungundlovu and Ladysmith",
+        "publisher":  "South African Red Cross Society",
+        "date":  "2026-04-17",
+        "used_by":  [
+                        "2026-04-kzn-umgungundlovu-ladysmith-severe-weather"
+                    ]
+    },
+    {
+        "url":  "https://redcross.org.za/heavy-overnight-rainfall-has-displaced-hundreds-of-residents-in-south-africas-free-state-province-prompting-an-urgent-humanitarian-response/",
+        "title":  "Heavy overnight rainfall has displaced hundreds of residents in South Africa\u0027s Free State province",
+        "publisher":  "South African Red Cross Society",
+        "date":  "2026-05-04",
+        "used_by":  [
+                        "2026-05-cutofflow-cold-fronts-national-disaster"
+                    ]
+    },
+    {
+        "url":  "https://www.weathersa.co.za/business/faq/ForecastFAQ",
+        "title":  "SAWS Impact-Based Information FAQ",
+        "publisher":  "South African Weather Service",
+        "date":  "",
+        "used_by":  [
+                        "reference"
+                    ]
+    },
+    {
+        "url":  "https://www.sowetan.co.za/news/south-africa/2021-01-26-tshakhuma-reels-after-eloise-hits-village/",
+        "title":  "Tshakhuma reels after Eloise hits village",
+        "publisher":  "Sowetan",
+        "date":  "2021-01-26",
+        "used_by":  [
+                        "2021-01-eloise-limpopo-mpumalanga"
+                    ]
+    },
+    {
+        "url":  "https://www.sowetan.co.za/news/south-africa/2021-01-25-people-put-on-high-alert-as-cyclone-eloise-lands/",
+        "title":  "People put on high alert as Cyclone Eloise lands",
+        "publisher":  "Sowetan",
+        "date":  "2021-01-25",
+        "used_by":  [
+                        "2021-01-eloise-limpopo-mpumalanga"
+                    ]
+    },
+    {
+        "url":  "https://www.citizen.co.za/soweto-urban/news-headlines/2022/12/13/flooding-not-a-new-thing-doornkop-residents-reveal/",
+        "title":  "Flooding not a new thing, Doornkop residents reveal",
+        "publisher":  "Soweto Urban (The Citizen)",
+        "date":  "2022-12-13",
+        "used_by":  [
+                        "2022-12-gauteng-northwest-soweto"
+                    ]
+    },
+    {
+        "url":  "https://www.citizen.co.za/news/jukskei-river-flash-flood-missing-4-december-2022/",
+        "title":  "Update: Seven more bodies found after 15 go missing in Jukskei River flash flood",
+        "publisher":  "The Citizen",
+        "date":  "2022-12-04",
+        "used_by":  [
+                        "2022-12-jukskei-baptism"
+                    ]
+    },
+    {
+        "url":  "https://theconversation.com/why-are-floods-in-south-africas-kwazulu-natal-so-devastating-urban-planning-expert-explains-221285",
+        "title":  "Why are floods in South Africa\u0027s KwaZulu-Natal so devastating? Urban planning expert explains",
+        "publisher":  "The Conversation",
+        "date":  "2024-01",
+        "used_by":  [
+                        "2019-03-durban-inanda",
+                        "2020-11-umlazi-hammanskraal"
+                    ]
+    },
+    {
+        "url":  "https://theconversation.com/south-africas-floods-turned-deadly-because-limpopo-wasnt-prepared-how-to-prevent-a-repeat-274287",
+        "title":  "South Africa\u0027s floods turned deadly because Limpopo wasn\u0027t prepared – how to prevent a repeat",
+        "publisher":  "The Conversation",
+        "date":  "2026-01-28",
+        "used_by":  [
+                        "2026-01-limpopo-mpumalanga-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.thedailybeast.com/river-baptism-ceremony-ends-in-disaster-after-flash-flood-kills-14-in-south-africa/",
+        "title":  "River Baptism Ceremony Ends in Disaster After Flash Flood Kills 14 in South Africa",
+        "publisher":  "The Daily Beast",
+        "date":  "2022-12",
+        "used_by":  [
+                        "2022-12-jukskei-baptism"
+                    ]
+    },
+    {
+        "url":  "https://www.theherald.co.za/news/2019-04-24-heavy-rains-deadly-toll/",
+        "title":  "Heavy rains\u0027 deadly toll",
+        "publisher":  "The Herald",
+        "date":  "2019-04-24",
+        "used_by":  [
+                        "2019-04-easter-floods-kzn-ec"
+                    ]
+    },
+    {
+        "url":  "https://iol.co.za/mercury/news/2024-12-23-heavy-rain-causes-retaining-wall-collapse-resulting-in-two-deaths-in-cato-manor/",
+        "title":  "Heavy rain causes retaining wall collapse, resulting in two deaths in Cato Manor",
+        "publisher":  "The Mercury (IOL)",
+        "date":  "2024-12-23",
+        "used_by":  [
+                        "2024-12-cato-manor-enkanini-wall-collapse"
+                    ]
+    },
+    {
+        "url":  "https://www.pressreader.com/south-africa/the-mercury-south-africa/20171012/281578060884382",
+        "title":  "EThekwini disaster plan \u0027a disaster\u0027",
+        "publisher":  "The Mercury (via PressReader)",
+        "date":  "2017-10-12",
+        "used_by":  [
+                        "2017-10-durban-supercell-storm"
+                    ]
+    },
+    {
+        "url":  "https://www.thepresidency.gov.za/government-declares-national-state-disaster-enable-intensive-response-widespread-floods",
+        "title":  "Government declares national state of disaster to enable intensive response to widespread floods",
+        "publisher":  "The Presidency",
+        "date":  "2023-02-13",
+        "used_by":  [
+                        "2023-02-national-disaster-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.washingtonpost.com/world/2026/05/12/south-africa-floods-storms-death-disaster/b3f699e2-4e1a-11f1-97e7-22c6c29ff0d8_story.html",
+        "title":  "South Africa declares natural disaster as flooding kills at least 10",
+        "publisher":  "The Washington Post",
+        "date":  "2026-05-12",
+        "used_by":  [
+                        "2026-05-cutofflow-cold-fronts-national-disaster"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2024/10/23/eastern-cape-floods-claim-at-least-10-lives-displace-over-3-000-south-africa/",
+        "title":  "Eastern Cape floods claim at least 10 lives, displace over 3 000, South Africa",
+        "publisher":  "The Watchers",
+        "date":  "2024-10-23",
+        "used_by":  [
+                        "2024-10-eastern-cape-nmb-floods"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2017/06/06/cape-town-storm-south-africa/",
+        "title":  "One hell of a storm: Cape Town braces for major winter storm",
+        "publisher":  "The Watchers",
+        "date":  "2017-06-06",
+        "used_by":  [
+                        "2017-06-cape-storm"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2026/05/12/deadly-storms-prompt-national-disaster-declaration-south-africa/",
+        "title":  "Deadly storms prompt national disaster declaration in South Africa",
+        "publisher":  "The Watchers",
+        "date":  "2026-05-12",
+        "used_by":  [
+                        "2026-05-cutofflow-cold-fronts-national-disaster"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2016/11/10/flash-floods-johannesburg-south-africa-november-9-2016/",
+        "title":  "Deadly flash floods hit Johannesburg, South Africa",
+        "publisher":  "The Watchers",
+        "date":  "2016-11-10",
+        "used_by":  [
+                        "2016-11-johannesburg-flash-floods"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2017/02/24/dineo-south-africa-flooding-february-2017/",
+        "title":  "Deadly flooding hits South Africa in the wake of Dineo",
+        "publisher":  "The Watchers",
+        "date":  "2017-02-24",
+        "used_by":  [
+                        "2017-02-ex-dineo-floods"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2017/01/10/flood-limpopo-south-africa-january-2017/",
+        "title":  "Severe flooding hits Limpopo and Mpumalanga, South Africa",
+        "publisher":  "The Watchers",
+        "date":  "2017-01-10",
+        "used_by":  [
+                        "2017-01-limpopo-mpumalanga-flash-floods"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2016/07/27/record-breaking-rainfall-destructive-tornadoes-and-a-spell-of-cold-weather-hits-south-africa/",
+        "title":  "Record-breaking rainfall, destructive tornadoes and a spell of cold weather hits South Africa",
+        "publisher":  "The Watchers",
+        "date":  "2016-07-27",
+        "used_by":  [
+                        "2016-07-cape-kzn-winter-storm"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2025/02/22/at-least-nine-dead-after-severe-flooding-and-landslides-hit-kwazulu-natal-kzn-south-africa/",
+        "title":  "At least nine dead after severe flooding and landslides hit KwaZulu-Natal (KZN), South Africa",
+        "publisher":  "The Watchers",
+        "date":  "2025-02-22",
+        "used_by":  [
+                        "2025-02-ethekwini-storm-wall-collapses"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2026/05/05/level-8-disruptive-rainfall-warnings-issued-eastern-western-cape-south-africa/",
+        "title":  "Level 8 disruptive rainfall warnings issued for Eastern and Western Cape, South Africa",
+        "publisher":  "The Watchers",
+        "date":  "2026-05-05",
+        "used_by":  [
+                        "2026-05-cutofflow-cold-fronts-national-disaster"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2021/12/15/eastern-cape-thunderstorms-casualties-damage-december-2021/",
+        "title":  "Severe thunderstorms hit Eastern Cape, claiming 6 lives and damaging more than 1 000 homes",
+        "publisher":  "The Watchers",
+        "date":  "2021-12-15",
+        "used_by":  [
+                        "2021-12-mthatha-or-tambo-storms"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2026/05/07/more-than-300-mm-11-8-inches-rain-triggers-flooding-evacuations-dam-overflow-south-africa/",
+        "title":  "More than 300 mm (11.8 inches) of rain triggers flooding, evacuations, and dam overflow in South Africa",
+        "publisher":  "The Watchers",
+        "date":  "2026-05-07",
+        "used_by":  [
+                        "2026-05-cutofflow-cold-fronts-national-disaster"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2017/10/10/south-africa-storm-october-10-2017/",
+        "title":  "Several dead in massive South Africa storm, Johannesburg hit hard",
+        "publisher":  "The Watchers",
+        "date":  "2017-10-10",
+        "used_by":  [
+                        "2017-10-durban-supercell-storm"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2017/06/07/cape-town-storm-june-7-2017/",
+        "title":  "Worst winter storm in 30 years hits Cape Town, causing at least 8 deaths",
+        "publisher":  "The Watchers",
+        "date":  "2017-06-07",
+        "used_by":  [
+                        "2017-06-cape-storm"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2018/03/25/flood-gauteng-south-africa/",
+        "title":  "Floods, havoc as month\u0027s worth of rain falls in one day, Gauteng Province, South Africa",
+        "publisher":  "The Watchers",
+        "date":  "2018-03-25",
+        "used_by":  [
+                        "2018-03-gauteng-floods"
+                    ]
+    },
+    {
+        "url":  "https://watchers.news/2017/10/11/durban-south-africa-record-breaking-rain/",
+        "title":  "Durban, South Africa receives record-breaking rain, 8 people dead",
+        "publisher":  "The Watchers",
+        "date":  "2017-10-11",
+        "used_by":  [
+                        "2017-10-durban-supercell-storm"
+                    ]
+    },
+    {
+        "url":  "https://witness.co.za/news/2025/02/26/kzn-floods-five-bodies-recovered-in-lamontville/",
+        "title":  "KZN floods: Five bodies recovered in Lamontville",
+        "publisher":  "The Witness",
+        "date":  "2025-02-26",
+        "used_by":  [
+                        "2025-02-lamontville-floods"
+                    ]
+    },
+    {
+        "url":  "https://witness.co.za/news/2023/12/27/tragedy-in-ladysmith/",
+        "title":  "Tragedy in Ladysmith",
+        "publisher":  "The Witness",
+        "date":  "2023-12-27",
+        "used_by":  [
+                        "2023-12-ladysmith-christmas-eve"
+                    ]
+    },
+    {
+        "url":  "https://witness.co.za/news/kzn/2024/01/22/flooding-woes-persist-in-ladysmith/",
+        "title":  "Flooding woes persist in Ladysmith",
+        "publisher":  "The Witness",
+        "date":  "2024-01-22",
+        "used_by":  [
+                        "2024-01-kzn-freestate-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2017-10-11-kzn-storm-tragedy-displays-of-bravery-and-acts-of-compassion-when-floods-hit/",
+        "title":  "KZN storm: Tragedy, displays of bravery and acts of compassion when floods hit",
+        "publisher":  "TimesLIVE",
+        "date":  "2017-10-11",
+        "used_by":  [
+                        "2017-10-durban-supercell-storm"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2026-02-11-five-die-160-families-homeless-after-severe-storms-in-eastern-cape-district/",
+        "title":  "Five die, 160 families homeless after severe storms in Eastern Cape district",
+        "publisher":  "TimesLIVE",
+        "date":  "2026-02-11",
+        "used_by":  [
+                        "2026-02-or-tambo-storms-early-feb"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2018-10-14-flash-floods-on-gauteng-roads-as-rains-persist/",
+        "title":  "Flash floods on Gauteng roads as rains persist",
+        "publisher":  "TimesLIVE",
+        "date":  "2018-10-14",
+        "used_by":  [
+                        "2018-10-pretoria-flash-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2024-06-03-help-for-1200-tongaat-residents-hit-by-tornado/",
+        "title":  "Help for 1,200 Tongaat residents hit by tornado",
+        "publisher":  "TimesLIVE",
+        "date":  "2024-06-03",
+        "used_by":  [
+                        "2024-06-kzn-tornadoes-storm"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2020-07-13-watch-ferocious-storm-blows-into-cape-town/",
+        "title":  "WATCH | Ferocious storm blows into Cape Town",
+        "publisher":  "TimesLIVE",
+        "date":  "2020-07-13",
+        "used_by":  [
+                        "2020-07-cape-town-storms"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2026-01-19-limpopo-flood-death-toll-reaches-18-search-continues-for-five-missing/",
+        "title":  "Limpopo flood death toll reaches 18, search continues for five missing",
+        "publisher":  "TimesLIVE",
+        "date":  "2026-01-19",
+        "used_by":  [
+                        "2026-01-limpopo-mpumalanga-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2020-07-10-flooding-in-cape-town-as-first-of-three-storms-hits-sa/",
+        "title":  "Flooding in Cape Town as first of three storms hits SA",
+        "publisher":  "TimesLIVE",
+        "date":  "2020-07-10",
+        "used_by":  [
+                        "2020-07-cape-town-storms"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2023-11-07-national-state-of-disaster-declared-for-western-and-eastern-cape-after-september-floods/",
+        "title":  "National state of disaster declared for Western and Eastern Cape after September floods",
+        "publisher":  "TimesLIVE",
+        "date":  "2023-11-07",
+        "used_by":  [
+                        "2023-09-western-cape-cutoff-low"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2024-01-22-flood-hit-kzn-municipalities-classified-as-disaster-areas/",
+        "title":  "Flood-hit KZN municipalities classified as disaster areas",
+        "publisher":  "TimesLIVE",
+        "date":  "2024-01-22",
+        "used_by":  [
+                        "2024-01-kzn-freestate-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2023-10-22-four-dead-more-than-100-houses-destroyed-in-kzn-rains-and-floods/",
+        "title":  "Four dead, more than 100 houses destroyed in KZN rains and floods",
+        "publisher":  "TimesLIVE",
+        "date":  "2023-10-22",
+        "used_by":  [
+                        "2023-10-kzn-mtubatuba-storm"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2018-10-14-two-drownings-under-investigation-as-flash-floods-hit-pretoria/",
+        "title":  "Two drownings under investigation as flash floods hit Pretoria",
+        "publisher":  "TimesLIVE",
+        "date":  "2018-10-14",
+        "used_by":  [
+                        "2018-10-pretoria-flash-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2025-06-11-eight-bodies-recovered-from-school-bus-swept-away-by-mthatha-floods/",
+        "title":  "Eight bodies recovered from school bus swept away by Mthatha floods",
+        "publisher":  "TimesLIVE",
+        "date":  "2025-06-11",
+        "used_by":  [
+                        "2025-06-eastern-cape-mthatha-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2026-02-24-in-pics-residents-blame-blocked-drains-construction-dumping-for-flooded-homes-after-heavy-rains/",
+        "title":  "IN PICS | Residents blame blocked drains, construction, dumping for flooded homes after heavy rains",
+        "publisher":  "TimesLIVE",
+        "date":  "2026-02-24",
+        "used_by":  [
+                        "2026-02-ntuzuma-flash-flood"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2020-10-12-child-killed-homes-destroyed-as-floods-wreak-havoc-in-limpopo/",
+        "title":  "Child killed, homes destroyed as floods wreak havoc in Limpopo",
+        "publisher":  "TimesLIVE",
+        "date":  "2020-10-12",
+        "used_by":  [
+                        "2020-10-mopani-hail-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2016-07-27-400-displaced-after-freak-tornado-leaves-trail-of-destruction-in-gauteng/",
+        "title":  "400 displaced after freak tornado leaves trail of destruction in Gauteng",
+        "publisher":  "TimesLIVE",
+        "date":  "2016-07-27",
+        "used_by":  [
+                        "2016-07-cape-kzn-winter-storm"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/amp/news/south-africa/2023-03-25-three-dead-hundreds-being-sheltered-after-eastern-cape-floods/",
+        "title":  "Three dead, hundreds being sheltered after Eastern Cape floods",
+        "publisher":  "TimesLIVE",
+        "date":  "2023-03-25",
+        "used_by":  [
+                        "2023-03-port-st-johns-ingquza"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2023-12-29-ladysmith-floods-death-toll-rises-to-13/",
+        "title":  "Ladysmith floods death toll rises to 13",
+        "publisher":  "TimesLIVE",
+        "date":  "2023-12-29",
+        "used_by":  [
+                        "2023-12-ladysmith-christmas-eve"
+                    ]
+    },
+    {
+        "url":  "https://www.timeslive.co.za/news/south-africa/2020-06-27-storm-accompanied-by-gale-force-winds-and-flooding-wreaks-havoc-in-cape-town/",
+        "title":  "Storm accompanied by gale-force winds and flooding wreaks havoc in Cape Town",
+        "publisher":  "TimesLIVE",
+        "date":  "2020-06-27",
+        "used_by":  [
+                        "2020-06-cape-town-gale-floods"
+                    ]
+    },
+    {
+        "url":  "https://doi.org/10.3389/fcomm.2025.1503016",
+        "title":  "Resilience and the dissemination of flood disaster early warning messages in a township in South Africa",
+        "publisher":  "Tlou D. Raphela; N. Ekeke",
+        "date":  "2025",
+        "used_by":  [
+                        "reference"
+                    ]
+    },
+    {
+        "url":  "https://umshwathi.gov.za/2025/11/26/update-on-the-disaster-that-occurred-in-umshwathi-municipality-on-sunday-23-november-2025/",
+        "title":  "Update on the disaster that occurred in uMshwathi Municipality on Sunday, 23 November 2025",
+        "publisher":  "uMshwathi Local Municipality",
+        "date":  "2025-11-26",
+        "used_by":  [
+                        "2025-11-umshwathi-new-hanover-floods"
+                    ]
+    },
+    {
+        "url":  "https://en.wikipedia.org/wiki/June_2024_South_African_storm_complex",
+        "title":  "June 2024 South African storm complex",
+        "publisher":  "Wikipedia",
+        "date":  null,
+        "used_by":  [
+                        "2024-06-western-cape-cutofflow-floods",
+                        "2024-06-eastern-cape-floods",
+                        "2024-06-kzn-tornadoes-storm"
+                    ]
+    },
+    {
+        "url":  "https://en.wikipedia.org/wiki/Cape_storm_(2017)",
+        "title":  "Cape storm (2017)",
+        "publisher":  "Wikipedia",
+        "date":  null,
+        "used_by":  [
+                        "2017-06-cape-storm"
+                    ]
+    },
+    {
+        "url":  "https://en.wikipedia.org/wiki/Cyclone_Eloise",
+        "title":  "Cyclone Eloise",
+        "publisher":  "Wikipedia",
+        "date":  null,
+        "used_by":  [
+                        "2021-01-eloise-limpopo-mpumalanga",
+                        "2021-01-northern-cape-floods"
+                    ]
+    },
+    {
+        "url":  "https://en.wikipedia.org/wiki/2016_Johannesburg_flood",
+        "title":  "2016 Johannesburg flood",
+        "publisher":  "Wikipedia",
+        "date":  null,
+        "used_by":  [
+                        "2016-11-johannesburg-flash-floods"
+                    ]
+    },
+    {
+        "url":  "https://en.wikipedia.org/wiki/2022_Eastern_Cape_floods",
+        "title":  "2022 Eastern Cape floods",
+        "publisher":  "Wikipedia",
+        "date":  null,
+        "used_by":  [
+                        "2022-01-eastern-cape-mdantsane"
+                    ]
+    },
+    {
+        "url":  "https://en.wikipedia.org/wiki/June_2025_South_Africa_floods",
+        "title":  "June 2025 South Africa floods",
+        "publisher":  "Wikipedia",
+        "date":  null,
+        "used_by":  [
+                        "2025-06-eastern-cape-mthatha-floods"
+                    ]
+    },
+    {
+        "url":  "https://en.wikipedia.org/wiki/2022_KwaZulu-Natal_floods",
+        "title":  "2022 KwaZulu-Natal floods",
+        "publisher":  "Wikipedia",
+        "date":  null,
+        "used_by":  [
+                        "2022-04-kzn-megaflood"
+                    ]
+    },
+    {
+        "url":  "https://en.wikipedia.org/wiki/2023_Western_Cape_floods",
+        "title":  "2023 Western Cape floods",
+        "publisher":  "Wikipedia",
+        "date":  null,
+        "used_by":  [
+                        "2023-09-western-cape-cutoff-low"
+                    ]
+    },
+    {
+        "url":  "https://en.wikipedia.org/wiki/2019_Durban_Easter_floods",
+        "title":  "2019 Durban Easter floods",
+        "publisher":  "Wikipedia",
+        "date":  null,
+        "used_by":  [
+                        "2019-04-easter-floods-kzn-ec"
+                    ]
+    },
+    {
+        "url":  "https://en.wikipedia.org/wiki/2023_South_Africa_floods",
+        "title":  "2023 South Africa floods",
+        "publisher":  "Wikipedia",
+        "date":  null,
+        "used_by":  [
+                        "2023-02-national-disaster-floods"
+                    ]
+    },
+    {
+        "url":  "https://www.worldweatherattribution.org/wp-content/uploads/WWA-KZN-floods-scientific-report.pdf",
+        "title":  "World Weather Attribution - KZN floods scientific report",
+        "publisher":  "World Weather Attribution",
+        "date":  "",
+        "used_by":  [
+                        "reference"
+                    ]
+    },
+    {
+        "url":  "https://english.news.cn/20260210/835e096e143e41afbe04a48ee4ab19ca/c.html",
+        "title":  "Weather-related death toll rises to 5 in South Africa\u0027s Eastern Cape",
+        "publisher":  "Xinhua",
+        "date":  "2026-02-10",
+        "used_by":  [
+                        "2026-02-or-tambo-storms-early-feb"
+                    ]
+    }
+]

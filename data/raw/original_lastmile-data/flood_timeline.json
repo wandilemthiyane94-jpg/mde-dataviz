@@ -1,0 +1,10 @@
+[
+ {"year":2013,"event":"Limpopo floods","deaths":"12-30","region":"Limpopo"},
+ {"year":2016,"event":"Johannesburg flash flood (Alexandra)","deaths":6,"region":"Gauteng"},
+ {"year":2019,"event":"Durban Easter floods","deaths":"70-85","region":"KwaZulu-Natal"},
+ {"year":2022,"event":"Eastern Cape floods, January (Mdantsane)","deaths":"unconfirmed","region":"Eastern Cape","note":"storm arrived without warning"},
+ {"year":2022,"event":"KwaZulu-Natal mega-flood, April","deaths":"435-448","region":"KwaZulu-Natal","note":"deadliest flood in SA recorded history"},
+ {"year":2023,"event":"Eastern Cape & Mpumalanga floods","deaths":"12+","region":"Eastern Cape / Mpumalanga"},
+ {"year":2025,"event":"Eastern Cape floods, June (Mthatha)","deaths":92,"region":"Eastern Cape"},
+ {"year":2026,"event":"Limpopo & Mpumalanga floods, January","deaths":"19-30+","region":"Limpopo / Mpumalanga"}
+]

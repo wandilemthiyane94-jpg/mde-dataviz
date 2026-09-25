@@ -1,0 +1,11 @@
+# OS / editor clutter
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+~$*
+
+# Third-party documents kept locally only (redistribution terms / copyright); source URLs are recorded in the data
+data/raw/source_documents/*.pdf
+data/raw/source_documents/*.xlsx
+data/raw/observing_network/*.pdf

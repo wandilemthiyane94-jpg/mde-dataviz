@@ -1,0 +1,122 @@
+[
+    {
+        "source_db":  "GDACS",
+        "source_id":  "1101006",
+        "start_date":  "2021-06-28",
+        "end_date":  "2021-07-03",
+        "provinces":  [
+
+                      ],
+        "deaths":  null,
+        "affected":  null,
+        "damage":  null,
+        "declaration":  null,
+        "url":  "https://www.gdacs.org/report.aspx?eventid=1101006\u0026episodeid=1\u0026eventtype=FL",
+        "notes":  "GDACS alert: Green; source: GLOFAS; countries: South Africa; episode 1. Sendai impact fragments reported by GDACS for South Africa (may overlap/duplicate; not summed): displaced=80 [Bloekombos]"
+    },
+    {
+        "source_db":  "GDACS",
+        "source_id":  "1101365",
+        "start_date":  "2022-03-13",
+        "end_date":  "2022-03-17",
+        "provinces":  [
+
+                      ],
+        "deaths":  null,
+        "affected":  null,
+        "damage":  null,
+        "declaration":  null,
+        "url":  "https://www.gdacs.org/report.aspx?eventid=1101365\u0026episodeid=1\u0026eventtype=FL",
+        "notes":  "GDACS alert: Green; source: GLOFAS; countries: South Africa; episode 1. Sendai impact fragments reported by GDACS for South Africa (may overlap/duplicate; not summed): displaced=750 [Deelpan]; death=1 [Deelpan]"
+    },
+    {
+        "source_db":  "GDACS",
+        "source_id":  "1101709",
+        "start_date":  "2022-10-18",
+        "end_date":  "2022-10-20",
+        "provinces":  [
+
+                      ],
+        "deaths":  null,
+        "affected":  null,
+        "damage":  null,
+        "declaration":  null,
+        "url":  "https://www.gdacs.org/report.aspx?eventid=1101709\u0026episodeid=1\u0026eventtype=FL",
+        "notes":  "GDACS alert: Green; source: GLOFAS; countries: South Africa; episode 1. Sendai impact fragments reported by GDACS for South Africa (may overlap/duplicate; not summed): transport=0 [Alberton]; roads=0 [Alberton]"
+    },
+    {
+        "source_db":  "GDACS",
+        "source_id":  "1101736",
+        "start_date":  "2022-11-08",
+        "end_date":  "2022-11-10",
+        "provinces":  [
+
+                      ],
+        "deaths":  null,
+        "affected":  null,
+        "damage":  null,
+        "declaration":  null,
+        "url":  "https://www.gdacs.org/report.aspx?eventid=1101736\u0026episodeid=1\u0026eventtype=FL",
+        "notes":  "GDACS alert: Green; source: GLOFAS; countries: South Africa; episode 1. Sendai impact fragments reported by GDACS for South Africa (may overlap/duplicate; not summed): houses damaged=50 [Pietermaritzburg]; bridges destroyed=4 [Pietermaritzburg]"
+    },
+    {
+        "source_db":  "GDACS",
+        "source_id":  "1102002",
+        "start_date":  "2023-05-14",
+        "end_date":  "2023-05-16",
+        "provinces":  [
+
+                      ],
+        "deaths":  null,
+        "affected":  null,
+        "damage":  null,
+        "declaration":  null,
+        "url":  "https://www.gdacs.org/report.aspx?eventid=1102002\u0026episodeid=1\u0026eventtype=FL",
+        "notes":  "GDACS alert: Green; source: GLOFAS; countries: South Africa; episode 1. Sendai impact fragments reported by GDACS for South Africa (may overlap/duplicate; not summed): displaced=1200 [Nelson Mandela Bay]"
+    },
+    {
+        "source_db":  "GDACS",
+        "source_id":  "1102822",
+        "start_date":  "2024-08-08",
+        "end_date":  "2024-08-10",
+        "provinces":  [
+
+                      ],
+        "deaths":  null,
+        "affected":  null,
+        "damage":  null,
+        "declaration":  null,
+        "url":  "https://www.gdacs.org/report.aspx?eventid=1102822\u0026episodeid=1\u0026eventtype=FL",
+        "notes":  "GDACS alert: Green; source: GLOFAS; countries: South Africa; episode 1. Sendai impact fragments reported by GDACS for South Africa (may overlap/duplicate; not summed): displaced=224 [Malmesbury]; affected=14 [Malmesbury]; affected=444 [Malmesbury]"
+    },
+    {
+        "source_db":  "GDACS",
+        "source_id":  "1103205",
+        "start_date":  "2025-04-04",
+        "end_date":  "2025-04-07",
+        "provinces":  [
+
+                      ],
+        "deaths":  null,
+        "affected":  null,
+        "damage":  null,
+        "declaration":  null,
+        "url":  "https://www.gdacs.org/report.aspx?eventid=1103205\u0026episodeid=1\u0026eventtype=FL",
+        "notes":  "GDACS alert: Green; source: GLOFAS; countries: South Africa; episode 1. Sendai impact fragments reported by GDACS for South Africa (may overlap/duplicate; not summed): houses damaged=35 [Bloemfontein]; affected=35 [Bloemfontein]"
+    },
+    {
+        "source_db":  "GDACS",
+        "source_id":  "1103236",
+        "start_date":  "2025-04-25",
+        "end_date":  "2025-04-27",
+        "provinces":  [
+
+                      ],
+        "deaths":  null,
+        "affected":  null,
+        "damage":  null,
+        "declaration":  null,
+        "url":  "https://www.gdacs.org/report.aspx?eventid=1103236\u0026episodeid=1\u0026eventtype=FL",
+        "notes":  "GDACS alert: Green; source: GLOFAS; countries: South Africa; episode 1. Sendai impact fragments reported by GDACS for South Africa (may overlap/duplicate; not summed): houses damaged=1 [Umlazi]; death=1 [Umlazi]; injured=5 [Umlazi]"
+    }
+]

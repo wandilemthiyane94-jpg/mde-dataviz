@@ -1,0 +1,792 @@
+[
+  {
+    "id": "2025-06-eastern-cape-mthatha-floods",
+    "death_sites": [
+      {
+        "place": "Slovo Park informal settlement, Mthatha West (KSD LM) - census main place 'Joe Slovo'",
+        "deaths_at_place": 9,
+        "deaths_note": "News24 (11 Jun 2025) 'counted nine bodies at the scene' in Slovo Park incl. four schoolchildren; final toll there not reported. Elitsha: Slovo Park 'one of the worst affected areas'.",
+        "settlement_type": "informal settlement (SAnews: one of four informal settlements outside Mthatha - Slovo Park, Mandela Park, Chris Hani Park, Polar Park - to be consolidated into Mthatha West); homes built close to Mthatha River",
+        "census_year": 2011,
+        "geo_level": "main place (Joe Slovo, KSD) - matched to 'Slovo Park' via SAnews naming and adjacent census codes for Mandela Park/Chris Hani main places; match not officially confirmed",
+        "top_languages": [{"language": "isiXhosa", "pct": 90.74}, {"language": "English", "pct": 4.25}, {"language": "Afrikaans", "pct": 1.44}],
+        "english_pct": 4.25,
+        "afrikaans_pct": 1.44,
+        "census_url": "https://census2011.adrianfrith.com/place/294037",
+        "death_source_url": "https://www.news24.com/southafrica/news/bodies-of-four-children-recovered-in-flooded-mthatha-following-heavy-rains-20250611-0569"
+      },
+      {
+        "place": "Efata Bridge (R61 Mthatha-Ngcobo, near Efata School for the Deaf and Blind) - scholar transport to Jumba Senior Secondary swept away",
+        "deaths_at_place": 8,
+        "deaths_note": "Wikipedia: bus 'swept away near Mthatha, resulting in the deaths of six students and two adults, with four students still missing'; later reports: 10 Jumba SSS pupils died. Some bodies found downstream at De Colligny (Decoligny).",
+        "settlement_type": "peri-urban / rural edge of Mthatha (bridge on R61)",
+        "census_year": 2011,
+        "geo_level": "sub place (Efata, Mthatha main place)",
+        "top_languages": [{"language": "isiXhosa", "pct": 90.48}, {"language": "English", "pct": 4.17}, {"language": "Sign language", "pct": 3.57}],
+        "english_pct": 4.17,
+        "afrikaans_pct": null,
+        "census_url": "https://census2011.adrianfrith.com/place/294040014",
+        "death_source_url": "https://en.wikipedia.org/wiki/June_2025_South_Africa_floods"
+      },
+      {
+        "place": "De Colligny / Decoligny (Mthatha) - bodies of three children in school uniform found on river banks",
+        "deaths_at_place": 3,
+        "deaths_note": "Bodies recovered here (likely bus victims, so overlapping with Efata count).",
+        "settlement_type": "village / mission station on Mthatha outskirts",
+        "census_year": 2011,
+        "geo_level": "sub place (De Colligny Mission Station, Mthatha main place; pop 311)",
+        "top_languages": [{"language": "isiXhosa", "pct": 78.57}, {"language": "English", "pct": 9.34}, {"language": "Afrikaans", "pct": 8.24}],
+        "english_pct": 9.34,
+        "afrikaans_pct": 8.24,
+        "census_url": "https://census2011.adrianfrith.com/place/294040013",
+        "death_source_url": "https://www.news24.com/southafrica/news/ive-never-seen-anything-like-this-eastern-cape-survivor-recounts-flood-nightmare-20250612-1191"
+      },
+      {
+        "place": "Mthatha town (main place, context for rest of 78 OR Tambo deaths)",
+        "deaths_at_place": null,
+        "deaths_note": "EC government 30 June 2025: OR Tambo district 78 deaths (Amathole 10, Alfred Nzo 5, Chris Hani 5, Joe Gqabi 2, Sarah Baartman 2; total 102). No per-suburb breakdown published.",
+        "settlement_type": "town with riverside informal settlements",
+        "census_year": 2011,
+        "geo_level": "main place (Mthatha)",
+        "top_languages": [{"language": "isiXhosa", "pct": 85.02}, {"language": "English", "pct": 8.62}, {"language": "Other", "pct": 1.77}],
+        "english_pct": 8.62,
+        "afrikaans_pct": 1.14,
+        "census_url": "https://census2011.adrianfrith.com/place/294040",
+        "death_source_url": "https://www.gov.za/news/media-statements/eastern-cape-provincial-government-floods-update-status-update-30-june-2025"
+      },
+      {
+        "place": "O.R. Tambo District (78 of 102 deaths)",
+        "deaths_at_place": 78,
+        "settlement_type": "mixed: town, informal settlements, rural villages",
+        "census_year": 2011,
+        "geo_level": "district municipality",
+        "top_languages": [{"language": "isiXhosa", "pct": 94.21}, {"language": "English", "pct": 2.69}, {"language": "Sign language", "pct": 0.77}],
+        "english_pct": 2.69,
+        "afrikaans_pct": 0.55,
+        "census_url": "https://census2011.adrianfrith.com/place/215",
+        "death_source_url": "https://www.gov.za/news/media-statements/eastern-cape-provincial-government-floods-update-status-update-30-june-2025"
+      },
+      {
+        "place": "Amathole District (10 deaths, incl. Butterworth area)",
+        "deaths_at_place": 10,
+        "settlement_type": "town and rural villages",
+        "census_year": 2011,
+        "geo_level": "district municipality",
+        "top_languages": [{"language": "isiXhosa", "pct": 93.62}, {"language": "English", "pct": 2.25}, {"language": "Afrikaans", "pct": 2.09}],
+        "english_pct": 2.25,
+        "afrikaans_pct": 2.09,
+        "census_url": "https://census2011.adrianfrith.com/place/212",
+        "death_source_url": "https://www.gov.za/news/media-statements/eastern-cape-provincial-government-floods-update-status-update-30-june-2025"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "isiXhosa (78.6-94% at every death site; English 2.7-9.3%)",
+    "warning_language_evidence": "No source found stating the language of the June 2025 warnings. Daily Dispatch (2026-06-23): 'All warnings were shared with the National Disaster Management Centre (NDMC) and then disseminated through social media' and via 'interviews, live radio and television' - https://www.dailydispatch.co.za/news/2026-06-23-saws-draws-global-praise-for-life-saving-mthatha-flood-warnings/ . Daily Maverick (2025-06-19): 'The weather warnings are also sent through disaster management WhatsApp groups, which are also used to send information to communities in rural areas.' and 'these systems often break down, particularly in reaching the people who need the warnings most.' - https://www.dailymaverick.co.za/article/2025-06-19-eaastern-cape-floods-why-sas-disaster-management-and-legislation-failed/ . Related (not Mthatha): The Conversation (Mokhele & Mvanyashe, 16 Jun 2026) on isiXhosa-speaking Walmer Airport Valley, Gqeberha: disaster warnings 'are still sent out almost entirely in English and Afrikaans' - https://theconversation.com/language-matters-for-disaster-warnings-this-community-didnt-get-useful-flood-alerts-284723",
+    "notes": "Premier Mabuyane (via Wikipedia) said floods began in the middle of the night 'leaving many unaware'. Final per-place toll for Slovo Park not published; 9 is a News24 scene count on day 2. Efata and De Colligny counts overlap (same bus). Census 2022 sub-place language not retrieved; 2011 used."
+  },
+  {
+    "id": "2022-01-eastern-cape-mdantsane",
+    "death_sites": [
+      {
+        "place": "Mdantsane township (Zones/Units 1, 3, 9, 18, NU7; Joe Slovo informal settlement) - Buffalo City",
+        "deaths_at_place": null,
+        "deaths_note": "Daily Maverick lists Mdantsane among death locations but gives no count; News24 headline 9 Jan 2022: 'Mdantsane ... flooding, one dead' (page 403, headline only).",
+        "settlement_type": "township on a floodplain; informal settlement (Joe Slovo)",
+        "census_year": 2011,
+        "geo_level": "main place (Mdantsane); Unit 1 sub place isiXhosa 93.43 / English 3.18; Unit 3 sub place isiXhosa 94.12 / English 3.23; 'Slovo Park' sub place (pop 325) isiXhosa 95.99 / English 2.47",
+        "top_languages": [{"language": "isiXhosa", "pct": 93.91}, {"language": "English", "pct": 3.02}, {"language": "Sign language", "pct": 0.94}],
+        "english_pct": 3.02,
+        "afrikaans_pct": 0.5,
+        "census_url": "https://census2011.adrianfrith.com/place/260088",
+        "death_source_url": "https://www.dailymaverick.co.za/article/2022-01-12-eastern-cape-officials-still-counting-losses-after-floods-kill-14-and-displace-hundreds/"
+      },
+      {
+        "place": "Horseshoe Valley causeway, Nahoon River, East London (incl. SAPS diver Capt Pierre Marx)",
+        "deaths_at_place": 4,
+        "settlement_type": "suburban river causeway",
+        "census_year": 2011,
+        "geo_level": "sub place (Nahoon Valley, East London main place; pop 704)",
+        "top_languages": [{"language": "English", "pct": 75.0}, {"language": "isiXhosa", "pct": 10.94}, {"language": "Afrikaans", "pct": 9.52}],
+        "english_pct": 75.0,
+        "afrikaans_pct": 9.52,
+        "census_url": "https://census2011.adrianfrith.com/place/260113017",
+        "death_source_url": "https://www.dailymaverick.co.za/article/2022-01-12-eastern-cape-officials-still-counting-losses-after-floods-kill-14-and-displace-hundreds/"
+      },
+      {
+        "place": "Shixini village, Dutywa/Gatyana (Mbhashe LM) - family swept away in car by Shixini River",
+        "deaths_at_place": 3,
+        "settlement_type": "rural village",
+        "census_year": 2011,
+        "geo_level": "local municipality (Mbhashe) - Shixini not found as a census place name",
+        "top_languages": [{"language": "isiXhosa", "pct": 95.7}, {"language": "English", "pct": 1.57}, {"language": "Sign language", "pct": 0.67}],
+        "english_pct": 1.57,
+        "afrikaans_pct": 0.53,
+        "census_url": "https://census2011.adrianfrith.com/place/270",
+        "death_source_url": "https://www.dailymaverick.co.za/article/2022-01-12-eastern-cape-officials-still-counting-losses-after-floods-kill-14-and-displace-hundreds/"
+      },
+      {
+        "place": "Nyandeni LM, OR Tambo (1 drowning, 1 lightning)",
+        "deaths_at_place": 2,
+        "settlement_type": "rural villages",
+        "census_year": 2011,
+        "geo_level": "local municipality",
+        "top_languages": [{"language": "isiXhosa", "pct": 95.27}, {"language": "English", "pct": 2.03}, {"language": "Sign language", "pct": 0.84}],
+        "english_pct": 2.03,
+        "afrikaans_pct": 0.47,
+        "census_url": "https://census2011.adrianfrith.com/place/292",
+        "death_source_url": "https://www.dailymaverick.co.za/article/2022-01-12-eastern-cape-officials-still-counting-losses-after-floods-kill-14-and-displace-hundreds/"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "isiXhosa (93-96% at Mdantsane, Shixini/Mbhashe, Nyandeni); exception: Nahoon Valley causeway (English 75%) where victims were motorists/rescuer, not necessarily residents",
+    "warning_language_evidence": "No source on warning language. Wikipedia: 'The storm arrived without warning. The response from the cities and weather services was not quick enough to warn the citizens' - https://en.wikipedia.org/wiki/2022_Eastern_Cape_floods",
+    "notes": "Wikipedia final toll 20: Buffalo City 8, OR Tambo 8, Amathole 3, 'Alfred Duma' 1 (likely Alfred Nzo). DM (12 Jan) had 14: East London 4, Shixini 3, Nyandeni 2, Mdantsane unspecified, 5 unspecified. Mdantsane Unit 9 sub place has pop 1 in 2011 so not usable; main place used."
+  },
+  {
+    "id": "2022-12-jukskei-baptism",
+    "death_sites": [
+      {
+        "place": "Jukskei River just after the Corlett Drive offramp, Bramley Park, Sandton (baptism site)",
+        "deaths_at_place": 14,
+        "deaths_note": "14 bodies recovered, at least 3 missing incl. a 3-month-old (Daily Maverick 6 Dec 2022). ~33 congregants.",
+        "settlement_type": "suburban river bank (site of death); congregants from Alexandra township",
+        "census_year": 2011,
+        "geo_level": "sub place (Bramley Park, Sandton main place; pop 1,161)",
+        "top_languages": [{"language": "English", "pct": 53.18}, {"language": "Other", "pct": 8.7}, {"language": "isiZulu", "pct": 8.62}],
+        "english_pct": 53.18,
+        "afrikaans_pct": 5.05,
+        "census_url": "https://census2011.adrianfrith.com/place/798013054",
+        "death_source_url": "https://www.citizen.co.za/news/jukskei-river-flash-flood-missing-4-december-2022/"
+      },
+      {
+        "place": "Alexandra township (home community of the church group)",
+        "deaths_at_place": null,
+        "deaths_note": "Victims were 'from a church in Alexandra' (Citizen); denomination 'Johane Masowe' (Daily Maverick). Deaths occurred at Bramley Park, not in Alexandra itself.",
+        "settlement_type": "township with informal riverbank settlements",
+        "census_year": 2011,
+        "geo_level": "main place (Alexandra)",
+        "top_languages": [{"language": "isiZulu", "pct": 26.25}, {"language": "Sepedi", "pct": 23.14}, {"language": "Xitsonga", "pct": 11.29}],
+        "english_pct": 2.24,
+        "afrikaans_pct": 0.82,
+        "census_url": "https://census2011.adrianfrith.com/place/798014",
+        "death_source_url": "https://www.dailymaverick.co.za/article/2022-12-06-bad-weather-stalls-search-for-alexandra-churchgoers-believed-drowned-in-flash-flood/"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "Home community (Alexandra): highly multilingual, isiZulu 26% / Sepedi 23% / Xitsonga 11%, English 2.2%. Death site itself (Bramley Park) is an English-majority suburb.",
+    "warning_language_evidence": "No warning was issued. Daily Maverick quotes WeatherSA chief forecaster Ezekiel Sebego: 'The amount of rain that has fallen locally would have been insufficient to cause a flash flood, and hence no warning was deemed necessary.' - https://www.dailymaverick.co.za/article/2022-12-06-bad-weather-stalls-search-for-alexandra-churchgoers-believed-drowned-in-flash-flood/ . FloodList: 'In late November public safety officials visited communities along the Juksei River to assess flood risks and increase awareness of flood dangers.' - https://floodlist.com/africa/south-africa-johannesburg-december-2022",
+    "notes": "No source states the congregants' language; per ethics rule none inferred from church denomination or names. Place-level language of Alexandra used as the community profile."
+  },
+  {
+    "id": "2016-11-johannesburg-flash-floods",
+    "death_sites": [
+      {
+        "place": "Stjwetla/Setswetla informal settlement, Alexandra (Jukskei banks) - 3-year-old girl swept away",
+        "deaths_at_place": 1,
+        "deaths_note": "Girl reported missing/swept away in Alexandra (SAnews, Wikipedia); counted among the 6 in some tallies.",
+        "settlement_type": "informal settlement on Jukskei River banks",
+        "census_year": 2011,
+        "geo_level": "sub place (Sejwetla, Alexandra main place; pop 5,131)",
+        "top_languages": [{"language": "Xitsonga", "pct": 54.52}, {"language": "Sepedi", "pct": 20.56}, {"language": "isiXhosa", "pct": 6.76}],
+        "english_pct": 1.75,
+        "afrikaans_pct": 0.12,
+        "census_url": "https://census2011.adrianfrith.com/place/798014009",
+        "death_source_url": "https://en.wikipedia.org/wiki/2016_Johannesburg_flood"
+      },
+      {
+        "place": "N3 near Linksfield (motorists drowned, cars pushed off highway)",
+        "deaths_at_place": 2,
+        "deaths_note": "Emer-G-Med: 'two people had drowned following flash floods on the N3 near Linksfield'.",
+        "settlement_type": "highway (suburb Linksfield adjacent) - victims were motorists, not necessarily residents",
+        "census_year": 2011,
+        "geo_level": "sub place (Linksfield, Johannesburg main place)",
+        "top_languages": [{"language": "English", "pct": 72.98}, {"language": "isiZulu", "pct": 4.72}, {"language": "Sepedi", "pct": 4.69}],
+        "english_pct": 72.98,
+        "afrikaans_pct": 4.28,
+        "census_url": "https://census2011.adrianfrith.com/place/798015028",
+        "death_source_url": "https://floodlist.com/africa/south-africa-gauteng-floods-november-2016"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "Mixed: Stjwetla (Xitsonga 54.5%, English 1.8%) vs N3/Linksfield highway deaths (English-majority suburb, but victims were motorists)",
+    "warning_language_evidence": null,
+    "notes": "Total 4 (SAnews) to 6 (Wikipedia/FloodList). FloodList also mentions 'four deaths in collision' involving a goods vehicle during floods, location unspecified. Remaining deaths not located."
+  },
+  {
+    "id": "2017-01-limpopo-mpumalanga-flash-floods",
+    "death_sites": [
+      {
+        "place": "Kwaggafontein, Thembisile Hani LM (taxi stranded crossing swollen river; passenger and Fire & Rescue member drowned)",
+        "deaths_at_place": 2,
+        "settlement_type": "rural/semi-rural township area, river crossing",
+        "census_year": 2011,
+        "geo_level": "main place (Kwaggafontein)",
+        "top_languages": [{"language": "isiNdebele", "pct": 69.89}, {"language": "isiZulu", "pct": 13.4}, {"language": "Sepedi", "pct": 4.01}],
+        "english_pct": 1.09,
+        "afrikaans_pct": 0.52,
+        "census_url": "https://census2011.adrianfrith.com/place/871006",
+        "death_source_url": "https://floodlist.com/africa/south-africa-floods-limpopo-mpumalanga-january-2017"
+      },
+      {
+        "place": "Limpopo River near Beitbridge (Musina LM used as enclosing SA municipality)",
+        "deaths_at_place": 5,
+        "deaths_note": "'Up to 5 deaths' in the swollen Limpopo River near Beitbridge; source does not say which side of the border (Beitbridge town is in Zimbabwe).",
+        "settlement_type": "rural border / river area",
+        "census_year": 2011,
+        "geo_level": "local municipality (Musina) - place-level unknown",
+        "top_languages": [{"language": "Tshivenda", "pct": 52.07}, {"language": "Other", "pct": 12.21}, {"language": "Sesotho", "pct": 9.03}],
+        "english_pct": 4.42,
+        "afrikaans_pct": 4.88,
+        "census_url": "https://census2011.adrianfrith.com/place/967",
+        "death_source_url": "https://floodlist.com/africa/south-africa-floods-limpopo-mpumalanga-january-2017"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "isiNdebele (Kwaggafontein) and Tshivenda (Musina LM)",
+    "warning_language_evidence": null,
+    "notes": "SAWS 'warned of a risk of flash floods in Limpopo, Mpumalanga and Gauteng' (FloodList); language not stated. Beitbridge deaths may have been on Zimbabwean side - treat Musina figure with caution."
+  },
+  {
+    "id": "2020-02-johannesburg-floods",
+    "death_sites": [
+      {
+        "place": "Mhlangeni (Plot 8) informal settlement, Progress Road, Roodepoort - 8-year-old girl died when footbridge collapsed",
+        "deaths_at_place": 1,
+        "settlement_type": "informal settlement",
+        "census_year": 2011,
+        "geo_level": "main place (Roodepoort) - Mhlangeni not a separate census unit; suburb-level profile likely differs from this settlement",
+        "top_languages": [{"language": "English", "pct": 29.81}, {"language": "Afrikaans", "pct": 23.97}, {"language": "isiZulu", "pct": 9.02}],
+        "english_pct": 29.81,
+        "afrikaans_pct": 23.97,
+        "census_url": "https://census2011.adrianfrith.com/place/798022",
+        "death_source_url": "https://www.sabcnews.com/sabcnews/gauteng-floods-claim-two-lives-leave-hundreds-stranded/"
+      },
+      {
+        "place": "Douglasdale (man aged 30-35)",
+        "deaths_at_place": 1,
+        "settlement_type": "suburb",
+        "census_year": 2011,
+        "geo_level": "sub place (Douglasdale, Sandton main place)",
+        "top_languages": [{"language": "English", "pct": 74.17}, {"language": "Afrikaans", "pct": 9.55}, {"language": "Other", "pct": 4.03}],
+        "english_pct": 74.17,
+        "afrikaans_pct": 9.55,
+        "census_url": "https://census2011.adrianfrith.com/place/798013013",
+        "death_source_url": "https://www.sabcnews.com/sabcnews/gauteng-floods-claim-two-lives-leave-hundreds-stranded/"
+      },
+      {
+        "place": "Kagiso, Mogale City (woman swept away, missing presumed dead)",
+        "deaths_at_place": 1,
+        "settlement_type": "township",
+        "census_year": 2011,
+        "geo_level": "main place (Kagiso)",
+        "top_languages": [{"language": "Setswana", "pct": 47.6}, {"language": "isiZulu", "pct": 14.72}, {"language": "isiXhosa", "pct": 12.1}],
+        "english_pct": 2.75,
+        "afrikaans_pct": 0.64,
+        "census_url": "https://census2011.adrianfrith.com/place/763010",
+        "death_source_url": "https://www.sabcnews.com/sabcnews/gauteng-floods-claim-two-lives-leave-hundreds-stranded/"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "Mixed: Kagiso Setswana-majority; Douglasdale English-majority; Mhlangeni only available at Roodepoort main-place level (English/Afrikaans plurality, not representative of the informal settlement)",
+    "warning_language_evidence": "No language info. FloodList quotes City of Johannesburg EMS: 'We urge residents to exercise caution on all roads, low lying areas and near rivers.' - https://floodlist.com/africa/south-africa-floods-johannesburg-gauteng-february-2020",
+    "notes": "Most displacement was in Kliptown (Soweto) and Alexandra/Setswetla, but deaths occurred at Mhlangeni, Douglasdale and Kagiso."
+  },
+  {
+    "id": "2020-10-mopani-hail-floods",
+    "death_sites": [
+      {
+        "place": "Affected villages in Greater Letaba LM (Sedibeng, GaMaupa, Bellevue, Jamela, Mohlabaneng, Tlatja, Sefofotse) - village of the child's death not specified",
+        "deaths_at_place": 1,
+        "deaths_note": "1 child killed; village not named in source.",
+        "settlement_type": "rural villages",
+        "census_year": 2011,
+        "geo_level": "local municipality (Greater Letaba). Village main places: Sedibeng Sepedi 89.70/English 0.06 (https://census2011.adrianfrith.com/place/961015); GaMaupa Sepedi 95.67/English 1.17 (/place/961031); Bellevue Sepedi 85.75/English 0.61 (/place/961032); Jamela Sepedi 89.25/English 0.65 (/place/961064)",
+        "top_languages": [{"language": "Sepedi", "pct": 80.38}, {"language": "Xitsonga", "pct": 12.57}, {"language": "Other", "pct": 1.7}],
+        "english_pct": 0.83,
+        "afrikaans_pct": 0.86,
+        "census_url": "https://census2011.adrianfrith.com/place/961",
+        "death_source_url": "https://www.timeslive.co.za/news/south-africa/2020-10-12-child-killed-homes-destroyed-as-floods-wreak-havoc-in-limpopo/"
+      }
+    ],
+    "death_site_precision": "affected_area_only",
+    "dominant_language_across_sites": "Sepedi (85-96% in named villages; English under 1.2%)",
+    "warning_language_evidence": null,
+    "notes": "Villages named in source matched in census 2011 under Greater Letaba (assumed; Sefofotse, Mohlabaneng, Tlatja not matched exactly - census has 'Mohlabeng' and 'Tlatsa'). Source quote: 'We, however, wish to appeal to residents to be vigilant, especially those in low-lying areas.'"
+  },
+  {
+    "id": "2022-02-tembisa-ivory-park",
+    "death_sites": [
+      {
+        "place": "Ivory Park (Kaalspruit river banks), City of Johannesburg",
+        "deaths_at_place": 1,
+        "deaths_note": "1 body recovered, 3 missing; 187 homeless.",
+        "settlement_type": "township / informal dwellings near river",
+        "census_year": 2011,
+        "geo_level": "main place (Ivory Park)",
+        "top_languages": [{"language": "Sepedi", "pct": 23.29}, {"language": "Xitsonga", "pct": 22.45}, {"language": "isiZulu", "pct": 21.39}],
+        "english_pct": 1.71,
+        "afrikaans_pct": 0.4,
+        "census_url": "https://census2011.adrianfrith.com/place/798006",
+        "death_source_url": "https://floodlist.com/africa/floods-tembisa-gauteng-south-africa-february-2022"
+      }
+    ],
+    "death_site_precision": "places_named_no_counts",
+    "dominant_language_across_sites": "Multilingual: Sepedi/Xitsonga/isiZulu (~22-23% each); English 1.7%",
+    "warning_language_evidence": null,
+    "notes": "Exact extension not given. Neighbouring Tembisa main place (Ekurhuleni): Sepedi 33.14, isiZulu 21.67, Xitsonga 13.31, English 2.11 (https://census2011.adrianfrith.com/place/797005)."
+  },
+  {
+    "id": "2021-01-northern-cape-floods",
+    "death_sites": [
+      {
+        "place": "John Taolo Gaetsewe District (3 deaths, locations not given)",
+        "deaths_at_place": 3,
+        "settlement_type": null,
+        "census_year": 2011,
+        "geo_level": "district municipality",
+        "top_languages": [{"language": "Setswana", "pct": 75.64}, {"language": "Afrikaans", "pct": 16.53}, {"language": "English", "pct": 2.64}],
+        "english_pct": 2.64,
+        "afrikaans_pct": 16.53,
+        "census_url": "https://census2011.adrianfrith.com/place/345",
+        "death_source_url": "https://floodlist.com/africa/south-africa-floods-january-february-2021"
+      }
+    ],
+    "death_site_precision": "affected_area_only",
+    "dominant_language_across_sites": "Setswana (district level)",
+    "warning_language_evidence": null,
+    "notes": "Provincial government press release URL failed to load (socket closed); no place-level detail found."
+  },
+  {
+    "id": "2023-09-western-cape-cutoff-low",
+    "death_sites": [
+      {
+        "place": "Driftsands informal settlement, eastern Cape Town (4 electrocuted)",
+        "deaths_at_place": 4,
+        "settlement_type": "informal settlement (makeshift electricity connections)",
+        "census_year": 2011,
+        "geo_level": "main place (Mfuleni) used as nearest census unit - Driftsands settlement lies between Mfuleni and Khayelitsha and is not a separate 2011 unit (Khayelitsha main place: isiXhosa 90.54, English 3.22 - https://census2011.adrianfrith.com/place/199038)",
+        "top_languages": [{"language": "isiXhosa", "pct": 85.94}, {"language": "Afrikaans", "pct": 3.43}, {"language": "Sesotho", "pct": 2.97}],
+        "english_pct": 2.78,
+        "afrikaans_pct": 3.43,
+        "census_url": "https://census2011.adrianfrith.com/place/199034",
+        "death_source_url": "https://www.voanews.com/a/people-electrocuted-in-south-africa-as-floods-cause-deaths-damage-across-western-cape/7284333.html"
+      },
+      {
+        "place": "Klipfontein Mission informal settlement near Crossroads (4 boys electrocuted)",
+        "deaths_at_place": 4,
+        "settlement_type": "informal settlement",
+        "census_year": 2011,
+        "geo_level": "sub place (Klipfontein Glebe, Crossroads main place; pop 3,999) - name match, assumed same area",
+        "top_languages": [{"language": "isiXhosa", "pct": 78.59}, {"language": "Afrikaans", "pct": 16.13}, {"language": "English", "pct": 2.9}],
+        "english_pct": 2.9,
+        "afrikaans_pct": 16.13,
+        "census_url": "https://census2011.adrianfrith.com/place/199032004",
+        "death_source_url": "https://thestar.co.za/capeargus/news/2023-09-26-four-boys-electrocuted-as-storm-strong-winds-wreaks-havoc-in-the-western-cape/"
+      },
+      {
+        "place": "Covid Village, Mfuleni (Zukile Komani, 32, apparent electrocution in flood water)",
+        "deaths_at_place": 1,
+        "deaths_note": "Reported by GroundUp 25 Sep; may be one of the 4 counted at Driftsands (adjacent) - possible overlap.",
+        "settlement_type": "informal settlement in township",
+        "census_year": 2011,
+        "geo_level": "main place (Mfuleni)",
+        "top_languages": [{"language": "isiXhosa", "pct": 85.94}, {"language": "Afrikaans", "pct": 3.43}, {"language": "Sesotho", "pct": 2.97}],
+        "english_pct": 2.78,
+        "afrikaans_pct": 3.43,
+        "census_url": "https://census2011.adrianfrith.com/place/199034",
+        "death_source_url": "https://groundup.org.za/article/hundreds-flee-flooded-homes-as-storms-batter-western-cape/"
+      },
+      {
+        "place": "Villiersdorp, Theewaterskloof (body recovered from floods)",
+        "deaths_at_place": 1,
+        "settlement_type": "rural town",
+        "census_year": 2011,
+        "geo_level": "main place (Villiersdorp)",
+        "top_languages": [{"language": "Afrikaans", "pct": 56.54}, {"language": "isiXhosa", "pct": 24.55}, {"language": "Sesotho", "pct": 12.81}],
+        "english_pct": 3.44,
+        "afrikaans_pct": 56.54,
+        "census_url": "https://census2011.adrianfrith.com/place/171001",
+        "death_source_url": "https://floodlist.com/africa/south-africa-floods-western-cape-september-2023"
+      },
+      {
+        "place": "Botrivier bridge (body recovered)",
+        "deaths_at_place": 1,
+        "settlement_type": "rural town / river crossing",
+        "census_year": 2011,
+        "geo_level": "main place (Botrivier)",
+        "top_languages": [{"language": "Afrikaans", "pct": 75.74}, {"language": "isiXhosa", "pct": 14.94}, {"language": "English", "pct": 5.16}],
+        "english_pct": 5.16,
+        "afrikaans_pct": 75.74,
+        "census_url": "https://census2011.adrianfrith.com/place/171012",
+        "death_source_url": "https://floodlist.com/africa/south-africa-floods-western-cape-september-2023"
+      },
+      {
+        "place": "Groot Brakrivier (person swept away when road and vehicle washed away; missing presumed dead)",
+        "deaths_at_place": 1,
+        "settlement_type": "coastal town / road",
+        "census_year": 2011,
+        "geo_level": "main place (Groot Brakrivier)",
+        "top_languages": [{"language": "Afrikaans", "pct": 90.82}, {"language": "English", "pct": 5.37}, {"language": "Sesotho", "pct": 1.08}],
+        "english_pct": 5.37,
+        "afrikaans_pct": 90.82,
+        "census_url": "https://census2011.adrianfrith.com/place/176006",
+        "death_source_url": "https://floodlist.com/africa/south-africa-floods-western-cape-september-2023"
+      },
+      {
+        "place": "Kleinmond (man swept off bridge in his car, missing)",
+        "deaths_at_place": null,
+        "settlement_type": "coastal town / bridge",
+        "census_year": 2011,
+        "geo_level": "main place (Kleinmond)",
+        "top_languages": [{"language": "Afrikaans", "pct": 60.14}, {"language": "isiXhosa", "pct": 25.53}, {"language": "English", "pct": 7.56}],
+        "english_pct": 7.56,
+        "afrikaans_pct": 60.14,
+        "census_url": "https://census2011.adrianfrith.com/place/172009",
+        "death_source_url": "https://en.wikipedia.org/wiki/2023_Western_Cape_floods"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "Split: the 8 electrocution deaths (4 Driftsands + 4 Klipfontein) were in isiXhosa-majority informal settlements (79-86% isiXhosa, English under 3%); the 3 wash-away deaths were in Afrikaans-majority Overberg/Garden Route towns (Afrikaans 57-91%, English 3-5%).",
+    "warning_language_evidence": "No source found on warning language for this event. SAWS issued a level 9 warning for disruptive rain (GroundUp: 'The South African Weather Service had issued a level 9 warning of disruptive rain and gale force winds.' - https://groundup.org.za/article/hundreds-flee-flooded-homes-as-storms-batter-western-cape/). No resident quotes about understanding warnings found.",
+    "notes": "FloodList also counts 3 killed in bus overturning on Jakes Gerwel Drive (unclear if weather-caused) - excluded. VOA: '3 people swept away by floodwaters' in Overberg. Contrast requested: isiXhosa electrocution sites vs Afrikaans river-crossing sites; English is a minority first language at all of them."
+  },
+  {
+    "id": "2017-06-cape-storm",
+    "death_sites": [
+      {
+        "place": "Kraaifontein (two adults and 4-year-old twins died in lightning-caused house fire)",
+        "deaths_at_place": 4,
+        "settlement_type": "suburb/township (exact section not retrieved; IOL page 403)",
+        "census_year": 2011,
+        "geo_level": "main place (Kraaifontein)",
+        "top_languages": [{"language": "Afrikaans", "pct": 45.4}, {"language": "isiXhosa", "pct": 33.4}, {"language": "English", "pct": 14.0}],
+        "english_pct": 14.0,
+        "afrikaans_pct": 45.4,
+        "census_url": "https://census2011.adrianfrith.com/place/199018",
+        "death_source_url": "https://watchers.news/2017/06/07/cape-town-storm-june-7-2017/"
+      },
+      {
+        "place": "Rose Street, Lavender Hill (60-year-old man; informal structure collapsed)",
+        "deaths_at_place": 1,
+        "settlement_type": "informal structure in township (Cape Flats)",
+        "census_year": 2011,
+        "geo_level": "sub place (Lavender Hill, Cape Town main place)",
+        "top_languages": [{"language": "Afrikaans", "pct": 74.05}, {"language": "English", "pct": 23.9}, {"language": "Setswana", "pct": 0.42}],
+        "english_pct": 23.9,
+        "afrikaans_pct": 74.05,
+        "census_url": "https://census2011.adrianfrith.com/place/199041118",
+        "death_source_url": "https://www.biznews.com/briefs/2017/06/08/cape-storm-fire"
+      },
+      {
+        "place": "Rheenendal, outside Knysna (three family members; home gutted by wind-driven wildfire)",
+        "deaths_at_place": 3,
+        "settlement_type": "rural settlement",
+        "census_year": 2011,
+        "geo_level": "main place (Rheenendal)",
+        "top_languages": [{"language": "Afrikaans", "pct": 92.05}, {"language": "isiXhosa", "pct": 5.33}, {"language": "English", "pct": 1.24}],
+        "english_pct": 1.24,
+        "afrikaans_pct": 92.05,
+        "census_url": "https://census2011.adrianfrith.com/place/180003",
+        "death_source_url": "https://watchers.news/2017/06/07/cape-town-storm-june-7-2017/"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "Afrikaans (plurality/majority at all 3 sites: 45%, 74%, 92%)",
+    "warning_language_evidence": null,
+    "notes": "None of the 8 storm deaths were drownings: lightning fire (4), structure collapse (1), wind-fanned fire (3). A further 7 Knysna fire deaths not included."
+  },
+  {
+    "id": "2023-09-cape-coast-storm-surge",
+    "death_sites": [
+      {
+        "place": "Leentjiesklip, Wilderness (93-year-old woman swept away by wave while watching surf from parking lot)",
+        "deaths_at_place": 1,
+        "settlement_type": "coastal town/suburb",
+        "census_year": 2011,
+        "geo_level": "sub place (Wilderness SP; pop 1,671)",
+        "top_languages": [{"language": "English", "pct": 49.42}, {"language": "Afrikaans", "pct": 45.47}, {"language": "Other", "pct": 3.0}],
+        "english_pct": 49.42,
+        "afrikaans_pct": 45.47,
+        "census_url": "https://census2011.adrianfrith.com/place/177008003",
+        "death_source_url": "https://www.dailymaverick.co.za/article/2023-09-17-two-dead-after-high-winds-and-wild-seas-wreak-havoc-on-eastern-and-western-cape-coasts/"
+      },
+      {
+        "place": "Aston Bay near Jeffreys Bay (man ~68 found; origin of body uncertain)",
+        "deaths_at_place": 1,
+        "settlement_type": "coastal suburb",
+        "census_year": 2011,
+        "geo_level": "sub place (Aston Bay, Jeffreys Bay main place; pop 792)",
+        "top_languages": [{"language": "Afrikaans", "pct": 69.28}, {"language": "English", "pct": 27.56}, {"language": "Other", "pct": 1.14}],
+        "english_pct": 27.56,
+        "afrikaans_pct": 69.28,
+        "census_url": "https://census2011.adrianfrith.com/place/268009010",
+        "death_source_url": "https://www.dailymaverick.co.za/article/2023-09-17-two-dead-after-high-winds-and-wild-seas-wreak-havoc-on-eastern-and-western-cape-coasts/"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "Afrikaans/English (only event where English first-language exceeds ~25% at every death site)",
+    "warning_language_evidence": "No language info. NMB officials (DM): 'really warn residents not to swim today; the weather conditions are not friendly.' - https://www.dailymaverick.co.za/article/2023-09-17-two-dead-after-high-winds-and-wild-seas-wreak-havoc-on-eastern-and-western-cape-coasts/",
+    "notes": "Coastal wave/storm-surge deaths, not riverine flooding."
+  },
+  {
+    "id": "2023-03-port-st-johns-ingquza",
+    "death_sites": [
+      {
+        "place": "Lusikisiki area incl. Rhole village, Ingquza Hill LM (2 swept away; bodies of a 52- and 24-year-old recovered; 3 had been reported missing in Rhole)",
+        "deaths_at_place": 2,
+        "settlement_type": "rural villages",
+        "census_year": 2011,
+        "geo_level": "main place (Rhole, pop 434). Lusikisiki town main place: isiXhosa 81.28, English 8.32 (https://census2011.adrianfrith.com/place/290266); Ngquza Hill LM: isiXhosa 94.57, English 2.20 (/place/290)",
+        "top_languages": [{"language": "isiXhosa", "pct": 96.07}, {"language": "English", "pct": 2.54}, {"language": "Sepedi", "pct": 0.46}],
+        "english_pct": 2.54,
+        "afrikaans_pct": null,
+        "census_url": "https://census2011.adrianfrith.com/place/290281",
+        "death_source_url": "https://www.timeslive.co.za/amp/news/south-africa/2023-03-25-three-dead-hundreds-being-sheltered-after-eastern-cape-floods/"
+      },
+      {
+        "place": "Coffee Bay, KSD LM",
+        "deaths_at_place": 1,
+        "settlement_type": "small coastal village (surrounding rural area)",
+        "census_year": 2011,
+        "geo_level": "main place (Coffee Bay, pop 258 - small tourist node; KSD LM isiXhosa 92.76 / English 3.62 is more representative of surrounding villages: https://census2011.adrianfrith.com/place/294)",
+        "top_languages": [{"language": "isiXhosa", "pct": 65.5}, {"language": "English", "pct": 22.87}, {"language": "Afrikaans", "pct": 7.36}],
+        "english_pct": 22.87,
+        "afrikaans_pct": 7.36,
+        "census_url": "https://census2011.adrianfrith.com/place/294453",
+        "death_source_url": "https://floodlist.com/africa/south-africa-floods-eastern-cape-late-march-2023"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "isiXhosa",
+    "warning_language_evidence": "No language info. TimesLIVE: warnings ranged 'from level 1 yellow (eastern half of province) to level 6 orange (Ngquza Hill municipality)'; SAWS forecaster afterwards: 'there's no flooding warning, there's no alerts out.' - https://www.timeslive.co.za/amp/news/south-africa/2023-03-25-three-dead-hundreds-being-sheltered-after-eastern-cape-floods/",
+    "notes": "Rhole-Lusikisiki link: DM reported 3 missing in Rhole village, Lusikisiki; TimesLIVE: 2 bodies recovered in Ingquza Hill, a third (40-year-old) missing - assumed same incident. Port St Johns (worst damage, no reported deaths): isiXhosa 89.68, English 6.22 (https://census2011.adrianfrith.com/place/291168)."
+  },
+  {
+    "id": "2023-10-or-tambo-floods",
+    "death_sites": [
+      {
+        "place": "Maqebevu village (Ward 19), Nyandeni LM - 14-year-old pupil drowned crossing Phompo River",
+        "deaths_at_place": 1,
+        "settlement_type": "rural village",
+        "census_year": 2011,
+        "geo_level": "main place (Maqebevu, pop 440)",
+        "top_languages": [{"language": "isiXhosa", "pct": 96.36}, {"language": "English", "pct": 2.05}, {"language": "Sesotho", "pct": 0.46}],
+        "english_pct": 2.05,
+        "afrikaans_pct": null,
+        "census_url": "https://census2011.adrianfrith.com/place/292231",
+        "death_source_url": "https://www.sanews.gov.za/south-africa/three-die-teenager-missing-eastern-cape-rains"
+      },
+      {
+        "place": "Rainy village outside Libode, Nyandeni LM - pregnant woman and child died when house collapsed",
+        "deaths_at_place": 2,
+        "settlement_type": "rural village",
+        "census_year": 2011,
+        "geo_level": "main place (Rainy, pop 2,204)",
+        "top_languages": [{"language": "isiXhosa", "pct": 98.05}, {"language": "English", "pct": 0.64}, {"language": "Sign language", "pct": 0.45}],
+        "english_pct": 0.64,
+        "afrikaans_pct": null,
+        "census_url": "https://census2011.adrianfrith.com/place/292062",
+        "death_source_url": "https://www.sanews.gov.za/south-africa/three-die-teenager-missing-eastern-cape-rains"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "isiXhosa (96-98%; English 0.6-2%)",
+    "warning_language_evidence": null,
+    "notes": "17-year-old girl from Nkumandeni A/A swept away crossing river, missing (not matched in census). Both drowned learners were crossing rivers on the way home from school."
+  },
+  {
+    "id": "2024-06-eastern-cape-floods",
+    "death_sites": [
+      {
+        "place": "KwaNobuhle, Kariega (NMB)",
+        "deaths_at_place": 4,
+        "settlement_type": "township (source notes >2,000 evacuated from makeshift homes metro-wide)",
+        "census_year": 2011,
+        "geo_level": "main place (KwaNobuhle)",
+        "top_languages": [{"language": "isiXhosa", "pct": 94.27}, {"language": "English", "pct": 2.37}, {"language": "Afrikaans", "pct": 0.92}],
+        "english_pct": 2.37,
+        "afrikaans_pct": 0.92,
+        "census_url": "https://census2011.adrianfrith.com/place/299009",
+        "death_source_url": "https://www.dailymaverick.co.za/article/2024-06-09-death-toll-10-after-nelson-mandela-bay-flood/"
+      },
+      {
+        "place": "Kariega/Uitenhage (2 bodies incl. car washed away; +1 drowning in Swartkops River area)",
+        "deaths_at_place": 3,
+        "settlement_type": "town",
+        "census_year": 2011,
+        "geo_level": "main place (Uitenhage)",
+        "top_languages": [{"language": "Afrikaans", "pct": 68.85}, {"language": "isiXhosa", "pct": 17.9}, {"language": "English", "pct": 10.36}],
+        "english_pct": 10.36,
+        "afrikaans_pct": 68.85,
+        "census_url": "https://census2011.adrianfrith.com/place/299003",
+        "death_source_url": "https://www.dailymaverick.co.za/article/2024-06-09-death-toll-10-after-nelson-mandela-bay-flood/"
+      },
+      {
+        "place": "Kamesh, Kariega",
+        "deaths_at_place": 1,
+        "settlement_type": "suburb/township",
+        "census_year": 2011,
+        "geo_level": "sub place ('Kamehs', Uitenhage main place)",
+        "top_languages": [{"language": "Afrikaans", "pct": 95.69}, {"language": "isiXhosa", "pct": 2.49}, {"language": "English", "pct": 1.01}],
+        "english_pct": 1.01,
+        "afrikaans_pct": 95.69,
+        "census_url": "https://census2011.adrianfrith.com/place/299003003",
+        "death_source_url": "https://www.dailymaverick.co.za/article/2024-06-09-death-toll-10-after-nelson-mandela-bay-flood/"
+      },
+      {
+        "place": "Kabega Park, Gqeberha",
+        "deaths_at_place": 1,
+        "settlement_type": "suburb",
+        "census_year": 2011,
+        "geo_level": "sub place (Kabega, Port Elizabeth main place)",
+        "top_languages": [{"language": "English", "pct": 47.71}, {"language": "Afrikaans", "pct": 41.53}, {"language": "isiXhosa", "pct": 8.08}],
+        "english_pct": 47.71,
+        "afrikaans_pct": 41.53,
+        "census_url": "https://census2011.adrianfrith.com/place/299007059",
+        "death_source_url": "https://www.dailymaverick.co.za/article/2024-06-09-death-toll-10-after-nelson-mandela-bay-flood/"
+      },
+      {
+        "place": "Walmer, Gqeberha (source does not say suburb vs Walmer township/Gqebera)",
+        "deaths_at_place": 1,
+        "settlement_type": "ambiguous: suburb or township/informal settlement",
+        "census_year": 2011,
+        "geo_level": "sub place (Walmer suburb). Alternative - Gqebera (Walmer township incl. Airport Valley informal settlement): isiXhosa 85.45, English 4.83, Other 4.07 (https://census2011.adrianfrith.com/place/299007115)",
+        "top_languages": [{"language": "English", "pct": 72.91}, {"language": "Afrikaans", "pct": 17.81}, {"language": "isiXhosa", "pct": 4.9}],
+        "english_pct": 72.91,
+        "afrikaans_pct": 17.81,
+        "census_url": "https://census2011.adrianfrith.com/place/299007074",
+        "death_source_url": "https://www.dailymaverick.co.za/article/2024-06-09-death-toll-10-after-nelson-mandela-bay-flood/"
+      },
+      {
+        "place": "Chatty, Gqeberha",
+        "deaths_at_place": 1,
+        "settlement_type": "township/informal area (not described in source)",
+        "census_year": 2011,
+        "geo_level": "metropolitan municipality (Nelson Mandela Bay) - Chatty not found as a 2011 census place",
+        "top_languages": [{"language": "isiXhosa", "pct": 53.92}, {"language": "Afrikaans", "pct": 29.34}, {"language": "English", "pct": 13.46}],
+        "english_pct": 13.46,
+        "afrikaans_pct": 29.34,
+        "census_url": "https://census2011.adrianfrith.com/place/299",
+        "death_source_url": "https://www.dailymaverick.co.za/article/2024-06-09-death-toll-10-after-nelson-mandela-bay-flood/"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "Mixed: KwaNobuhle (4 deaths) isiXhosa 94%; Kariega/Kamesh Afrikaans 69-96%; Kabega Park/Walmer suburbs English plurality. isiXhosa- or Afrikaans-majority places account for 8 of 10 NMB deaths.",
+    "warning_language_evidence": "Event-specific: none found. Directly relevant study of Walmer Airport Valley (Gqebera), Gqeberha - The Conversation (Mokhele & Mvanyashe, 16 Jun 2026): disaster warnings are 'sent out almost entirely in English and Afrikaans'; of 270 residents surveyed, 210 said 'they had never received an early warning message'; 258 owned mobile phones but only 90 'had ever received a warning through their device'; argues for plain isiXhosa over a 'jargon-filled English message'. https://theconversation.com/language-matters-for-disaster-warnings-this-community-didnt-get-useful-flood-alerts-284723 . SAWS had issued 'an Orange level 6 warning for disruptive rain' (Algoa FM).",
+    "notes": "DM 9 Jun: 10 NMB deaths (KwaNobuhle 4, Kamesh 1, Kabega Park 1, Chatty 1, Walmer 1, Kariega 2, + Swartkops drowning - sums to 11 as listed; DM headline says 10). Algoa FM earlier: Kariega 4, Kabega Park & Walmer 2. Buffalo City: 1 pedestrian fatally struck in West Bank; 20-year-old missing near Dawn (SAnews). Wikipedia: 11 in EC."
+  },
+  {
+    "id": "2021-05-western-cape-overberg",
+    "death_sites": [
+      {
+        "place": "Bonnievale, Langeberg LM (2 died when truck stuck in flood waters)",
+        "deaths_at_place": 2,
+        "settlement_type": "rural town / road",
+        "census_year": 2011,
+        "geo_level": "main place (Bonnievale)",
+        "top_languages": [{"language": "Afrikaans", "pct": 89.7}, {"language": "isiXhosa", "pct": 5.98}, {"language": "English", "pct": 1.69}],
+        "english_pct": 1.69,
+        "afrikaans_pct": 89.7,
+        "census_url": "https://census2011.adrianfrith.com/place/169007",
+        "death_source_url": "https://floodlist.com/africa/south-africa-floods-western-cape-may-2021"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "Afrikaans",
+    "warning_language_evidence": null,
+    "notes": "FloodList: 'Local media also report 2 people died in Bonnievale, Cape Winelands District, after a truck became stuck in flood waters.' Victims were truck occupants - may not be residents."
+  },
+  {
+    "id": "2018-10-pretoria-flash-floods",
+    "death_sites": [
+      {
+        "place": "Apies River near the low-water bridge, Capital Park, Pretoria (2 possible drownings, unconfirmed)",
+        "deaths_at_place": null,
+        "deaths_note": "Community member reported 'two bodies in the Apies River close to the low-water bridge in Capital Park'; not confirmed.",
+        "settlement_type": "suburb / river low-water bridge",
+        "census_year": 2011,
+        "geo_level": "sub place (Capital Park, Pretoria main place)",
+        "top_languages": [{"language": "Afrikaans", "pct": 60.74}, {"language": "English", "pct": 19.62}, {"language": "Other", "pct": 3.58}],
+        "english_pct": 19.62,
+        "afrikaans_pct": 60.74,
+        "census_url": "https://census2011.adrianfrith.com/place/799035055",
+        "death_source_url": "https://www.timeslive.co.za/news/south-africa/2018-10-14-two-drownings-under-investigation-as-flash-floods-hit-pretoria/"
+      }
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "Afrikaans (suburb level; identity of possible victims unknown)",
+    "warning_language_evidence": null,
+    "notes": "Deaths unconfirmed - consider excluding from 'deadly' set. SAWS warned of 'continuing heavy rains with the possibility of hail in Gauteng and especially Tshwane'."
+  },
+  {
+    "id": "2019-12-tshwane-mamelodi",
+    "death_sites": [
+      {
+        "place": "Low-lying bridge close to Hartbeespoort Dam, North West (vehicle swept away)",
+        "deaths_at_place": 1,
+        "settlement_type": "road / bridge (rural-periurban)",
+        "census_year": 2011,
+        "geo_level": "local municipality (Madibeng) - exact bridge not identified",
+        "top_languages": [{"language": "Setswana", "pct": 43.52}, {"language": "Xitsonga", "pct": 10.98}, {"language": "Afrikaans", "pct": 8.96}],
+        "english_pct": 3.57,
+        "afrikaans_pct": 8.96,
+        "census_url": "https://census2011.adrianfrith.com/place/661",
+        "death_source_url": "https://floodlist.com/africa/south-africa-floods-gauteng-december-2019"
+      }
+    ],
+    "death_site_precision": "affected_area_only",
+    "dominant_language_across_sites": "Setswana (municipal level)",
+    "warning_language_evidence": null,
+    "notes": "Motorist death; Hartbeespoort town itself is likely much more Afrikaans/English than the Madibeng average - LM figure is not representative of the exact site. Mamelodi informal settlements flooded but no deaths reported there."
+  },
+  {
+    "id": "2024-12-centurion-flash-floods",
+    "death_sites": [
+      {
+        "place": "Centurion (motorcyclist and motorist; exact roads not retrieved - AllAfrica page 403, search budget exhausted)",
+        "deaths_at_place": 2,
+        "settlement_type": "suburban roads",
+        "census_year": 2011,
+        "geo_level": "main place (Centurion)",
+        "top_languages": [{"language": "Afrikaans", "pct": 49.43}, {"language": "English", "pct": 25.99}, {"language": "Sepedi", "pct": 5.23}],
+        "english_pct": 25.99,
+        "afrikaans_pct": 49.43,
+        "census_url": "https://census2011.adrianfrith.com/place/799059",
+        "death_source_url": "https://allafrica.com/stories/202412230033.html"
+      }
+    ],
+    "death_site_precision": "places_named_no_counts",
+    "dominant_language_across_sites": "Afrikaans/English (suburb); victims were road users",
+    "warning_language_evidence": null,
+    "notes": "Count (2) from input headline 'Motorcyclist and motorist died'; source not accessible to verify location."
+  },
+  {
+    "id": "2026-06-garden-route-karoo-kouga-floods",
+    "death_sites": [
+      {
+        "place": "Garden Route District - unnamed flooded river crossing",
+        "deaths_at_place": 1,
+        "settlement_type": null,
+        "census_year": 2011,
+        "geo_level": "district municipality (Eden = Garden Route District in 2011)",
+        "top_languages": [{"language": "Afrikaans", "pct": 70.81}, {"language": "isiXhosa", "pct": 18.3}, {"language": "English", "pct": 7.53}],
+        "english_pct": 7.53,
+        "afrikaans_pct": 70.81,
+        "census_url": "https://census2011.adrianfrith.com/place/104",
+        "death_source_url": "https://www.capetownetc.com/news/one-death-in-garden-route-flooding-as-western-cape-issues-warning/"
+      }
+    ],
+    "death_site_precision": "affected_area_only",
+    "dominant_language_across_sites": "Afrikaans (district level)",
+    "warning_language_evidence": "No language info. Minister Anton Bredell: 'One fatality has been confirmed in the Garden Route after an individual attempted to cross a flooded river.' SAWS had issued an Orange Level 8 alert. Residents urged to 'Follow official weather warnings and municipal updates' - https://www.georgeherald.com/News/Article/Local-News/garden-route-flood-danger-remains-despite-improving-weather-as-1-death-confirmed-202606051223",
+    "notes": "No source names the river/town. For reference, De Rust (named affected town): Afrikaans 93.57, English 4.12 (https://census2011.adrianfrith.com/place/178001); Kouga LM (informal settlements flooded): Afrikaans 59.44, isiXhosa 30.46, English 6.54 (https://census2011.adrianfrith.com/place/268)."
+  },
+  {
+    "id": "2024-07-western-cape-storms",
+    "death_sites": [],
+    "death_site_precision": "affected_area_only",
+    "dominant_language_across_sites": "n/a - no flood deaths reported. Most-affected areas were informal settlements in Khayelitsha (isiXhosa 90.54 / English 3.22, https://census2011.adrianfrith.com/place/199038), Mfuleni (isiXhosa 85.94, /place/199034), Philippi (isiXhosa 78.69, /place/199033), Gugulethu, Lwandle/Nomzamo.",
+    "warning_language_evidence": null,
+    "notes": "Input states 'No flood-related fatalities reported (GroundUp, 9 Jul 2024)'. Included for completeness; should arguably be dropped from the deadly-events set."
+  }
+]

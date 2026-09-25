@@ -1,0 +1,1181 @@
+[
+    {
+        "id":  "2016-07-cape-kzn-winter-storm",
+        "start_date":  "2016-07-23",
+        "provinces":  [
+                          "Western Cape",
+                          "KwaZulu-Natal",
+                          "Gauteng"
+                      ],
+        "municipalities":  [
+                               "City of Cape Town",
+                               "eThekwini",
+                               "Ugu District",
+                               "Ekurhuleni"
+                           ],
+        "named_places":  [
+                             "Philippi",
+                             "Khayelitsha",
+                             "Durban",
+                             "Amanzimtoti",
+                             "Inanda",
+                             "Ntuzuma",
+                             "KwaMashu",
+                             "uMlazi",
+                             "Yellow Wood Park",
+                             "Chatsworth",
+                             "Cato Manor",
+                             "Margate",
+                             "Tembisa",
+                             "Winnie Mandela",
+                             "Hospital View"
+                         ],
+        "deaths_text":  "5 confirmed by KZN CoGTA; possibly 7 (2 more reported by SABC)",
+        "settlement_type_mentioned":  "informal settlements (Cape Town); shacks (Ekurhuleni)",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-cape-town-durban-july-2016",
+                        "https://www.timeslive.co.za/news/south-africa/2016-07-27-400-displaced-after-freak-tornado-leaves-trail-of-destruction-in-gauteng/",
+                        "https://www.aljazeera.com/amp/news/2016/7/26/winter-cold-brings-floods-and-snow-to-south-africa",
+                        "https://watchers.news/2016/07/27/record-breaking-rainfall-destructive-tornadoes-and-a-spell-of-cold-weather-hits-south-africa/"
+                    ]
+    },
+    {
+        "id":  "2017-02-ex-dineo-floods",
+        "start_date":  "2017-02-16",
+        "provinces":  [
+                          "North West",
+                          "KwaZulu-Natal",
+                          "Mpumalanga",
+                          "Limpopo",
+                          "Gauteng"
+                      ],
+        "municipalities":  [
+                               "Ratlou",
+                               "Kagisano-Molopo",
+                               "Greater Taung",
+                               "Ramotshere Moiloa",
+                               "Mahikeng",
+                               "Moses Kotane",
+                               "Rustenburg",
+                               "Maquassi Hills",
+                               "Matlosana",
+                               "iLembe District",
+                               "KwaDukuza",
+                               "eThekwini",
+                               "Newcastle",
+                               "Vhembe District",
+                               "Mopani District",
+                               "Ehlanzeni District"
+                           ],
+        "named_places":  [
+                             "Loporung (near Makgobistad)",
+                             "Lemenong",
+                             "Wolmaransstad",
+                             "Makwassie creek",
+                             "Harding",
+                             "Mafodobo River",
+                             "Durban",
+                             "Newcastle"
+                         ],
+        "deaths_text":  "at least 3 (a boy drowned crossing a stream in Loporung; 2 died when their vehicle was swept away in Lemenong)",
+        "settlement_type_mentioned":  "rural areas, residential communities",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-february-2017",
+                        "https://watchers.news/2017/02/24/dineo-south-africa-flooding-february-2017/",
+                        "https://www.gov.za/speeches/government-calls-communities-be-high-alert-ahead-arrival-tropical-cyclone-dineo-15-feb-2017",
+                        "https://www.news24.com/pics-heavy-rain-flooding-as-ex-dineo-sweeps-over-sa-20170217"
+                    ]
+    },
+    {
+        "id":  "2017-05-kzn-floods",
+        "start_date":  "2017-05-14",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "eThekwini",
+                               "King Cetshwayo District",
+                               "uMhlathuze",
+                               "uMzumbe",
+                               "uMdoni",
+                               "uMuziwabantu",
+                               "Ugu District",
+                               "Nquthu",
+                               "Umzinyathi District"
+                           ],
+        "named_places":  [
+                             "Durban",
+                             "Nseleni",
+                             "Richards Bay",
+                             "Mzingwenya",
+                             "Zinkwazi (N2)",
+                             "Gugushe River",
+                             "Mtuze",
+                             "Charters Creek",
+                             "Mandini"
+                         ],
+        "deaths_text":  "1 feared dead (40-year-old teacher, Nquthu)",
+        "settlement_type_mentioned":  null,
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-kwazulu-natal-may-2017"
+                    ]
+    },
+    {
+        "id":  "2017-10-durban-supercell-storm",
+        "start_date":  "2017-10-09",
+        "provinces":  [
+                          "KwaZulu-Natal",
+                          "Gauteng"
+                      ],
+        "municipalities":  [
+                               "eThekwini",
+                               "Nquthu",
+                               "Ugu District",
+                               "Ray Nkonyeni (Izingolweni area)",
+                               "King Cetshwayo District",
+                               "uMgungundlovu District"
+                           ],
+        "named_places":  [
+                             "The Bluff",
+                             "Jacobs",
+                             "Montclair",
+                             "Glenwood",
+                             "Umlazi",
+                             "Merebank",
+                             "Isipingo",
+                             "Prospecton",
+                             "Sarnia",
+                             "Mount Edgecombe",
+                             "Pennington South",
+                             "Paddock",
+                             "Izingolweni",
+                             "Prince Mshiyeni Memorial Hospital",
+                             "Montclair Community Hall",
+                             "N2",
+                             "M7"
+                         ],
+        "deaths_text":  "8 (FloodList, KZN government) to at least 9 (TimesLIVE)",
+        "settlement_type_mentioned":  "township (Umlazi); urban suburbs",
+        "sources":  [
+                        "https://floodlist.com/africa/kwazulu-natal-durban-flood-october-2017",
+                        "https://www.gov.za/news/media-statements/kwazulu-natal-impact-mega-storm-11-oct-2017",
+                        "https://www.timeslive.co.za/news/south-africa/2017-10-11-kzn-storm-tragedy-displays-of-bravery-and-acts-of-compassion-when-floods-hit/",
+                        "https://www.news24.com/southafrica/news/live-weather-update-on-storms-over-gauteng-and-durban-20171012",
+                        "https://watchers.news/2017/10/10/south-africa-storm-october-10-2017/",
+                        "https://watchers.news/2017/10/11/durban-south-africa-record-breaking-rain/",
+                        "https://www.pressreader.com/south-africa/the-mercury-south-africa/20171012/281578060884382"
+                    ]
+    },
+    {
+        "id":  "2019-03-durban-inanda",
+        "start_date":  "2019-03-11",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "eThekwini Metropolitan Municipality"
+                           ],
+        "named_places":  [
+                             "Durban",
+                             "Inanda",
+                             "Verulam",
+                             "KwaMashu",
+                             "Amaoti"
+                         ],
+        "deaths_text":  "at least 3",
+        "settlement_type_mentioned":  null,
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-kwazulu-natal-march-2019",
+                        "https://theconversation.com/why-are-floods-in-south-africas-kwazulu-natal-so-devastating-urban-planning-expert-explains-221285"
+                    ]
+    },
+    {
+        "id":  "2019-04-easter-floods-kzn-ec",
+        "start_date":  "2019-04-18",
+        "provinces":  [
+                          "KwaZulu-Natal",
+                          "Eastern Cape",
+                          "Free State"
+                      ],
+        "municipalities":  [
+                               "eThekwini Metropolitan Municipality",
+                               "King Cetshwayo District Municipality",
+                               "uMsunduzi Local Municipality",
+                               "iLembe District Municipality",
+                               "Port St Johns Local Municipality",
+                               "OR Tambo District Municipality",
+                               "Alfred Nzo District Municipality",
+                               "Ray Nkonyeni (Port Edward/Margate area)"
+                           ],
+        "named_places":  [
+                             "Umlazi (eMlazi)",
+                             "Amanzimtoti (eManzimtoti)",
+                             "Chatsworth",
+                             "Malvern",
+                             "Queensburgh",
+                             "Overport",
+                             "New Germany",
+                             "Mount Edgecombe",
+                             "Virginia Airport",
+                             "Ballito",
+                             "Port Edward",
+                             "Margate",
+                             "Pennington",
+                             "Paddock",
+                             "Oribi Gorge",
+                             "Ezakheleni informal settlement (Umlazi)",
+                             "Mangosuthu Highway",
+                             "Umgeni River",
+                             "Empangeni (church wall collapse)",
+                             "Mega Village informal settlement (Umlazi)",
+                             "Port St Johns",
+                             "Green Farm(s)",
+                             "Mzimvubu River",
+                             "Lubhacweni village, KwaBhaca (Mount Frere)",
+                             "Qhaka village (R61)",
+                             "Kei Cuttings",
+                             "Coffee Bay",
+                             "Mthatha",
+                             "Potsdam (Mdantsane)",
+                             "East London",
+                             "King William\u0027s Town"
+                         ],
+        "deaths_text":  "85-87 (87 across KZN, EC and Free State per NDMC/Cogta; 71 in KZN); earlier counts 21, 32, 51, 60+, 70; Daily Maverick cites 64 in eThekwini",
+        "settlement_type_mentioned":  "informal settlements (Ezakheleni, Chatsworth, Mega Village in Umlazi, Green Farms in Port St Johns) and formal suburbs",
+        "sources":  [
+                        "https://en.wikipedia.org/wiki/2019_Durban_Easter_floods",
+                        "https://floodlist.com/africa/south-africa-floods-kzn-eastern-cape-april-2019",
+                        "https://www.sanews.gov.za/south-africa/heavy-rains-kzn-claim-21-lives",
+                        "https://www.polity.org.za/article/kzn-floods-in-durban-2019-04-23",
+                        "https://www.theherald.co.za/news/2019-04-24-heavy-rains-deadly-toll/",
+                        "https://www.aljazeera.com/news/2019/4/24/more-than-60-dead-in-south-africa-floods",
+                        "https://groundup.org.za/article/protest-after-informal-settlement-flooded-durban/",
+                        "https://www.sanews.gov.za/south-africa/provincial-disaster-declared-flood-stricken-kzn",
+                        "https://www.dailymaverick.co.za/article/2022-04-18-weathering-the-climate-crisis-in-flood-prone-durban-tough-lessons-from-the-rain-bomb/",
+                        "https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/"
+                    ]
+    },
+    {
+        "id":  "2019-11-durban-mpolweni-storms",
+        "start_date":  "2019-11-11",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "eThekwini Metropolitan Municipality",
+                               "uMshwathi (Mpolweni, near Pietermaritzburg)"
+                           ],
+        "named_places":  [
+                             "Durban",
+                             "Inanda",
+                             "Mpolweni",
+                             "Pietermaritzburg",
+                             "Umhlanga",
+                             "Sibaya",
+                             "M4 Highway"
+                         ],
+        "deaths_text":  "4 (2 in Inanda wall collapse; 2 in Mpolweni tornado)",
+        "settlement_type_mentioned":  "settlement (Mpolweni)",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-durban-november-2019"
+                    ]
+    },
+    {
+        "id":  "2020-02-kzn-nonoti",
+        "start_date":  "2020-02-22",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "Umuziwabantu",
+                               "uMngeni",
+                               "Ndwedwe",
+                               "Umvoti",
+                               "Greater Kokstad",
+                               "Umzumbe",
+                               "Newcastle",
+                               "Ubuhlebezwe",
+                               "Umzimkhulu"
+                           ],
+        "named_places":  [
+                             "Nonoti",
+                             "MR01 bridge"
+                         ],
+        "deaths_text":  "1 (28-year-old woman swept away after vehicle washed off low-lying bridge)",
+        "settlement_type_mentioned":  null,
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-lash-floods-kwazulunatal-february-2020"
+                    ]
+    },
+    {
+        "id":  "2020-11-umlazi-hammanskraal",
+        "start_date":  "2020-11-20",
+        "provinces":  [
+                          "KwaZulu-Natal",
+                          "Gauteng",
+                          "Free State"
+                      ],
+        "municipalities":  [
+                               "eThekwini Metropolitan Municipality",
+                               "City of Tshwane Metropolitan Municipality"
+                           ],
+        "named_places":  [
+                             "Umlazi",
+                             "Hammanskraal",
+                             "Pretoria",
+                             "Centurion",
+                             "Hennopspark",
+                             "Witstinkhout Road"
+                         ],
+        "deaths_text":  "4 (1 swept away crossing river in Umlazi; 3 young people died in a storm-water trench in Hammanskraal)",
+        "settlement_type_mentioned":  "township (Umlazi, Hammanskraal)",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-kwazulunatal-gauteng-november-2020",
+                        "https://theconversation.com/why-are-floods-in-south-africas-kwazulu-natal-so-devastating-urban-planning-expert-explains-221285"
+                    ]
+    },
+    {
+        "id":  "2021-01-eloise-limpopo-mpumalanga",
+        "start_date":  "2021-01-22",
+        "provinces":  [
+                          "Limpopo",
+                          "Mpumalanga",
+                          "KwaZulu-Natal",
+                          "North West",
+                          "Northern Cape"
+                      ],
+        "municipalities":  [
+                               "Vhembe District Municipality",
+                               "Thulamela",
+                               "City of Mbombela",
+                               "Bushbuckridge",
+                               "Nkomazi",
+                               "Thaba Chweu",
+                               "Chief Albert Luthuli (Elukwatini)",
+                               "eDumbe"
+                           ],
+        "named_places":  [
+                             "Venda",
+                             "Tshakhuma (near Thohoyandou)",
+                             "Mbaleni",
+                             "Makonde",
+                             "Mkhuhlu",
+                             "Nkomazi Block B",
+                             "Sabie",
+                             "Graskop",
+                             "Blyde River",
+                             "Elukwatini",
+                             "Vryheid",
+                             "Kruger National Park"
+                         ],
+        "deaths_text":  "at least 10 in South Africa, 7 missing (Wikipedia); Mpumalanga govt confirmed 10 deaths on 4 Feb for 25-31 Jan rains",
+        "settlement_type_mentioned":  "rural villages (Vhembe), Lowveld towns",
+        "sources":  [
+                        "https://floodlist.com/africa/storm-eloise-floods-mozambique-zimbabwe-southafrica-january-2021",
+                        "https://en.wikipedia.org/wiki/Cyclone_Eloise",
+                        "https://www.sowetan.co.za/news/south-africa/2021-01-25-people-put-on-high-alert-as-cyclone-eloise-lands/",
+                        "https://www.sowetan.co.za/news/south-africa/2021-01-26-tshakhuma-reels-after-eloise-hits-village/",
+                        "https://floodlist.com/africa/south-africa-floods-january-february-2021",
+                        "https://pmg.org.za/committee-meeting/32747/"
+                    ]
+    },
+    {
+        "id":  "2021-02-mpumalanga-kzn-limpopo-floods",
+        "start_date":  "2021-02-04",
+        "provinces":  [
+                          "Mpumalanga",
+                          "KwaZulu-Natal",
+                          "Limpopo",
+                          "Gauteng"
+                      ],
+        "municipalities":  [
+                               "City of Mbombela",
+                               "Bushbuckridge",
+                               "Nkomazi",
+                               "Alfred Duma (Ladysmith)",
+                               "uThukela District Municipality",
+                               "Vhembe District Municipality",
+                               "Waterberg District Municipality",
+                               "Sekhukhune District Municipality",
+                               "Capricorn District Municipality"
+                           ],
+        "named_places":  [
+                             "Ladysmith",
+                             "Klip River",
+                             "Komatidraai",
+                             "Nandoni Dam",
+                             "Luvuvhu River",
+                             "ha-Mutoti",
+                             "ha-Budeli",
+                             "ha-Mphego",
+                             "Vaal Dam",
+                             "Thohoyandou"
+                         ],
+        "deaths_text":  "Mpumalanga 8 dead + 5 missing (~7-8 Feb); KZN 8 dead (reported 11 Feb); Limpopo at least 10 dead + 7 missing (13 Feb, Vhembe, Waterberg, Sekhukhune, Capricorn districts); FloodList total \u0027over 30\u0027 for Jan-Feb including Eloise and Northern Cape; parliament briefing 54 dead for whole period",
+        "settlement_type_mentioned":  "rural villages near Nandoni Dam",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-january-february-2021",
+                        "https://clubofmozambique.com/news/south-africa-search-operations-in-mpumalanga-under-way-after-8-people-drowned-5-missing-183746/",
+                        "https://www.news24.com/amp/news24/southafrica/news/8-dead-five-missing-in-devastating-mpumalanga-floods-20210207",
+                        "https://pmg.org.za/committee-meeting/32747/"
+                    ]
+    },
+    {
+        "id":  "2022-01-kzn-ladysmith-vaal",
+        "start_date":  "2022-01-15",
+        "provinces":  [
+                          "KwaZulu-Natal",
+                          "North West"
+                      ],
+        "municipalities":  [
+                               "Alfred Duma Local Municipality",
+                               "Msinga Local Municipality"
+                           ],
+        "named_places":  [
+                             "Ladysmith CBD",
+                             "Ezakheni",
+                             "Msinga",
+                             "Klip River",
+                             "uThukela River",
+                             "Qedusizi Dam",
+                             "Bloemhof",
+                             "Christiana",
+                             "Vaal Dam",
+                             "Bloemhof Dam"
+                         ],
+        "deaths_text":  "1 (Ezakheni); 14-year-old Sihle Ziqubu believed drowned in Klip River; 25 weather deaths in KZN since early December (cumulative)",
+        "settlement_type_mentioned":  "town CBD; riverside communities",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-kzn-north-west-province-january-2022",
+                        "https://www.dailymaverick.co.za/article/2022-01-19-search-continues-for-teen-boy-as-rain-battered-ladysmith-counts-cost-of-floods/",
+                        "https://www.polity.org.za/article/da-calls-for-an-independent-investigation-following-ladysmith-flooding-2022-01-18",
+                        "https://reliefweb.int/report/south-africa/south-africa-floods-dws-weather-south-africa-floodlist-media-echo-daily-flash-20"
+                    ]
+    },
+    {
+        "id":  "2022-04-kzn-megaflood",
+        "start_date":  "2022-04-08",
+        "provinces":  [
+                          "KwaZulu-Natal",
+                          "Eastern Cape"
+                      ],
+        "municipalities":  [
+                               "eThekwini Metropolitan Municipality",
+                               "iLembe District",
+                               "Ugu District",
+                               "uMgungundlovu District",
+                               "King Cetshwayo District",
+                               "uThukela District",
+                               "uMzinyathi District"
+                           ],
+        "named_places":  [
+                             "Durban",
+                             "Verulam",
+                             "Pinetown",
+                             "Amanzimtoti",
+                             "eMdloti/Umdloti",
+                             "oThongathi/Tongaat",
+                             "Clare Estate",
+                             "Reservoir Hills",
+                             "Quarry Road informal settlement (M19)",
+                             "Umlazi",
+                             "Ntuzuma",
+                             "Nthungwane Extension 5",
+                             "Prospecton",
+                             "KwaNdengezi (Dassenhoek)",
+                             "Molweni",
+                             "Osizweni",
+                             "Durban North",
+                             "Umbumbulu",
+                             "KwaNcolosi",
+                             "Ndwedwe",
+                             "Napierville",
+                             "Mount Edgecombe",
+                             "Margate",
+                             "Sezela",
+                             "Ballito"
+                         ],
+        "deaths_text":  "435-459 (435/436 official Wikipedia; 443 widely reported; 448 ECHO; 459 KZN Cogta later)",
+        "settlement_type_mentioned":  "informal settlements (at least 164 of 550 on floodplains), townships, formal suburbs",
+        "sources":  [
+                        "https://www.dailymaverick.co.za/article/2022-04-12-could-the-kzn-flooding-disaster-have-been-mitigated-by-a-better-early-warning-system/",
+                        "https://en.wikipedia.org/wiki/2022_KwaZulu-Natal_floods",
+                        "https://floodlist.com/africa/south-africa-kwazulu-natal-floods-april-2022",
+                        "https://www.dailymaverick.co.za/article/2022-04-12-tragedy-in-kzn-as-floods-cause-devastation-mostly-for-the-poor-in-informal-settlements/",
+                        "https://www.dailymaverick.co.za/article/2022-04-14-devastated-kzn-communities-search-for-family-members-swept-away-by-floodwaters/",
+                        "https://www.news24.com/southafrica/news/kzn-floods-even-if-we-had-systems-in-place-we-are-merely-human-beings-says-premier-zikalala-20220421",
+                        "https://www.dailymaverick.co.za/article/2022-06-07-kzn-floods-early-warning-not-enough-climate-hazard-literacy-key-experts/"
+                    ]
+    },
+    {
+        "id":  "2022-05-kzn-repeat",
+        "start_date":  "2022-05-20",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "eThekwini Metropolitan Municipality",
+                               "iLembe District",
+                               "King Cetshwayo District",
+                               "uMkhanyakude District",
+                               "KwaDukuza",
+                               "Mandeni",
+                               "Maphumulo",
+                               "Ndwedwe",
+                               "Mtubatuba",
+                               "Umdoni",
+                               "uMhlathuze",
+                               "uMlalazi"
+                           ],
+        "named_places":  [
+                             "Mount Edgecombe",
+                             "Durban",
+                             "Sezela",
+                             "Bluff",
+                             "Umdloti",
+                             "Westbrook",
+                             "Tongaat",
+                             "Pinetown",
+                             "La Mercy"
+                         ],
+        "deaths_text":  "at least 2 (per secondary summary of media reports; not confirmed in provincial statement)",
+        "settlement_type_mentioned":  "care centres housing April flood displaced",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floodi-kwazulu-natal-may-2022",
+                        "https://www.gov.za/news/media-statements/kwazulu-natal-provides-update-latest-storms-and-floods-23-may-2022",
+                        "https://www.savethechildren.org/us/about-us/media-and-news/2022-press-releases/floods-hit-south-africa-kwazula-natal-second-time"
+                    ]
+    },
+    {
+        "id":  "2022-09-jagersfontein-tailings",
+        "start_date":  "2022-09-11",
+        "provinces":  [
+                          "Free State"
+                      ],
+        "municipalities":  [
+                               "Kopanong Local Municipality"
+                           ],
+        "named_places":  [
+                             "Jagersfontein",
+                             "Charlesville"
+                         ],
+        "deaths_text":  "3 dead, 4 missing (FloodList, 12 Sep)",
+        "settlement_type_mentioned":  "mining town",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-mining-dam-jagersfontein-september-2022"
+                    ]
+    },
+    {
+        "id":  "2023-02-national-disaster-floods",
+        "start_date":  "2023-02-02",
+        "provinces":  [
+                          "Mpumalanga",
+                          "Eastern Cape",
+                          "Gauteng",
+                          "KwaZulu-Natal",
+                          "Limpopo",
+                          "Northern Cape",
+                          "North West"
+                      ],
+        "municipalities":  [
+                               "Chris Hani District (Enoch Mgijima)",
+                               "Nkomazi Local Municipality",
+                               "City of Mbombela",
+                               "Lekwa Local Municipality",
+                               "King Sabata Dalindyebo Local Municipality",
+                               "Newcastle Local Municipality",
+                               "Dannhauser Local Municipality",
+                               "uMkhanyakude District",
+                               "Alfred Duma (Ladysmith)",
+                               "Vhembe District",
+                               "Mopani District",
+                               "Capricorn District",
+                               "Waterberg District"
+                           ],
+        "named_places":  [
+                             "Komani (Queenstown)",
+                             "Bonkolo Dam",
+                             "Kamhlushwa",
+                             "Driekoppies",
+                             "Tonga",
+                             "Masibekela",
+                             "Steenbok",
+                             "Mataffin",
+                             "Newcastle Ward 25",
+                             "Ngwavuma",
+                             "Coffee Bay",
+                             "Deelpan village (near Mahikeng)",
+                             "Douglas",
+                             "Kruger National Park (Lower Sabie, Crocodile Bridge)"
+                         ],
+        "deaths_text":  "at least 12 in first half of February (ECHO); DM 14 Feb: Mpumalanga 3, Limpopo 2, KZN 3; Wikipedia: at least 12 plus 2 in KSD and 1 in Komani",
+        "settlement_type_mentioned":  "rural villages (Nkomazi), towns",
+        "sources":  [
+                        "https://www.thepresidency.gov.za/government-declares-national-state-disaster-enable-intensive-response-widespread-floods",
+                        "https://floodlist.com/africa/south-africa-state-of-disaster-flods-february-2023",
+                        "https://floodlist.com/africa/south-africa-flooding-eastern-cape-mpumalanga-february-2023",
+                        "https://floodlist.com/africa/south-africa-floods-update-feberuary-2023",
+                        "https://www.dailymaverick.co.za/article/2023-02-14-flood-disaster-provinces-record-mounting-death-destruction/",
+                        "https://www.sanews.gov.za/south-africa/families-relocated-after-floods-nkomazi",
+                        "https://en.wikipedia.org/wiki/2023_South_Africa_floods"
+                    ]
+    },
+    {
+        "id":  "2023-06-kzn-ethekwini-landspout",
+        "start_date":  "2023-06-27",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "eThekwini Metropolitan Municipality",
+                               "Ugu District"
+                           ],
+        "named_places":  [
+                             "Inanda",
+                             "Phoenix",
+                             "Verulam",
+                             "Zwelisha",
+                             "Mount Edgecombe",
+                             "Pinetown",
+                             "Umbilo River",
+                             "Paddock",
+                             "Sezela",
+                             "Blue Lagoon"
+                         ],
+        "deaths_text":  "4 confirmed early 29 Jun; 7 (News24 30 Jun, Al Jazeera)",
+        "settlement_type_mentioned":  null,
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-kwazulu-natal-june-2023",
+                        "https://www.news24.com/southafrica/news/kzn-flooding-death-toll-rises-to-7-20230630",
+                        "https://www.aljazeera.com/news/2023/6/29/four-dead-one-missing-after-heavy-rain-tornado-in-south-africa"
+                    ]
+    },
+    {
+        "id":  "2023-10-kzn-mtubatuba-storm",
+        "start_date":  "2023-10-21",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "Mtubatuba Local Municipality",
+                               "Greater Kokstad Local Municipality",
+                               "Umzimkhulu Local Municipality"
+                           ],
+        "named_places":  [
+                             "Mtubatuba"
+                         ],
+        "deaths_text":  "4-5 (4 per News24/TimesLIVE/SABC; 5 incl. a one-year-old per ECHO/ECR)",
+        "settlement_type_mentioned":  null,
+        "sources":  [
+                        "https://www.timeslive.co.za/news/south-africa/2023-10-22-four-dead-more-than-100-houses-destroyed-in-kzn-rains-and-floods/",
+                        "https://www.news24.com/southafrica/news/pics-4-people-killed-70-houses-destroyed-and-infrastructure-pummelled-in-kzn-hailstorm-20231022",
+                        "https://www.ecr.co.za/news/news/kzn-storm-claims-five-lives-mec-visits-victims/",
+                        "https://reliefweb.int/report/south-africa/south-africa-severe-weather-and-floods-catnat-media-south-african-weather-service-echo-daily-flash-24-october-2023"
+                    ]
+    },
+    {
+        "id":  "2023-12-dundee-storm",
+        "start_date":  "2023-12-18",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "Endumeni Local Municipality",
+                               "uMzinyathi District"
+                           ],
+        "named_places":  [
+                             "Dundee",
+                             "Sithembile Township"
+                         ],
+        "deaths_text":  "1 (adult male struck by lightning)",
+        "settlement_type_mentioned":  "township",
+        "sources":  [
+                        "https://www.sanews.gov.za/south-africa/disaster-teams-respond-dundee-flood-victims",
+                        "https://reliefweb.int/report/south-africa/south-africa-floods-south-africa-news-agency-south-africa-weather-service-echo-daily-flash-21-december-2023"
+                    ]
+    },
+    {
+        "id":  "2023-12-ladysmith-christmas-eve",
+        "start_date":  "2023-12-24",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "Alfred Duma Local Municipality",
+                               "uThukela District"
+                           ],
+        "named_places":  [
+                             "Ladysmith (uMnambithi)",
+                             "Bell\u0027s Spruit",
+                             "Klip River",
+                             "Shepstone Road caravan park",
+                             "N11 near Limit Hill",
+                             "Animal Anti-Cruelty League / SPCA"
+                         ],
+        "deaths_text":  "5-6 initially; 13 (28 Dec); 21 bodies recovered by 29 Dec; later reported as 25 (SABC) / 26 in uThukela festive period",
+        "settlement_type_mentioned":  "town; caravan park",
+        "sources":  [
+                        "https://witness.co.za/news/2023/12/27/tragedy-in-ladysmith/",
+                        "https://www.timeslive.co.za/news/south-africa/2023-12-29-ladysmith-floods-death-toll-rises-to-13/",
+                        "https://www.africanews.com/2023/12/31/south-africa-flash-floods-kill-21-people-in-coastal-province-of-kwazulu-natal/",
+                        "https://www.sabcnews.com/sabcnews/910874-2/",
+                        "https://www.news24.com/southafrica/news/five-dead-at-least-11-others-missing-after-ladysmith-flash-flood-on-christmas-eve-20231225"
+                    ]
+    },
+    {
+        "id":  "2024-01-kzn-freestate-floods",
+        "start_date":  "2024-01-07",
+        "provinces":  [
+                          "KwaZulu-Natal",
+                          "Free State"
+                      ],
+        "municipalities":  [
+                               "uThukela District",
+                               "Alfred Duma LM",
+                               "uMzinyathi District",
+                               "Amajuba District",
+                               "iLembe District",
+                               "Ugu District",
+                               "eThekwini Metro"
+                           ],
+        "named_places":  [
+                             "Ladysmith",
+                             "KwaDukuza",
+                             "Indwedwe",
+                             "N11"
+                         ],
+        "deaths_text":  "41 fatalities per government reports (includes 21 from Ladysmith, many from the 24 Dec 2023 flash flood); 26 in uThukela district per TimesLive",
+        "settlement_type_mentioned":  null,
+        "sources":  [
+                        "https://reliefweb.int/disaster/fl-2024-000008-zaf",
+                        "https://www.timeslive.co.za/news/south-africa/2024-01-22-flood-hit-kzn-municipalities-classified-as-disaster-areas/",
+                        "https://www.sanews.gov.za/south-africa/several-parts-kzn-classified-disaster-areas-following-floods",
+                        "https://witness.co.za/news/kzn/2024/01/22/flooding-woes-persist-in-ladysmith/"
+                    ]
+    },
+    {
+        "id":  "2024-04-kzn-south-coast-floods",
+        "start_date":  "2024-04-16",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "Ugu District",
+                               "eThekwini Metro"
+                           ],
+        "named_places":  [
+                             "Margate"
+                         ],
+        "deaths_text":  "5 fatalities confirmed",
+        "settlement_type_mentioned":  null,
+        "sources":  [
+                        "https://reliefweb.int/report/south-africa/south-africa-flood-04-2024-floods-2024-04-18"
+                    ]
+    },
+    {
+        "id":  "2024-06-kzn-tornadoes-storm",
+        "start_date":  "2024-06-03",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "eThekwini Metro",
+                               "iLembe District",
+                               "King Cetshwayo District",
+                               "Amajuba District",
+                               "uMzinyathi District",
+                               "uMkhanyakude District",
+                               "Newcastle LM"
+                           ],
+        "named_places":  [
+                             "oThongathi (Tongaat)",
+                             "Magwaveni",
+                             "La Mercy",
+                             "Sandfields",
+                             "Fairbreeze",
+                             "Sea Tides",
+                             "Desainagar",
+                             "Newcastle",
+                             "Utrecht"
+                         ],
+        "deaths_text":  "12 in KwaZulu-Natal",
+        "settlement_type_mentioned":  "township (Magwaveni); shacks destroyed",
+        "sources":  [
+                        "https://groundup.org.za/article/storm-in-tongaat/",
+                        "https://www.timeslive.co.za/news/south-africa/2024-06-03-help-for-1200-tongaat-residents-hit-by-tornado/",
+                        "https://www.dailymaverick.co.za/article/2024-06-09-death-toll-10-after-nelson-mandela-bay-flood/",
+                        "https://www.knysnaplettherald.com/News/Article/National-News/tornadoes-explained-tongaat-tornado-rated-ef3-202406121259",
+                        "https://en.wikipedia.org/wiki/June_2024_South_African_storm_complex"
+                    ]
+    },
+    {
+        "id":  "2024-10-eastern-cape-nmb-floods",
+        "start_date":  "2024-10-21",
+        "provinces":  [
+                          "Eastern Cape",
+                          "KwaZulu-Natal",
+                          "Free State",
+                          "Limpopo",
+                          "North West",
+                          "Gauteng",
+                          "Mpumalanga"
+                      ],
+        "municipalities":  [
+                               "Nelson Mandela Bay Metro"
+                           ],
+        "named_places":  [
+                             "Gqeberha",
+                             "Kariega",
+                             "KwaZakhele",
+                             "Lapland",
+                             "Vastrap informal settlement",
+                             "Motherwell",
+                             "Uitenhage"
+                         ],
+        "deaths_text":  "3 confirmed in NMB (Daily Maverick, mayor Gary van Niekerk); \u0027at least 10 including 4 children\u0027 per The Watchers/eNCA-linked reports",
+        "settlement_type_mentioned":  "informal settlement (Vastrap)",
+        "sources":  [
+                        "https://www.dailymaverick.co.za/article/2024-10-23-nelson-mandela-bay-counts-flooding-costs-three-dead-3000-displaced-electricity-and-sewage-systems-down/",
+                        "https://watchers.news/2024/10/23/eastern-cape-floods-claim-at-least-10-lives-displace-over-3-000-south-africa/",
+                        "https://www.enca.com/news/eastern-cape-floods-three-dead-and-thousands-displaced",
+                        "https://www.engineeringnews.co.za/article/south-africa-declares-national-disaster-after-floods-storms-2024-11-13",
+                        "https://www.insurancejournal.com/news/international/2024/11/13/800944.htm"
+                    ]
+    },
+    {
+        "id":  "2025-02-ethekwini-storm-wall-collapses",
+        "start_date":  "2025-02-19",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "eThekwini Metro",
+                               "Zululand District",
+                               "uMzinyathi District",
+                               "uThukela District",
+                               "King Cetshwayo District"
+                           ],
+        "named_places":  [
+                             "KwaMakhutha",
+                             "Adams Mission",
+                             "Folweni",
+                             "Demat",
+                             "Ensimbini",
+                             "Amanzimtoti",
+                             "Morton",
+                             "Clairwood",
+                             "Isipingo",
+                             "Chatsworth",
+                             "Umkomaas",
+                             "Verulam",
+                             "Eshowe"
+                         ],
+        "deaths_text":  "4 (eThekwini/SAnews initial); 6 (Daily Maverick, IOL 20 Feb); at least 9 (The Watchers, 22 Feb)",
+        "settlement_type_mentioned":  "formal and informal structures collapsed",
+        "sources":  [
+                        "https://www.sanews.gov.za/south-africa/ethekwini-heavy-rains-claim-four-lives",
+                        "https://www.dailymaverick.co.za/article/2025-02-20-heavy-rain-batters-kzn-killing-3-in-landslide-amid-flooding/",
+                        "https://iol.co.za/mercury/news/2025-02-20-six-lives-lost-as-heavy-rains-hit-ethekwini-municipality/",
+                        "https://www.durban.gov.za/press-statement/Four+fatalities+reported+and+mop-up+operations+continue+following+heavy+rains",
+                        "https://watchers.news/2025/02/22/at-least-nine-dead-after-severe-flooding-and-landslides-hit-kwazulu-natal-kzn-south-africa/"
+                    ]
+    },
+    {
+        "id":  "2025-02-lamontville-floods",
+        "start_date":  "2025-02-25",
+        "provinces":  [
+                          "KwaZulu-Natal",
+                          "Gauteng",
+                          "Free State",
+                          "North West",
+                          "Limpopo",
+                          "Northern Cape"
+                      ],
+        "municipalities":  [
+                               "eThekwini Metro",
+                               "uMdoni LM"
+                           ],
+        "named_places":  [
+                             "Lamontville",
+                             "Chatsworth",
+                             "Malangeni",
+                             "Johannesburg",
+                             "Pretoria",
+                             "Midrand",
+                             "Soweto",
+                             "Ekurhuleni"
+                         ],
+        "deaths_text":  "7 dead, 1 missing (KZN CoGTA from 24 Feb); 12 in eThekwini (News24, 27 Feb); 15 in eThekwini by mid-March",
+        "settlement_type_mentioned":  "informal settlement along canal (Lamontville)",
+        "sources":  [
+                        "https://www.news24.com/southafrica/news/ethekwini-floods-municipality-under-fire-as-death-toll-rises-to-12-one-person-still-missing-20250227",
+                        "https://witness.co.za/news/2025/02/26/kzn-floods-five-bodies-recovered-in-lamontville/",
+                        "https://iol.co.za/dailynews/news/2025-02-26-tragedy-strikes-lamontville-as-heavy-rains-claim-lives-amid-previous-community-warnings/",
+                        "https://www.ewn.co.za/2025/02/27/lamontville-flood-victims-to-be-moved-to-community-shelters",
+                        "https://www.forafrika.org/south-africa/storms-and-flash-floods-in-kwazulu-natal-gauteng-free-state-north-west-and-limpopo/",
+                        "https://iol.co.za/news/weather/2025-12-24-devastating-floods-in-kwazulu-natal-and-eastern-cape-a-year-of-loss-and-recovery/"
+                    ]
+    },
+    {
+        "id":  "2025-03-kzn-further-floods",
+        "start_date":  "2025-03-01",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "eThekwini Metro"
+                           ],
+        "named_places":  [
+                             "Pinetown"
+                         ],
+        "deaths_text":  "\u0027more than 20 people in the last two months\u0027 (cumulative, Rev. Thulasizwe Buthelezi); ~40 deaths nationally by March per IOL (cumulative)",
+        "settlement_type_mentioned":  "low-lying areas and riverbanks",
+        "sources":  [
+                        "https://allafrica.com/stories/202503030054.html",
+                        "https://iol.co.za/mercury/2025-03-02-flash-flooding-affects-parts-of-ethekwini-municipality-damage-being-assessed/"
+                    ]
+    },
+    {
+        "id":  "2025-11-umshwathi-new-hanover-floods",
+        "start_date":  "2025-11-23",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "uMshwathi LM",
+                               "uMgungundlovu District"
+                           ],
+        "named_places":  [
+                             "New Hanover",
+                             "Shiyabazali",
+                             "Shiyasi",
+                             "Mishani",
+                             "Dalton",
+                             "Cool Air",
+                             "Loliwe",
+                             "Sphothom",
+                             "Mkhushwa",
+                             "Kamelhoek",
+                             "Wartburg"
+                         ],
+        "deaths_text":  "1 confirmed plus 2 missing initially; 3 dead after the 2 missing were recovered on 3 December (IOL)",
+        "settlement_type_mentioned":  "informal settlements on riverbanks and floodplains; mud houses and rental properties",
+        "sources":  [
+                        "https://www.dailymaverick.co.za/article/2025-11-24-floods-bring-death-and-devastation-to-community-of-new-hanover-in-kzn/",
+                        "https://umshwathi.gov.za/2025/11/26/update-on-the-disaster-that-occurred-in-umshwathi-municipality-on-sunday-23-november-2025/",
+                        "https://www.ecr.co.za/news/news/new-hanover-flood-damage-made-worse-flouting-bylaws/",
+                        "https://www.ewn.co.za/2025/11/25/kzn-municipalities-urged-to-enforce-by-laws-to-prevent-disaster-deaths",
+                        "https://iol.co.za/news/weather/2025-12-24-devastating-floods-in-kwazulu-natal-and-eastern-cape-a-year-of-loss-and-recovery/"
+                    ]
+    },
+    {
+        "id":  "2025-12-festive-storms-kzn-ec-gauteng",
+        "start_date":  "2025-12-21",
+        "provinces":  [
+                          "KwaZulu-Natal",
+                          "Eastern Cape",
+                          "Gauteng",
+                          "Limpopo",
+                          "Mpumalanga"
+                      ],
+        "municipalities":  [
+                               "Ugu District",
+                               "eThekwini Metro",
+                               "City of Tshwane",
+                               "City of Johannesburg",
+                               "Buffalo City Metro"
+                           ],
+        "named_places":  [
+                             "Amanzimtoti",
+                             "eManzimtoti",
+                             "Margate",
+                             "Port Shepstone",
+                             "Bomela",
+                             "Qholoqholo",
+                             "Olievenhoutbosch Extension 19",
+                             "Diepsloot",
+                             "Centurion",
+                             "Temba",
+                             "Hammanskraal",
+                             "East London",
+                             "Bhisho",
+                             "Qonce (King William\u0027s Town)",
+                             "Middledrift",
+                             "Lady Grey"
+                         ],
+        "deaths_text":  "5 (4 KZN incl. 3 in vehicle swept away near Amanzimtoti; 1 drowned in Olievenhoutbosch)",
+        "settlement_type_mentioned":  "informal structures (Diepsloot)",
+        "sources":  [
+                        "https://www.dailymaverick.co.za/article/2025-12-22-severe-weather-claims-two-lives-as-relief-operations-across-sa-kick-into-gear/",
+                        "https://iol.co.za/news/weather/2025-12-24-devastating-floods-in-kwazulu-natal-and-eastern-cape-a-year-of-loss-and-recovery/"
+                    ]
+    },
+    {
+        "id":  "2026-01-limpopo-mpumalanga-floods",
+        "start_date":  "2026-01-12",
+        "provinces":  [
+                          "Limpopo",
+                          "Mpumalanga",
+                          "KwaZulu-Natal",
+                          "Eastern Cape",
+                          "North West"
+                      ],
+        "municipalities":  [
+                               "Vhembe District",
+                               "Mopani District",
+                               "Waterberg District",
+                               "Sekhukhune District",
+                               "Ba-Phalaborwa LM",
+                               "Elias Motsoaledi LM",
+                               "Nkomazi LM"
+                           ],
+        "named_places":  [
+                             "Phalaborwa",
+                             "Giyani",
+                             "Giyani Nkomo village 22B",
+                             "Thohoyandou",
+                             "Tshakhuma",
+                             "Mashishimale",
+                             "Selati River",
+                             "Mutale River",
+                             "Tswinga",
+                             "Tshilapfene",
+                             "Gobe River",
+                             "Marulaneng",
+                             "Luckau",
+                             "Legolaneng",
+                             "Nghomunghomu (Malamulele)",
+                             "Olifants River",
+                             "Kruger National Park",
+                             "Beitbridge border post"
+                         ],
+        "deaths_text":  "At least 30 (AP/Al Jazeera, 16-17 Jan); 37 (20 Mpumalanga, 17 Limpopo; SABC 19 Jan); Limpopo alone rose to 22 (26 Jan) then 25 with 3 missing (late Jan)",
+        "settlement_type_mentioned":  "rural villages cut off",
+        "sources":  [
+                        "https://www.ewn.co.za/2026/01/15/level-10-warning-issued-extreme-flood-risk-for-limpopo-and-mpumalanga",
+                        "https://iol.co.za/news/south-africa/2026-01-16-death-toll-rises-to-nine-almost-2000-homes-destroyed-as-limpopo-floods-wreak-havoc/",
+                        "https://www.aljazeera.com/news/2026/1/17/floods-kill-more-than-100-across-southern-africa-as-rains-intensify",
+                        "https://www.sabcnews.com/sabcnews/floods-claim-37-lives-across-mpumalanga-limpopo/",
+                        "https://www.timeslive.co.za/news/south-africa/2026-01-19-limpopo-flood-death-toll-reaches-18-search-continues-for-five-missing/",
+                        "https://iol.co.za/news/south-africa/2026-01-26-limpopo-floods-death-toll-rises-to-22-as-seven-remain-missing/",
+                        "https://redcross.org.za/national-disaster-declared-floods-severe-weather-18-january-2026/",
+                        "https://theconversation.com/south-africas-floods-turned-deadly-because-limpopo-wasnt-prepared-how-to-prevent-a-repeat-274287",
+                        "https://abcnews.go.com/International/wireStory/south-africa-declares-national-disaster-flooding-severe-weather-129326963"
+                    ]
+    },
+    {
+        "id":  "2026-05-cutofflow-cold-fronts-national-disaster",
+        "start_date":  "2026-05-04",
+        "provinces":  [
+                          "Western Cape",
+                          "Eastern Cape",
+                          "Northern Cape",
+                          "North West",
+                          "Free State",
+                          "Mpumalanga"
+                      ],
+        "municipalities":  [
+                               "Garden Route District",
+                               "Knysna LM",
+                               "Bitou LM",
+                               "Kou-Kamma LM",
+                               "Kouga LM",
+                               "Nelson Mandela Bay Metro",
+                               "City of Cape Town",
+                               "Drakenstein LM",
+                               "Stellenbosch LM",
+                               "Breede Valley LM",
+                               "Witzenberg LM",
+                               "Theewaterskloof LM",
+                               "Swellendam LM",
+                               "Matjhabeng LM (Lejweleputswa)"
+                           ],
+        "named_places":  [
+                             "Joubertina",
+                             "Knysna",
+                             "Kleingrysbos",
+                             "Diepwalle",
+                             "Plettenberg Bay",
+                             "Stormsrivier",
+                             "Gamtoos Valley",
+                             "Kouga Dam",
+                             "De Rust",
+                             "Welgeluk",
+                             "Kenilworth",
+                             "Genadendal",
+                             "Klaarstroom",
+                             "Khayelitsha",
+                             "Makhaza",
+                             "Monwabisi",
+                             "Island",
+                             "Imizamo Yethu",
+                             "Nomzamo",
+                             "Lwandle",
+                             "Phola Park",
+                             "Gugulethu",
+                             "Valhalla Park",
+                             "Vygieskraal",
+                             "Tafelsig",
+                             "Delft",
+                             "Kampies",
+                             "Langrug",
+                             "Mfuleni",
+                             "Philippi",
+                             "Riverside",
+                             "Mitchells Plain",
+                             "Hanover Park",
+                             "Wynberg",
+                             "Parow",
+                             "Welkom"
+                         ],
+        "deaths_text":  "At least 4 (The Watchers: 1 in Knysna 5-7 May, 3 on 11 May); 6 (WC Health, per search summary); 10 in Western Cape (IOL 13-14 May; Washington Post \u0027at least 10\u0027)",
+        "settlement_type_mentioned":  "informal settlements",
+        "sources":  [
+                        "https://www.news24.com/southafrica/news/govt-declares-national-disaster-as-severe-storms-floods-and-snow-batter-several-provinces-20260510-0648",
+                        "https://watchers.news/2026/05/05/level-8-disruptive-rainfall-warnings-issued-eastern-western-cape-south-africa/",
+                        "https://watchers.news/2026/05/07/more-than-300-mm-11-8-inches-rain-triggers-flooding-evacuations-dam-overflow-south-africa/",
+                        "https://www.dailymaverick.co.za/article/2026-05-11-cold-fronts-lash-western-cape-one-dead-communities-flooded-and-schools-shut/",
+                        "https://groundup.org.za/article/storm-wreaks-havoc-across-the-cape-three-deaths-reported-as-emergency-teams-respond-to-hundreds-of-calls/",
+                        "https://www.sabcnews.com/sabcnews/three-dead-in-cape-town-as-severe-winds-and-rainfall-lash-region/",
+                        "https://watchers.news/2026/05/12/deadly-storms-prompt-national-disaster-declaration-south-africa/",
+                        "https://mg.co.za/the-green-guardian/2026-05-12-cape-town-storm-floods-26-informal-settlements-and-damages-more-than-10-000-structures/",
+                        "https://www.washingtonpost.com/world/2026/05/12/south-africa-floods-storms-death-disaster/b3f699e2-4e1a-11f1-97e7-22c6c29ff0d8_story.html",
+                        "https://iol.co.za/news/environment/2026-05-14-western-cape-flood-disaster-10-dead-nearly-90000-displaced/",
+                        "https://www.ewn.co.za/2026/05/15/wc-govt-wants-recent-destructive-floods-declared-a-national-disaster",
+                        "https://redcross.org.za/heavy-overnight-rainfall-has-displaced-hundreds-of-residents-in-south-africas-free-state-province-prompting-an-urgent-humanitarian-response/"
+                    ]
+    },
+    {
+        "id":  "2026-09-kzn-heavy-rain",
+        "start_date":  "2026-09-18",
+        "provinces":  [
+                          "KwaZulu-Natal"
+                      ],
+        "municipalities":  [
+                               "eThekwini Metro",
+                               "uMkhanyakude District",
+                               "King Cetshwayo District",
+                               "City of uMhlathuze"
+                           ],
+        "named_places":  [
+                             "Tshelimnyama (Mariannhill)",
+                             "Pinetown",
+                             "Quarry Road informal settlement",
+                             "Melody Hills Transitional Emergency Accommodation (Umlazi)",
+                             "Isipingo River estuary",
+                             "Montclair",
+                             "uMkhuze (N2)",
+                             "Gingindlovu",
+                             "Eshowe (R66)",
+                             "Richards Bay"
+                         ],
+        "deaths_text":  "4 killed in two road crashes attributed partly to rain and flooding; no flood-drowning deaths confirmed",
+        "settlement_type_mentioned":  "informal settlements; transitional emergency accommodation",
+        "sources":  [
+                        "https://insidepolitic.co.za/gallery-four-killed-on-kzn-roads-as-heavy-rain-floods-settlements-and-swells-rivers/",
+                        "https://briefly.co.za/south-africa/253657-kwazulu-natal-heavy-rain-death-destruction-mudslides-destroy-homes-crashes-kill-4/",
+                        "https://iol.co.za/news/south-africa/2026-09-19-kzn-heavy-rain-tests-whether-flood-warnings-reach-vulnerable-communities/",
+                        "https://www.joburgetc.com/news/four-die-kzn-crashes-heavy-rain/"
+                    ]
+    }
+]

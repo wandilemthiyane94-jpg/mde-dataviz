@@ -1,0 +1,86 @@
+[
+    {
+        "pattern":  "Death toll reported rising, never final",
+        "recurs_in":  "22 of 53 deadly events, 2016-2026",
+        "code":  "P1",
+        "true":  22,
+        "false":  29,
+        "not_determinable":  2,
+        "out_of":  53,
+        "original_claim":  "7 of 7 events sampled",
+        "verdict":  "conditional on scale: 0/25 small (1-4 deaths), 17/21 mid (5-19), 5/7 mass (20+)",
+        "note":  "Rising tolls seen in 25/53 events; a clear final official figure was reported in 8. Big events 13/16 true vs small 9/37: most small events report a single stable toll (1-4 deaths). Original 7/7 holds for mass-casualty events, weakens as a general pattern. Several trues are weak (4-\u003e5 across different outlets)."
+    },
+    {
+        "pattern":  "\"Informal settlement\" as default causal explanation",
+        "recurs_in":  "24 of 53 deadly events, 2016-2026",
+        "code":  "P2",
+        "true":  24,
+        "false":  29,
+        "not_determinable":  0,
+        "out_of":  53,
+        "original_claim":  "7 of 7 events, 2013-2026, near-identical phrasing",
+        "verdict":  "conditional on scale and national declaration (28% small -\u003e 52% mid -\u003e 86% mass; 67% if nationally declared). Voiced mostly by officials (16/24) as \"don\u0027t build near rivers\"",
+        "note":  "mention_type: causal 24, location_only 13, none 16. Big events 10/16, small 14/37. Many small-event deaths are drivers or pedestrians swept off low-water bridges, where settlement framing is absent. Some trues come from non-news sources only (PMG for 2021-02, The Conversation for 2026-01, a July follow-up for 2026-05) or from floodplain framing without informal settlements (Ladysmith 2023). Original 7/7 \u0027default\u0027 claim weakens substantially."
+    },
+    {
+        "pattern":  "Presidential site visit as ritual story beat",
+        "recurs_in":  "7 of 53 deadly events, 2016-2026",
+        "code":  "P3",
+        "true":  7,
+        "false":  46,
+        "not_determinable":  0,
+        "out_of":  53,
+        "original_claim":  "5 of 7 events",
+        "verdict":  "conditional: mass-casualty or national-disaster events in provinces governed by the President\u0027s party - see pattern_conditions.md",
+        "note":  "President visit in 7/53 (big 5/16: 2019-04, 2022-04, 2024-06 EC, 2025-06 Mthatha, 2026-01; small 2/37: 2022-09 Jagersfontein, 2023-03 Port St Johns). No President visit found for several big events (e.g. 2023-12 Ladysmith, 2024-01, 2025-02 Lamontville, 2023-09 WC). Original 5/7 breaks as a general pattern; a President visit is a story beat only in the largest or most politically salient events."
+    },
+    {
+        "pattern":  "Premier/Minister/MEC site visit",
+        "recurs_in":  "26 of 53 deadly events, 2016-2026",
+        "code":  "P3b",
+        "true":  26,
+        "false":  27,
+        "not_determinable":  0,
+        "out_of":  53,
+        "original_claim":  "(not in original)",
+        "verdict":  "new",
+        "note":  "Premier/Minister/MEC (mostly Premier or MEC) visits reported in 26/53: big 9/16, small 17/37. Coded separately from the President."
+    },
+    {
+        "pattern":  "Officials quoted almost exclusively over residents",
+        "recurs_in":  "35 of 53 deadly events, 2016-2026",
+        "code":  "P4",
+        "true":  35,
+        "false":  18,
+        "not_determinable":  0,
+        "out_of":  53,
+        "original_claim":  "7 of 7 events; 1 academic causal quote in whole sample",
+        "verdict":  "holds at every scale (residents quoted in 48% small, 38% mid, 57% mass events); academic-quote claim breaks",
+        "note":  "Across all events 187 officials vs 58 residents quoted (32 others: NGOs, academics, church, business). 29/53 events had zero residents quoted; officials outnumbered residents in 47/53. The \u003e=80% threshold is met in 35/53, several at exactly 0.8. Original 7/7 mostly holds in direction but weakens at the threshold. The original \u00271 academic causal quote in whole sample\u0027 breaks: 32 non-official, non-resident voices were quoted."
+    },
+    {
+        "pattern":  "Climate change framing only after mass-casualty events",
+        "recurs_in":  "15 of 53 deadly events, 2016-2026",
+        "code":  "P5",
+        "true":  15,
+        "false":  38,
+        "not_determinable":  0,
+        "out_of":  53,
+        "original_claim":  "1 of 7 events (April 2022) explicitly; absent from smaller/frequent events",
+        "verdict":  "conditional on scale (12% small -\u003e 33% mid -\u003e 71% mass) and period (17% 2016-19, 13% 2020-22, 42% 2023-26); present in every weather-disaster presidential visit (6/6)",
+        "note":  "Explicit climate framing in 15/53: big 9/16 (56%) vs small 6/37 (16%). It appears in small events (2023-12 Dundee, 1 death; 2023-09 Cape coast, 2 deaths; 2025-02 eThekwini walls; 2023-06 eThekwini) and is often voiced by officials (Ramaphosa in Kariega 2024 and Durban 2019; KZN CoGTA via SAnews). Original \u0027only after mass-casualty events, 1 of 7\u0027 breaks in its strong form; the direction (more likely after big events) holds."
+    },
+    {
+        "pattern":  "Warning mentioned at all",
+        "recurs_in":  "33 of 53 deadly events, 2016-2026",
+        "code":  "P6",
+        "true":  33,
+        "false":  20,
+        "not_determinable":  0,
+        "out_of":  53,
+        "original_claim":  "(not in original)",
+        "verdict":  "new",
+        "note":  "Some pre-event warning mentioned in 33/53 (big 11/16, small 22/37). Several trues are weak: warnings issued mid-event, for a different region, or general statements that warnings had been issued."
+    }
+]

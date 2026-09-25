@@ -1,0 +1,11 @@
+  {
+    "id": "2022-01-kzn-ladysmith-vaal",
+    "death_sites": [
+      {"place": "Ezakheni (Alfred Duma LM)", "deaths_at_place": 1, "settlement_type": "township", "census_year": 2011, "geo_level": "main place", "census_place_name": "Ezakheni (Emnambithi/Ladysmith LM, now Alfred Duma)", "top_languages": [{"language": "isiZulu", "pct": 95.06}, {"language": "English", "pct": 1.28}, {"language": "isiNdebele", "pct": 0.98}], "english_pct": 1.28, "afrikaans_pct": 0.3, "census_url": "https://census2011.adrianfrith.com/place/514019", "death_source_url": "https://floodlist.com/africa/south-africa-floods-kzn-north-west-province-january-2022", "count_note": "'One fatality in Ezakheni'"},
+      {"place": "Klip River, Ladysmith CBD (14-year-old believed drowned crossing swollen river)", "deaths_at_place": 1, "settlement_type": "town CBD / riverside", "census_year": 2011, "geo_level": "main place", "census_place_name": "Ladysmith", "top_languages": [{"language": "isiZulu", "pct": 64.25}, {"language": "English", "pct": 22.77}, {"language": "Afrikaans", "pct": 6.27}], "english_pct": 22.77, "afrikaans_pct": 6.27, "census_url": "https://census2011.adrianfrith.com/place/514018", "death_source_url": "https://www.dailymaverick.co.za/article/2022-01-19-search-continues-for-teen-boy-as-rain-battered-ladysmith-counts-cost-of-floods/", "count_note": "Believed drowned; body not yet found at time of report. Where he lived/crossed is not stated beyond Ladysmith/Klip River."}
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "isiZulu",
+    "warning_language_evidence": null,
+    "notes": "Msinga, Bloemhof/Christiana (North West, Vaal) affected but no deaths located there. The 25 KZN weather deaths since early December are cumulative and not placed. DWS 'warned downstream communities about the imminent increase of outflow from the dams' (Vaal) - no language info."
+  }

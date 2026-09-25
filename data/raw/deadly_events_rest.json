@@ -1,0 +1,682 @@
+[
+    {
+        "id":  "2016-11-johannesburg-flash-floods",
+        "start_date":  "2016-11-09",
+        "provinces":  [
+                          "Gauteng"
+                      ],
+        "municipalities":  [
+                               "City of Johannesburg",
+                               "Ekurhuleni",
+                               "City of Tshwane"
+                           ],
+        "named_places":  [
+                             "Alexandra",
+                             "Stjwetla/Setswetla informal settlement",
+                             "Buccleuch",
+                             "Linksfield",
+                             "Orchards",
+                             "Kyalami",
+                             "Midrand",
+                             "Bedfordview",
+                             "Bryanston",
+                             "Sandton",
+                             "Edenvale",
+                             "OR Tambo International Airport",
+                             "Jukskei River",
+                             "N3 Buccleuch interchange",
+                             "Johannesburg Zoo"
+                         ],
+        "deaths_text":  "4-6 (SAnews on 10 Nov: four confirmed dead; FloodList/Wikipedia/Africanews: 6)",
+        "settlement_type_mentioned":  "informal settlement (Stjwetla, Alexandra township); low-lying suburbs",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-deadly-flash-floods-hit-johannesburg",
+                        "https://floodlist.com/africa/south-africa-gauteng-floods-november-2016",
+                        "https://www.sanews.gov.za/south-africa/joburg-flash-floods-aftermath",
+                        "https://watchers.news/2016/11/10/flash-floods-johannesburg-south-africa-november-9-2016/",
+                        "https://www.africanews.com/2016/11/10/south-africa-flash-floods-kill-six-people-in-johannesburg/",
+                        "https://en.wikipedia.org/wiki/2016_Johannesburg_flood",
+                        "https://reliefweb.int/report/south-africa/red-cross-aids-flash-floods-johannesburg"
+                    ]
+    },
+    {
+        "id":  "2017-01-limpopo-mpumalanga-flash-floods",
+        "start_date":  "2017-01-05",
+        "provinces":  [
+                          "Limpopo",
+                          "Mpumalanga",
+                          "Gauteng"
+                      ],
+        "municipalities":  [
+                               "Thembisile Hani (Kwaggafontein)",
+                               "Musina (near Beitbridge)"
+                           ],
+        "named_places":  [
+                             "Kwaggafontein",
+                             "Beitbridge area",
+                             "Limpopo River",
+                             "Witkoppen Road",
+                             "N1 near Diepkloof interchange",
+                             "M1 double decker"
+                         ],
+        "deaths_text":  "as many as 7 (5 near Beitbridge, Limpopo; 2 in Kwaggafontein, Mpumalanga, including a rescue worker)",
+        "settlement_type_mentioned":  "rural areas near rivers",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-limpopo-mpumalanga-january-2017",
+                        "https://watchers.news/2017/01/10/flood-limpopo-south-africa-january-2017/"
+                    ]
+    },
+    {
+        "id":  "2017-06-cape-storm",
+        "start_date":  "2017-06-06",
+        "provinces":  [
+                          "Western Cape",
+                          "Eastern Cape",
+                          "Northern Cape"
+                      ],
+        "municipalities":  [
+                               "City of Cape Town",
+                               "Knysna",
+                               "Bitou (Plettenberg Bay)"
+                           ],
+        "named_places":  [
+                             "Kraaifontein",
+                             "Lavender Hill",
+                             "Rheenendal",
+                             "Knysna",
+                             "Plettenberg Bay",
+                             "Brenton-on-Sea",
+                             "Buffalo Bay"
+                         ],
+        "deaths_text":  "at least 8 storm-related (plus 7 in the Knysna fires the storm winds fanned; 15 total per Wikipedia); Al Jazeera: \u0027at least nine\u0027 in some reports",
+        "settlement_type_mentioned":  "informal settlements / shacks (\u0027shanty towns\u0027)",
+        "sources":  [
+                        "https://en.wikipedia.org/wiki/Cape_storm_(2017)",
+                        "https://watchers.news/2017/06/06/cape-town-storm-south-africa/",
+                        "https://watchers.news/2017/06/07/cape-town-storm-june-7-2017/",
+                        "https://www.aljazeera.com/amp/news/2017/6/8/storm-kills-several-displaces-thousands-in-cape-town",
+                        "https://mg.co.za/article/2017-06-13-climate-change-evident-in-cape-storm-and-knysna-fires/",
+                        "https://reliefweb.int/report/south-africa/south-africa-storm-surge-dref-operation-n-mdrza007",
+                        "https://www.bloomberg.com/news/articles/2017-06-08/cape-town-mops-up-after-most-devastating-storm-in-three-decades"
+                    ]
+    },
+    {
+        "id":  "2018-10-pretoria-flash-floods",
+        "start_date":  "2018-10-13",
+        "provinces":  [
+                          "Gauteng",
+                          "North West"
+                      ],
+        "municipalities":  [
+                               "City of Tshwane",
+                               "City of Johannesburg",
+                               "Madibeng (Brits)"
+                           ],
+        "named_places":  [
+                             "Hammanskraal",
+                             "Temba",
+                             "Pretoria West",
+                             "Pretoria North",
+                             "Capital Park",
+                             "Apies River",
+                             "Rachel de Beer Street subway",
+                             "Centurion",
+                             "Ga-Rankuwa",
+                             "Mooinooi",
+                             "Cullinan",
+                             "Barry Hertzog Drive",
+                             "Rodger Dayson Road",
+                             "Roodeplaat Dam"
+                         ],
+        "deaths_text":  "2 possible drownings under investigation (two people reportedly seen in the Apies River at Capital Park); not confirmed",
+        "settlement_type_mentioned":  "townships (Hammanskraal, Temba)",
+        "sources":  [
+                        "https://www.timeslive.co.za/news/south-africa/2018-10-14-two-drownings-under-investigation-as-flash-floods-hit-pretoria/",
+                        "https://www.timeslive.co.za/news/south-africa/2018-10-14-flash-floods-on-gauteng-roads-as-rains-persist/"
+                    ]
+    },
+    {
+        "id":  "2019-12-tshwane-mamelodi",
+        "start_date":  "2019-12-09",
+        "provinces":  [
+                          "Gauteng",
+                          "North West"
+                      ],
+        "municipalities":  [
+                               "City of Tshwane Metropolitan Municipality"
+                           ],
+        "named_places":  [
+                             "Pretoria",
+                             "Mamelodi",
+                             "Nellmapius",
+                             "Centurion",
+                             "Centurion Lake Hotel",
+                             "Hartbeespoort Dam"
+                         ],
+        "deaths_text":  "1 (vehicle swept off low-lying bridge near Hartbeespoort Dam, North West)",
+        "settlement_type_mentioned":  "informal settlement / makeshift homes (Mamelodi)",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-gauteng-december-2019"
+                    ]
+    },
+    {
+        "id":  "2020-02-johannesburg-floods",
+        "start_date":  "2020-02-07",
+        "provinces":  [
+                          "Gauteng"
+                      ],
+        "municipalities":  [
+                               "City of Johannesburg Metropolitan Municipality"
+                           ],
+        "named_places":  [
+                             "Soweto",
+                             "Alexandra",
+                             "Kliptown",
+                             "Setswetla informal settlement",
+                             "Mhlangeni informal settlement (Roodepoort)",
+                             "Douglasdale",
+                             "Kagiso",
+                             "Helen Joseph Hospital",
+                             "M1 De Villiers Graaff motorway",
+                             "Jukskei River",
+                             "Buccleuch Drive bridge",
+                             "Botanical Gardens (West Rand)"
+                         ],
+        "deaths_text":  "2 confirmed (SABC) plus 1 missing presumed dead; TimesLIVE headline: \u0027Pupil among 3 killed\u0027",
+        "settlement_type_mentioned":  "informal settlement (Setswetla, Alexandra)",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-johannesburg-gauteng-february-2020",
+                        "https://www.sabcnews.com/sabcnews/gauteng-floods-claim-two-lives-leave-hundreds-stranded/"
+                    ]
+    },
+    {
+        "id":  "2020-10-mopani-hail-floods",
+        "start_date":  "2020-10-10",
+        "provinces":  [
+                          "Limpopo"
+                      ],
+        "municipalities":  [
+                               "Mopani District Municipality"
+                           ],
+        "named_places":  [
+                             "Sedibeng",
+                             "Sefofotse",
+                             "Maupa",
+                             "Bellevue",
+                             "Mohlabaneng",
+                             "Jamela",
+                             "Tlatja"
+                         ],
+        "deaths_text":  "1 child killed; 1 child injured",
+        "settlement_type_mentioned":  "villages",
+        "sources":  [
+                        "https://www.timeslive.co.za/news/south-africa/2020-10-12-child-killed-homes-destroyed-as-floods-wreak-havoc-in-limpopo/"
+                    ]
+    },
+    {
+        "id":  "2021-01-northern-cape-floods",
+        "start_date":  "2021-01-27",
+        "provinces":  [
+                          "Northern Cape"
+                      ],
+        "municipalities":  [
+                               "John Taolo Gaetsewe District Municipality"
+                           ],
+        "named_places":  [
+
+                         ],
+        "deaths_text":  "3 (John Taolo Gaetsewe district)",
+        "settlement_type_mentioned":  null,
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-january-february-2021",
+                        "http://www.northern-cape.gov.za/index.php/about-us/nc-dg/151-media-room/office-of-the-premier/press-releases/420-statement-on-the-floods-and-rains-causing-a-disaster-in-the-province",
+                        "https://en.wikipedia.org/wiki/Cyclone_Eloise"
+                    ]
+    },
+    {
+        "id":  "2021-05-western-cape-overberg",
+        "start_date":  "2021-05-05",
+        "provinces":  [
+                          "Western Cape"
+                      ],
+        "municipalities":  [
+                               "Cape Agulhas Local Municipality",
+                               "Overberg District Municipality",
+                               "Cape Winelands District Municipality",
+                               "Langeberg (Bonnievale)"
+                           ],
+        "named_places":  [
+                             "Struisbaai",
+                             "Struisbaai North",
+                             "L\u0027Agulhas",
+                             "Cape Agulhas",
+                             "Stormsvlei",
+                             "Riviersonderend",
+                             "Bonnievale"
+                         ],
+        "deaths_text":  "2 (truck stuck in flood waters at Bonnievale)",
+        "settlement_type_mentioned":  null,
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-western-cape-may-2021"
+                    ]
+    },
+    {
+        "id":  "2022-01-eastern-cape-mdantsane",
+        "start_date":  "2022-01-08",
+        "provinces":  [
+                          "Eastern Cape"
+                      ],
+        "municipalities":  [
+                               "Buffalo City Metropolitan Municipality",
+                               "OR Tambo District Municipality",
+                               "Amathole District Municipality",
+                               "Alfred Nzo District Municipality"
+                           ],
+        "named_places":  [
+                             "Mdantsane (Zones 1, 3, 9, 18, NU.7)",
+                             "Joe Slovo informal settlement",
+                             "East London",
+                             "Duncan Village",
+                             "Potsdam",
+                             "Shixini (Dutywa)",
+                             "Willowvale",
+                             "Gatyana",
+                             "Mqanduli",
+                             "Matatiele",
+                             "Nyandeni",
+                             "Mthatha",
+                             "Buffalo River",
+                             "Nahoon River (Horseshoe Valley)"
+                         ],
+        "deaths_text":  "7 (FloodList, early), 14 (Daily Maverick 12 Jan), 20 confirmed (Wikipedia)",
+        "settlement_type_mentioned":  "township on floodplain (Mdantsane); informal settlement (Joe Slovo)",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-eastern-cape-january-2022",
+                        "https://www.dailymaverick.co.za/article/2022-01-12-eastern-cape-officials-still-counting-losses-after-floods-kill-14-and-displace-hundreds/",
+                        "https://en.wikipedia.org/wiki/2022_Eastern_Cape_floods",
+                        "https://www.news24.com/news24/southafrica/news/mop-up-operations-begin-after-mdantsane-in-eastern-cape-flooding-one-dead-20220109"
+                    ]
+    },
+    {
+        "id":  "2022-02-tembisa-ivory-park",
+        "start_date":  "2022-02-18",
+        "provinces":  [
+                          "Gauteng"
+                      ],
+        "municipalities":  [
+                               "City of Johannesburg",
+                               "City of Ekurhuleni"
+                           ],
+        "named_places":  [
+                             "Ivory Park",
+                             "Tembisa",
+                             "Kaalspruit river"
+                         ],
+        "deaths_text":  "1 dead, 3 missing",
+        "settlement_type_mentioned":  "township / informal dwellings near river",
+        "sources":  [
+                        "https://floodlist.com/africa/floods-tembisa-gauteng-south-africa-february-2022",
+                        "https://www.news24.com/news24/southafrica/news/flash-floods-heavy-rains-leave-one-dead-187-homeless-3-missing-in-ivory-park-20220219"
+                    ]
+    },
+    {
+        "id":  "2022-12-jukskei-baptism",
+        "start_date":  "2022-12-03",
+        "provinces":  [
+                          "Gauteng"
+                      ],
+        "municipalities":  [
+                               "City of Johannesburg"
+                           ],
+        "named_places":  [
+                             "Alexandra",
+                             "Bramley Park",
+                             "Jukskei River"
+                         ],
+        "deaths_text":  "9 (FloodList 4 Dec) rising to 14 bodies recovered; 3 still missing incl. a baby",
+        "settlement_type_mentioned":  "informal riverbank settlements (Alexandra)",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-johannesburg-december-2022",
+                        "https://www.thedailybeast.com/river-baptism-ceremony-ends-in-disaster-after-flash-flood-kills-14-in-south-africa/",
+                        "https://www.dailymaverick.co.za/article/2022-12-06-bad-weather-stalls-search-for-alexandra-churchgoers-believed-drowned-in-flash-flood/",
+                        "https://www.citizen.co.za/news/jukskei-river-flash-flood-missing-4-december-2022/"
+                    ]
+    },
+    {
+        "id":  "2023-03-port-st-johns-ingquza",
+        "start_date":  "2023-03-23",
+        "provinces":  [
+                          "Eastern Cape"
+                      ],
+        "municipalities":  [
+                               "Port St Johns Local Municipality",
+                               "Ingquza Hill Local Municipality",
+                               "King Sabata Dalindyebo Local Municipality",
+                               "Nyandeni",
+                               "Mbizana",
+                               "Mnquma",
+                               "Mbashe",
+                               "OR Tambo District Municipality"
+                           ],
+        "named_places":  [
+                             "Port St Johns",
+                             "Green Farm",
+                             "Lusikisiki",
+                             "Rhole village",
+                             "Coffee Bay",
+                             "R61 near Isinuka",
+                             "Nkwili (Isilimela Hospital)"
+                         ],
+        "deaths_text":  "at least 3 (2 Lusikisiki, 1 Coffee Bay); 1 missing (FloodList); DM reported 3 missing in Rhole village",
+        "settlement_type_mentioned":  "rural villages, small town",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-eastern-cape-late-march-2023",
+                        "https://www.dailymaverick.co.za/article/2023-03-24-it-was-scary-say-residents-as-the-eastern-cape-is-lashed-by-yet-more-rain/",
+                        "https://www.dailymaverick.co.za/article/2023-03-30-port-st-johns-flood-crisis-leaves-more-than-1000-displaced-and-waterworks-bridges-destroyed/",
+                        "https://www.timeslive.co.za/amp/news/south-africa/2023-03-25-three-dead-hundreds-being-sheltered-after-eastern-cape-floods/",
+                        "https://www.parliament.gov.za/news/port-st-johns-prone-flood-disasters-committee-hears"
+                    ]
+    },
+    {
+        "id":  "2023-09-cape-coast-storm-surge",
+        "start_date":  "2023-09-16",
+        "provinces":  [
+                          "Eastern Cape",
+                          "Western Cape"
+                      ],
+        "municipalities":  [
+                               "Nelson Mandela Bay",
+                               "Kouga Local Municipality",
+                               "George (Wilderness)"
+                           ],
+        "named_places":  [
+                             "Wilderness",
+                             "Aston Bay",
+                             "Jeffreys Bay",
+                             "Kariega"
+                         ],
+        "deaths_text":  "2 (93-year-old woman swept by wave at Wilderness; man found at Aston Bay)",
+        "settlement_type_mentioned":  null,
+        "sources":  [
+                        "https://www.dailymaverick.co.za/article/2023-09-17-two-dead-after-high-winds-and-wild-seas-wreak-havoc-on-eastern-and-western-cape-coasts/"
+                    ]
+    },
+    {
+        "id":  "2023-09-western-cape-cutoff-low",
+        "start_date":  "2023-09-23",
+        "provinces":  [
+                          "Western Cape",
+                          "Eastern Cape"
+                      ],
+        "municipalities":  [
+                               "City of Cape Town",
+                               "Overberg District",
+                               "Overstrand",
+                               "Theewaterskloof",
+                               "Cape Agulhas",
+                               "Cape Winelands District",
+                               "Stellenbosch",
+                               "Garden Route District",
+                               "Nelson Mandela Bay"
+                           ],
+        "named_places":  [
+                             "Mfuleni (Covid Village)",
+                             "Siyahlala informal settlement (Dunoon)",
+                             "Khayelitsha",
+                             "Philippi",
+                             "Strand",
+                             "Kosovo informal settlement",
+                             "Sir Lowry\u0027s Pass Village",
+                             "Botrivier",
+                             "Kleinmond",
+                             "Hermanus",
+                             "Villiersdorp",
+                             "Elgin",
+                             "Greyton",
+                             "Faure",
+                             "Sandvlei",
+                             "Groot Brakrivier",
+                             "Stellenbosch",
+                             "Kuils River"
+                         ],
+        "deaths_text":  "at least 11 (8 electrocuted incl. 4 children in informal settlements, 3 washed away)",
+        "settlement_type_mentioned":  "informal settlements, township (Mfuleni)",
+        "sources":  [
+                        "https://floodlist.com/africa/south-africa-floods-western-cape-september-2023",
+                        "https://groundup.org.za/article/hundreds-flee-flooded-homes-as-storms-batter-western-cape/",
+                        "https://en.wikipedia.org/wiki/2023_Western_Cape_floods",
+                        "https://snowreport.co.za/disruptive-weather-warnings-for-south-africa-cut-off-low-24-september-2023/",
+                        "https://www.timeslive.co.za/news/south-africa/2023-11-07-national-state-of-disaster-declared-for-western-and-eastern-cape-after-september-floods/",
+                        "https://www.gov.za/speeches/national-disaster-classification-7-nov-2023-0000"
+                    ]
+    },
+    {
+        "id":  "2023-10-or-tambo-floods",
+        "start_date":  "2023-10-17",
+        "provinces":  [
+                          "Eastern Cape"
+                      ],
+        "municipalities":  [
+                               "OR Tambo District Municipality"
+                           ],
+        "named_places":  [
+                             "Maqebevu village",
+                             "Rainy village",
+                             "Phompo River",
+                             "Mthatha"
+                         ],
+        "deaths_text":  "at least 3 (1 Maqebevu, 2 Rainy village); 2 feared missing",
+        "settlement_type_mentioned":  "rural villages",
+        "sources":  [
+                        "https://reliefweb.int/report/south-africa/south-africa-severe-weather-and-floods-saws-media-echo-daily-flash-20-october-2023",
+                        "https://www.news24.com/news24/community-newspaper/mthathaexpress/two-high-school-learners-drowned-in-rivers-on-their-way-home-20231017"
+                    ]
+    },
+    {
+        "id":  "2024-06-eastern-cape-floods",
+        "start_date":  "2024-06-01",
+        "provinces":  [
+                          "Eastern Cape"
+                      ],
+        "municipalities":  [
+                               "Nelson Mandela Bay Metro",
+                               "Buffalo City Metro",
+                               "Sarah Baartman District"
+                           ],
+        "named_places":  [
+                             "Kariega",
+                             "KwaNobuhle",
+                             "Walmer",
+                             "Blue Horizon Bay",
+                             "Kamesh",
+                             "Kabega Park",
+                             "Chatty",
+                             "Kuyga",
+                             "Kwadwesi",
+                             "Qunu (NMB)",
+                             "Langa",
+                             "Greenfields",
+                             "Gqeberha",
+                             "Ducats",
+                             "Pefferville",
+                             "Duncan Village",
+                             "Cambridge Location",
+                             "Mzamomhle",
+                             "Reeston",
+                             "Stoney Drift",
+                             "Mdantsane",
+                             "Gompo",
+                             "Dawn",
+                             "Tyriville"
+                         ],
+        "deaths_text":  "10 in Nelson Mandela Bay (Daily Maverick 9 Jun); 11 in Eastern Cape (Wikipedia); SAnews reported 7 in Eastern Cape on 3 Jun",
+        "settlement_type_mentioned":  "informal settlements / makeshift homes (over 2,000 evacuated from makeshift homes)",
+        "sources":  [
+                        "https://www.dailymaverick.co.za/article/2024-06-09-death-toll-10-after-nelson-mandela-bay-flood/",
+                        "https://www.algoafm.co.za/local/nmb-flood-toll-climbs-and-more-rain-is-coming",
+                        "https://www.sanews.gov.za/south-africa/buffalo-city-search-and-rescue-operations-continue",
+                        "https://groundup.org.za/article/storm-in-tongaat/",
+                        "https://www.news24.com/southafrica/news/national-disaster-declared-for-kzn-eastern-cape-free-state-in-wake-of-severe-weather-20240612",
+                        "https://en.wikipedia.org/wiki/June_2024_South_African_storm_complex"
+                    ]
+    },
+    {
+        "id":  "2024-07-western-cape-storms",
+        "start_date":  "2024-07-07",
+        "provinces":  [
+                          "Western Cape"
+                      ],
+        "municipalities":  [
+                               "City of Cape Town",
+                               "Cederberg LM",
+                               "George LM",
+                               "Stellenbosch LM",
+                               "Swartland LM",
+                               "Garden Route District",
+                               "Cape Winelands District",
+                               "West Coast District"
+                           ],
+        "named_places":  [
+                             "Khayelitsha",
+                             "Lwandle",
+                             "Nomzamo",
+                             "Strand",
+                             "Gugulethu",
+                             "Philippi",
+                             "Philippi East",
+                             "Masiphumelele",
+                             "Mfuleni",
+                             "Tafelsig",
+                             "Vygieskraal",
+                             "Malema",
+                             "Siyahlala",
+                             "Graveyard Pond",
+                             "Baghdad",
+                             "Macassar",
+                             "Driftsands",
+                             "Eluxolweni",
+                             "Marikana",
+                             "Taiwan",
+                             "Strandfontein",
+                             "Kalk Bay",
+                             "Fish Hoek",
+                             "Muizenberg",
+                             "Wynberg",
+                             "Wupperthal",
+                             "Eselsbank",
+                             "Citrusdal",
+                             "Riverlands"
+                         ],
+        "deaths_text":  "No flood-related fatalities reported (GroundUp, 9 Jul 2024)",
+        "settlement_type_mentioned":  "informal settlements",
+        "sources":  [
+                        "https://groundup.org.za/article/thousands-of-homes-flooded-as-violent-storm-batters-western-cape/",
+                        "https://groundup.org.za/article/western-cape-storms-worst-still-to-come/",
+                        "https://www.news24.com/southafrica/news/western-cape-gets-disaster-declaration-but-is-still-counting-the-cost-of-flooding-20240715",
+                        "https://www.sabcnews.com/sabcnews/western-cape-saw-severe-damaging-weather-in-2024/",
+                        "https://www.dailymaverick.co.za/article/2024-10-08-year-of-disasters-leaves-western-cape-with-multibillion-rand-shortfall/",
+                        "https://www.capetownetc.com/news/saws-issues-orange-level-8-warning-as-storm-approaches-western-cape/"
+                    ]
+    },
+    {
+        "id":  "2024-12-centurion-flash-floods",
+        "start_date":  "2024-12-22",
+        "provinces":  [
+                          "Gauteng"
+                      ],
+        "municipalities":  [
+                               "City of Tshwane"
+                           ],
+        "named_places":  [
+                             "Centurion"
+                         ],
+        "deaths_text":  "Motorcyclist and motorist died (headline)",
+        "settlement_type_mentioned":  null,
+        "sources":  [
+                        "https://allafrica.com/stories/202412230033.html"
+                    ]
+    },
+    {
+        "id":  "2025-06-eastern-cape-mthatha-floods",
+        "start_date":  "2025-06-09",
+        "provinces":  [
+                          "Eastern Cape"
+                      ],
+        "municipalities":  [
+                               "OR Tambo District",
+                               "King Sabata Dalindyebo LM",
+                               "Amathole District",
+                               "Alfred Nzo District",
+                               "Chris Hani District",
+                               "Joe Gqabi District",
+                               "Sarah Baartman District"
+                           ],
+        "named_places":  [
+                             "Mthatha",
+                             "Slovo Park",
+                             "Efata Special School for the Deaf and Blind",
+                             "R61 (Mthatha-Ngcobo)",
+                             "Ngcobo",
+                             "Ngqeleni",
+                             "Butterworth",
+                             "Mthatha River",
+                             "Mthatha Dam"
+                         ],
+        "deaths_text":  "102 bodies recovered (EC government, 30 June); 103 (4 July), incl. 32 pupils and 39-40 children",
+        "settlement_type_mentioned":  "homes built in unsafe areas too close to the Mthatha River; rural villages",
+        "sources":  [
+                        "https://en.wikipedia.org/wiki/June_2025_South_Africa_floods",
+                        "https://www.gov.za/news/media-statements/eastern-cape-provincial-government-floods-update-status-update-30-june-2025",
+                        "https://www.timeslive.co.za/news/south-africa/2025-06-11-eight-bodies-recovered-from-school-bus-swept-away-by-mthatha-floods/",
+                        "https://www.dailymaverick.co.za/article/2025-06-18-deadly-mthatha-flood-underscores-worsening-factors-increasing-risks-for-sa/",
+                        "https://www.dailymaverick.co.za/article/2025-06-19-eaastern-cape-floods-why-sas-disaster-management-and-legislation-failed/",
+                        "https://www.dailydispatch.co.za/news/2026-06-23-saws-draws-global-praise-for-life-saving-mthatha-flood-warnings/",
+                        "https://iol.co.za/news/weather/2025-12-24-devastating-floods-in-kwazulu-natal-and-eastern-cape-a-year-of-loss-and-recovery/"
+                    ]
+    },
+    {
+        "id":  "2026-06-garden-route-karoo-kouga-floods",
+        "start_date":  "2026-06-03",
+        "provinces":  [
+                          "Western Cape",
+                          "Eastern Cape"
+                      ],
+        "municipalities":  [
+                               "Garden Route District",
+                               "Central Karoo District",
+                               "Oudtshoorn LM",
+                               "Kouga LM",
+                               "Nelson Mandela Bay Metro",
+                               "Sarah Baartman District"
+                           ],
+        "named_places":  [
+                             "De Rust",
+                             "Welgeluk",
+                             "Toekomsrus",
+                             "Gourits River",
+                             "Gouritsmond",
+                             "Vleesbaai",
+                             "Leeu Gamka (N1)",
+                             "Molteno Pass",
+                             "Harkerville",
+                             "Covie",
+                             "Sedgefield",
+                             "Karatara",
+                             "Oceanview informal settlement",
+                             "Kingsway Village informal settlement",
+                             "Patensie",
+                             "Baviaanskloof",
+                             "Newton Park"
+                         ],
+        "deaths_text":  "1 person died trying to cross a flooded river",
+        "settlement_type_mentioned":  "informal settlements (Kouga)",
+        "sources":  [
+                        "https://www.dailymaverick.co.za/article/2026-06-03-garden-route-braces-for-more-flooding-as-second-major-storm-hits-in-a-month/",
+                        "https://www.georgeherald.com/News/Article/National-News/garden-route-battered-by-up-to-200mm-of-rain-as-n1-closes-and-rivers-flood-202606041227",
+                        "https://www.news24.com/southafrica/weather/eastern-cape-floods-force-evacuations-and-widespread-road-closures-20260604-0580",
+                        "https://www.georgeherald.com/News/Article/Local-News/garden-route-flood-danger-remains-despite-improving-weather-as-1-death-confirmed-202606051223",
+                        "https://iol.co.za/news/environment/2026-06-05-emergency-services-on-high-alert-as-flooding-hits-garden-route-and-central-karoo/",
+                        "https://www.capetownetc.com/news/one-death-in-garden-route-flooding-as-western-cape-issues-warning/"
+                    ]
+    }
+]

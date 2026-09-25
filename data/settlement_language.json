@@ -1,0 +1,56 @@
+{
+    "value":  [
+                  {
+                      "location":  "Walmer Airport Valley, Gqeberha",
+                      "province":  "Eastern Cape",
+                      "settlement_type":  "Informal settlement",
+                      "residents":  27000,
+                      "dominant_language":  "isiXhosa",
+                      "pct_local":  100,
+                      "warning_language":  "English/Afrikaans",
+                      "never_received_warning_pct":  77.8,
+                      "phone_owners_ever_warned_pct":  34.9,
+                      "trust_community_radio_pct":  88,
+                      "warning_language_verified":  "English (SAWS/NDMC/municipality); no official Afrikaans or African-language warning found",
+                      "warning_language_note":  "Original \"English/Afrikaans\" value traced to unsourced framing in The Conversation (16 Jun 2026); Afrikaans not verified as an official warning language. See warning_language.json."
+                  },
+                  {
+                      "location":  "Quarry Road West, Durban",
+                      "province":  "KwaZulu-Natal",
+                      "settlement_type":  "Informal settlement",
+                      "dominant_language":  "isiZulu",
+                      "pct_local":  80,
+                      "warning_language":  "English/Afrikaans",
+                      "note":  "community-built parallel warning system",
+                      "warning_language_verified":  "English (SAWS/NDMC); eThekwini has issued isiZulu newsflashes ad hoc (e.g. 27 Jun 2023) but recent alerts English-only",
+                      "ews_detail":  "Amnesty 2025 (p.50, 67-68): community EWS since 2016 (eThekwini + UKZN); SAWS data + community reports; WhatsApp groups, whistles, ropes, evacuation map; ~30 min lead time; triggered 5 times by May 2025. April 2022: all residents evacuated, one death by electrocution (no drownings). Not yet replicated to the 180 high-risk settlements; nearest shelter 5km away.",
+                      "warning_language_note":  "Original \"English/Afrikaans\" value traced to unsourced framing in The Conversation (16 Jun 2026); Afrikaans not verified as an official warning language. See warning_language.json."
+                  },
+                  {
+                      "location":  "Mdantsane, Buffalo City",
+                      "province":  "Eastern Cape",
+                      "settlement_type":  "Formal township",
+                      "dominant_language":  "isiXhosa",
+                      "pct_local":  81.8,
+                      "warning_language":  "English/Afrikaans",
+                      "warning_language_verified":  "English (SAWS/NDMC/municipality); no official Afrikaans or African-language warning found",
+                      "warning_language_note":  "Original \"English/Afrikaans\" value traced to unsourced framing in The Conversation (16 Jun 2026); Afrikaans not verified as an official warning language. See warning_language.json."
+                  },
+                  {
+                      "location":  "Alexandra, Johannesburg",
+                      "province":  "Gauteng",
+                      "settlement_type":  "Formal township + informal backyard shacks",
+                      "dominant_language":  "none \u003e30%",
+                      "breakdown":  {
+                                        "isiZulu":  23,
+                                        "Sesotho":  13,
+                                        "English":  14,
+                                        "Sepedi":  13
+                                    },
+                      "warning_language":  "English/Afrikaans",
+                      "warning_language_verified":  "English (SAWS/NDMC/municipality); no official Afrikaans or African-language warning found",
+                      "warning_language_note":  "Original \"English/Afrikaans\" value traced to unsourced framing in The Conversation (16 Jun 2026); Afrikaans not verified as an official warning language. See warning_language.json."
+                  }
+              ],
+    "Count":  4
+}

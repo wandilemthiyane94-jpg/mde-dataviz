@@ -1,0 +1,276 @@
+{
+  "findings": [
+    {
+      "claim": "Reading in a second language is slower and needs more fixations than reading in L1, even for proficient bilinguals reading natural text.",
+      "mechanism": "processing cost",
+      "evidence_strength": "moderate",
+      "effect_size_or_numbers": "Bilinguals read a whole novel with longer total reading times, more fixations and fewer word skips in L2 English than in L1 Dutch, with L2 patterns resembling those of younger or less skilled readers (see paper for exact values).",
+      "population/context": "Dutch-English unbalanced bilinguals vs English monolinguals; eye-tracking while reading an entire novel (lab).",
+      "citation": "Cop, U., Drieghe, D., & Duyck, W. (2015). Eye movement patterns in natural reading: A comparison of monolingual and bilingual reading of a novel. PLOS ONE, 10(8), e0134008.",
+      "doi_or_url": "https://doi.org/10.1371/journal.pone.0134008",
+      "relevance_to_SA": "A short English SMS or cell-broadcast alert takes longer to process and is more likely to be misread by isiZulu/isiXhosa/Tshivenda/Xitsonga/Sepedi L1 readers. These are also university-educated bilinguals, so the cost is likely larger for residents with less schooling."
+    },
+    {
+      "claim": "Under social-evaluative stress, L2 readers with high reading anxiety became less efficient (slower), whereas L1 readers were not harmed and high-working-memory L1 readers actually became more efficient.",
+      "mechanism": "stress x L2",
+      "evidence_strength": "moderate",
+      "effect_size_or_numbers": "N = 86 L2 Spanish readers vs 70 L1 English readers. Stress lengthened response times for high-anxiety L2 readers and shortened them for high-WM L1 readers. Framed within attentional control theory.",
+      "population/context": "US university students, lab reading comprehension (fact, bridging and pragmatic inference questions).",
+      "citation": "Rai, M. K., Loschky, L. C., & Harris, R. J. (2015). The effects of stress on reading: A comparison of first-language versus intermediate second-language reading comprehension. Journal of Educational Psychology, 107(2), 348-363.",
+      "doi_or_url": "https://doi.org/10.1037/a0037591 ; https://eric.ed.gov/?id=EJ1061915",
+      "relevance_to_SA": "Supports the argument that the stress of a flood emergency pushes L2 English comprehension down further, while L1 comprehension holds up better. Direct evidence for a stress x language interaction, though the stressor was mild and lab-induced."
+    },
+    {
+      "claim": "Stress slows L2 foreign-language reading, especially for questions that need inference, and working-memory capacity predicts L2 comprehension accuracy.",
+      "mechanism": "stress x L2",
+      "evidence_strength": "moderate",
+      "effect_size_or_numbers": "N = 55 intermediate L2 Spanish learners. Higher-WM learners were more accurate. Stress increased processing time overall, with a trend toward larger slowing for more complex inferences.",
+      "population/context": "US learners of Spanish; stress manipulated with a video camera (lab).",
+      "citation": "Rai, M. K., Loschky, L. C., Harris, R. J., Peck, N. R., & Cook, L. G. (2011). Effects of stress and working memory capacity on foreign language readers' inferential processing during comprehension. Language Learning, 61(1), 187-218.",
+      "doi_or_url": "https://doi.org/10.1111/j.1467-9922.2010.00592.x ; https://eric.ed.gov/?id=EJ928520",
+      "relevance_to_SA": "Warnings that leave meaning to be inferred (e.g. 'Level 6 disruptive rain: expect flooding of low-lying areas', which requires the reader to work out 'is that my street? should I leave?') are the kind of content most vulnerable to stress in L2."
+    },
+    {
+      "claim": "Eye-tracking shows stress disrupts global, situation-model-level text processing in L2 readers but not L1 readers.",
+      "mechanism": "stress x L2",
+      "evidence_strength": "weak/single study",
+      "effect_size_or_numbers": "N = 43 (22 L1 English, 21 L2 English with L1 Mandarin). Under stress, L2 readers made more between-sentence regressions (p = .036) and reread topic sentences more (p = .007-.013). Global processing in L1 readers was unaffected. Both groups showed slower local syntactic integration.",
+      "population/context": "Graduate-age students, GRE passages, social-evaluative and negative-feedback stress (lab).",
+      "citation": "Xia, Z., Chen, C.-H., Kuo, J.-Y., & Zhang, M. (2025). How do stress situations affect higher-level text processing in L1 and L2 readers? An eye-tracking study. Journal of Eye Movement Research, 18(2), 7.",
+      "doi_or_url": "https://doi.org/10.3390/jemr18020007",
+      "relevance_to_SA": "Under stress, L2 readers struggle to build the 'what does this mean for me' model of a message, which is exactly the personalisation stage of warning response."
+    },
+    {
+      "claim": "Non-native listeners reliably understand speech in noise, reverberation and other adverse conditions worse than native listeners, and the gap widens as conditions get worse.",
+      "mechanism": "processing cost",
+      "evidence_strength": "strong (meta-analysis/replicated)",
+      "effect_size_or_numbers": "Narrative review of many studies. The non-native disadvantage is consistent across most masker types and grows with signal degradation. Non-native listeners must cope with both an imperfect signal and imperfect language knowledge.",
+      "population/context": "Many L1/L2 pairs; lab speech-perception studies.",
+      "citation": "Garcia Lecumberri, M. L., Cooke, M., & Cutler, A. (2010). Non-native speech perception in adverse conditions: A review. Speech Communication, 52(11-12), 864-886.",
+      "doi_or_url": "https://doi.org/10.1016/j.specom.2010.08.014",
+      "relevance_to_SA": "Directly relevant to loud-hailer, siren-plus-voice, radio and ward-councillor announcements in English during heavy rain, wind and night-time chaos. Spoken English warnings in noise will be understood worse by L2 listeners."
+    },
+    {
+      "claim": "Emotionally charged words and reprimands produce stronger physiological arousal in L1 than in L2.",
+      "mechanism": "emotional resonance",
+      "evidence_strength": "moderate",
+      "effect_size_or_numbers": "Skin conductance responses to taboo words and childhood reprimands were larger in L1 Turkish than in L2 English among Turkish-English bilinguals (N = 32).",
+      "population/context": "Late Turkish-English bilinguals in the US (lab psychophysiology).",
+      "citation": "Harris, C. L., Aycicegi, A., & Gleason, J. B. (2003). Taboo words and reprimands elicit greater autonomic reactivity in a first language than in a second language. Applied Psycholinguistics, 24(4), 561-579.",
+      "doi_or_url": "https://doi.org/10.1017/S0142716403000286",
+      "relevance_to_SA": "An imperative such as 'Leave now!' or 'Danger!' is likely to feel less arousing and urgent in L2 English than in L1 isiZulu or isiXhosa (e.g. 'Phumani manje!'). This is an inference, since no study has tested warnings directly."
+    },
+    {
+      "claim": "Reviews conclude that a foreign or second language is typically processed with reduced emotional resonance, a pattern that varies with age of acquisition, proficiency and context of learning.",
+      "mechanism": "emotional resonance",
+      "evidence_strength": "strong (meta-analysis/replicated)",
+      "effect_size_or_numbers": "Narrative reviews synthesising autobiographical-memory, self-report, psychophysiology and decision studies (no pooled effect size). Pavlenko stresses that the effect is weaker for early or immersed bilinguals.",
+      "population/context": "Mostly late bilinguals, often in Western lab settings.",
+      "citation": "Caldwell-Harris, C. L. (2015). Emotionality differences between a native and foreign language: Implications for everyday life. Current Directions in Psychological Science, 24(3), 214-219. / Pavlenko, A. (2012). Affective processing in bilingual speakers: Disembodied cognition? International Journal of Psychology, 47(6), 405-428.",
+      "doi_or_url": "https://doi.org/10.1177/0963721414566268 ; https://doi.org/10.1080/00207594.2012.743665",
+      "relevance_to_SA": "Many black South Africans learn English early through schooling, which may weaken the effect. But English is often a school or formal register rather than the language of home and emotion, which favours the effect."
+    },
+    {
+      "claim": "Presenting a decision problem in a foreign language reduced framing biases (the 'foreign-language effect').",
+      "mechanism": "foreign language effect",
+      "evidence_strength": "moderate",
+      "effect_size_or_numbers": "In the Asian-disease framing task the usual gain/loss framing effect appeared in L1 but was eliminated or much reduced in L2 across several experiments (e.g. English-Japanese, Korean-English, English-French). Loss aversion in bets was also reduced.",
+      "population/context": "University students, hypothetical choice tasks (lab).",
+      "citation": "Keysar, B., Hayakawa, S. L., & An, S. G. (2012). The foreign-language effect: Thinking in a foreign tongue reduces decision biases. Psychological Science, 23(6), 661-668.",
+      "doi_or_url": "https://doi.org/10.1177/0956797611432178",
+      "relevance_to_SA": "Implies that L2 warnings are processed more 'coldly', with less emotion. That may dampen the felt urgency that drives quick protective action. Extrapolation from decision tasks to warnings is untested."
+    },
+    {
+      "claim": "Hazards presented in a foreign language were judged less risky and more beneficial than the same hazards in the native language, an effect mediated by affect.",
+      "mechanism": "foreign language effect",
+      "evidence_strength": "moderate",
+      "effect_size_or_numbers": "Italian students rated 26 hazards (e.g. nuclear power, air travel, climate change) in L1 Italian or L2 English. The foreign-language condition gave lower risk and higher benefit judgments, via more positive affect.",
+      "population/context": "Italian university students (lab/survey).",
+      "citation": "Hadjichristidis, C., Geipel, J., & Savadori, L. (2015). The effect of foreign language in judgments of risk and benefit: The role of affect. Journal of Experimental Psychology: Applied, 21(2), 117-129.",
+      "doi_or_url": "https://doi.org/10.1037/xap0000044",
+      "relevance_to_SA": "The most direct lab evidence that the same hazard feels less risky in L2. It supports the claim that English warnings may understate perceived risk for isiZulu/isiXhosa speakers, but it is not tested with real warnings."
+    },
+    {
+      "claim": "Two meta-analyses find a reliable but modest foreign-language effect on decisions: more utilitarian moral choices and less risk aversion in L2.",
+      "mechanism": "foreign language effect",
+      "evidence_strength": "strong (meta-analysis/replicated)",
+      "effect_size_or_numbers": "Circi et al.: 17 studies / 47 experiments (38 moral, 9 risk), with significant FLE in both domains. Del Maschio et al.: reliable FLE not moderated by L2 age of acquisition, proficiency or task type. Pooled effects are small (roughly d = 0.2 per secondary commentary; see the papers for exact estimates).",
+      "population/context": "Mostly European and US student samples; hypothetical dilemmas and gambles.",
+      "citation": "Circi, R., Gatti, D., Russo, V., & Vecchi, T. (2021). The foreign language effect on decision-making: A meta-analysis. Psychonomic Bulletin & Review, 28, 1131-1141. / Del Maschio, N., Crespi, F., Peressotti, F., Abutalebi, J., & Sulpizio, S. (2022). Decision-making depends on language: A meta-analysis of the Foreign Language Effect. Bilingualism: Language and Cognition, 25(4), 617-630.",
+      "doi_or_url": "https://doi.org/10.3758/s13423-020-01871-z ; https://www.cambridge.org/core/journals/bilingualism-language-and-cognition/article/decisionmaking-depends-on-language-a-metaanalysis-of-the-foreign-language-effect/357CDDF948DB7FC3C101534F1EA3442A",
+      "relevance_to_SA": "Confirms the effect is real but small, so it should be a supporting argument rather than the main one. Reduced risk aversion in L2 is directionally consistent with under-reaction to warnings."
+    },
+    {
+      "claim": "The foreign-language effect does not appear for every bias: studies find no effect for outcome bias, representativeness, the conjunction and base-rate fallacies, or illusions of causality.",
+      "mechanism": "foreign language effect",
+      "evidence_strength": "moderate",
+      "effect_size_or_numbers": "Null results in several experiments (Vives et al. 2018). Further 'evidence of absence' papers (e.g. illusion of causality, Bilingualism: Language and Cognition) and a large-sample (N = 220) Bayesian replication that did not reproduce the original framing FLE.",
+      "population/context": "Spanish-English and other bilingual students (lab).",
+      "citation": "Vives, M.-L., Aparici, M., & Costa, A. (2018). The limits of the foreign language effect on decision-making: The case of the outcome bias and the representativeness heuristic. PLOS ONE, 13(9), e0203528.",
+      "doi_or_url": "https://doi.org/10.1371/journal.pone.0203528",
+      "relevance_to_SA": "Caveat: do not overstate the foreign-language effect. The comprehension and processing-cost arguments are more robust than the 'less emotional risk' argument."
+    },
+    {
+      "claim": "Translated warning terms can carry less urgency than the originals and are understood less accurately by L2-community members.",
+      "mechanism": "jargon/numeracy",
+      "evidence_strength": "moderate",
+      "effect_size_or_numbers": "66% of English-speaking respondents correctly defined a tornado 'watch', vs 38% of Spanish-speaking respondents given the official Spanish terms. Spanish speakers ranked 'aviso' (the official term for 'warning') among the least urgent options, and 'alerta', 'amenaza' and 'emergencia' as most urgent.",
+      "population/context": "US national Severe Weather and Society Survey, 2021, administered in English and Spanish (University of Oklahoma).",
+      "citation": "Trujillo-Falcón, J. E., Gaviria Pabón, A. R., Ripberger, J. T., Bitterman, A., Thornton, J. B., Krocak, M. J., Ernst, S. R., Cassiani Obeso, E., & Lipski, J. (2022). ¿Aviso o Alerta? Developing effective, inclusive, and consistent watch and warning translations for U.S. Spanish speakers. Bulletin of the American Meteorological Society, 103(12), E2791-E2803.",
+      "doi_or_url": "https://doi.org/10.1175/BAMS-D-22-0050.1",
+      "relevance_to_SA": "A strong template for SA. Simply translating 'Orange Level 6 warning' or 'disruptive rain' into isiZulu or isiXhosa is not enough: candidate terms must be tested for comprehension and perceived urgency with L1 speakers."
+    },
+    {
+      "claim": "Even among L1 speakers, colour- and level-coded warnings ('amber level 3') are ambiguous without knowledge of the scale. People disagreed on whether level 1 or level 5 was the most severe.",
+      "mechanism": "jargon/numeracy",
+      "evidence_strength": "weak/single study",
+      "effect_size_or_numbers": "Qualitative focus groups. Participants could order yellow < amber but disagreed on the direction of the numeric scale and on which level should prompt concern.",
+      "population/context": "UK public, heatwave and cold-weather alerts.",
+      "citation": "Tang, C. (2022). 'Amber Alert' or 'Heatwave Warning': The role of linguistic framing in mediating understandings of early warning messages about heatwaves and cold spells. Applied Linguistics, 43(2), 227-252.",
+      "doi_or_url": "https://doi.org/10.1093/applin/amab020",
+      "relevance_to_SA": "SAWS's impact-based 'Yellow/Orange/Red, Level 1-10' matrix is likely even harder to decode in L2 and without prior familiarity. For example, in April 2022 KZN warnings were escalated from Level 5 to 8 to 9."
+    },
+    {
+      "claim": "The public often misreads probabilistic forecasts ('30% chance of rain') because the reference class is not stated.",
+      "mechanism": "jargon/numeracy",
+      "evidence_strength": "moderate",
+      "effect_size_or_numbers": "Survey of 750 people in five cities (Amsterdam, Athens, Berlin, Milan, New York). Many respondents gave interpretations other than the meteorologists' meaning (the '30% of days like this' reference class), with large differences between cities.",
+      "population/context": "Urban adults, mostly interviewed in L1.",
+      "citation": "Gigerenzer, G., Hertwig, R., van den Broek, E., Fasolo, B., & Katsikopoulos, K. V. (2005). 'A 30% chance of rain tomorrow': How does the public understand probabilistic weather forecasts? Risk Analysis, 25(3), 623-629.",
+      "doi_or_url": "https://doi.org/10.1111/j.1539-6924.2005.00608.x",
+      "relevance_to_SA": "Numeracy and reference-class problems exist even in L1, and are likely compounded in L2 and at lower levels of schooling. This argues for concrete action statements rather than probabilities or levels."
+    },
+    {
+      "claim": "Impact-based warnings that state what the weather will do, together with specific behavioural recommendations, raise risk perception and intended protective action more than phenomenon-only warnings, though effects are modest.",
+      "mechanism": "jargon/numeracy",
+      "evidence_strength": "moderate",
+      "effect_size_or_numbers": "Online survey experiments in NZ and Switzerland. Impact-based information raised perceived risk and intentions in some conditions, and behavioural recommendations improved appropriate intended responses. Results were mixed across hazards and colour levels (see papers for coefficients).",
+      "population/context": "NZ public (Potter et al.), Swiss public (Weyrich et al.), in L1.",
+      "citation": "Potter, S. H., Kreft, P. V., Milojev, P., Noble, C., Montz, B., Dhellemmes, A., Woods, R. J., & Gauden-Ing, S. (2018). The influence of impact-based severe weather warnings on risk perceptions and intended protective actions. International Journal of Disaster Risk Reduction, 30, 34-43. / Weyrich, P., Scolobig, A., Bresch, D. N., & Patt, A. (2018). Effects of impact-based warnings and behavioral recommendations for extreme weather events. Weather, Climate, and Society, 10(4), 781-796.",
+      "doi_or_url": "https://doi.org/10.1016/j.ijdrr.2018.03.031 ; https://doi.org/10.1175/WCAS-D-18-0038.1",
+      "relevance_to_SA": "SAWS's impact-based system is sound in principle, but the impact and action content has to reach people in a language they process fluently."
+    },
+    {
+      "claim": "Linguistic minorities face distinct disaster vulnerability ('disaster linguicism'): official information in the dominant language did not reach them or was not understood, so they relied on co-ethnic networks and informal translators.",
+      "mechanism": "channel",
+      "evidence_strength": "moderate",
+      "effect_size_or_numbers": "Qualitative interviews with immigrant and refugee linguistic minorities after the 2010-11 Canterbury (NZ) earthquakes and the 2011 Tohoku disaster (Miyagi, Japan). No quantified effect sizes.",
+      "population/context": "Christchurch/Canterbury and Miyagi, 2010-2011.",
+      "citation": "Uekusa, S. (2019). Disaster linguicism: Linguistic minorities in disasters. Language in Society, 48(3), 353-375. / Uekusa, S., & Matthewman, S. (2017). Vulnerable and resilient? Immigrants and refugees in the 2010-2011 Canterbury and Tohoku disasters. International Journal of Disaster Risk Reduction, 22, 355-361.",
+      "doi_or_url": "https://doi.org/10.1017/S0047404519000150 ; https://doi.org/10.1016/j.ijdrr.2017.02.006",
+      "relevance_to_SA": "An important conceptual difference: in SA the linguistically excluded are the majority, not a minority. That makes an English-only default a structural form of linguicism, not an edge case."
+    },
+    {
+      "claim": "In the 2017 Northern California (Sonoma) wildfires, official alerts were mostly in English only. Undocumented Latino/a and Indigenous (Mixteco, Triqui, Zapoteco) immigrants lacked usable warnings and relied on community organisations and radio.",
+      "mechanism": "channel",
+      "evidence_strength": "moderate",
+      "effect_size_or_numbers": "Qualitative and community-based research, no effect sizes. Many Indigenous migrants speak neither English nor Spanish well, so Spanish translation alone was insufficient.",
+      "population/context": "Sonoma and Ventura counties, California, 2017 wildfires.",
+      "citation": "Mendez, M., Flores-Haro, G., & Zucker, L. (2020). The (in)visible victims of disaster: Understanding the vulnerability of undocumented Latino/a and indigenous immigrants. Geoforum, 116, 50-62.",
+      "doi_or_url": "https://doi.org/10.1016/j.geoforum.2020.07.007",
+      "relevance_to_SA": "Parallels SA, where translating into one additional language (e.g. isiZulu only) would still exclude Tshivenda, Xitsonga, Sepedi and other speakers. Warnings need to be matched to the languages of each area."
+    },
+    {
+      "claim": "In the 2011 Brisbane floods, CALD communities depended on community 'gatekeepers' (leaders, ethnic media) who received, translated and redistributed official risk information.",
+      "mechanism": "trust/source",
+      "evidence_strength": "weak/single study",
+      "effect_size_or_numbers": "Qualitative interviews with CALD gatekeepers, no effect sizes.",
+      "population/context": "Brisbane, Australia, 2011 floods.",
+      "citation": "Shepherd, J., & van Vuuren, K. (2014). The Brisbane flood: CALD gatekeepers' risk communication role. Disaster Prevention and Management, 23(4), 469-483.",
+      "doi_or_url": "https://doi.org/10.1108/DPM-08-2013-0133",
+      "relevance_to_SA": "Matches the SA finding that ward councillors and community leaders are the main warning source. Formalising and resourcing these intermediaries, in L1, is an evidence-based lever."
+    },
+    {
+      "claim": "Linguistic analysis of SMS warnings from the 2022 South East Queensland floods found wording that is hard to understand or translate, such as 'evacuate', 'shelter in place' and 'occurring'. Simple, translatable wording can be used within the same character limits.",
+      "mechanism": "jargon/numeracy",
+      "evidence_strength": "weak/single study",
+      "effect_size_or_numbers": "7 real SMS warnings analysed. 25 wording recommendations, e.g. 'leave' instead of 'evacuate' and 'stay where you are' instead of 'shelter in place'. About 23% of Australians speak a language other than English at home.",
+      "population/context": "South East Queensland 2022 floods, CALD communities (Australian Journal of Emergency Management, practitioner-oriented peer-reviewed journal).",
+      "citation": "Bromhead, H. (2023). Making messages effective for all: South East Queensland flood warnings and alerts. Australian Journal of Emergency Management, 38(4), 40-46.",
+      "doi_or_url": "https://knowledge.aidr.org.au/resources/ajem-october-2023-making-messages-effective-for-all-south-east-queensland-flood-warnings-and-alerts/",
+      "relevance_to_SA": "Directly transferable method (clear, explicit, translatable language) for rewriting SAWS and municipal SMS templates before translation into isiZulu, isiXhosa and other languages."
+    },
+    {
+      "claim": "Japan developed 'yasashii nihongo' (Easy Japanese) for disaster messaging after foreign residents were disproportionately harmed in the 1995 Hanshin-Awaji earthquake. Even foreign residents at intermediate-to-advanced proficiency show poor disaster preparedness.",
+      "mechanism": "processing cost",
+      "evidence_strength": "weak/single study",
+      "effect_size_or_numbers": "Koike et al. (2024), N = 114 international students (72% at JLPT N2-N3): only 37.7% had confirmed evacuation routes, about half did not know nearby evacuation sites, and 23.7% knew how to use the Dial 171 safety-confirmation service. The Hirosaki University (Sato Kazuyuki) group defined Easy Japanese as understandable by about 80% of foreign residents, and reported it was understood better than English or Chinese messages. That claim is reported in secondary sources; the original is in Japanese and was not verified here.",
+      "population/context": "Foreign residents in Japan.",
+      "citation": "Koike, R., Sonoda, N., Furuki, H., & Morimoto, A. (2024). Individual preparedness for large-scale earthquakes among international students in Japan: A cross-sectional questionnaire survey. JMA Journal, 7(4), 496-505. / Kido, H., & Saeki, S. (2025). Dissemination of information to foreigners in preparation for natural disasters. JMA Journal, 8(2), 658-659.",
+      "doi_or_url": "https://doi.org/10.31662/jmaj.2024-0049 ; https://doi.org/10.31662/jmaj.2024-0327",
+      "relevance_to_SA": "A precedent for a national 'plain-language' tier, which could be applied as plain isiZulu or isiXhosa templates plus plain English. The Japanese quantitative comprehension data is mostly in Japanese-language reports, so treat it cautiously."
+    },
+    {
+      "claim": "In a flood-prone isiXhosa-speaking informal settlement in Gqeberha, few residents received early warnings by phone despite high phone ownership. Community radio was the most trusted channel, and message clarity (linked to education) predicted message effectiveness.",
+      "mechanism": "channel",
+      "evidence_strength": "weak/single study",
+      "effect_size_or_numbers": "N = 300 surveyed (The Conversation summary; figures vary by item). 258 owned mobile phones, but only 90 had ever received a warning on the phone (about 30-35%). 210 of 270 respondents said they had never received an early warning. 88% (264/300) trusted community radio. Clarity x education chi-square = 96.282 (p < .001), and clarity -> efficacy regression coefficient 0.489 (p < .001). One summary also reports 90% comprehended disaster concepts and 85.4% had 'encountered' warnings. That appears to conflict with the 210/270 'never received' figure, so check the full text. Warnings are described as being issued almost entirely in English and Afrikaans.",
+      "population/context": "Walmer Airport Valley informal settlement, Gqeberha (Nelson Mandela Bay), Eastern Cape; isiXhosa L1 speakers.",
+      "citation": "Mokhele, M. O., & Mvanyashe, A. (2025). The role of language as a catalyst in communicating early warning messages: A case study in Walmer Airport Valley informal settlement, Gqeberha, South Africa. International Journal of Disaster Risk Reduction, 126, 105573.",
+      "doi_or_url": "https://doi.org/10.1016/j.ijdrr.2025.105573 ; https://www.sciencedirect.com/science/article/pii/S2212420925003978 ; summary: https://theconversation.com/language-matters-for-disaster-warnings-this-community-didnt-get-useful-flood-alerts-284723",
+      "relevance_to_SA": "The only SA study found that directly links language to early-warning effectiveness. It is a single cross-sectional site, so exact figures should be verified against the full text before quoting."
+    },
+    {
+      "claim": "In a Free State informal settlement, residents preferred early warnings via church, school and social media (WhatsApp, Facebook). Community volunteers and ward committees, not formal government, led disaster risk reduction dissemination.",
+      "mechanism": "trust/source",
+      "evidence_strength": "weak/single study",
+      "effect_size_or_numbers": "N = 295 household heads. Channel preferences reported descriptively.",
+      "population/context": "Khayelitsha informal settlement, Free State, South Africa.",
+      "citation": "Muhame, C., Ncube, A., & Bahta, Y. T. (2024). Dissemination and participation in early warnings and disaster risk reduction in South Africa. Jamba: Journal of Disaster Risk Studies, 16(1), a1566.",
+      "doi_or_url": "https://doi.org/10.4102/jamba.v16i1.1566",
+      "relevance_to_SA": "Corroborates Mokhele & Mvanyashe: the last mile runs through trusted local, L1 intermediaries rather than English SMS."
+    },
+    {
+      "claim": "South African rural communities hold Indigenous-language knowledge of weather and hazard signs (clouds, winds, animal and plant behaviour, lunar cycles). Integrating it with official forecasts is recommended to build trust and uptake.",
+      "mechanism": "trust/source",
+      "evidence_strength": "weak/single study",
+      "effect_size_or_numbers": "Qualitative studies, no effect sizes.",
+      "population/context": "Joe Morolong LM, Northern Cape (Setswana speakers), and SeSotho/isiZulu-speaking farmers in the south-western Free State.",
+      "citation": "Motsumi, M. M., & Nemakonde, L. D. (2025). Indigenous early warning indicators for improving natural hazard predictions. Jamba: Journal of Disaster Risk Studies, 17(1), a1754. / Zuma-Netshiukhwi, G., Stigter, K., & Walker, S. (2013). Use of traditional weather/climate knowledge by farmers in the South-Western Free State of South Africa: Agrometeorological learning by scientists. Atmosphere, 4(4), 383-410.",
+      "doi_or_url": "https://doi.org/10.4102/jamba.v17i1.1754 ; https://doi.org/10.3390/atmos4040383",
+      "relevance_to_SA": "Indigenous-language hazard vocabulary and concepts already exist and can anchor translated warnings. No peer-reviewed study was found that tests comprehension of SAWS warning terms in isiZulu, isiXhosa, Tshivenda, Xitsonga or Sepedi, which is a clear evidence gap."
+    },
+    {
+      "claim": "COVID-19 showed that crisis communication in dominant languages systematically excluded linguistic minorities, and that translation was often late, partial or inaccurate.",
+      "mechanism": "channel",
+      "evidence_strength": "moderate",
+      "effect_size_or_numbers": "Review and editorial synthesis of international cases, no pooled effect size.",
+      "population/context": "Global (China, Australia and others), 2020.",
+      "citation": "Piller, I., Zhang, J., & Li, J. (2020). Linguistic diversity in a time of crisis: Language challenges of the COVID-19 pandemic. Multilingua, 39(5), 503-515.",
+      "doi_or_url": "https://doi.org/10.1515/multi-2020-0136",
+      "relevance_to_SA": "A health-crisis analogue showing that language exclusion is a systemic pattern in risk communication, not specific to floods."
+    }
+  ],
+  "key_models": [
+    {
+      "name": "Mileti & Sorensen warning-response (hear-understand-believe-personalise-respond) model",
+      "stages": "Hear the warning -> understand it -> believe it -> personalise the risk -> decide and respond (confirmation-seeking between stages). Outcomes are shaped by sender factors (source credibility, consistency, frequency, channel) and receiver factors (knowledge, experience, social ties, resources).",
+      "where_language_enters": "Mainly at UNDERSTAND (the message must be in a language and style the receiver comprehends). But also at BELIEVE (source familiarity and trust, which is often higher for L1 local sources), PERSONALISE (L2 readers under stress struggle to build situation models) and at confirmation-seeking (people confirm with family and neighbours in L1). In L2, 'heard' does not mean 'understood'.",
+      "citation": "Mileti, D. S., & Sorensen, J. H. (1990). Communication of emergency public warnings: A social science perspective and state-of-the-art assessment (ORNL-6609). Oak Ridge National Laboratory.",
+      "url": "https://doi.org/10.2172/6137387"
+    },
+    {
+      "name": "Protective Action Decision Model (PADM)",
+      "stages": "Environmental and social cues plus warnings -> pre-decisional processes (exposure, attention, comprehension) -> perceptions of the threat, the protective action and stakeholders -> protective action decision-making -> behavioural response, moderated by situational facilitators and impediments.",
+      "where_language_enters": "Pre-decisional comprehension is explicitly a gate: messages not understood never reach threat perception. Stakeholder perceptions (trustworthiness, expertise) are shaped by whether the source 'speaks our language'. Receiver characteristics include language. The foreign-language-effect literature suggests L2 input may also weaken the affective component of threat perception.",
+      "citation": "Lindell, M. K., & Perry, R. W. (2012). The Protective Action Decision Model: Theoretical modifications and additional evidence. Risk Analysis, 32(4), 616-632.",
+      "url": "https://doi.org/10.1111/j.1539-6924.2011.01647.x"
+    },
+    {
+      "name": "Early Warnings for All (EW4All) - four pillars of people-centred early warning systems",
+      "stages": "Pillar 1 disaster risk knowledge (UNDRR) -> Pillar 2 detection, observation, monitoring, analysis and forecasting (WMO) -> Pillar 3 warning dissemination and communication (ITU) -> Pillar 4 preparedness and response capabilities (IFRC).",
+      "where_language_enters": "Pillar 3 guidance calls for warnings that reach everyone at risk through multiple channels and in languages and formats people understand. WMO promotes CAP partly because its structured format supports multilingual output and accessible formats.",
+      "citation": "WMO (2025). Leveraging the Common Alerting Protocol and Cell Broadcast Technology for Advancing Early Warnings for All. WMO Bulletin 74(2); UNDRR Early Warnings for All.",
+      "url": "https://wmo.int/resources/wmo-bulletin/wmo-bulletin-vol-74-2-2025/leveraging-common-alerting-protocol-and-cell-broadcast-technology-advancing-early-warnings-all ; https://www.undrr.org/implementing-sendai-framework/sendai-framework-action/early-warnings-for-all"
+    },
+    {
+      "name": "Common Alerting Protocol (CAP) v1.2 (OASIS / ITU-T X.1303)",
+      "stages": "alert -> one or more info blocks (event, urgency, severity, certainty, headline, description, instruction) -> resource/area blocks.",
+      "where_language_enters": "Each info block has a 'language' element, and one alert can carry parallel info blocks in several languages. SAWS and NDMC CAP feeds could therefore carry isiZulu, isiXhosa, Tshivenda, Xitsonga and Sepedi versions of the headline and instruction fields for cell broadcast and radio.",
+      "citation": "OASIS (2010). Common Alerting Protocol Version 1.2. OASIS Standard.",
+      "url": "http://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html"
+    }
+  ],
+  "caveats": "(1) Most psycholinguistic evidence on L2 processing cost, stress x L2 and emotional resonance comes from lab studies of university students, usually late learners of a European L2. South African speakers of African languages often learn English early and for years at school, in a different sociolinguistic setting, so effect sizes may not transfer. (2) The stress x L2 studies (Rai et al. 2011, 2015; Xia et al. 2025) use mild social-evaluative stress, far weaker than a night-time flood, and mainly show slower processing rather than large accuracy losses. The direction supports the argument but the magnitude under real emergencies is unknown. (3) The foreign-language effect is contested: meta-analyses find a reliable but small effect, while several studies find no effect for many biases and at least one large-sample replication failed. It has never been tested with real warnings or protective-action outcomes. Use it as a supporting mechanism, not a core claim. (4) Disaster case studies on language minorities (Uekusa; Mendez et al.; Shepherd & van Vuuren; Bromhead) are mostly qualitative. Few give quantified mortality or evacuation differences attributable to language, because language is confounded with migration status, poverty, housing and social networks. The same confounding applies in SA (language correlates with income, informal housing and schooling). (5) Claims that foreign residents died at higher rates in Kobe 1995 and that Easy Japanese beats English or Chinese are widely repeated, but the primary quantitative sources are Japanese-language reports not verified here. (6) SA-specific evidence is thin: essentially one single-site survey (Mokhele & Mvanyashe 2025, with some internally inconsistent figures in secondary summaries) plus channel and trust studies. No peer-reviewed study was found testing comprehension of SAWS impact-based warning levels or colours, or of translated warning terms, in isiZulu, isiXhosa, Tshivenda, Xitsonga or Sepedi. This is the key gap the project could fill. (7) The '~3% English L1' figure should be checked against Census 2022 for the specific areas; nationally, English is the home language of roughly 8-9% of South Africans.",
+  "summary": "The evidence points one way. A warning in a second language is read and heard more slowly and less accurately, especially for spoken messages in noise (Garcia Lecumberri et al. 2010) and for the inference needed to judge 'what this means for me' (Rai et al. 2011, 2015). This disadvantage grows under stress for L2 but not L1 readers (Rai et al. 2015; Xia et al. 2025). L2 also tends to carry less emotional force (Harris et al. 2003; Caldwell-Harris 2015; Pavlenko 2012), and hazards presented in a foreign language are judged less risky (Hadjichristidis et al. 2015). The broader 'foreign-language effect' on decisions is real but small and inconsistent (Circi et al. 2021; Del Maschio et al. 2022; Vives et al. 2018). Warning science places comprehension as a gate before belief, personalisation and action (Mileti & Sorensen 1990; Lindell & Perry 2012). Level and colour codes and translated terms are often misunderstood, even in L1 (Tang 2022; Gigerenzer et al. 2005), and translated terms can lose urgency: 38% vs 66% correct understanding of 'watch' among Spanish vs English speakers in the US (Trujillo-Falcon et al. 2022). Disaster case studies from New Zealand, Japan, California and Australia show that linguistic minorities miss or misread official warnings and rely on trusted L1 intermediaries. In South Africa, the Walmer Airport Valley study (Mokhele & Mvanyashe 2025) found few isiXhosa-speaking residents received phone warnings, and that community radio (88% trust) and local leaders were the effective channels. Together this supports the argument that English-dominant SAWS warnings are likely to fail at the last mile. Direct SA evidence on comprehension of warning levels and translated terms in African languages is still missing, and most mechanistic evidence is lab-based."
+}

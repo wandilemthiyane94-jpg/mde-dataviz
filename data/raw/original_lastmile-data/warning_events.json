@@ -1,0 +1,8 @@
+[
+ {"year":2022,"month":1,"place":"Eastern Cape (Mdantsane)","deaths":"unconfirmed","warning_issued":false,"category":"Denial of warning"},
+ {"year":2022,"month":4,"place":"KwaZulu-Natal (eThekwini)","deaths":"435-448","warning_issued":"disputed","alert_level":"Red (highest)","category":"Accountability ambiguity"},
+ {"year":2022,"month":5,"place":"KwaZulu-Natal (repeat)","deaths":0,"warning_issued":true,"alert_level":"highest","category":"Control case - it worked"},
+ {"year":2026,"month":1,"place":"Limpopo & Mpumalanga","deaths":"19-30+","warning_issued":true,"alert_level":"Red 10","category":"Named 'last-mile problem'"},
+ {"year":2026,"month":2,"place":"retrospective analysis","deaths":null,"warning_issued":true,"alert_level":"Red 10","category":"Comprehension gap named directly"},
+ {"year":2026,"month":9,"place":"KwaZulu-Natal (precautionary)","deaths":0,"warning_issued":true,"alert_level":"Orange 6","category":"Warning fatigue named directly"}
+]

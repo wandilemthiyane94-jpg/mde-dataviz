@@ -1,0 +1,6 @@
+[
+ {"location":"Walmer Airport Valley, Gqeberha","province":"Eastern Cape","settlement_type":"Informal settlement","residents":27000,"dominant_language":"isiXhosa","pct_local":100,"warning_language":"English/Afrikaans","never_received_warning_pct":77.8,"phone_owners_ever_warned_pct":34.9,"trust_community_radio_pct":88},
+ {"location":"Quarry Road West, Durban","province":"KwaZulu-Natal","settlement_type":"Informal settlement","dominant_language":"isiZulu","pct_local":80,"warning_language":"English/Afrikaans","note":"community-built parallel warning system"},
+ {"location":"Mdantsane, Buffalo City","province":"Eastern Cape","settlement_type":"Formal township","dominant_language":"isiXhosa","pct_local":81.8,"warning_language":"English/Afrikaans"},
+ {"location":"Alexandra, Johannesburg","province":"Gauteng","settlement_type":"Formal township + informal backyard shacks","dominant_language":"none >30%","breakdown":{"isiZulu":23,"Sesotho":13,"English":14,"Sepedi":13},"warning_language":"English/Afrikaans"}
+]

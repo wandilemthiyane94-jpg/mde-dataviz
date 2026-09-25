@@ -1,0 +1,97 @@
+{
+  "source": {
+    "title": "Flooded and Forgotten: Informal Settlements and the Right to Housing in South Africa",
+    "publisher": "Amnesty International",
+    "index": "AFR 53/0369/2025",
+    "date": "2025-11",
+    "url": "https://www.amnesty.org (search index AFR 53/0369/2025; exact document URL not printed in the PDF)",
+    "method": "Qualitative research Feb-Sep 2025; 96 residents (69 women, 27 men) in Cape Town, eThekwini, Johannesburg informal settlements/TRAs; 47 experts; 23 municipal/NDMC officials. Page numbers refer to the PDF."
+  },
+  "warning_and_language": [
+    {"topic": "Standard for disaster information (normative)", "page": "63-64",
+     "text": "According to the IASC Guidelines on Protection of Persons in Situations of Natural Disasters (IASC Guidelines), people affected by disasters should be informed and consulted on measures taken on their behalf. They should be provided with information in a language and form that is accessible to them on the nature and level of disaster they are facing",
+     "use": "Human-rights benchmark to hold English-only warnings against. Amnesty recommends CoGTA ensure compliance with IASC guidelines 'including vis-à-vis provision of information to and participation of affected communities' (p.90)."},
+    {"topic": "Languages residents chose to speak in", "page": "12",
+     "text": "Where necessary, interpretation by local contacts and Amnesty International researchers was used to allow people to respond in their preferred language, which included isiXhosa, isiZulu, Sesotho, Setswana and Xitsonga.",
+     "use": "Direct evidence that flood-affected residents in all three metros needed African-language interpretation to be interviewed."},
+    {"topic": "Awareness of early warning systems", "page": "68",
+     "text": "While disaster management plans mentioned the importance of early warning systems, residents of informal settlements were largely unaware of them.",
+     "use": "Last-mile failure named for the three metros."},
+    {"topic": "Recommendation on warning reach", "page": "91",
+     "text": "Ensure that disaster preparedness measures, including the setting up of early warning systems and demarcation of nearby temporary shelter areas, are established throughout the municipal area and that this information is communicated to all, including those who may not have access to electronic messaging platforms.",
+     "use": "Amnesty addresses channel, not language."},
+    {"topic": "SALGA on forecasting", "page": "67",
+     "text": "outdated forecasting models that hinder early warning systems and insufficient monitoring and response capabilities, leaving municipalities overwhelmed",
+     "use": "Official local-government body (SALGA, Mar 2025) naming EWS weakness."},
+    {"topic": "Emergency Housing Command Centre", "page": "70",
+     "text": "This change was accompanied by the establishment of the Emergency Housing Command Centre, which coordinates disaster response efforts and collaborates with the South African Weather Service to provide early warnings.",
+     "use": "National Human Settlements warning role since 1 Apr 2023."},
+    {"topic": "Trust gap / armed guards", "page": "67, 69",
+     "text": "Officials could only enter the informal settlement if accompanied by armed guards.",
+     "use": "Channel failure independent of language: officials can't physically deliver warnings. Cape Town flood-awareness flyer distribution was 'discontinued for the day' after tension (p.69)."},
+    {"topic": "Resident on help-seeking", "page": "48",
+     "text": "We fear any rain that comes. We don't know where to go or get hold of people who are supposed to assist us.",
+     "speaker": "Phindile (name changed), Dakota informal settlement, eThekwini"}
+  ],
+  "quarry_road_ews": {
+    "page": "50, 67-68",
+    "established": 2016,
+    "partners": "eThekwini municipality + UKZN School of Built Environment and Development Studies",
+    "inputs": "South African Weather Service information plus real-time information shared by the community",
+    "channels": "WhatsApp groups and whistles; ropes and an evacuation map",
+    "lead_time": "an estimated 30 minutes warning of floods",
+    "april_2022_outcome": "everyone (except one person who lost his life due to an illegal electricity connection) was at least able to leave the settlement safely",
+    "triggered_by_may_2025": 5,
+    "replication": "has yet to be replicated in the 180 high-risk informal settlements identified by eThekwini municipality; projects underway in two other informal settlements and one peri-urban area",
+    "gap": "plans did not include identification of locations for where people could go after they had evacuated their homes. For Quarry Road residents, the nearest community hall that could provide shelter is 5km away.",
+    "resident_quote": {"text": "Yes, we do have an early warning system – people come around checking if we are safe and ask people to move to certain areas… What we need is RDP houses.", "speaker": "Thokozile (name changed), Quarry Road", "page": "60"},
+    "correction": "Earlier dataset note said 'no lives were lost'. Amnesty (citing eThekwini) records one death by electrocution, no drowning."
+  },
+  "lamontville_tra": {
+    "page": "8, 40, 50, 64-65, 70",
+    "fact": "Around 100 flood impacted households were relocated by the City of eThekwini to a temporary relocation area established in Lamontville on the banks of the Umlazi river.",
+    "feb_2025_deaths": "two women (aged 56 and 60) and three children (aged 5, 11, and 16) living in the TRA died in the floods",
+    "prior_warning": "the Auditor General of South Africa's report in August 2022 had pointed out that 20% of the 30 temporary residential units inspected soon after the 2022 KwaZulu-Natal floods \"were built on unsuitable land as they were close to the riverbank or their entrances were inaccessible, waterlogged and required proper drainage.\"",
+    "amnesty_finding": "Most recently the failure of the eThekwini municipality to ensure safe relocation sites cost five people their lives in Lamontville.",
+    "significance": "The 2025 Lamontville deaths were in state-placed housing on a riverbank, yet official framing (Mayor Xaba) blamed residents building on high-risk land. See pattern_conditions.md P2."
+  },
+  "new_event": {
+    "id": "2024-12-cato-manor-enkanini-wall-collapse",
+    "text": "In December 2024, two people, a man (aged 38) and a woman (aged 18) died in eNkanini when a retaining wall collapsed on them due to heavy rain and flooding.",
+    "page": "51",
+    "secondary_source": "https://iol.co.za/mercury/news/2024-12-23-heavy-rain-causes-retaining-wall-collapse-resulting-in-two-deaths-in-cato-manor/"
+  },
+  "response_threshold": [
+    {"page": "68", "text": "In the context of seasonal flooding, disaster response at the municipal level, emergency relief and response is deployed only when the mayor declares a \"major incident\" on the advice of the municipal disaster management centre.",
+     "use": "Scale threshold is institutional as well as editorial - matches P1/P3 scale effects."},
+    {"page": "62", "text": "People interviewed often said that it was only in large-scale disasters like in the 2022 floods in KwaZulu-Natal or the 2025 floods in eThekwini when six lives were lost that they received attention and support"},
+    {"page": "55", "text": "When flooding is bad, people are sometimes placed in a community hall. It feels like they are responding more to the media than to people's needs.",
+     "speaker": "Kenneth, Barcelona informal settlement, Cape Town",
+     "use": "A resident naming the media-driven response pattern directly."},
+    {"page": "60", "text": "We even did a toyi toyi [...] asking for help. The police came but the ward councillor did not come.",
+     "speaker": "Samukele (name changed), Dakota informal settlement, Isipingo", "context": "Feb 2025 floods: no official help, versus a month in the civic hall in 2022."}
+  ],
+  "official_siting_frame": {
+    "page": "69",
+    "text": "[m]ost informal structures are located within stormwater systems, water courses, natural drainage routes, waterbodies or wetlands that expand in the rainy season. [...] the best solution is for such structures to be moved out of the high-risk areas and for no resident to settle in the same area again.",
+    "speaker": "City of Cape Town, written response to Amnesty, 6 June 2025",
+    "contrast": "Cape Town's own 2021 Climate Change Action Plan says flooding is largely due to vulnerability in low-lying areas and informal settlements lacking drainage, rather than extreme rainfall (p.66)."
+  },
+  "figures": [
+    {"fact": "at least 164 of the city's 550 informal settlements are located in floodplains (eThekwini)", "page": "48"},
+    {"fact": "April 2022: 435 died, 80 missing; 19,113 households / 128,743 people affected (IFRC final report)", "page": "49"},
+    {"fact": "2019 KZN: ~1,000 displaced, 80 died", "page": "49"},
+    {"fact": "April 2022 economic loss ~ZAR 17 billion; Durban lost ~1.8% of annual GDP", "page": "50"},
+    {"fact": "Emergency expenditure due to extreme weather across SA cities up 320% between 1998 and 2025 (CoGTA discussion document)", "page": "67"},
+    {"fact": "1,049 families still in Transitional Emergency Accommodation as of June 2025", "page": "56"},
+    {"fact": "eThekwini water & sanitation infrastructure unit vacancy rate 58% (AGSA 2023-24)", "page": "44"}
+  ],
+  "climate_attribution_verified": {
+    "page": "72",
+    "text": "the probability of an event such as the rainfall that resulted in this disaster has approximately doubled due to human-induced climate change. The intensity of the current event has increased by 4-8%.",
+    "return_time": "about 20 years now vs about 40 years in a 1.2°C cooler world",
+    "citation": "I. Pinto and others, Climate Change Exacerbated Rainfall Causing Devastating Flooding in Eastern South Africa, World Weather Attribution, 13 May 2022",
+    "url": "https://www.worldweatherattribution.org/wp-content/uploads/WWA-KZN-floods-scientific-report.pdf"
+  },
+  "what_it_does_not_contain": "No statement on the language SAWS/municipal warnings are issued in; no use of the term 'disaster linguicism'."
+}

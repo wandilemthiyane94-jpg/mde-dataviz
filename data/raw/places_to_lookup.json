@@ -1,0 +1,3719 @@
+[
+    {
+        "place":  "Philippi",
+        "provinces":  "Western Cape | Western Cape/Eastern Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga | Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm",
+                          "2023-09-western-cape-cutoff-low",
+                          "2024-07-western-cape-storms",
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Khayelitsha",
+        "provinces":  "Western Cape | Western Cape/Eastern Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga | Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm",
+                          "2022-06-cape-town",
+                          "2023-09-western-cape-cutoff-low",
+                          "2024-06-western-cape-cutofflow-floods",
+                          "2024-07-western-cape-storms",
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Durban",
+        "provinces":  "KwaZulu-Natal | KwaZulu-Natal/Eastern Cape | North West/KwaZulu-Natal/Mpumalanga/Limpopo/Gauteng | Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm",
+                          "2017-02-ex-dineo-floods",
+                          "2017-05-kzn-floods",
+                          "2019-03-durban-inanda",
+                          "2019-11-durban-mpolweni-storms",
+                          "2022-04-kzn-megaflood",
+                          "2022-05-kzn-repeat"
+                      ]
+    },
+    {
+        "place":  "Amanzimtoti",
+        "provinces":  "KwaZulu-Natal | KwaZulu-Natal/Eastern Cape | KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga | Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm",
+                          "2022-04-kzn-megaflood",
+                          "2025-02-ethekwini-storm-wall-collapses",
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Inanda",
+        "provinces":  "KwaZulu-Natal | Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm",
+                          "2019-03-durban-inanda",
+                          "2019-11-durban-mpolweni-storms",
+                          "2023-06-kzn-ethekwini-landspout"
+                      ]
+    },
+    {
+        "place":  "Ntuzuma",
+        "provinces":  "KwaZulu-Natal/Eastern Cape | Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm",
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "KwaMashu",
+        "provinces":  "KwaZulu-Natal | Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm",
+                          "2019-03-durban-inanda"
+                      ]
+    },
+    {
+        "place":  "uMlazi",
+        "provinces":  "KwaZulu-Natal/Eastern Cape | KwaZulu-Natal/Gauteng | KwaZulu-Natal/Gauteng/Free State | Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm",
+                          "2017-10-durban-supercell-storm",
+                          "2020-11-umlazi-hammanskraal",
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Yellow Wood Park",
+        "provinces":  "Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm"
+                      ]
+    },
+    {
+        "place":  "Chatsworth",
+        "provinces":  "KwaZulu-Natal | KwaZulu-Natal/Eastern Cape/Free State | KwaZulu-Natal/Gauteng/Free State/North West/Limpopo/Northern Cape | Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm",
+                          "2019-04-easter-floods-kzn-ec",
+                          "2025-02-ethekwini-storm-wall-collapses",
+                          "2025-02-lamontville-floods"
+                      ]
+    },
+    {
+        "place":  "Cato Manor",
+        "provinces":  "Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm"
+                      ]
+    },
+    {
+        "place":  "Margate",
+        "provinces":  "KwaZulu-Natal | KwaZulu-Natal/Eastern Cape | KwaZulu-Natal/Eastern Cape/Free State | KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga | Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm",
+                          "2019-04-easter-floods-kzn-ec",
+                          "2022-04-kzn-megaflood",
+                          "2024-04-kzn-south-coast-floods",
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Tembisa",
+        "provinces":  "Gauteng | Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm",
+                          "2022-02-tembisa-ivory-park"
+                      ]
+    },
+    {
+        "place":  "Winnie Mandela",
+        "provinces":  "Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm"
+                      ]
+    },
+    {
+        "place":  "Hospital View",
+        "provinces":  "Western Cape/KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2016-07-cape-kzn-winter-storm"
+                      ]
+    },
+    {
+        "place":  "Alexandra",
+        "provinces":  "Gauteng | Gauteng/North West",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods",
+                          "2020-02-johannesburg-floods",
+                          "2022-12-gauteng-northwest-soweto",
+                          "2022-12-jukskei-baptism"
+                      ]
+    },
+    {
+        "place":  "Stjwetla/Setswetla informal settlement",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Buccleuch",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Linksfield",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Orchards",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Kyalami",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Midrand",
+        "provinces":  "Gauteng | KwaZulu-Natal/Gauteng/Free State/North West/Limpopo/Northern Cape",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods",
+                          "2025-02-lamontville-floods"
+                      ]
+    },
+    {
+        "place":  "Bedfordview",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Bryanston",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Sandton",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Edenvale",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods"
+                      ]
+    },
+    {
+        "place":  "OR Tambo International Airport",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Jukskei River",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods",
+                          "2020-02-johannesburg-floods",
+                          "2022-12-jukskei-baptism"
+                      ]
+    },
+    {
+        "place":  "N3 Buccleuch interchange",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Johannesburg Zoo",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2016-11-johannesburg-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Kwaggafontein",
+        "provinces":  "Limpopo/Mpumalanga/Gauteng",
+        "event_ids":  [
+                          "2017-01-limpopo-mpumalanga-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Beitbridge area",
+        "provinces":  "Limpopo/Mpumalanga/Gauteng",
+        "event_ids":  [
+                          "2017-01-limpopo-mpumalanga-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Limpopo River",
+        "provinces":  "Limpopo/Mpumalanga/Gauteng",
+        "event_ids":  [
+                          "2017-01-limpopo-mpumalanga-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Witkoppen Road",
+        "provinces":  "Limpopo/Mpumalanga/Gauteng",
+        "event_ids":  [
+                          "2017-01-limpopo-mpumalanga-flash-floods"
+                      ]
+    },
+    {
+        "place":  "N1 near Diepkloof interchange",
+        "provinces":  "Limpopo/Mpumalanga/Gauteng",
+        "event_ids":  [
+                          "2017-01-limpopo-mpumalanga-flash-floods"
+                      ]
+    },
+    {
+        "place":  "M1 double decker",
+        "provinces":  "Limpopo/Mpumalanga/Gauteng",
+        "event_ids":  [
+                          "2017-01-limpopo-mpumalanga-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Loporung (near Makgobistad)",
+        "provinces":  "North West/KwaZulu-Natal/Mpumalanga/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2017-02-ex-dineo-floods"
+                      ]
+    },
+    {
+        "place":  "Lemenong",
+        "provinces":  "North West/KwaZulu-Natal/Mpumalanga/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2017-02-ex-dineo-floods"
+                      ]
+    },
+    {
+        "place":  "Wolmaransstad",
+        "provinces":  "North West/KwaZulu-Natal/Mpumalanga/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2017-02-ex-dineo-floods"
+                      ]
+    },
+    {
+        "place":  "Makwassie creek",
+        "provinces":  "North West/KwaZulu-Natal/Mpumalanga/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2017-02-ex-dineo-floods"
+                      ]
+    },
+    {
+        "place":  "Harding",
+        "provinces":  "North West/KwaZulu-Natal/Mpumalanga/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2017-02-ex-dineo-floods"
+                      ]
+    },
+    {
+        "place":  "Mafodobo River",
+        "provinces":  "North West/KwaZulu-Natal/Mpumalanga/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2017-02-ex-dineo-floods"
+                      ]
+    },
+    {
+        "place":  "Newcastle",
+        "provinces":  "KwaZulu-Natal | North West/KwaZulu-Natal/Mpumalanga/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2017-02-ex-dineo-floods",
+                          "2024-06-kzn-tornadoes-storm"
+                      ]
+    },
+    {
+        "place":  "Nseleni",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2017-05-kzn-floods"
+                      ]
+    },
+    {
+        "place":  "Richards Bay",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2017-05-kzn-floods",
+                          "2026-09-kzn-heavy-rain"
+                      ]
+    },
+    {
+        "place":  "Mzingwenya",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2017-05-kzn-floods"
+                      ]
+    },
+    {
+        "place":  "Zinkwazi (N2)",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2017-05-kzn-floods"
+                      ]
+    },
+    {
+        "place":  "Gugushe River",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2017-05-kzn-floods"
+                      ]
+    },
+    {
+        "place":  "Mtuze",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2017-05-kzn-floods"
+                      ]
+    },
+    {
+        "place":  "Charters Creek",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2017-05-kzn-floods"
+                      ]
+    },
+    {
+        "place":  "Mandini",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2017-05-kzn-floods"
+                      ]
+    },
+    {
+        "place":  "Kraaifontein",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape",
+        "event_ids":  [
+                          "2017-06-cape-storm"
+                      ]
+    },
+    {
+        "place":  "Lavender Hill",
+        "provinces":  "Western Cape | Western Cape/Eastern Cape/Northern Cape",
+        "event_ids":  [
+                          "2017-06-cape-storm",
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Rheenendal",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape",
+        "event_ids":  [
+                          "2017-06-cape-storm"
+                      ]
+    },
+    {
+        "place":  "Knysna",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2017-06-cape-storm",
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Plettenberg Bay",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2017-06-cape-storm",
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Brenton-on-Sea",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape",
+        "event_ids":  [
+                          "2017-06-cape-storm"
+                      ]
+    },
+    {
+        "place":  "Buffalo Bay",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape",
+        "event_ids":  [
+                          "2017-06-cape-storm"
+                      ]
+    },
+    {
+        "place":  "The Bluff",
+        "provinces":  "KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm"
+                      ]
+    },
+    {
+        "place":  "Jacobs",
+        "provinces":  "KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm"
+                      ]
+    },
+    {
+        "place":  "Montclair",
+        "provinces":  "KwaZulu-Natal | KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm",
+                          "2026-09-kzn-heavy-rain"
+                      ]
+    },
+    {
+        "place":  "Glenwood",
+        "provinces":  "KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm"
+                      ]
+    },
+    {
+        "place":  "Merebank",
+        "provinces":  "KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm"
+                      ]
+    },
+    {
+        "place":  "Isipingo",
+        "provinces":  "KwaZulu-Natal | KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm",
+                          "2025-02-ethekwini-storm-wall-collapses"
+                      ]
+    },
+    {
+        "place":  "Prospecton",
+        "provinces":  "KwaZulu-Natal/Eastern Cape | KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm",
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Sarnia",
+        "provinces":  "KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm"
+                      ]
+    },
+    {
+        "place":  "Mount Edgecombe",
+        "provinces":  "KwaZulu-Natal | KwaZulu-Natal/Eastern Cape | KwaZulu-Natal/Eastern Cape/Free State | KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm",
+                          "2019-04-easter-floods-kzn-ec",
+                          "2022-04-kzn-megaflood",
+                          "2022-05-kzn-repeat",
+                          "2023-06-kzn-ethekwini-landspout"
+                      ]
+    },
+    {
+        "place":  "Pennington South",
+        "provinces":  "KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm"
+                      ]
+    },
+    {
+        "place":  "Paddock",
+        "provinces":  "KwaZulu-Natal | KwaZulu-Natal/Eastern Cape/Free State | KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm",
+                          "2019-04-easter-floods-kzn-ec",
+                          "2023-06-kzn-ethekwini-landspout"
+                      ]
+    },
+    {
+        "place":  "Izingolweni",
+        "provinces":  "KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm"
+                      ]
+    },
+    {
+        "place":  "Prince Mshiyeni Memorial Hospital",
+        "provinces":  "KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm"
+                      ]
+    },
+    {
+        "place":  "Montclair Community Hall",
+        "provinces":  "KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm"
+                      ]
+    },
+    {
+        "place":  "N2",
+        "provinces":  "KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm"
+                      ]
+    },
+    {
+        "place":  "M7",
+        "provinces":  "KwaZulu-Natal/Gauteng",
+        "event_ids":  [
+                          "2017-10-durban-supercell-storm"
+                      ]
+    },
+    {
+        "place":  "Centurion",
+        "provinces":  "Gauteng | Gauteng/KwaZulu-Natal | Gauteng/North West | KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga | KwaZulu-Natal/Gauteng/Free State",
+        "event_ids":  [
+                          "2018-03-gauteng-floods",
+                          "2018-10-pretoria-flash-floods",
+                          "2019-12-tshwane-mamelodi",
+                          "2020-11-umlazi-hammanskraal",
+                          "2022-02-gauteng-kzn-feb4",
+                          "2024-12-centurion-flash-floods",
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Klipspruit",
+        "provinces":  "Gauteng | Gauteng/North West",
+        "event_ids":  [
+                          "2018-03-gauteng-floods",
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Orlando West",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2018-03-gauteng-floods"
+                      ]
+    },
+    {
+        "place":  "Kliptown",
+        "provinces":  "Gauteng | Gauteng/North West",
+        "event_ids":  [
+                          "2018-03-gauteng-floods",
+                          "2020-02-johannesburg-floods",
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Katlehong",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2018-03-gauteng-floods"
+                      ]
+    },
+    {
+        "place":  "Daveyton (N12 off-ramp)",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2018-03-gauteng-floods"
+                      ]
+    },
+    {
+        "place":  "M24",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2018-03-gauteng-floods"
+                      ]
+    },
+    {
+        "place":  "Hennops River",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2018-03-gauteng-floods"
+                      ]
+    },
+    {
+        "place":  "northern Johannesburg",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2018-03-gauteng-floods"
+                      ]
+    },
+    {
+        "place":  "RR Section, Site B, Khayelitsha",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2018-06-cape-town-informal-settlement-floods"
+                      ]
+    },
+    {
+        "place":  "Siyahlala Town 2, Khayelitsha",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2018-06-cape-town-informal-settlement-floods"
+                      ]
+    },
+    {
+        "place":  "Masiphumelele",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2018-06-cape-town-informal-settlement-floods",
+                          "2020-07-cape-town-storms",
+                          "2024-06-western-cape-cutofflow-floods",
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Hammanskraal",
+        "provinces":  "Gauteng/North West | KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga | KwaZulu-Natal/Gauteng/Free State",
+        "event_ids":  [
+                          "2018-10-pretoria-flash-floods",
+                          "2020-11-umlazi-hammanskraal",
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Temba",
+        "provinces":  "Gauteng/North West | KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga",
+        "event_ids":  [
+                          "2018-10-pretoria-flash-floods",
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Pretoria West",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2018-10-pretoria-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Pretoria North",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2018-10-pretoria-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Capital Park",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2018-10-pretoria-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Apies River",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2018-10-pretoria-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Rachel de Beer Street subway",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2018-10-pretoria-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Ga-Rankuwa",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2018-10-pretoria-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Mooinooi",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2018-10-pretoria-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Cullinan",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2018-10-pretoria-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Barry Hertzog Drive",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2018-10-pretoria-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Rodger Dayson Road",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2018-10-pretoria-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Roodeplaat Dam",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2018-10-pretoria-flash-floods"
+                      ]
+    },
+    {
+        "place":  "Verulam",
+        "provinces":  "KwaZulu-Natal | KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2019-03-durban-inanda",
+                          "2022-04-kzn-megaflood",
+                          "2023-06-kzn-ethekwini-landspout",
+                          "2025-02-ethekwini-storm-wall-collapses"
+                      ]
+    },
+    {
+        "place":  "Amaoti",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2019-03-durban-inanda"
+                      ]
+    },
+    {
+        "place":  "Umlazi (eMlazi)",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Amanzimtoti (eManzimtoti)",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Malvern",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Queensburgh",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Overport",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "New Germany",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Virginia Airport",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Ballito",
+        "provinces":  "KwaZulu-Natal/Eastern Cape | KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec",
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Port Edward",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Pennington",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Oribi Gorge",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Ezakheleni informal settlement (Umlazi)",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Mangosuthu Highway",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Umgeni River",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Empangeni (church wall collapse)",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Mega Village informal settlement (Umlazi)",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Port St Johns",
+        "provinces":  "Eastern Cape | KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec",
+                          "2023-03-port-st-johns-ingquza"
+                      ]
+    },
+    {
+        "place":  "Green Farm(s)",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Mzimvubu River",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Lubhacweni village, KwaBhaca (Mount Frere)",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Qhaka village (R61)",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Kei Cuttings",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Coffee Bay",
+        "provinces":  "Eastern Cape | KwaZulu-Natal/Eastern Cape/Free State | Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec",
+                          "2023-02-national-disaster-floods",
+                          "2023-03-port-st-johns-ingquza"
+                      ]
+    },
+    {
+        "place":  "Mthatha",
+        "provinces":  "Eastern Cape | KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec",
+                          "2022-01-eastern-cape-mdantsane",
+                          "2023-10-or-tambo-floods",
+                          "2025-06-eastern-cape-mthatha-floods"
+                      ]
+    },
+    {
+        "place":  "Potsdam (Mdantsane)",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "East London",
+        "provinces":  "Eastern Cape | KwaZulu-Natal/Eastern Cape/Free State | KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec",
+                          "2022-01-eastern-cape-mdantsane",
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "King William\u0027s Town",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Free State",
+        "event_ids":  [
+                          "2019-04-easter-floods-kzn-ec"
+                      ]
+    },
+    {
+        "place":  "Mpolweni",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2019-11-durban-mpolweni-storms"
+                      ]
+    },
+    {
+        "place":  "Pietermaritzburg",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2019-11-durban-mpolweni-storms"
+                      ]
+    },
+    {
+        "place":  "Umhlanga",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2019-11-durban-mpolweni-storms"
+                      ]
+    },
+    {
+        "place":  "Sibaya",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2019-11-durban-mpolweni-storms"
+                      ]
+    },
+    {
+        "place":  "M4 Highway",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2019-11-durban-mpolweni-storms"
+                      ]
+    },
+    {
+        "place":  "Pretoria",
+        "provinces":  "Gauteng/North West | KwaZulu-Natal/Gauteng/Free State | KwaZulu-Natal/Gauteng/Free State/North West/Limpopo/Northern Cape",
+        "event_ids":  [
+                          "2019-12-tshwane-mamelodi",
+                          "2020-11-umlazi-hammanskraal",
+                          "2025-02-lamontville-floods"
+                      ]
+    },
+    {
+        "place":  "Mamelodi",
+        "provinces":  "Gauteng/KwaZulu-Natal | Gauteng/North West",
+        "event_ids":  [
+                          "2019-12-tshwane-mamelodi",
+                          "2022-02-gauteng-kzn-feb4"
+                      ]
+    },
+    {
+        "place":  "Nellmapius",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2019-12-tshwane-mamelodi"
+                      ]
+    },
+    {
+        "place":  "Centurion Lake Hotel",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2019-12-tshwane-mamelodi"
+                      ]
+    },
+    {
+        "place":  "Hartbeespoort Dam",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2019-12-tshwane-mamelodi"
+                      ]
+    },
+    {
+        "place":  "Alice",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2020-02-alice-amathole"
+                      ]
+    },
+    {
+        "place":  "Soweto",
+        "provinces":  "Gauteng | KwaZulu-Natal/Gauteng/Free State/North West/Limpopo/Northern Cape",
+        "event_ids":  [
+                          "2020-02-johannesburg-floods",
+                          "2025-02-lamontville-floods"
+                      ]
+    },
+    {
+        "place":  "Setswetla informal settlement",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2020-02-johannesburg-floods"
+                      ]
+    },
+    {
+        "place":  "Mhlangeni informal settlement (Roodepoort)",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2020-02-johannesburg-floods"
+                      ]
+    },
+    {
+        "place":  "Douglasdale",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2020-02-johannesburg-floods"
+                      ]
+    },
+    {
+        "place":  "Kagiso",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2020-02-johannesburg-floods"
+                      ]
+    },
+    {
+        "place":  "Helen Joseph Hospital",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2020-02-johannesburg-floods"
+                      ]
+    },
+    {
+        "place":  "M1 De Villiers Graaff motorway",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2020-02-johannesburg-floods"
+                      ]
+    },
+    {
+        "place":  "Buccleuch Drive bridge",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2020-02-johannesburg-floods"
+                      ]
+    },
+    {
+        "place":  "Botanical Gardens (West Rand)",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2020-02-johannesburg-floods"
+                      ]
+    },
+    {
+        "place":  "Nonoti",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2020-02-kzn-nonoti"
+                      ]
+    },
+    {
+        "place":  "MR01 bridge",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2020-02-kzn-nonoti"
+                      ]
+    },
+    {
+        "place":  "Heideveld",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-06-cape-town-hail-floods",
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Qandu Qandu informal settlement (Khayelitsha)",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-06-cape-town-hail-floods"
+                      ]
+    },
+    {
+        "place":  "Jeff Masemola Road",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-06-cape-town-hail-floods"
+                      ]
+    },
+    {
+        "place":  "Kalk Bay",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-06-cape-town-hail-floods",
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Gugulethu",
+        "provinces":  "Western Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2020-06-cape-town-hail-floods",
+                          "2024-07-western-cape-storms",
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Joe Slovo Park",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-06-cape-town-hail-floods"
+                      ]
+    },
+    {
+        "place":  "Waterfront informal settlement (Philippi)",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-06-cape-town-hail-floods"
+                      ]
+    },
+    {
+        "place":  "The Island informal settlement (Khayelitsha)",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-06-cape-town-hail-floods"
+                      ]
+    },
+    {
+        "place":  "Victoria Lodge informal settlement (Southfield)",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-06-cape-town-gale-floods"
+                      ]
+    },
+    {
+        "place":  "Lotus Park (Gugulethu)",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-06-cape-town-gale-floods"
+                      ]
+    },
+    {
+        "place":  "Wynberg",
+        "provinces":  "Western Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2020-06-cape-town-gale-floods",
+                          "2024-07-western-cape-storms",
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Plumstead",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-06-cape-town-gale-floods"
+                      ]
+    },
+    {
+        "place":  "Fish Hoek",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-06-cape-town-gale-floods",
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Retreat",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-06-cape-town-gale-floods"
+                      ]
+    },
+    {
+        "place":  "Zwelitsha informal settlement (Dunoon)",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Diep River",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Lwazi Park (Gugulethu)",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "New Rest (Gugulethu)",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Kanana (Gugulethu)",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Fisantekraal",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Klipheuwel",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Blikkiesdorp",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Delft",
+        "provinces":  "Western Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2020-07-cape-town-storms",
+                          "2022-06-cape-town",
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Marikana",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms",
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Taiwan (Khayelitsha)",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Brown\u0027s Farm (Philippi)",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Sea Point",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Manenberg",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Strand",
+        "provinces":  "Western Cape | Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms",
+                          "2022-06-cape-town",
+                          "2023-09-western-cape-cutoff-low",
+                          "2024-06-western-cape-cutofflow-floods",
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Sandvlei (Macassar)",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Eerste River",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Wallacedene",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2020-07-cape-town-storms"
+                      ]
+    },
+    {
+        "place":  "Mfuleni",
+        "provinces":  "Western Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2020-07-cape-town-storms",
+                          "2024-07-western-cape-storms",
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Sedibeng",
+        "provinces":  "Limpopo",
+        "event_ids":  [
+                          "2020-10-mopani-hail-floods"
+                      ]
+    },
+    {
+        "place":  "Sefofotse",
+        "provinces":  "Limpopo",
+        "event_ids":  [
+                          "2020-10-mopani-hail-floods"
+                      ]
+    },
+    {
+        "place":  "Maupa",
+        "provinces":  "Limpopo",
+        "event_ids":  [
+                          "2020-10-mopani-hail-floods"
+                      ]
+    },
+    {
+        "place":  "Bellevue",
+        "provinces":  "Limpopo",
+        "event_ids":  [
+                          "2020-10-mopani-hail-floods"
+                      ]
+    },
+    {
+        "place":  "Mohlabaneng",
+        "provinces":  "Limpopo",
+        "event_ids":  [
+                          "2020-10-mopani-hail-floods"
+                      ]
+    },
+    {
+        "place":  "Jamela",
+        "provinces":  "Limpopo",
+        "event_ids":  [
+                          "2020-10-mopani-hail-floods"
+                      ]
+    },
+    {
+        "place":  "Tlatja",
+        "provinces":  "Limpopo",
+        "event_ids":  [
+                          "2020-10-mopani-hail-floods"
+                      ]
+    },
+    {
+        "place":  "Hennopspark",
+        "provinces":  "KwaZulu-Natal/Gauteng/Free State",
+        "event_ids":  [
+                          "2020-11-umlazi-hammanskraal"
+                      ]
+    },
+    {
+        "place":  "Witstinkhout Road",
+        "provinces":  "KwaZulu-Natal/Gauteng/Free State",
+        "event_ids":  [
+                          "2020-11-umlazi-hammanskraal"
+                      ]
+    },
+    {
+        "place":  "Venda",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/North West/Northern Cape",
+        "event_ids":  [
+                          "2021-01-eloise-limpopo-mpumalanga"
+                      ]
+    },
+    {
+        "place":  "Tshakhuma (near Thohoyandou)",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/North West/Northern Cape",
+        "event_ids":  [
+                          "2021-01-eloise-limpopo-mpumalanga"
+                      ]
+    },
+    {
+        "place":  "Mbaleni",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/North West/Northern Cape",
+        "event_ids":  [
+                          "2021-01-eloise-limpopo-mpumalanga"
+                      ]
+    },
+    {
+        "place":  "Makonde",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/North West/Northern Cape",
+        "event_ids":  [
+                          "2021-01-eloise-limpopo-mpumalanga"
+                      ]
+    },
+    {
+        "place":  "Mkhuhlu",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/North West/Northern Cape",
+        "event_ids":  [
+                          "2021-01-eloise-limpopo-mpumalanga"
+                      ]
+    },
+    {
+        "place":  "Nkomazi Block B",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/North West/Northern Cape",
+        "event_ids":  [
+                          "2021-01-eloise-limpopo-mpumalanga"
+                      ]
+    },
+    {
+        "place":  "Sabie",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/North West/Northern Cape",
+        "event_ids":  [
+                          "2021-01-eloise-limpopo-mpumalanga"
+                      ]
+    },
+    {
+        "place":  "Graskop",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/North West/Northern Cape",
+        "event_ids":  [
+                          "2021-01-eloise-limpopo-mpumalanga"
+                      ]
+    },
+    {
+        "place":  "Blyde River",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/North West/Northern Cape",
+        "event_ids":  [
+                          "2021-01-eloise-limpopo-mpumalanga"
+                      ]
+    },
+    {
+        "place":  "Elukwatini",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/North West/Northern Cape",
+        "event_ids":  [
+                          "2021-01-eloise-limpopo-mpumalanga"
+                      ]
+    },
+    {
+        "place":  "Vryheid",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/North West/Northern Cape",
+        "event_ids":  [
+                          "2021-01-eloise-limpopo-mpumalanga"
+                      ]
+    },
+    {
+        "place":  "Kruger National Park",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West | Limpopo/Mpumalanga/KwaZulu-Natal/North West/Northern Cape",
+        "event_ids":  [
+                          "2021-01-eloise-limpopo-mpumalanga",
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Ladysmith",
+        "provinces":  "KwaZulu-Natal | KwaZulu-Natal/Free State | Mpumalanga/KwaZulu-Natal/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2021-02-mpumalanga-kzn-limpopo-floods",
+                          "2024-01-kzn-freestate-floods",
+                          "2026-04-kzn-umgungundlovu-ladysmith-severe-weather"
+                      ]
+    },
+    {
+        "place":  "Klip River",
+        "provinces":  "KwaZulu-Natal | KwaZulu-Natal/North West | Mpumalanga/KwaZulu-Natal/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2021-02-mpumalanga-kzn-limpopo-floods",
+                          "2022-01-kzn-ladysmith-vaal",
+                          "2023-12-ladysmith-christmas-eve"
+                      ]
+    },
+    {
+        "place":  "Komatidraai",
+        "provinces":  "Mpumalanga/KwaZulu-Natal/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2021-02-mpumalanga-kzn-limpopo-floods"
+                      ]
+    },
+    {
+        "place":  "Nandoni Dam",
+        "provinces":  "Mpumalanga/KwaZulu-Natal/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2021-02-mpumalanga-kzn-limpopo-floods"
+                      ]
+    },
+    {
+        "place":  "Luvuvhu River",
+        "provinces":  "Mpumalanga/KwaZulu-Natal/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2021-02-mpumalanga-kzn-limpopo-floods"
+                      ]
+    },
+    {
+        "place":  "ha-Mutoti",
+        "provinces":  "Mpumalanga/KwaZulu-Natal/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2021-02-mpumalanga-kzn-limpopo-floods"
+                      ]
+    },
+    {
+        "place":  "ha-Budeli",
+        "provinces":  "Mpumalanga/KwaZulu-Natal/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2021-02-mpumalanga-kzn-limpopo-floods"
+                      ]
+    },
+    {
+        "place":  "ha-Mphego",
+        "provinces":  "Mpumalanga/KwaZulu-Natal/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2021-02-mpumalanga-kzn-limpopo-floods"
+                      ]
+    },
+    {
+        "place":  "Vaal Dam",
+        "provinces":  "KwaZulu-Natal/North West | Mpumalanga/KwaZulu-Natal/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2021-02-mpumalanga-kzn-limpopo-floods",
+                          "2022-01-kzn-ladysmith-vaal"
+                      ]
+    },
+    {
+        "place":  "Thohoyandou",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West | Mpumalanga/KwaZulu-Natal/Limpopo/Gauteng",
+        "event_ids":  [
+                          "2021-02-mpumalanga-kzn-limpopo-floods",
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Musina",
+        "provinces":  "Limpopo",
+        "event_ids":  [
+                          "2021-02-musina-floods"
+                      ]
+    },
+    {
+        "place":  "Beitbridge (Zimbabwe side)",
+        "provinces":  "Limpopo",
+        "event_ids":  [
+                          "2021-02-musina-floods"
+                      ]
+    },
+    {
+        "place":  "Struisbaai",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2021-05-western-cape-overberg"
+                      ]
+    },
+    {
+        "place":  "Struisbaai North",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2021-05-western-cape-overberg"
+                      ]
+    },
+    {
+        "place":  "L\u0027Agulhas",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2021-05-western-cape-overberg"
+                      ]
+    },
+    {
+        "place":  "Cape Agulhas",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2021-05-western-cape-overberg"
+                      ]
+    },
+    {
+        "place":  "Stormsvlei",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2021-05-western-cape-overberg"
+                      ]
+    },
+    {
+        "place":  "Riviersonderend",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2021-05-western-cape-overberg"
+                      ]
+    },
+    {
+        "place":  "Bonnievale",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2021-05-western-cape-overberg"
+                      ]
+    },
+    {
+        "place":  "Mdantsane (Zones 1, 3, 9, 18, NU.7)",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2022-01-eastern-cape-mdantsane"
+                      ]
+    },
+    {
+        "place":  "Joe Slovo informal settlement",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2022-01-eastern-cape-mdantsane"
+                      ]
+    },
+    {
+        "place":  "Duncan Village",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2022-01-eastern-cape-mdantsane",
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Potsdam",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2022-01-eastern-cape-mdantsane"
+                      ]
+    },
+    {
+        "place":  "Shixini (Dutywa)",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2022-01-eastern-cape-mdantsane"
+                      ]
+    },
+    {
+        "place":  "Willowvale",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2022-01-eastern-cape-mdantsane"
+                      ]
+    },
+    {
+        "place":  "Gatyana",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2022-01-eastern-cape-mdantsane"
+                      ]
+    },
+    {
+        "place":  "Mqanduli",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2022-01-eastern-cape-mdantsane"
+                      ]
+    },
+    {
+        "place":  "Matatiele",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2022-01-eastern-cape-mdantsane"
+                      ]
+    },
+    {
+        "place":  "Nyandeni",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2022-01-eastern-cape-mdantsane"
+                      ]
+    },
+    {
+        "place":  "Buffalo River",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2022-01-eastern-cape-mdantsane"
+                      ]
+    },
+    {
+        "place":  "Nahoon River (Horseshoe Valley)",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2022-01-eastern-cape-mdantsane"
+                      ]
+    },
+    {
+        "place":  "Ladysmith CBD",
+        "provinces":  "KwaZulu-Natal/North West",
+        "event_ids":  [
+                          "2022-01-kzn-ladysmith-vaal"
+                      ]
+    },
+    {
+        "place":  "Ezakheni",
+        "provinces":  "KwaZulu-Natal/North West",
+        "event_ids":  [
+                          "2022-01-kzn-ladysmith-vaal"
+                      ]
+    },
+    {
+        "place":  "Msinga",
+        "provinces":  "KwaZulu-Natal/North West",
+        "event_ids":  [
+                          "2022-01-kzn-ladysmith-vaal"
+                      ]
+    },
+    {
+        "place":  "uThukela River",
+        "provinces":  "KwaZulu-Natal/North West",
+        "event_ids":  [
+                          "2022-01-kzn-ladysmith-vaal"
+                      ]
+    },
+    {
+        "place":  "Qedusizi Dam",
+        "provinces":  "KwaZulu-Natal/North West",
+        "event_ids":  [
+                          "2022-01-kzn-ladysmith-vaal"
+                      ]
+    },
+    {
+        "place":  "Bloemhof",
+        "provinces":  "KwaZulu-Natal/North West",
+        "event_ids":  [
+                          "2022-01-kzn-ladysmith-vaal"
+                      ]
+    },
+    {
+        "place":  "Christiana",
+        "provinces":  "KwaZulu-Natal/North West",
+        "event_ids":  [
+                          "2022-01-kzn-ladysmith-vaal"
+                      ]
+    },
+    {
+        "place":  "Bloemhof Dam",
+        "provinces":  "KwaZulu-Natal/North West",
+        "event_ids":  [
+                          "2022-01-kzn-ladysmith-vaal"
+                      ]
+    },
+    {
+        "place":  "Midstream",
+        "provinces":  "Gauteng/KwaZulu-Natal",
+        "event_ids":  [
+                          "2022-02-gauteng-kzn-feb4"
+                      ]
+    },
+    {
+        "place":  "Olifantsfontein",
+        "provinces":  "Gauteng/KwaZulu-Natal",
+        "event_ids":  [
+                          "2022-02-gauteng-kzn-feb4"
+                      ]
+    },
+    {
+        "place":  "Ivory Park",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2022-02-tembisa-ivory-park"
+                      ]
+    },
+    {
+        "place":  "Kaalspruit river",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2022-02-tembisa-ivory-park"
+                      ]
+    },
+    {
+        "place":  "Pinetown",
+        "provinces":  "KwaZulu-Natal | KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood",
+                          "2022-05-kzn-repeat",
+                          "2023-06-kzn-ethekwini-landspout",
+                          "2025-03-kzn-further-floods",
+                          "2026-09-kzn-heavy-rain"
+                      ]
+    },
+    {
+        "place":  "eMdloti/Umdloti",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "oThongathi/Tongaat",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Clare Estate",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Reservoir Hills",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Quarry Road informal settlement (M19)",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Nthungwane Extension 5",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "KwaNdengezi (Dassenhoek)",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Molweni",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Osizweni",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Durban North",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Umbumbulu",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "KwaNcolosi",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Ndwedwe",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Napierville",
+        "provinces":  "KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood"
+                      ]
+    },
+    {
+        "place":  "Sezela",
+        "provinces":  "KwaZulu-Natal | KwaZulu-Natal/Eastern Cape",
+        "event_ids":  [
+                          "2022-04-kzn-megaflood",
+                          "2022-05-kzn-repeat",
+                          "2023-06-kzn-ethekwini-landspout"
+                      ]
+    },
+    {
+        "place":  "Bluff",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2022-05-kzn-repeat"
+                      ]
+    },
+    {
+        "place":  "Umdloti",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2022-05-kzn-repeat"
+                      ]
+    },
+    {
+        "place":  "Westbrook",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2022-05-kzn-repeat"
+                      ]
+    },
+    {
+        "place":  "Tongaat",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2022-05-kzn-repeat"
+                      ]
+    },
+    {
+        "place":  "La Mercy",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2022-05-kzn-repeat",
+                          "2024-06-kzn-tornadoes-storm"
+                      ]
+    },
+    {
+        "place":  "Ottery",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2022-06-cape-town"
+                      ]
+    },
+    {
+        "place":  "Langa",
+        "provinces":  "Eastern Cape | Western Cape",
+        "event_ids":  [
+                          "2022-06-cape-town",
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Kleinvlei",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2022-06-cape-town"
+                      ]
+    },
+    {
+        "place":  "Ravensmead",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2022-06-cape-town"
+                      ]
+    },
+    {
+        "place":  "Goodwood",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2022-06-cape-town"
+                      ]
+    },
+    {
+        "place":  "Bonteheuwel",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2022-06-cape-town"
+                      ]
+    },
+    {
+        "place":  "Belhar",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2022-06-cape-town"
+                      ]
+    },
+    {
+        "place":  "Maitland",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2022-06-cape-town"
+                      ]
+    },
+    {
+        "place":  "Bellville South",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2022-06-cape-town"
+                      ]
+    },
+    {
+        "place":  "Paarl",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2022-06-cape-town"
+                      ]
+    },
+    {
+        "place":  "Newlands",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2022-06-cape-town"
+                      ]
+    },
+    {
+        "place":  "Jagersfontein",
+        "provinces":  "Free State",
+        "event_ids":  [
+                          "2022-09-jagersfontein-tailings"
+                      ]
+    },
+    {
+        "place":  "Charlesville",
+        "provinces":  "Free State",
+        "event_ids":  [
+                          "2022-09-jagersfontein-tailings"
+                      ]
+    },
+    {
+        "place":  "Bramley Park",
+        "provinces":  "Gauteng",
+        "event_ids":  [
+                          "2022-12-jukskei-baptism"
+                      ]
+    },
+    {
+        "place":  "Protea South",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Bram Fischer",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Nancefield Hostel",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Lenasia",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Dlamini",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Florida",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Orlando informal settlement",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Mzimhlophe (M70)",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Doornkop",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Brakpan",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Vereeniging",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Rustenburg",
+        "provinces":  "Gauteng/North West",
+        "event_ids":  [
+                          "2022-12-gauteng-northwest-soweto"
+                      ]
+    },
+    {
+        "place":  "Komani (Queenstown)",
+        "provinces":  "Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West",
+        "event_ids":  [
+                          "2023-02-national-disaster-floods"
+                      ]
+    },
+    {
+        "place":  "Bonkolo Dam",
+        "provinces":  "Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West",
+        "event_ids":  [
+                          "2023-02-national-disaster-floods"
+                      ]
+    },
+    {
+        "place":  "Kamhlushwa",
+        "provinces":  "Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West",
+        "event_ids":  [
+                          "2023-02-national-disaster-floods"
+                      ]
+    },
+    {
+        "place":  "Driekoppies",
+        "provinces":  "Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West",
+        "event_ids":  [
+                          "2023-02-national-disaster-floods"
+                      ]
+    },
+    {
+        "place":  "Tonga",
+        "provinces":  "Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West",
+        "event_ids":  [
+                          "2023-02-national-disaster-floods"
+                      ]
+    },
+    {
+        "place":  "Masibekela",
+        "provinces":  "Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West",
+        "event_ids":  [
+                          "2023-02-national-disaster-floods"
+                      ]
+    },
+    {
+        "place":  "Steenbok",
+        "provinces":  "Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West",
+        "event_ids":  [
+                          "2023-02-national-disaster-floods"
+                      ]
+    },
+    {
+        "place":  "Mataffin",
+        "provinces":  "Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West",
+        "event_ids":  [
+                          "2023-02-national-disaster-floods"
+                      ]
+    },
+    {
+        "place":  "Newcastle Ward 25",
+        "provinces":  "Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West",
+        "event_ids":  [
+                          "2023-02-national-disaster-floods"
+                      ]
+    },
+    {
+        "place":  "Ngwavuma",
+        "provinces":  "Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West",
+        "event_ids":  [
+                          "2023-02-national-disaster-floods"
+                      ]
+    },
+    {
+        "place":  "Deelpan village (near Mahikeng)",
+        "provinces":  "Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West",
+        "event_ids":  [
+                          "2023-02-national-disaster-floods"
+                      ]
+    },
+    {
+        "place":  "Douglas",
+        "provinces":  "Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West | Northern Cape",
+        "event_ids":  [
+                          "2023-02-national-disaster-floods",
+                          "2023-02-northern-cape-orange-river"
+                      ]
+    },
+    {
+        "place":  "Kruger National Park (Lower Sabie, Crocodile Bridge)",
+        "provinces":  "Mpumalanga/Eastern Cape/Gauteng/KwaZulu-Natal/Limpopo/Northern Cape/North West",
+        "event_ids":  [
+                          "2023-02-national-disaster-floods"
+                      ]
+    },
+    {
+        "place":  "Upington",
+        "provinces":  "Northern Cape",
+        "event_ids":  [
+                          "2023-02-northern-cape-orange-river"
+                      ]
+    },
+    {
+        "place":  "Pokkies Eiland",
+        "provinces":  "Northern Cape",
+        "event_ids":  [
+                          "2023-02-northern-cape-orange-river"
+                      ]
+    },
+    {
+        "place":  "Keimoes",
+        "provinces":  "Northern Cape",
+        "event_ids":  [
+                          "2023-02-northern-cape-orange-river"
+                      ]
+    },
+    {
+        "place":  "Kakamas",
+        "provinces":  "Northern Cape",
+        "event_ids":  [
+                          "2023-02-northern-cape-orange-river"
+                      ]
+    },
+    {
+        "place":  "Augrabies",
+        "provinces":  "Northern Cape",
+        "event_ids":  [
+                          "2023-02-northern-cape-orange-river"
+                      ]
+    },
+    {
+        "place":  "Lutzburg",
+        "provinces":  "Northern Cape",
+        "event_ids":  [
+                          "2023-02-northern-cape-orange-river"
+                      ]
+    },
+    {
+        "place":  "Green Farm",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2023-03-port-st-johns-ingquza"
+                      ]
+    },
+    {
+        "place":  "Lusikisiki",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2023-03-port-st-johns-ingquza"
+                      ]
+    },
+    {
+        "place":  "Rhole village",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2023-03-port-st-johns-ingquza"
+                      ]
+    },
+    {
+        "place":  "R61 near Isinuka",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2023-03-port-st-johns-ingquza"
+                      ]
+    },
+    {
+        "place":  "Nkwili (Isilimela Hospital)",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2023-03-port-st-johns-ingquza"
+                      ]
+    },
+    {
+        "place":  "Phoenix",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2023-06-kzn-ethekwini-landspout"
+                      ]
+    },
+    {
+        "place":  "Zwelisha",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2023-06-kzn-ethekwini-landspout"
+                      ]
+    },
+    {
+        "place":  "Umbilo River",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2023-06-kzn-ethekwini-landspout"
+                      ]
+    },
+    {
+        "place":  "Blue Lagoon",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2023-06-kzn-ethekwini-landspout"
+                      ]
+    },
+    {
+        "place":  "Wilderness",
+        "provinces":  "Eastern Cape/Western Cape",
+        "event_ids":  [
+                          "2023-09-cape-coast-storm-surge"
+                      ]
+    },
+    {
+        "place":  "Aston Bay",
+        "provinces":  "Eastern Cape/Western Cape",
+        "event_ids":  [
+                          "2023-09-cape-coast-storm-surge"
+                      ]
+    },
+    {
+        "place":  "Jeffreys Bay",
+        "provinces":  "Eastern Cape/Western Cape",
+        "event_ids":  [
+                          "2023-09-cape-coast-storm-surge"
+                      ]
+    },
+    {
+        "place":  "Kariega",
+        "provinces":  "Eastern Cape | Eastern Cape/KwaZulu-Natal/Free State/Limpopo/North West/Gauteng/Mpumalanga | Eastern Cape/Western Cape",
+        "event_ids":  [
+                          "2023-09-cape-coast-storm-surge",
+                          "2024-06-eastern-cape-floods",
+                          "2024-10-eastern-cape-nmb-floods"
+                      ]
+    },
+    {
+        "place":  "Mfuleni (Covid Village)",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Siyahlala informal settlement (Dunoon)",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Kosovo informal settlement",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Sir Lowry\u0027s Pass Village",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Botrivier",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Kleinmond",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Hermanus",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Villiersdorp",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Elgin",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Greyton",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Faure",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Sandvlei",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Groot Brakrivier",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Stellenbosch",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Kuils River",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2023-09-western-cape-cutoff-low"
+                      ]
+    },
+    {
+        "place":  "Maqebevu village",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2023-10-or-tambo-floods"
+                      ]
+    },
+    {
+        "place":  "Rainy village",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2023-10-or-tambo-floods"
+                      ]
+    },
+    {
+        "place":  "Phompo River",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2023-10-or-tambo-floods"
+                      ]
+    },
+    {
+        "place":  "Mtubatuba",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2023-10-kzn-mtubatuba-storm"
+                      ]
+    },
+    {
+        "place":  "Dundee",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2023-12-dundee-storm"
+                      ]
+    },
+    {
+        "place":  "Sithembile Township",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2023-12-dundee-storm"
+                      ]
+    },
+    {
+        "place":  "Ladysmith (uMnambithi)",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2023-12-ladysmith-christmas-eve"
+                      ]
+    },
+    {
+        "place":  "Bell\u0027s Spruit",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2023-12-ladysmith-christmas-eve"
+                      ]
+    },
+    {
+        "place":  "Shepstone Road caravan park",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2023-12-ladysmith-christmas-eve"
+                      ]
+    },
+    {
+        "place":  "N11 near Limit Hill",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2023-12-ladysmith-christmas-eve"
+                      ]
+    },
+    {
+        "place":  "Animal Anti-Cruelty League / SPCA",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2023-12-ladysmith-christmas-eve"
+                      ]
+    },
+    {
+        "place":  "KwaDukuza",
+        "provinces":  "KwaZulu-Natal/Free State",
+        "event_ids":  [
+                          "2024-01-kzn-freestate-floods"
+                      ]
+    },
+    {
+        "place":  "Indwedwe",
+        "provinces":  "KwaZulu-Natal/Free State",
+        "event_ids":  [
+                          "2024-01-kzn-freestate-floods"
+                      ]
+    },
+    {
+        "place":  "N11",
+        "provinces":  "KwaZulu-Natal/Free State",
+        "event_ids":  [
+                          "2024-01-kzn-freestate-floods"
+                      ]
+    },
+    {
+        "place":  "Bloekombos",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-06-western-cape-cutofflow-floods"
+                      ]
+    },
+    {
+        "place":  "KwaNobuhle",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Walmer",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Blue Horizon Bay",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Kamesh",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Kabega Park",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Chatty",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Kuyga",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Kwadwesi",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Qunu (NMB)",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Greenfields",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Gqeberha",
+        "provinces":  "Eastern Cape | Eastern Cape/KwaZulu-Natal/Free State/Limpopo/North West/Gauteng/Mpumalanga",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods",
+                          "2024-10-eastern-cape-nmb-floods"
+                      ]
+    },
+    {
+        "place":  "Ducats",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Pefferville",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Cambridge Location",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Mzamomhle",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Reeston",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Stoney Drift",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Mdantsane",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Gompo",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Dawn",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "Tyriville",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2024-06-eastern-cape-floods"
+                      ]
+    },
+    {
+        "place":  "oThongathi (Tongaat)",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2024-06-kzn-tornadoes-storm"
+                      ]
+    },
+    {
+        "place":  "Magwaveni",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2024-06-kzn-tornadoes-storm"
+                      ]
+    },
+    {
+        "place":  "Sandfields",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2024-06-kzn-tornadoes-storm"
+                      ]
+    },
+    {
+        "place":  "Fairbreeze",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2024-06-kzn-tornadoes-storm"
+                      ]
+    },
+    {
+        "place":  "Sea Tides",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2024-06-kzn-tornadoes-storm"
+                      ]
+    },
+    {
+        "place":  "Desainagar",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2024-06-kzn-tornadoes-storm"
+                      ]
+    },
+    {
+        "place":  "Utrecht",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2024-06-kzn-tornadoes-storm"
+                      ]
+    },
+    {
+        "place":  "Lwandle",
+        "provinces":  "Western Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2024-07-western-cape-storms",
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Nomzamo",
+        "provinces":  "Western Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2024-07-western-cape-storms",
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Philippi East",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Tafelsig",
+        "provinces":  "Western Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2024-07-western-cape-storms",
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Vygieskraal",
+        "provinces":  "Western Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2024-07-western-cape-storms",
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Malema",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Siyahlala",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Graveyard Pond",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Baghdad",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Macassar",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Driftsands",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Eluxolweni",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Taiwan",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Strandfontein",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Muizenberg",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Wupperthal",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Eselsbank",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Citrusdal",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "Riverlands",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2024-07-western-cape-storms"
+                      ]
+    },
+    {
+        "place":  "KwaZakhele",
+        "provinces":  "Eastern Cape/KwaZulu-Natal/Free State/Limpopo/North West/Gauteng/Mpumalanga",
+        "event_ids":  [
+                          "2024-10-eastern-cape-nmb-floods"
+                      ]
+    },
+    {
+        "place":  "Lapland",
+        "provinces":  "Eastern Cape/KwaZulu-Natal/Free State/Limpopo/North West/Gauteng/Mpumalanga",
+        "event_ids":  [
+                          "2024-10-eastern-cape-nmb-floods"
+                      ]
+    },
+    {
+        "place":  "Vastrap informal settlement",
+        "provinces":  "Eastern Cape/KwaZulu-Natal/Free State/Limpopo/North West/Gauteng/Mpumalanga",
+        "event_ids":  [
+                          "2024-10-eastern-cape-nmb-floods"
+                      ]
+    },
+    {
+        "place":  "Motherwell",
+        "provinces":  "Eastern Cape/KwaZulu-Natal/Free State/Limpopo/North West/Gauteng/Mpumalanga",
+        "event_ids":  [
+                          "2024-10-eastern-cape-nmb-floods"
+                      ]
+    },
+    {
+        "place":  "Uitenhage",
+        "provinces":  "Eastern Cape/KwaZulu-Natal/Free State/Limpopo/North West/Gauteng/Mpumalanga",
+        "event_ids":  [
+                          "2024-10-eastern-cape-nmb-floods"
+                      ]
+    },
+    {
+        "place":  "KwaMakhutha",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-02-ethekwini-storm-wall-collapses"
+                      ]
+    },
+    {
+        "place":  "Adams Mission",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-02-ethekwini-storm-wall-collapses"
+                      ]
+    },
+    {
+        "place":  "Folweni",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-02-ethekwini-storm-wall-collapses"
+                      ]
+    },
+    {
+        "place":  "Demat",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-02-ethekwini-storm-wall-collapses"
+                      ]
+    },
+    {
+        "place":  "Ensimbini",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-02-ethekwini-storm-wall-collapses"
+                      ]
+    },
+    {
+        "place":  "Morton",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-02-ethekwini-storm-wall-collapses"
+                      ]
+    },
+    {
+        "place":  "Clairwood",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-02-ethekwini-storm-wall-collapses"
+                      ]
+    },
+    {
+        "place":  "Umkomaas",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-02-ethekwini-storm-wall-collapses"
+                      ]
+    },
+    {
+        "place":  "Eshowe",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-02-ethekwini-storm-wall-collapses"
+                      ]
+    },
+    {
+        "place":  "Lamontville",
+        "provinces":  "KwaZulu-Natal/Gauteng/Free State/North West/Limpopo/Northern Cape",
+        "event_ids":  [
+                          "2025-02-lamontville-floods"
+                      ]
+    },
+    {
+        "place":  "Malangeni",
+        "provinces":  "KwaZulu-Natal/Gauteng/Free State/North West/Limpopo/Northern Cape",
+        "event_ids":  [
+                          "2025-02-lamontville-floods"
+                      ]
+    },
+    {
+        "place":  "Johannesburg",
+        "provinces":  "KwaZulu-Natal/Gauteng/Free State/North West/Limpopo/Northern Cape",
+        "event_ids":  [
+                          "2025-02-lamontville-floods"
+                      ]
+    },
+    {
+        "place":  "Ekurhuleni",
+        "provinces":  "KwaZulu-Natal/Gauteng/Free State/North West/Limpopo/Northern Cape",
+        "event_ids":  [
+                          "2025-02-lamontville-floods"
+                      ]
+    },
+    {
+        "place":  "Slovo Park",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2025-06-eastern-cape-mthatha-floods"
+                      ]
+    },
+    {
+        "place":  "Efata Special School for the Deaf and Blind",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2025-06-eastern-cape-mthatha-floods"
+                      ]
+    },
+    {
+        "place":  "R61 (Mthatha-Ngcobo)",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2025-06-eastern-cape-mthatha-floods"
+                      ]
+    },
+    {
+        "place":  "Ngcobo",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2025-06-eastern-cape-mthatha-floods"
+                      ]
+    },
+    {
+        "place":  "Ngqeleni",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2025-06-eastern-cape-mthatha-floods"
+                      ]
+    },
+    {
+        "place":  "Butterworth",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2025-06-eastern-cape-mthatha-floods"
+                      ]
+    },
+    {
+        "place":  "Mthatha River",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2025-06-eastern-cape-mthatha-floods"
+                      ]
+    },
+    {
+        "place":  "Mthatha Dam",
+        "provinces":  "Eastern Cape",
+        "event_ids":  [
+                          "2025-06-eastern-cape-mthatha-floods"
+                      ]
+    },
+    {
+        "place":  "Vygieskraal informal settlement",
+        "provinces":  "Western Cape",
+        "event_ids":  [
+                          "2025-07-cape-town-floods"
+                      ]
+    },
+    {
+        "place":  "New Hanover",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-11-umshwathi-new-hanover-floods"
+                      ]
+    },
+    {
+        "place":  "Shiyabazali",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-11-umshwathi-new-hanover-floods"
+                      ]
+    },
+    {
+        "place":  "Shiyasi",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-11-umshwathi-new-hanover-floods"
+                      ]
+    },
+    {
+        "place":  "Mishani",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-11-umshwathi-new-hanover-floods"
+                      ]
+    },
+    {
+        "place":  "Dalton",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-11-umshwathi-new-hanover-floods"
+                      ]
+    },
+    {
+        "place":  "Cool Air",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-11-umshwathi-new-hanover-floods"
+                      ]
+    },
+    {
+        "place":  "Loliwe",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-11-umshwathi-new-hanover-floods"
+                      ]
+    },
+    {
+        "place":  "Sphothom",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-11-umshwathi-new-hanover-floods"
+                      ]
+    },
+    {
+        "place":  "Mkhushwa",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-11-umshwathi-new-hanover-floods"
+                      ]
+    },
+    {
+        "place":  "Kamelhoek",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-11-umshwathi-new-hanover-floods"
+                      ]
+    },
+    {
+        "place":  "Wartburg",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2025-11-umshwathi-new-hanover-floods"
+                      ]
+    },
+    {
+        "place":  "eManzimtoti",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga",
+        "event_ids":  [
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Port Shepstone",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga",
+        "event_ids":  [
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Bomela",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga",
+        "event_ids":  [
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Qholoqholo",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga",
+        "event_ids":  [
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Olievenhoutbosch Extension 19",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga",
+        "event_ids":  [
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Diepsloot",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga",
+        "event_ids":  [
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Bhisho",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga",
+        "event_ids":  [
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Qonce (King William\u0027s Town)",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga",
+        "event_ids":  [
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Middledrift",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga",
+        "event_ids":  [
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Lady Grey",
+        "provinces":  "KwaZulu-Natal/Eastern Cape/Gauteng/Limpopo/Mpumalanga",
+        "event_ids":  [
+                          "2025-12-festive-storms-kzn-ec-gauteng"
+                      ]
+    },
+    {
+        "place":  "Phalaborwa",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Giyani",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Giyani Nkomo village 22B",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Tshakhuma",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Mashishimale",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Selati River",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Mutale River",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Tswinga",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Tshilapfene",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Gobe River",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Marulaneng",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Luckau",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Legolaneng",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Nghomunghomu (Malamulele)",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Olifants River",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Beitbridge border post",
+        "provinces":  "Limpopo/Mpumalanga/KwaZulu-Natal/Eastern Cape/North West",
+        "event_ids":  [
+                          "2026-01-limpopo-mpumalanga-floods"
+                      ]
+    },
+    {
+        "place":  "Joubertina",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Kleingrysbos",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Diepwalle",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Stormsrivier",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Gamtoos Valley",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Kouga Dam",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "De Rust",
+        "provinces":  "Western Cape/Eastern Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster",
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Welgeluk",
+        "provinces":  "Western Cape/Eastern Cape | Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster",
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Kenilworth",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Genadendal",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Klaarstroom",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Makhaza",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Monwabisi",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Island",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Imizamo Yethu",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Phola Park",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Valhalla Park",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Kampies",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Langrug",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Riverside",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Mitchells Plain",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Hanover Park",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Parow",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Welkom",
+        "provinces":  "Western Cape/Eastern Cape/Northern Cape/North West/Free State/Mpumalanga",
+        "event_ids":  [
+                          "2026-05-cutofflow-cold-fronts-national-disaster"
+                      ]
+    },
+    {
+        "place":  "Toekomsrus",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Gourits River",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Gouritsmond",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Vleesbaai",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Leeu Gamka (N1)",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Molteno Pass",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Harkerville",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Covie",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Sedgefield",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Karatara",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Oceanview informal settlement",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Kingsway Village informal settlement",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Patensie",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Baviaanskloof",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Newton Park",
+        "provinces":  "Western Cape/Eastern Cape",
+        "event_ids":  [
+                          "2026-06-garden-route-karoo-kouga-floods"
+                      ]
+    },
+    {
+        "place":  "Tshelimnyama (Mariannhill)",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2026-09-kzn-heavy-rain"
+                      ]
+    },
+    {
+        "place":  "Quarry Road informal settlement",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2026-09-kzn-heavy-rain"
+                      ]
+    },
+    {
+        "place":  "Melody Hills Transitional Emergency Accommodation (Umlazi)",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2026-09-kzn-heavy-rain"
+                      ]
+    },
+    {
+        "place":  "Isipingo River estuary",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2026-09-kzn-heavy-rain"
+                      ]
+    },
+    {
+        "place":  "uMkhuze (N2)",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2026-09-kzn-heavy-rain"
+                      ]
+    },
+    {
+        "place":  "Gingindlovu",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2026-09-kzn-heavy-rain"
+                      ]
+    },
+    {
+        "place":  "Eshowe (R66)",
+        "provinces":  "KwaZulu-Natal",
+        "event_ids":  [
+                          "2026-09-kzn-heavy-rain"
+                      ]
+    }
+]

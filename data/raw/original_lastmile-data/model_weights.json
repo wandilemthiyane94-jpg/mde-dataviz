@@ -1,0 +1,14 @@
+{
+  "total_facilities": 592,
+  "dimensions": [
+    {"name":"Climate Exposure","weight":20,"status":"real"},
+    {"name":"Criticality","weight":20,"status":"real"},
+    {"name":"Access/Isolation","weight":15,"status":"real"},
+    {"name":"Social Vulnerability","weight":15,"status":"real"},
+    {"name":"Infrastructure Fragility","weight":15,"status":"defaulted","default_value":3,"pct_defaulted":100},
+    {"name":"Operational/Tech Gap","weight":10,"status":"defaulted","default_value":3,"pct_defaulted":100},
+    {"name":"Governance/Legal Gap","weight":5,"status":"defaulted","default_value":3,"pct_defaulted":100}
+  ],
+  "real_weight_pct":70,
+  "defaulted_weight_pct":30
+}

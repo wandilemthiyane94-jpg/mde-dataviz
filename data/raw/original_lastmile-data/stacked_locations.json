@@ -1,0 +1,18 @@
+[
+ {"location":"Umlazi","facility_count":9,"model_risk_score":3.78,"media_evidence":"Casualty","repeat_years":[2019,2022],"settlement_type":"Formal township","language":"isiZulu","group":"model_and_media_agree"},
+ {"location":"Isipingo","facility_count":1,"model_risk_score":4.0,"media_evidence":"Not confirmed","repeat_years":[],"settlement_type":"Formal, mixed","language":"isiZulu","group":"high_risk_invisible"},
+ {"location":"Lamontville","facility_count":1,"model_risk_score":4.0,"media_evidence":"Not confirmed","repeat_years":[],"settlement_type":"Formal township","language":"isiZulu","group":"high_risk_invisible"},
+ {"location":"Bluff","facility_count":1,"model_risk_score":3.0,"media_evidence":"Displacement","repeat_years":[2022],"settlement_type":"Formal suburb","language":"isiZulu","group":"other"},
+ {"location":"Amanzimtoti","facility_count":1,"model_risk_score":2.0,"media_evidence":"Casualty","repeat_years":[2019,2022],"settlement_type":"Formal suburb","language":"isiZulu","group":"other"},
+ {"location":"Folweni","facility_count":1,"model_risk_score":2.0,"media_evidence":"Casualty","repeat_years":[2025],"settlement_type":"Peri-urban township/informal mix","language":"isiZulu","group":"other"},
+ {"location":"Umbumbulu","facility_count":1,"model_risk_score":2.0,"media_evidence":"Ambiguous","repeat_years":[2022],"settlement_type":"Rural/peri-urban","language":"isiZulu","group":"other"},
+ {"location":"Verulam","facility_count":1,"model_risk_score":2.0,"media_evidence":"Not confirmed","repeat_years":[],"settlement_type":"Formal town","language":"English (unverified)","group":"other"},
+ {"location":"Chatsworth","facility_count":1,"model_risk_score":1.0,"media_evidence":"Casualty","repeat_years":[2019],"settlement_type":"Formal township","language":"English (unverified)","group":"other"},
+ {"location":"Clermont","facility_count":1,"model_risk_score":1.0,"media_evidence":"Not confirmed","repeat_years":[],"settlement_type":"Formal township","language":"isiZulu","group":"other"},
+ {"location":"Inanda","facility_count":1,"model_risk_score":1.0,"media_evidence":"Displacement","repeat_years":[2022],"settlement_type":"Mixed formal/informal","language":"isiZulu","group":"other"},
+ {"location":"KwaMakhutha","facility_count":1,"model_risk_score":1.0,"media_evidence":"Casualty","repeat_years":[2025],"settlement_type":"Peri-urban township/informal mix","language":"isiZulu","group":"other"},
+ {"location":"KwaMashu","facility_count":1,"model_risk_score":1.0,"media_evidence":"General damage","repeat_years":[2022],"settlement_type":"Formal township","language":"isiZulu","group":"other"},
+ {"location":"KwaNdengezi","facility_count":1,"model_risk_score":1.0,"media_evidence":"Infrastructure","repeat_years":[2022],"settlement_type":"Peri-urban, informal","language":"isiZulu","group":"other"},
+ {"location":"Molweni","facility_count":1,"model_risk_score":1.0,"media_evidence":"Infrastructure","repeat_years":[2022],"settlement_type":"Peri-urban, informal/semi-formal","language":"isiZulu","group":"other"},
+ {"location":"Ntuzuma","facility_count":1,"model_risk_score":1.0,"media_evidence":"Infrastructure","repeat_years":[2022],"settlement_type":"Formal township","language":"isiZulu","group":"other"}
+]

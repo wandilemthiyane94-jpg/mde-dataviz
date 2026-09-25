@@ -1,0 +1,343 @@
+{
+    "value":  [
+                  {
+                      "location":  "Umlazi",
+                      "facility_count":  9,
+                      "model_risk_score":  3.78,
+                      "media_evidence":  "Casualty",
+                      "repeat_years":  [
+                                           2019,
+                                           2022
+                                       ],
+                      "settlement_type":  "Formal township",
+                      "language":  "isiZulu",
+                      "group":  "model_and_media_agree",
+                      "news_years_2016_2026":  [
+                                                   2016,
+                                                   2017,
+                                                   2019,
+                                                   2020,
+                                                   2022,
+                                                   2026
+                                               ],
+                      "news_event_ids":  [
+                                             "2016-07-cape-kzn-winter-storm",
+                                             "2017-10-durban-supercell-storm",
+                                             "2019-04-easter-floods-kzn-ec",
+                                             "2020-11-umlazi-hammanskraal",
+                                             "2022-04-kzn-megaflood",
+                                             "2026-09-kzn-heavy-rain"
+                                         ]
+                  },
+                  {
+                      "location":  "Isipingo",
+                      "facility_count":  1,
+                      "model_risk_score":  4.0,
+                      "media_evidence":  "Not confirmed",
+                      "repeat_years":  [
+
+                                       ],
+                      "settlement_type":  "Formal, mixed",
+                      "language":  "isiZulu",
+                      "group":  "high_risk_invisible",
+                      "news_years_2016_2026":  [
+                                                   2017,
+                                                   2025,
+                                                   2026
+                                               ],
+                      "news_event_ids":  [
+                                             "2017-10-durban-supercell-storm",
+                                             "2025-02-ethekwini-storm-wall-collapses",
+                                             "2026-09-kzn-heavy-rain"
+                                         ],
+                      "update_note":  "REVIEW: named in coverage of Oct 2017 Durban supercell storm and Feb 2025 eThekwini storm (wall collapses). Group left as high_risk_invisible pending your review. Amnesty (2025, p.51/60): Dakota informal settlement in Isipingo flooded Apr 2022 and Feb 2025; residents received no official help in 2025."
+                  },
+                  {
+                      "location":  "Lamontville",
+                      "facility_count":  1,
+                      "model_risk_score":  4.0,
+                      "media_evidence":  "Casualty",
+                      "repeat_years":  [
+                                           2025
+                                       ],
+                      "settlement_type":  "Formal township",
+                      "language":  "isiZulu",
+                      "group":  "model_and_media_agree",
+                      "news_years_2016_2026":  [
+                                                   2025
+                                               ],
+                      "news_event_ids":  [
+                                             "2025-02-lamontville-floods"
+                                         ],
+                      "previous_group":  "high_risk_invisible",
+                      "update_note":  "Feb 2025 Lamontville flash floods: 7-12+ dead (News24, The Witness, IOL, EWN). Was \"Not confirmed\" / high_risk_invisible in the original dataset. Amnesty (2025, p.8/50/64): 5 of the dead (2 women, 3 children) lived in a temporary relocation area eThekwini itself built on the Umlazi riverbank for 2022 flood victims; AGSA had warned in Aug 2022 that 20% of inspected temporary units were on unsuitable riverbank land."
+                  },
+                  {
+                      "location":  "Bluff",
+                      "facility_count":  1,
+                      "model_risk_score":  3.0,
+                      "media_evidence":  "Displacement",
+                      "repeat_years":  [
+                                           2022
+                                       ],
+                      "settlement_type":  "Formal suburb",
+                      "language":  "isiZulu",
+                      "group":  "other",
+                      "news_years_2016_2026":  [
+                                                   2017,
+                                                   2022
+                                               ],
+                      "news_event_ids":  [
+                                             "2017-10-durban-supercell-storm",
+                                             "2022-05-kzn-repeat"
+                                         ]
+                  },
+                  {
+                      "location":  "Amanzimtoti",
+                      "facility_count":  1,
+                      "model_risk_score":  2.0,
+                      "media_evidence":  "Casualty",
+                      "repeat_years":  [
+                                           2019,
+                                           2022
+                                       ],
+                      "settlement_type":  "Formal suburb",
+                      "language":  "isiZulu",
+                      "group":  "other",
+                      "news_years_2016_2026":  [
+                                                   2016,
+                                                   2019,
+                                                   2022,
+                                                   2025
+                                               ],
+                      "news_event_ids":  [
+                                             "2016-07-cape-kzn-winter-storm",
+                                             "2019-04-easter-floods-kzn-ec",
+                                             "2022-04-kzn-megaflood",
+                                             "2025-02-ethekwini-storm-wall-collapses",
+                                             "2025-12-festive-storms-kzn-ec-gauteng"
+                                         ]
+                  },
+                  {
+                      "location":  "Folweni",
+                      "facility_count":  1,
+                      "model_risk_score":  2.0,
+                      "media_evidence":  "Casualty",
+                      "repeat_years":  [
+                                           2025
+                                       ],
+                      "settlement_type":  "Peri-urban township/informal mix",
+                      "language":  "isiZulu",
+                      "group":  "other",
+                      "news_years_2016_2026":  [
+                                                   2025
+                                               ],
+                      "news_event_ids":  [
+                                             "2025-02-ethekwini-storm-wall-collapses"
+                                         ]
+                  },
+                  {
+                      "location":  "Umbumbulu",
+                      "facility_count":  1,
+                      "model_risk_score":  2.0,
+                      "media_evidence":  "Ambiguous",
+                      "repeat_years":  [
+                                           2022
+                                       ],
+                      "settlement_type":  "Rural/peri-urban",
+                      "language":  "isiZulu",
+                      "group":  "other",
+                      "news_years_2016_2026":  [
+                                                   2022
+                                               ],
+                      "news_event_ids":  [
+                                             "2022-04-kzn-megaflood"
+                                         ]
+                  },
+                  {
+                      "location":  "Verulam",
+                      "facility_count":  1,
+                      "model_risk_score":  2.0,
+                      "media_evidence":  "Not confirmed",
+                      "repeat_years":  [
+
+                                       ],
+                      "settlement_type":  "Formal town",
+                      "language":  "English (unverified)",
+                      "group":  "other",
+                      "news_years_2016_2026":  [
+                                                   2019,
+                                                   2022,
+                                                   2023,
+                                                   2025
+                                               ],
+                      "news_event_ids":  [
+                                             "2019-03-durban-inanda",
+                                             "2022-04-kzn-megaflood",
+                                             "2023-06-kzn-ethekwini-landspout",
+                                             "2025-02-ethekwini-storm-wall-collapses"
+                                         ]
+                  },
+                  {
+                      "location":  "Chatsworth",
+                      "facility_count":  1,
+                      "model_risk_score":  1.0,
+                      "media_evidence":  "Casualty",
+                      "repeat_years":  [
+                                           2019
+                                       ],
+                      "settlement_type":  "Formal township",
+                      "language":  "English (unverified)",
+                      "group":  "other",
+                      "news_years_2016_2026":  [
+                                                   2016,
+                                                   2019,
+                                                   2025
+                                               ],
+                      "news_event_ids":  [
+                                             "2016-07-cape-kzn-winter-storm",
+                                             "2019-04-easter-floods-kzn-ec",
+                                             "2025-02-ethekwini-storm-wall-collapses",
+                                             "2025-02-lamontville-floods"
+                                         ]
+                  },
+                  {
+                      "location":  "Clermont",
+                      "facility_count":  1,
+                      "model_risk_score":  1.0,
+                      "media_evidence":  "Not confirmed",
+                      "repeat_years":  [
+
+                                       ],
+                      "settlement_type":  "Formal township",
+                      "language":  "isiZulu",
+                      "group":  "other",
+                      "news_years_2016_2026":  [
+
+                                               ],
+                      "news_event_ids":  [
+
+                                         ]
+                  },
+                  {
+                      "location":  "Inanda",
+                      "facility_count":  1,
+                      "model_risk_score":  1.0,
+                      "media_evidence":  "Displacement",
+                      "repeat_years":  [
+                                           2022
+                                       ],
+                      "settlement_type":  "Mixed formal/informal",
+                      "language":  "isiZulu",
+                      "group":  "other",
+                      "news_years_2016_2026":  [
+                                                   2016,
+                                                   2019,
+                                                   2023
+                                               ],
+                      "news_event_ids":  [
+                                             "2016-07-cape-kzn-winter-storm",
+                                             "2019-03-durban-inanda",
+                                             "2019-11-durban-mpolweni-storms",
+                                             "2023-06-kzn-ethekwini-landspout"
+                                         ]
+                  },
+                  {
+                      "location":  "KwaMakhutha",
+                      "facility_count":  1,
+                      "model_risk_score":  1.0,
+                      "media_evidence":  "Casualty",
+                      "repeat_years":  [
+                                           2025
+                                       ],
+                      "settlement_type":  "Peri-urban township/informal mix",
+                      "language":  "isiZulu",
+                      "group":  "other",
+                      "news_years_2016_2026":  [
+                                                   2025
+                                               ],
+                      "news_event_ids":  [
+                                             "2025-02-ethekwini-storm-wall-collapses"
+                                         ]
+                  },
+                  {
+                      "location":  "KwaMashu",
+                      "facility_count":  1,
+                      "model_risk_score":  1.0,
+                      "media_evidence":  "General damage",
+                      "repeat_years":  [
+                                           2022
+                                       ],
+                      "settlement_type":  "Formal township",
+                      "language":  "isiZulu",
+                      "group":  "other",
+                      "news_years_2016_2026":  [
+                                                   2016,
+                                                   2019
+                                               ],
+                      "news_event_ids":  [
+                                             "2016-07-cape-kzn-winter-storm",
+                                             "2019-03-durban-inanda"
+                                         ]
+                  },
+                  {
+                      "location":  "KwaNdengezi",
+                      "facility_count":  1,
+                      "model_risk_score":  1.0,
+                      "media_evidence":  "Infrastructure",
+                      "repeat_years":  [
+                                           2022
+                                       ],
+                      "settlement_type":  "Peri-urban, informal",
+                      "language":  "isiZulu",
+                      "group":  "other",
+                      "news_years_2016_2026":  [
+                                                   2022
+                                               ],
+                      "news_event_ids":  [
+                                             "2022-04-kzn-megaflood"
+                                         ]
+                  },
+                  {
+                      "location":  "Molweni",
+                      "facility_count":  1,
+                      "model_risk_score":  1.0,
+                      "media_evidence":  "Infrastructure",
+                      "repeat_years":  [
+                                           2022
+                                       ],
+                      "settlement_type":  "Peri-urban, informal/semi-formal",
+                      "language":  "isiZulu",
+                      "group":  "other",
+                      "news_years_2016_2026":  [
+                                                   2022
+                                               ],
+                      "news_event_ids":  [
+                                             "2022-04-kzn-megaflood"
+                                         ]
+                  },
+                  {
+                      "location":  "Ntuzuma",
+                      "facility_count":  1,
+                      "model_risk_score":  1.0,
+                      "media_evidence":  "Infrastructure",
+                      "repeat_years":  [
+                                           2022
+                                       ],
+                      "settlement_type":  "Formal township",
+                      "language":  "isiZulu",
+                      "group":  "other",
+                      "news_years_2016_2026":  [
+                                                   2016,
+                                                   2022,
+                                                   2026
+                                               ],
+                      "news_event_ids":  [
+                                             "2016-07-cape-kzn-winter-storm",
+                                             "2022-04-kzn-megaflood",
+                                             "2026-02-ntuzuma-flash-flood"
+                                         ]
+                  }
+              ],
+    "Count":  16
+}

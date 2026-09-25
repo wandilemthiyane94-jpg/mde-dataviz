@@ -1,0 +1,31 @@
+[
+  {
+    "id": "2024-12-cato-manor-enkanini-wall-collapse",
+    "start_date": "2024-12",
+    "end_date": null,
+    "event": "Cato Manor (eNkanini) retaining-wall collapse in heavy rain",
+    "provinces": ["KwaZulu-Natal"],
+    "municipalities": ["eThekwini"],
+    "named_places": ["eNkanini informal settlement", "Cato Manor"],
+    "deaths": 2,
+    "deaths_text": "2 (man aged 38, woman aged 18)",
+    "missing": null,
+    "displaced_or_affected": null,
+    "homes_damaged": null,
+    "economic_loss": null,
+    "disaster_declared": "none_found",
+    "warning_issued": "unknown",
+    "alert_level": null,
+    "warning_lead_time": null,
+    "warning_quote": null,
+    "resident_quote_on_warning": null,
+    "warning_category": "Casualty-dominant, no warning detail",
+    "settlement_type_mentioned": "informal settlement on a hillside",
+    "sources": [
+      {"title": "Flooded and Forgotten (p.51)", "publisher": "Amnesty International", "url": "https://www.amnesty.org", "date": "2025-11"},
+      {"title": "Heavy rain causes retaining wall collapse, resulting in two deaths in Cato Manor", "publisher": "The Mercury (IOL)", "url": "https://iol.co.za/mercury/news/2024-12-23-heavy-rain-causes-retaining-wall-collapse-resulting-in-two-deaths-in-cato-manor/", "date": "2024-12-23"}
+    ],
+    "confidence": "medium",
+    "notes": "Added from Amnesty report; IOL URL cited by Amnesty, not independently fetched. Exact day not given (IOL article 23 Dec 2024). Residents say municipality provided no relief after the follow-up March 2025 flooding."
+  }
+]

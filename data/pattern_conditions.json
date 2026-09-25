@@ -1,0 +1,43 @@
+{
+  "note": "Cross-tabs of media patterns (53 deadly events) by condition. Values are [true, out_of]. See pattern_conditions.md for readings. Scale: small 1-4 deaths (25), mid 5-19 (21), mass 20+ (7).",
+  "P1_rising_toll": {
+    "by_scale": {"small": [0, 25], "mid": [17, 21], "mass": [5, 7]}
+  },
+  "P2_informal_settlement_causal": {
+    "by_scale": {"small": [7, 25], "mid": [11, 21], "mass": [6, 7]},
+    "by_national_declaration": {"declared": [10, 15], "not_declared": [14, 38]},
+    "by_death_in_informal_settlement": {"yes": [10, 17], "no": [9, 26], "no_site_data": [5, 10]},
+    "by_metro": {"metro": [16, 35], "non_metro": [8, 18]},
+    "by_vehicle_deaths_only": {"yes": [9, 20], "no": [15, 33]},
+    "by_western_cape": {"yes": [4, 8], "no": [20, 45]},
+    "by_period": {"2016-2019": [5, 12], "2020-2022": [5, 15], "2023-2026": [14, 26]},
+    "speaker": {"officials": 16, "journalists": 4, "academics_experts": 3, "residents": 1, "out_of": 24}
+  },
+  "P3_president_visit": {
+    "by_scale": {"small": [2, 25], "mid": [1, 21], "mass": [4, 7]},
+    "by_national_declaration": {"declared": [5, 15], "not_declared": [2, 38]},
+    "by_period": {"2016-2019": [1, 12], "2020-2022": [2, 15], "2023-2026": [4, 26]},
+    "verified_visits_by_province_government": {"ANC": 9, "DA (Western Cape)": 0, "IFP-led GNU (KZN from Jun 2024)": 0},
+    "western_cape_national_disasters_without_visit": 3,
+    "source": "president_visits.json"
+  },
+  "P4_residents_quoted": {
+    "by_scale": {"small": [12, 25], "mid": [8, 21], "mass": [4, 7]},
+    "by_period": {"2016-2019": [4, 12], "2020-2022": [8, 15], "2023-2026": [12, 26]},
+    "totals": {"officials_quoted": 187, "residents_quoted": 58, "others_quoted": 32, "events_zero_residents": 29}
+  },
+  "P5_climate_change": {
+    "by_scale": {"small": [3, 25], "mid": [7, 21], "mass": [5, 7]},
+    "by_period": {"2016-2019": [2, 12], "2020-2022": [2, 15], "2023-2026": [11, 26]},
+    "by_national_declaration": {"declared": [7, 15], "not_declared": [8, 38]},
+    "with_presidential_weather_visit": [6, 6],
+    "speaker": {"officials": 9, "journalists_experts": 6, "out_of": 15},
+    "kzn_share": [7, 15]
+  },
+  "warning_frame": {
+    "last_mile_failure_category": [3, 71],
+    "no_warning_discussion": [32, 71],
+    "median_english_first_language_pct_at_death_sites": 3.14,
+    "death_sites_n": 113
+  }
+}

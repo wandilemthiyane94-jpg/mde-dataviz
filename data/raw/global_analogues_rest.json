@@ -1,0 +1,375 @@
+[
+{
+"country": "Pakistan",
+"community": "Sindhi-, Saraiki- and Balochi-speaking riverine and low-lying villages (Khairpur, Sanghar, Mirpur Khas, Dadu in Sindh; South Punjab)",
+"region": "Asia",
+"conditions": {
+"C1": {"value": true, "evidence": "Official messaging is in Urdu, the first language of only 9.25% of Pakistanis (2023 census). In a CLEAR Global and Pattan study of Sindhi, Balochi and Saraiki speakers after the 2022 floods, a participant said: 'We can only understand voice messages. It is better if it is in Balochi or Saraiki. Urdu is difficult for us to understand.' The NDMA Disaster Alert app offers audio only in Urdu and English.", "url": "https://reliefweb.int/report/pakistan/dangerous-information-gap-flood-affected-communities-sindh-and-south-punjab-lack-information-they-need-access-assistance-avoid-further-harm-and-prepare-future-floods-enur"},
+"C2": {"value": true, "evidence": "The 2022 floods inundated the Indus floodplain. By NDMA's 28 Oct 2022 count, 46% of deaths were in Sindh. CLEAR Global found the hardest-hit villages had received no information at all.", "url": "https://disasterphilanthropy.org/disasters/2022-pakistan-floods/"},
+"C3": {"value": true, "evidence": "UNESCO describes a 'forwarding paradigm' in which 'technical alerts are passed from one administrative level to another without being translated into localized and actionable guidance'. It says communities need messages like 'Move livestock and valuables to higher ground and relocate to the designated evacuation shelter', not rainfall totals.", "url": "https://www.unesco.org/en/articles/beyond-forecasting-strengthening-pakistans-flood-early-warning-system-local-action"},
+"C4": {"value": true, "evidence": "There is no national cell broadcast. NDMA relies on SMS: a geo-fenced SMS system with the operator Jazz (formalised March 2025) reached more than 23 million people, alongside an opt-in app. UNESCO notes that GSM, power and internet 'frequently fail during severe weather events, limiting the effectiveness of Short Message Service (SMS) alerts'.", "url": "https://www.arabnews.pk/node/2607594/pakistan"},
+"C5": {"value": true, "evidence": "2022: about 1,739 deaths nationally. 2025 monsoon: more than 700 deaths by late August (UN).", "url": "https://reliefweb.int/disaster/fl-2022-000254-pak"},
+"C6": {"value": true, "evidence": "UNESCO: in a 2025 GLOF event, 'The message was rapidly disseminated through community networks and mosque announcements, enabling residents to evacuate'. It recommends investing in 'mosque loudspeakers, radio networks, community organizations, and trained volunteers'. Sindhi-language media such as KTN are the main channels in Sindh.", "url": "https://www.unesco.org/en/articles/beyond-forecasting-strengthening-pakistans-flood-early-warning-system-local-action"}
+},
+"warning_language": "Urdu and English (NDMA alerts and app); the provinces add some local messaging",
+"majority_l1": "Nationally Punjabi 37.0%, Pashto 18.1%, Sindhi 14.3%, Saraiki 12.0%, Urdu 9.25%, Balochi 3.38%. Sindhi is the majority first language in rural Sindh.",
+"l1_source": "https://en.wikipedia.org/wiki/Languages_of_Pakistan",
+"recent_floods": [
+{"date": "2022-06 to 2022-11", "event": "Monsoon super-floods (Sindh, Balochistan, South Punjab)", "deaths": "about 1,739 (NDMA, to 18 Nov 2022)", "url": "https://disasterphilanthropy.org/disasters/2022-pakistan-floods/"},
+{"date": "2025-06 to 2025-09", "event": "2025 monsoon floods (national)", "deaths": "more than 700 by late August 2025 (UN News, citing NDMA)", "url": "https://news.un.org/en/story/2025/08/1165699"}
+],
+"reforms": "Geo-fenced SMS alerts with Jazz (DEW-3 Monsoon, formalised March 2025). The NDMA Disaster Alert app (Urdu and English audio). CLEAR Global recommends regional-language voice messages. UNESCO is working to localise flood early warning with 'human sensors'.",
+"outcome_after_reform": "unclear: no evaluation found. In 2025, deaths from riverine and flash floods were again high (more than 700 by late August).",
+"counterexample": false,
+"notes": "The closest structural analogue to South Africa: the national lingua franca is a minority first language, and voice and local-language channels are preferred. The 71% information-access figure comes from a search summary of the CLEAR Global study and was not verified on the page, so it is not used as a condition claim."
+},
+{
+"country": "Pakistan",
+"community": "Pashto-speaking mountain valley villages in Buner, Shangla and Swat (Khyber Pakhtunkhwa)",
+"region": "Asia",
+"conditions": {
+"C1": {"value": "unclear", "evidence": "Pashto is the local first language, and the NDMA app alerts are in Urdu and English. But the survey found the main failure was that no warning arrived at all, not that it came in the wrong language.", "url": "https://apps.apple.com/pk/app/pak-ndma-disaster-alert/id6503601052"},
+"C2": {"value": true, "evidence": "Villages sit on steep slopes and along torrent channels. On 15 Aug 2025, 150 mm of rain fell on Buner in one hour.", "url": "https://www.preventionweb.net/news/preparing-better-monsoons-lessons-2025-flash-floods-pakistan"},
+"C3": {"value": true, "evidence": "The KP PDMA chief said there was 'no forecasting system anywhere in the world' that could predict the time and place of such a downpour. A survey of 1,207 households found 85% received no warning, and half of those warned had less than 30 minutes.", "url": "https://www.preventionweb.net/news/preparing-better-monsoons-lessons-2025-flash-floods-pakistan"},
+"C4": {"value": true, "evidence": "SMS and app only; no cell broadcast. The World Bank found 51% of warned households reached women second-hand, through male relatives.", "url": "https://www.worldbank.org/en/news/feature/2026/09/03/preparing-better-for-monsoons-lessons-from-the-2025-flash-floods-in-pakistan"},
+"C5": {"value": true, "evidence": "Buner was the worst-hit district, with 184 deaths reported in the August 2025 cloudburst floods. KP had at least 308 deaths.", "url": "https://tribune.com.pk/story/2561565/k-p-floods-rains-leave-307-dead-23-injured-pdma"},
+"C6": {"value": true, "evidence": "World Bank: warnings that worked came from mosque announcements, family phone calls and neighbours going door to door. 'The most effective early warning technology was a man with a microphone.'", "url": "https://www.worldbank.org/en/news/feature/2026/09/03/preparing-better-for-monsoons-lessons-from-the-2025-flash-floods-in-pakistan"}
+},
+"warning_language": "Urdu/English (NDMA app and SMS)",
+"majority_l1": "Pashto (18.1% nationally; the majority language in these KP districts)",
+"l1_source": "https://en.wikipedia.org/wiki/Languages_of_Pakistan",
+"recent_floods": [
+{"date": "2025-08-15", "event": "Cloudburst flash floods, Buner/Shangla/Swat", "deaths": "Buner 184; KP at least 308 (PDMA via Express Tribune)", "url": "https://tribune.com.pk/story/2561565/k-p-floods-rains-leave-307-dead-23-injured-pdma"}
+],
+"reforms": "The World Bank recommends formally building mosque and community channels into the warning system.",
+"outcome_after_reform": "not yet tested",
+"counterexample": false,
+"notes": "The World Bank feature says '509 lives lost', but the extraction did not make clear what area that covers, so it is not used as a Buner figure. Strong evidence on C6 (mosque loudspeaker) and on warnings not reaching women."
+},
+{
+"country": "India",
+"community": "Interstate migrant plantation and construction workers (from Assam, West Bengal, Bihar, Odisha) in Kerala; Wayanad (Mundakkai-Chooralmala)",
+"region": "Asia",
+"conditions": {
+"C1": {"value": true, "evidence": "Kerala warnings are in Malayalam. After the 2018 floods, researchers found migrants 'had missed the alerts in local languages'. After Wayanad 2024, an Assamese tea-estate worker said: 'We do not know where to go or what to do, nor do we understand the local language.'", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7659401/"},
+"C2": {"value": true, "evidence": "The Wayanad victims lived on tea farms 'built on steep slopes'. 'Most of the victims were tea and cardamom estate workers, asleep when the landslides struck.'", "url": "https://en.wikipedia.org/wiki/2024_Wayanad_landslides"},
+"C3": {"value": "unclear", "evidence": "Forecasts were themselves disputed. Amit Shah said warnings were given on 23-26 July. Kerala said no red alert was issued for Wayanad, and the district forecast of 26 July predicted 'light to moderate' rain for 30 July. Chooralmala residents stayed home because the area 'was not classified as landslide-prone'.", "url": "https://www.thequint.com/news/wayanad-landslide-kerala-floods-amit-shah-pinarayi-vijayan-latest-news"},
+"C4": {"value": false, "evidence": "India runs the CAP-based SACHET SMS platform in regional languages and has tested cell broadcast nationally. But messages go out in the state language, Malayalam, not in migrants' languages.", "url": "https://www.newsonair.gov.in/govt-begins-testing-new-mobile-alert-system-for-real-time-disaster-warnings"},
+"C5": {"value": true, "evidence": "2024 Wayanad landslides: 420 deaths and 118 missing. The 2018 Kerala floods also caused mass deaths; that toll is in global_language_cases.json and was not re-checked here.", "url": "https://en.wikipedia.org/wiki/2024_Wayanad_landslides"},
+"C6": {"value": true, "evidence": "Kerala's new guideline deploys 'linkage workers from within the migrant community' who are 'fluent in multiple languages' as intermediaries.", "url": "https://thesouthfirst.com/kerala/left-behind-no-more-kerala-integrates-migrant-workers-into-disaster-preparedness/"}
+},
+"warning_language": "Malayalam (plus English)",
+"majority_l1": "Malayalam for Kerala residents. The migrant workforce (estimated 2.5-3.5 million, about 10% of Kerala's population, per The Federal) speaks Hindi, Bengali, Assamese and Odia.",
+"l1_source": "https://thefederal.com/category/opinion/wayanad-landslide-exposes-invisibility-of-kerala-migrant-workers-249714",
+"recent_floods": [
+{"date": "2024-07-30", "event": "Wayanad landslides (Mundakkai, Chooralmala)", "deaths": "420 dead, 118 missing", "url": "https://en.wikipedia.org/wiki/2024_Wayanad_landslides"}
+],
+"reforms": "Kerala guideline on including migrant workers in disaster management: multilingual early warning, linkage workers from migrant communities, and migrant data built into disaster systems (South First). During COVID, messages were issued in Assamese, Odia, Bengali, Hindi and Tamil.",
+"outcome_after_reform": "unclear: no post-reform event evaluated",
+"counterexample": false,
+"notes": "This mirrors South Africa's case of internal and foreign migrants in KZN informal settlements. Registration gaps meant bodies could not be identified (The Federal)."
+},
+{
+"country": "Nepal",
+"community": "River-corridor and riverside informal settlements (Kathmandu Valley 2024; Bhote Koshi–Trishuli corridor 2026); Terai speakers of Maithili, Bhojpuri and Tharu",
+"region": "Asia",
+"conditions": {
+"C1": {"value": true, "evidence": "Mongabay (Sept 2026): SMS alerts during the August 2026 floods went out in Nepali only. Nepali is the mother tongue of 44.86% of the population (2021 census); Maithili 11.05%, Bhojpuri 6.24%, Tharu 5.88%.", "url": "https://news.mongabay.com/2026/09/during-nepal-floods-decentralized-community-based-warning-saved-lives/"},
+"C2": {"value": true, "evidence": "UN News (Oct 2024): many of the more than 7,600 severely affected families lived 'in informal settlements along rivers that were completely washed away'.", "url": "https://news.un.org/en/story/2024/10/1155246"},
+"C3": {"value": true, "evidence": "Researcher Chandani Bhandari, quoted by Mongabay: the SMS messages 'lacked exact locations, severity, context and actionable instructions'.", "url": "https://news.mongabay.com/2026/09/during-nepal-floods-decentralized-community-based-warning-saved-lives/"},
+"C4": {"value": true, "evidence": "There is no cell broadcast. A GSMA/ITU study costed it at $1.75-3 million, but 'the study's recommendations haven't been implemented' (Mongabay). More than 600,000 SMS were sent in 2026, but they arrived too late for communities near the source (The Conversation).", "url": "https://theconversation.com/emergency-warnings-werent-enough-to-save-nepals-flood-ravaged-villages-an-expert-explains-290718"},
+"C5": {"value": true, "evidence": "September 2024: at least 236 dead (ReliefWeb). August 2026 corridor floods: 1,252 dead and 4,216 missing as of 3 Sept 2026 (Mongabay; figures still changing).", "url": "https://reliefweb.int/disaster/fl-2024-000177-npl"},
+"C6": {"value": true, "evidence": "A head teacher moved about 900 students to high ground after 'frantic phone calls' from people upstream. Mongabay says warnings worked when they came from 'a named, trusted person describing exactly what they saw'. ThePrint found most survivors escaped by sight: 'no sirens, just scrambling'.", "url": "https://theprint.in/ground-reports/no-sirens-just-scrambling-the-uneven-reality-of-nepals-early-warning-systems/3030423/"}
+},
+"warning_language": "Nepali (SMS)",
+"majority_l1": "Nepali is the mother tongue of 44.86% (and a second language for 46.2%); Maithili 11.05%, Bhojpuri 6.24%, Tharu 5.88%",
+"l1_source": "https://en.wikipedia.org/wiki/Languages_of_Nepal",
+"recent_floods": [
+{"date": "2024-09-26/28", "event": "Monsoon floods and landslides, Kathmandu Valley and central Nepal", "deaths": "at least 236 (ReliefWeb, early Oct 2024)", "url": "https://reliefweb.int/disaster/fl-2024-000177-npl"},
+{"date": "2026-08-26", "event": "Glacier-collapse flood, Bhote Koshi–Trishuli (Rasuwa, Nuwakot)", "deaths": "1,252 dead and 4,216 missing as of 3 Sept 2026 (Mongabay). ThePrint had earlier reported more than 600.", "url": "https://news.mongabay.com/2026/09/during-nepal-floods-decentralized-community-based-warning-saved-lives/"}
+],
+"reforms": "Community-based flood early warning on the Karnali, Rapti, Babai and Koshi rivers, with sirens and community early-warning centres (45 communities on the Karnali). The GSMA/ITU cell broadcast recommendation has not been implemented.",
+"outcome_after_reform": "Mixed. Basins with community early warning (Karnali, Rapti) are described as stronger. The Bhote Koshi and Trishuli lacked it, and SMS arrived too late (ThePrint, The Conversation). No quantitative evaluation found.",
+"counterexample": false,
+"notes": "The Terai-language point (Maithili, Tharu) is inferred from the census plus Nepali-only SMS. No study was found that tests how well Terai speakers understand flood SMS. The 2026 death figures were still changing at the time of writing."
+},
+{
+"country": "Bangladesh",
+"community": "Rohingya refugees in the Cox's Bazar camps (Kutupalong-Balukhali and others)",
+"region": "Asia",
+"conditions": {
+"C1": {"value": true, "evidence": "TWB, via NPR: 'Since Rohingya is an oral language, written communications like fliers or pamphlets... may not be effective given the lack of a standardized script.' The response runs in Bangla, English, Burmese and Chittagonian. An Internews study found 'almost two-thirds' of 570 refugees could not communicate with aid providers.", "url": "https://www.kuer.org/2018-07-22/finding-the-right-words-to-help-rohingya-refugees"},
+"C2": {"value": true, "evidence": "Nearly 1 million refugees live in bamboo-and-tarpaulin shacks on steep, deforested hills. More than 3,100 landslides in 2018-2025 affected more than 73,000 people, and 287 slopes need immediate stabilisation (Mongabay 2026).", "url": "https://news.mongabay.com/2026/09/bangladeshs-rohingya-refugee-camps-become-increasingly-vulnerable-to-landslides/"},
+"C3": {"value": "unclear", "evidence": "BMD forecasts heavy rain and landslide risk, and red flags mark risky slopes, but residents often cannot or will not relocate (Mongabay). Search results cite a survey (59% of women and 53% of men do not know how to keep their families safe; about a quarter know where the nearest cyclone shelter is), but it could not be verified on the source page.", "url": "https://news.mongabay.com/2026/09/bangladeshs-rohingya-refugee-camps-become-increasingly-vulnerable-to-landslides/"},
+"C4": {"value": "unclear", "evidence": "Warnings rely on CPP volunteers, flags and loudhailers rather than phones. No source found on cell broadcast reaching camp residents.", "url": "https://rohingyaresponse.org/cross-cutting/emergency-preparedness-and-response/"},
+"C5": {"value": true, "evidence": "July 2026: more than 200 landslides between 4 and 19 July killed at least 15, including five adolescent girls (Mongabay). Annual camp landslide deaths in 2021-2024 were 8, 1, 3 and 12 (search summaries of Daily Star and landslidebd).", "url": "https://news.mongabay.com/2026/09/bangladeshs-rohingya-refugee-camps-become-increasingly-vulnerable-to-landslides/"},
+"C6": {"value": true, "evidence": "Trained Rohingya Safety Unit Volunteers and CPP volunteers are the first responders. A search summary of TWB says cyclone messages are 'increasingly issued in the Rohingya language, using audio-visual formats'.", "url": "https://rohingyaresponse.org/cross-cutting/emergency-preparedness-and-response/"}
+},
+"warning_language": "Bangla (BMD and CPP), with humanitarian translation into spoken Rohingya",
+"majority_l1": "Rohingya, an oral language with no commonly accepted script. A search summary of TWB says 66% cannot read or write any language and about 36% understood written Burmese.",
+"l1_source": "https://www.kuer.org/2018-07-22/finding-the-right-words-to-help-rohingya-refugees",
+"recent_floods": [
+{"date": "2024-06-19", "event": "Monsoon landslides, Cox's Bazar camps", "deaths": "10 killed, including two children (UN Bangladesh)", "url": "https://bangladesh.un.org/en/272024-monsoon-rains-trigger-deadly-flash-floods-and-landslides-cox%E2%80%99s-bazar-refugee-camps"},
+{"date": "2026-07-04/19", "event": "More than 200 monsoon landslides in the camps", "deaths": "at least 15", "url": "https://news.mongabay.com/2026/09/bangladeshs-rohingya-refugee-camps-become-increasingly-vulnerable-to-landslides/"}
+],
+"reforms": "TWB and CLEAR Global Rohingya glossaries and audio-visual Rohingya messages. CPP extended into the camps with refugee volunteers. Red flags mark risky slopes.",
+"outcome_after_reform": "unclear. Deaths remain in the low double digits each year, but no evaluation links them to warnings. Slope stabilisation is unfunded (a $73.9m gap, Mongabay).",
+"counterexample": false,
+"notes": "The closest analogue for an oral first language with no official script, the strongest form of C1. Several figures come from search summaries of TWB pages that returned HTTP 500, so treat them as medium confidence."
+},
+{
+"country": "Indonesia",
+"community": "Riverine and hillside villages in Aceh, North Sumatra and West Sumatra (Cyclone Senyar floods, Nov 2025)",
+"region": "Asia",
+"conditions": {
+"C1": {"value": false, "evidence": "Indonesian is the primary language of only about 20%, but it 'is spoken by over 94% of the population' (CLEAR Global). The national language is a widely understood second language, unlike English in rural KZN. No study found that shows warnings failed for language reasons.", "url": "https://clearglobal.org/language-data-for-indonesia/"},
+"C2": {"value": true, "evidence": "In Aceh Tamiang the water rose to 11 m on 26 Nov 2025, and residents fled on tyres and jerrycans (MSF).", "url": "https://www.msf.org/indonesia-msf-responded-devastating-flooding-aceh"},
+"C3": {"value": true, "evidence": "BMKG says it warned 8, 4 and 2 days before landfall. Its head said regional leaders should have acted on the warnings and alerted the public. A survivors' lawsuit argues the government failed to prepare communities (Mongabay, June 2026).", "url": "https://news.mongabay.com/2026/06/survivors-sue-indonesian-government-over-response-to-catastrophic-sumatra-floods/"},
+"C4": {"value": "unclear", "evidence": "Kominfo runs SMS blasts and an early-warning channel on digital TV. No reliable source found confirming that national cell broadcast operated during Senyar.", "url": "https://observerid.com/kemenkominfo-uses-digital-tv-and-sms-blast-for-emergency-alert-system/"},
+"C5": {"value": true, "evidence": "1,140 dead per BNPB as of 29 Dec 2025 (as of 23 Dec: Aceh 477, North Sumatra 369, West Sumatra 260).", "url": "https://en.tempo.co/read/2075519/sumatra-floods-kill-over-1100-bnpb-records"},
+"C6": {"value": "unclear", "evidence": "Traditional kentongan drums serve as community warnings in Java. No evidence found on which channels people trusted in Sumatra in 2025.", "url": "https://www.sciencedirect.com/science/article/pii/S2405844024061127"}
+},
+"warning_language": "Bahasa Indonesia",
+"majority_l1": "Indonesian is the primary language of about 20% and Javanese of more than 30%; more than 94% speak Indonesian",
+"l1_source": "https://clearglobal.org/language-data-for-indonesia/",
+"recent_floods": [
+{"date": "2025-11-25/28", "event": "Cyclone Senyar floods and landslides, Aceh, North Sumatra and West Sumatra", "deaths": "1,140 (BNPB, 29 Dec 2025)", "url": "https://en.tempo.co/read/2075519/sumatra-floods-kill-over-1100-bnpb-records"}
+],
+"reforms": "A new flood early-warning system in Banda Aceh reaching down to RT/RW (neighbourhood) level (BNPB via VOI). Survivors filed a lawsuit on 7 May 2026.",
+"outcome_after_reform": "not yet tested",
+"counterexample": true,
+"notes": "A partial counterexample for C1. A national lingua franca that most people understand did not prevent more than 1,100 deaths. The failure was in turning the forecast into local action (C3), as in South Africa."
+},
+{
+"country": "Philippines",
+"community": "Poor riverside communities in Cebu (Talisay on the Mananga River, Liloan) and Cebuano/Bisaya-speaking provinces",
+"region": "Asia",
+"conditions": {
+"C1": {"value": "unclear", "evidence": "National warnings are in English and Filipino. A search summary of the PSA 2020 census says Tagalog is the home language of 39.9% of households nationally. LGUs 'interpret, translate, and act on national advisories'. In a Mindanao pilot of local-dialect SMS, a resident said 'The messages were very clear because they were in our local language' (People in Need). This suggests national text alone is not enough, but no language failure was documented in Cebu in 2025.", "url": "https://philippines.peopleinneed.net/en/alerts-to-action-how-our-early-warning-system-keeps-communities-safe-and-ready-12575gp"},
+"C2": {"value": true, "evidence": "Search summaries of the coverage say that in Talisay 'impoverished communities along the Mananga River were buried in mud and debris'.", "url": "https://newsinfo.inquirer.net/2133803/residents-on-rooftops-plead-for-rescue-as-floods-swamp-cebu-due-to-tino"},
+"C3": {"value": true, "evidence": "Gov. Baricuatro: 'We were expecting the winds to be the dangerous part, but … the water is what's truly putting our people at risk.' The typhoon signal, framed around wind, did not convey the flood threat.", "url": "https://www.cnn.com/2025/11/04/asia/typhoon-kalmaegi-deaths-philippines-cebu-intl"},
+"C4": {"value": false, "evidence": "The Philippines has had an Emergency Cell Broadcast System since 13 March 2017, under RA 10639 (the Free Mobile Disaster Alerts Act).", "url": "https://en.wikipedia.org/wiki/Emergency_Cell_Broadcast_System"},
+"C5": {"value": true, "evidence": "Typhoon Tino/Kalmaegi, Nov 2025: 188 dead and 135 missing, 139 of the dead in Cebu (OCD via Inquirer).", "url": "https://newsinfo.inquirer.net/2135766/fwd-tino-reported-death-toll-soars-to-152-86-still-missing"},
+"C6": {"value": "unclear", "evidence": "Barangay and LGU officers are the final relay (People in Need; OECD 2025), but no Cebu-specific evidence on trusted channels was found.", "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/11/disaster-early-warning-systems-and-private-sector-participation-in-asean_4a161409/bc282563-en.pdf"}
+},
+"warning_language": "English and Filipino (PAGASA and NDRRMC); LGUs relay in local languages",
+"majority_l1": "Tagalog in 39.9% of households nationally (PSA 2020). Cebuano/Bisaya is dominant in Central Visayas (no verified %).",
+"l1_source": "https://psa.gov.ph/content/tagalog-most-widely-spoken-language-home-2020-census-population-and-housing",
+"recent_floods": [
+{"date": "2025-11-04", "event": "Typhoon Kalmaegi (Tino) floods, Cebu", "deaths": "188 dead, 135 missing (OCD)", "url": "https://newsinfo.inquirer.net/2135766/fwd-tino-reported-death-toll-soars-to-152-86-still-missing"}
+],
+"reforms": "After Haiyan, 'storm surge' was paired with the Filipino 'daluyong ng bagyo'. RA 10639 free alerts and cell broadcast (2017). The KWF weather-forecasting guide in Filipino. Local-dialect STREAM-EWS pilots in Mindanao (55,200 registered users).",
+"outcome_after_reform": "Mixed. Cell broadcast exists, yet Cebu still lost 139 people in 2025. Channel reform alone did not fix impact messaging (C3) or flood-control failures (TIME: '₱26 billion ... of flood control funds for Cebu yet we are flooded').",
+"counterexample": true,
+"notes": "A useful partial counterexample on C4: having cell broadcast did not prevent mass flood deaths when the hazard was framed as wind. The PSA page returned 403, so the household-language % is from a search summary."
+},
+{
+"country": "Guatemala",
+"community": "Maya Q'eqchi' and Poqomchi' highland and valley villages in Alta Verapaz (Quejá in San Cristóbal Verapaz; Sesab)",
+"region": "Americas",
+"conditions": {
+"C1": {"value": true, "evidence": "Spanish is the mother tongue of 69.9% and a Mayan language of about 30% (Q'eqchi' 8.3%, K'iche' 7.7%) (INE 2018 census). Search summaries describe Alta Verapaz, the worst-hit department, as 'mostly indigenous Maya Q'eqchi''. CONRED's translated materials are prevention posters (22 languages), not event warnings.", "url": "https://dca.gob.gt/noticias-guatemala-diario-centro-america/espanol-70-de-cada-100-guatemaltecos-lo-tiene-como-lengua-materna/"},
+"C2": {"value": true, "evidence": "A landslide buried Quejá on 5 Nov 2020 (Eta). Sesab was submerged under a lagoon dozens of metres deep.", "url": "https://www.hrw.org/video-photos/interactive/2023/11/15/desperate-choices-in-guatemala"},
+"C3": {"value": true, "evidence": "PBI: communities 'reported that the tropical phenomena caught them unprepared because, although [INSIVUMEH] had warned [CONRED], the latter did not communicate this warning across the territories.'", "url": "https://pbi-guatemala.org/en/news/tropical-storms-guatemala-only-people-can-save-people%E2%80%9D"},
+"C4": {"value": "unclear", "evidence": "No source found on cell broadcast or SMS alerting in Guatemala during Eta/Iota. CONRED publishes alerts online.", "url": "https://conred.gob.gt/alertas-conred/"},
+"C5": {"value": true, "evidence": "Eta and Iota (Nov 2020): PBI reports an estimated 60 dead and 100 missing nationally. Search summaries give CONRED's Quejá figures as 8 confirmed dead and 88 missing.", "url": "https://pbi-guatemala.org/en/news/tropical-storms-guatemala-only-people-can-save-people%E2%80%9D"},
+"C6": {"value": true, "evidence": "Indigenous and campesino organisations organised the response themselves: 'In Guatemala only the people save the people… it is not by chance that the government does not reach the communities' (PBI).", "url": "https://pbi-guatemala.org/en/news/tropical-storms-guatemala-only-people-can-save-people%E2%80%9D"}
+},
+"warning_language": "Spanish (CONRED alerts); prevention posters in Mayan languages",
+"majority_l1": "Spanish 69.9%; Mayan languages about 30% (Q'eqchi' 8.3%, K'iche' 7.7%, Kaqchikel 3.0%) per the INE 2018 census. Mayan languages are the majority in Alta Verapaz.",
+"l1_source": "https://dca.gob.gt/noticias-guatemala-diario-centro-america/espanol-70-de-cada-100-guatemaltecos-lo-tiene-como-lengua-materna/",
+"recent_floods": [
+{"date": "2020-11-05", "event": "Hurricane Eta: Quejá landslide and Alta Verapaz floods (followed by Iota, 2020-11-17)", "deaths": "60 dead and at least 100 missing nationally (CONRED, via PBI)", "url": "https://pbi-guatemala.org/en/news/tropical-storms-guatemala-only-people-can-save-people%E2%80%9D"}
+],
+"reforms": "CONRED and the Academy of Mayan Languages produced prevention material in 22 languages (Q'eqchi' posters in Petén, Izabal, Alta Verapaz, Zacapa and Quiché).",
+"outcome_after_reform": "unclear. No evaluation found, and the materials support preparedness, not real-time warnings.",
+"counterexample": false,
+"notes": "Quejá's language is not verified in any source here (possibly Poqomchi'); the documented majority for Alta Verapaz is Q'eqchi'. The Sesab wording comes from a search summary of the HRW interactive."
+},
+{
+"country": "Haiti",
+"community": "Low-lying and ravine neighbourhoods (Léogâne, Port-au-Prince, Nippes, Sud-Est)",
+"region": "Americas",
+"conditions": {
+"C1": {"value": false, "evidence": "Haitian Creole is universal: more than 95% are fluent, while estimates of fluent French speakers run from 5% to 20%. According to search summaries of ReliefWeb and UNDRR, civil protection and Red Cross community messaging is in Kreyòl: the 'Kouri di Vwazin' community relay project, and more than 400 Creole-language hydromet risk boards installed for the 2024 season. French is the official language and Kreyòl the first language, but warning practice largely bridges the gap.", "url": "https://reliefweb.int/report/haiti/système-dalerte-communautaire-en-haïti"},
+"C2": {"value": true, "evidence": "June 2023 floods: rivers overflowed and more than 13,000 people were displaced. Léogâne was among the hardest hit.", "url": "https://en.wikipedia.org/wiki/2023_Haiti_floods"},
+"C3": {"value": "unclear", "evidence": "No source found on what warnings said before the June 2023 floods.", "url": "https://en.wikipedia.org/wiki/2023_Haiti_floods"},
+"C4": {"value": true, "evidence": "DGPC was only due to be authorised to send phone warnings from May 2025, after a March 2025 SMS and cell broadcast simulation in Cap-Haïtien (WMO).", "url": "https://wmo.int/media/news/simulation-haiti-shows-potential-of-mobile-phone-alerts-disasters"},
+"C5": {"value": true, "evidence": "Floods of 2-3 June 2023: at least 51 dead and 18 missing as of 6 June.", "url": "https://en.wikipedia.org/wiki/2023_Haiti_floods"},
+"C6": {"value": true, "evidence": "A search summary of ReliefWeb's 'Système d'alerte communautaire' says about 150 Red Cross volunteers were trained as 'community relays' because 'oral tradition remains very strong' and over 60% of people are illiterate.", "url": "https://reliefweb.int/report/haiti/système-dalerte-communautaire-en-haïti"}
+},
+"warning_language": "Kreyòl in practice (radio, community relays); French is official",
+"majority_l1": "Haitian Creole (more than 95%); a small minority is fluent in French (estimates 5-20%)",
+"l1_source": "https://en.wikipedia.org/wiki/Haitian_Creole",
+"recent_floods": [
+{"date": "2023-06-03", "event": "Torrential rain floods (Ouest, Nippes, Sud-Est, Nord-Ouest, Centre)", "deaths": "at least 51 (DGPC via Wikipedia). A search summary of ReliefWeb says DGPC later reported 58.", "url": "https://en.wikipedia.org/wiki/2023_Haiti_floods"}
+],
+"reforms": "Early Warnings for All: an SMS and cell broadcast simulation with CONATEL, Digicel and Natcom (March 2025) delivered 50,000 SMS. A search summary of WMO says more than 100,000 preventive flood SMS have been sent since.",
+"outcome_after_reform": "unclear. No evaluated event after 2025 was found.",
+"counterexample": true,
+"notes": "A partial counterexample for C1: warnings use the creole majority language, unlike South Africa, where isiZulu-first residents receive mostly English products. ReliefWeb and UNDRR pages returned 403, so the evidence on Kreyòl practice is medium confidence."
+},
+{
+"country": "Brazil",
+"community": "Hillside favelas (Petrópolis) and riverside neighbourhoods (Rio Grande do Sul)",
+"region": "Americas",
+"conditions": {
+"C1": {"value": false, "evidence": "Portuguese is spoken by 'nearly all' of the population, and warnings are in that majority language.", "url": "https://en.wikipedia.org/wiki/Languages_of_Brazil"},
+"C2": {"value": true, "evidence": "Petrópolis: '26 % of the at-risk population was living in subnormal agglomerates (slums)' (NHESS 2023).", "url": "https://nhess.copernicus.org/articles/23/1157/2023/"},
+"C3": {"value": true, "evidence": "Petrópolis, February 2022: forecasts warned only of 'isolated convective rainfall'. According to a search summary, 18 of the 20 risk sirens sounded but there is no evidence that evacuation was called. On 20 March 2022, by contrast, 'CEMADEN issued precise warnings' and civil defence moved residents in time (NHESS).", "url": "https://nhess.copernicus.org/articles/23/1157/2023/"},
+"C4": {"value": "unclear", "evidence": "Until October 2024, alerts were opt-in SMS (text your postcode to 40199). Cell broadcast was first used in Rio Grande do Sul in October 2024, after the May 2024 floods.", "url": "https://www.defesacivil.rs.gov.br/alerta-cell-broadcast-e-emitido-pela-primeira-vez-para-regiao-metropolitana-de-porto-alegre"},
+"C5": {"value": true, "evidence": "Petrópolis 2022: 231 dead. Rio Grande do Sul 2024: 181 dead and 61 missing (as of 7 July 2024).", "url": "https://en.wikipedia.org/wiki/2024_Rio_Grande_do_Sul_floods"},
+"C6": {"value": true, "evidence": "Community civil-defence groups (NUPDECs), for example 'NUPDEC Vale do Cuiabá: a group of people who live in risk areas and are in contact with the local civil defense'.", "url": "https://nhess.copernicus.org/articles/23/1157/2023/"}
+},
+"warning_language": "Portuguese",
+"majority_l1": "Portuguese (spoken by nearly all Brazilians)",
+"l1_source": "https://en.wikipedia.org/wiki/Languages_of_Brazil",
+"recent_floods": [
+{"date": "2022-02-15", "event": "Petrópolis flash floods and landslides", "deaths": "231", "url": "https://nhess.copernicus.org/articles/23/1157/2023/"},
+{"date": "2024-04-26/05", "event": "Rio Grande do Sul floods", "deaths": "181 dead, 61 missing (7 July 2024)", "url": "https://en.wikipedia.org/wiki/2024_Rio_Grande_do_Sul_floods"}
+],
+"reforms": "Defesa Civil Alerta cell broadcast (Anatel, the Communications Ministry and operators), first used in Rio Grande do Sul in October 2024. It works alongside SMS 40199 and social media and is used only for severe and extreme alerts. Rio de Janeiro state also has community sirens and NUPDECs.",
+"outcome_after_reform": "In early use, for example ten cell broadcast alerts in 18 hours in Rio Grande do Sul, but no evaluation of effects on deaths was found. Petrópolis in March 2022 shows that precise warnings plus civil-defence evacuation worked when the forecast was accurate.",
+"counterexample": true,
+"notes": "A key C1 counterexample: warnings and sirens in the majority language did not prevent 231 deaths in Petrópolis. Forecast accuracy and evacuation orders (C3) were the limiting factors."
+},
+{
+"country": "USA",
+"community": "Indigenous Mexican (Mixteco, Triqui, Zapoteco) farmworkers in Pajaro, Monterey County, California",
+"region": "Americas",
+"conditions": {
+"C1": {"value": true, "evidence": "When a Spanish bullhorn warning came, a Mixteco-speaking family 'understood just enough Spanish to bolt out of bed'. 'We don't speak very good Spanish. The language barrier is big' (Center for Health Journalism). The Press Democrat counts 'more than a dozen variants of the Mixteco language in Pajaro', and about 6 in 10 California farmworkers are Indigenous.", "url": "https://centerforhealthjournalism.org/our-work/reporting/catastrophic-flood-californias-central-coast-has-plunged-already-marginalized"},
+"C2": {"value": true, "evidence": "Pajaro sits behind a levee that 'no longer provides the designed level of protection' (USACE via NBC). It is a low-income farmworker town of about 3,000.", "url": "https://www.nbcnews.com/news/latino/decades-levee-failures-disaster-latino-farming-town-rcna77009"},
+"C3": {"value": "unclear", "evidence": "According to a search summary of CBS, evacuation was ordered just before midnight, after the levee breached. Resources in Mixteco existed on county websites, but residents did not know about them (CHJ).", "url": "https://www.cbsnews.com/sanfrancisco/news/levee-breach-pajaro-river-evacuations-monterey-county-san-ardo/"},
+"C4": {"value": false, "evidence": "The US has Wireless Emergency Alerts (cell broadcast). The FCC's multilingual WEA templates (13 languages plus ASL) are due by 2028, and none are in Indigenous Mexican languages.", "url": "https://www.fcc.gov/multilingual-wireless-emergency-alerts"},
+"C5": {"value": false, "evidence": "No deaths documented in the March 2023 Pajaro flood. The 1995 Pajaro flood killed two (NBC).", "url": "https://www.nbcnews.com/news/latino/decades-levee-failures-disaster-latino-farming-town-rcna77009"},
+"C6": {"value": true, "evidence": "Community organisations ran shifts of 'staff, contractors and volunteers who speak Mixteco, Triqui and Zapoteco' at the shelter, and recruited community members to interpret the different variants (Press Democrat).", "url": "https://www.pressdemocrat.com/2023/04/02/amid-a-disastrous-flood-interpreters-are-a-lifeline-for-indigenous-farmworkers/"}
+},
+"warning_language": "English and Spanish; search summaries say responders on the ground spoke mostly English or broken Spanish. Some county web content is in Indigenous languages.",
+"majority_l1": "Spanish and Indigenous Mexican languages among Pajaro residents (no census % found). About 170,000 Indigenous Mexican farmworkers live in California.",
+"l1_source": "https://www.pressdemocrat.com/2023/04/02/amid-a-disastrous-flood-interpreters-are-a-lifeline-for-indigenous-farmworkers/",
+"recent_floods": [
+{"date": "2023-03-10/11", "event": "Pajaro River levee breach", "deaths": "none documented; about 1,700 evacuated", "url": "https://www.nbcnews.com/news/latino/decades-levee-failures-disaster-latino-farming-town-rcna77009"}
+],
+"reforms": "Monterey County began publishing in Mexican Indigenous languages (Monterey County Now, Jan 2023). The FCC multilingual WEA rule (compliance by 2028). California SB 160 cultural-competence planning.",
+"outcome_after_reform": "unclear",
+"counterexample": false,
+"notes": "A strong analogue for C1 below the lingua-franca level (Mixteco speakers receiving Spanish) and for C6 (community interpreters). C5 does not hold for this event."
+},
+{
+"country": "USA",
+"community": "Guadalupe River valley, Kerr County, Texas Hill Country (including riverside summer camps)",
+"region": "Americas",
+"conditions": {
+"C1": {"value": false, "evidence": "Alerts were in English, the majority language. No language barrier was documented as a cause.", "url": "https://www.tpr.org/news/2025-07-08/kerr-county-residents-emergency-alert-messages-sporadic-inconsistent-in-wake-of-floods"},
+"C2": {"value": true, "evidence": "Deaths were concentrated on the Guadalupe floodplain, including 28 at a riverside girls' camp (PBS).", "url": "https://www.pbs.org/newshour/nation/texas-hill-country-floods-test-new-warning-systems-after-last-years-deadly-disaster"},
+"C3": {"value": true, "evidence": "NWS sent flash-flood WEAs from 1:14 a.m. Firefighters requested a CodeRED alert at 4:22 a.m., but dispatch delayed it pending supervisor authorisation. Later messages said 'Stay away from the river and low water crossings' and told people to shelter in place (TPR). Judge Kelly: 'We didn't know this flood was coming.'", "url": "https://www.nbcnews.com/news/us-news/fema-records-show-kerr-county-didnt-alert-cell-phones-flooding-began-rcna218248"},
+"C4": {"value": true, "evidence": "The county relied on opt-in CodeRED (18,451 sign-ups reported in 2012) and did not send IPAWS/WEA alerts itself. There were no sirens: 'The public reeled at the cost.'", "url": "https://www.tpr.org/news/2025-07-08/kerr-county-residents-emergency-alert-messages-sporadic-inconsistent-in-wake-of-floods"},
+"C5": {"value": true, "evidence": "136 killed in July 2025 and at least 2 in July 2026 (PBS).", "url": "https://www.pbs.org/newshour/nation/texas-hill-country-floods-test-new-warning-systems-after-last-years-deadly-disaster"},
+"C6": {"value": "unclear", "evidence": "Volunteer firefighters were the ones requesting alerts. No evidence found of community radio as a trusted channel.", "url": "https://www.tpr.org/news/2025-07-08/kerr-county-residents-emergency-alert-messages-sporadic-inconsistent-in-wake-of-floods"}
+},
+"warning_language": "English",
+"majority_l1": "English (no local % retrieved)",
+"l1_source": "unclear",
+"recent_floods": [
+{"date": "2025-07-04", "event": "Guadalupe River flash flood, Kerr County and Central Texas", "deaths": "136 (PBS)", "url": "https://www.pbs.org/newshour/nation/texas-hill-country-floods-test-new-warning-systems-after-last-years-deadly-disaster"},
+{"date": "2026-07-17/18", "event": "Hill Country floods", "deaths": "at least 2", "url": "https://www.pbs.org/newshour/nation/texas-hill-country-floods-test-new-warning-systems-after-last-years-deadly-disaster"}
+],
+"reforms": "2025 state legislation funding flood sirens, with 28 more counties now eligible. New sirens in Ingram and in Kerr and Kendall counties. River Sentry installed 104 sirens on the Guadalupe. The county now issues WEAs (four from Kerr County and one from Kerrville in July 2026).",
+"outcome_after_reform": "Improved: the July 2026 floods killed at least 2, against 136 in 2025. A resident: 'Last year, we got no alarms... This year, very different.' Gaps remained in Batesville and Uvalde County (PBS).",
+"counterexample": true,
+"notes": "A same-language counterexample. C4 (opt-in alerts, no sirens) and C3 (late, vague messages) were enough on their own to cause mass deaths. Fixing the channel and who had authority to send brought a measurable improvement within a year."
+},
+{
+"country": "Spain",
+"community": "Horta Sud municipalities in Valencia province (Paiporta and others), including undocumented migrant workers",
+"region": "Europe",
+"conditions": {
+"C1": {"value": false, "evidence": "ES-Alert went out in Spanish and Valencian. The documented language problem was delay caused by edits to the Valencian text, not comprehension. No source found showing that migrants failed to understand the alert.", "url": "https://valenciaplaza.com/valenciaplaza/comunitat-valenciana1/pradas-y-mompo-ordenaron-cambios-lingisticos-en-valenciano-del-es-alert-en-la-dana"},
+"C2": {"value": true, "evidence": "Wikipedia's 2024 Spanish floods article is the only URL cited here; the specific locations (the Poyo ravine floodplain towns; ground-floor and garage deaths) come from general reporting and were not checked against it.", "url": "https://en.wikipedia.org/wiki/2024_Spanish_floods"},
+"C3": {"value": true, "evidence": "Drafting of the ES-Alert began at 18:15, but it was sent at 20:11 and reached people 'only once it was already too late to seek safety' (The Local).", "url": "https://www.thelocal.es/20260918/how-spains-valencia-is-trying-to-prevent-another-deadly-dana-flood"},
+"C4": {"value": false, "evidence": "Spain has ES-Alert cell broadcast, and it was used, though late.", "url": "https://www.thelocal.es/20260918/how-spains-valencia-is-trying-to-prevent-another-deadly-dana-flood"},
+"C5": {"value": true, "evidence": "The DANA of 29 Oct 2024 killed 'over 230 in the region'.", "url": "https://www.thelocal.es/20260918/how-spains-valencia-is-trying-to-prevent-another-deadly-dana-flood"},
+"C6": {"value": "unclear", "evidence": "No evidence found on trusted intermediaries for migrants.", "url": "https://www.infomigrants.net/en/post/62792/spain-migrants-affected-by-valencia-floods-to-receive-legal-status"}
+},
+"warning_language": "Spanish and Valencian (ES-Alert)",
+"majority_l1": "Spanish and Valencian. At least 25,000 affected undocumented migrants received regularisation (InfoMigrants); no breakdown of their first languages was found.",
+"l1_source": "https://www.infomigrants.net/en/post/62792/spain-migrants-affected-by-valencia-floods-to-receive-legal-status",
+"recent_floods": [
+{"date": "2024-10-29", "event": "DANA flash floods, Valencia", "deaths": "over 230 in the region (The Local); InfoMigrants (Feb 2025) says at least 227 nationwide", "url": "https://www.thelocal.es/20260918/how-spains-valencia-is-trying-to-prevent-another-deadly-dana-flood"}
+],
+"reforms": "A 16-day advance flood-warning system for authorities (tendered, due for completion in 2028). Sponge-city works over 1,485 ha. Evacuation drills. One-year residency and work permits for at least 25,000 affected migrants.",
+"outcome_after_reform": "not yet evaluated (the system is still being built)",
+"counterexample": true,
+"notes": "A counterexample: cell broadcast in the majority languages failed because of timing and who had authority to send (C3). No source was found for the migrant-language angle suggested in the brief."
+},
+{
+"country": "Japan",
+"community": "Riverside towns and elderly-care facilities (Kuma River, Kumamoto 2020; Mabi, Kurashiki 2018)",
+"region": "Asia",
+"conditions": {
+"C1": {"value": false, "evidence": "Warnings are in Japanese, the majority language, plus Easy Japanese and 14 foreign languages for foreign residents. Ethnic Koreans are about 0.5% of the population and ethnic Chinese about 0.4%.", "url": "https://en.wikipedia.org/wiki/Languages_of_Japan"},
+"C2": {"value": true, "evidence": "According to a search summary of AP, 14 residents of the Senjuen nursing home beside the Kuma River died when the embankment gave way.", "url": "https://www.pbs.org/newshour/amp/world/japan-floods-leave-up-to-34-dead-many-at-nursing-homes"},
+"C3": {"value": true, "evidence": "In 2018, evacuation orders covered about 2 million people, yet 'Only 0.3% of residents evacuated'. A Mabi resident said: 'We had evacuation orders before and nothing happened' (search summary of Bangkok Post/Reuters). The 2021 amendment then merged Japan's 'evacuation advisory' and 'evacuation order' into a single Level-4 evacuation instruction (Library of Congress).", "url": "https://www.loc.gov/item/global-legal-monitor/2021-07-14/japan-basic-act-on-disaster-management-amended/"},
+"C4": {"value": false, "evidence": "Kurashiki (2018) used loudspeakers, mobile phone alerts, TV and radio.", "url": "https://www.pressreader.com/thailand/bangkok-post/20180723/282789242228427"},
+"C5": {"value": true, "evidence": "July 2020 Kyushu floods: 77 confirmed deaths.", "url": "https://en.wikipedia.org/wiki/2020_Kyushu_floods"},
+"C6": {"value": "unclear", "evidence": "Not assessed.", "url": "https://en.wikipedia.org/wiki/2020_Kyushu_floods"}
+},
+"warning_language": "Japanese (plus Easy Japanese and 14 foreign languages)",
+"majority_l1": "Japanese (share not quantified in the source; ethnic Korean about 0.5% and ethnic Chinese about 0.4%)",
+"l1_source": "https://en.wikipedia.org/wiki/Languages_of_Japan",
+"recent_floods": [
+{"date": "2020-07-04", "event": "Kyushu (Kuma River) floods", "deaths": "77", "url": "https://en.wikipedia.org/wiki/2020_Kyushu_floods"}
+],
+"reforms": "The 2021 amendment merged the evacuation advisory and evacuation order into one Level-4 'evacuation instruction', within a five-level alert system.",
+"outcome_after_reform": "unclear. No before-and-after study of evacuation rates was retrieved.",
+"counterexample": true,
+"notes": "A counterexample: warnings in the universal language, through many channels including phone alerts, still led to low evacuation where messages were ambiguous and past false alarms had taught people to ignore them. This supports treating C3 (clear, directive content) as separate from C1."
+},
+{
+"country": "Bangladesh",
+"community": "Coastal cyclone belt (Khulna, Bagerhat, Satkhira, Patuakhali, Barguna, Bhola), covered by the Cyclone Preparedness Programme",
+"region": "Asia",
+"conditions": {
+"C1": {"value": false, "evidence": "Almost 99% speak Bengali as their first language (2022 census). CPP volunteers relay warnings in local spoken Bangla.", "url": "https://en.wikipedia.org/wiki/Languages_of_Bangladesh"},
+"C2": {"value": true, "evidence": "Low-lying coastal and char (river-island) populations are exposed to storm surge.", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9657222/"},
+"C3": {"value": false, "evidence": "Volunteers use 'megaphones, loudspeakers, and hand-held sirens' and help people reach named cyclone shelters, so warnings come with instructions on where to go.", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9657222/"},
+"C4": {"value": "unclear", "evidence": "The system does not depend on phones. Cell broadcast status not verified.", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9657222/"},
+"C5": {"value": true, "evidence": "Cyclone Remal (May 2024): about 800,000 evacuated (All India Radio). A search summary of ReliefWeb gives 16 deaths across seven districts (DDM).", "url": "https://www.newsonair.gov.in/bangladesh-evacuates-over-8-lakh-people-as-cyclone-remal-approaches"},
+"C6": {"value": true, "evidence": "About 76,000 volunteers in 3,801 village units, 50% of them women. Cyclone mortality has been 'below a hundred over the last decade'.", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9657222/"}
+},
+"warning_language": "Bangla (spoken, face to face) plus flag signals",
+"majority_l1": "Bengali about 99% (2022 census)",
+"l1_source": "https://en.wikipedia.org/wiki/Languages_of_Bangladesh",
+"recent_floods": [
+{"date": "2024-05-26", "event": "Cyclone Remal", "deaths": "16 (DDM, from a search summary); about 807,000 evacuated to 9,424 shelters", "url": "https://www.newsonair.gov.in/bangladesh-evacuates-over-8-lakh-people-as-cyclone-remal-approaches"}
+],
+"reforms": "CPP since 1973, gender parity in volunteer units, and cyclone shelters.",
+"outcome_after_reform": "Improved: cyclone deaths have been below 100 over the last decade (PMC). Earlier cyclones killed about 300,000 (1970) and more than 138,000 (1991); those figures come from an earlier project file and were not re-checked.",
+"counterexample": true,
+"notes": "The classic positive counterexample: face-to-face warnings in the local language, from trusted volunteers, that say what to do (the reverse of C1, C3 and C4 at once). Compare the Rohingya camps in the same district, where C1 holds."
+},
+{
+"country": "Papua New Guinea",
+"community": "Yambali / Mulitaka, Maip Muritaka LLG, Enga Province (mountain slope villages)",
+"region": "Oceania",
+"conditions": {
+"C1": {"value": "unclear", "evidence": "Official languages are English, Tok Pisin and Hiri Motu. Tok Pisin has about 50,000 first-language speakers and 2 million second-language speakers (search summary of Cambridge Language Centre). Enga villagers mostly speak local languages, but no source was found on the language of any warning, and no official warning existed for this event.", "url": "https://www.langcen.cam.ac.uk/resources/langn/newguin.html"},
+"C2": {"value": true, "evidence": "The villages sit on 'mountainous limestone slopes vulnerable to slides'. 1,182 homes were destroyed or buried.", "url": "https://en.wikipedia.org/wiki/2024_Enga_landslide"},
+"C3": {"value": false, "evidence": "The problem was not warnings without instructions. No official warning system appears to have existed. Survivors escaped after hearing 'two loud cracks around one to two hours before the disaster'.", "url": "https://en.wikipedia.org/wiki/2024_Enga_landslide"},
+"C4": {"value": "unclear", "evidence": "No phone-alert system documented for Enga.", "url": "https://www.pngndc.gov.pg/"},
+"C5": {"value": true, "evidence": "Deaths on 24 May 2024: the government cited 670, local head counts gave 160, and the NDC's early estimate was 2,000 or more.", "url": "https://en.wikipedia.org/wiki/2024_Enga_landslide"},
+"C6": {"value": true, "evidence": "PNG has 133 community radio stations, against 62 commercial ones. Community stations broadcast in Tok Pisin and English, for example New Dawn in Bougainville (ReliefWeb).", "url": "https://reliefweb.int/report/papua-new-guinea/papua-new-guinea%E2%80%99s-new-dawn-community-radio"}
+},
+"warning_language": "No official warning issued; national communication is in English and Tok Pisin",
+"majority_l1": "More than 800 languages; Tok Pisin is a first language for about 50,000 and a second language for about 2 million",
+"l1_source": "https://www.langcen.cam.ac.uk/resources/langn/newguin.html",
+"recent_floods": [
+{"date": "2024-05-24", "event": "Enga (Yambali) landslide", "deaths": "670 (government estimate); 160 to 2,000+ across sources", "url": "https://en.wikipedia.org/wiki/2024_Enga_landslide"}
+],
+"reforms": "IOM community-based disaster risk management, early warning, drills and evacuation centres. Regional work to scale up early warning in Fiji, PNG and Vanuatu.",
+"outcome_after_reform": "unclear",
+"counterexample": false,
+"notes": "This analogue sits upstream of South Africa's problem. There was no forecast or warning at all, so C3 does not apply. It is included because it is the main Oceania case and because community radio is the natural channel there."
+}
+]

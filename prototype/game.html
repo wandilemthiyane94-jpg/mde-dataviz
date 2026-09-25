@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Same Rain, Different Words</title>
+<meta name="description" content="An interactive data story: a flood warning you can't read, the data behind South Africa's flood deaths, and what changes when warnings speak people's language.">
+<style>
+  :root { --bg:#07090d; --text:#ece9e2; --muted:#9097a0; --accent:#ffcf6e; --death:#ff5a4f; --storm:#3d8fe0; --edge:#2b3545; --card:#121821;
+    --sans:"Helvetica Neue",Arial,sans-serif; --serif:"Iowan Old Style","Palatino Linotype",Georgia,serif; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; height:100%; overflow:hidden; background:var(--bg); color:var(--text); font:18px/1.45 var(--serif); }
+  #world { position:fixed; inset:0; z-index:1; transition:filter .8s; }
+  #land, #viz { position:absolute; inset:0; width:100%; height:100%; }
+  #land { transition:opacity 1s; }
+  .scene { position:absolute; inset:0; opacity:0; visibility:hidden; transition:opacity .7s, visibility .7s; pointer-events:none; }
+  .scene.on { opacity:1; visibility:visible; pointer-events:auto; }
+  .col { position:absolute; left:6vw; top:7vh; width:min(560px,88vw); }
+  .center { position:absolute; left:50%; top:40%; transform:translate(-50%,-50%); width:min(820px,90vw); text-align:center; }
+  .big { font-size:clamp(26px,3.3vw,44px); line-height:1.2; }
+  .mid { font-size:clamp(18px,1.9vw,25px); line-height:1.35; }
+  .small { font:13px/1.45 var(--sans); color:var(--muted); }
+  .kicker { font:12px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+  .accent { color:var(--accent); }
+  .clock { font:600 15px var(--sans); color:var(--muted); }
+  button.btn { font:15px var(--sans); color:var(--text); background:var(--card); border:1px solid var(--edge); border-radius:8px; padding:11px 14px; cursor:pointer; text-align:left; }
+  button.btn:hover { border-color:var(--accent); }
+  button.primary { background:var(--accent); color:#1a1405; border-color:var(--accent); font-weight:700; }
+  /* radio */
+  #radio { position:absolute; left:6vw; top:20vh; width:250px; background:#1b1611; border:1px solid #3a2f22; border-radius:14px; padding:14px; font-family:var(--sans);
+    box-shadow:0 20px 60px rgba(0,0,0,.5); opacity:0; transform:translateY(10px); transition:all .6s; }
+  #radio.on { opacity:1; transform:none; }
+  #radio .grille { height:54px; border-radius:8px; background:repeating-linear-gradient(90deg,#2c241a 0 3px,#15110c 3px 6px); margin-bottom:10px; }
+  #radio .dial { display:flex; justify-content:space-between; font-size:12px; color:#c9a86a; }
+  #radio .live { color:#ff6b5f; font-weight:700; }
+  #radio .cap { margin-top:10px; font-size:13px; line-height:1.4; color:#d9d0c2; min-height:36px; }
+  /* community group post (generic social UI, no platform branding) */
+  #post { position:absolute; right:6vw; top:14vh; width:min(400px,88vw); background:#f3f2ef; color:#1c1e21; border-radius:10px; font-family:var(--sans);
+    box-shadow:0 24px 70px rgba(0,0,0,.55); opacity:0; transform:translateY(16px); transition:all .6s; overflow:hidden; }
+  #post.on { opacity:1; transform:none; }
+  #post .grp { background:#dfe3ea; padding:8px 12px; font-size:12px; color:#4b4f56; }
+  #post .hd { display:flex; gap:10px; align-items:center; padding:12px 12px 6px; }
+  #post .av { width:38px; height:38px; border-radius:50%; background:#8d6e4a; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; }
+  #post .nm { font-weight:700; font-size:14px; } #post .tm { font-size:12px; color:#65676b; }
+  #post .bd { padding:4px 12px 10px; font-size:15px; line-height:1.4; }
+  #post .bd b { display:block; margin-bottom:4px; }
+  #post .rx { border-top:1px solid #d6d8dc; margin:0 12px; padding:8px 0 10px; font-size:13px; color:#65676b; display:flex; justify-content:space-between; }
+  #choices { position:absolute; left:50%; bottom:6vh; transform:translateX(-50%); width:min(760px,92vw); display:grid; grid-template-columns:1fr 1fr; gap:10px; opacity:0; transition:opacity .6s; pointer-events:none; }
+  #choices.on { opacity:1; pointer-events:auto; }
+  #choices .q { grid-column:1/-1; text-align:center; font-size:clamp(20px,2.2vw,28px); margin-bottom:4px; }
+  /* water + rain */
+  #rain { position:fixed; inset:0; z-index:5; pointer-events:none; }
+  #water { position:fixed; left:0; right:0; bottom:0; height:0; z-index:6; pointer-events:none;
+    background:linear-gradient(rgba(62,96,112,.55), rgba(20,36,44,.92)); backdrop-filter:blur(3px) brightness(.8); -webkit-backdrop-filter:blur(3px) brightness(.8); }
+  #water svg { position:absolute; left:0; top:-14px; width:200%; height:16px; animation:wave 6s linear infinite; }
+  @keyframes wave { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  #nav { position:fixed; right:18px; bottom:18px; z-index:10; display:flex; gap:8px; align-items:center; }
+  #dots { position:fixed; left:50%; top:10px; transform:translateX(-50%); z-index:10; display:flex; gap:5px; }
+  #dots i { width:7px; height:7px; border-radius:50%; background:#2a3140; display:block; } #dots i.on { background:var(--accent); }
+  #over { position:fixed; inset:0; z-index:8; display:flex; align-items:center; justify-content:center; text-align:center; padding:24px; opacity:0; visibility:hidden; transition:opacity 1s, visibility 1s; }
+  #over.on { opacity:1; visibility:visible; }
+  #over .go { font:700 clamp(40px,7vw,96px)/1 var(--sans); letter-spacing:.06em; color:#fff; text-shadow:0 0 40px rgba(0,0,0,.8); }
+  .quiz { display:grid; gap:8px; margin-top:14px; }
+  .quiz button.right { border-color:#7fd08a; } .quiz button.wrong { border-color:var(--death); opacity:.6; }
+  .quote { border-left:2px solid var(--accent); padding-left:12px; margin:12px 0 0; font-style:italic; }
+  .braille { font-size:clamp(24px,3.2vw,42px); letter-spacing:.06em; line-height:1.5; word-break:break-word; }
+  #cap2 { position:fixed; left:50%; transform:translateX(-50%); bottom:64px; z-index:10; font:13px var(--sans); color:var(--muted); background:rgba(7,9,13,.8); padding:5px 10px; border-radius:4px; display:none; max-width:90vw; text-align:center; }
+  body.poster *, body.poster *::before { transition:none !important; }
+  @media (max-width:760px) { #radio { top:auto; bottom:44vh; } #post { top:8vh; right:4vw; } #choices { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div id="world">
+  <svg id="land" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="skyDay" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7cc3f0"/><stop offset="1" stop-color="#cfe9f7"/></linearGradient>
+      <linearGradient id="skyNight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05070b"/><stop offset="1" stop-color="#18222e"/></linearGradient>
+    </defs>
+    <rect id="skyD" width="1600" height="900" fill="url(#skyDay)"/>
+    <rect id="skyN" width="1600" height="900" fill="url(#skyNight)" opacity="0"/>
+    <circle id="sun" cx="1260" cy="170" r="70" fill="#ffe28a"/>
+    <path d="M0 560 C 220 470, 420 500, 640 540 S 1100 470, 1600 520 L1600 900 L0 900Z" id="hill1" fill="#6f9a5a"/>
+    <path d="M0 640 C 300 600, 700 650, 1000 620 S 1400 600, 1600 630 L1600 900 L0 900Z" id="hill2" fill="#58804a"/>
+    <path d="M0 780 C 300 760, 600 800, 900 770 S 1400 760, 1600 790 L1600 900 L0 900Z" id="river" fill="#4f86b0"/>
+    <g id="houses">
+      <rect x="380" y="640" width="120" height="80" fill="#c9b79c"/><path d="M370 642 L440 590 L510 642Z" fill="#8a5a44"/>
+      <rect x="425" y="675" width="28" height="45" fill="#5b4636"/><rect x="395" y="658" width="22" height="18" fill="#e8f1f7"/>
+      <rect x="560" y="660" width="100" height="66" fill="#b9c4c9"/><path d="M552 662 L610 620 L668 662Z" fill="#6d6d6d"/>
+      <line x1="690" y1="660" x2="860" y2="650" stroke="#555" stroke-width="2"/>
+      <rect x="712" y="660" width="26" height="30" fill="#e94f64"/><rect x="752" y="658" width="24" height="34" fill="#f6c343"/><rect x="792" y="655" width="28" height="28" fill="#4aa3df"/>
+      <rect x="1180" y="470" width="150" height="70" fill="#d9cfbf"/><path d="M1170 472 L1255 430 L1340 472Z" fill="#7b4d3a"/>
+      <text x="1255" y="515" text-anchor="middle" font-family="Helvetica Neue, Arial" font-size="15" fill="#5b4636">HALL</text>
+    </g>
+    <rect id="nightTint" width="1600" height="900" fill="#02040a" opacity="0"/>
+  </svg>
+  <svg id="viz" aria-label="Data visualisation"></svg>
+
+  <!-- SCENES -->
+  <section class="scene" data-id="title"><div class="center">
+    <div class="kicker">An interactive data story · about 6 minutes</div>
+    <div class="big">Same Rain, Different Words</div>
+    <p class="mid" style="margin-top:16px">Put on headphones. You'll need to make one decision.</p>
+    <p class="small">Sound makes this better; everything is also captioned.</p>
+    <p><button class="btn primary" id="startBtn">Begin with sound</button> &nbsp; <button class="btn" id="startQuiet">Begin muted</button></p>
+  </div></section>
+
+  <section class="scene" data-id="goodday"><div class="col" style="color:#10202c">
+    <div class="clock" style="color:#2d4a5e">SATURDAY · 14:00</div>
+    <div class="big">A good day.</div>
+    <p class="mid">You live in a small house near the river in eThekwini. The washing is out. The kids are playing on the bank. Up the hill is the community hall.</p>
+  </div></section>
+
+  <section class="scene" data-id="night">
+    <div class="col"><div class="clock">SATURDAY · <span class="nightclock">22:40</span></div><div class="mid">It has been raining for hours.</div></div>
+    <div id="radio"><div class="grille"></div><div class="dial"><span>COMMUNITY RADIO</span><span class="live">● LIVE</span></div><div class="cap" id="radioCap">…</div></div>
+    <div id="post"><div class="grp">Riverside Neighbours · Community group</div>
+      <div class="hd"><div class="av">EM</div><div><div class="nm" id="postName">Shared by a group member</div><div class="tm"><span class="nightclock">22:41</span> · eThekwini Municipality newsflash</div></div></div>
+      <div class="bd"><b id="postTitle"></b><span id="postText"></span></div>
+      <div class="rx"><span>👍 14</span><span>6 comments · 9 shares</span></div></div>
+    <div id="choices"><div class="q">What do you do?</div></div>
+  </section>
+
+  <section class="scene" data-id="reveal"><div class="center">
+    <div class="kicker">What the warning said</div>
+    <div class="big" id="revealText"></div>
+    <p class="mid accent" style="margin-top:20px">It never says what to do, or where to go.</p>
+    <p class="small" id="revealSrc"></p>
+  </div></section>
+
+  <section class="scene" data-id="flip"><div class="center">
+    <div class="big">Most of you couldn't read it.</div>
+    <p class="mid" style="margin-top:16px">Flip it around. South Africa's official flood warnings are issued in <b>English</b>. Most people in the places where flood deaths happen grew up speaking something else.</p>
+    <p class="small">Source: data/warning_language.json</p>
+  </div></section>
+
+  <section class="scene" data-id="sky"><div class="col">
+    <div class="kicker">What South Africa can see</div>
+    <div class="big">The sky is watched.</div>
+    <p class="mid" id="skyCount"></p>
+    <p class="small"><span style="color:#f3efe4">●</span> weather station · <span style="color:#79c8ff">●</span> river gauge · <span style="color:#ffcf6e">●</span> radar. Each point is a real station at its published position (WMO OSCAR, WMO Radar Database).</p>
+    <p class="small" id="skyNote"></p>
+  </div></section>
+
+  <section class="scene" data-id="years"><div class="col">
+    <div class="kicker">South Africa · floods 2016–2026</div>
+    <div class="big" id="yrYear">2016</div>
+    <p class="mid" id="yrCount"></p>
+    <p class="small"><span style="color:var(--tick,#fff)">✓</span> warning issued beforehand · <span style="color:var(--death)">●</span> one death, where it happened</p>
+    <p class="mid accent" id="yrLine" style="opacity:0;transition:opacity 1s">The forecasts were often right. People still died.</p>
+  </div></section>
+
+  <section class="scene" data-id="people"><div class="col" style="width:min(1000px,88vw)">
+    <div class="mid" style="font-size:clamp(20px,2.3vw,32px)">In the places where these <span id="pN"></span> people died, <span class="accent">4 in 5</span> residents grew up speaking a language other than English.</div>
+    <p class="small">Each dot is one death, coloured by the first-language mix of the places where the deaths happened (Census 2011), not the language of any individual.</p>
+  </div></section>
+
+  <section class="scene" data-id="second"><div class="col" style="width:min(640px,88vw)">
+    <div class="kicker">Even if you can read it</div>
+    <div class="big">A second language breaks down exactly when you need it.</div>
+    <div id="l2facts" class="small" style="margin-top:12px;font-size:14px;color:var(--text)"></div>
+  </div></section>
+
+  <section class="scene" data-id="levels"><div class="col" style="width:min(640px,88vw)">
+    <div class="kicker">And in English?</div>
+    <div class="mid" id="lvQ"></div>
+    <div class="quiz" id="lvOpts"></div>
+    <div id="lvReveal" style="opacity:0;transition:opacity .8s"></div>
+  </div></section>
+
+  <section class="scene" data-id="braille"><div class="center" style="top:34%">
+    <div class="kicker">One more warning</div>
+    <div class="braille" id="brailleText"></div>
+    <p class="mid" style="margin-top:12px">Can you read this?</p>
+    <p><button class="btn" id="brailleBtn">Reveal</button></p>
+    <div id="brailleReveal" style="opacity:0;transition:opacity .8s"></div>
+  </div></section>
+
+  <section class="scene" data-id="worldmap"><div class="col" style="width:min(460px,88vw)">
+    <div class="kicker">Elsewhere</div>
+    <div class="mid">Where language cost lives, some places changed how warnings speak.</div>
+    <div id="wmCard" style="margin-top:12px"></div>
+    <p class="small" id="wmCaveat"></p>
+  </div></section>
+
+  <section class="scene" data-id="day2"><div class="col" style="color:#10202c">
+    <div class="clock" style="color:#2d4a5e">SATURDAY · 14:00</div>
+    <div class="big">Let's go back.</div>
+    <p class="mid">Same house. Same river. Same rain tonight. One thing changes: the words.</p>
+  </div></section>
+
+  <section class="scene" data-id="end"><div class="center" style="top:42%">
+    <div class="big">Same rain.</div><div class="big accent">Different words.</div>
+    <p class="mid" style="margin-top:22px">Warnings in all 12 official languages, including sign language.<br>Saying what to do, and where to go.<br>Spoken by people communities trust.</p>
+    <p><button class="btn" id="againBtn">Play again</button></p>
+    <p class="small">Data, methods and every source: methods/METHODS.md · methods/SOURCES.md</p>
+  </div></section>
+</div>
+
+<canvas id="rain"></canvas>
+<div id="water"><svg viewBox="0 0 200 16" preserveAspectRatio="none"><path d="M0 8 Q 12.5 0 25 8 T 50 8 T 75 8 T 100 8 T 125 8 T 150 8 T 175 8 T 200 8 V16 H0Z" fill="rgba(62,96,112,.55)"/></svg></div>
+<div id="over"><div><div class="go" id="overTitle">GAME OVER</div><p class="mid" id="overText" style="max-width:640px;margin:18px auto"></p><button class="btn primary" id="overBtn">Continue</button></div></div>
+<div id="dots"></div>
+<div id="cap2" aria-live="polite"></div>
+<div id="nav"><button class="btn" id="soundBtn">Sound on</button><button class="btn primary" id="nextBtn">Continue ▸</button></div>
+
+<script src="vendor/d3.v7.min.js"></script>
+<script src="vendor/topojson-client.min.js"></script>
+<script src="vendor/world-50m.js"></script>
+<script src="data/story-data.js"></script>
+<script>
+(function () {
+  "use strict";
+  var S = window.STORY, G = S.game, WT = window.WORLD_TOPO, Q = new URLSearchParams(location.search);
+  function $(id) { return document.getElementById(id); }
+  function clamp(x) { return Math.max(0, Math.min(1, x)); }
+  function seg(p, a, b) { return clamp((p - a) / (b - a)); }
+  var ease = d3.easeCubicInOut;
+
+  // ---------- scenes ----------
+  // level = water height (share of screen), rain = intensity, land = day|night|null
+  var SCENES = [
+    { id: "title", level: 0, rain: 0, land: "day" },
+    { id: "goodday", level: 0, rain: 0, land: "day" },
+    { id: "night", level: 0.04, rain: 0.7, land: "night", waitChoice: true },
+    { id: "reveal", level: 0.08, rain: 0.45, land: null },
+    { id: "flip", level: 0.11, rain: 0.5, land: null },
+    { id: "sky", level: 0.14, rain: 0.5, land: null, viz: "sky" },
+    { id: "years", level: 0.17, rain: 0.55, land: null, viz: "years", dur: 10 },
+    { id: "people", level: 0.2, rain: 0.6, land: null, viz: "people", dur: 4 },
+    { id: "second", level: 0.23, rain: 0.65, land: null, viz: "second", dur: 3 },
+    { id: "levels", level: 0.26, rain: 0.7, land: null },
+    { id: "braille", level: 0.29, rain: 0.75, land: null },
+    { id: "worldmap", level: 0.32, rain: 0.8, land: null, viz: "world", dur: 22 },
+    { id: "day2", level: 0, rain: 0, land: "day" },
+    { id: "night2", dom: "night", level: 0.04, rain: 0.7, land: "night", waitChoice: true, round: 2 },
+    { id: "end", level: 0, rain: 0.05, land: "day" }];
+  var cur = -1, sceneT0 = 0, lvl = 0, lvlTarget = 0, rainAmt = 0, rainTarget = 0, drowning = false;
+
+  // ---------- audio ----------
+  var A = { ctx: null, on: false };
+  function audioInit() {
+    if (A.ctx) return; var C = window.AudioContext || window.webkitAudioContext; if (!C) return;
+    var ctx = A.ctx = new C();
+    A.muffle = ctx.createBiquadFilter(); A.muffle.type = "lowpass"; A.muffle.frequency.value = 18000;
+    A.master = ctx.createGain(); A.master.gain.value = 0.9; A.muffle.connect(A.master); A.master.connect(ctx.destination);
+    var buf = ctx.createBuffer(1, ctx.sampleRate * 3, ctx.sampleRate), ch = buf.getChannelData(0);
+    for (var i = 0; i < ch.length; i++) ch[i] = Math.random() * 2 - 1;
+    function noise() { var s = ctx.createBufferSource(); s.buffer = buf; s.loop = true; s.start(); return s; }
+    var r = noise(), rf = ctx.createBiquadFilter(); rf.type = "lowpass"; rf.frequency.value = 2200;
+    A.rain = ctx.createGain(); A.rain.gain.value = 0; r.connect(rf); rf.connect(A.rain); A.rain.connect(A.muffle);
+    var st = noise(), sf = ctx.createBiquadFilter(); sf.type = "bandpass"; sf.frequency.value = 2400; sf.Q.value = 0.7;
+    A.stat = ctx.createGain(); A.stat.gain.value = 0; st.connect(sf); sf.connect(A.stat); A.stat.connect(A.muffle);
+    var lfo = ctx.createOscillator(), lg = ctx.createGain(); lfo.frequency.value = 7; lg.gain.value = 0.02; lfo.connect(lg); lg.connect(A.stat.gain); lfo.start();
+  }
+  function aset(param, v, tc) { if (A.ctx) { param.cancelScheduledValues(A.ctx.currentTime); param.setTargetAtTime(v, A.ctx.currentTime, tc || 0.4); } }
+  function beep() { if (!A.ctx || !A.on) return; var o = A.ctx.createOscillator(), g = A.ctx.createGain(); o.frequency.value = 880; g.gain.value = 0;
+    o.connect(g); g.connect(A.muffle); var t = A.ctx.currentTime; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.12, t + 0.02);
+    g.gain.setValueAtTime(0.12, t + 0.18); g.gain.linearRampToValueAtTime(0, t + 0.22); o.start(t); o.stop(t + 0.3); }
+  function voiceFor(lang) { var vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    return vs.filter(function (v) { return v.lang && v.lang.toLowerCase().indexOf(lang) === 0; })[0] || null; }
+  // Radio read-out. Prefers a real recording (audio/warning_<lang>.mp3), then a browser voice for that language,
+  // otherwise static + caption. The recording slot is for a native speaker.
+  function radioSay(text, lang, done) {
+    var cap = $("radioCap"); cap.textContent = "“" + text + "”";
+    if (!A.on) { setTimeout(done, 3500); return; }
+    aset(A.stat.gain, 0.05); beep();
+    var fin = function () { aset(A.stat.gain, 0.0, 0.3); done && done(); done = null; };
+    var file = new Audio("audio/warning_" + lang + ".mp3");
+    file.volume = Math.max(0.2, 1 - lvl);
+    file.onended = fin;
+    file.onerror = function () {
+      if (file._f) return; file._f = true;
+      var v = voiceFor(lang);
+      if (!v || !window.speechSynthesis) { $("cap2").style.display = "block";
+        $("cap2").textContent = "Radio (" + lang + "): no " + lang + " voice on this device. Placeholder until a native speaker's recording is added at prototype/audio/warning_" + lang + ".mp3.";
+        setTimeout(fin, 4500); return; }
+      var u = new SpeechSynthesisUtterance(text); u.voice = v; u.lang = v.lang; u.rate = 1.02; u.pitch = 0.9; u.volume = Math.max(0.25, 1 - lvl * 1.5);
+      u.onend = fin; u.onerror = fin; speechSynthesis.cancel(); speechSynthesis.speak(u);
+      $("cap2").style.display = "block"; $("cap2").textContent = "Radio voice: synthetic " + v.name + " (placeholder for a native-speaker recording).";
+    };
+    setTimeout(function () { var pr = file.play(); if (pr && pr["catch"]) pr["catch"](function () { file.onerror(); }); }, 700);
+  }
+
+  // ---------- rain canvas ----------
+  var cv = $("rain"), cx = cv.getContext("2d"), drops = [], beads = [];
+  function sizeCanvas() { cv.width = innerWidth; cv.height = innerHeight; }
+  for (var i = 0; i < 420; i++) drops.push({ x: Math.random(), y: Math.random(), v: 0.6 + Math.random() * 0.8, l: 8 + Math.random() * 14 });
+  for (i = 0; i < 60; i++) beads.push({ x: Math.random(), y: Math.random(), r: 1.5 + Math.random() * 4, v: 0.01 + Math.random() * 0.03 });
+  function drawRain(dt) {
+    cx.clearRect(0, 0, cv.width, cv.height);
+    var n = Math.round(drops.length * rainAmt), W = cv.width, H = cv.height;
+    cx.strokeStyle = "rgba(190,210,230,0.35)"; cx.lineWidth = 1; cx.beginPath();
+    for (var i = 0; i < n; i++) { var d = drops[i]; d.y += d.v * dt * 1.4; if (d.y > 1) { d.y = -0.05; d.x = Math.random(); }
+      var x = d.x * W, y = d.y * H; cx.moveTo(x, y); cx.lineTo(x - 2, y + d.l); }
+    cx.stroke();
+    var nb = Math.round(beads.length * rainAmt);  // droplets running down the "glass"
+    for (i = 0; i < nb; i++) { var b = beads[i]; b.y += b.v * dt * (0.3 + Math.random()); if (b.y > 1) { b.y = 0; b.x = Math.random(); }
+      cx.fillStyle = "rgba(210,225,240,0.22)"; cx.beginPath(); cx.arc(b.x * W, b.y * H, b.r, 0, 6.283); cx.fill();
+      cx.fillStyle = "rgba(255,255,255,0.3)"; cx.beginPath(); cx.arc(b.x * W - b.r * 0.3, b.y * H - b.r * 0.3, b.r * 0.35, 0, 6.283); cx.fill(); }
+  }
+
+  // ---------- data prep ----------
+  var st = S.stats;
+  var floods = S.floods.map(function (f) { f.t = f.year + ((f.month || 1) - 1) / 12; return f; });
+  var sites = S.sites.filter(function (s) { return s.lat != null; }).map(function (s) { s.t = s.year + ((s.month || 1) - 1) / 12; return s; });
+  var PAL = { English: "#f3efe4", isiZulu: "#4f86c6", isiXhosa: "#8a6fce", Afrikaans: "#c9895a", Sepedi: "#3fa796", Xitsonga: "#c2618b",
+    Tshivenda: "#9fb34a", Setswana: "#5fa4c4", SiSwati: "#b487d2", isiNdebele: "#77b777", Sesotho: "#c9a84b", Other: "#5b6270" };
+  var comp = S.composition.slice().sort(function (a, b) { if (a.language === "English") return -1; if (b.language === "English") return 1;
+    if (a.language === "Other") return 1; if (b.language === "Other") return -1; return b.n - a.n; });
+  var cellLang = []; comp.forEach(function (c) { for (var i = 0; i < c.n; i++) cellLang.push(c.language); });
+  var dots = []; sites.slice().sort(function (a, b) { return a.t - b.t; }).forEach(function (s) { for (var i = 0; i < s.deaths; i++) dots.push({ s: s, i: i }); });
+  dots.forEach(function (d, k) { d.k = k; d.lang = cellLang[k] || "Other"; });
+  var countries = topojson.feature(WT, WT.objects.countries).features, byId = {}; countries.forEach(function (c) { byId[c.id] = c; });
+  var zaF = byId["710"], za = { type: "Feature", geometry: { type: "MultiPolygon", coordinates: zaF.geometry.coordinates.filter(function (p) { return p[0][0][1] > -36; }) } };
+
+  // static text from data
+  var hook = S.hook;
+  $("postTitle").textContent = hook.title; $("postText").textContent = hook.text;
+  $("revealText").textContent = "“" + hook.translation + "”";
+  $("revealSrc").textContent = "Real warning: " + hook.issuer + ", " + hook.date + ". " + hook.translation_note;
+  $("pN").textContent = st.placed_deaths;
+  $("l2facts").innerHTML = G.l2.facts.map(function (f) { return "<p>" + f.text + "<br><span class='small'>" + f.source + "</span></p>"; }).join("");
+  $("lvQ").textContent = G.levels.question;
+  $("wmCaveat").textContent = G.world_caveat;
+
+  // ---------- viz ----------
+  var svg = d3.select("#viz"), W, H, avail;
+  function top() { return 0; }
+  function clearViz() { svg.selectAll("*").remove(); }
+  function landPath(proj) { return d3.geoPath(proj); }
+  function drawSA(proj) {
+    var p = landPath(proj), g = svg.append("g");
+    ["426", "748", "516", "072", "716", "508"].forEach(function (id) { if (byId[id]) g.append("path").attr("d", p(byId[id])).attr("fill", "#0c1017").attr("stroke", "#19202a"); });
+    g.append("path").attr("d", p(za)).attr("fill", "#121821").attr("stroke", "#2b3545");
+    return g;
+  }
+  function saProj() { var left = W > 900 ? W * 0.44 : 16; return d3.geoMercator().fitExtent([[left, H * 0.08], [W - 24, avail]], za); }
+  var V = {};
+  var VIZ = {
+    sky: function () {
+      var proj = saProj(); drawSA(proj); var N = S.network; V.pts = [];
+      if (!N) { $("skyCount").textContent = "Observing network data not built."; return; }
+      var sty = { surface_stations: ["#f3efe4", 1.7], river_gauges: ["#79c8ff", 1.3], radars: ["#ffcf6e", 3.2] };
+      N.layers.forEach(function (L, li) { var s = sty[L.id]; if (!s) return;
+        L.points.slice().sort(function (a, b) { return a[0] - b[0]; }).forEach(function (pt, j, arr) { var xy = proj(pt); if (!xy) return;
+          V.pts.push({ el: svg.append("circle").attr("cx", xy[0]).attr("cy", xy[1]).attr("r", s[1]).attr("fill", s[0]).attr("opacity", 0), a: 0.05 + li * 0.25 + 0.2 * j / arr.length }); }); });
+      var SH = { radars: "weather radars", surface_stations: "weather stations", river_gauges: "river gauges", lightning_sensors: "lightning sensors" };
+      $("skyCount").innerHTML = N.layers.map(function (L) { return "<b>" + L.count_total + "</b> " + (SH[L.id] || L.label); }).join(" · ") +
+        (N.satellites ? " · <b>" + N.satellites.length + "</b> weather satellites watching the region" : "");
+      $("skyNote").textContent = "Of the satellites, " + N.saws_documented_sats + " are documented as received by SAWS. " + (S.radar_caveat ? S.radar_caveat.text : "");
+    },
+    years: function () {
+      var proj = saProj(); drawSA(proj); V.proj = proj;
+      V.dots = dots.map(function (d) { var p = proj([+d.s.lon, +d.s.lat]), a = d.i * 2.39996, r = 1.9 * Math.sqrt(d.i);
+        d.mx = p[0] + Math.cos(a) * r; d.my = p[1] + Math.sin(a) * r; return svg.append("circle").attr("cx", d.mx).attr("cy", d.my).attr("r", 1.8).attr("fill", "#ff5a4f").attr("opacity", 0); });
+      var tx = d3.scaleLinear().domain([2016, 2026.85]).range([W * 0.06, W * 0.94]), base = Math.min(avail + 10, H * 0.78); V.tx = tx;
+      V.marks = floods.map(function (f) { var h = f.deaths >= 1 ? 5 + Math.log2(f.deaths + 1) * 4 : 3;
+        var m = svg.append("line").attr("x1", tx(f.t)).attr("x2", tx(f.t)).attr("y1", base).attr("y2", base - h).attr("stroke", "#8a93a0").attr("stroke-width", 2).attr("opacity", 0.12);
+        var k = f.warned ? svg.append("text").attr("x", tx(f.t)).attr("y", base - h - 3).attr("text-anchor", "middle").attr("fill", "#fff").attr("font-size", 10).text("✓").attr("opacity", 0) : null;
+        return { f: f, m: m, k: k }; });
+      for (var y = 2016; y <= 2026; y += 2) svg.append("text").attr("x", tx(y)).attr("y", base + 14).attr("fill", "#6b7380").attr("font-size", 11).attr("font-family", "Helvetica Neue, Arial").text(y);
+    },
+    people: function () {
+      VIZ.years(); var cols = 22, rows = Math.ceil(dots.length / cols);
+      var cell = Math.min((W * (W > 900 ? 0.5 : 0.9)) / cols, (avail - H * 0.3) / rows), x0 = W > 900 ? W * 0.06 : 16, y0 = H * 0.3;
+      dots.forEach(function (d) { d.gx = x0 + (d.k % cols) * cell + cell / 2; d.gy = y0 + Math.floor(d.k / cols) * cell + cell / 2; });
+      V.cellR = Math.max(2, cell * 0.36); V.marks.forEach(function (m) { m.m.remove(); if (m.k) m.k.remove(); });
+      svg.selectAll("text").remove(); svg.select("g").transition().duration(1500).attr("opacity", 0);
+      var lx = x0 + cols * cell + 26, g = svg.append("g").attr("opacity", 0); V.legend = g;
+      comp.forEach(function (c, i) { var r = g.append("g").attr("transform", "translate(" + lx + "," + (y0 + 8 + i * 20) + ")");
+        r.append("circle").attr("r", 6).attr("cy", -5).attr("fill", PAL[c.language] || PAL.Other);
+        r.append("text").attr("x", 14).attr("fill", "#ece9e2").attr("font-size", 13).attr("font-family", "Helvetica Neue, Arial").attr("font-weight", c.language === "English" ? 700 : 400).text(c.language + "  " + c.n); });
+      var eng = comp.filter(function (c) { return c.language === "English"; })[0].n, tot = d3.sum(comp, function (c) { return c.n; });
+      g.append("text").attr("x", lx).attr("y", y0 + 8 + comp.length * 20 + 12).attr("fill", "#ffcf6e").attr("font-weight", 700).attr("font-size", 14).attr("font-family", "Helvetica Neue, Arial").text((tot - eng) + " of " + tot + " not English");
+    },
+    second: function () {
+      var b = G.l2.bars, x0 = W > 900 ? W * 0.58 : 16, y0 = W > 900 ? H * 0.16 : H * 0.55, bw = Math.min(360, W * 0.3), bh = 34, g = svg.append("g");
+      g.append("text").attr("x", x0).attr("y", y0).attr("fill", "#ece9e2").attr("font-size", 16).attr("font-family", "Helvetica Neue, Arial").attr("font-weight", 700).text(G.l2.bars_title);
+      V.bars = b.map(function (d, i) { var y = y0 + 22 + i * (bh + 34);
+        g.append("text").attr("x", x0).attr("y", y + 12).attr("fill", "#9097a0").attr("font-size", 13).attr("font-family", "Helvetica Neue, Arial").text(d.label);
+        g.append("rect").attr("x", x0).attr("y", y + 18).attr("width", bw).attr("height", bh).attr("fill", "#1a212c");
+        var r = g.append("rect").attr("x", x0).attr("y", y + 18).attr("width", 0).attr("height", bh).attr("fill", i === 0 ? "#f3efe4" : "#ffcf6e");
+        var t = g.append("text").attr("x", x0 + 8).attr("y", y + 18 + bh / 2 + 6).attr("fill", "#111").attr("font-size", 16).attr("font-weight", 700).attr("font-family", "Helvetica Neue, Arial").text("");
+        return { r: r, t: t, v: d.v, bw: bw }; });
+      g.append("text").attr("x", x0).attr("y", y0 + 22 + b.length * (bh + 34) + 8).attr("fill", "#6b7380").attr("font-size", 11).attr("font-family", "Helvetica Neue, Arial").text(G.l2.bars_source);
+    },
+    world: function () {
+      var proj = d3.geoNaturalEarth1().fitExtent([[W > 900 ? W * 0.36 : 8, H * 0.06], [W - 16, avail]], { type: "Sphere" }), p = d3.geoPath(proj);
+      svg.append("path").attr("d", p({ type: "Sphere" })).attr("fill", "#0b1016");
+      svg.append("g").selectAll("path").data(countries).join("path").attr("d", p).attr("fill", "#141b25").attr("stroke", "#0b1016").attr("stroke-width", 0.4);
+      var rmax = Math.min(46, H * 0.06);
+      V.cases = G.world.map(function (c, i) { var f = byId[c.iso]; if (!f) return null; var xy = proj(c.iso === "710" ? d3.geoCentroid(za) : d3.geoCentroid(f));
+        var g = svg.append("g").attr("transform", "translate(" + xy[0] + "," + xy[1] + ")").attr("opacity", 0.35);
+        var r0 = c.bd ? rmax * Math.sqrt(c.bd / 300000) : 0, r1 = c.ad ? rmax * Math.sqrt(c.ad / 300000) : 0;
+        var big = g.append("circle").attr("r", c.bd ? Math.max(6, r0 * 3) : 7).attr("fill", c.home ? "none" : "#ff5a4f").attr("stroke", c.home ? "#ff5a4f" : "none").attr("stroke-width", 2).attr("opacity", 0.8);
+        g.append("text").attr("y", c.iso === "050" ? 4 : -12).attr("x", c.iso === "050" ? 12 : 0).attr("text-anchor", c.iso === "050" ? "start" : "middle").attr("fill", "#ece9e2").attr("font-size", 12).attr("font-family", "Helvetica Neue, Arial").text(c.place);
+        return { c: c, g: g, big: big, r0: c.bd ? Math.max(6, r0 * 3) : 7, r1: c.ad ? Math.max(2.5, r1 * 3) : 7, i: i }; }).filter(Boolean);
+    }
+  };
+  function vizTick(id, p, t) {
+    if (id === "sky" && V.pts) V.pts.forEach(function (q) { q.el.attr("opacity", 0.9 * seg(p, q.a, q.a + 0.04)); });
+    if (id === "years" && V.marks) {
+      var yr = 2016 + seg(p, 0.05, 0.85) * 10.85;
+      V.marks.forEach(function (m) { var s = m.f.t <= yr; m.m.attr("opacity", s ? 0.95 : 0.12); if (m.k) m.k.attr("opacity", s ? 1 : 0); });
+      V.dots.forEach(function (c, i) { var d = dots[i], k = clamp((yr - d.s.t) / 0.35); c.attr("opacity", k > 0 ? 0.9 : 0).attr("cy", d.my - 24 * (1 - ease(k))); });
+      var fs = floods.filter(function (f) { return f.t <= yr; });
+      $("yrYear").textContent = Math.floor(Math.min(yr, 2026));
+      $("yrCount").innerHTML = fs.length + " floods · <b>" + fs.filter(function (f) { return f.warned; }).length + "</b> warned beforehand · <span style='color:var(--death)'>" +
+        d3.sum(sites.filter(function (s) { return s.t <= yr; }), function (s) { return s.deaths; }) + " deaths</span> we can place";
+      $("yrLine").style.opacity = p > 0.88 ? 1 : 0;
+    }
+    if (id === "people" && V.dots) {
+      V.dots.forEach(function (c, i) { var d = dots[i], f = ease(seg(p, 0.05 + 0.25 * (i / dots.length), 0.45 + 0.25 * (i / dots.length)));
+        c.attr("opacity", 0.95).attr("cx", d.mx + (d.gx - d.mx) * f).attr("cy", d.my + (d.gy - d.my) * f).attr("r", 1.8 + (V.cellR - 1.8) * f)
+          .attr("fill", d3.interpolateRgb("#ff5a4f", PAL[d.lang] || PAL.Other)(seg(p, 0.7, 0.9))); });
+      V.legend.attr("opacity", seg(p, 0.85, 1));
+    }
+    if (id === "second" && V.bars) V.bars.forEach(function (b, i) { var k = ease(seg(p, 0.1 + i * 0.25, 0.6 + i * 0.25)); b.r.attr("width", b.bw * b.v / 100 * k); b.t.text(k > 0.3 ? Math.round(b.v * k) + "%" : ""); });
+    if (id === "world" && V.cases) {
+      var n = V.cases.length, slot = 1 / n, k = Math.min(n - 1, Math.floor(p / slot)), sp = (p - k * slot) / slot, c = V.cases[k];
+      V.cases.forEach(function (q, j) { q.g.attr("opacity", j === k ? 1 : (j < k ? 0.7 : 0.3));
+        var shrink = j < k ? 1 : (j === k ? ease(seg(sp, 0.35, 0.8)) : 0);
+        q.big.attr("r", q.r0 + (q.r1 - q.r0) * shrink).attr("fill", q.c.home ? "none" : (shrink > 0.5 && q.c.ad ? "#ffcf6e" : "#ff5a4f")); });
+      if (V.shown !== k) { V.shown = k; $("wmCard").innerHTML = "<div class='mid'><b>" + c.c.place + "</b></div><p class='small' style='color:var(--text);font-size:14px'>" + c.c.before +
+        "</p><p class='small' style='color:var(--accent);font-size:14px'>" + c.c.after + "</p><p class='small'>" + c.c.sources.join(" · ") + "</p>"; }
+    }
+  }
+
+  // ---------- night scene ----------
+  var round = 1;
+  function setupNight(r) {
+    round = r; $("radio").classList.remove("on"); $("post").classList.remove("on"); $("choices").classList.remove("on");
+    var eng = r === 2;
+    $("postTitle").textContent = eng ? "Flood warning" : hook.title;
+    $("postText").textContent = eng ? G.fixed_warning : hook.text;
+    $("postName").textContent = eng ? "Shared by a group member, in your language" : "Shared by a group member";
+    var box = $("choices"); box.innerHTML = "<div class='q'>What do you do?</div>";
+    d3.shuffle(G.choices.slice()).forEach(function (c) { var b = document.createElement("button"); b.className = "btn"; b.textContent = c.label;
+      b.onclick = function () { choose(c); }; box.appendChild(b); });
+    setTimeout(function () { if (SCENES[cur].id.indexOf("night") !== 0) return; $("radio").classList.add("on");
+      radioSay(eng ? G.fixed_warning : hook.text, eng ? "en" : "zu", function () {
+        if (SCENES[cur].id.indexOf("night") !== 0) return; $("post").classList.add("on");
+        setTimeout(function () { $("choices").classList.add("on"); }, 1400); });
+      if (!A.on) setTimeout(function () { $("post").classList.add("on"); }, 1200);
+    }, 1800);
+  }
+  function choose(c) {
+    $("choices").classList.remove("on"); if (window.speechSynthesis) speechSynthesis.cancel();
+    if (c.live) {
+      showOver(round === 1 ? "YOU LIVED" : "YOU'RE ALIVE",
+        round === 1 ? "By luck. You couldn't read the warning, and it never said where to go. Most people in the real floods didn't get lucky." :
+        "Same rain. This time the words told you what to do, and where to go.", false);
+    } else {
+      drowning = true; lvlTarget = 1; if (A.on) { aset(A.muffle.frequency, 260, 1.2); aset(A.rain.gain, 0.35, 0.8); }
+      setTimeout(function () { showOver("GAME OVER",
+        round === 1 ? "The river came up at 01:00. You didn't leave. You couldn't read the warning, and even translated, it never said where to go." :
+        "The warning was clear this time, and you still stayed. Clear words save most people. Practice and trust do the rest.", true); }, 3200);
+    }
+  }
+  function showOver(title, text, drowned) {
+    $("overTitle").textContent = title; $("overText").textContent = text; $("over").classList.add("on");
+    $("overBtn").onclick = function () { $("over").classList.remove("on"); drowning = false; goto(cur + 1); };
+  }
+
+  // ---------- scene engine ----------
+  var dotsEl = $("dots"); SCENES.forEach(function () { dotsEl.appendChild(document.createElement("i")); });
+  function goto(i) {
+    if (i >= SCENES.length) i = 0; if (i < 0) i = 0;
+    cur = i; var sc = SCENES[i], domId = sc.dom || sc.id;
+    Array.prototype.forEach.call(document.querySelectorAll(".scene"), function (el) { el.classList.toggle("on", el.dataset.id === domId); });
+    Array.prototype.forEach.call(dotsEl.children, function (d, k) { d.classList.toggle("on", k <= i); });
+    lvlTarget = sc.level; rainTarget = sc.rain; sceneT0 = performance.now(); $("cap2").style.display = "none";
+    var night = sc.land === "night";
+    $("land").style.opacity = sc.land ? 1 : 0;
+    d3.select("#skyN").transition().duration(poster ? 0 : 1500).attr("opacity", night ? 1 : 0);
+    d3.select("#nightTint").transition().duration(poster ? 0 : 1500).attr("opacity", night ? 0.35 : 0);
+    d3.select("#sun").transition().duration(poster ? 0 : 1500).attr("opacity", night ? 0 : 1);
+    W = innerWidth; H = innerHeight; avail = H * (1 - Math.max(sc.level, 0.05)) - 70; clearViz(); V = {};
+    if (sc.viz) VIZ[sc.viz]();
+    $("nextBtn").style.visibility = (sc.waitChoice || sc.id === "title" || sc.id === "end") ? "hidden" : "visible";
+    if (sc.id.indexOf("night") === 0) setupNight(sc.round || 1);
+    if (sc.id === "levels") setupLevels();
+    if (sc.id === "braille") setupBraille();
+    if (A.on) aset(A.rain.gain, 0.02 + sc.rain * 0.22, 1.2);
+  }
+  function setupLevels() {
+    var box = $("lvOpts"); box.innerHTML = ""; $("lvReveal").style.opacity = 0;
+    G.levels.options.forEach(function (o, k) { var b = document.createElement("button"); b.className = "btn"; b.textContent = o;
+      b.onclick = function () { Array.prototype.forEach.call(box.children, function (x, j) { x.classList.add(j === G.levels.answer ? "right" : "wrong"); });
+        $("lvReveal").innerHTML = "<p class='mid' style='margin-top:14px'>" + G.levels.explain + "</p>" +
+          G.levels.quotes.map(function (q) { return "<p class='quote'>“" + q.text + "”<br><span class='small'>" + q.who + "</span></p>"; }).join("");
+        $("lvReveal").style.opacity = 1; };
+      box.appendChild(b); });
+  }
+  function toBraille(s) { // uncontracted (Grade 1) English braille, Unicode braille patterns
+    var dotsMap = { a: [1], b: [1, 2], c: [1, 4], d: [1, 4, 5], e: [1, 5], f: [1, 2, 4], g: [1, 2, 4, 5], h: [1, 2, 5], i: [2, 4], j: [2, 4, 5], k: [1, 3], l: [1, 2, 3], m: [1, 3, 4],
+      n: [1, 3, 4, 5], o: [1, 3, 5], p: [1, 2, 3, 4], q: [1, 2, 3, 4, 5], r: [1, 2, 3, 5], s: [2, 3, 4], t: [2, 3, 4, 5], u: [1, 3, 6], v: [1, 2, 3, 6], w: [2, 4, 5, 6], x: [1, 3, 4, 6],
+      y: [1, 3, 4, 5, 6], z: [1, 3, 5, 6], ".": [2, 5, 6], " ": [] };
+    return s.toLowerCase().split("").map(function (ch) { var d = dotsMap[ch] || []; return String.fromCharCode(0x2800 + d.reduce(function (a, n) { return a + (1 << (n - 1)); }, 0)); }).join("");
+  }
+  function setupBraille() {
+    $("brailleText").textContent = toBraille(G.braille_text); $("brailleReveal").style.opacity = 0;
+    $("brailleBtn").onclick = function () {
+      $("brailleReveal").innerHTML = "<p class='big' style='margin-top:10px'>“" + G.braille_text.replace(/(^|\.\s+)([a-z])/g, function (m, a, b) { return a + b.toUpperCase(); }) + "”</p>" +
+        "<p class='mid'>A warning is only a warning if you can understand it. Language is one barrier; so is sight, hearing, literacy, and jargon like “Level 9”.</p>" +
+        "<p class='small'>" + G.sasl.text + " Official flood warnings: written English. · Uncontracted English braille. · " + G.sasl.sources[0] + "</p>";
+      $("brailleReveal").style.opacity = 1; };
+  }
+
+  // ---------- main loop ----------
+  var last = performance.now();
+  function frame(now) {
+    var dt = Math.min(0.05, (now - last) / 1000); last = now;
+    lvl += (lvlTarget - lvl) * Math.min(1, dt * (drowning ? 0.9 : 1.6));
+    rainAmt += (rainTarget - rainAmt) * Math.min(1, dt * 1.2);
+    $("water").style.height = (lvl * 100) + "vh";
+    $("world").style.filter = "blur(" + (lvl * 3).toFixed(2) + "px) saturate(" + (1 - lvl * 0.6).toFixed(2) + ")";
+    if (A.ctx && A.on && !drowning) A.muffle.frequency.value = 400 + 17600 * Math.pow(1 - Math.min(lvl * 2.2, 1), 3);
+    drawRain(dt);
+    var sc = SCENES[cur]; if (sc && sc.viz) { var p = sc.dur ? clamp((now - sceneT0) / 1000 / sc.dur) : clamp((now - sceneT0) / 1000 / 4); if (poster) p = posterP; vizTick(sc.viz, p, now); }
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- controls ----------
+  function start(withSound) { if (window.speechSynthesis) speechSynthesis.getVoices(); if (withSound) { audioInit(); A.on = true; if (A.ctx) A.ctx.resume(); } $("soundBtn").textContent = A.on ? "Sound on" : "Sound off"; goto(1); }
+  $("startBtn").onclick = function () { start(true); }; $("startQuiet").onclick = function () { start(false); };
+  $("nextBtn").onclick = function () { goto(cur + 1); };
+  $("againBtn").onclick = function () { goto(1); };
+  $("soundBtn").onclick = function () { if (!A.ctx) audioInit(); A.on = !A.on; if (A.ctx) { if (A.on) A.ctx.resume(); else A.ctx.suspend(); }
+    if (!A.on && window.speechSynthesis) speechSynthesis.cancel(); this.textContent = A.on ? "Sound on" : "Sound off"; };
+  document.addEventListener("keydown", function (e) {
+    if (e.code === "Space" || e.code === "ArrowRight") { var sc = SCENES[cur]; if (!sc.waitChoice && sc.id !== "title" && !$("over").classList.contains("on")) { e.preventDefault(); goto(cur + 1); } }
+    if (e.code === "ArrowLeft") goto(cur - 1);
+  });
+  // on resize, only redraw the chart layer (re-entering the scene would reset its state, e.g. the night choices)
+  window.addEventListener("resize", function () { sizeCanvas(); var sc = SCENES[cur]; if (!sc) return;
+    W = innerWidth; H = innerHeight; avail = H * (1 - Math.max(sc.level, 0.05)) - 70; clearViz(); V = {}; if (sc.viz) VIZ[sc.viz](); });
+
+  // ?scene=<id>&p=<0-1> renders one scene statically (review/screenshots); &over=drown|live shows the outcome card
+  var poster = false, posterP = 1;
+  sizeCanvas();
+  var qs = Q.get("scene");
+  if (qs) { var idx = SCENES.map(function (s) { return s.id; }).indexOf(qs); if (idx >= 0) { poster = true; document.body.classList.add("poster"); posterP = Q.get("p") != null ? parseFloat(Q.get("p")) : 1;
+    goto(idx); lvl = lvlTarget; rainAmt = rainTarget;
+    if (SCENES[idx].waitChoice) { $("radio").classList.add("on"); $("radioCap").textContent = "“" + (SCENES[idx].round === 2 ? G.fixed_warning : hook.text) + "”"; $("post").classList.add("on"); $("choices").classList.add("on"); }
+    if (Q.get("over")) { var dr = Q.get("over") === "drown"; lvl = dr ? 0.85 : lvl; showOver(dr ? "GAME OVER" : "YOU LIVED", dr ? "The river came up at 01:00. You didn't leave." : "By luck.", dr); }
+    if (qs === "levels" && Q.get("reveal")) $("lvOpts").children[G.levels.answer].click();
+    if (qs === "braille" && Q.get("reveal")) $("brailleBtn").click(); } }
+  else goto(0);
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

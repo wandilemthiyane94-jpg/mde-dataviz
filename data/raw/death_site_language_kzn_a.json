@@ -1,0 +1,678 @@
+[
+    {
+        "id":  "2016-07-cape-kzn-winter-storm",
+        "death_sites":  [
+                            {
+                                "place":  "Cato Manor, Durban",
+                                "deaths_at_place":  2,
+                                "settlement_type":  "residential area; mud-walled homes (mud wall collapsed onto homes)",
+                                "census_year":  2011,
+                                "geo_level":  "sub place",
+                                "census_place_name":  "Cato Crest (sub place of Durban main place; Cato Manor is not a single Census unit - Cato Crest used as proxy, see notes)",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  74.57
+                                                      },
+                                                      {
+                                                          "language":  "isiXhosa",
+                                                          "pct":  14.76
+                                                      },
+                                                      {
+                                                          "language":  "Sesotho",
+                                                          "pct":  3.79
+                                                      }
+                                                  ],
+                                "english_pct":  2.02,
+                                "afrikaans_pct":  0.54,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599054043",
+                                "death_source_url":  "https://floodlist.com/africa/south-africa-floods-cape-town-durban-july-2016"
+                            },
+                            {
+                                "place":  "Chatsworth, Durban",
+                                "deaths_at_place":  1,
+                                "settlement_type":  "urban area (woman\u0027s car swept away by flood water)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "Chatsworth",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  62.60
+                                                      },
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  26.15
+                                                      },
+                                                      {
+                                                          "language":  "isiXhosa",
+                                                          "pct":  5.71
+                                                      }
+                                                  ],
+                                "english_pct":  62.60,
+                                "afrikaans_pct":  0.75,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599161",
+                                "death_source_url":  "https://floodlist.com/africa/south-africa-floods-cape-town-durban-july-2016"
+                            }
+                        ],
+        "death_site_precision":  "per_place_counts",
+        "dominant_language_across_sites":  "isiZulu (Cato Manor) / English (Chatsworth, vehicle death - victim not necessarily resident)",
+        "warning_language_evidence":  null,
+        "notes":  "FloodList: 1 woman in Chatsworth (car swept away), 2 in Cato Manor (mud wall collapse); KZN CoGTA confirmed 5 deaths, SABC reports raised total to at least 7 but locations of the others not given. Al Jazeera reported only 2 missing. No Western Cape or Gauteng deaths located in sources. Other Cato Manor sub places for reference: Wiggins (isiZulu 79.97, isiXhosa 9.23, English 3.86; place/599054042), uMkumbaan (isiZulu 80.09, English 9.80; place/599054046). Chatsworth death was a motorist, so place language may not reflect the victim\u0027s community. SAWS warnings quoted in English (\u0027Severe thunderstorms are expected\u0027, \u0027Flooding is expected in places\u0027) but no statement about language of warnings."
+    },
+    {
+        "id":  "2017-02-ex-dineo-floods",
+        "death_sites":  [
+                            {
+                                "place":  "Loporung (near Makgobistad), North West",
+                                "deaths_at_place":  1,
+                                "settlement_type":  "rural village (boy drowned crossing a stream)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "Loporung (Ratlou LM, Ngaka Modiri Molema)",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "Setswana",
+                                                          "pct":  96.26
+                                                      },
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  2.89
+                                                      },
+                                                      {
+                                                          "language":  "isiNdebele",
+                                                          "pct":  0.34
+                                                      }
+                                                  ],
+                                "english_pct":  2.89,
+                                "afrikaans_pct":  null,
+                                "census_url":  "https://census2011.adrianfrith.com/place/665003",
+                                "death_source_url":  "https://floodlist.com/africa/south-africa-floods-february-2017"
+                            },
+                            {
+                                "place":  "Lemenong, North West",
+                                "deaths_at_place":  2,
+                                "settlement_type":  "not described (vehicle swept away by flood water)",
+                                "census_year":  2011,
+                                "geo_level":  null,
+                                "census_place_name":  null,
+                                "top_languages":  [
+
+                                                  ],
+                                "english_pct":  null,
+                                "afrikaans_pct":  null,
+                                "census_url":  null,
+                                "death_source_url":  "https://floodlist.com/africa/south-africa-floods-february-2017"
+                            }
+                        ],
+        "death_site_precision":  "per_place_counts",
+        "dominant_language_across_sites":  "Setswana",
+        "warning_language_evidence":  null,
+        "notes":  "All 3 confirmed deaths were in North West. \u0027Lemenong\u0027 could not be matched to any Census 2011 place in Ratlou, Mafikeng, Ramotshere Moiloa, Ditsobotla, Tswaing or the Dr Ruth S Mompati LMs (closest names Lomanyaneng in Mafikeng, not assumed). Context: Ngaka Modiri Molema district is Setswana 81.78%, English 3.24%, Afrikaans 5.02% (place/638); North West province Setswana 63.39%, English 3.47%. Loporung main place has only 590 residents (2011); Afrikaans not listed in its table. KZN: a woman and 15-month-old baby were missing (not confirmed dead) at Mafodobo River near Harding. Government advised residents to \u0027stay informed by tuning to their local radio stations\u0027 - no statement on warning language."
+    },
+    {
+        "id":  "2017-05-kzn-floods",
+        "death_sites":  [
+                            {
+                                "place":  "Nquthu, Umzinyathi District",
+                                "deaths_at_place":  1,
+                                "settlement_type":  "not described; car washed away by flooded river at a bridge crossing",
+                                "census_year":  2011,
+                                "geo_level":  "local municipality",
+                                "census_place_name":  "Nqutu Local Municipality",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  90.13
+                                                      },
+                                                      {
+                                                          "language":  "Sesotho",
+                                                          "pct":  6.56
+                                                      },
+                                                      {
+                                                          "language":  "isiNdebele",
+                                                          "pct":  0.86
+                                                      }
+                                                  ],
+                                "english_pct":  0.81,
+                                "afrikaans_pct":  0.26,
+                                "census_url":  "https://census2011.adrianfrith.com/place/575",
+                                "death_source_url":  "https://floodlist.com/africa/south-africa-floods-kwazulu-natal-may-2017"
+                            }
+                        ],
+        "death_site_precision":  "affected_area_only",
+        "dominant_language_across_sites":  "isiZulu",
+        "warning_language_evidence":  "No explicit statement on warning language. The warnings/advisories quoted by FloodList are in English, e.g. \u0027Heavy rain warning with flooding in north-eastern KZN to continue\u0027 and \u0027In these wet \u0026 rainy conditions, please drive carefully! SLOW DOWN INCREASE FOLLOWING DISTANCE HEAD LIGHTS ON\u0027; an official is quoted: \u0027We are still frustrated by some people and drivers who attempt to drive across flooded roads despite all the warnings\u0027.",
+        "notes":  "Single feared death: \u0027a teacher is presumed dead after his car was washed away by a flooded river in Nquthu, in Umzinyathi District of KwaZulu-Natal\u0027. Exact river/bridge not named, so the LM is used. Umzinyathi district: isiZulu 91.00%, English 3.11% (place/554). Victim was a motorist; place language may not reflect victim\u0027s community."
+    },
+    {
+        "id":  "2017-10-durban-supercell-storm",
+        "death_sites":  [
+                            {
+                                "place":  "Prince Mshiyeni Memorial Hospital, Umlazi",
+                                "deaths_at_place":  2,
+                                "settlement_type":  "township (hospital wall collapse; victims were patients)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "Umlazi",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  91.42
+                                                      },
+                                                      {
+                                                          "language":  "isiXhosa",
+                                                          "pct":  2.99
+                                                      },
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  2.09
+                                                      }
+                                                  ],
+                                "english_pct":  2.09,
+                                "afrikaans_pct":  0.30,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599163",
+                                "death_source_url":  "https://www.gov.za/news/media-statements/kwazulu-natal-impact-mega-storm-11-oct-2017"
+                            },
+                            {
+                                "place":  "Umlazi (Hambakahle Mkhonto Road)",
+                                "deaths_at_place":  1,
+                                "settlement_type":  "township (19-month-old baby swept away by floodwaters)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "Umlazi",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  91.42
+                                                      },
+                                                      {
+                                                          "language":  "isiXhosa",
+                                                          "pct":  2.99
+                                                      },
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  2.09
+                                                      }
+                                                  ],
+                                "english_pct":  2.09,
+                                "afrikaans_pct":  0.30,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599163",
+                                "death_source_url":  "https://www.timeslive.co.za/news/south-africa/2017-10-11-kzn-storm-tragedy-displays-of-bravery-and-acts-of-compassion-when-floods-hit/"
+                            },
+                            {
+                                "place":  "KwaMakhutha (Sewula School)",
+                                "deaths_at_place":  1,
+                                "settlement_type":  "township (child died at a school)",
+                                "census_year":  2011,
+                                "geo_level":  "sub place",
+                                "census_place_name":  "KwaMakhutha (Malagazi main place, eThekwini)",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  92.68
+                                                      },
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  1.83
+                                                      },
+                                                      {
+                                                          "language":  "Sign language",
+                                                          "pct":  1.58
+                                                      }
+                                                  ],
+                                "english_pct":  1.83,
+                                "afrikaans_pct":  0.22,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599174006",
+                                "death_source_url":  "https://www.gov.za/news/media-statements/kwazulu-natal-impact-mega-storm-11-oct-2017"
+                            },
+                            {
+                                "place":  "Isipingo (Old Main Road)",
+                                "deaths_at_place":  1,
+                                "settlement_type":  "urban road (driver trapped in vehicle during flooding)",
+                                "census_year":  2011,
+                                "geo_level":  "sub place",
+                                "census_place_name":  "Isipingo Rail (Durban main place) - proxy, see notes",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  43.85
+                                                      },
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  40.88
+                                                      },
+                                                      {
+                                                          "language":  "isiXhosa",
+                                                          "pct":  10.06
+                                                      }
+                                                  ],
+                                "english_pct":  43.85,
+                                "afrikaans_pct":  0.94,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599054063",
+                                "death_source_url":  "https://www.timeslive.co.za/news/south-africa/2017-10-11-kzn-storm-tragedy-displays-of-bravery-and-acts-of-compassion-when-floods-hit/"
+                            },
+                            {
+                                "place":  "Izingolweni, near Port Shepstone (Ugu)",
+                                "deaths_at_place":  1,
+                                "settlement_type":  "rural (12-year-old boy swept away in a stream)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "Izingolweni (Ezingoleni LM)",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  97.70
+                                                      },
+                                                      {
+                                                          "language":  "isiNdebele",
+                                                          "pct":  0.55
+                                                      },
+                                                      {
+                                                          "language":  "Setswana",
+                                                          "pct":  0.36
+                                                      }
+                                                  ],
+                                "english_pct":  0.30,
+                                "afrikaans_pct":  0.13,
+                                "census_url":  "https://census2011.adrianfrith.com/place/505012",
+                                "death_source_url":  "https://www.timeslive.co.za/news/south-africa/2017-10-11-kzn-storm-tragedy-displays-of-bravery-and-acts-of-compassion-when-floods-hit/"
+                            },
+                            {
+                                "place":  "Nquthu Local Municipality",
+                                "deaths_at_place":  2,
+                                "settlement_type":  "rural (8-year-old struck by lightning; 46-year-old man drowned \u0027while crossing a low-lying river\u0027)",
+                                "census_year":  2011,
+                                "geo_level":  "local municipality",
+                                "census_place_name":  "Nqutu Local Municipality",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  90.13
+                                                      },
+                                                      {
+                                                          "language":  "Sesotho",
+                                                          "pct":  6.56
+                                                      },
+                                                      {
+                                                          "language":  "isiNdebele",
+                                                          "pct":  0.86
+                                                      }
+                                                  ],
+                                "english_pct":  0.81,
+                                "afrikaans_pct":  0.26,
+                                "census_url":  "https://census2011.adrianfrith.com/place/575",
+                                "death_source_url":  "https://www.gov.za/news/media-statements/kwazulu-natal-impact-mega-storm-11-oct-2017"
+                            }
+                        ],
+        "death_site_precision":  "per_place_counts",
+        "dominant_language_across_sites":  "isiZulu",
+        "warning_language_evidence":  null,
+        "notes":  "KZN govt statement (11 Oct 2017) lists 8 deaths: Nquthu 2; eThekwini 6 = municipal employee (Russell Street, public toilet collapse), SAPS member (Rottendam Road, container fell on vehicle), child at Sewula School KwaMakhutha, two patients at Prince Mshiyeni Memorial Hospital (wall collapse), male at Isiphingo trapped in vehicle. TimesLIVE adds the Izingolweni boy and the Umlazi baby (toll \u0027at least 9\u0027); the Umlazi baby may overlap with official list counts - not resolved. Russell Street and Rottendam Road (workplace/road deaths in Durban CBD/port area) not given census profiles. The 2 lightning/drowning Nquthu deaths are storm deaths; only the drowning is flood-related. Isipingo spans three sub places: Isipingo Rail (used), Isipingo Hills (isiZulu 47.35, English 42.00; place/599054064), Isipingo Beach (English 67.63; place/599054068). Govt statement urged people \u0027to keep in doors\u0027 and warned of social-media hoaxes; no statement on warning language."
+    },
+    {
+        "id":  "2019-03-durban-inanda",
+        "death_sites":  [
+                            {
+                                "place":  "Inanda (incl. Amaoti), north of Durban",
+                                "deaths_at_place":  null,
+                                "settlement_type":  "township / informal settlement area (settlement type not described by source)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "Inanda A (largest Inanda main place, pop 158,619)",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  88.64
+                                                      },
+                                                      {
+                                                          "language":  "isiXhosa",
+                                                          "pct":  4.53
+                                                      },
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  2.35
+                                                      }
+                                                  ],
+                                "english_pct":  2.35,
+                                "afrikaans_pct":  0.28,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599037",
+                                "death_source_url":  "https://floodlist.com/africa/south-africa-floods-kwazulu-natal-march-2019"
+                            },
+                            {
+                                "place":  "KwaMashu",
+                                "deaths_at_place":  null,
+                                "settlement_type":  "township (not described by source)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "KwaMashu",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  91.30
+                                                      },
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  2.93
+                                                      },
+                                                      {
+                                                          "language":  "isiXhosa",
+                                                          "pct":  1.54
+                                                      }
+                                                  ],
+                                "english_pct":  2.93,
+                                "afrikaans_pct":  0.32,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599055",
+                                "death_source_url":  "https://floodlist.com/africa/south-africa-floods-kwazulu-natal-march-2019"
+                            },
+                            {
+                                "place":  "Verulam",
+                                "deaths_at_place":  null,
+                                "settlement_type":  "town / suburb (not described by source)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "Verulam",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  62.22
+                                                      },
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  25.35
+                                                      },
+                                                      {
+                                                          "language":  "isiXhosa",
+                                                          "pct":  4.92
+                                                      }
+                                                  ],
+                                "english_pct":  62.22,
+                                "afrikaans_pct":  1.03,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599034",
+                                "death_source_url":  "https://floodlist.com/africa/south-africa-floods-kwazulu-natal-march-2019"
+                            }
+                        ],
+        "death_site_precision":  "affected_area_only",
+        "dominant_language_across_sites":  "isiZulu (Inanda, KwaMashu); English (Verulam)",
+        "warning_language_evidence":  null,
+        "notes":  "FloodList: \u0027Cogta said that at least 3 people have died in the flooding. Local media reported more are thought to be missing.\u0027 Deaths not attributed to specific places; Inanda, Verulam, KwaMashu and Amaoti named only as affected areas. \u0027Amaoti\u0027 is not a named Census 2011 unit (not found by search; lies within the Inanda area) so Inanda A main place is used; the separate small \u0027Inanda\u0027 main place (pop 10,032) is isiZulu 91.54%, English 1.86% (place/599036). No warning info in source."
+    },
+    {
+        "id":  "2019-04-easter-floods-kzn-ec",
+        "death_sites":  [
+                            {
+                                "place":  "Pentecostal Holiness Church, Empangeni (King Cetshwayo/Uthungulu)",
+                                "deaths_at_place":  13,
+                                "settlement_type":  "town (church wall collapsed during Easter service)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "Empangeni (uMhlathuze LM)",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  84.52
+                                                      },
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  7.86
+                                                      },
+                                                      {
+                                                          "language":  "Afrikaans",
+                                                          "pct":  3.59
+                                                      }
+                                                  ],
+                                "english_pct":  7.86,
+                                "afrikaans_pct":  3.59,
+                                "census_url":  "https://census2011.adrianfrith.com/place/538015",
+                                "death_source_url":  "https://www.sanews.gov.za/south-africa/heavy-rains-kzn-claim-21-lives"
+                            },
+                            {
+                                "place":  "Westcliff, Chatsworth (caretaker\u0027s home at Westcliff Secondary School)",
+                                "deaths_at_place":  9,
+                                "settlement_type":  "formal suburb (mudslide destroyed home); input also lists informal settlements in Chatsworth",
+                                "census_year":  2011,
+                                "geo_level":  "sub place",
+                                "census_place_name":  "Westcliff (Chatsworth main place)",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  93.76
+                                                      },
+                                                      {
+                                                          "language":  "Sign language",
+                                                          "pct":  2.09
+                                                      },
+                                                      {
+                                                          "language":  "isiNdebele",
+                                                          "pct":  0.97
+                                                      }
+                                                  ],
+                                "english_pct":  93.76,
+                                "afrikaans_pct":  0.86,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599161004",
+                                "death_source_url":  "https://www.theherald.co.za/news/2019-04-24-heavy-rains-deadly-toll/"
+                            },
+                            {
+                                "place":  "KwaNdengezi (near Mariannridge, west of Durban)",
+                                "deaths_at_place":  6,
+                                "settlement_type":  "township (8 houses destroyed by mudslides)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "KwaNdengezi",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  85.96
+                                                      },
+                                                      {
+                                                          "language":  "Sesotho",
+                                                          "pct":  4.01
+                                                      },
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  3.05
+                                                      }
+                                                  ],
+                                "english_pct":  3.05,
+                                "afrikaans_pct":  0.36,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599139",
+                                "death_source_url":  "https://www.theherald.co.za/news/2019-04-24-heavy-rains-deadly-toll/"
+                            },
+                            {
+                                "place":  "Malvern, Queensburgh",
+                                "deaths_at_place":  4,
+                                "settlement_type":  "formal suburb (home collapsed)",
+                                "census_year":  2011,
+                                "geo_level":  "sub place",
+                                "census_place_name":  "Malvern (Queensburgh main place)",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  74.48
+                                                      },
+                                                      {
+                                                          "language":  "Afrikaans",
+                                                          "pct":  13.72
+                                                      },
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  7.13
+                                                      }
+                                                  ],
+                                "english_pct":  74.48,
+                                "afrikaans_pct":  13.72,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599160009",
+                                "death_source_url":  "https://floodlist.com/africa/south-africa-floods-kzn-eastern-cape-april-2019"
+                            },
+                            {
+                                "place":  "New Germany, Pinetown",
+                                "deaths_at_place":  2,
+                                "settlement_type":  "suburb (\u0027two kids below seven years were killed\u0027)",
+                                "census_year":  2011,
+                                "geo_level":  "sub place",
+                                "census_place_name":  "New Germany (Pinetown main place)",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  51.97
+                                                      },
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  29.05
+                                                      },
+                                                      {
+                                                          "language":  "Afrikaans",
+                                                          "pct":  8.01
+                                                      }
+                                                  ],
+                                "english_pct":  51.97,
+                                "afrikaans_pct":  8.01,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599116011",
+                                "death_source_url":  "https://www.sanews.gov.za/south-africa/heavy-rains-kzn-claim-21-lives"
+                            },
+                            {
+                                "place":  "Umlazi (incl. Ezakheleni and Mega Village informal settlements)",
+                                "deaths_at_place":  null,
+                                "settlement_type":  "township with informal settlements (shacks damaged by water and mud)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "Umlazi",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  91.42
+                                                      },
+                                                      {
+                                                          "language":  "isiXhosa",
+                                                          "pct":  2.99
+                                                      },
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  2.09
+                                                      }
+                                                  ],
+                                "english_pct":  2.09,
+                                "afrikaans_pct":  0.30,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599163",
+                                "death_source_url":  "https://www.sanews.gov.za/south-africa/heavy-rains-kzn-claim-21-lives"
+                            },
+                            {
+                                "place":  "Green Farm(s) informal settlement, Port St Johns (Eastern Cape)",
+                                "deaths_at_place":  null,
+                                "settlement_type":  "informal settlement \u0027less than 5km outside the town towards Second Beach\u0027 (worst-affected area)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "Port St Johns (town main place; Green Farm not a separate Census unit)",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiXhosa",
+                                                          "pct":  89.68
+                                                      },
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  6.22
+                                                      },
+                                                      {
+                                                          "language":  "Afrikaans",
+                                                          "pct":  0.99
+                                                      }
+                                                  ],
+                                "english_pct":  6.22,
+                                "afrikaans_pct":  0.99,
+                                "census_url":  "https://census2011.adrianfrith.com/place/291168",
+                                "death_source_url":  "https://www.theherald.co.za/news/2019-04-24-heavy-rains-deadly-toll/"
+                            },
+                            {
+                                "place":  "Lubhacweni village, KwaBhaca/Mount Frere (Eastern Cape)",
+                                "deaths_at_place":  1,
+                                "settlement_type":  "rural village (12-year-old girl drowned)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "Lubhacweni (Umzimvubu LM) - see notes for A/B variants",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiXhosa",
+                                                          "pct":  80.37
+                                                      },
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  6.16
+                                                      },
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  3.88
+                                                      }
+                                                  ],
+                                "english_pct":  6.16,
+                                "afrikaans_pct":  2.74,
+                                "census_url":  "https://census2011.adrianfrith.com/place/296183",
+                                "death_source_url":  "https://www.theherald.co.za/news/2019-04-24-heavy-rains-deadly-toll/"
+                            }
+                        ],
+        "death_site_precision":  "per_place_counts",
+        "dominant_language_across_sites":  "isiZulu (KZN township/town sites) and isiXhosa (EC sites); English-majority at the Chatsworth/Malvern/New Germany suburb sites",
+        "warning_language_evidence":  null,
+        "notes":  "Total 85-87 deaths; named-site counts cover ~35. Sources do not break down most of the ~64 eThekwini deaths. Overport: 1 death in a house collapse (FloodList) - Overport is not listed as a sub place of the Durban main place in Census 2011, so not profiled. Umlazi informal settlements (Ezakheleni, Mega Village) were among the most severely affected per GroundUp but no per-site death count was found. Lubhacweni exists as three Census main places: Lubhacweni (pop 835, used), Lubhacweni A (isiXhosa 93.49, English 0.59; place/296203), Lubhacweni B (pop 7,640; isiXhosa 88.56, English 5.93; place/296182). Port St Johns LM overall: isiXhosa 94.97, English 2.65 (place/291). Empangeni church collapse was rain-induced (Easter Sunday service). KZN spokesman Lennox Mabaso: \u0027authorities did not anticipate the extent of the downpour late on Monday\u0027 (Al Jazeera). Govt advisory: \u0027We are also calling on residents of low-lying areas to move to higher ground without delay\u0027 (FloodList) - no statement on warning language."
+    },
+    {
+        "id":  "2019-11-durban-mpolweni-storms",
+        "death_sites":  [
+                            {
+                                "place":  "Inanda, Durban",
+                                "deaths_at_place":  2,
+                                "settlement_type":  "residential area/township (\u0027a couple have been killed after a wall collapsed on them\u0027)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "Inanda A (largest Inanda main place; exact section not given)",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  88.64
+                                                      },
+                                                      {
+                                                          "language":  "isiXhosa",
+                                                          "pct":  4.53
+                                                      },
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  2.35
+                                                      }
+                                                  ],
+                                "english_pct":  2.35,
+                                "afrikaans_pct":  0.28,
+                                "census_url":  "https://census2011.adrianfrith.com/place/599037",
+                                "death_source_url":  "https://floodlist.com/africa/south-africa-floods-durban-november-2019"
+                            },
+                            {
+                                "place":  "Mpolweni, near Pietermaritzburg",
+                                "deaths_at_place":  2,
+                                "settlement_type":  "settlement (semi-rural; deaths caused by tornado)",
+                                "census_year":  2011,
+                                "geo_level":  "main place",
+                                "census_place_name":  "Mpolweni (uMshwathi LM)",
+                                "top_languages":  [
+                                                      {
+                                                          "language":  "isiZulu",
+                                                          "pct":  93.51
+                                                      },
+                                                      {
+                                                          "language":  "English",
+                                                          "pct":  2.53
+                                                      },
+                                                      {
+                                                          "language":  "Setswana",
+                                                          "pct":  0.90
+                                                      }
+                                                  ],
+                                "english_pct":  2.53,
+                                "afrikaans_pct":  0.27,
+                                "census_url":  "https://census2011.adrianfrith.com/place/562025",
+                                "death_source_url":  "https://floodlist.com/africa/south-africa-floods-durban-november-2019"
+                            }
+                        ],
+        "death_site_precision":  "per_place_counts",
+        "dominant_language_across_sites":  "isiZulu",
+        "warning_language_evidence":  null,
+        "notes":  "4 deaths: 2 in Inanda (wall collapse), 2 in Mpolweni (tornado, not flooding). The Inanda section is not specified; the small \u0027Inanda\u0027 main place (isiZulu 91.54, English 1.86; place/599036) is an alternative. eThekwini Mayor urged driver caution; no warning-language information."
+    }
+]

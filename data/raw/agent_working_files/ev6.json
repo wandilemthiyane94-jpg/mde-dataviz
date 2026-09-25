@@ -1,0 +1,21 @@
+  {
+    "id": "2020-02-kzn-nonoti",
+    "death_sites": [
+      {"place": "Nonoti River low-level bridge (MR01), near KwaDukuza town", "deaths_at_place": 1, "settlement_type": "rural/peri-urban north-coast area (road crossing)", "census_year": 2011, "geo_level": "main place", "census_place_name": "Nonoti (KwaDukuza LM, iLembe). KwaDukuza LM: isiZulu 66.08, English 20.80, isiXhosa 6.97. Note a different 'Nonoti' main place exists in eThekwini (isiZulu 94.18) - not used.", "top_languages": [{"language": "isiZulu", "pct": 71.86}, {"language": "English", "pct": 23.51}, {"language": "isiXhosa", "pct": 2.22}], "english_pct": 23.51, "afrikaans_pct": 0.27, "census_url": "https://census2011.adrianfrith.com/place/592006", "death_source_url": "https://floodlist.com/africa/south-africa-lash-floods-kwazulunatal-february-2020", "count_note": "FloodList: 'a vehicle was washed off a low-lying bridge on the MR01 ... a 28-year-old female ... was swept away'. Witness/LNN places it at 'a low-level bridge near KwaDukuza town' over the Nonoti River (https://witness.co.za/lnn/1167966/woman-and-vehicle-swept-away-by-floods-in-kwadukuza-kzn/). FloodList lists the Umgeni municipality among responding areas, which conflicts; KwaDukuza location used. Road-crossing death: victim may not have lived in the place."}
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "isiZulu",
+    "warning_language_evidence": null,
+    "notes": "Single death. An IOL/Post item reports a separate Nonoti River flash-flood death at a family gathering (breadwinner, 36) - possibly a second death for this storm; not added because FloodList total is 1 and age differs (36 vs 28). Victim identity/language not inferred."
+  },
+  {
+    "id": "2020-11-umlazi-hammanskraal",
+    "death_sites": [
+      {"place": "Hammanskraal (storm-water trench)", "deaths_at_place": 3, "settlement_type": "township", "census_year": 2011, "geo_level": "main place", "census_place_name": "Hammanskraal (City of Tshwane); adjacent Temba main place: Setswana 49.38, Sepedi 15.64, Xitsonga 11.54, English 2.32 - https://census2011.adrianfrith.com/place/799008", "top_languages": [{"language": "Setswana", "pct": 46.2}, {"language": "Sepedi", "pct": 18.14}, {"language": "Xitsonga", "pct": 14.71}], "english_pct": 4.07, "afrikaans_pct": 0.6, "census_url": "https://census2011.adrianfrith.com/place/799012", "death_source_url": "https://floodlist.com/africa/south-africa-floods-kwazulunatal-gauteng-november-2020", "count_note": "'Three young people died in a storm water trench in Hammanskraal on 21 November.' Exact section not stated."},
+      {"place": "Umlazi (swept away crossing river)", "deaths_at_place": 1, "settlement_type": "township", "census_year": 2011, "geo_level": "main place", "census_place_name": "Umlazi", "top_languages": [{"language": "isiZulu", "pct": 91.42}, {"language": "isiXhosa", "pct": 2.99}, {"language": "English", "pct": 2.09}], "english_pct": 2.09, "afrikaans_pct": 0.3, "census_url": "https://census2011.adrianfrith.com/place/599163", "death_source_url": "https://floodlist.com/africa/south-africa-floods-kwazulunatal-gauteng-november-2020"}
+    ],
+    "death_site_precision": "per_place_counts",
+    "dominant_language_across_sites": "Setswana (Hammanskraal, 3 deaths); isiZulu (Umlazi, 1 death)",
+    "warning_language_evidence": null,
+    "notes": "FloodList mentions no warnings. Pretoria/Centurion/Hennopspark affected without deaths."
+  }

@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Same Rain, Different Words</title>
+<meta name="description" content="Prototype: South African flood warnings, the forecasting system that produces them, and the languages spoken where people died.">
+<style>
+  :root {
+    --bg: #06080c;
+    --land: #10151d;
+    --land-edge: #2a3444;
+    --text: #ebe8e1;
+    --muted: #8d939c;
+    --beam: #fff4d6;
+    --sky: #6fc3ff;
+    --storm: #3d8fe0;
+    --death: #ff5a4f;
+    --tick: #ffffff;
+    --card: rgba(8, 11, 16, 0.86);
+    --rule: #252c37;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text);
+    font: 17px/1.55 "Iowan Old Style", "Palatino Linotype", Georgia, serif; }
+  #stage { position: fixed; inset: 0; z-index: 0; }
+  #map, #timeline { position: absolute; left: 0; width: 100%; display: block; }
+  #map { top: 0; height: calc(100% - 96px); }
+  #timeline { bottom: 0; height: 96px; }
+  #big { position: absolute; inset: 0 0 96px 0; display: flex; align-items: center; justify-content: center;
+    pointer-events: none; opacity: 0; transition: opacity .6s; text-align: center; padding: 0 24px; }
+  #big .n { font: 700 min(28vw, 220px)/1 "Helvetica Neue", Arial, sans-serif; letter-spacing: -0.04em; color: var(--beam);
+    text-shadow: 0 0 60px rgba(255, 236, 190, .35); }
+  #big .l { font-size: 20px; max-width: 34ch; margin: 12px auto 0; color: var(--text); }
+  #big .s { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  main { position: relative; z-index: 1; }
+  .step { min-height: 100vh; display: flex; align-items: center; padding: 0 16px; }
+  .step.tall { min-height: 260vh; align-items: flex-start; }
+  .step.tall .card { position: sticky; top: 18vh; }
+  .card { max-width: 440px; background: var(--card); border: 1px solid var(--rule); border-radius: 6px;
+    padding: 22px 24px; margin-left: min(6vw, 64px); backdrop-filter: blur(6px); }
+  .card h2 { font: 600 13px/1.2 "Helvetica Neue", Arial, sans-serif; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 12px; }
+  .card p { margin: 0 0 12px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card .quote { border-left: 2px solid var(--beam); padding-left: 12px; font-style: italic; }
+  .src { font: 12px/1.4 "Helvetica Neue", Arial, sans-serif; color: var(--muted); margin-top: 14px; }
+  .src a, .card a { color: var(--sky); }
+  ul.facts { padding-left: 18px; margin: 0; font-size: 15px; }
+  ul.facts li { margin-bottom: 8px; }
+  .clear { background: none; border: none; backdrop-filter: none; }
+  .clear p:not(.src):not(.proto) { font-size: clamp(22px, 3.2vw, 34px); line-height: 1.3; }
+  #poster { position: fixed; z-index: 4; left: 0; top: 0; bottom: 96px; display: flex; align-items: center; pointer-events: none; padding: 0 16px; }
+  #poster .card { pointer-events: auto; }
+  body.poster main { display: none; }
+  .center { justify-content: center; text-align: center; }
+  .center .card { margin-left: 0; }
+  #sound { position: fixed; top: 14px; right: 14px; z-index: 5; font: 14px "Helvetica Neue", Arial, sans-serif;
+    background: #11161e; color: var(--text); border: 1px solid var(--rule); border-radius: 20px; padding: 8px 14px; cursor: pointer; }
+  #sound[aria-pressed="true"] { border-color: var(--beam); }
+  #caption { position: fixed; left: 50%; transform: translateX(-50%); bottom: 104px; z-index: 5; max-width: min(92vw, 640px);
+    font: 13px/1.4 "Helvetica Neue", Arial, sans-serif; color: var(--muted); background: rgba(6, 8, 12, .8);
+    padding: 6px 10px; border-radius: 4px; text-align: center; display: none; }
+  .legend { font: 12px/1.5 "Helvetica Neue", Arial, sans-serif; color: var(--muted); margin-top: 12px; }
+  .legend i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  .proto { font: 12px "Helvetica Neue", Arial, sans-serif; color: #c9a86a; }
+  @media (max-width: 640px) {
+    .step { align-items: flex-end; padding-bottom: 120px; }
+    .card { margin-left: 0; max-width: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="map" role="img" aria-label="Map of South Africa showing flood death sites"></svg>
+  <svg id="timeline" role="img" aria-label="Timeline of floods 2016 to 2026"></svg>
+  <div id="big"><div><div class="n"></div><div class="l"></div><div class="s"></div></div></div>
+</div>
+<button id="sound" aria-pressed="false">Turn on sound (recommended)</button>
+<div id="caption" aria-live="polite"></div>
+
+<main>
+  <section class="step center" data-step="intro">
+    <div class="card clear">
+      <p class="proto">PROTOTYPE · placeholder audio · data as of Sep 2026</p>
+      <p>On the night the water came, someone was watching.</p>
+      <p class="src">Scroll to begin. Sound is optional; captions describe everything you would hear.</p>
+    </div>
+  </section>
+
+  <section class="step" data-step="sky">
+    <div class="card">
+      <h2>The watched sky</h2>
+      <p>South Africa's weather service watches the country continuously, and a colour-coded warning system links its forecasts to disaster managers.</p>
+      <ul class="facts" id="skyfacts"></ul>
+      <p class="src">Only facts marked verified in <code>data/forecasting_infrastructure.json</code> are shown here.</p>
+    </div>
+  </section>
+
+  <section class="step" data-step="chain">
+    <div class="card">
+      <h2>The chain</h2>
+      <p>When a storm forms, the system sees it. A warning is issued in Pretoria and passed to provincial and municipal disaster centres.</p>
+      <p id="radar-caveat" class="src"></p>
+      <p class="src">Lines are schematic: Pretoria to provincial capitals (approximate positions). Radar ring: only sites with published coordinates are drawn.</p>
+    </div>
+  </section>
+
+  <section class="step tall" data-step="timeline">
+    <div class="card">
+      <h2>It keeps happening · 2016–2026</h2>
+      <p id="tl-year">2016</p>
+      <p>Each blue mark below is a flood. A white <b>✓</b> means a warning was issued before it. Each red dot on the map is one person who died, placed at the suburb or village where it happened.</p>
+      <div class="legend"><i style="background:var(--storm)"></i>flood &nbsp; <i style="background:var(--death)"></i>one death &nbsp; ✓ warning issued</div>
+      <p class="src" id="tl-count"></p>
+    </div>
+  </section>
+
+  <section class="step" data-step="notluck">
+    <div class="card">
+      <h2>Not bad luck. Not bad science.</h2>
+      <p id="notluck-text"></p>
+      <p class="quote">"Technologically, the system worked. Socially, it faltered."</p>
+      <p class="src">Daily Maverick, Feb 2026, on the Jan 2026 Limpopo floods. Counts: <code>data/floods_2016_2026.json</code> (hazard_type = flood).</p>
+    </div>
+  </section>
+
+  <section class="step tall" data-step="beam">
+    <div class="card">
+      <h2>The warning goes out</h2>
+      <p>The warning is light. It reaches everywhere.</p>
+      <p>Here, a place glows only as brightly as the share of its residents who speak <b>English</b>, the language the warning is written in, as their first language.</p>
+      <p class="src">Brightness = Census 2011 English first-language share at each death site (<code>data/death_sites_geocoded.json</code>). Warning language: <code>data/warning_language.json</code>.</p>
+    </div>
+  </section>
+
+  <section class="step center" data-step="number">
+    <div class="card clear"><p>&nbsp;</p></div>
+  </section>
+
+  <section class="step" data-step="exceptions">
+    <div class="card">
+      <h2>What doesn't fit</h2>
+      <p>The bright places where people died are mostly roads, causeways and river crossings: motorists passing through, not residents.</p>
+      <p>We show them because a pattern you can trust has to include its exceptions.</p>
+      <p class="src">Sites with English first-language share &gt; 50% are highlighted.</p>
+    </div>
+  </section>
+
+  <section class="step tall" data-step="chorus">
+    <div class="card">
+      <h2>Same rain, different words</h2>
+      <p>In the dark, people call out and pray in the languages they were born into.</p>
+      <p>The warning keeps speaking in the same calm English.</p>
+      <p class="proto">Placeholder: tones stand in for native-speaker recordings, to be commissioned and recorded with consent. The English voice is your browser's text-to-speech.</p>
+    </div>
+  </section>
+
+  <section class="step center" data-step="turn">
+    <div class="card clear">
+      <p>People pray in the language they were born into.</p>
+      <p>They were warned in the one they learned at school.</p>
+    </div>
+  </section>
+
+  <section class="step tall" data-step="fix">
+    <div class="card">
+      <h2>The fix is a sentence</h2>
+      <p>Now the same warning, spoken in each community's language, saying what to do and where to go.</p>
+      <p>This time, every place lights up.</p>
+      <p class="proto">Final version: warnings recorded by native speakers of isiZulu, isiXhosa, Tshivenda, Xitsonga, Sepedi, SiSwati, Sesotho, Setswana, isiNdebele, Afrikaans and English.</p>
+    </div>
+  </section>
+
+  <section class="step center" data-step="end">
+    <div class="card">
+      <h2>How we know</h2>
+      <p>Every number here is generated from the project's data files by <code>methods/scripts/build_prototype_data.ps1</code>.</p>
+      <p>Method, limitations and all sources: <code>methods/METHODS.md</code>, <code>methods/SOURCES.md</code>.</p>
+      <p class="src" id="meta"></p>
+    </div>
+  </section>
+</main>
+
+<script src="vendor/d3.v7.min.js"></script>
+<script src="vendor/topojson-client.min.js"></script>
+<script src="vendor/world-50m.js"></script>
+<script src="data/story-data.js"></script>
+<script>
+(function () {
+  "use strict";
+  var S = window.STORY, W = window.WORLD_TOPO;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var PRETORIA = [28.2293, -25.7479];
+  var CAPITALS = [ // approximate; decorative chain only
+    [30.3794, -29.6006], [27.4381, -32.8494], [18.4241, -33.9249], [29.4689, -23.9045],
+    [30.9694, -25.4753], [26.1596, -29.0852], [24.7499, -28.7282], [25.6403, -25.8560], [28.0473, -26.2041]];
+
+  // ---------- data prep ----------
+  var floods = S.floods.map(function (f) { f.t = f.year + ((f.month || 1) - 1) / 12; return f; });
+  var sites = S.sites.filter(function (s) { return s.lat != null && s.lon != null; })
+    .map(function (s) { s.t = s.year + ((s.month || 1) - 1) / 12; s.e = Math.max(0, Math.min(100, s.english_pct)) / 100; return s; });
+  var totalFloodDeaths = d3.sum(floods, function (f) { return f.deaths; });
+  var st = S.stats;
+
+  document.getElementById("notluck-text").textContent =
+    "In " + st.warned_floods + " of " + st.floods + " floods, a warning went out before the water came. People still died in " +
+    st.warned_deadly_floods + " of them.";
+  document.getElementById("meta").textContent = "Data generated " + S.meta.generated_at + " · " + st.placed_deaths +
+    " deaths placed at " + st.placed_sites + " sites (" + st.placed_sites_with_coords + " with coordinates).";
+  if (S.radar_caveat) {
+    var rc = document.getElementById("radar-caveat"); rc.textContent = S.radar_caveat.text + " ";
+    if (S.radar_caveat.source) { var ra = document.createElement("a"); ra.href = S.radar_caveat.source; ra.textContent = "source"; ra.target = "_blank"; rc.appendChild(ra); }
+  }
+  var ul = document.getElementById("skyfacts");
+  if (!S.sky_facts.length) { ul.innerHTML = "<li>Verification pending.</li>"; }
+  S.sky_facts.forEach(function (f) {
+    var li = document.createElement("li"); li.textContent = f.text + " ";
+    if (f.source) { var a = document.createElement("a"); a.href = f.source; a.textContent = "source"; a.target = "_blank"; li.appendChild(a); }
+    ul.appendChild(li);
+  });
+
+  // one dot per person, golden-angle jitter around the site
+  var dots = [];
+  sites.forEach(function (s, si) {
+    for (var i = 0; i < s.deaths; i++) dots.push({ s: s, i: i });
+  });
+
+  // ---------- map ----------
+  var svg = d3.select("#map"), tl = d3.select("#timeline");
+  var countries = topojson.feature(W, W.objects.countries).features;
+  var byId = {}; countries.forEach(function (c) { byId[c.id] = c; });
+  // Fit to mainland SA only: drop the Prince Edward Islands (~46.9S), which would otherwise shrink the map.
+  var zaFull = byId["710"];
+  var za = { type: "Feature", id: "710", properties: {}, geometry: { type: "MultiPolygon",
+    coordinates: (zaFull.geometry.type === "MultiPolygon" ? zaFull.geometry.coordinates : [zaFull.geometry.coordinates])
+      .filter(function (poly) { return poly[0][0][1] > -36; }) } };
+  var posterMode = false;
+  var context = ["426", "748", "516", "072", "716", "508"].map(function (id) { return byId[id]; }).filter(Boolean);
+  var proj, path, gLand, gChain, gRadar, gStorm, gHalo, gDot, beamCircle, beamFill, width, height;
+
+  var defs = svg.append("defs");
+  var glow = defs.append("filter").attr("id", "glow").attr("x", "-100%").attr("y", "-100%").attr("width", "300%").attr("height", "300%");
+  glow.append("feGaussianBlur").attr("stdDeviation", 4).attr("result", "b");
+  var m = glow.append("feMerge"); m.append("feMergeNode").attr("in", "b"); m.append("feMergeNode").attr("in", "SourceGraphic");
+  var soft = defs.append("filter").attr("id", "soft").attr("x", "-200%").attr("y", "-200%").attr("width", "500%").attr("height", "500%");
+  soft.append("feGaussianBlur").attr("stdDeviation", 7);
+  var rg = defs.append("radialGradient").attr("id", "beamgrad");
+  rg.append("stop").attr("offset", "0%").attr("stop-color", "#fff4d6").attr("stop-opacity", 0.0);
+  rg.append("stop").attr("offset", "85%").attr("stop-color", "#fff4d6").attr("stop-opacity", 0.05);
+  rg.append("stop").attr("offset", "100%").attr("stop-color", "#fff4d6").attr("stop-opacity", 0.22);
+
+  gLand = svg.append("g"); gChain = svg.append("g"); gRadar = svg.append("g");
+  beamFill = svg.append("circle").attr("fill", "url(#beamgrad)").attr("r", 0);
+  beamCircle = svg.append("circle").attr("fill", "none").attr("stroke", "#fff4d6").attr("stroke-width", 1.5).attr("filter", "url(#glow)").attr("r", 0).attr("opacity", 0);
+  gStorm = svg.append("g"); gHalo = svg.append("g"); gDot = svg.append("g");
+
+  function layout() {
+    var r = document.getElementById("map").getBoundingClientRect();
+    width = r.width; height = r.height;
+    var padL = width > 900 ? width * 0.36 : 16;
+    proj = d3.geoMercator().fitExtent([[padL, 24], [width - 24, height - 24]], za);
+    path = d3.geoPath(proj);
+
+    gLand.selectAll("*").remove();
+    gLand.selectAll("path.ctx").data(context).join("path").attr("class", "ctx").attr("d", path)
+      .attr("fill", "#0b0f15").attr("stroke", "#1a212c").attr("stroke-width", 0.6);
+    gLand.append("path").datum(za).attr("d", path).attr("fill", "var(--land)").attr("stroke", "var(--land-edge)").attr("stroke-width", 1);
+
+    var p0 = proj(PRETORIA);
+    gChain.selectAll("*").remove();
+    // (schematic Pretoria->capital lines removed at the author's request; see film.html for the real observing network)
+    gChain.append("circle").attr("cx", p0[0]).attr("cy", p0[1]).attr("r", 4).attr("fill", "var(--sky)").attr("filter", "url(#glow)");
+    gChain.append("text").attr("x", p0[0] + 8).attr("y", p0[1] - 8).attr("fill", "var(--muted)").attr("font-size", 12)
+      .attr("font-family", "Helvetica Neue, Arial, sans-serif").text("Pretoria");
+
+    gRadar.selectAll("*").remove();
+    (S.radars || []).forEach(function (rd) {
+      var p = proj([+rd.lon, +rd.lat]);
+      var c = gRadar.append("circle").attr("cx", p[0]).attr("cy", p[1]).attr("r", 18)
+        .attr("fill", "none").attr("stroke", "var(--sky)").attr("stroke-width", 1).attr("opacity", 0.6);
+      if (!reduceMotion) c.append("animate").attr("attributeName", "r").attr("values", "4;26;4").attr("dur", "3s").attr("repeatCount", "indefinite");
+    });
+
+    beamFill.attr("cx", p0[0]).attr("cy", p0[1]);
+    beamCircle.attr("cx", p0[0]).attr("cy", p0[1]);
+
+    sites.forEach(function (s) { var p = proj([+s.lon, +s.lat]); s.x = p[0]; s.y = p[1]; s.d = Math.hypot(s.x - p0[0], s.y - p0[1]); });
+    dots.forEach(function (d) {
+      var a = d.i * 2.39996, rr = 1.9 * Math.sqrt(d.i);
+      d.x = d.s.x + Math.cos(a) * rr; d.y = d.s.y + Math.sin(a) * rr;
+    });
+    gHalo.selectAll("circle").data(sites).join("circle")
+      .attr("cx", function (s) { return s.x; }).attr("cy", function (s) { return s.y; })
+      .attr("r", function (s) { return 6 + 22 * s.e + Math.sqrt(s.deaths) * 2; })
+      .attr("fill", "var(--beam)").attr("filter", "url(#soft)").attr("opacity", 0)
+      // lighten = overlapping glows show the brightest site, not a sum, so dense clusters aren't exaggerated
+      .style("mix-blend-mode", "lighten");
+    gDot.selectAll("circle").data(dots).join("circle")
+      .attr("cx", function (d) { return d.x; }).attr("cy", function (d) { return d.y; }).attr("r", 1.6)
+      .attr("fill", "var(--death)").attr("opacity", 0);
+
+    // storms: one bloom per flood at mean of its sites
+    var bySite = d3.group(sites, function (s) { return s.event_id; });
+    var storms = floods.filter(function (f) { return bySite.has(f.id); }).map(function (f) {
+      var ss = bySite.get(f.id); return { f: f, x: d3.mean(ss, function (s) { return s.x; }), y: d3.mean(ss, function (s) { return s.y; }) };
+    });
+    gStorm.selectAll("circle").data(storms).join("circle")
+      .attr("cx", function (d) { return d.x; }).attr("cy", function (d) { return d.y; })
+      .attr("r", function (d) { return 10 + Math.sqrt(d.f.deaths) * 3; })
+      .attr("fill", "var(--storm)").attr("filter", "url(#soft)").attr("opacity", 0);
+
+    drawTimeline();
+    render(true);
+  }
+
+  // ---------- timeline ----------
+  var tx, playhead;
+  function drawTimeline() {
+    var r = document.getElementById("timeline").getBoundingClientRect();
+    tl.selectAll("*").remove();
+    tx = d3.scaleLinear().domain([2016, 2026.85]).range([24, r.width - 24]);
+    tl.append("line").attr("x1", tx(2016)).attr("x2", tx(2026.85)).attr("y1", 70).attr("y2", 70).attr("stroke", "var(--rule)");
+    for (var y = 2016; y <= 2026; y++) {
+      tl.append("text").attr("x", tx(y)).attr("y", 88).attr("fill", "var(--muted)").attr("font-size", 11)
+        .attr("font-family", "Helvetica Neue, Arial, sans-serif").attr("text-anchor", "start").text(y);
+    }
+    var g = tl.append("g").attr("class", "marks");
+    floods.forEach(function (f) {
+      var h = f.deaths >= 1 ? 6 + Math.log2(f.deaths + 1) * 5 : 4;
+      f._mark = g.append("line").attr("x1", tx(f.t)).attr("x2", tx(f.t)).attr("y1", 70).attr("y2", 70 - h)
+        .attr("stroke", "var(--storm)").attr("stroke-width", 2).attr("opacity", 0.15);
+      if (f.warned) f._tick = g.append("text").attr("x", tx(f.t)).attr("y", 70 - h - 4).attr("text-anchor", "middle")
+        .attr("fill", "var(--tick)").attr("font-size", 10).text("✓").attr("opacity", 0);
+      f._mark.append("title").text(f.date + " · " + f.event + " · " + (f.deaths_text || f.deaths) + (f.alert_level ? " · " + f.alert_level : ""));
+    });
+    playhead = tl.append("line").attr("y1", 8).attr("y2", 72).attr("stroke", "var(--beam)").attr("stroke-width", 1).attr("opacity", 0);
+  }
+
+  // ---------- state machine ----------
+  var state = { step: "intro", p: 0 };
+  var order = Array.prototype.map.call(document.querySelectorAll(".step"), function (el) { return el.dataset.step; });
+  function idx(name) { return order.indexOf(name); }
+
+  function render(force) {
+    var s = state.step, p = state.p, i = idx(s);
+    var landOn = i >= idx("sky");
+    gLand.transition().duration(force ? 0 : 600).attr("opacity", landOn ? 1 : 0.0);
+    var chainOn = s === "sky" || s === "chain" || s === "timeline" || s === "notluck";
+    gChain.transition().duration(force ? 0 : 600).attr("opacity", s === "chain" ? 1 : (chainOn ? 0.35 : 0));
+    gRadar.attr("opacity", (s === "sky" || s === "chain") ? 1 : 0);
+
+    // timeline progress
+    var tNow = 2016;
+    if (s === "timeline") tNow = 2016 + p * 10.85;
+    else if (i > idx("timeline")) tNow = 2026.85;
+    var tlOn = i >= idx("timeline") && i <= idx("notluck");
+    playhead.attr("x1", tx(tNow)).attr("x2", tx(tNow)).attr("opacity", s === "timeline" ? 0.8 : 0);
+    floods.forEach(function (f) {
+      var shown = f.t <= tNow && i >= idx("timeline");
+      f._mark.attr("opacity", shown ? (tlOn ? 0.95 : 0.35) : 0.12);
+      if (f._tick) f._tick.attr("opacity", shown ? (tlOn ? 1 : 0.35) : 0);
+    });
+    var warnedSoFar = floods.filter(function (f) { return f.t <= tNow && f.warned; }).length;
+    var flSoFar = floods.filter(function (f) { return f.t <= tNow; });
+    document.getElementById("tl-year").textContent = Math.floor(Math.min(tNow, 2026));
+    document.getElementById("tl-count").textContent = flSoFar.length + " floods · " + warnedSoFar + " with a warning issued · " +
+      Math.round(d3.sum(flSoFar, function (f) { return f.deaths; })) + " deaths recorded (" +
+      Math.round(d3.sum(sites.filter(function (x) { return x.t <= tNow; }), function (x) { return x.deaths; })) + " placed on the map)";
+
+    gStorm.selectAll("circle").attr("opacity", function (d) {
+      if (s !== "timeline") return 0;
+      var age = tNow - d.f.t; return age >= 0 && age < 0.6 ? 0.55 * (1 - age / 0.6) : 0;
+    });
+
+    // beam
+    var p0 = proj(PRETORIA), maxD = d3.max(sites, function (x) { return x.d; }) + 40;
+    var R = 0, beamOn = false, fixMode = s === "fix" || s === "end";
+    if (s === "beam") { R = p * maxD * 1.15; beamOn = true; }
+    else if (i > idx("beam")) { R = maxD * 1.2; }
+    if (fixMode) R = (s === "fix" ? p : 1) * maxD * 1.2;
+    beamCircle.attr("r", R).attr("opacity", (beamOn || s === "fix") && R < maxD * 1.15 ? 0.9 : 0);
+    beamFill.attr("r", R).attr("opacity", (i >= idx("beam") && s !== "turn") ? 1 : 0);
+
+    var dark = i >= idx("beam");
+    gLand.select("path:last-child").attr("fill", dark ? "#0a0e13" : "var(--land)");
+
+    gDot.selectAll("circle").attr("opacity", function (d) {
+      if (s === "turn") return 0.15;
+      if (i < idx("timeline")) return 0;
+      if (d.s.t > tNow) return 0;
+      return dark ? 0.55 : 0.85;
+    }).attr("fill", function (d) {
+      var lit = d.s.d <= R;
+      if (!dark || !lit) return "var(--death)";
+      var k = fixMode ? 1 : d.s.e;
+      return d3.interpolateRgb("#ff5a4f", "#fff4d6")(k);
+    });
+
+    gHalo.selectAll("circle").attr("opacity", function (x) {
+      if (!dark || s === "turn" || x.d > R) return 0;
+      if (fixMode) return 0.55;
+      if (s === "exceptions") return x.e > 0.5 ? 0.9 : 0.04;
+      return 0.03 + 0.85 * x.e;
+    }).attr("r", function (x) { return fixMode ? 14 + Math.sqrt(x.deaths) * 2 : 5 + 16 * x.e + Math.sqrt(x.deaths) * 1.5; });
+
+    // big number
+    var big = document.getElementById("big");
+    if (s === "number") {
+      big.style.opacity = 1;
+      big.querySelector(".n").textContent = st.pct_deaths_lt10_english + "%";
+      big.querySelector(".l").textContent = "of the deaths we could place were in places where fewer than 1 in 10 people speak English as a first language.";
+      big.querySelector(".s").textContent = "Median English first-language share at death sites: " + st.median_english_pct.toFixed(1) +
+        "%. Every warning was in English. (n = " + st.placed_deaths + " deaths at " + st.placed_sites + " sites)";
+    } else big.style.opacity = 0;
+
+    audio.update(s, p);
+  }
+
+  // ---------- scroll ----------
+  var steps = Array.prototype.slice.call(document.querySelectorAll(".step"));
+  var ticking = false;
+  function onScroll() {
+    if (posterMode || ticking) return; ticking = true;
+    requestAnimationFrame(function () {
+      ticking = false;
+      var mid = window.innerHeight * 0.5, cur = steps[0], pr = 0;
+      for (var k = 0; k < steps.length; k++) {
+        var r = steps[k].getBoundingClientRect();
+        if (r.top <= mid && r.bottom > mid) { cur = steps[k]; pr = (mid - r.top) / r.height; break; }
+        if (r.top <= mid) { cur = steps[k]; pr = 1; }
+      }
+      state.step = cur.dataset.step; state.p = Math.max(0, Math.min(1, pr));
+      render(false);
+    });
+  }
+
+  // ---------- audio (placeholder) ----------
+  var audio = (function () {
+    var ctx = null, on = false, master, rainG, voices = [], speaking = false, lastStep = null;
+    var cap = document.getElementById("caption");
+    var WARNING = "The South African Weather Service has issued a Red Level 10 warning for disruptive rain, leading to flooding of roads, bridges and settlements. Take necessary precautions.";
+    function langGroups() {
+      var g = d3.rollups(sites.filter(function (x) { return x.top_language && !/English/i.test(x.top_language); }),
+        function (v) { return { deaths: d3.sum(v, function (x) { return x.deaths; }), lon: d3.mean(v, function (x) { return +x.lon; }) }; },
+        function (x) { return x.top_language; });
+      var tot = d3.sum(g, function (d) { return d[1].deaths; }) || 1;
+      return g.map(function (d) { return { lang: d[0], w: d[1].deaths / tot, pan: Math.max(-1, Math.min(1, (d[1].lon - 24.5) / 8.5)) }; });
+    }
+    function start() {
+      ctx = new (window.AudioContext || window.webkitAudioContext)();
+      master = ctx.createGain(); master.gain.value = 0.8; master.connect(ctx.destination);
+      // rain: filtered noise
+      var buf = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate), ch = buf.getChannelData(0);
+      for (var i = 0; i < ch.length; i++) ch[i] = Math.random() * 2 - 1;
+      var src = ctx.createBufferSource(); src.buffer = buf; src.loop = true;
+      var lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 1400;
+      rainG = ctx.createGain(); rainG.gain.value = 0;
+      src.connect(lp); lp.connect(rainG); rainG.connect(master); src.start();
+      // one placeholder "voice" per language, panned by where its death sites are
+      var freqs = [196, 220, 247, 262, 294, 330, 349, 392, 440];
+      langGroups().forEach(function (L, k) {
+        var o1 = ctx.createOscillator(), o2 = ctx.createOscillator(), f = ctx.createBiquadFilter(), g = ctx.createGain(), pn = ctx.createStereoPanner();
+        o1.type = "triangle"; o2.type = "sine"; o1.frequency.value = freqs[k % freqs.length]; o2.frequency.value = freqs[k % freqs.length] * 1.006;
+        f.type = "lowpass"; f.frequency.value = 900; g.gain.value = 0; pn.pan.value = L.pan;
+        var lfo = ctx.createOscillator(), lg = ctx.createGain(); lfo.frequency.value = 0.15 + k * 0.05; lg.gain.value = 6;
+        lfo.connect(lg); lg.connect(o1.frequency);
+        o1.connect(f); o2.connect(f); f.connect(g); g.connect(pn); pn.connect(master);
+        o1.start(); o2.start(); lfo.start();
+        voices.push({ L: L, g: g, o1: o1, o2: o2, base: freqs[k % freqs.length] });
+      });
+    }
+    function say() {
+      if (!window.speechSynthesis || speaking) return;
+      var u = new SpeechSynthesisUtterance(WARNING); u.lang = "en-ZA"; u.rate = 0.95; u.pitch = 1.0; u.volume = 0.9;
+      u.onend = function () { speaking = false; if (on && englishWanted) setTimeout(say, 600); };
+      speaking = true; window.speechSynthesis.speak(u);
+    }
+    var englishWanted = false;
+    function english(want) {
+      englishWanted = want;
+      if (want) say(); else if (window.speechSynthesis) { window.speechSynthesis.cancel(); speaking = false; }
+    }
+    function ramp(param, v) { param.cancelScheduledValues(ctx.currentTime); param.setTargetAtTime(v, ctx.currentTime, 0.25); }
+    function update(s, p) {
+      var capText = "";
+      if (s === "chorus" || s === "turn" || s === "fix" || s === "beam" || s === "number" || s === "exceptions")
+        capText = "Placeholder audio. ";
+      if (s === "chorus") capText += "Voices in " + voices.map(function (v) { return v.L.lang; }).join(", ") + " (to be recorded by native speakers) rise; the English warning repeats unchanged.";
+      else if (s === "turn") capText += "Silence.";
+      else if (s === "fix") capText += "The warning in each language, saying what to do and where to go (recordings to come).";
+      else if (s === "beam" || s === "number" || s === "exceptions") capText += "Rain. The English warning is read aloud.";
+      cap.style.display = on && capText ? "block" : "none"; cap.textContent = capText;
+      if (!on || !ctx) return;
+      var rain = { intro: 0.05, sky: 0.04, chain: 0.04, timeline: 0.12, notluck: 0.08, beam: 0.1, number: 0.06, exceptions: 0.06, chorus: 0.14, turn: 0, fix: 0.03, end: 0 }[s] || 0;
+      ramp(rainG.gain, rain);
+      var chorus = 0;
+      if (s === "timeline") chorus = 0.05 * p;
+      if (s === "chorus") chorus = 0.05 + 0.2 * p;
+      if (s === "fix") chorus = 0.06;
+      voices.forEach(function (v) {
+        ramp(v.g.gain, chorus * (0.4 + v.L.w * 2));
+        var tgt = s === "fix" ? v.base * 1.25 : v.base; // resolve upward in the fix
+        v.o1.frequency.setTargetAtTime(tgt, ctx.currentTime, 0.8); v.o2.frequency.setTargetAtTime(tgt * 1.006, ctx.currentTime, 0.8);
+      });
+      english(s === "beam" || s === "number" || s === "exceptions" || s === "chorus");
+      if (s === "turn" && lastStep !== "turn") { master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(0, ctx.currentTime); }
+      if (s !== "turn" && lastStep === "turn") master.gain.setTargetAtTime(0.8, ctx.currentTime, 0.5);
+      lastStep = s;
+    }
+    function toggle() {
+      on = !on;
+      if (on && !ctx) start();
+      if (ctx) { if (on) ctx.resume(); else { ctx.suspend(); english(false); } }
+      var b = document.getElementById("sound"); b.setAttribute("aria-pressed", on); b.textContent = on ? "Sound on" : "Turn on sound (recommended)";
+      update(state.step, state.p);
+    }
+    return { update: update, toggle: toggle };
+  })();
+  document.getElementById("sound").addEventListener("click", audio.toggle);
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", function () { layout(); onScroll(); });
+  layout();
+  // Poster mode: index.html?scene=beam&p=0.9 renders one scene statically (for review and screenshots)
+  var q = new URLSearchParams(location.search), qs = q.get("scene");
+  var qstep = qs && document.querySelector('.step[data-step="' + qs + '"]');
+  if (qstep) {
+    posterMode = true;
+    document.body.classList.add("poster");
+    var holder = document.createElement("div"); holder.id = "poster";
+    if (qstep.classList.contains("center")) { holder.style.right = "0"; holder.style.justifyContent = "center"; holder.style.textAlign = "center"; }
+    holder.appendChild(qstep.querySelector(".card").cloneNode(true)); document.body.appendChild(holder);
+    state.step = qs; state.p = q.get("p") ? Math.max(0, Math.min(1, parseFloat(q.get("p")))) : 1;
+    if (qs === "timeline") document.getElementById("tl-year").textContent = "";
+    render(true);
+    // update cloned card text that render() writes into the original ids
+    ["tl-year", "tl-count", "notluck-text", "meta"].forEach(function (id) {
+      var src = document.getElementById(id), dup = holder.querySelector("#" + id);
+      if (src && dup && src !== dup) dup.textContent = src.textContent;
+    });
+    return;
+  }
+  // Deep link: index.html#number jumps to that scene (#scene=0.5 sets progress within tall scenes)
+  var hm = location.hash.replace("#", "").split("=");
+  var target = hm[0] && document.querySelector('.step[data-step="' + hm[0] + '"]');
+  if (target) {
+    var frac = hm[1] ? Math.max(0, Math.min(1, parseFloat(hm[1]))) : 0.5;
+    var top = target.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo(0, top + target.offsetHeight * frac - window.innerHeight * 0.5);
+  }
+  onScroll();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Same Rain, Different Words</title>
+<meta name="description" content="A 60-second data film: South Africa's flood warnings, the languages of the places where people died, and what works elsewhere.">
+<style>
+  :root {
+    --bg: #07090d; --land: #121821; --edge: #2b3545; --text: #ece9e2; --muted: #8f959e;
+    --death: #ff5a4f; --storm: #3d8fe0; --tick: #ffffff; --eng: #f3efe4; --accent: #ffcf6e; --rule: #262d38;
+    --sans: "Helvetica Neue", Arial, sans-serif; --serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden; font: 18px/1.45 var(--serif); }
+  #svg { position: fixed; inset: 0; width: 100%; height: 100%; }
+  .layer { position: fixed; pointer-events: none; opacity: 0; }
+  /* phone */
+  #phone { left: 50%; top: 50%; width: min(380px, 86vw); transform: translate(-50%, -50%);
+    background: #151b24; border: 1px solid #323c4d; border-radius: 18px; padding: 16px 18px 18px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 0 6px #0c1016; font-family: var(--sans); }
+  #phone .top { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+  #phone .app { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+  #phone .app i { width: 18px; height: 18px; border-radius: 5px; background: #e0463a; display: inline-block; }
+  #phone h3 { margin: 6px 0 6px; font-size: 17px; }
+  #phone p { margin: 0; font-size: 15px; line-height: 1.45; color: #d9d6cf; }
+  /* text blocks */
+  .say { left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(820px, 90vw); text-align: center; }
+  .say.low { top: auto; bottom: 110px; transform: translateX(-50%); }
+  .say.left { left: 6vw; transform: translateY(-50%); text-align: left; width: min(440px, 88vw); }
+  .say.topleft { left: 6vw; top: 7vh; transform: none; text-align: left; width: min(560px, 88vw); }
+  .big { font-size: clamp(26px, 3.4vw, 44px); line-height: 1.22; }
+  .mid { font-size: clamp(19px, 2vw, 26px); line-height: 1.35; }
+  .small { font: 13px/1.45 var(--sans); color: var(--muted); }
+  .accent { color: var(--accent); }
+  .eng { color: var(--eng); font-weight: 600; }
+  #quiz { left: 50%; bottom: 12vh; transform: translateX(-50%); display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: min(640px, 90vw); pointer-events: auto; }
+  #quiz button { font: 16px var(--sans); color: var(--text); background: #121821; border: 1px solid var(--edge); border-radius: 8px; padding: 12px 14px; text-align: left; cursor: pointer; }
+  #quiz button:hover, #quiz button.picked { border-color: var(--accent); }
+  #quiz button b { color: var(--accent); margin-right: 8px; }
+  /* controls */
+  #controls { position: fixed; left: 0; right: 0; bottom: 0; padding: 10px 16px 12px; display: flex; gap: 12px; align-items: center;
+    font: 13px var(--sans); color: var(--muted); background: linear-gradient(transparent, rgba(7,9,13,.92) 40%); z-index: 10; }
+  #controls button { font: 13px var(--sans); color: var(--text); background: #141a23; border: 1px solid var(--edge); border-radius: 16px; padding: 6px 12px; cursor: pointer; }
+  #bar { flex: 1; height: 6px; background: #1a212c; border-radius: 3px; position: relative; cursor: pointer; }
+  #fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); border-radius: 3px; width: 0; }
+  #bar span { position: absolute; top: -3px; width: 2px; height: 12px; background: #3a4455; }
+  #hint { position: fixed; right: 16px; bottom: 44px; font: 13px var(--sans); color: var(--accent); z-index: 10; opacity: 0; transition: opacity .3s; }
+  #start { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px;
+    background: var(--bg); z-index: 20; cursor: pointer; text-align: center; padding: 16px; }
+  #start h1 { font: 600 clamp(28px, 4vw, 48px)/1.1 var(--serif); margin: 0; }
+  #start p { margin: 0; font: 15px var(--sans); color: var(--muted); }
+  body.record #controls, body.record #hint { display: none; }
+  @media (max-width: 640px) { #quiz { grid-template-columns: 1fr; bottom: 90px; } }
+</style>
+</head>
+<body>
+<svg id="svg" aria-label="Animated data visualisation"></svg>
+
+<div id="phone" class="layer" aria-live="polite">
+  <div class="top"><span id="ph-time">now</span><span>●●●</span></div>
+  <div class="app"><i></i><span id="ph-issuer">eThekwini Municipality</span></div>
+  <h3 id="ph-title"></h3>
+  <p id="ph-text"></p>
+</div>
+
+<div id="s-hook" class="layer say low"><div class="mid">Your phone lights up.</div></div>
+<div id="s-question" class="layer say topleft"><div class="big">What does this warning tell you to do?</div></div>
+<div id="quiz" class="layer">
+  <button data-a="A"><b>A</b>Leave now for higher ground</button>
+  <button data-a="B"><b>B</b>Stay indoors until it passes</button>
+  <button data-a="C"><b>C</b>Nothing. It's routine</button>
+  <button data-a="D"><b>D</b>I don't know</button>
+</div>
+<div id="s-reveal" class="layer say">
+  <div class="small" style="margin-bottom:10px">IT SAYS</div>
+  <div class="big" id="rv-text"></div>
+  <div class="mid accent" style="margin-top:22px">It never says what to do, even for the people who can read it.</div>
+  <div class="small" style="margin-top:16px" id="rv-src"></div>
+</div>
+<div id="s-flip" class="layer say">
+  <div class="big">Most of you couldn't read it.</div>
+  <div class="mid" style="margin-top:18px">South Africa's official flood warnings are issued in <span class="eng">English</span>.<br>Most people in the places where flood deaths happen grew up speaking something else.</div>
+</div>
+<div id="s-sky" class="layer say topleft">
+  <div class="small">WHAT SOUTH AFRICA CAN SEE</div>
+  <div class="big">The sky is watched.</div>
+  <div class="mid" id="sk-count" style="margin-top:8px"></div>
+  <div class="small" style="margin-top:10px"><span style="color:#f3efe4">●</span> weather station &nbsp; <span style="color:#79c8ff">●</span> river gauge &nbsp; <span style="color:#ffcf6e">●</span> radar &nbsp; <span style="color:#ffcf6e">●</span> <span style="color:#79c8ff">●</span> satellites (geostationary / polar)</div>
+  <div class="small" id="sk-note" style="margin-top:8px"></div>
+  <div id="s-sky2" class="mid accent" style="margin-top:22px;opacity:0">South Africa can see the storm coming.</div>
+</div>
+<div id="s-map" class="layer say topleft">
+  <div class="small">SOUTH AFRICA · FLOODS 2016–2026</div>
+  <div class="big" id="mp-year">2016</div>
+  <div class="mid" id="mp-count" style="margin-top:6px"></div>
+  <div class="small" style="margin-top:10px"><span style="color:var(--storm)">|</span> flood &nbsp; <span style="color:var(--tick)">✓</span> warning issued beforehand &nbsp; <span style="color:var(--death)">●</span> one death, where it happened</div>
+  <div id="s-map2" class="mid" style="margin-top:22px;opacity:0">The forecasts were often right. <span class="accent">People still died.</span></div>
+</div>
+<div id="s-people" class="layer say topleft" style="width:min(1000px,88vw)">
+  <div class="big" style="font-size:clamp(22px,2.5vw,34px)">In the places where these <span id="pp-n">286</span> people died, <span class="accent">4 in 5</span> residents grew up speaking a language other than English.</div>
+  <div class="small" style="margin-top:12px">Each dot is one death. Colour shows the first-language mix of the places where the deaths happened (Census 2011), not the language of any individual.</div>
+</div>
+<div id="s-typical" class="layer say left">
+  <div class="big">At the typical place where someone died, <span class="eng">3 in 100</span> residents speak English as a first language.</div>
+  <div class="small" style="margin-top:12px">Median across <span id="ty-n">113</span> death sites. Census 2011.</div>
+</div>
+<div id="s-world" class="layer say topleft">
+  <div class="mid">Elsewhere, warnings moved into local languages and were spoken by local people.</div>
+  <div class="small" style="margin-top:8px" id="wd-cav"></div>
+</div>
+<div id="s-close" class="layer say">
+  <div class="big">The forecast was right.</div>
+  <div class="big accent" style="margin-top:6px">The words weren't.</div>
+  <div class="mid" style="margin-top:26px">Warnings in all 12 official languages,<br>saying what to do and where to go.</div>
+  <div class="small" style="margin-top:26px">SAME RAIN, DIFFERENT WORDS · Data &amp; sources: methods/METHODS.md</div>
+</div>
+
+<div id="start" role="button" tabindex="0">
+  <h1>Same Rain, Different Words</h1>
+  <p id="start-mode"></p>
+  <p>Click or press Space to begin</p>
+</div>
+<div id="hint">Press Space to reveal ▸</div>
+<div id="controls">
+  <button id="play">Pause</button>
+  <div id="bar"><div id="fill"></div></div>
+  <span id="clock">0:00</span>
+  <button id="modeBtn"></button>
+</div>
+
+<script src="vendor/d3.v7.min.js"></script>
+<script src="vendor/topojson-client.min.js"></script>
+<script src="vendor/world-50m.js"></script>
+<script src="data/story-data.js"></script>
+<script>
+(function () {
+  "use strict";
+  var S = window.STORY, W = window.WORLD_TOPO;
+  var Q = new URLSearchParams(location.search);
+  var mode = Q.get("mode") === "video" || Q.get("record") ? "video" : "class";
+  if (Q.get("record")) document.body.classList.add("record");
+
+  // ---------- beats (seconds) ----------
+  var BEATS = [
+    { id: "hook", dur: 4 }, { id: "question", dur: 5, hold: true }, { id: "reveal", dur: 6 }, { id: "flip", dur: 4 },
+    { id: "sky", dur: 7, needs: "network" }, { id: "map", dur: 9 }, { id: "people", dur: 9 }, { id: "typical", dur: 4 }, { id: "world", dur: 8 }, { id: "close", dur: 5 }];
+  // drop scenes whose data isn't available yet (e.g. the observing network before it is collected)
+  BEATS = BEATS.filter(function (b) { return !b.needs || (S[b.needs] && S[b.needs].layers && S[b.needs].layers.length); });
+  var t0 = 0; BEATS.forEach(function (b) { b.start = t0; t0 += b.dur; }); var TOTAL = t0;
+
+  // ---------- helpers ----------
+  function clamp(x) { return Math.max(0, Math.min(1, x)); }
+  function seg(p, a, b) { return clamp((p - a) / (b - a)); }
+  var ease = d3.easeCubicInOut;
+  function vis(p, inEnd, outStart) { return Math.min(seg(p, 0, inEnd || 0.12), 1 - seg(p, outStart || 0.9, 1)); }
+  function $(id) { return document.getElementById(id); }
+  function show(id, o) { var el = $(id); el.style.opacity = o; el.style.visibility = o > 0.01 ? "visible" : "hidden"; }
+
+  // ---------- data ----------
+  var st = S.stats, hook = S.hook;
+  $("ph-title").textContent = hook.title; $("ph-text").textContent = hook.text;
+  $("ph-issuer").textContent = "eThekwini Municipality · " + hook.language;
+  $("rv-text").textContent = "“" + hook.translation + "”";
+  $("rv-src").textContent = "Real warning: " + hook.issuer + ", " + hook.date + " (" + hook.url.replace(/^https?:\/\//, "").split("/")[0] + "). " + hook.translation_note;
+  $("pp-n").textContent = st.placed_deaths; $("ty-n").textContent = st.placed_sites;
+  $("wd-cav").textContent = S.world_caveat;
+  $("start-mode").textContent = mode === "class"
+    ? "Class mode: pauses at the question. → next scene, ← back, R restart."
+    : "Video mode: plays straight through (about " + Math.round(TOTAL) + " seconds).";
+
+  var floods = S.floods.map(function (f) { f.t = f.year + ((f.month || 1) - 1) / 12; return f; });
+  var sites = S.sites.filter(function (s) { return s.lat != null; })
+    .map(function (s) { s.t = s.year + ((s.month || 1) - 1) / 12; return s; });
+
+  var PAL = { English: "#f3efe4", isiZulu: "#4f86c6", isiXhosa: "#8a6fce", Afrikaans: "#c9895a", Sepedi: "#3fa796",
+    Xitsonga: "#c2618b", Tshivenda: "#9fb34a", Setswana: "#5fa4c4", SiSwati: "#b487d2", isiNdebele: "#77b777",
+    Sesotho: "#c9a84b", Other: "#5b6270" };
+  // grid order: English first (the warning's language), then the rest by size
+  var comp = S.composition.slice().sort(function (a, b) {
+    if (a.language === "English") return -1; if (b.language === "English") return 1;
+    if (a.language === "Other") return 1; if (b.language === "Other") return -1; return b.n - a.n; });
+  var cellLang = []; comp.forEach(function (c) { for (var i = 0; i < c.n; i++) cellLang.push(c.language); });
+
+  // one dot per death
+  var dots = [];
+  sites.slice().sort(function (a, b) { return a.t - b.t; }).forEach(function (s) {
+    for (var i = 0; i < s.deaths; i++) dots.push({ s: s, i: i });
+  });
+  dots.forEach(function (d, k) { d.lang = cellLang[k] || "Other"; d.k = k; });
+
+  // ---------- svg ----------
+  var svg = d3.select("#svg"), Wd, Ht;
+  var countries = topojson.feature(W, W.objects.countries).features, byId = {};
+  countries.forEach(function (c) { byId[c.id] = c; });
+  var zf = byId["710"];
+  var za = { type: "Feature", geometry: { type: "MultiPolygon",
+    coordinates: zf.geometry.coordinates.filter(function (p) { return p[0][0][1] > -36; }) } };
+  var ctx = ["426", "748", "516", "072", "716", "508"].map(function (id) { return byId[id]; }).filter(Boolean);
+
+  var gLand = svg.append("g"), gSky = svg.append("g"), gStrip = svg.append("g"), gDots = svg.append("g"), gLegend = svg.append("g"),
+      gMini = svg.append("g"), gWorld = svg.append("g");
+  var proj, dotSel, grid = {}, skyPts = [], skySats = [];
+
+  function layout() {
+    Wd = window.innerWidth; Ht = window.innerHeight;
+    svg.attr("viewBox", "0 0 " + Wd + " " + Ht);
+    var left = Wd > 900 ? Wd * 0.42 : 16;
+    proj = d3.geoMercator().fitExtent([[left, Ht * 0.12], [Wd - 24, Ht - 120]], za);
+    var path = d3.geoPath(proj);
+    gLand.selectAll("*").remove();
+    gLand.selectAll("path.c").data(ctx).join("path").attr("class", "c").attr("d", path).attr("fill", "#0c1017").attr("stroke", "#19202a");
+    gLand.append("path").datum(za).attr("d", path).attr("fill", "var(--land)").attr("stroke", "var(--edge)");
+
+    // observing network: one point of light per real station (only stations with published coordinates)
+    gSky.selectAll("*").remove(); skyPts = [];
+    var NET = S.network, LSTYLE = { surface_stations: { c: "#f3efe4", r: 1.7 }, river_gauges: { c: "#79c8ff", r: 1.3 },
+      radars: { c: "#ffcf6e", r: 3, ring: true }, lightning_sensors: { c: "#c9b8ff", r: 2 } };
+    if (NET && NET.layers) {
+      var pxkm = Math.abs(proj([25, -29])[1] - proj([25, -28])[1]) / 111;
+      NET.layers.forEach(function (L, li) {
+        var sty = LSTYLE[L.id] || { c: "#fff", r: 1.5 };
+        var pts = (L.points || []).slice().sort(function (a, b) { return a[0] - b[0]; });
+        pts.forEach(function (pt, j) {
+          var xy = proj(pt); if (!xy) return;
+          var c = gSky.append("circle").attr("cx", xy[0]).attr("cy", xy[1]).attr("r", sty.r).attr("fill", sty.c).attr("opacity", 0);
+          skyPts.push({ el: c, li: li, j: j, n: pts.length, ring: false });
+          if (sty.ring && NET.radar_km) {
+            var rr = gSky.append("circle").attr("cx", xy[0]).attr("cy", xy[1]).attr("r", NET.radar_km * pxkm)
+              .attr("fill", "none").attr("stroke", sty.c).attr("stroke-width", 1).attr("opacity", 0);
+            skyPts.push({ el: rr, li: li, j: j, n: pts.length, ring: true });
+          }
+        });
+      });
+      // satellites: geostationary drawn fixed above the map; polar orbiters as passes across it
+      skySats = (NET.satellites || []).map(function (s, k) {
+        var geo = /geo/i.test(s.orbit || ""), g = gSky.append("g").attr("opacity", 0);
+        g.append("circle").attr("r", geo ? 4.5 : 3).attr("fill", geo ? "#ffcf6e" : "#79c8ff");
+        if (geo) g.append("text").attr("x", 0).attr("y", -9).attr("text-anchor", "middle").attr("fill", "var(--muted)").attr("font-size", 10)
+          .attr("font-family", "Helvetica Neue, Arial, sans-serif").text(s.name.replace(/\s*\(.*\)/, ""));
+        return { s: s, g: g, geo: geo, k: k };
+      });
+    }
+
+    // map positions
+    dots.forEach(function (d) { var p = proj([+d.s.lon, +d.s.lat]), a = d.i * 2.39996, r = 1.9 * Math.sqrt(d.i);
+      d.mx = p[0] + Math.cos(a) * r; d.my = p[1] + Math.sin(a) * r; });
+    // grid positions: 22 x 13 = 286 cells (grows if needed)
+    var N = dots.length, cols = 22, rows = Math.ceil(N / cols);
+    var cell = Math.min((Wd * (Wd > 900 ? 0.5 : 0.9)) / cols, (Ht * 0.46) / rows);
+    grid = { cols: cols, rows: rows, cell: cell, x0: Wd > 900 ? Wd * 0.06 : 16, y0: Ht * 0.34 };
+    dots.forEach(function (d) { var c = d.k % cols, r = Math.floor(d.k / cols);
+      d.gx = grid.x0 + c * cell + cell / 2; d.gy = grid.y0 + r * cell + cell / 2; });
+    grid.r = Math.max(2, cell * 0.36);
+
+    dotSel = gDots.selectAll("circle").data(dots).join("circle").attr("r", 1.8);
+
+    // legend beside grid
+    gLegend.selectAll("*").remove();
+    var lx = grid.x0 + cols * cell + 28, ly = grid.y0 + 6;
+    comp.forEach(function (c, i) {
+      var g = gLegend.append("g").attr("transform", "translate(" + lx + "," + (ly + i * 22) + ")");
+      g.append("circle").attr("r", 6).attr("cy", -5).attr("fill", PAL[c.language] || PAL.Other);
+      g.append("text").attr("x", 14).attr("fill", c.language === "English" ? "var(--eng)" : "var(--text)")
+        .attr("font-family", "Helvetica Neue, Arial, sans-serif").attr("font-size", 14)
+        .attr("font-weight", c.language === "English" ? 700 : 400).text(c.language + "  " + c.n);
+    });
+    var tot = d3.sum(comp, function (c) { return c.n; }), eng = (comp.filter(function (c) { return c.language === "English"; })[0] || { n: 0 }).n;
+    gLegend.append("text").attr("x", lx).attr("y", ly + comp.length * 22 + 14).attr("fill", "var(--accent)")
+      .attr("font-family", "Helvetica Neue, Arial, sans-serif").attr("font-size", 15).attr("font-weight", 700)
+      .text((tot - eng) + " of " + tot + " not English");
+
+    // timeline strip
+    gStrip.selectAll("*").remove();
+    var tx = d3.scaleLinear().domain([2016, 2026.85]).range([Wd * 0.06, Wd - 24]); grid.tx = tx;
+    var base = Ht - 78;
+    gStrip.append("line").attr("x1", tx(2016)).attr("x2", tx(2026.85)).attr("y1", base).attr("y2", base).attr("stroke", "var(--rule)");
+    for (var y = 2016; y <= 2026; y++) gStrip.append("text").attr("x", tx(y)).attr("y", base + 16).attr("fill", "var(--muted)")
+      .attr("font-size", 11).attr("font-family", "Helvetica Neue, Arial, sans-serif").text(y);
+    floods.forEach(function (f) {
+      var h = f.deaths >= 1 ? 6 + Math.log2(f.deaths + 1) * 5 : 4;
+      f._m = gStrip.append("line").attr("x1", tx(f.t)).attr("x2", tx(f.t)).attr("y1", base).attr("y2", base - h)
+        .attr("stroke", "var(--storm)").attr("stroke-width", 2);
+      f._k = f.warned ? gStrip.append("text").attr("x", tx(f.t)).attr("y", base - h - 4).attr("text-anchor", "middle")
+        .attr("fill", "var(--tick)").attr("font-size", 11).text("✓") : null;
+    });
+    grid.ph = gStrip.append("line").attr("y1", base - 60).attr("y2", base + 2).attr("stroke", "var(--accent)");
+
+    // mini 10x10 "typical place" square
+    gMini.selectAll("*").remove();
+    var ms = Math.min(22, Ht * 0.03), mx0 = Wd > 900 ? Wd * 0.58 : 16, my0 = Wd > 900 ? Ht * 0.3 : Ht * 0.5;
+    var engN = Math.round(st.median_english_pct);
+    for (var i = 0; i < 100; i++) gMini.append("rect").attr("x", mx0 + (i % 10) * ms).attr("y", my0 + Math.floor(i / 10) * ms)
+      .attr("width", ms - 3).attr("height", ms - 3).attr("rx", 2).attr("fill", i < engN ? PAL.English : "#2a3140");
+    gMini.append("text").attr("x", mx0).attr("y", my0 + 10 * ms + 22).attr("fill", "var(--muted)").attr("font-size", 13)
+      .attr("font-family", "Helvetica Neue, Arial, sans-serif").text("100 residents of a typical death site · " + engN + " English first-language");
+
+    // world pairs
+    gWorld.selectAll("*").remove();
+    var rows3 = S.world, wx = Wd > 900 ? Wd * 0.06 : 16, wy0 = Ht * 0.27;
+    var rowH = Math.min(175, (Ht - wy0 - 110) / rows3.length), rmax = Math.min(rowH * 0.3, 52);
+    function wrap(g, text, x, y, maxChars) {
+      var words = text.split(" "), line = "", dy = 0, el = g.append("text").attr("x", x).attr("y", y).attr("fill", "var(--muted)")
+        .attr("font-size", 13).attr("font-family", "Helvetica Neue, Arial, sans-serif");
+      words.forEach(function (w) {
+        if ((line + " " + w).trim().length > maxChars) { el.append("tspan").attr("x", x).attr("dy", dy).text(line.trim()); line = w; dy = 17; }
+        else line = (line + " " + w).trim();
+      });
+      el.append("tspan").attr("x", x).attr("dy", dy).text(line);
+    }
+    rows3.forEach(function (w, i) {
+      var cy = wy0 + i * rowH + rmax, g = gWorld.append("g").attr("class", "wrow");
+      var rA = rmax * Math.sqrt(w.after.deaths / w.before.deaths);
+      w._g = g; w._rA = Math.max(2, rA); w._rB = rmax;
+      g.append("text").attr("x", wx).attr("y", cy - rmax + 14).attr("fill", "var(--text)").attr("font-size", 17)
+        .attr("font-family", "Helvetica Neue, Arial, sans-serif").attr("font-weight", 700).text(w.place);
+      wrap(g, w.how, wx, cy - rmax + 36, Wd > 900 ? 58 : 40);
+      var bx = wx + Math.min(560, Wd * 0.44), ax = bx + rmax * 2 + Math.min(200, Wd * 0.14);
+      w._b = g.append("circle").attr("cx", bx).attr("cy", cy + 8).attr("r", rmax).attr("fill", "var(--death)").attr("opacity", 0.75);
+      w._a = g.append("circle").attr("cx", ax).attr("cy", cy + 8).attr("r", rmax).attr("fill", "var(--death)").attr("opacity", 0.9);
+      g.append("text").attr("x", bx).attr("y", cy + rmax + 26).attr("text-anchor", "middle").attr("fill", "var(--muted)").attr("font-size", 12)
+        .attr("font-family", "Helvetica Neue, Arial, sans-serif").text(w.before.label + " · " + w.before.text + " dead");
+      w._at = g.append("text").attr("x", ax).attr("y", cy + rmax + 26).attr("text-anchor", "middle").attr("fill", "var(--accent)").attr("font-size", 12)
+        .attr("font-family", "Helvetica Neue, Arial, sans-serif").text(w.after.label + " · " + w.after.text + " dead");
+      g.append("text").attr("x", (bx + ax) / 2).attr("y", cy + 13).attr("text-anchor", "middle").attr("fill", "var(--muted)").attr("font-size", 20).text("→");
+    });
+    gWorld.append("text").attr("x", wx).attr("y", wy0 + rows3.length * rowH + 10).attr("fill", "var(--muted)").attr("font-size", 12)
+      .attr("font-family", "Helvetica Neue, Arial, sans-serif").text("Circle area ∝ deaths, scaled within each row. Sources: data/global_language_cases.json, global_lastmile_cases.json");
+    render(T);
+  }
+
+  // ---------- render at time T ----------
+  var T = 0;
+  function beatAt(t) { for (var i = BEATS.length - 1; i >= 0; i--) if (t >= BEATS[i].start) return i; return 0; }
+  function render(t) {
+    var bi = beatAt(t), b = BEATS[bi], p = clamp((t - b.start) / b.dur), id = b.id;
+    function on(x) { return id === x; }
+
+    // phone: hook, question, reveal (fades during reveal)
+    var ph = on("hook") ? vis(p, 0.25, 1.01) : on("question") ? 1 : on("reveal") ? 1 - seg(p, 0, 0.15) : 0;
+    show("phone", ph);
+    $("phone").style.transform = "translate(-50%, " + (on("hook") ? (-50 + 12 * (1 - ease(seg(p, 0, 0.3)))) : -50) + "%)";
+    show("s-hook", on("hook") ? seg(p, 0.35, 0.55) : 0);
+    show("s-question", on("question") ? seg(p, 0, 0.15) : 0);
+    show("quiz", on("question") ? seg(p, 0.1, 0.3) : 0);
+    show("s-reveal", on("reveal") ? vis(p, 0.2, 0.92) : 0);
+    show("s-flip", on("flip") ? vis(p, 0.15, 0.9) : 0);
+    show("s-map", on("map") ? vis(p, 0.08, 0.94) : 0);
+    $("s-map2").style.opacity = on("map") ? seg(p, 0.75, 0.85) : 0;
+    show("s-people", on("people") ? seg(p, 0.55, 0.7) * (1 - seg(p, 0.95, 1)) : 0);
+    show("s-typical", on("typical") ? vis(p, 0.15, 0.9) : 0);
+    show("s-world", on("world") ? vis(p, 0.08, 0.94) : 0);
+    show("s-close", on("close") ? seg(p, 0, 0.15) : 0);
+
+    // watched sky
+    show("s-sky", on("sky") ? vis(p, 0.08, 0.94) : 0);
+    $("s-sky2").style.opacity = on("sky") ? seg(p, 0.72, 0.82) : 0;
+    var nL = S.network && S.network.layers ? S.network.layers.length : 0;
+    skyPts.forEach(function (q) {
+      var a = 0.12 + 0.5 * (q.li / Math.max(1, nL)), k = seg(p, a + 0.18 * (q.j / q.n), a + 0.18 * (q.j / q.n) + 0.04);
+      var o = on("sky") ? k * (1 - seg(p, 0.94, 1)) : (on("map") ? 0.35 * (1 - seg(p, 0, 0.15)) : 0);
+      q.el.attr("opacity", q.ring ? o * 0.35 : o * 0.9);
+    });
+    var geos = skySats.filter(function (q) { return q.geo; }), polars = skySats.filter(function (q) { return !q.geo; });
+    geos.forEach(function (q, i) {
+      var k = on("sky") ? seg(p, 0.55 + i * 0.02, 0.6 + i * 0.02) * (1 - seg(p, 0.94, 1)) : 0;
+      var x = Wd * 0.47 + i * Math.min(110, Wd * 0.075), y = Ht * 0.06 + (i % 2) * 18;
+      q.g.attr("transform", "translate(" + x + "," + y + ")").attr("opacity", k);
+    });
+    polars.forEach(function (q, i) {  // polar orbiters sweep across the country on staggered tracks
+      var k = on("sky") ? seg(p, 0.6, 0.66) * (1 - seg(p, 0.94, 1)) : 0, u = (seg(p, 0.55, 1) + i * 0.13) % 1;
+      var x = Wd * (0.40 + 0.055 * i) + u * Wd * 0.18, y = Ht * 0.02 + u * Ht * 0.9;
+      q.g.attr("transform", "translate(" + x + "," + y + ")").attr("opacity", k * 0.85);
+    });
+    if (on("sky") && S.network) {
+      var SHORT = { radars: "weather radars", surface_stations: "weather stations", river_gauges: "river gauges", lightning_sensors: "lightning sensors" };
+      var parts = S.network.layers.map(function (L) { return "<b>" + L.count_total + "</b> " + (SHORT[L.id] || L.label); });
+      if (S.network.satellites && S.network.satellites.length) parts.push("<b>" + S.network.satellites.length + "</b> weather satellites watching the region");
+      $("sk-count").innerHTML = parts.join(" &nbsp;·&nbsp; ");
+      var unplotted = S.network.layers.filter(function (L) { return L.count_with_coords < L.count_total; })
+        .map(function (L) { var n = L.count_total - L.count_with_coords, nm = SHORT[L.id] || L.label; return n + " " + (n === 1 ? nm.replace(/s$/, "") : nm); });
+      $("sk-note").textContent = "Each point is a real station at its published position (WMO OSCAR, WMO Radar Database). " +
+        (unplotted.length ? "Not plotted (no published position): " + unplotted.join(", ") + ". " : "") +
+        (S.network.saws_documented_sats != null ? "Of the satellites, " + S.network.saws_documented_sats + " are documented as received by SAWS. " : "") +
+        (S.radar_caveat ? S.radar_caveat.text : "");
+    }
+
+    // land + strip
+    var land = on("sky") ? seg(p, 0, 0.1) : on("map") ? 1 : on("people") ? 1 - seg(p, 0.05, 0.3) : 0;
+    gLand.attr("opacity", land);
+    gStrip.attr("opacity", on("map") ? vis(p, 0.1, 0.96) : 0);
+    var yr = 2016 + seg(p, 0.1, 0.72) * 10.85;
+    if (!on("map")) yr = bi > BEATS.map(function (x) { return x.id; }).indexOf("map") ? 2026.85 : 2016;
+    grid.ph.attr("x1", grid.tx(yr)).attr("x2", grid.tx(yr));
+    floods.forEach(function (f) { var s = f.t <= yr; f._m.attr("opacity", s ? 0.95 : 0.12); if (f._k) f._k.attr("opacity", s ? 1 : 0); });
+    if (on("map")) {
+      var fs = floods.filter(function (f) { return f.t <= yr; });
+      $("mp-year").textContent = Math.floor(Math.min(yr, 2026));
+      $("mp-count").innerHTML = fs.length + " floods &nbsp;·&nbsp; <b>" + fs.filter(function (f) { return f.warned; }).length +
+        "</b> with a warning issued beforehand &nbsp;·&nbsp; <span style='color:var(--death)'>" +
+        d3.sum(sites.filter(function (s) { return s.t <= yr; }), function (s) { return s.deaths; }) + " deaths</span> we can place";
+    }
+
+    // dots
+    var N = dots.length;
+    dotSel.each(function (d) {
+      var x = d.mx, y = d.my, r = 1.8, fill = "#ff5a4f", o = 0;
+      if (on("map")) {
+        var k = clamp((yr - d.s.t) / 0.35); o = k > 0 ? 0.9 : 0; y = d.my - 24 * (1 - ease(k));
+      } else if (on("people")) {
+        var f = ease(seg(p, 0.05 + 0.18 * (d.k / N), 0.33 + 0.18 * (d.k / N)));
+        x = d.mx + (d.gx - d.mx) * f; y = d.my + (d.gy - d.my) * f; r = 1.8 + (grid.r - 1.8) * f;
+        var c = seg(p, 0.42, 0.58); fill = d3.interpolateRgb("#ff5a4f", PAL[d.lang] || PAL.Other)(c); o = 0.95;
+      } else if (on("typical")) {
+        x = d.gx; y = d.gy; r = grid.r; fill = PAL[d.lang] || PAL.Other; o = 0.95 * (1 - seg(p, 0, 0.12));
+      }
+      this.setAttribute("cx", x); this.setAttribute("cy", y); this.setAttribute("r", r);
+      this.setAttribute("fill", fill); this.setAttribute("opacity", o);
+    });
+    gLegend.attr("opacity", on("people") ? seg(p, 0.55, 0.7) : on("typical") ? 0.9 * (1 - seg(p, 0, 0.1)) : 0);
+    gMini.attr("opacity", on("typical") ? vis(p, 0.2, 0.9) : 0);
+
+    // world
+    gWorld.attr("opacity", on("world") ? vis(p, 0.06, 0.95) : 0);
+    S.world.forEach(function (w, i) {
+      var k = on("world") ? ease(seg(p, 0.2 + i * 0.12, 0.45 + i * 0.12)) : 0;
+      w._a.attr("r", w._rB + (w._rA - w._rB) * k).attr("fill", k > 0.5 ? "var(--accent)" : "var(--death)");
+      w._at.attr("opacity", k);
+    });
+
+    // hold hint + progress
+    $("hint").style.opacity = (mode === "class" && b.hold && p > 0.98 && !released[bi]) ? 1 : 0;
+    $("fill").style.width = (100 * t / TOTAL) + "%";
+    var s = Math.floor(t); $("clock").textContent = Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2) + " / " + Math.floor(TOTAL / 60) + ":" + ("0" + Math.round(TOTAL % 60)).slice(-2);
+  }
+
+  // ---------- playback ----------
+  var playing = false, last = null, released = {};
+  function tick(now) {
+    if (playing) {
+      var dt = last == null ? 0 : (now - last) / 1000; last = now;
+      var bi = beatAt(T), b = BEATS[bi];
+      T = Math.min(TOTAL, T + dt);
+      if (mode === "class" && b.hold && !released[bi] && T >= b.start + b.dur - 0.001) T = b.start + b.dur - 0.001;
+      if (T >= TOTAL) { playing = false; $("play").textContent = "Replay"; }
+      render(T);
+    } else last = null;
+    requestAnimationFrame(tick);
+  }
+  function play() { if (T >= TOTAL) { T = 0; released = {}; } playing = true; last = null; $("play").textContent = "Pause"; }
+  function pause() { playing = false; $("play").textContent = "Play"; }
+  function seekBeat(i) { i = Math.max(0, Math.min(BEATS.length - 1, i)); T = BEATS[i].start + 0.001; render(T); }
+  function advance() {
+    var bi = beatAt(T), b = BEATS[bi];
+    if (b.hold && !released[bi] && T >= b.start + b.dur - 0.01) { released[bi] = true; T = b.start + b.dur + 0.001; play(); return; }
+    if (playing) pause(); else play();
+  }
+  function begin() { $("start").style.display = "none"; play(); }
+
+  $("start").addEventListener("click", begin);
+  $("play").addEventListener("click", function () { if (playing) pause(); else play(); });
+  $("modeBtn").textContent = mode === "class" ? "Class mode" : "Video mode";
+  $("modeBtn").addEventListener("click", function () { mode = mode === "class" ? "video" : "class"; $("modeBtn").textContent = mode === "class" ? "Class mode" : "Video mode"; });
+  $("bar").addEventListener("click", function (e) { var r = this.getBoundingClientRect(); T = TOTAL * clamp((e.clientX - r.left) / r.width); render(T); });
+  BEATS.forEach(function (b) { var sp = document.createElement("span"); sp.style.left = (100 * b.start / TOTAL) + "%"; $("bar").appendChild(sp); });
+  Array.prototype.forEach.call(document.querySelectorAll("#quiz button"), function (btn) {
+    btn.addEventListener("click", function () {
+      Array.prototype.forEach.call(document.querySelectorAll("#quiz button"), function (x) { x.classList.remove("picked"); });
+      btn.classList.add("picked");
+    });
+  });
+  document.addEventListener("keydown", function (e) {
+    if ($("start").style.display !== "none" && (e.code === "Space" || e.code === "Enter")) { e.preventDefault(); begin(); return; }
+    if (e.code === "Space") { e.preventDefault(); advance(); }
+    else if (e.code === "ArrowRight") { var bi = beatAt(T); released[bi] = true; seekBeat(bi + 1); }
+    else if (e.code === "ArrowLeft") seekBeat(beatAt(T) - (T - BEATS[beatAt(T)].start < 0.8 ? 1 : 0));
+    else if (e.key === "r" || e.key === "R") { T = 0; released = {}; render(0); play(); }
+    else if (e.key === "h" || e.key === "H") document.body.classList.toggle("record");
+  });
+  window.addEventListener("resize", layout);
+
+  layout();
+  // ?t=SECONDS renders a still frame (for screenshots / review); ?record=1 autostarts in video mode.
+  if (Q.get("t") != null) { $("start").style.display = "none"; released = { 1: true }; T = Math.min(TOTAL, parseFloat(Q.get("t")) || 0); render(T); document.body.classList.add("record"); }
+  else if (Q.get("record")) begin();
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
