@@ -1,0 +1,328 @@
+<title>Moved Into the Water</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#0A1015; --panel:#101920; --ink:#E6EDEF; --muted:#8C9DA6; --rule:#22313A;
+  --water:#58B7EA; --plain:#2F79AD; --camp:#F4B942; --hit:#FF5B4F; --ok:#5ED69C;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",Consolas,monospace;
+  color-scheme:dark;
+}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+h1,h2{font-family:var(--display);font-weight:700;text-transform:uppercase;line-height:.98;margin:0;text-wrap:balance}
+h1{font-size:clamp(52px,9vw,112px);letter-spacing:.005em}
+h2{font-size:clamp(34px,5vw,60px)}
+p{margin:0;max-width:34em}
+.k{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.big{font-family:var(--display);font-weight:700;font-size:clamp(46px,7vw,86px);line-height:1;font-variant-numeric:tabular-nums}
+.hit{color:var(--hit)} .ok{color:var(--ok)} .camp{color:var(--camp)} .wat{color:var(--water)}
+header{padding-block:56px 36px;display:grid;gap:18px}
+header p{font-size:clamp(20px,2.3vw,25px);color:var(--muted)}
+section{padding-block:72px;border-top:1px solid var(--rule)}
+.act{display:grid;gap:14px;margin-bottom:34px}
+/* scrolly */
+.scrolly{display:grid;grid-template-columns:minmax(260px,1fr) minmax(0,1.35fr);gap:36px;align-items:start}
+.steps{display:grid;gap:62vh;padding-block:12vh 40vh}
+.step{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:18px 20px;display:grid;gap:8px;opacity:.45;transition:opacity .3s}
+.step.on{opacity:1;border-color:var(--muted)}
+.step p{font-size:18px}
+.sticky{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);height:calc(100vh - 24px);display:grid;align-items:center}
+.sticky svg{width:100%;height:100%;max-height:92vh;display:block}
+@media (max-width:820px){
+  .scrolly{grid-template-columns:1fr}
+  .sticky{grid-row:1;height:58vh;top:env(safe-area-inset-top,0px);z-index:1;background:var(--ground)}
+  .steps{grid-row:2;gap:48vh;padding-block:4vh 30vh;position:relative;z-index:2}
+}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:12px;color:var(--muted);align-items:center}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.fig{overflow-x:auto}
+.fig svg{display:block;width:100%;height:auto}
+.fig.min svg{min-width:720px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;align-items:start}
+.stat{display:grid;gap:6px;border-top:2px solid var(--rule);padding-top:12px}
+.stat p{font-size:16px;color:var(--muted)}
+/* suspects */
+.suspects{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.sus{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:16px;display:grid;gap:8px;align-content:start}
+.sus h3{font-family:var(--display);font-size:28px;text-transform:uppercase;margin:0;position:relative;display:inline-block;justify-self:start}
+.sus h3::after{content:"";position:absolute;left:-4px;right:-4px;top:52%;height:3px;background:var(--hit);transform:scaleX(0);transform-origin:left;transition:transform .7s ease .2s}
+.sus.out h3::after{transform:scaleX(1)}
+.sus p{font-size:15.5px;color:var(--muted);line-height:1.4}
+.sus .v{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--hit)}
+.reveal{padding-block:90px}
+.reveal .big{font-size:clamp(60px,11vw,150px)}
+.src{font-family:var(--mono);font-size:11.5px;line-height:1.5;color:var(--muted);max-width:none;margin-top:10px}.src a{color:var(--water);word-break:break-word}
+.fine{font-size:14px;color:var(--muted);max-width:none}
+.fine a{color:var(--water)}
+.srcs{columns:2 320px;column-gap:28px;font-size:13.5px;color:var(--muted)}
+.srcs p{max-width:none;margin-bottom:6px;break-inside:avoid}
+.srcs a{color:var(--water);word-break:break-word}
+button.replay{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:none;color:var(--muted);border:1px solid var(--rule);border-radius:3px;padding:6px 10px;cursor:pointer;justify-self:start}
+button.replay:focus-visible,a:focus-visible{outline:2px solid var(--water);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.step,.sus h3::after{transition:none}.pulse{animation:none!important}}
+.pulse{animation:pulse 1.8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.2);opacity:0}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="k">Same Rain, Different Words · Harvard GSD MDE</div>
+  <h1>Moved into<br>the water</h1>
+  <p>Where South Africa puts people after a flood, and what the rest of the world does differently.</p>
+</header>
+
+<!-- ACT 1 -->
+<section id="durban" style="border-top:none;padding-top:0">
+  <div class="scrolly">
+    <div class="steps" id="steps">
+      <div class="step" data-s="1"><div class="k">Layer 1 · Satellite</div><p><span class="wat">Bright blue</span> is ground that Landsat satellites saw under water now and then between 1984 and 2021: ground that floods and dries. Dark blue is permanent water.</p><p class="src">Source: EC JRC <a href="https://global-surface-water.appspot.com/">Global Surface Water</a>, occurrence layer 1984–2021; Pekel et al. 2016, <a href="https://doi.org/10.1038/nature20584"><i>Nature</i> 540: 418–422</a>.</p></div>
+      <div class="step" data-s="2"><div class="k">Layer 2 · The city's own map</div><p>eThekwini's official 1-in-100-year floodplain. The city published this map itself.</p><p class="src">Source: eThekwini Municipality, <a href="https://gis-ethekwini.opendata.arcgis.com/datasets/e33fb655723e49fab434a23a8ca3d1d2_0"><i>Flood Plain 100yr</i></a>, open data portal.</p></div>
+      <div class="step" data-s="3"><div class="k">Layer 3 · Where the state puts people</div><p><span class="camp">Transit camps and emergency accommodation</span>, 2022–2026.</p><p class="big camp" id="durbanStat">–</p><p id="durbanStatTxt" style="font-size:16px;color:var(--muted)"></p><p class="src">Sources: "South Africa TRAs 2022–2026" site list (<code>data/tra_sites_2022_2026.csv</code>); our spatial test against the eThekwini floodplain (<code>methods/scripts/build_tra_exposure.ps1</code>).</p></div>
+      <div class="step" data-s="4"><div class="k">Layer 4 · The water comes back</div><p id="refloodTxt">Camps where flooding after the move is documented.</p><p class="src">Sources: Lamontville, <a href="https://iol.co.za/dailynews/news/2025-02-26-tragedy-strikes-lamontville-as-heavy-rains-claim-lives-amid-previous-community-warnings/">IOL, 26 Feb 2025</a> and <a href="https://www.amnesty.org/en/documents/afr53/0369/2025/en/">Amnesty International, AFR 53/0369/2025</a>; Gwala St, <a href="https://mg.co.za/news/south-africa/2022-05-09-opinion-ethekwini-refugees-ordered-back-to-flood-prone-damaged-transit-camp/">Mail &amp; Guardian, 9 May 2022</a>; Isipingo, <a href="https://www.iol.co.za/dailynews/news/isipingo-transit-camp-flooded-2050104">IOL</a> and <a href="https://risingsunnewspapers.co.za/196341/thirteen-years-later-still-no-proper-housing/">Rising Sun</a>; siting flag, <a href="https://www.agsa.co.za/Portals/0/Reports/Special%20Reports/RealTime/Flood%20relief%20SR%20-%20FINAL%20(print).pdf">Auditor-General, Aug 2022</a>.</p></div>
+    </div>
+    <div class="sticky"><svg id="map" viewBox="0 0 760 860" role="img" aria-label="Map of Durban showing satellite-observed water, the city's 100-year floodplain, temporary relocation sites and sites that flooded again"></svg></div>
+  </div>
+</section>
+
+<section id="moved">
+  <div class="act"><div class="k">The same river, 2008–2025</div><h2>"Moved from one place to another"</h2></div>
+  <div class="fig min"><svg id="path" viewBox="0 0 1100 250" role="img" aria-label="Timeline of flood-displaced families in south Durban moved between camps from 2008 to 2025"></svg></div>
+  <p class="fine" style="margin-top:10px">Two overlapping groups of displaced families along the Umlaas and Umlazi rivers in south Durban. </p><p class="src">Sources: <a href="https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/">GroundUp, "We have been moved from one place to another"</a>; <a href="https://www.dailymaverick.co.za/opinionista/2022-03-23-human-rights-day-no-human-rights-for-ethekwinis-umlazi-flood-victims-three-years-down-the-line/">Daily Maverick, 23 Mar 2022</a>; <a href="https://mg.co.za/news/south-africa/2022-05-09-opinion-ethekwini-refugees-ordered-back-to-flood-prone-damaged-transit-camp/">Mail &amp; Guardian, 9 May 2022</a>; <a href="https://www.agsa.co.za/Portals/0/Reports/Special%20Reports/RealTime/Flood%20relief%20SR%20-%20FINAL%20(print).pdf">Auditor-General, Aug 2022</a>; <a href="https://iol.co.za/dailynews/news/2025-02-26-tragedy-strikes-lamontville-as-heavy-rains-claim-lives-amid-previous-community-warnings/">IOL, 26 Feb 2025</a>; <a href="https://www.amnesty.org/en/documents/afr53/0369/2025/en/">Amnesty 2025</a>; Umbilo move, site list #54 (<a href="https://sundaytribune.co.za/news/2025-10-05-flood-victims-struggle-with-strict-rules-at-temporary-accommodation/">Sunday Tribune, Oct 2025</a>).</p>
+</section>
+
+<section id="country">
+  <div class="act"><div class="k">Beyond Durban</div><h2>84 "temporary" sites</h2></div>
+  <div class="two">
+    <div class="fig"><svg id="sa" viewBox="0 0 620 540" role="img" aria-label="Map of South Africa with 84 temporary relocation sites coloured by why they were created"></svg>
+      <div class="legend" id="saLegend" style="margin-top:8px"></div><p class="src">Source: "South Africa TRAs 2022–2026" site list: 84 sites, each with its own sources (GroundUp, IOL, Daily Maverick, PMG, municipal and provincial records), in <code>data/tra_sites_2022_2026.csv</code>. Why each site was created is coded from the list's type and notes, plus our case research. Reflooding is documented at 6 sites.</p></div>
+    <div style="display:grid;gap:22px">
+      <div class="stat"><div class="big camp" id="yrsMax">–</div><p id="yrsMaxTxt"></p></div>
+      <div class="fig"><svg id="yrs" viewBox="0 0 520 380" role="img" aria-label="Years that the longest-running temporary sites have existed"></svg></div><p class="src">Years = 2026 minus the "established" year in the site list; active, non-Covid sites only.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACT 2 -->
+<section id="world">
+  <div class="act"><div class="k">Is it just South Africa?</div><h2>Moved, then flooded</h2></div>
+  <div class="fig min"><svg id="bad" viewBox="0 0 1100 420" role="img" aria-label="Flood years at relocation sites in South Africa, India, the Philippines, Haiti and Bangladesh"></svg></div>
+  <div class="legend"><span><svg width="16" height="12"><rect x="2" y="1" width="3" height="10" fill="var(--muted)"/></svg>people moved in</span><span><i style="background:var(--hit)"></i>site flooded</span><span><i style="background:var(--hit);opacity:.35"></i>assessed as flooding "at least once a year"</span></div><p class="src">Sources: Lamontville &amp; Gwala St and Isipingo, as above; Perumbakkam, <a href="https://citizenmatters.in/flood-audit-report-of-ircduc/">IRCDUC flood audit</a> and <a href="https://www.thenewsminute.com/tamil-nadu/displaced-chennai-families-were-resettled-onto-flood-paths-reveals-study">The News Minute</a>; Semmencheri, <a href="https://caravanmagazine.in/vantage/placing-the-poor-in-the-flood-pathpost-disaster-slum-resettlement-in-chennai">Coelho, <i>Caravan</i></a>; Kasiglahan, <a href="https://www.philstar.com/newsx/kasiglahan-village-flooding">Philstar</a> and <a href="https://www.sciencedirect.com/science/article/pii/S2590061726000384">Lauer et al. 2026, <i>Progress in Disaster Science</i></a>; Corail, <a href="https://canada-haiti.ca/content/haiti-reconstructions-disastrous-legacy-corail-cesselesse">Haiti Grassroots Watch</a> (IOM report, July 2010); Cox's Bazar, <a href="https://www.hrw.org/news/2019/07/12/bangladesh-rohingya-face-monsoon-floods-landslides">HRW 2019</a> and <a href="https://bangladesh.un.org/en/272024-monsoon-rains-trigger-deadly-flash-floods-and-landslides-cox%E2%80%99s-bazar-refugee-camps">UN Bangladesh 2024</a>; Bentiu, <a href="https://www.eyeradio.org/anxiety-as-flood-submerges-section-of-bentiu-idps-camp/">Eye Radio</a> and <a href="https://southsudan.un.org/en/307122-rising-waters-crisis-unity">UN South Sudan</a>.</p>
+</section>
+
+<!-- ACT 3 -->
+<section id="right">
+  <div class="act"><div class="k">Does anyone get it right?</div><h2>Moved, and dry</h2></div>
+  <div class="fig min"><svg id="good" viewBox="0 0 1100 330" role="img" aria-label="Relocations in Australia, Japan, Colombia, the Netherlands and Fiji with no flooding at the new site after the move"></svg></div>
+  <p class="fine" style="margin-top:10px">Grantham, 2013 flood: 3 homes damaged in Grantham; 119 were destroyed across the Lockyer Valley in 2011. The other four sites have no flooding reported since people moved in, but none has yet faced a flood as big as the one that displaced them. Every success also has caveats: Grantham helped only property owners, and Gramalote took six years.</p><p class="src">Sources: Grantham, <a href="https://researchonline.jcu.edu.au/34960/1/34960%20Okada%20et%20al%202014.pdf">Okada et al. 2014, <i>IJDRR</i></a>; Vunidogoloa, <a href="https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf">McMichael et al. 2019</a> and <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8072796/">2021</a>; Iwanuma, <a href="https://www.reconstruction.go.jp/files/user/topics/main-cat1/sub-cat1-16/jirei_e.pdf">Japan Reconstruction Agency</a>; Overdiepse, <a href="https://research-portal.uu.nl/ws/files/211569892/DOI-_10.7564_13-IJWG34.pdf">Roth &amp; Winnubst 2015</a>; Gramalote, <a href="https://hazards.colorado.edu/quick-response-report/post-disaster-resettlement">Natural Hazards Center</a> and <a href="https://www.unipamplona.edu.co/unipamplona/portalIG/home_76/recursos/octubre/documentos_descarga/plan_reasentamiento_miraflores/17102013/plan_reasentamiento_miraflores.pdf">resettlement plan</a>.</p>
+</section>
+
+<!-- ACT 4 -->
+<section id="why">
+  <div class="act"><div class="k">So why?</div><h2>The usual suspects</h2><p style="color:var(--muted)">Test each one against all 11 cases.</p></div>
+  <div class="suspects" id="suspects">
+    <div class="sus"><h3>Climate</h3><p>Floods hit Grantham again in 2013. The people moved to the hilltop stayed dry.</p><p class="src"><a href="https://researchonline.jcu.edu.au/34960/1/34960%20Okada%20et%20al%202014.pdf">Okada et al. 2014</a></p><div class="v">Hits every case</div></div>
+    <div class="sus"><h3>Money</h3><p>Haiti had large amounts of international money and still built on flood land. Fiji and Colombia got it right.</p><p class="src"><a href="https://canada-haiti.ca/content/haiti-reconstructions-disastrous-legacy-corail-cesselesse">Haiti Grassroots Watch</a>; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8072796/">McMichael 2021</a>; <a href="https://hazards.colorado.edu/quick-response-report/post-disaster-resettlement">NHC</a></p><div class="v">Doesn't separate them</div></div>
+    <div class="sus"><h3>Corruption</h3><p>Documented in 3 of the 4 failures with evidence. Mozambique and Somalia failed without it.</p><p class="src"><a href="https://iol.co.za/mercury/news/2023-10-13-investigation-under-way-in-ethekwini-municipality-after-money-meant-for-housing-project-disappears/">IOL R32m probe</a>; Haiti land deal (AP, via <code>relocation_deep_does.json</code>); <code>relocation_rootcause_matrix.csv</code></p><div class="v">Makes it worse, doesn't cause it</div></div>
+    <div class="sus"><h3>Incompetence</h3><p>In every failure, someone had already flagged the site: an auditor, a UN agency or a study.</p><p class="src"><a href="https://www.agsa.co.za/Portals/0/Reports/Special%20Reports/RealTime/Flood%20relief%20SR%20-%20FINAL%20(print).pdf">Auditor-General 2022</a>; IOM 2010 (<a href="https://canada-haiti.ca/content/haiti-reconstructions-disastrous-legacy-corail-cesselesse">HGW</a>); <a href="https://citizenmatters.in/flood-audit-report-of-ircduc/">IRCDUC</a>; <a href="https://www.philstar.com/newsx/kasiglahan-village-flooding">Philstar</a></p><div class="v">They knew</div></div>
+    <div class="sus"><h3>Elections</h3><p>The displaced aren't a voting bloc anyone fears. The ratepayers who block sites are.</p><p class="src"><a href="https://static.pmg.org.za/230308_Ethekwini_Metro.pdf">eThekwini to Parliament, 8 Mar 2023</a>; <a href="https://pmg.org.za/committee-meeting/35527/">PMG</a>; <a href="https://mg.co.za/politics/2023-10-28-anc-takes-ward-off-da-ifp-coalition-in-ethekwini-halting-slide/">M&amp;G, Oct 2023</a></p><div class="v">Backwards</div></div>
+  </div>
+  <div style="margin-top:40px" class="act"><div class="k">What does separate them</div></div>
+  <div class="fig min"><svg id="dumb" viewBox="0 0 1000 330" role="img" aria-label="Share of failure and success cases with each structural factor"></svg></div>
+  <div class="legend"><span><i style="background:var(--hit)"></i>6 relocations into flood risk</span><span><i style="background:var(--ok)"></i>5 relocations out of it</span></div><p class="src">Source: our scoring of 11 cases on 10 factors from sourced findings (<code>data/relocation_rootcause_matrix.csv</code>, <code>data/raw/relocation_deep_*.json</code>). Consistent with <a href="https://doi.org/10.1038/s41558-023-01753-x">Bower et al. 2023, <i>Nature Climate Change</i></a>: community-driven relocations did better.</p>
+</section>
+
+<!-- ACT 5 -->
+<section id="reveal" class="reveal">
+  <div class="act"><div class="k">The reveal</div><div class="big">Nobody<br><span class="hit">owns it.</span></div></div>
+  <div class="two">
+    <div class="fig"><svg id="orgBad" viewBox="0 0 520 470" role="img" aria-label="South Africa: eight links held by different bodies across three spheres of government"></svg></div>
+    <div class="fig"><svg id="orgGood" viewBox="0 0 520 470" role="img" aria-label="Successful model: one owner across the links, residents at the table"></svg></div>
+  </div>
+  <p style="margin-top:34px;font-size:clamp(20px,2.4vw,26px);max-width:32em">In South Africa, 8 links in the chain are held by 3 spheres of government. None of them is answerable for whether families are safe three years later, or whether a warning reached them in <span class="wat">isiZulu</span>.</p><p class="src">Sources: <a href="https://dhs.mpg.gov.za/2%20Volume%204%20Emergency%20Housing%20Programme.pdf">National Housing Code, Vol. 4, Emergency Housing Programme</a>; <a href="https://static.pmg.org.za/230308_Ethekwini_Metro.pdf">eThekwini to Parliament, 8 Mar 2023</a>; <a href="https://groundup.org.za/article/kzn-is-failing-to-build-houses-for-thousands-of-flood-victims/">GroundUp: R360m unspent, 0 of 2,224 units</a>; <a href="https://www.agsa.co.za/Portals/0/Reports/Special%20Reports/RealTime/Flood%20relief%20SR%20-%20FINAL%20(print).pdf">Auditor-General 2022</a>; success cases as above; warning language, <code>data/warning_language.json</code>.</p>
+</section>
+
+<section id="method">
+  <div class="k" style="margin-bottom:12px">Data and method</div>
+  <p class="fine" id="methodTxt"></p>
+  <div class="srcs" style="margin-top:16px">
+    <p><b>Sites:</b> "South Africa TRAs 2022–2026" list (84 sites, with per-site sources), transcribed to <code>data/tra_sites_2022_2026.csv</code>.</p>
+    <p><b>Satellite water:</b> JRC Global Surface Water occurrence 1984–2021 (Pekel et al. 2016, <i>Nature</i> 540: 418–422), <a href="https://global-surface-water.appspot.com/">global-surface-water.appspot.com</a>.</p>
+    <p><b>Floodplain:</b> eThekwini Municipality, <i>Flood Plain 100yr</i>, <a href="https://gis-ethekwini.opendata.arcgis.com/datasets/e33fb655723e49fab434a23a8ca3d1d2_0">eThekwini open data</a>.</p>
+    <p><b>Reflooding:</b> the site list's status notes; <a href="https://iol.co.za/dailynews/news/2025-02-26-tragedy-strikes-lamontville-as-heavy-rains-claim-lives-amid-previous-community-warnings/">IOL, Lamontville Feb 2025</a>; <a href="https://mg.co.za/opinion/2022-05-09-opinion-ethekwini-refugees-ordered-back-to-flood-prone-damaged-transit-camp/">Mail &amp; Guardian, May 2022</a>; <a href="https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/">GroundUp</a>.</p>
+    <p><b>World cases:</b> <code>data/raw/relocation_deep_*.json</code>. Key sources: Coelho (Caravan) and IRCDUC for Chennai; Lauer et al. 2026 for Kasiglahan; IOM (2010) for Corail; Okada et al. 2014 for Grantham; Reconstruction Agency for Iwanuma; Oliver-Smith and Arenas for Gramalote; Roth and Winnubst 2015 for Overdiepse; McMichael et al. 2019 for Vunidogoloa.</p>
+    <p><b>Scoring:</b> <code>data/relocation_rootcause_matrix.csv</code>. Eleven cases chosen because of how they turned out, so read the result as a pattern, not a statistical test.</p>
+  </div>
+</section>
+</div>
+
+<script src="vendor/d3.v7.min.js"></script>
+<script src="vendor/topojson-client.min.js"></script>
+<script src="vendor/world-50m.js"></script>
+<script src="tra-story-data.js"></script>
+<script>
+(function(){
+var T=window.TRA, S=T.summary, sites=T.sites.filter(function(d){return d.lat!=="";});
+sites.forEach(function(d){d.lat=+d.lat;d.lon=+d.lon;});
+var css=function(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim();};
+var C={water:css("--water"),plain:css("--plain"),camp:css("--camp"),hit:css("--hit"),ok:css("--ok"),ink:css("--ink"),muted:css("--muted"),rule:css("--rule"),panel:css("--panel")};
+var mono="'IBM Plex Mono',monospace", disp="'Barlow Condensed','Arial Narrow',sans-serif";
+
+/* ---------- ACT 1: Durban layers ---------- */
+var svg=d3.select("#map"), W=760, H=860, M=S.mosaic;
+var dsites=sites.filter(function(d){return d.muni==="eThekwini";});
+var bounds={type:"Feature",geometry:{type:"Polygon",coordinates:[[[30.74,-29.53],[31.14,-29.53],[31.14,-30.06],[30.74,-30.06],[30.74,-29.53]]]}};
+var proj=d3.geoMercator().fitExtent([[10,10],[W-10,H-10]],bounds), path=d3.geoPath(proj);
+svg.append("rect").attr("width",W).attr("height",H).attr("fill",C.panel);
+var p0=proj([M.west,M.north]), p1=proj([M.east,M.south]);
+svg.append("clipPath").attr("id","mapclip").append("rect").attr("width",W).attr("height",H);var gWater=svg.append("g").attr("class","L1").attr("clip-path","url(#mapclip)");
+gWater.append("image").attr("href","durban_water.png").attr("x",p0[0]).attr("y",p0[1]).attr("width",p1[0]-p0[0]).attr("height",p1[1]-p0[1]).attr("preserveAspectRatio","none").style("image-rendering","pixelated");
+var defs=svg.append("defs");
+var pat=defs.append("pattern").attr("id","hatch").attr("width",6).attr("height",6).attr("patternUnits","userSpaceOnUse").attr("patternTransform","rotate(45)");
+pat.append("rect").attr("width",6).attr("height",6).attr("fill",C.plain).attr("opacity",.35); pat.append("line").attr("x1",0).attr("y1",0).attr("x2",0).attr("y2",6).attr("stroke",C.plain).attr("stroke-width",2.5);
+var gPlain=svg.append("g").attr("class","L2").style("opacity",0);
+gPlain.selectAll("path").data((window.FLOODPLAIN&&FLOODPLAIN.features)||[]).join("path").attr("d",path).attr("fill","url(#hatch)").attr("stroke",C.plain).attr("stroke-width",.6);
+var gCamps=svg.append("g").attr("class","L3").style("opacity",0);
+gCamps.selectAll("circle").data(dsites).join("circle").attr("cx",function(d){return proj([d.lon,d.lat])[0];}).attr("cy",function(d){return proj([d.lon,d.lat])[1];}).attr("r",6.5).attr("fill",C.camp).attr("stroke",C.panel).attr("stroke-width",1.5);
+var gHit=svg.append("g").attr("class","L4").style("opacity",0);
+var hits=dsites.filter(function(d){return d.reflood==="yes";});
+var lbl={26:"Isipingo · flooded 4–5 times",32:"Gwala St · flooded Apr 2022",33:"Lamontville · Feb 2025, 5 dead"};
+hits.forEach(function(d,i){var p=proj([d.lon,d.lat]);
+  gHit.append("circle").attr("class","pulse").attr("cx",p[0]).attr("cy",p[1]).attr("r",8).attr("fill","none").attr("stroke",C.hit).attr("stroke-width",2);
+  gHit.append("circle").attr("cx",p[0]).attr("cy",p[1]).attr("r",7.5).attr("fill",C.hit).attr("stroke",C.panel).attr("stroke-width",1.5);
+  var t=lbl[d.id]||d.site, dy=[-22,26,-4][i%3], dx=d.id===32?-16:16, anc=d.id===32?"end":"start";
+  gHit.append("text").attr("x",p[0]+dx).attr("y",p[1]+dy).attr("text-anchor",anc).attr("fill",C.ink).attr("font-family",mono).attr("font-size",14).attr("paint-order","stroke").attr("stroke",C.panel).attr("stroke-width",4).text(t);});
+/* place labels + scale */
+[["DURBAN CBD",31.02,-29.858],["UMLAZI",30.885,-29.965],["PINETOWN",30.86,-29.815],["INANDA",30.95,-29.69]].forEach(function(l){var p=proj([l[1],l[2]]);
+  svg.append("text").attr("x",p[0]).attr("y",p[1]).attr("fill",C.muted).attr("font-family",disp).attr("font-size",15).attr("letter-spacing",".12em").attr("text-anchor","middle").text(l[0]);});
+var s0=proj([30.78,-30.04]),s1=proj([30.78+10/96.4,-30.04]);
+svg.append("line").attr("x1",s0[0]).attr("x2",s1[0]).attr("y1",s0[1]).attr("y2",s0[1]).attr("stroke",C.muted).attr("stroke-width",2);
+svg.append("text").attr("x",s0[0]).attr("y",s0[1]-8).attr("fill",C.muted).attr("font-family",mono).attr("font-size",12).text("10 km");
+var cap=svg.append("text").attr("x",W-16).attr("y",H-16).attr("text-anchor","end").attr("fill",C.muted).attr("font-family",mono).attr("font-size",12);
+var caps={1:"JRC Global Surface Water 1984–2021",2:"+ eThekwini Flood Plain 100yr",3:"+ transit camps and emergency accommodation",4:"+ documented reflooding"};
+function setStep(n){[".L2",".L3",".L4"].forEach(function(c,i){svg.select(c).transition().duration(500).style("opacity",n>=i+2?1:0);});cap.text(caps[n]||caps[1]);}
+setStep(1);
+var within=S.durban_sites_inside_or_250m, tested=S.durban_sites_tested;
+document.getElementById("durbanStat").textContent=within+" of "+tested;
+document.getElementById("durbanStatTxt").innerHTML="Durban camps inside the city's floodplain or within 250 m of it ("+Math.round(100*within/tested)+"%). Random ground across Durban: "+S.baseline_inside_or_250m_pct+"%. <b style='color:var(--ink)'>The flood map made no difference to where people were put.</b>";
+document.getElementById("refloodTxt").innerHTML="<span class='hit'>"+hits.length+" Durban camps</span> where flooding after the move is documented. "+
+  "One was Lamontville: the Auditor-General flagged unsuitable siting in August 2022, and 5 people died there in February 2025.";
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){document.querySelectorAll(".step").forEach(function(s){s.classList.remove("on");});e.target.classList.add("on");setStep(+e.target.dataset.s);}});},{rootMargin:"-45% 0px -45% 0px"});
+document.querySelectorAll(".step").forEach(function(s){io.observe(s);});
+document.querySelector(".step").classList.add("on");
+
+/* ---------- moved timeline ---------- */
+(function(){var s=d3.select("#path"),x=d3.scaleLinear([2007.5,2025.8],[40,1060]);
+  s.append("line").attr("x1",40).attr("x2",1060).attr("y1",150).attr("y2",150).attr("stroke",C.rule).attr("stroke-width",2);
+  d3.range(2008,2026).forEach(function(y){s.append("text").attr("x",x(y)).attr("y",240).attr("text-anchor","middle").attr("fill",C.muted).attr("font-family",mono).attr("font-size",12).text(y%2===0?y:"");
+    s.append("line").attr("x1",x(y)).attr("x2",x(y)).attr("y1",146).attr("y2",154).attr("stroke",C.muted);});
+  var ev=[[2008.3,"move","Moved to Lamontville transit camps after uMlazi floods"],[2012.2,"hit","Mega Village floods"],[2016.3,"hit","Floods again"],[2019.3,"hit","Floods again → tents"],[2021.2,"move","Moved to Gwala St, by the Umlaas canal"],[2022.28,"hit","Gwala St floods"],[2022.6,"move","TEA on the Umlazi riverbank"],[2022.66,"flag","Auditor-General: 'unsuitable land'"],[2025.15,"hit","Lamontville camp floods · 5 dead"],[2025.55,"move","Moved to Umbilo residence"]];
+  ev.forEach(function(e,i){var X=x(e[0]),up=i%2===0,col=e[1]==="hit"?C.hit:e[1]==="flag"?C.water:C.camp;
+    s.append("line").attr("x1",X).attr("x2",X).attr("y1",150).attr("y2",up?92:208).attr("stroke",col).attr("stroke-width",1.2).attr("opacity",.7);
+    if(e[1]==="move")s.append("rect").attr("x",X-4).attr("y",142).attr("width",8).attr("height",16).attr("fill",col);
+    else s.append("circle").attr("cx",X).attr("cy",150).attr("r",e[1]==="hit"?9:6).attr("fill",col);
+    s.append("text").attr("x",X).attr("y",up?84:224).attr("text-anchor",X>900?"end":X<120?"start":"middle").attr("fill",C.ink).attr("font-size",14.5).text(e[2]);});
+  s.append("text").attr("x",40).attr("y",24).attr("fill",C.muted).attr("font-family",mono).attr("font-size",12).text("■ moved by the state    ● flooded    ● warned");
+})();
+
+/* ---------- national map ---------- */
+(function(){var WT=window.WORLD_TOPO,za=topojson.feature(WT,WT.objects.countries).features.filter(function(f){return +f.id===710;})[0];
+  if(za&&za.geometry.type==="MultiPolygon"){za={type:"Feature",geometry:{type:"MultiPolygon",coordinates:za.geometry.coordinates.filter(function(p){return p[0][0][1]>-36;})}};}
+  var s=d3.select("#sa"),pr=d3.geoMercator().fitExtent([[10,10],[610,530]],za),pa=d3.geoPath(pr);
+  s.append("path").attr("d",pa(za)).attr("fill",C.panel).attr("stroke",C.muted).attr("stroke-width",.8);
+  var col={flood:C.water,clearance:C.camp,eviction:C.camp,covid:"#B58CF0",fire:"#F28C5B",densification:"#C9C28A",upgrading:"#C9C28A",other:C.muted,unknown:C.muted};
+  var lab={flood:"flood survivors",clearance:"clearances and evictions",covid:"Covid decongestion",fire:"fire survivors",densification:"upgrading and de-densification",unknown:"other or unknown"};
+  var sorted=sites.slice().sort(function(a,b){return (a.reflood==="yes")-(b.reflood==="yes");});
+  s.selectAll("circle.s").data(sorted).join("circle").attr("class","s").attr("cx",function(d){return pr([d.lon,d.lat])[0];}).attr("cy",function(d){return pr([d.lon,d.lat])[1];})
+    .attr("r",function(d){return d.reflood==="yes"?6:4.2;}).attr("fill",function(d){return col[d.origin]||C.muted;}).attr("fill-opacity",.85)
+    .attr("stroke",function(d){return d.reflood==="yes"?C.hit:C.panel;}).attr("stroke-width",function(d){return d.reflood==="yes"?2.5:1;});
+  [["Cape Town",18.5,-33.93,-14,"end"],["Durban",31.0,-29.86,14,"start"],["Johannesburg",28.05,-26.2,14,"start"],["Gqeberha",25.6,-33.96,0,"middle"],["Mthatha",28.78,-31.59,14,"start"],["East London",27.9,-33.0,14,"start"]].forEach(function(c){var p=pr([c[1],c[2]]);
+    s.append("text").attr("x",p[0]+c[3]).attr("y",c[3]===0?p[1]+22:p[1]+4).attr("text-anchor",c[4]).attr("fill",C.ink).attr("font-family",disp).attr("font-size",15).attr("letter-spacing",".06em").text(c[0]);});
+  var counts={};sites.forEach(function(d){var k=d.origin==="eviction"?"clearance":d.origin==="upgrading"?"densification":d.origin==="other"?"unknown":d.origin;counts[k]=(counts[k]||0)+1;});
+  document.getElementById("saLegend").innerHTML=Object.keys(lab).filter(function(k){return counts[k];}).map(function(k){return "<span><i style='background:"+(col[k])+"'></i>"+lab[k]+" ("+counts[k]+")</span>";}).join("")+"<span><i style='background:transparent;border:2.5px solid "+C.hit+"'></i>flooding documented after the move</span>";
+})();
+
+/* ---------- years temporary ---------- */
+(function(){var act=T.sites.filter(function(d){return d.est&&/^Active/.test(d.status)&&d.origin!=="covid";}).map(function(d){return {n:d.site.replace(/\s*\(.*\)/,"").replace(/ TRA$| transit camp$/,""),m:d.muni,y:2026-(+d.est)};}).sort(function(a,b){return b.y-a.y;}).slice(0,12);
+  document.getElementById("yrsMax").textContent=act[0].y+" years";
+  document.getElementById("yrsMaxTxt").textContent=act[0].n+" ("+act[0].m+"), still active. These are the longest-running \"temporary\" sites on the list:";
+  var s=d3.select("#yrs"),x=d3.scaleLinear([0,25],[170,500]);
+  act.forEach(function(d,i){var y=14+i*30;s.append("text").attr("x",162).attr("y",y+13).attr("text-anchor","end").attr("fill",C.ink).attr("font-size",14).text(d.n.length>22?d.n.slice(0,21)+"…":d.n);
+    s.append("rect").attr("x",170).attr("y",y).attr("width",x(d.y)-170).attr("height",18).attr("fill",C.camp).attr("opacity",.85);
+    s.append("text").attr("x",x(d.y)+6).attr("y",y+14).attr("fill",C.muted).attr("font-family",mono).attr("font-size",12).text(d.y+" yrs");});
+})();
+
+/* ---------- strips ---------- */
+function strips(id,rows,good){var s=d3.select(id),x=d3.scaleLinear([1998,2026.5],[250,1080]),h=good?52:48;
+  d3.range(2000,2027,2).forEach(function(y){s.append("line").attr("x1",x(y)).attr("x2",x(y)).attr("y1",10).attr("y2",rows.length*h+12).attr("stroke",C.rule);
+    s.append("text").attr("x",x(y)).attr("y",rows.length*h+30).attr("text-anchor","middle").attr("fill",C.muted).attr("font-family",mono).attr("font-size",12).text(y);});
+  rows.forEach(function(r,i){var y=28+i*h;
+    s.append("text").attr("x",10).attr("y",y-2).attr("fill",C.ink).attr("font-family",disp).attr("font-size",20).attr("font-weight",600).text(r[0]);
+    s.append("text").attr("x",10).attr("y",y+15).attr("fill",C.muted).attr("font-family",mono).attr("font-size",11.5).text(r[1]);
+    s.append("line").attr("x1",x(r[2])).attr("x2",x(2026.3)).attr("y1",y).attr("y2",y).attr("stroke",good?C.ok:C.muted).attr("stroke-width",good?3:1.5).attr("opacity",good?.8:.6);
+    s.append("rect").attr("x",x(r[2])-2).attr("y",y-11).attr("width",4).attr("height",22).attr("fill",C.ink);
+    if(r[4])for(var yy=Math.ceil(r[2]);yy<=2026;yy++)s.append("circle").attr("cx",x(yy)).attr("cy",y).attr("r",8).attr("fill",C.hit).attr("opacity",.28);
+    (r[3]||[]).forEach(function(f){s.append("circle").attr("cx",x(f)).attr("cy",y).attr("r",9).attr("fill",C.hit);});
+    if(r[5])s.append("text").attr("x",x(2026.3)+4).attr("y",y+4).attr("fill",good?C.ok:C.hit).attr("font-family",mono).attr("font-size",11.5).attr("text-anchor","end").attr("dy",-14).text(r[5]);});}
+strips("#bad",[
+ ["Lamontville & Gwala St","South Africa · eThekwini",2021.2,[2022.3,2025.15],0,"5 dead, Feb 2025"],
+ ["Isipingo camp","South Africa · eThekwini",2009,[2022.3],0,"flooded 4–5 times; only 2022 dated"],
+ ["Perumbakkam","India · Chennai",2015.95,[2018.9,2019.9,2020.9,2021.9,2023.9],0,"also flooded in 2015, before most moved in"],
+ ["Semmencheri","India · Chennai",2005.5,[2015.9,2023.9],0,"12 deaths reported, 2015"],
+ ["Kasiglahan Village","Philippines · Rizal",1999.5,[2009.7,2012.6,2014.6,2020.9],0,"~7,591 units hit, 2020"],
+ ["Corail-Cesselesse","Haiti",2010.3,[],1,"IOM: 'should not be used'"],
+ ["Cox's Bazar camps","Bangladesh",2017.7,[2018.6,2019.6,2020.6,2021.6,2024.5],0,""],
+ ["Bentiu camp","South Sudan",2014,[2021.8,2022.8],0,"dyke breach, Oct 2022"]],false);
+strips("#good",[
+ ["Grantham","Australia · hilltop land swap",2011.9,[],0,"2013 flood: 3 homes damaged"],
+ ["Vunidogoloa","Fiji · village's own clan land",2014,[],0,"no flooding 2015–2023"],
+ ["Iwanuma","Japan · resident committee, 28 meetings",2015,[],0,"no flooding reported"],
+ ["Overdiepse polder","Netherlands · farms on 6 m mounds",2015,[],0,"no flooding reported"],
+ ["Gramalote","Colombia · renters became owners",2017,[],0,"no disaster reported"]],true);
+
+/* ---------- suspects strike-through on view ---------- */
+var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){document.querySelectorAll(".sus").forEach(function(el,i){setTimeout(function(){el.classList.add("out");},i*350);});io2.disconnect();}});},{threshold:.4});
+io2.observe(document.getElementById("suspects"));
+
+/* ---------- dumbbell ---------- */
+(function(){var F=[["One body owns land + outcome",0,90],["Residents help choose the site",0,90],["Permanent tenure from the move",17,100],["Flood maps binding on siting",8,100],["Cheapest or leftover land",90,0],["A court forced action",0,0]];
+  var s=d3.select("#dumb"),x=d3.scaleLinear([0,100],[330,970]);
+  [0,50,100].forEach(function(v){s.append("line").attr("x1",x(v)).attr("x2",x(v)).attr("y1",10).attr("y2",300).attr("stroke",C.rule);s.append("text").attr("x",x(v)).attr("y",322).attr("text-anchor","middle").attr("fill",C.muted).attr("font-family",mono).attr("font-size",12).text(v+"%");});
+  F.forEach(function(f,i){var y=32+i*48;s.append("text").attr("x",316).attr("y",y+5).attr("text-anchor","end").attr("fill",C.ink).attr("font-size",17).text(f[0]);
+    s.append("line").attr("x1",x(f[1])).attr("x2",x(f[2])).attr("y1",y).attr("y2",y).attr("stroke",C.muted).attr("stroke-width",3).attr("opacity",.4);
+    s.append("circle").attr("cx",x(f[1])).attr("cy",y).attr("r",10).attr("fill",C.hit);
+    s.append("circle").attr("cx",x(f[2])).attr("cy",y).attr("r",10).attr("fill",f[1]===f[2]?"none":C.ok).attr("stroke",C.ok).attr("stroke-width",f[1]===f[2]?3:0);});
+})();
+
+/* ---------- org charts ---------- */
+function org(id,good){var s=d3.select(id);
+  var links=["Forecast","Warning","Rescue","Housing money","Land","Shelters","Permanent home","Oversight"];
+  s.append("text").attr("x",10).attr("y",24).attr("fill",good?C.ok:C.hit).attr("font-family",disp).attr("font-size",24).attr("font-weight",700).text(good?"GRANTHAM · IWANUMA · GRAMALOTE":"SOUTH AFRICA · eTHEKWINI");
+  links.forEach(function(l,i){var y=52+i*40;s.append("text").attr("x",10).attr("y",y+20).attr("fill",C.muted).attr("font-family",mono).attr("font-size",12).text(l.toUpperCase());});
+  if(!good){var who=[["SAWS",0],["Municipal disaster mgmt + councillor",1],["Metro + SAPS + province",1],["Province: Human Settlements",2],["Metro · ratepayers veto",1],["Province via HDA",2],["Housing list: province + metro",2],["Auditor-General, afterwards",0]];
+    var colx=[300,300,300];
+    who.forEach(function(w,i){var y=52+i*40,x=[150,230,190][w[1]];
+      s.append("rect").attr("x",x).attr("y",y).attr("width",250).attr("height",30).attr("rx",3).attr("fill",C.panel).attr("stroke",C.hit).attr("stroke-width",1.2).attr("stroke-dasharray",i%2?"4 3":null);
+      s.append("text").attr("x",x+10).attr("y",y+20).attr("fill",C.ink).attr("font-size",14).text(w[0]);});
+    s.append("text").attr("x",10).attr("y",400).attr("fill",C.hit).attr("font-family",mono).attr("font-size",12.5).text("NATIONAL · PROVINCIAL · MUNICIPAL: 8 HANDS, NO OWNER");
+    s.append("rect").attr("x",10).attr("y",420).attr("width",500).attr("height",38).attr("rx",3).attr("fill","none").attr("stroke",C.hit).attr("stroke-dasharray","3 4");
+    s.append("text").attr("x",260).attr("y",444).attr("text-anchor","middle").attr("fill",C.hit).attr("font-size",15).text("Displaced families: lease, no title, no seat");}
+  else{s.append("rect").attr("x",150).attr("y",52).attr("width",360).attr("height",30).attr("rx",3).attr("fill",C.panel).attr("stroke",C.muted);
+    s.append("text").attr("x",160).attr("y",72).attr("fill",C.ink).attr("font-size",14).text("National weather service");
+    s.append("rect").attr("x",150).attr("y",92).attr("width",360).attr("height",70).attr("rx",3).attr("fill","none").attr("stroke",C.ok).attr("stroke-dasharray","3 4");
+    s.append("text").attr("x",330).attr("y",132).attr("text-anchor","middle").attr("fill",C.ok).attr("font-size",13.5).text("thesis: the same owner holds the warning");
+    s.append("rect").attr("x",150).attr("y",172).attr("width",360).attr("height",190).attr("rx",3).attr("fill",C.ok).attr("fill-opacity",.12).attr("stroke",C.ok).attr("stroke-width",2);
+    s.append("text").attr("x",330).attr("y",250).attr("text-anchor","middle").attr("fill",C.ok).attr("font-family",disp).attr("font-size",30).attr("font-weight",700).text("ONE OWNER");
+    s.append("text").attr("x",330).attr("y",276).attr("text-anchor","middle").attr("fill",C.ink).attr("font-size",14.5).text("land power · one budget · legal authority");
+    s.append("text").attr("x",330).attr("y",300).attr("text-anchor","middle").attr("fill",C.muted).attr("font-size",14).text("judged on 'safe years later'");
+    s.append("text").attr("x",10).attr("y",400).attr("fill",C.ok).attr("font-family",mono).attr("font-size",12.5).text("RESIDENTS AT THE TABLE · TITLE OR TENANCY FROM DAY ONE");
+    s.append("rect").attr("x",10).attr("y",420).attr("width",500).attr("height",38).attr("rx",3).attr("fill",C.ok).attr("fill-opacity",.12).attr("stroke",C.ok);
+    s.append("text").attr("x",260).attr("y",444).attr("text-anchor","middle").attr("fill",C.ok).attr("font-size",15).text("Residents' committee helps choose the site");}}
+org("#orgBad",false); org("#orgGood",true);
+
+document.getElementById("methodTxt").innerHTML="Of the "+S.sites+" listed sites, "+S.with_coords+" have coordinates, mostly estimated to within 1–3 km, so each site's result is indicative. The "+S.durban_sites_tested+" Durban sites were tested against the city's 100-year floodplain (inside, within 250 m, or within 1 km), and against satellite water within 1 km. 300 random points across the same urban area give the baseline: "+S.baseline_inside_or_250m_pct+"% are inside or within 250 m of the floodplain, against "+Math.round(100*within/tested)+"% of camps. Reflooding counts only floods documented after the move. Built by <code>methods/scripts/build_tra_exposure.ps1</code>.";
+})();
+</script>
