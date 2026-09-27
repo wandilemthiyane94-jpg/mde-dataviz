@@ -1,0 +1,336 @@
+<title>Who Owns the Flood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#EEF2F1; --panel:#F8FAF9; --ink:#14212B; --muted:#56656F; --rule:#C9D3D2;
+  --water:#2B6A8A; --water-soft:#D5E5EC; --break:#B02A1F; --break-soft:#F3D9D5;
+  --own:#23734F; --own-soft:#D4EADF; --veto:#8A5A12;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1519; --panel:#152027; --ink:#E4ECEE; --muted:#97A7AF; --rule:#2C3A41;
+    --water:#6DB0CF; --water-soft:#18323F; --break:#F07A6C; --break-soft:#3A1D1A;
+    --own:#6BC79B; --own-soft:#143228; --veto:#E0AE5C; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1519; --panel:#152027; --ink:#E4ECEE; --muted:#97A7AF; --rule:#2C3A41;
+  --water:#6DB0CF; --water-soft:#18323F; --break:#F07A6C; --break-soft:#3A1D1A;
+  --own:#6BC79B; --own-soft:#143228; --veto:#E0AE5C; color-scheme:dark;
+}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:.01em;line-height:1.05;text-wrap:balance;margin:0}
+h1{font-size:clamp(44px,7vw,84px);text-transform:uppercase}
+h2{font-size:clamp(28px,4vw,40px);text-transform:uppercase;margin-top:8px}
+h3{font-size:22px;text-transform:uppercase}
+p{margin:0;max-width:68ch}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+section{padding-block:44px;border-top:1px solid var(--rule);display:grid;gap:18px}
+.hero{display:grid;gap:18px;padding-block:24px 36px}
+.thesis{font-size:clamp(20px,2.4vw,26px);max-width:40ch;line-height:1.35}
+.thesis b{color:var(--break);font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:8px}
+.stat{border-top:3px solid var(--ink);padding-top:10px;display:grid;gap:4px}
+.stat .n{font-family:var(--display);font-size:44px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.stat .l{font-size:14px;color:var(--muted);line-height:1.35}
+.stat.bad{border-color:var(--break)} .stat.bad .n{color:var(--break)}
+.stat.good{border-color:var(--own)} .stat.good .n{color:var(--own)}
+.fig{background:var(--panel);border:1px solid var(--rule);border-radius:4px;overflow-x:auto}
+.fig svg{display:block;min-width:900px;width:100%;height:auto}
+.fig.narrow svg{min-width:640px}
+.cap{font-family:var(--mono);font-size:12px;color:var(--muted);max-width:none}
+svg text{font-family:var(--body)}
+.breaks{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px 22px;list-style:none;padding:0;margin:0}
+.breaks li{display:grid;grid-template-columns:30px 1fr;gap:10px;font-size:15.5px;line-height:1.45}
+.pin{width:26px;height:26px;border-radius:50%;background:var(--break);color:var(--ground);font-family:var(--mono);font-size:13px;display:grid;place-items:center;font-weight:500}
+.pin.g{background:var(--own)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:16px 18px;display:grid;gap:8px;align-content:start}
+.card.ok{border-top:4px solid var(--own)} .card.fail{border-top:4px solid var(--break)}
+.card h3{font-size:21px}
+.card .where{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.card dl{display:grid;grid-template-columns:88px 1fr;gap:5px 10px;margin:0;font-size:14.5px;line-height:1.4}
+.card dt{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.card dd{margin:0}
+.card .res{font-weight:600}
+.card.ok .res{color:var(--own)} .card.fail .res{color:var(--break)}
+.card .cav{font-size:13.5px;color:var(--muted);border-top:1px dashed var(--rule);padding-top:8px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;font-size:14px;min-width:720px;width:100%}
+th,td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td.c{text-align:center}
+.cell{display:inline-block;width:22px;height:22px;border-radius:3px;border:2px solid var(--rule)}
+.cell.gy{background:var(--own);border-color:var(--own)} .cell.by{background:var(--break);border-color:var(--break)}
+.cell.gp{background:linear-gradient(135deg,var(--own) 50%,transparent 50%);border-color:var(--own)}
+.cell.bp{background:linear-gradient(135deg,var(--break) 50%,transparent 50%);border-color:var(--break)}
+.cell.nf{border-style:dashed}
+tr.base td{background:var(--break-soft)}
+.tag{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:10px;white-space:nowrap}
+.tag.f{background:var(--break-soft);color:var(--break)} .tag.s{background:var(--own-soft);color:var(--own)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.levels{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.levels li{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:start;padding:12px 14px;border-radius:4px;background:var(--panel);border:1px solid var(--rule)}
+.levels li:first-child{border:2px solid var(--own)}
+.levels .k{font-family:var(--display);font-size:30px;font-weight:700;line-height:1;color:var(--muted)}
+.levels li:first-child .k{color:var(--own)}
+.levels b{font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.02em;font-weight:600}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+.src{font-size:13.5px;color:var(--muted);columns:2 320px;column-gap:28px}
+.src p{margin-bottom:6px;break-inside:avoid;max-width:none}
+.src a{color:var(--water);word-break:break-word}
+a{color:var(--water)}
+a:focus-visible{outline:2px solid var(--water);outline-offset:2px}
+.note{font-size:15px;color:var(--muted)}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Same Rain, Different Words · Systems map · Harvard GSD MDE</div>
+  <h1>Who owns the flood?</h1>
+  <p class="thesis">South Africa's flood response is split across three spheres of government and eight hand-offs. No one owns the whole process, so <b>the risk lands on whoever cannot push back</b>: families moved onto riverbanks and residents who never get a warning in their language.</p>
+  <div class="stats">
+    <div class="stat bad"><div class="n">8 / 3</div><div class="l">hand-offs across 3 spheres of government between a forecast and a permanent home in eThekwini</div></div>
+    <div class="stat bad"><div class="n">2.5 yrs</div><div class="l">from the Auditor-General flagging unsuitable siting (Aug 2022) to 5 deaths in the Lamontville camp (Feb 2025)</div></div>
+    <div class="stat bad"><div class="n">0 of 6</div><div class="l">relocations into flood risk had one body owning both the land and the outcome</div></div>
+    <div class="stat good"><div class="n">4.5 of 5</div><div class="l">relocations out of risk did (score 90%; Fiji's owner counts as partial)</div></div>
+    <div class="stat bad"><div class="n">0 of 22</div><div class="l">relocation sites worldwide where a source confirms a warning reached the people the state moved there</div></div>
+  </div>
+</header>
+
+<section id="sa">
+  <div class="eyebrow">1 · The South African system</div>
+  <h2>Eight links, three spheres, no owner</h2>
+  <p>Each column is one link in the chain from forecast to permanent home. Each box is the body that holds that link in eThekwini. The dashed lines are hand-offs: nobody owns them, and they are where the failures happen. The families at the bottom are not in any box.</p>
+  <div class="fig"><svg id="saChart" viewBox="0 0 1060 560" role="img" aria-label="Organisation chart of eThekwini flood decision-making showing eight links spread across national, provincial, municipal and ward levels, with five numbered break points"></svg></div>
+  <ol class="breaks">
+    <li><span class="pin">1</span><span><b>Warning to residents.</b> Official warnings are in English. At the sites where people died, a median of 3.1% speak English as a first language. Only 3 of 72 flood events have a resident speaking about the warning in the coverage.</span></li>
+    <li><span class="pin">2</span><span><b>Money and land are split.</b> The province funds and owns the shelters; the city has to find land. In 2022/23, R360m went unspent and none of 2,224 planned flood units were built.</span></li>
+    <li><span class="pin">3</span><span><b>Ratepayers veto; the riverbank remains.</b> Umhlanga, Shallcross and Montclair groups blocked sites. 41% of land is private and 18% is Ingonyama Trust land. What's left is the riverbank and the canal edge.</span></li>
+    <li><span class="pin">4</span><span><b>"Temporary" becomes permanent.</b> The emergency programme says permanent-structure norms "will not apply". The city has built 71 transit camps since 2009; Isipingo has lasted 14 years. The backlog is 469,500 households, and the city calls moving flood victims up the list "que-jumping".</span></li>
+    <li><span class="pin">5</span><span><b>The warning goes nowhere.</b> The Auditor-General flagged "some units… built on unsuitable land" in August 2022. No one owned the fix, and the camp flooded in February 2025. The mayor said it "is related mainly to the size of the storm event".</span></li>
+  </ol>
+</section>
+
+<section id="works">
+  <div class="eyebrow">2 · The system that works</div>
+  <h2>One owner, with powers, answerable to residents</h2>
+  <p>This model is drawn from five relocations that moved people out of danger: Grantham, Overdiepse, Gramalote, Iwanuma and Vunidogoloa. One public body holds every link from housing money to the final outcome. It has the power to secure land, one budget and legal authority. Residents sit on the siting and design decisions, and they come out with title or permanent tenancy.</p>
+  <div class="fig"><svg id="okChart" viewBox="0 0 1060 470" role="img" aria-label="Organisation chart of the successful model showing a single owner spanning the relocation links, backed by land, budget and legal powers, with a residents' committee feeding into siting and design"></svg></div>
+  <p class="note">The success cases are relocations. None of them tested the warning links (forecast, passing the warning on, evacuation). Extending one owner to those links is this project's thesis, shown with a dotted line.</p>
+  <div class="cards" id="okCards"></div>
+</section>
+
+<section id="fails">
+  <div class="eyebrow">3 · South Africa is not alone</div>
+  <h2>Systems like South Africa's fail the same way</h2>
+  <p>In five other places the state relocated people and they stayed exposed. Each has the same structure: responsibility is split, the site is the cheapest or leftover land, the warning existed and wasn't binding, and after the flood the blame went to the weather or the residents.</p>
+  <div class="cards" id="failCards"></div>
+</section>
+
+<section id="test">
+  <div class="eyebrow">4 · The test</div>
+  <h2>What separates failure from success</h2>
+  <p>We scored all 11 cases on ten structural factors, then compared how often each factor appears in the 6 failures and the 5 successes. Wealth, courts and corruption don't separate them. Ownership, residents' say, tenure and binding hazard rules do.</p>
+  <div class="fig narrow"><svg id="dumbbell" viewBox="0 0 900 470" role="img" aria-label="Dumbbell chart comparing the share of failure cases and success cases showing each structural factor"></svg></div>
+  <div class="legend"><span><svg width="14" height="14"><circle cx="7" cy="7" r="6" fill="var(--break)"/></svg>6 relocations into risk (incl. South Africa)</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="6" fill="var(--own)"/></svg>5 relocations out of risk</span><span>Partial counts as half. nf = not found in sources, left out of the share.</span></div>
+  <div class="tbl fig" style="padding:6px 8px"><table id="matrix"></table></div>
+  <div class="legend"><span><i class="cell gy"></i>protective factor present</span><span><i class="cell by"></i>risk factor present</span><span><i class="cell gp"></i><i class="cell bp"></i>partial</span><span><i class="cell"></i>absent</span><span><i class="cell nf"></i>not found</span></div>
+  <p class="note"><b>What doesn't separate them:</b> wealth (Fiji and Colombia succeeded; Haiti failed despite large amounts of international money), courts (no case in either group was forced by a court), and whether the housing programme was permanent (Kasiglahan and Chennai <i>were</i> permanent housing programmes). The less obvious finding is that the successes repeated the failure for their own residents with no standing. Grantham excluded renters and people without insurance. Overdiepse pushed out tenant farmers, and only 8 of 17 families stayed. Gramalote deliberately turned its 40% renters into owners, and it worked for them.</p>
+</section>
+
+<section id="loops">
+  <div class="eyebrow">5 · The systems map</div>
+  <h2>Two loops</h2>
+  <p>Failure reinforces itself. Because there is no consequence, nothing changes before the next flood. In the success loop, the owner is judged on whether people are safe years later, which pulls every decision toward the hazard-free site.</p>
+  <div class="two">
+    <div class="fig narrow"><svg id="loopBad" viewBox="0 0 520 470" role="img" aria-label="Reinforcing failure loop"></svg></div>
+    <div class="fig narrow"><svg id="loopGood" viewBox="0 0 520 470" role="img" aria-label="Reinforcing success loop"></svg></div>
+  </div>
+</section>
+
+<section id="hierarchy">
+  <div class="eyebrow">6 · The hierarchy of the problem</div>
+  <h2>Ownership at the root, implementation below</h2>
+  <ol class="levels">
+    <li><span class="k">L1</span><span><b>Government owns the whole process</b><br>One accountable body from warning to permanent home, judged on "safe years later", with residents given a real say in the decisions. Present in 5 of 5 successes; absent in 6 of 6 failures.</span></li>
+    <li><span class="k">L2</span><span><b>Powers that make ownership real</b><br>Land, one budget and legal authority. Grantham used a state reconstruction declaration; Gramalote used Colombia's Law 1523, Article 73 to buy or expropriate land. In eThekwini this is the hard, political level: private land, Ingonyama Trust land and ratepayer vetoes.</span></li>
+    <li><span class="k">L3</span><span><b>Design rules the owner sets</b><br>A measure of success based on outcomes, not units delivered. No emergency unit inside the 1:100 floodline. A land bank before the next flood. A guaranteed, time-limited path from temporary to permanent housing.</span></li>
+    <li><span class="k">L4</span><span><b>Implementation</b><br>Scoring sites on hazard first (Gramalote weighted stability 30 of 100 points), build quality, electricity, livelihoods, and warnings in residents' languages. These are fixable once someone owns them.</span></li>
+    <li><span class="k">L5</span><span><b>Symptoms</b><br>Blaming the rain, "temporary" lasting 14 years, repeat displacement, deaths. This is the level the media sees.</span></li>
+  </ol>
+  <p class="note">Corruption (the R32m probe found "not a single house was built"), capacity gaps (58% of water and sanitation infrastructure posts are vacant) and fragmented budgets cut across every level. They make failure worse, but fixing them without L1 doesn't change the outcome.</p>
+</section>
+
+<section id="caveats">
+  <div class="eyebrow">Method and caveats</div>
+  <p>We scored 11 cases on ten factors; codes are our reading of sourced findings (<span style="font-family:var(--mono);font-size:14px">data/relocation_rootcause_matrix.csv</span>, built by <span style="font-family:var(--mono);font-size:14px">methods/scripts/build_relocation_rootcause.ps1</span>).</p>
+  <ul>
+    <li><b>Small, outcome-selected sample.</b> Cases were chosen because of how they turned out, so the clean separation overstates how predictive the factors are. Read it as a pattern, not a statistical test.</li>
+    <li><b>Imperfect successes.</b> Grantham excluded non-owners, Gramalote took six years and was a landslide rather than a flood, and Vunidogoloa's promised infrastructure was never built.</li>
+    <li><b>Weaker evidence.</b> Beledweyne rests on a submitted manuscript that may not yet be peer-reviewed. Some quotes come from search snippets and are tagged in the raw JSON.</li>
+    <li><b>Consistent with other research.</b> The Bower et al. (2023) comparison of 14 flood relocations also found community-driven relocations did better.</li>
+  </ul>
+  <div class="src">
+    <p><b>South Africa.</b> Auditor-General flood relief special report (Aug 2022); National Housing Code Vol. 4, Emergency Housing Programme: <a href="https://dhs.mpg.gov.za/2%20Volume%204%20Emergency%20Housing%20Programme.pdf">dhs.mpg.gov.za</a>; eThekwini briefing to Parliament, 8 Mar 2023: <a href="https://static.pmg.org.za/230308_Ethekwini_Metro.pdf">pmg.org.za</a>; <a href="https://groundup.org.za/article/kzn-is-failing-to-build-houses-for-thousands-of-flood-victims/">GroundUp: KZN failing to build houses</a>; <a href="https://iol.co.za/news/south-africa/kwazulu-natal/2021-04-16-ethekwini-eradicates-17-out-of-71-transit-camps-built-to-make-way-for-2010-fifa-world-cup/">IOL: 71 transit camps</a>; <a href="https://mg.co.za/opinion/2022-05-09-opinion-ethekwini-refugees-ordered-back-to-flood-prone-damaged-transit-camp/">M&amp;G: refugees ordered back to flood-prone camp</a>; <a href="https://iol.co.za/dailynews/news/2025-02-26-tragedy-strikes-lamontville-as-heavy-rains-claim-lives-amid-previous-community-warnings/">IOL: Lamontville deaths</a>; <a href="https://iol.co.za/mercury/news/2023-10-13-investigation-under-way-in-ethekwini-municipality-after-money-meant-for-housing-project-disappears/">IOL: R32m housing probe</a>; <a href="https://iol.co.za/mercury/2025-06-04-ethekwini-municipality-grapples-with-severe-staff-shortages-in-water-and-sanitation-units/">IOL: 58% vacancies</a>; Amnesty International, <i>Flooded and Forgotten</i> (2025).</p>
+    <p><b>Successes.</b> Okada et al. 2014, Grantham: <a href="https://researchonline.jcu.edu.au/34960/1/34960%20Okada%20et%20al%202014.pdf">JCU</a>; Roth &amp; Winnubst 2015, Overdiepse: <a href="https://research-portal.uu.nl/ws/files/211569892/DOI-_10.7564_13-IJWG34.pdf">Utrecht</a>; Gramalote resettlement plan: <a href="https://www.unipamplona.edu.co/unipamplona/portalIG/home_76/recursos/octubre/documentos_descarga/plan_reasentamiento_miraflores/17102013/plan_reasentamiento_miraflores.pdf">Unipamplona</a> and <a href="https://hazards.colorado.edu/quick-response-report/post-disaster-resettlement">Natural Hazards Center</a>; Iwanuma: <a href="https://www.reconstruction.go.jp/files/user/topics/main-cat1/sub-cat1-16/jirei_e.pdf">Reconstruction Agency</a>; McMichael et al. 2019, Vunidogoloa: <a href="https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf">IOM</a>.</p>
+    <p><b>Failures.</b> Kasiglahan: <a href="https://philstar.com/headlines/climate-and-environment/2021/12/10/2140820/year-on-kasiglahan-folk-still-haunted-ulysses-flooding">Philstar</a>; Chennai: <a href="https://caravanmagazine.in/vantage/placing-the-poor-in-the-flood-pathpost-disaster-slum-resettlement-in-chennai">Coelho, Caravan</a>, <a href="https://discovery.ucl.ac.uk/id/eprint/1524130/1/Arabindoo_Unprecedented%20natures%20An%20anatomy%20of%20the%20Chennai%20floodAAM.pdf">Arabindoo 2016</a>; Corail: <a href="https://canada-haiti.ca/content/haiti-reconstructions-disastrous-legacy-corail-cesselesse">Haiti Grassroots Watch</a>; Lower Zambezi: <a href="https://www.brookings.edu/wp-content/uploads/2016/06/brookings-planned-relocations-annotated-bibliography-june-2015.pdf">Brookings bibliography</a>; Beledweyne: <a href="https://mop.gov.so/wp-content/uploads/PDF/DSU/Post%20Flood%20Solutions%20Assessment%20Final_DSS%20052020.pdf">FGS assessment 2020</a>, <a href="https://doi.org/10.3390/land15071275">Land 2026</a>.</p>
+    <p><b>Comparative.</b> Bower, Badamikar, Wong-Parodi &amp; Field 2023, <i>Nature Climate Change</i> 13: 919–926: <a href="https://doi.org/10.1038/s41558-023-01753-x">doi:10.1038/s41558-023-01753-x</a>. Full source lists: <span style="font-family:var(--mono)">data/raw/relocation_deep_*.json</span>.</p>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+var NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+function txt(parent,x,y,lines,o){o=o||{};var t=el("text",{x:x,y:y,"text-anchor":o.anchor||"middle","font-size":o.size||12,fill:o.fill||"var(--ink)","font-weight":o.weight||400},parent);
+  if(o.family)t.setAttribute("font-family",o.family);
+  lines.forEach(function(s,i){var ts=el("tspan",{x:x,dy:i?(o.lh||14):0},t);ts.textContent=s;});return t;}
+function defs(svg){var d=el("defs",{},svg);
+  [["arrInk","var(--muted)"],["arrOwn","var(--own)"],["arrBreak","var(--break)"]].forEach(function(a){
+    var m=el("marker",{id:svg.id+a[0],viewBox:"0 0 10 10",refX:9,refY:5,markerWidth:7,markerHeight:7,orient:"auto-start-reverse"},d);
+    el("path",{d:"M0,0 L10,5 L0,10 z",fill:a[1]},m);});}
+var LINKS=["Forecast","Warning to residents","Evacuation & rescue","Housing money","Land for camps","Shelters","Permanent home","Oversight"];
+var CX=function(i){return 205+i*113;}, BW=106, BH=58;
+function header(svg){LINKS.forEach(function(l,i){var x=CX(i);
+  el("path",{d:"M"+(x-54)+",14 L"+(x+48)+",14 L"+(x+56)+",32 L"+(x+48)+",50 L"+(x-54)+",50 L"+(x-46)+",32 z",fill:"var(--water-soft)",stroke:"var(--water)","stroke-width":1},svg);
+  var w=l.split(" "); var lines=l.length>13?[w.slice(0,Math.ceil(w.length/2)).join(" "),w.slice(Math.ceil(w.length/2)).join(" ")]:[l];
+  txt(svg,x+1,lines.length>1?29:36,lines,{size:11.5,weight:600,fill:"var(--water)",lh:12,family:"'Barlow Condensed',Arial Narrow,sans-serif"});});}
+function rowLabels(svg,rows){rows.forEach(function(r){el("line",{x1:140,x2:1050,y1:r[1]-10,y2:r[1]-10,stroke:"var(--rule)","stroke-dasharray":"2 4"},svg);
+  txt(svg,14,r[1]+BH/2-4,r[0],{anchor:"start",size:12,fill:"var(--muted)",family:"'IBM Plex Mono',monospace",lh:14});});}
+function box(svg,i,y,lines,kind,span){var w=span?span*113-13:BW, x=CX(i)-BW/2;
+  var st={n:["var(--panel)","var(--ink)"],veto:["var(--panel)","var(--veto)"],own:["var(--own-soft)","var(--own)"],res:["var(--panel)","var(--muted)"]}[kind||"n"];
+  el("rect",{x:x,y:y,width:w,height:BH,rx:3,fill:st[0],stroke:st[1],"stroke-width":kind==="own"?2:1.2},svg);
+  txt(svg,x+w/2,y+BH/2-(lines.length-1)*7+4,lines,{size:10.5,fill:kind==="veto"?"var(--veto)":"var(--ink)",weight:400});
+  if(lines.length&&svg.lastChild.firstChild){svg.lastChild.firstChild.setAttribute("font-weight",600);svg.lastChild.firstChild.setAttribute("font-size",12);}
+  return {x:x,y:y,w:w,cx:x+w/2,cy:y+BH/2};}
+function pin(svg,x,y,n,good){el("circle",{cx:x,cy:y,r:12,fill:good?"var(--own)":"var(--break)"},svg);
+  txt(svg,x,y+4.5,[String(n)],{size:12.5,fill:"var(--ground)",weight:600,family:"'IBM Plex Mono',monospace"});}
+function handoff(svg,a,b,broken){var d="M"+(a.x+a.w)+","+a.cy+" C"+(a.x+a.w+30)+","+a.cy+" "+(b.x-30)+","+b.cy+" "+b.x+","+b.cy;
+  el("path",{d:d,fill:"none",stroke:broken?"var(--break)":"var(--muted)","stroke-width":1.4,"stroke-dasharray":"5 4"},svg);}
+
+/* South Africa */
+var sa=document.getElementById("saChart"); defs(sa); header(sa);
+var R={N:80,P:175,M:270,W:365};
+rowLabels(sa,[[["NATIONAL"],R.N],[["PROVINCE","KZN"],R.P],[["MUNICIPALITY","eThekwini"],R.M],[["WARD /","INFORMAL"],R.W]]);
+var b={};
+b.saws=box(sa,0,R.N,["SAWS","forecast, alert level"]);
+b.dm=box(sa,1,R.M,["Disaster Mgmt","passes warning on"]);
+b.cllr=box(sa,1,R.W,["Ward councillor","WhatsApp, loudhailer"]);
+b.pdm=box(sa,2,R.P,["Prov. Disaster","Mgmt Centre"]);
+b.res=box(sa,2,R.M,["Metro + SAPS","rescue, mass care"]);
+b.code=box(sa,3,R.N,["Housing Code","emergency rules"]);
+b.dhs=box(sa,3,R.P,["Human Settlements","funds the units"]);
+b.land=box(sa,4,R.M,["Metro","must find land"]);
+b.veto=box(sa,4,R.W,["Ratepayer groups","block sites"],"veto");
+b.hda=box(sa,5,R.P,["Province via HDA","owns, leases TEAs"]);
+b.list=box(sa,6,R.P,["Housing list","subsidy eligibility"]);
+b.alloc=box(sa,6,R.M,["Metro","allocation, verification"]);
+b.agsa=box(sa,7,R.N,["Auditor-General","audits afterwards"]);
+handoff(sa,b.saws,b.dm); handoff(sa,b.dm,b.res); handoff(sa,b.res,b.land);
+handoff(sa,b.dhs,b.land,true); handoff(sa,b.land,b.hda); handoff(sa,b.hda,b.list,true);
+el("line",{x1:b.dm.cx,y1:b.dm.y+BH,x2:b.cllr.cx,y2:b.cllr.y,stroke:"var(--muted)","stroke-width":1.4,"stroke-dasharray":"5 4"},sa);
+el("line",{x1:b.veto.cx,y1:b.veto.y,x2:b.land.cx,y2:b.land.y+BH+2,stroke:"var(--veto)","stroke-width":2.2,"marker-end":"url(#saChartarrBreak)"},sa);
+txt(sa,b.veto.cx+10,b.veto.y-14,["veto"],{anchor:"start",size:11,fill:"var(--veto)",family:"'IBM Plex Mono',monospace"});
+el("path",{d:"M"+b.agsa.cx+","+(b.agsa.y+BH)+" C"+b.agsa.cx+",250 "+(b.land.cx+120)+",250 "+(b.land.x+b.land.w)+","+(b.land.cy-12),fill:"none",stroke:"var(--break)","stroke-width":1.6,"stroke-dasharray":"2 4","marker-end":"url(#saChartarrBreak)"},sa);
+txt(sa,b.agsa.cx-6,b.agsa.y+BH+20,["Aug 2022: 'unsuitable land'"],{anchor:"end",size:11,fill:"var(--break)",family:"'IBM Plex Mono',monospace"});
+/* residents */
+el("rect",{x:150,y:470,width:900,height:62,rx:3,fill:"var(--break-soft)",stroke:"var(--break)","stroke-width":1.2},sa);
+txt(sa,600,496,["DISPLACED FAMILIES: lease, no title, no seat in any box"],{size:14,weight:600,fill:"var(--break)",family:"'Barlow Condensed',Arial Narrow,sans-serif"});
+txt(sa,600,516,["Lamontville riverbank camp: 5 dead, Feb 2025 · ~1,050 families still in emergency accommodation, Sept 2025"],{size:12,fill:"var(--ink)"});
+el("line",{x1:b.cllr.cx,y1:b.cllr.y+BH,x2:b.cllr.cx,y2:468,stroke:"var(--break)","stroke-width":1.4,"stroke-dasharray":"3 5"},sa);
+txt(sa,14,505,["RESIDENTS"],{anchor:"start",size:12,fill:"var(--break)",family:"'IBM Plex Mono',monospace"});
+pin(sa,b.cllr.cx,445,1); pin(sa,(b.dhs.x+b.dhs.w+b.land.x)/2,(b.dhs.cy+b.land.cy)/2,2);
+pin(sa,b.veto.cx-28,b.veto.y-12,3); pin(sa,(b.hda.x+b.hda.w+b.list.x)/2,b.hda.cy-16,4); pin(sa,b.land.x+b.land.w+44,236,5);
+
+/* Success model */
+var ok=document.getElementById("okChart"); defs(ok); header(ok);
+var RY={O:84,P:180,C:282,H:380};
+rowLabels(ok,[[["ONE OWNER"],RY.O],[["POWERS"],RY.P],[["RESIDENTS'","COMMITTEE"],RY.C],[["RESIDENTS"],RY.H]]);
+box(ok,0,RY.O,["Weather service","forecast"]);
+el("rect",{x:CX(1)-BW/2,y:RY.O,width:2*113-13,height:BH,rx:3,fill:"none",stroke:"var(--own)","stroke-width":1.6,"stroke-dasharray":"3 4"},ok);
+txt(ok,CX(1)+56,RY.O+25,["Thesis: same owner","holds warning links"],{size:11.5,fill:"var(--own)",lh:14});
+var own=box(ok,3,RY.O,["ONE PUBLIC OWNER, judged on 'safe years later'","Grantham council · Colombia's reconstruction fund · Iwanuma city · Brabant province"],"own",5);
+var p1=box(ok,3,RY.P,["Land power","buy or expropriate"],"n");
+var p2=box(ok,4,RY.P,["One budget","standing programme"],"n",2);
+var p3=box(ok,6,RY.P,["Legal authority","ban hazard-zone rebuild"],"n",2);
+[p1,p2,p3].forEach(function(p){el("line",{x1:p.cx,y1:p.y,x2:p.cx,y2:RY.O+BH+2,stroke:"var(--own)","stroke-width":1.6,"marker-end":"url(#okChartarrOwn)"},ok);});
+var com=box(ok,3,RY.C,["Residents co-decide site and design","Iwanuma: 18 members, 28 meetings · Gramalote: site matrix, hazard weighted 30/100 · Overdiepse: farmers' own plan"],"own",4);
+el("path",{d:"M"+(com.x+com.w+8)+","+com.cy+" C"+(CX(7)+30)+","+com.cy+" "+(CX(7)+30)+","+(RY.O+BH+30)+" "+(CX(7)+30)+","+(RY.O+BH+4),fill:"none",stroke:"var(--own)","stroke-width":1.6,"marker-start":"url(#okChartarrOwn)","marker-end":"url(#okChartarrOwn)"},ok);
+txt(ok,CX(7)+24,RY.C-18,["answerable","both ways"],{anchor:"end",size:11,fill:"var(--own)",family:"'IBM Plex Mono',monospace"});
+el("rect",{x:150,y:RY.H,width:900,height:62,rx:3,fill:"var(--own-soft)",stroke:"var(--own)","stroke-width":1.2},ok);
+txt(ok,600,RY.H+26,["FAMILIES KEEP OR GAIN TITLE / PERMANENT TENANCY"],{size:14,weight:600,fill:"var(--own)",family:"'Barlow Condensed',Arial Narrow,sans-serif"});
+txt(ok,600,RY.H+46,["Grantham: title swap · Gramalote: 40% renters became owners · Iwanuma: new lot or low-rent public housing · Fiji: clan land kept"],{size:12});
+el("line",{x1:com.cx,y1:com.y+BH,x2:com.cx,y2:RY.H-2,stroke:"var(--own)","stroke-width":1.6,"marker-end":"url(#okChartarrOwn)"},ok);
+
+/* Cards */
+var OK=[
+ {h:"Grantham",w:"Australia · river flood 2011",own:"Lockyer Valley Regional Council",pow:"Bought hilltop farm from own reserves (Apr 2011); state reconstruction declaration bypassed planning; AUD 18m federal and state",res:"About 400 at public meetings; master plan back to residents 10 weeks after the flood; voluntary swap by ballot",ten:"Title-for-title land swap",out:"First families in after ~11 months. Only 3 Grantham homes damaged in the 2013 flood.",cav:"Owners only. Businesses excluded; people without money or insurance stayed on the floodplain."},
+ {h:"Overdiepse polder",w:"Netherlands · pre-emptive",own:"Noord-Brabant province, as broker in the national Room for the River programme",pow:"Permanent programme (~EUR 2.3bn, 30+ projects); compulsory purchase as backstop",res:"Farmers wrote the plan and set 4 conditions before they would cooperate",ten:"Owners rebuilt on 6 m mounds",out:"8 mounds occupied; high water on the Bergsche Maas lowered ~27 cm.",cav:"Only 8 of 17 families stayed. Farmers who mostly leased land were pushed out."},
+ {h:"Gramalote",w:"Colombia · landslide 2010",own:"Fondo Adaptación (national reconstruction fund)",pow:"Law 1523/2012, Art. 73: purchase or expropriate after a declared disaster",res:"Working group (Apr 2012) co-designed the site matrix; stability weighted 30 of 100",ten:"About 40% had rented; all original households became owners",out:"No new disaster reported; residents proud of the new town.",cav:"Six-year wait; services lagged; the comptroller found at least COP 8bn wasted."},
+ {h:"Iwanuma",w:"Japan · tsunami 2011",own:"Iwanuma City within the national collective relocation programme (since 1972)",pow:"Legal ban on rebuilding on the coast; state bought hazard land; full national funding after 2011",res:"Steering committee of 18 (a leader, a woman and a youth per hamlet); met 28 times",ten:"Buy a new lot or low-rent public housing (covers renters)",out:"First approval in the country (Mar 2012); district opened Jan 2015; older survivors' social ties grew.",cav:"3–4 years in prefab housing. Other Tohoku towns lost population."},
+ {h:"Vunidogoloa",w:"Fiji · coastal flooding",own:"Fiji government (Prime Minister's Office) with village chiefs",pow:"Moved within the village's own clan land, so no purchase needed",res:"The village asked to move in 2006; its leaders made the decisions",ten:"Customary land rights kept",out:"Moved Jan 2014. No flooding at the new site 2015–2023. Cost FJD 978,228; community gave FJD 239,852.",cav:"Women had little voice; drainage and kitchens unfinished."}
+];
+var FAIL=[
+ {h:"Kasiglahan Village",w:"Philippines · since 1999",own:"Split: National Housing Authority vs Rodriguez town. Each says the other failed to act.",land:"Filled stream and rice field; 'the absence of affordable land'; P75,000 per unit",warn:"A 2004 study found the site unsuitable. Building went on.",ten:"The 2012 danger-zone label blocks awarding units, but no one moves the residents.",out:"Flooded 2009, 2012, 2014 and 2020 (~7,591 units hit in 2020)."},
+ {h:"Chennai resettlement",w:"India · Perumbakkam, Semmencheri",own:"The slum board built the flats first; evictions were then used to fill them",land:"Marsh classed as wasteland, 'worthless in revenue terms'",warn:"2014 national audit: 294 units per hectare against a maximum of 150; planning 'defective'",ten:"About 1,000 families hold only temporary tokens",out:"Perumbakkam flooded in 6 years from 2015 to 2023. Officials called 2015 'an unprecedented (global) weather anomaly'."},
+ {h:"Corail / Canaan",w:"Haiti · 2010",own:"Split across the government, the UN, the US and NGOs; 'created because of pressure from the international community'",land:"Expropriated from a company led by the government's own relocation adviser",warn:"The IOM said it 'should not be used', 3 months after people moved in",ten:"No titles, no municipality",out:"Grew to 200,000–250,000 people; gangs present since 2023."},
+ {h:"Lower Zambezi",w:"Mozambique · 2001–2010s",own:"Top-down resettlement by the national disaster agency; no one owned livelihoods",land:"Higher, less fertile land",warn:"Flood-safe, but livelihoods not planned",ten:"State land with little else provided",out:"Many returned to the river and flooded again. Officials said they went back 'despite all the warnings'."},
+ {h:"Beledweyne",w:"Somalia · 2020",own:"No river authority; response dominated by donors; the government blames Ethiopia and residents",land:"The 2026 companion study found safe land within 6 km for everyone displaced in 2020",warn:"The 2020 government assessment names unplanned land use and unenforced land rules",ten:"Flood camp at Ceel Jaale hardening into a permanent settlement",out:"Satellite study: flooded area +19.8%, 'consistent with' people moving back (manuscript, low confidence)."}
+];
+function cards(id,arr,good){var c=document.getElementById(id);arr.forEach(function(d){
+  var rows=good?[["Owner",d.own],["Powers",d.pow],["Residents",d.res],["Tenure",d.ten],["Outcome",d.out,1]]:[["Who owns",d.own],["Land",d.land],["Warning",d.warn],["Status",d.ten],["Outcome",d.out,1]];
+  var h='<article class="card '+(good?"ok":"fail")+'"><div class="where">'+d.w+'</div><h3>'+d.h+'</h3><dl>';
+  rows.forEach(function(r){h+='<dt>'+r[0]+'</dt><dd'+(r[2]?' class="res"':'')+'>'+r[1]+'</dd>';});
+  h+='</dl>'+(d.cav?'<div class="cav"><b>Caveat:</b> '+d.cav+'</div>':'')+'</article>';c.insertAdjacentHTML("beforeend",h);});}
+cards("okCards",OK,true); cards("failCards",FAIL,false);
+
+/* Dumbbell (values from build_relocation_rootcause.ps1 output) */
+var F=[["One body owns land + outcome",0,90,1],["Residents co-decide site",0,90,1],["Permanent tenure at move",17,100,1],["Hazard information binding in siting",8,100,1],["Livelihoods planned",0,40,1],["Site is cheapest / leftover land",90,0,0],["Blame shifted after flood",100,0,0],["Emergency / temporary route",58,20,0],["A court forced action",0,0,0]];
+var db=document.getElementById("dumbbell"),X0=300,X1=860,xs=function(v){return X0+(X1-X0)*v/100;};
+[0,25,50,75,100].forEach(function(v){el("line",{x1:xs(v),x2:xs(v),y1:30,y2:440,stroke:"var(--rule)"},db);txt(db,xs(v),458,[v+"%"],{size:11,fill:"var(--muted)",family:"'IBM Plex Mono',monospace"});});
+txt(db,X0,20,["Share of cases where the factor is present"],{anchor:"start",size:11.5,fill:"var(--muted)",family:"'IBM Plex Mono',monospace"});
+F.forEach(function(f,i){var y=52+i*44;
+  txt(db,X0-14,y+4,[f[0]],{anchor:"end",size:13.5,weight:i<5?600:400});
+  if(i===5)el("line",{x1:20,x2:880,y1:y-22,y2:y-22,stroke:"var(--muted)","stroke-dasharray":"2 3"},db);
+  el("line",{x1:xs(f[1]),x2:xs(f[2]),y1:y,y2:y,stroke:"var(--muted)","stroke-width":3,opacity:.5},db);
+  el("circle",{cx:xs(f[1]),cy:y,r:8,fill:"var(--break)"},db); el("circle",{cx:xs(f[2]),cy:y,r:8,fill:"var(--own)"},db);
+  if(f[1]===f[2]){el("circle",{cx:xs(f[1]),cy:y,r:8,fill:"none",stroke:"var(--own)","stroke-width":3},db);}
+  var hi=Math.max(f[1],f[2]); txt(db,Math.min(xs(hi)+16,875),y+4,[f[1]+" / "+f[2]],{anchor:hi>90?"end":"start",size:11,fill:"var(--muted)",family:"'IBM Plex Mono',monospace"});
+  if(hi>90){db.lastChild.setAttribute("x",xs(hi)-16);db.lastChild.firstChild.setAttribute("x",xs(hi)-16);db.lastChild.setAttribute("y",y-12);}
+});
+txt(db,24,52+5*44-30,["Risk factors ↓"],{anchor:"start",size:11,fill:"var(--muted)",family:"'IBM Plex Mono',monospace"});
+txt(db,24,40,["Protective factors ↓"],{anchor:"start",size:11,fill:"var(--muted)",family:"'IBM Plex Mono',monospace"});
+
+/* Matrix (from data/relocation_rootcause_matrix.csv) */
+var cols=[["One owner",1],["Residents co-decide",1],["Permanent tenure",1],["Hazard binding",1],["Cheapest land",0],["Blame shifted",0]];
+var M=[["South Africa · eThekwini (baseline)","f","N N N N Y Y"],["Philippines · Kasiglahan","f","N N N N Y Y"],["India · Chennai","f","N N P N Y Y"],["Haiti · Corail/Canaan","f","N N N N Y Y"],["Mozambique · Lower Zambezi","f","N N P P P Y"],["Somalia · Beledweyne","f","N N N N nf Y"],
+       ["Australia · Grantham","s","Y P Y Y N N"],["Netherlands · Overdiepse","s","Y Y Y Y N N"],["Colombia · Gramalote","s","Y Y Y Y N N"],["Japan · Iwanuma","s","Y Y Y Y N N"],["Fiji · Vunidogoloa","s","P Y Y Y N N"]];
+var t='<thead><tr><th>Case</th><th>Outcome</th>'+cols.map(function(c){return '<th style="text-align:center">'+c[0]+'</th>';}).join("")+'</tr></thead><tbody>';
+M.forEach(function(r,i){var v=r[2].split(" ");t+='<tr'+(i===0?' class="base"':'')+'><td>'+(i===0?'<b>'+r[0]+'</b>':r[0])+'</td><td><span class="tag '+r[1]+'">'+(r[1]==="f"?"into risk":"out of risk")+'</span></td>';
+  v.forEach(function(x,j){var g=cols[j][1],cls=x==="Y"?(g?"gy":"by"):x==="P"?(g?"gp":"bp"):x==="nf"?"nf":"";t+='<td class="c"><i class="cell '+cls+'" title="'+x+'"></i></td>';});t+='</tr>';});
+document.getElementById("matrix").innerHTML=t+'</tbody>';
+
+/* Loops */
+function loop(id,nodes,color,center,sub){var s=document.getElementById(id);defs(s);var cx=260,cy=242,r=160,n=nodes.length;
+  var pts=nodes.map(function(_,i){var a=-Math.PI/2+i*2*Math.PI/n;return [cx+r*Math.cos(a),cy+r*Math.sin(a)];});
+  pts.forEach(function(p,i){var q=pts[(i+1)%n];var a1=Math.atan2(p[1]-cy,p[0]-cx),a2=Math.atan2(q[1]-cy,q[0]-cx);if(a2<a1)a2+=2*Math.PI;
+    var gap=0.30,s1=a1+gap,s2=a2-gap;var P=function(a){return [cx+r*Math.cos(a),cy+r*Math.sin(a)];};var A=P(s1),B=P(s2);
+    el("path",{d:"M"+A[0]+","+A[1]+" A"+r+","+r+" 0 0 1 "+B[0]+","+B[1],fill:"none",stroke:color,"stroke-width":2,"marker-end":"url(#"+id+(color.indexOf("own")>0?"arrOwn":"arrBreak")+")"},s);});
+  pts.forEach(function(p,i){var w=150,h=46;el("rect",{x:p[0]-w/2,y:p[1]-h/2,width:w,height:h,rx:3,fill:"var(--panel)",stroke:color,"stroke-width":1.4},s);
+    txt(s,p[0],p[1]-(nodes[i].length-1)*7+4,nodes[i],{size:12,lh:14});});
+  txt(s,cx,cy-6,[center],{size:26,weight:700,fill:color,family:"'Barlow Condensed',Arial Narrow,sans-serif"});
+  txt(s,cx,cy+14,sub,{size:11,fill:"var(--muted)",family:"'IBM Plex Mono',monospace",lh:13});}
+loop("loopBad",[["No single owner","8 hand-offs"],["Cheapest land wins","ratepayers veto"],["'Emergency'","skips flood checks"],["'Temporary'","withholds rights"],["Flood hits","the same families"],["Blame the rain","or the residents"],["No consequence","21 of 22 no inquiry"]],"var(--break)","REINFORCING",["failure repeats","next flood"]);
+loop("loopGood",[["One owner","+ residents at table"],["Hazard-first site","binding floodline"],["Permanent tenure","from day one"],["Safe years later","Grantham 2013: 3 homes"],["Owner judged","on outcome"],["Next plan better","land bank ready"]],"var(--own)","REINFORCING",["safety compounds"]);
+})();
+</script>
