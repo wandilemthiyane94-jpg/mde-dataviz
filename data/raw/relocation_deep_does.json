@@ -1,0 +1,802 @@
+{
+  "meta": {
+    "project": "last-mile: why governments relocate displaced people onto flood-prone land (baseline: eThekwini / Lamontville camp)",
+    "compiled": "2026-09-27",
+    "method_notes": [
+      "Quotes were taken from pages retrieved with WebFetch, or from PDFs downloaded and converted locally with pdftotext. Quotes from WebFetch come through an extraction model and are presented as verbatim, but check them against the source before publication.",
+      "Anything that comes only from a search-engine snippet (the page itself could not be fetched) is marked [snippet] and should be verified before it is published.",
+      "Victims and ordinary residents are not named. Officials, academics and company executives are named when a source quotes them on the record.",
+      "Several key sources could not be fetched (403 or paywall): the ScienceDirect Kasiglahan paper (Lauer et al. 2026), Arnall 2014 (Geographical Journal), Artur & Hilhorst 2014 full text, the ReliefWeb/IRIN Mozambique pieces, and the MDPI Sustainability re-encroachment manuscript. Where only abstracts or secondary annotations were available, this is stated."
+    ],
+    "confidence_scale": "high = several independent primary or academic sources that agree; medium = one good source or several secondary ones; low = snippet-level evidence or inference"
+  },
+  "cases": [
+    {
+      "id": "kasiglahan_ph",
+      "place": "Kasiglahan Village, Barangay San Jose, Rodriguez (formerly Montalban), Rizal",
+      "country": "Philippines",
+      "summary": "The National Housing Authority (NHA) built a socialized-housing resettlement site around 1999-2000 for families evicted from the Pasig River banks. Families from other Metro Manila 'danger zones' were later added. Sources describe the site as a reclaimed former stream and rice field, bounded by the Marikina and Puray rivers. A 2004 study found it unsuitable because of flood and earthquake risk. It flooded in Ondoy (2009), 2012, Luis (2014) and Ulysses (2020, around 7,591 units affected according to the NHA). The local government declared Phase 1K2 a 'danger zone' in 2012, yet families still live in the units. The key reason given across sources is price: land inside Metro Manila was unaffordable, and cheap peripheral land is cheap because it is unsafe.",
+      "variables": {
+        "land": {
+          "finding": "Sources say the site was chosen because land in Metro Manila was unaffordable, and a housing advocate argues that socialized-housing land is cheap precisely because it is unsafe. The NHA says the budget was P75,000 per core housing unit. Residents say parts of the site were a reclaimed stream and a rice field. No source was found on who owned the safer land nearby or what it would have cost.",
+          "quotes": [
+            "\"the absence of affordable land in the capital region prompted the government to build a resettlement site in Rodriguez.\" (Philstar, Cabico, 2021)",
+            "\"Urban poor advocate Chester Arcilla said the sites of socialized housing projects—such as that of Kasiglahan—were low-priced because 'those lands are not safe to begin with.' The area where 1K2 is standing used to be a rice field, residents said.\" (Philstar 2021)",
+            "\"Disasters exist because the government is relocating its people in far-flung communities because these are low-priced lands, even if they are not suitable for houses.\" (Chester Arcilla, UP associate professor, Bulatlat 2020)",
+            "\"Kasiglahan Village was formerly a stream that was reclaimed.\" (Bulatlat 2012 and 2014)",
+            "\"Our budget at the time was P75,000 per housing unit. Usually, that will answer for core housing units only. Unlike today, we have already upgraded our standards.\" (NHA district manager Raymund Abad, Philstar 2021)",
+            "\"Bounded by the Marikina River in the south and the Puray River in the east\" (Philstar 2021)"
+          ],
+          "urls": [
+            "https://www.philstar.com/newsx/kasiglahan-village-flooding",
+            "https://philstar.com/headlines/climate-and-environment/2021/12/10/2140820/year-on-kasiglahan-folk-still-haunted-ulysses-flooding",
+            "https://www.bulatlat.com/2020/11/22/kasiglahans-miserable-state-highlights-disregard-for-the-poors-right-decent-housing/",
+            "https://www.bulatlat.com/2012/08/17/relocation-site-at-kasiglahan-village-submerged-in-floods/",
+            "https://www.bulatlat.com/2014/09/20/relocation-site-almost-wiped-out-by-typhoon/"
+          ],
+          "confidence": "medium"
+        },
+        "decision_maker": {
+          "finding": "Top-down. The national NHA chose the site and built the units, and families were moved there after demolitions and evictions. No evidence was found that residents were consulted on the site or could veto it. The local government (LGU) and the NHA now blame each other: the LGU says the NHA did not approve its request to move residents out of harm's way, and the NHA says it never received the request and has no power to block one. The LGU also refuses to certify 1K2 as safe, and that certification is a prerequisite for awarding units.",
+          "quotes": [
+            "\"We will not transfer you to a dangerous place\" (NHA General Manager Chito Cruz, as quoted by a Kadamay leader, Bulatlat 2012)",
+            "\"According to Reambillo, the local government of Rodriguez planned to move the residents out of harm's way, but its request for relocation was not approved by the NHA.\" (Philstar 2021)",
+            "\"Abad, however, said he was not aware of such a request and noted the NHA has no authority to disapprove any plans of the local government to relocate people.\" (Philstar 2021)",
+            "\"Before Ulyssses triggered flooding in Kasiglahan, there had been discussions to award the units to residents of 1K2, Abad said. But the local government refused to declare the area safe for settlement, which is a prerequisite for the awarding of units.\" (Philstar 2021)"
+          ],
+          "urls": [
+            "https://www.bulatlat.com/2012/08/17/relocation-site-at-kasiglahan-village-submerged-in-floods/",
+            "https://www.philstar.com/newsx/kasiglahan-village-better-housing"
+          ],
+          "confidence": "medium"
+        },
+        "legal_status_of_residents": {
+          "finding": "Residents were former informal settlers from 'danger zones'. The houses were sold, not given: around $3,400 per unit, paid by monthly amortization that rises over time. The families in the flood-worst Phase 1K2 took over the units in 2016 and have not been awarded them. Because the area was declared a danger zone, the LGU will not certify it as safe, so the units cannot be awarded. The housing office frames these residents as having 'invaded' the area. The result is a status trap: the flood-hazard designation is the reason residents cannot get secure rights, but it does not get them moved either.",
+          "quotes": [
+            "\"Houses in Kasiglahan village are not for free. The two-story house that the [resident family] is residing in is worth $3,400. They were supposed to pay $4 a month, with incremental increases every five years\" (Bulatlat 2020; family name removed)",
+            "\"monthly amortization, which starts next year at $4.8 a month. The amortization will rise every year\" (Bulatlat 2012)",
+            "\"They invaded that area despite the efforts to make them understand that the LGU declared it a danger zone\" (Dominic Reambillo, head of Rodriguez Housing and People's Development Office, Philstar 2021)",
+            "\"After a massive flooding in 2012, the local government of Rodriguez declared 1K2 ... a 'danger zone.' This means that people are prohibited from living in 1K2.\" (Philstar 2021)",
+            "\"The urban poor, in order to survive, they have to challenge property rights. They have to challenge legality\" (Chester Arcilla, Philstar 2021)"
+          ],
+          "urls": [
+            "https://www.bulatlat.com/2020/11/22/kasiglahans-miserable-state-highlights-disregard-for-the-poors-right-decent-housing/",
+            "https://www.bulatlat.com/2012/08/17/relocation-site-at-kasiglahan-village-submerged-in-floods/",
+            "https://www.philstar.com/newsx/kasiglahan-village-better-housing"
+          ],
+          "confidence": "medium"
+        },
+        "funding_stream": {
+          "finding": "It was a permanent socialized-housing programme, not emergency shelter. Units were budgeted at P75,000 each, which the NHA itself says was 'constrained by budgetary limitations'. In 2014, NHA money for relocating informal settlers came from a P50 billion Informal Settler Fund, part of which came from the Disbursement Acceleration Program (DAP) that the Supreme Court struck down. No source was found on whether environmental or flood assessments were skipped, or on procurement findings specific to Kasiglahan.",
+          "quotes": [
+            "\"Informal Settler Fund, worth P50 billion until 2016 with an annual disbursement of P10 billion\" (Philstar 2014)",
+            "Part of this funding \"came from the controversial Disbursement Acceleration Program of the Aquino administration, which the Supreme Court struck down in a decision earlier this year.\" (Philstar 2014)",
+            "we were \"constrained by budgetary limitations\" back then (NHA's Abad, Philstar 2021)"
+          ],
+          "urls": [
+            "https://www.philstar.com/nation/2014/09/22/1371895/rizal-flood-victims-storm-local-housing-authority",
+            "https://www.philstar.com/newsx/kasiglahan-village-flooding"
+          ],
+          "confidence": "low"
+        },
+        "flood_risk_information": {
+          "finding": "Hazard information existed early and was not acted on. A 2004 study found the site unsuitable, and residents say it flooded from the start. In 2012 the LGU declared 1K2 a danger zone. In 2011 a Technical Working Group discouraged off-city relocation sites because they lacked livelihoods. Later flood modelling (Lauer et al. 2026) simulated Ondoy-level depths above 5 m in parts of the settlement [snippet]. Urban-poor advocates questioned what study the NHA did before moving people. No evidence was found that a pre-siting hazard assessment was published.",
+          "quotes": [
+            "\"As early as 2004, a study by Urban Poverty Morphology Series revealed that Kasiglahan Village is not suitable for a socialized housing project, citing its vulnerability to flooding and earthquake.\" (Bulatlat 2020)",
+            "\"Since Kasiglahan Village was constructed, it gets flooded easily\" (Bulatlat 2012)",
+            "The 2011 Technical Working Group \"discouraged off-cite relocation sites for the lack of sustainable livelihoods for residents.\" (Bulatlat 2014)",
+            "[snippet] Simulations of Ondoy flood heights found \"most of the settlement's phases are highly susceptible to flooding with some areas simulated at a flood depth of more than 5.0 m\" (Lauer et al. 2026, Progress in Disaster Science)"
+          ],
+          "urls": [
+            "https://www.bulatlat.com/2020/11/22/kasiglahans-miserable-state-highlights-disregard-for-the-poors-right-decent-housing/",
+            "https://www.bulatlat.com/2012/08/17/relocation-site-at-kasiglahan-village-submerged-in-floods/",
+            "https://www.bulatlat.com/2014/09/20/relocation-site-almost-wiped-out-by-typhoon/",
+            "https://www.sciencedirect.com/science/article/pii/S2590061726000384"
+          ],
+          "confidence": "medium"
+        },
+        "legal_liability": {
+          "finding": "not_found. No lawsuit or Commission on Human Rights case by residents against the NHA or the LGU over flooding was found. Residents have used protest instead: in 2014 they stormed the NHA office demanding dialogue and a moratorium on house payments.",
+          "quotes": [
+            "requested \"a moratorium in monthly house payments as urban poor families continue to face the threat of flooding and lack of employment.\" (Philstar 2014)"
+          ],
+          "urls": [
+            "https://www.philstar.com/nation/2014/09/22/1371895/rizal-flood-victims-storm-local-housing-authority"
+          ],
+          "confidence": "low"
+        },
+        "political_voice": {
+          "finding": "Residents are organized through militant urban-poor groups (Kadamay, Alyansa Kontra Demolisyon, the Center for Environmental Concerns), which frame the case as state abandonment. No evidence was found either way on electoral weight or patronage. Residents say no warning was given before the 2014 flood.",
+          "quotes": [
+            "\"local government and NHA officials had not issued any warning before the massive flooding.\" (residents, Philstar 2014)",
+            "\"The plight of Kasiglahan Village, constantly battered by typhoons and floods, denied of aid and dignity, reflects on how the poor and vulnerable in the Philippines are abandoned by the Duterte government in the face of the worsening climate crisis\" (Lia Alonzo, CEC, Philstar 2021)"
+          ],
+          "urls": [
+            "https://www.philstar.com/nation/2014/09/22/1371895/rizal-flood-victims-storm-local-housing-authority",
+            "https://www.philstar.com/newsx/kasiglahan-village-better-housing"
+          ],
+          "confidence": "low"
+        },
+        "livelihoods": {
+          "finding": "The site is peri-urban, outside Metro Manila. Residents lost city incomes and some consider going back to Manila. Residents of the danger zone stay because they cannot afford rent elsewhere and their only income is local.",
+          "quotes": [
+            "[resident's husband] \"is thinking of going back to Tondo, Manila\" (Bulatlat 2012)",
+            "\"We have nowhere to go. If we leave, we'll have to rent a house. But our only source of livelihood is a store\" (resident, Philstar 2021)",
+            "A resident who sold noodles in a Manila market found no work at the relocation site (Bulatlat 2020, paraphrase of the source)"
+          ],
+          "urls": [
+            "https://www.bulatlat.com/2012/08/17/relocation-site-at-kasiglahan-village-submerged-in-floods/",
+            "https://www.philstar.com/newsx/kasiglahan-village-better-housing",
+            "https://www.bulatlat.com/2020/11/22/kasiglahans-miserable-state-highlights-disregard-for-the-poors-right-decent-housing/"
+          ],
+          "confidence": "medium"
+        },
+        "blame_framing": {
+          "finding": "Agencies blame each other and the residents. Advocates and the NHA point to quarrying upstream, while the Mines and Geosciences Bureau (MGB) says quarrying contributes only 'minimal' amounts and blames urbanization and deforestation. The housing office blames residents for 'invading' a declared danger zone. The NHA blames past budgets. Advocates blame the choice of site.",
+          "quotes": [
+            "\"The contributions of these operations to the flooding and siltation of the Marikina River are only minimal\" ... \"Several factors including rapid urbanization, natural erosion, deforestation...have greater contributions\" (MGB, Philstar 2021)",
+            "\"Rocks and sand came with the water because of the quarrying activities near the relocation site.\" (Bulatlat 2014)",
+            "\"They invaded that area despite the efforts to make them understand that the LGU declared it a danger zone\" (Rodriguez housing office, Philstar 2021)",
+            "\"He was the one who brought them to a dangerous place when their houses were demolished and now he is blaming them\" (Kadamay's Carlito Badion on President Aquino, Bulatlat 2012)"
+          ],
+          "urls": [
+            "https://www.philstar.com/newsx/kasiglahan-village-flooding",
+            "https://www.bulatlat.com/2014/09/20/relocation-site-almost-wiped-out-by-typhoon/",
+            "https://www.philstar.com/newsx/kasiglahan-village-better-housing",
+            "https://www.bulatlat.com/2012/08/17/relocation-site-at-kasiglahan-village-submerged-in-floods/"
+          ],
+          "confidence": "medium"
+        },
+        "outcome": {
+          "finding": "The site has flooded repeatedly: 2009 (Ondoy), 2012, 2014 (Luis: at least 2,000 units in waist- to roof-high water), 2020 (Ulysses: the worst since 1999, about 7,591 units affected per the NHA), and 2024 per Lauer et al. [snippet]. [snippet, Inquirer, not fetched] After Ondoy the village was expanded with new phases for Ondoy-affected families from other danger areas. No confirmed death counts inside Kasiglahan were found. Residents remain in the danger zone, and the units have not been awarded.",
+          "quotes": [
+            "\"At least 2,000 housing units in waist to roof-high water in Kasiglahan Village\" (Philstar 2014)",
+            "\"around 7,591 housing units were affected during the flooding\" (NHA via Philstar 2021)",
+            "\"This has become an annual event for relocatees here.\" (Bulatlat 2014)",
+            "\"In Block 5 and 6 of Phase 1K1 of the relocation site, the flood was as high as the roof.\" (Bulatlat 2014)"
+          ],
+          "urls": [
+            "https://www.philstar.com/nation/2014/09/22/1371895/rizal-flood-victims-storm-local-housing-authority",
+            "https://www.philstar.com/newsx/kasiglahan-village-flooding",
+            "https://www.bulatlat.com/2014/09/20/relocation-site-almost-wiped-out-by-typhoon/",
+            "https://opinion.inquirer.net/137689/do-not-forget-kasiglahan-village"
+          ],
+          "confidence": "medium"
+        },
+        "what_scholars_say": {
+          "finding": "Lauer, Scholz, Islam, Kaiser & Eugenio (2026), 'From danger to death zones: Living with the floods in the resettlement site of Kasiglahan Village in the Philippines', Progress in Disaster Science. From the snippet, their argument is that treating resettlement as a one-off intervention produces inadequate infrastructure, limited livelihoods and renewed exposure to hazards. Their survey found 98.7% of respondents came from designated danger zones, with a median resettlement year of 2000 [snippet; full text not accessible]. The UP academic Chester Arcilla gives a land-market explanation: cheap land is unsafe land. There is also an academia.edu paper, 'Binabahang tahanan: Notions of home amidst disaster in a peri-urban relocation site', that was identified but could not be accessed.",
+          "quotes": [
+            "[snippet] \"treating it as a one-off intervention has led to inadequate infrastructure, limited livelihoods and sometimes even renewed exposure to hazards\" (Lauer et al. 2026)"
+          ],
+          "urls": [
+            "https://www.sciencedirect.com/science/article/pii/S2590061726000384",
+            "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5765187",
+            "https://www.academia.edu/91262767/Binabahang_tahanan_Notions_of_home_amidst_disaster_in_a_peri_urban_relocation_site"
+          ],
+          "confidence": "low"
+        }
+      },
+      "overall_confidence": "medium"
+    },
+    {
+      "id": "chennai_in",
+      "place": "Perumbakkam, Semmencheri, Kannagi Nagar and Ezhil Nagar/Okkiyam Thoraipakkam resettlement colonies, south Chennai (Pallikaranai marsh)",
+      "country": "India",
+      "summary": "Since the early 2000s the Tamil Nadu Slum Clearance Board (TNSCB, now TNUHDB) has built more than 43,000 resettlement tenements on the Pallikaranai marsh and its flood pathways, 20-40 km from the city. The land was 'poramboke', revenue wasteland owned by the government. Evictees from the Adyar, Cooum and Buckingham Canal were moved there, and 95% of evictions since 2015 were justified as 'restoration of water bodies'. Perumbakkam flooded in 2015, 2018, 2019, 2020, 2021 and 2023, yet expansion continued. A 2014 CAG audit found the density twice the national norm. After the 2015 floods, flood victims were moved into tenements that had stood empty. The pattern: the state clears valuable land in the city and places the poor on free state marshland.",
+      "variables": {
+        "land": {
+          "finding": "The land was government-owned 'poramboke' (unassessed revenue wasteland) on the Pallikaranai marsh. It was 'marked worthless in revenue terms' and set aside for slum resettlement. Clearing central riverbank slums freed valuable land. Distance from the city centre is 20-40 km.",
+          "quotes": [
+            "\"Large parts of the marsh, designated as wasteland or poramboke (unassessed government lands), and marked worthless in revenue terms, were earmarked for slum resettlement.\" (Coelho, Caravan, 2016)",
+            "\"Kannagi Nagar and Ezhilnagar are a huge problem, ecologically speaking. They were developed on a large tract of marshland that served as a buffer for floodwaters.\" (ecologist Jayshree Vencatesan, quoted in Caravan)",
+            "\"relocated to slum resettlement sites in Semmancheri and Kannagi Nagar, 30-40 kms south of the city. Disregarding the fact that the latter are part of the now forgotten wetland system, the resettlement exposed the evicted slum-dwellers to new kinds of vulnerability.\" (Arabindoo 2016, City)",
+            "\"Since the early 2000s, over 43,000 resettlement tenements have been built in Kannagi Nagar and Ezhilnagar (on the Pallikaranai marsh), and Perumbakkam.\" (IRCDUC 2023 via Citizen Matters)"
+          ],
+          "urls": [
+            "https://caravanmagazine.in/vantage/placing-the-poor-in-the-flood-pathpost-disaster-slum-resettlement-in-chennai",
+            "https://discovery.ucl.ac.uk/id/eprint/1524130/1/Arabindoo_Unprecedented%20natures%20An%20anatomy%20of%20the%20Chennai%20floodAAM.pdf",
+            "https://citizenmatters.in/flood-audit-report-of-ircduc/"
+          ],
+          "confidence": "high"
+        },
+        "decision_maker": {
+          "finding": "Top-down, driven by the state board. A 2014 consultant report gave the TNSCB three options for river restoration. Only full resettlement to the colonies was treated as possible, because the tenements were already built. That means the housing supply drove the eviction decision, not the reverse. Evictees reported getting hours of notice or none. No evidence was found of any veto for residents.",
+          "quotes": [
+            "\"all three options were presented to TNSCB in several meetings\" ... only the third was deemed possible \"as the tenements were built and ready for occupation.\" (Caravan 2016)",
+            "Some residents learned of forced evictions only hours before displacement, while others received no advance notice (FEMLab 2020, paraphrase of the source)",
+            "\"It is only the Dhideer Nagars, the Alamelu Nagars, the Ambedkar Nagars that are removed, because they are slums, because they are considered eyesores.\" (quoted in Caravan 2016)"
+          ],
+          "urls": [
+            "https://caravanmagazine.in/vantage/placing-the-poor-in-the-flood-pathpost-disaster-slum-resettlement-in-chennai",
+            "https://femlab.co/2020/11/23/not-quite-the-death-of-distance-challenging-the-resettlement-utopia-of-perumbakkam/"
+          ],
+          "confidence": "medium"
+        },
+        "legal_status_of_residents": {
+          "finding": "Evictees were 'encroachers' on waterways, so their status was informal. After moving, residents have to re-register every ID (ration, pension, voter) using the TNUHDB allotment order. About 1,000 Perumbakkam families have only temporary tokens, which blocks welfare access. The resettlement framework does not assign responsibility for transferring entitlements. Voter re-registration is hindered by camp-based processes.",
+          "quotes": [
+            "\"1,000 families have only received temporary tokens according to IRCDUC estimates, preventing them from accessing welfare benefits.\" (Citizen Matters)",
+            "\"It is as if we have just come into the world\" (resident on redoing ID documents, Citizen Matters)",
+            "\"Initiating transfers should be the responsibility of the resettling authority, but the Resettlement and Rehabilitation Framework does not outline procedures and assign responsibilities.\" (Citizen Matters)",
+            "A TNUHDB official admitted document camps are \"camps in name only\" (Citizen Matters)"
+          ],
+          "urls": [
+            "https://citizenmatters.in/resettlement-impact-social-assistance-pensions-perumbakkam/",
+            "https://citizenmatters.in/perumbakkam-slum-evicted-pds-ration-centre/"
+          ],
+          "confidence": "medium"
+        },
+        "funding_stream": {
+          "finding": "Perumbakkam was built as permanent housing under the national JnNURM urban-renewal scheme, not with emergency money. The 2014 CAG audit found 23,864 units at 294 units per hectare against the National Building Code (NBC) maximum of 150, and called the planning 'defective', with cost escalation. The tenements stood mostly empty until the 2015 floods, when the state used 'flood rehabilitation' to fill them. That is an emergency framing laid over an existing permanent project, which let the state sidestep the audit findings. Other colonies were funded by a mix of the World Bank, JICA and KfW.",
+          "quotes": [
+            "\"TNSCB proposed to construct 23,864 dwelling units with a density of 294 dwelling units per hectare\" (vs NBC max 150/ha; CAG audit 2014 via CAG-India blog, 2016)",
+            "\"The planning of Perumbakkam project itself was defective and that resulted in the escalation of costs and delays in the completion of the project.\" (CAG audit via CAG blog)",
+            "\"Perumbakkam suffered severe flooding for the reason that it was constructed on a floodplain.\" (CAG blog 2016)",
+            "[snippet] \"The recent floods in Chennai opened a window of opportunity for the Government and it wasted no time in moving flood affected slum dwellers to these tenements under the pretext of flood rehabilitation.\" (CAG blog 2016)"
+          ],
+          "urls": [
+            "https://www.cag.org.in/blogs/tn-slum-clearance-board-through-lens-cags-audit-report-part-ii",
+            "https://citizenmatters.in/in-chennais-resettlement-colonies-life-comes-full-circle-with-the-floods/"
+          ],
+          "confidence": "medium"
+        },
+        "flood_risk_information": {
+          "finding": "The flood role of the marsh was known: ecologists had flagged it, the 2002 floods raised awareness, and the CAG audit and experts said Perumbakkam sits on a floodplain. Building went ahead anyway. The IRCDUC found no effort to stop expansion despite near-annual flooding, and 1,152 more houses were added. In September 2025 the National Green Tribunal (NGT) froze new approvals within 1 km of the Ramsar marsh, a zone that covers Perumbakkam, Semmancheri and Okkiyam Thoraipakkam [snippet].",
+          "quotes": [
+            "\"the government has historically encroached on the area, and also set up a housing board here in Perumbakkam, Kannagi Nagar and Semmencheri despite experts flagging it to be an ecologically sensitive zone.\" (Citizen Matters)",
+            "\"From 2015 to 2023, 12,045 families were resettled in the site of Perumbakkam for the restoration of water bodies. Since 2015, Perumbakkam has faced flooding in the years 2015, 2018, 2019, 2020, 2021 and 2023.\" (IRCDUC via Citizen Matters)"
+          ],
+          "urls": [
+            "https://citizenmatters.in/pallikaranai-marshland-1-km-buffer-zone-residents-housing-encroachment-ecology/",
+            "https://citizenmatters.in/flood-audit-report-of-ircduc/",
+            "https://www.thenewsminute.com/tamil-nadu/displaced-chennai-families-were-resettled-onto-flood-paths-reveals-study",
+            "https://www.gktoday.in/national-green-tribunal-halts-construction-near-pallikaranai-marsh/"
+          ],
+          "confidence": "high"
+        },
+        "legal_liability": {
+          "finding": "No damages case by residents over flooding was found. Litigation has been about the marsh (the NGT buffer-zone order of September 2025 and related Madras High Court hearings [snippet]), not about liability to resettled people. The advocacy route has been an IRCDUC/HLRN report, 'From deluge to displacement', alleging violations of law and rights. The October 2021 draft Tamil Nadu Resettlement and Rehabilitation policy is not final, and the IRCDUC asks that it ban siting in ecologically sensitive zones.",
+          "quotes": [
+            "The IRCDUC recommends finalising Tamil Nadu's draft R&R policy to prohibit siting projects in ecologically sensitive zones (The News Minute, paraphrase of the source)"
+          ],
+          "urls": [
+            "https://www.thenewsminute.com/tamil-nadu/displaced-chennai-families-were-resettled-onto-flood-paths-reveals-study",
+            "https://citizenmatters.in/in-chennais-resettlement-colonies-life-comes-full-circle-with-the-floods/",
+            "https://www.gktoday.in/national-green-tribunal-halts-construction-near-pallikaranai-marsh/"
+          ],
+          "confidence": "low"
+        },
+        "political_voice": {
+          "finding": "The evidence points to neglect, not patronage. After the 2015 floods, residents of Ezhilnagar said no official visited. After Michaung in 2023, relief (water tankers) came only after protests. The colonies are becoming ghettos of Scheduled Caste, Scheduled Tribe and Most Backward Class households (Coelho et al. 2012, cited in the literature). Residents describe paying bribes for repairs. Moving also disrupts voter re-registration. No evidence was found of the relocated people acting as a courted voting bloc.",
+          "quotes": [
+            "\"People in Ezhilnagar (Okkiyam Thoraipakkam) were furious that not a single official from the government had come to visit them. They were left to fend for themselves.\" (Caravan 2016)",
+            "\"We do not have access to water, electricity or food. Government authorities have not taken any relief measures whatsoever.\" (resident, Citizen Matters)"
+          ],
+          "urls": [
+            "https://caravanmagazine.in/vantage/placing-the-poor-in-the-flood-pathpost-disaster-slum-resettlement-in-chennai",
+            "https://citizenmatters.in/in-chennais-resettlement-colonies-life-comes-full-circle-with-the-floods/",
+            "https://www.thenewsminute.com/tamil-nadu/displaced-chennai-families-were-resettled-onto-flood-paths-reveals-study"
+          ],
+          "confidence": "medium"
+        },
+        "livelihoods": {
+          "finding": "Perumbakkam is more than 30 km from the city centre. Resettlers lost domestic-work and other city jobs, face heavy transport costs, and some keep commuting to their old areas. A resettled evictee told Arabindoo the move was a 'permanent disaster'.",
+          "quotes": [
+            "\"I cannot find a job here; I cannot move back to the city.\" (resident, FEMLab 2020)",
+            "\"Initially, we agreed to move here thinking this was a better option. But there, everything else was intact: jobs, schools for our children, clinics, everything was nearby ... But by relocating us here, this is permanent disaster. ... You think this [resettlement site] is not flood-prone. You put us in a swamp.\" (resettled evictee, Arabindoo 2016)"
+          ],
+          "urls": [
+            "https://femlab.co/2020/11/23/not-quite-the-death-of-distance-challenging-the-resettlement-utopia-of-perumbakkam/",
+            "https://discovery.ucl.ac.uk/id/eprint/1524130/1/Arabindoo_Unprecedented%20natures%20An%20anatomy%20of%20the%20Chennai%20floodAAM.pdf"
+          ],
+          "confidence": "high"
+        },
+        "blame_framing": {
+          "finding": "The state and national governments framed 2015 as an unprecedented global weather event, and the Prime Minister blamed climate change. Arabindoo calls this 'political denial'. Eviction itself frames riverbank slums as the cause of flooding, since 95% of evictions are justified as water-body restoration. The TNUHDB had marketed the houses as 'disaster-proof'.",
+          "quotes": [
+            "\"the state sought refuge in the argument that this was an unprecedented (global) weather anomaly.\" (Arabindoo 2016, abstract)",
+            "\"Prime Minister Narendra Modi blamed climate change for the 'unseasonal rains'.\" (Arabindoo 2016)",
+            "\"Such interpretations are steeped in a liberal discourse of political denial, where the argument of weather disturbance and upheaval is invoked by the state not just to dispel citizen anxieties but ... this is also a form of narrative that precludes political analysis or action.\" (Arabindoo 2016)",
+            "\"95% of the evictions were carried out for the 'restoration of water bodies' in Chennai since 2015\" (IRCDUC via Citizen Matters)",
+            "Houses were marketed as \"eco-friendly construction fit for diverse climatic quality standards and disaster-proof houses\" (TNUHDB claim cited by Citizen Matters)"
+          ],
+          "urls": [
+            "https://discovery.ucl.ac.uk/id/eprint/1524130/1/Arabindoo_Unprecedented%20natures%20An%20anatomy%20of%20the%20Chennai%20floodAAM.pdf",
+            "https://citizenmatters.in/flood-audit-report-of-ircduc/"
+          ],
+          "confidence": "high"
+        },
+        "outcome": {
+          "finding": "Perumbakkam flooded in 2015, 2018, 2019, 2020, 2021 and 2023. In 2015, tenements went under waist-deep water and boats were used for rescue. During Michaung (December 2023), ground floors, including units prioritised for people with disabilities, were inundated with sewage-laden water, and residents were without power or water for more than 2 days. Since 2015, 83 settlements (about 19,817 families) have been evicted. No death figures specific to the colonies were found. The sites keep expanding.",
+          "quotes": [
+            "\"most part of the tenements went under waist-deep water and boats were brought to rescue people\" (CAG blog 2016)",
+            "\"Since 2015, 83 settlements comprising nearly 19,817 families were evicted.\" (IRCDUC via Citizen Matters)",
+            "households \"were unable to safeguard their belongings, most of which were lifetime savings.\" (IRCDUC via The News Minute)"
+          ],
+          "urls": [
+            "https://www.cag.org.in/blogs/tn-slum-clearance-board-through-lens-cags-audit-report-part-ii",
+            "https://citizenmatters.in/flood-audit-report-of-ircduc/",
+            "https://www.thenewsminute.com/tamil-nadu/displaced-chennai-families-were-resettled-onto-flood-paths-reveals-study"
+          ],
+          "confidence": "high"
+        },
+        "what_scholars_say": {
+          "finding": "Coelho (Caravan, 2016) argues that the state uses environmental restoration to clear poor settlements from valuable city land while placing them on 'worthless' state marshland. The land-value gap is the mechanism. Arabindoo (2016, City 20(6), doi:10.1080/13604813.2016.1239410) argues that 'unprecedented' is a political invention that masks recurring floods and blocks accountability, and that floods sit within property relations and inequality. Coelho et al. (2012), cited in the literature, describe the colonies as ghettos of marginalised castes.",
+          "quotes": [
+            "\"the notion of the unprecedented is a political invention that has no standing in the definitions of social science. It masks the fact that the crisis situation is generally less of a deviation from the normal, often falling in place within a classic sequence of recurring flood and drought.\" (Arabindoo 2016)"
+          ],
+          "urls": [
+            "https://caravanmagazine.in/vantage/placing-the-poor-in-the-flood-pathpost-disaster-slum-resettlement-in-chennai",
+            "https://discovery.ucl.ac.uk/id/eprint/1524130/1/Arabindoo_Unprecedented%20natures%20An%20anatomy%20of%20the%20Chennai%20floodAAM.pdf",
+            "https://www.tandfonline.com/doi/abs/10.1080/13604813.2016.1239410"
+          ],
+          "confidence": "high"
+        }
+      },
+      "overall_confidence": "high"
+    },
+    {
+      "id": "corail_canaan_ht",
+      "place": "Corail-Cesselesse planned camp and the surrounding informal city of Canaan, north of Port-au-Prince",
+      "country": "Haiti",
+      "summary": "After the January 2010 earthquake, the Haitian government declared about 5,000 ha 'of public utility' in March 2010 and opened Corail-Cesselesse, around 15-18 km from the capital. Around 7,000-8,000 people were moved there in April 2010, mostly from the Pétion-Ville golf-course camp, under pressure from the US Army, UN agencies and NGOs. The land belonged mainly to NABATEC, a company led by the government's chief relocation adviser, and AP reported a conflict of interest. An IOM report of 29 July 2010 said the site 'is flooded regularly at least once a year' and 'should not be used'. NGOs said they had not seen it. Tens of thousands then squatted around the camp, creating Canaan (estimated at 200,000-250,000 people), which has no municipal recognition and no titles and is now affected by gang violence.",
+      "variables": {
+        "land": {
+          "finding": "Officials said the state had almost no large parcels of its own, so private land was expropriated by decree. The owner, NABATEC, was led by Gérard-Émile 'Aby' Brun, the government's chief relocation adviser. AP reported that site selection was 'tainted by conflict of interest'. NABATEC then sought about $64 million in compensation, and a later academic city profile says the previous owners were never identified or compensated [snippet]. The site was a distant desert plain on a flood plain.",
+          "quotes": [
+            "\"the state did not have any land larger than the size of a soccer field\" (Brun, Haiti Grassroots Watch 2013)",
+            "An AP investigation found \"the site's selection was tainted by conflict of interest: The land under it belonged to the company led by the government's chief relocation adviser, Gerard-Emile 'Aby' Brun.\" (AP via Fox News, Nov 2010)",
+            "\"The country lost a great opportunity. I have been working on that project for 16 years.\" (Brun on the lost 'Habitat Haïti 2020' zone, HGW 2013)"
+          ],
+          "urls": [
+            "https://canada-haiti.ca/content/haiti-reconstructions-disastrous-legacy-corail-cesselesse",
+            "https://www.foxnews.com/world/haiti-wants-major-camp-evacuated-ahead-of-storm",
+            "https://www.sciencedirect.com/science/article/pii/S0264275120306636"
+          ],
+          "confidence": "medium"
+        },
+        "decision_maker": {
+          "finding": "Top-down and driven by international actors. UN-Habitat's director said Corail was created under international pressure (the US Army and Sean Penn) against the objections of President Préval. The move was organised by the UN, the US and NGOs (World Vision, Oxfam, CARE, ARC) with less than a week to prepare. It was formally 'voluntary', but the choice was the golf-course camp or Corail. No veto existed for residents.",
+          "quotes": [
+            "\"Corail was created because of pressure from the international community. The government was opposed to it. Préval was opposed\" (UN-HABITAT's Jean-Christophe Adrian, HGW 2013)",
+            "\"It has been a challenge because we've had less than a week to prepare.\" (World Vision spokeswoman, AP April 2010)",
+            "\"But future moves cannot be done in this last-minute fashion.\" (Oxfam Haiti head Marcel Stoessel, AP April 2010)"
+          ],
+          "urls": [
+            "https://canada-haiti.ca/content/haiti-reconstructions-disastrous-legacy-corail-cesselesse",
+            "https://www.tehrantimes.com/news/217344/Haitians-relocated-to-new-camps-as-rains-loom"
+          ],
+          "confidence": "medium"
+        },
+        "legal_status_of_residents": {
+          "finding": "People were moved as camp IDPs. Squatters in Canaan 'bought' plots from racketeers with fake titles. The government initially banned permanent structures and has never recognised Canaan as a municipality or issued titles. De facto ownership has since become accepted. Without titles, residents cannot get credit or build a tax base.",
+          "quotes": [
+            "Residents \"bought\" parcels from \"racketeers\" and received fake \"titles\" (HGW 2013)",
+            "\"The Government of Haiti...officially banned the construction of any permanent structures.\" ... \"Over time, the de facto land ownership has become accepted.\" (Wikipedia, Canaan, Haiti)",
+            "\"The state doesn't take responsibility. The state isn't here.\" (police officer in Canaan, longlead)"
+          ],
+          "urls": [
+            "https://canada-haiti.ca/content/haiti-reconstructions-disastrous-legacy-corail-cesselesse",
+            "https://en.wikipedia.org/wiki/Canaan,_Haiti",
+            "https://haiti.longlead.com/"
+          ],
+          "confidence": "medium"
+        },
+        "funding_stream": {
+          "finding": "Emergency humanitarian money: tents, ShelterBox units, and US Army and UN bulldozers leveling ground as families arrived. The site was chosen and prepared in days, under a rainy-season deadline. No environmental or flood assessment preceded the move; the IOM flood report came 3 months after the site opened. The government estimates that urbanizing Canaan will cost 'hundreds of millions'. No procurement finding was located beyond the conflict of interest over the land.",
+          "quotes": [
+            "UN bulldozers were still leveling soil as families arrived (AP April 2010, paraphrase of the source)",
+            "The government estimates urbanization costs at \"hundreds of millions\" (HGW 2013)"
+          ],
+          "urls": [
+            "https://www.tehrantimes.com/news/217344/Haitians-relocated-to-new-camps-as-rains-loom",
+            "https://canada-haiti.ca/content/haiti-reconstructions-disastrous-legacy-corail-cesselesse"
+          ],
+          "confidence": "low"
+        },
+        "flood_risk_information": {
+          "finding": "The IOM warned on 29 July 2010, after the move. The camp manager and Oxfam publicly called the site unsafe. NGOs were 'apparently undeterred', and World Vision said it had not seen the report. Later academic flood modelling of Onaville in Canaan found exposure to flash floods, and a TU Munich study estimated around 15,000 people affected in a 100-year flood.",
+          "quotes": [
+            "The area \"is prone to flood and strong wind\" and \"is flooded regularly at least once a year\" ... \"Due to the reoccurrence and magnitude of floods, this site should not be used for further relocation and resettlement of\" displaced persons (IOM report, 29 July 2010, via HGW 2013)",
+            "\"The Corail site is located on a flood plain, and hydrologically it's not a sound location.\" (camp manager, AP Nov 2010)",
+            "\"No, (Corail is) not a safe place to live.\" (Oxfam spokeswoman, AP Nov 2010)",
+            "World Vision stated it \"had not seen the report\" (HGW 2013)"
+          ],
+          "urls": [
+            "https://canada-haiti.ca/content/haiti-reconstructions-disastrous-legacy-corail-cesselesse",
+            "https://www.foxnews.com/world/haiti-wants-major-camp-evacuated-ahead-of-storm",
+            "https://doi.org/10.3390/w7073832",
+            "https://en.wikipedia.org/wiki/Canaan,_Haiti"
+          ],
+          "confidence": "high"
+        },
+        "legal_liability": {
+          "finding": "The only legal claim found is NABATEC's compensation claim (about $64 million) and its threatened suits against the government and humanitarian organisations. No case by displaced residents was found.",
+          "quotes": [
+            "The company seeks $64 million in compensation while threatening lawsuits against the government and humanitarian organizations (HGW 2013, paraphrase of the source)"
+          ],
+          "urls": [
+            "https://canada-haiti.ca/content/haiti-reconstructions-disastrous-legacy-corail-cesselesse"
+          ],
+          "confidence": "low"
+        },
+        "political_voice": {
+          "finding": "The evidence shows state absence, not patronage. Canaan has no municipal government, residents self-govern through neighbourhood committees, and the state 'said nothing' as land invasions took place. No electoral evidence was found.",
+          "quotes": [
+            "\"Nobody in the central government said anything to prevent the invasions, which continue today.\" (HGW 2013)"
+          ],
+          "urls": [
+            "https://canada-haiti.ca/content/haiti-reconstructions-disastrous-legacy-corail-cesselesse",
+            "https://haiti.longlead.com/"
+          ],
+          "confidence": "low"
+        },
+        "livelihoods": {
+          "finding": "The camp was about 15-18 km from the capital, with little economic activity. The former camp manager for the American Refugee Committee (ARC) called the location a mistake.",
+          "quotes": [
+            "\"the location of the camps far from Port-au-Prince with little or no prospect of economic activity was a mistake.\" (former ARC camp manager Richard Poole, HGW 2013)",
+            "\"If you put 500 nice houses on some field and there are no jobs, no infrastructure, it's not going to work.\" (TIME, July 2010, general reconstruction context)"
+          ],
+          "urls": [
+            "https://canada-haiti.ca/content/haiti-reconstructions-disastrous-legacy-corail-cesselesse",
+            "https://time.com/archive/6950488/haitis-homeless-is-transitional-housing-the-solution/"
+          ],
+          "confidence": "medium"
+        },
+        "blame_framing": {
+          "finding": "Blame is spread across actors: UN-Habitat blames international pressure, and NGOs say they did not see the warning or that the government ordered an immediate move. Civil protection told residents to shelter with friends. No official weather-blame quote was found.",
+          "quotes": [
+            "World Vision acknowledged the government determined relocation \"must begin immediately\" (HGW 2013)",
+            "\"We are using radio stations to announce to people that if they don't have a place to go, but they have friends and families, they should move into a place that is secure.\" (civil protection official Nadia Lochard, AP Nov 2010)"
+          ],
+          "urls": [
+            "https://canada-haiti.ca/content/haiti-reconstructions-disastrous-legacy-corail-cesselesse",
+            "https://www.foxnews.com/world/confusion-fear-as-haiti-camps-evacuate-for-storm"
+          ],
+          "confidence": "medium"
+        },
+        "outcome": {
+          "finding": "On 12 July 2010 a storm destroyed 344 tents, injured 6 people and displaced around 1,700. In November 2010, ahead of Hurricane Tomas, there were scuffles over a 'voluntary' evacuation of the camp's roughly 8,000 residents. Canaan grew to 200,000-250,000 people, whom sources credit with about $90 million of their own money invested in building [longlead]. Neighbourhood ravines flood in the rainy season. Since 2023 gangs have penetrated Canaan, bringing killings and new displacement. No confirmed flood death toll for Corail specifically was found.",
+          "quotes": [
+            "\"Flying debris from the storm caused six people to be injured and damaged or destroyed 344 tents, forcing around 1,700 people to seek emergency shelter overnight.\" (IOM, 13 July 2010)",
+            "\"There is no future for us in Haiti.\" (long-time Canaan community organiser, longlead)"
+          ],
+          "urls": [
+            "https://www.iom.int/news/iom-haiti-responds-quickly-storm-tears-through-corail-camp",
+            "https://www.foxnews.com/world/confusion-fear-as-haiti-camps-evacuate-for-storm",
+            "https://haiti.longlead.com/"
+          ],
+          "confidence": "medium"
+        },
+        "what_scholars_say": {
+          "finding": "A City Profile (Cities journal, 2020) describes Canaan as a 'new post-disaster city' produced by the expropriation decree [snippet; full text not accessible]. The Onaville flood-risk study (Water 2015, 7(7):3832, doi:10.3390/w7073832) models flash-flood exposure. Journalistic analysis by Haiti Grassroots Watch (2013) attributes the siting to international pressure and the lack of state land. No academic paper was found that directly explains why the IOM warning was ignored.",
+          "quotes": [],
+          "urls": [
+            "https://www.sciencedirect.com/science/article/pii/S0264275120306636",
+            "https://doi.org/10.3390/w7073832",
+            "https://www.researchgate.net/publication/283301253_Designing_for_Uncertainty_The_Case_of_Canaan_Haiti"
+          ],
+          "confidence": "low"
+        }
+      },
+      "overall_confidence": "medium"
+    },
+    {
+      "id": "lower_zambezi_mz",
+      "place": "Lower Zambezi valley (Caia, Mopeia, Chemba, Mutarara, Marromeu districts)",
+      "country": "Mozambique",
+      "summary": "After the 2001, 2007 and 2008 floods, the disaster agency INGC and the government resettled tens of thousands of households (2007: about 56,000 displaced households the government intended to resettle permanently; around 24,000 parcels planned) onto higher, less fertile land. The design gave families a homestead on high ground while they kept farming the floodplain. Livelihood failure, and drought on the higher ground, drew many back to the river. In March 2010 an INGC official said drought had pushed households 'to the banks of the rivers', and the government spokesperson threatened coercive resettlement. Scholars read the programme as a continuation of state control and modernisation, backed by donors and dam interests. This case inverts the others: the new land was safer from floods but not safer for life.",
+      "variables": {
+        "land": {
+          "finding": "People were resettled onto higher-altitude, less fertile land, while still expected to farm the fertile floodplain. The 2007 plan allocated about 24,000 parcels on elevated terrain. Who owned the land was not directly found (in Mozambique all land belongs to the state), and no cost data was found.",
+          "quotes": [
+            "\"involuntary resettlement to higher-altitude, less fertile areas of land\" (Brookings 2015 annotation of Arnall 2014)",
+            "The government planned to allocate approximately 24,000 land parcels on elevated, safer terrain, with residents \"expected to continue agricultural practices along the Zambezi's fertile margins\" (IOM, 29 March 2007, paraphrase of the source)"
+          ],
+          "urls": [
+            "https://www.brookings.edu/wp-content/uploads/2016/06/brookings-planned-relocations-annotated-bibliography-june-2015.pdf",
+            "https://www.iom.int/news/race-help-resettle-flood-victims-mozambique"
+          ],
+          "confidence": "medium"
+        },
+        "decision_maker": {
+          "finding": "Top-down and state-led, with donor support. Arnall calls it 'forced relocations' and 'top-down imposition'. In 2010 the government spokesperson warned that anyone who did not leave would be moved coercively. Local chiefs initially resisted because they feared losing territorial authority.",
+          "quotes": [
+            "\"Nkutumula warned that if people did not leave dangerous areas voluntarily, they would be coercively resettled.\" (AIM, 10 March 2010, via Hanlon's Mozambique News Reports & Clippings no. 158)",
+            "\"donors' willingness to support such projects, thus rationalizing the top-down imposition of unpopular social policies.\" (Brookings annotation of Arnall 2014)",
+            "Local leadership initially resisted the programme due to concerns about losing territorial authority (Artur & Hilhorst 2014, WUR summary, paraphrase of the source)"
+          ],
+          "urls": [
+            "https://university.open.ac.uk/technology/mozambique/sites/www.open.ac.uk.technology.mozambique/files/pics/d119582.pdf",
+            "https://www.brookings.edu/wp-content/uploads/2016/06/brookings-planned-relocations-annotated-bibliography-june-2015.pdf",
+            "https://research.wur.nl/en/publications/floods-resettlement-and-land-access-and-use-in-the-lower-zambezi-/"
+          ],
+          "confidence": "medium"
+        },
+        "legal_status_of_residents": {
+          "finding": "Resettlers were citizens with customary land use. The IOM helped 'demarcate and legalize' homesites. No evidence was found that a temporary or IDP label reduced their rights. A 2019 Idai-era source reports suspicion that resettlement was used to move 'unsympathetic voters' (see political_voice).",
+          "quotes": [
+            "IOM mobile field units were \"to identify, demarcate, and legalize family homesites while maintaining residents' access to traditional lands\" (IOM 2007, paraphrase of the source)"
+          ],
+          "urls": [
+            "https://www.iom.int/news/race-help-resettle-flood-victims-mozambique"
+          ],
+          "confidence": "low"
+        },
+        "funding_stream": {
+          "finding": "After 2001 the state provided land but little else, and many returned home and were flooded again in 2007. After 2007 a broader scheme funded brick houses. Donors supported the programme. For the Idai resettlement (2019, Sofala, outside the Lower Zambezi), Jacobs & Almeida describe a disconnect between the emergency response and development planning. No environmental-assessment skips or corruption findings were located. A search snippet alleging bribery by commercial farmers could not be traced to a primary source and was excluded.",
+          "quotes": [
+            "\"As little other support was given by the government, many people returned to their places of origin and many were again displaced by floods in 2007. After the 2007 floods the government agreed to a broader assistance scheme with supplying assistance to construct brick houses in the resettlement areas.\" (Brookings annotation of Stal 2011, International Migration 49(s1))"
+          ],
+          "urls": [
+            "https://www.brookings.edu/wp-content/uploads/2016/06/brookings-planned-relocations-annotated-bibliography-june-2015.pdf",
+            "https://academic.oup.com/rsq/article/40/2/239/6048241"
+          ],
+          "confidence": "medium"
+        },
+        "flood_risk_information": {
+          "finding": "Flood risk was well known and was the whole reason for the move. The failure here was a livelihood and drought risk at the destination that planners did not account for. Stal reports that the areas protected from floods suffered drought and water scarcity [snippet]. Stal also notes that building the houses caused deforestation.",
+          "quotes": [
+            "\"The construction of the housing also led to deforestation, which in turn leads to soil erosion and changes in water tables.\" (Brookings annotation of Stal 2011)"
+          ],
+          "urls": [
+            "https://www.brookings.edu/wp-content/uploads/2016/06/brookings-planned-relocations-annotated-bibliography-june-2015.pdf",
+            "https://www.researchgate.net/publication/230050077_Flooding_and_Relocation_The_Zambezi_River_Valley_in_Mozambique"
+          ],
+          "confidence": "medium"
+        },
+        "legal_liability": {
+          "finding": "not_found",
+          "quotes": [],
+          "urls": [],
+          "confidence": "low"
+        },
+        "political_voice": {
+          "finding": "Scholars see the programme as state 'control over rural populations' and the formation of a new elite class, with chiefs moving into elite housing. In the Idai resettlement (2019, Sofala, not the Lower Zambezi) there was suspicion of moving unsympathetic voters before the 2019 election. That is a direct electoral-motive allegation, but for a neighbouring case.",
+          "quotes": [
+            "\"the extension of control over rural populations, from which resettled people derive little direct benefit.\" (Brookings annotation of Arnall 2014)",
+            "\"plans to resettle communities affected by Cyclone Idai were met with suspicion that the government was trying to move unsympathetic voters elsewhere in the run-up to the 2019 general election (ibid.). Others argue that government resettlement programmes are more to do with the government's modernising agenda for economic development than with protecting people against recurrent flooding (Artur and Hilhorst, 2012).\" (ODI/HPG, Sturridge, Feijó & Tivane 2022)"
+          ],
+          "urls": [
+            "https://www.brookings.edu/wp-content/uploads/2016/06/brookings-planned-relocations-annotated-bibliography-june-2015.pdf",
+            "https://media.odi.org/documents/USAID_CCD_Mozambique_final.pdf"
+          ],
+          "confidence": "medium"
+        },
+        "livelihoods": {
+          "finding": "This is the core of the case. Whether people could secure a viable livelihood decided whether they stayed or went back to the river. Most families split their lives between the resettlement area and the floodplain. Drought on the higher ground drove households back to the fertile banks.",
+          "quotes": [
+            "\"The ability to secure a viable livelihood was a key determinant of whether resettlers remained in their new locations or returned to the river valleys despite the risks posed by floods.\" (Brookings annotation of Arnall et al. 2013, Disasters 37(3):468-488)",
+            "\"Because of the drought that has assailed Sofala, many households returned to areas of risk - to the banks of the rivers in search of fertile areas for food production\", he said. \"These areas are now completely inundated\". (INGC Sofala delegate Luis Pacheco, AIM, March 2010)",
+            "\"Many families opted for a mixed lifestyle by partly living in, and adapting to, the resettlement area, but also partly retaining their old residence and way of life in the floodplain.\" (Brookings annotation of Artur & Hilhorst 2014)",
+            "\"while many respondents returned to their low-land plots for livelihood reasons after the 2007 floods, many were happier to have a flood-resistant housing option in the resettlement centers, but complained about the limited farming options\" (Brookings annotation of Stal 2011)"
+          ],
+          "urls": [
+            "https://www.brookings.edu/wp-content/uploads/2016/06/brookings-planned-relocations-annotated-bibliography-june-2015.pdf",
+            "https://university.open.ac.uk/technology/mozambique/sites/www.open.ac.uk.technology.mozambique/files/pics/d119582.pdf"
+          ],
+          "confidence": "high"
+        },
+        "blame_framing": {
+          "finding": "Officials frame returnees as having gone back 'despite all the warnings', treat the return as the residents' choice, and threaten coercion. The drought is cited as the push factor. Arnall argues that a climate-hazard narrative is itself used to justify involuntary resettlement.",
+          "quotes": [
+            "\"He admitted that, despite large scale resettlement after the Zambezi floods of 2007 and 2008, some people had still returned to dangerous areas\" (AIM, March 2010)",
+            "\"Despite all the warnings given in 2008, some people have even returning to live on islands in the Zambezi.\" (AIM, March 2010)",
+            "[snippet] \"70% of the people have been moved, but 30% are still missing, for two reasons: some are resisting to move – they want to stay; and a number of people have decided to move back to flooded areas.\" (INGC director Paulo Zucula, IRIN via ReliefWeb)",
+            "\"a dominant narrative of climate change-induced hazards for small-scale farmers is contributing to their involuntary resettlement\" (Brookings annotation of Arnall 2014)"
+          ],
+          "urls": [
+            "https://university.open.ac.uk/technology/mozambique/sites/www.open.ac.uk.technology.mozambique/files/pics/d119582.pdf",
+            "https://reliefweb.int/report/mozambique/mozambique-flood-lessons",
+            "https://www.brookings.edu/wp-content/uploads/2016/06/brookings-planned-relocations-annotated-bibliography-june-2015.pdf"
+          ],
+          "confidence": "medium"
+        },
+        "outcome": {
+          "finding": "People returned to the floodplain and were flooded again: 2007 (after the 2001 resettlement), and 2010 (after 2007-08). In 2023 Tropical Storm Freddy hit Caia and other Lower Zambezi districts, and resettlement sites were in use again, such as Nhacuecha in Caia (June 2023 site map, title only). No specific data was found on whether the 2007-08 resettlement villages themselves flooded in 2019-2023.",
+          "quotes": [
+            "\"Further upstream, in Mutarara district, in Tete province, the INGC says that 2,800 people at risk in areas close to the Zambezi are being evacuated to resettlement areas.\" (AIM, March 2010)"
+          ],
+          "urls": [
+            "https://university.open.ac.uk/technology/mozambique/sites/www.open.ac.uk.technology.mozambique/files/pics/d119582.pdf",
+            "https://reliefweb.int/report/mozambique/mozambique-tropical-storm-freddy-resettlement-sites-sofala-caia-nhacuecha-june-2023"
+          ],
+          "confidence": "medium"
+        },
+        "what_scholars_say": {
+          "finding": "Arnall 2014, 'A climate of control' (Geographical Journal 180(2):141-150), uses political ecology: climate-hazard narratives plus dam and hydropower interests plus state control produce involuntary resettlement onto poorer land. Artur & Hilhorst 2014 (Land Use Policy 36:361-368) treat resettlement as 'an arena of multiple meanings and objectives' and a continuation of historical resettlement for control and modernisation. Arnall 2019 (Climate and Development, open access) says researchers must uncover 'long-standing governmental perceptions of rural populations'. Stal 2011 and Arnall et al. 2013 identify livelihood viability as the key determinant of return.",
+          "quotes": [
+            "\"there is a need to uncover long-standing governmental perceptions of rural populations and the ways in which these affect state-led responses to climate shocks and stresses\" (Arnall 2019, abstract)",
+            "\"avoid situations in which present-day interventions to assist populations experiencing or threatened by climate displacement simply repeat or reinforce past injustices.\" (Arnall 2019, abstract)",
+            "\"an arena of multiple meanings and objectives, with differentiated outcomes for different categories of actors\" (Artur & Hilhorst 2014)"
+          ],
+          "urls": [
+            "https://rgs-ibg.onlinelibrary.wiley.com/doi/abs/10.1111/geoj.12036",
+            "https://research.wur.nl/en/publications/floods-resettlement-and-land-access-and-use-in-the-lower-zambezi-/",
+            "https://doi.org/10.1080/17565529.2018.1442799",
+            "https://onlinelibrary.wiley.com/doi/10.1111/disa.12003"
+          ],
+          "confidence": "high"
+        }
+      },
+      "overall_confidence": "medium"
+    },
+    {
+      "id": "beledweyne_so",
+      "place": "Beledweyne, Hiraan region, Hirshabelle State (Shabelle River)",
+      "country": "Somalia",
+      "summary": "Recurrent Shabelle floods (2016, 2018, 2019: about 231,000 affected and 68% of the city flooded; 2020 Gu: about 184,000 displaced; 2023; 2024) prompted what Heo et al. describe as a 2020 government-led relocation policy. Their SAR study (Sentinel-1, 2015-2025) finds evidence 'consistent with re-encroachment into hazardous floodplains'. Other sources show a messier reality. The Federal Government's own May 2020 assessment blames the 'absence of urban land use planning' and unenforced housing, land and property (HLP) rules. The IDMC (2021) found that nearly all displaced families return home, and that informal flood-displacement camps (Ceel Jaale) are hardening into permanent settlements. Primary documentation of the 2020 policy itself was NOT found; its existence rests on the Heo et al. manuscript.",
+      "variables": {
+        "land": {
+          "finding": "Displaced people go to higher parts of the city, to 'customarily uninhabited lands out of town' (Ceel Jaale, near the airport), or face eviction by landowners. Heo et al. (Land 2026) estimate 552-1,104 ha of land demand from the 2020 displacement and identify suitable, unbuilt grassland within 6 km of the centre. That suggests safe land exists nearby; who owns it is not assessed. The FGS assessment reports flood-caused land disputes and unenforced HLP regulation. No evidence was found of who owns the safe land or what it costs.",
+          "quotes": [
+            "\"Candidate areas sufficient to absorb the 2020 displacement land demand (552–1104 ha) lie within 6 km of the city centre.\" (Heo et al. 2026, Land 15(7):1275, abstract)",
+            "\"they move to customarily uninhabited lands out of town that become de facto camps for IDPs.\" (IDMC 2021)",
+            "\"As a result of the poor urban settlement and land use planning the flood created land disputes in the area. There are no effective enforcement of the existing Housing, Land and Property regulations\" (FGS Post Flood Solutions Assessment, May 2020)",
+            "\"Another issue is eviction or secondary displacement when owners ask IDPs to vacate their land.\" (IDMC 2021)"
+          ],
+          "urls": [
+            "https://doi.org/10.3390/land15071275",
+            "https://api.internal-displacement.org/sites/default/files/publications/documents/%202021.10.21_IDMC_Impacts%20of%20Displacement_Somalia.pdf",
+            "https://mop.gov.so/wp-content/uploads/PDF/DSU/Post%20Flood%20Solutions%20Assessment%20Final_DSS%20052020.pdf"
+          ],
+          "confidence": "medium"
+        },
+        "decision_maker": {
+          "finding": "Heo et al. describe the 2020 policy as 'government-led'. The FGS assessment was led by the national Durable Solutions Secretariat (MoPIED) with Hirshabelle. After the flood, a committee made up largely of prominent businesspeople was formed to help rebuilding. No evidence was found of community consultation or veto on relocation. Heo et al. themselves say their site analysis must be followed by 'community-driven site selection'.",
+          "quotes": [
+            "\"prompting a 2020 government-led relocation policy intended to reduce long-term flood risk exposure\" (Heo et al., manuscript description / search snippet)",
+            "\"a Flood Committee comprising largely of prominent businesspeople was established post-flood disaster in Beledweyne to assist the affected community to rebuild itself.\" (FGS PFSA 2020)",
+            "\"the framework should be understood as the first analytical step of a larger participatory process within which community-driven site selection, tenure formalisation and infrastructure planning can proceed.\" (Heo et al. 2026, Land)"
+          ],
+          "urls": [
+            "https://zenodo.org/records/20454490",
+            "https://mop.gov.so/wp-content/uploads/PDF/DSU/Post%20Flood%20Solutions%20Assessment%20Final_DSS%20052020.pdf",
+            "https://doi.org/10.3390/land15071275"
+          ],
+          "confidence": "low"
+        },
+        "legal_status_of_residents": {
+          "finding": "Most surveyed households report 'own land' (61.8% in the FGS survey). During floods they become IDPs in de facto camps on others' land and are vulnerable to eviction. The IDMC found tenure security among displaced tenants no weaker than among others (nearly half have written rental agreements). Heo et al. argue that relocation fails without 'tenure security'.",
+          "quotes": [
+            "\"Nearly half of displaced tenants have a written rental agreement, compared with only 11 per cent of non-displaced ones. So tenure security does not appear to be weaker in the displaced population.\" (IDMC 2021)",
+            "[snippet] \"structural relocation alone is unlikely to deliver durable flood risk reduction without parallel investment in tenure security, livelihoods, and inclusive governance.\" (Heo et al., Sustainability manuscript)"
+          ],
+          "urls": [
+            "https://api.internal-displacement.org/sites/default/files/publications/documents/%202021.10.21_IDMC_Impacts%20of%20Displacement_Somalia.pdf",
+            "https://mop.gov.so/wp-content/uploads/PDF/DSU/Post%20Flood%20Solutions%20Assessment%20Final_DSS%20052020.pdf",
+            "https://zenodo.org/records/20454490"
+          ],
+          "confidence": "low"
+        },
+        "funding_stream": {
+          "finding": "Response is dominated by humanitarian and donor money. The FGS says it sought external assistance and wants donor funds routed through government. The IDMC documents emergency funds arriving too late (after people had returned) and being repurposed. The UN-Habitat analysis was funded by the UN Peacebuilding Fund (Midnimo II). No procurement or corruption findings were located.",
+          "quotes": [
+            "\"The funds were meant to build toilets for displaced people, but they arrived very late when people were already returning to their homes.\" (local health professional, IDMC 2021)",
+            "\"Humanitarian agencies along with international donors have been the dominant providers of Disaster Response, Preparedness planning and risk management in Somalia for more than a decade.\" (FGS PFSA 2020)"
+          ],
+          "urls": [
+            "https://api.internal-displacement.org/sites/default/files/publications/documents/%202021.10.21_IDMC_Impacts%20of%20Displacement_Somalia.pdf",
+            "https://mop.gov.so/wp-content/uploads/PDF/DSU/Post%20Flood%20Solutions%20Assessment%20Final_DSS%20052020.pdf",
+            "https://unhabitat.org/an-analysis-of-flood-risk-and-urban-resilience-in-beledweyne"
+          ],
+          "confidence": "low"
+        },
+        "flood_risk_information": {
+          "finding": "Hazard information is abundant: UNOSAT/ReliefWeb satellite flood maps (2023), the UN-Habitat 2020 flood-risk analysis (68% of the city flooded in 2019), and Heo et al.'s 10-year SAR flood-frequency maps. The FGS assessment names the absence of land-use planning as a driver. The gap is enforcement, not information.",
+          "quotes": [
+            "\"absence of urban land use planning that results in unregulated embankment and cultivation of the river by inhabitants\" (FGS PFSA 2020)",
+            "approximately \"68% of the city was flooded\" in 2019 (UN-Habitat 2020)"
+          ],
+          "urls": [
+            "https://mop.gov.so/wp-content/uploads/PDF/DSU/Post%20Flood%20Solutions%20Assessment%20Final_DSS%20052020.pdf",
+            "https://unhabitat.org/an-analysis-of-flood-risk-and-urban-resilience-in-beledweyne",
+            "https://reliefweb.int/map/somalia/preliminary-satellite-derived-flood-assessment-over-beledweyne-city-hiraan-region-and-jowhar-city-middle-shebelle-region-somalia-19-may-2023"
+          ],
+          "confidence": "medium"
+        },
+        "legal_liability": {
+          "finding": "not_found",
+          "quotes": [],
+          "urls": [],
+          "confidence": "low"
+        },
+        "political_voice": {
+          "finding": "not_found. There is no evidence on voting-bloc or patronage dynamics. The FGS report quotes a local farmer and historian who contrasts an effective 1981 government response with today's 'absent role of the government' (paraphrase of the source).",
+          "quotes": [],
+          "urls": [
+            "https://mop.gov.so/wp-content/uploads/PDF/DSU/Post%20Flood%20Solutions%20Assessment%20Final_DSS%20052020.pdf"
+          ],
+          "confidence": "low"
+        },
+        "livelihoods": {
+          "finding": "This is an agropastoral city: the river is 'the dominant livelihood resource', and communities depend on agriculture and small business. That is why Heo et al. build a non-monotonic river-distance score, far enough to be safe but close enough to farm. Nearly all displaced people return home after one to three months.",
+          "quotes": [
+            "\"Site selection in this agropastoral context must simultaneously avoid the riparian flood corridor and preserve access to the river as the dominant livelihood resource.\" (Heo et al. 2026, Land)",
+            "\"Nearly all were able to return to their home.\" (IDMC 2021)",
+            "\"These communities are mostly dependent upon agriculture and small business activities, and their income levels are generally low.\" (FGS PFSA 2020)"
+          ],
+          "urls": [
+            "https://doi.org/10.3390/land15071275",
+            "https://api.internal-displacement.org/sites/default/files/publications/documents/%202021.10.21_IDMC_Impacts%20of%20Displacement_Somalia.pdf",
+            "https://mop.gov.so/wp-content/uploads/PDF/DSU/Post%20Flood%20Solutions%20Assessment%20Final_DSS%20052020.pdf"
+          ],
+          "confidence": "medium"
+        },
+        "blame_framing": {
+          "finding": "The federal government points partly to Ethiopia (lack of upstream coordination) and partly to residents ('unregulated embankment and cultivation of the river by inhabitants', dumping waste on riverbanks to gain land). Informants cite climate change or urbanisation and land management.",
+          "quotes": [
+            "\"upstream river in Ethiopia without coordination and early warning to the downstream in Somalia\" (FGS PFSA 2020)",
+            "\"Rapid urbanization is causing people to dump waste on the riverbanks so that extra land for habitation can be attained\" (FGS PFSA 2020)",
+            "\"Some link this deepening of the problem with climate change. Others point to urbanisation and land management issues.\" (IDMC 2021)"
+          ],
+          "urls": [
+            "https://mop.gov.so/wp-content/uploads/PDF/DSU/Post%20Flood%20Solutions%20Assessment%20Final_DSS%20052020.pdf",
+            "https://api.internal-displacement.org/sites/default/files/publications/documents/%202021.10.21_IDMC_Impacts%20of%20Displacement_Somalia.pdf"
+          ],
+          "confidence": "medium"
+        },
+        "outcome": {
+          "finding": "Floods recurred in 2023 (Hiiraan and CNN report nearly 250,000 fleeing) and 2024. SAR shows the mean flooded-area fraction rising from 4.68% to 5.61% (+19.8%, 95% CI 9.1-32.0) [snippet; the authors interpret this as consistent with re-encroachment]. The IDMC documents that the flood-displacement site at Ceel Jaale became a permanent settlement that is itself displaced in each flood.",
+          "quotes": [
+            "\"There are people who never return. They decide to permanently stay in Ceel-Jaale, where they get displaced every time there is flooding. (...) Each time, some people don't return, and Ceel-Jaale, which was once open land, is now a settlement.\" (private health professional, IDMC 2021)",
+            "[snippet] \"The mean flooded area fraction rose from 4.68% to 5.61%, a relative increase of +19.8% (95% CI 9.1–32.0)\" (Heo et al., Sustainability manuscript)"
+          ],
+          "urls": [
+            "https://api.internal-displacement.org/sites/default/files/publications/documents/%202021.10.21_IDMC_Impacts%20of%20Displacement_Somalia.pdf",
+            "https://zenodo.org/records/20454490",
+            "https://www.cnn.com/2023/05/18/africa/somalia-flooding-displaced-intl/index.html"
+          ],
+          "confidence": "low"
+        },
+        "what_scholars_say": {
+          "finding": "This is the satellite study requested. Heo, Kim, Yun & Lee, 'Are Flood-Risk Relocation Policies Sustainable? Decadal SAR Evidence of Re-encroachment in Beledweyne, Somalia', submitted to Sustainability (MDPI). Code: Zenodo doi:10.5281/zenodo.20454490 (v1.0.0, 30 May 2026). Methods: 259 Sentinel-1 scenes (2015-2025), Copernicus GLO-30, FABDEM and SRTM elevation models, CHIRPS rainfall, and BFAST changepoint analysis at 10 m. Conclusion: relocation alone fails without tenure security, livelihoods and inclusive governance. Caveat: it may not yet be peer-reviewed, and flooded-area fraction is an indirect proxy for settlement. The companion paper is Heo et al. 2026, 'Balancing Flood Hazard and Livelihood...', Land 15(7):1275 (open access, CC-BY).",
+          "quotes": [
+            "\"Planned relocation is increasingly framed in the international literature as a last-resort adaptation to avoid recurrent flood displacement, but one that can easily produce maladaptive outcomes--new hazards, unemployment, social marginalisation--if the destination site or the process is poorly designed\" (Heo et al. 2026, Land)"
+          ],
+          "urls": [
+            "https://zenodo.org/records/20454490",
+            "https://doi.org/10.3390/land15071275"
+          ],
+          "confidence": "medium"
+        }
+      },
+      "overall_confidence": "low"
+    }
+  ],
+  "comparative_study": {
+    "citation": "Bower, E. R., Badamikar, A., Wong-Parodi, G., & Field, C. B. (2023). Enabling pathways for sustainable livelihoods in planned relocation. Nature Climate Change, 13(9), 919-926. https://doi.org/10.1038/s41558-023-01753-x",
+    "urls": [
+      "https://www.nature.com/articles/s41558-023-01753-x",
+      "https://climateandnature.org.nz/wp-content/uploads/2023/10/Enabling-pathways-for-sustainable-livelihoods-in-planned-relocation.pdf",
+      "https://phys.org/news/2023-07-communities-minimal.html",
+      "https://www.smartcitiesdive.com/news/managed-retreat-teach-us-cities-planned-relocation-flood-sea-level-rise/691336/"
+    ],
+    "note_on_candidates": "The paper is by Bower et al. (Stanford), not Tadgell or Mortreux. Related works found: Hino, Field & Orloff (2017), 'Managed retreat as a response to natural hazard risk', Nature Climate Change 7:364-370 (cited in Bower et al.), and Mortreux et al., 'Political economy of planned relocation: a model of action and inaction in government responses' (seen in search; not reviewed).",
+    "method": "fsQCA on 14 completed, single-origin to single-destination, flood-related planned relocations drawn from the Platform on Disaster Displacement / Kaldor Centre global database (73 cases met the first three criteria, and 81% failed the documentation criterion). Outcomes were scored with SLA+ (human, social, cultural, natural, financial, physical).",
+    "cases": ["Grantham (Australia)", "El Choncho (Colombia)", "La Barquita (Dominican Republic)", "Vunidogoloa, Denimanu, Vunisavisavi (Fiji)", "Kandholhudhoo (Maldives)", "Mondo (Solomon Islands)", "Kananke Watta (Sri Lanka)", "Valmeyer, Soldier's Grove, Allenville, Pattonsburg (USA)", "Lateu (Vanuatu)"],
+    "key_findings": [
+      "\"Relocation processes initiated and driven by community members had better outcomes than government-driven processes, adding a global comparative perspective to prior findings.\" (abstract)",
+      "\"Cases initiated and driven by community members (high engagement) with overall positive livelihood outcomes are Vunidogoloa, Grantham, Valmeyer, Allenville, Soldier's Grove and Lateu, while cases driven by governments or non-governmental organizations (NGO) (low engagement) with overall negative livelihood outcomes are La Barquita, Kananke Watta and Kandholhudhoo.\"",
+      "\"For larger communities, relocating quickly with high levels of engagement led to more positive outcomes. For smaller communities, relocating slowly with synchronized transfers alongside high levels of engagement led to more positive outcomes.\"",
+      "\"Surprisingly, close site proximity was not important for livelihood outcomes in these cases.\" Distances ranged only from 200 m to 16 km.",
+      "\"Cultural dimensions fared the worst, with 8 of 14 cases exhibiting negative outcomes.\"",
+      "The El Choncho exception: the community drove the process but outcomes were negative, because \"the government provided only construction materials\". The authors write: \"While community engagement is undeniably important, it is not sufficient on its own.\"",
+      "Solution consistency 0.979, coverage 0.688.",
+      "Excluded: \"cases with multiple origin and destination sites ... (for example, in the Carteret Islands, Mozambique)\". None of the five deep-dive cases is in the sample, and the sample is biased toward well-documented, English-language cases.",
+      "The authors propose, as an alternative to minimising distance, \"to facilitate everyday translocal agency between sites through the provision of transportation or site selection along major transit routes.\""
+    ],
+    "relevance_to_project": "All five deep-dive cases are government- or NGO-driven, with low community engagement. That is the configuration Bower et al. associate with negative livelihood outcomes. Their finding that distance matters less applies only within 16 km, and it does not transfer to Chennai (30-40 km) or Kasiglahan (outside the metro area)."
+  },
+  "cross_case_observations": [
+    "Land price and ownership decide the site. In every case with evidence, the site was the land the state could get cheaply or for free: government 'poramboke' marsh in Chennai, 'low-priced' peripheral land in Kasiglahan, private land expropriated by decree in Haiti (where the state said it had no large parcels), and state-allocated higher ground in Mozambique. In Chennai and Kasiglahan the land was cheap because it was hazardous: 'those lands are not safe to begin with' (Arcilla).",
+    "The flood warning existed and was overridden. There was a 2004 unsuitability study (Kasiglahan), expert flags and a CAG audit (Chennai), and an IOM report saying 'should not be used' (Corail). This matches eThekwini, where the Auditor-General flagged siting in August 2022. The failure is not a lack of information but that no actor had to act on it.",
+    "The emergency label is used to override or bypass normal process. Chennai filled empty, audit-flagged JnNURM tenements 'under the pretext of flood rehabilitation'. Corail was chosen and bulldozed in days under a rainy-season deadline. The IOM flood assessment came after the move. Idai (Mozambique) shows the same emergency-versus-development disconnect.",
+    "'Temporary' or informal status traps people. In Kasiglahan the danger-zone designation blocks awarding the units, so residents stay without rights. In Chennai about 1,000 families hold only temporary tokens. In Canaan no titles or municipal recognition exist. The hazard label becomes a reason to deny rights, not a reason to move people.",
+    "Blame moves from the siting decision to weather, other agencies or residents: Chennai's 'unprecedented (global) weather anomaly'; Rodriguez's housing office saying residents 'invaded'; the MGB and NHA blaming quarrying and deforestation; Mozambique officials saying people returned 'despite all the warnings'; the Somali federal government blaming Ethiopia and 'cultivation of the river by inhabitants'. This mirrors eThekwini's 'unprecedented rainfall' framing.",
+    "Divided responsibility produces no accountability: the LGU and NHA contradict each other (Kasiglahan); international actors and the government point at each other (Haiti); and there is no river authority (Beledweyne). No resident-initiated damages case was found in any of the five cases. Protest and NGO reports are the only accountability channels.",
+    "The livelihood pull defeats safe-land relocation (Mozambique, Beledweyne). Where the destination was genuinely safer, people returned to the floodplain because the river was their livelihood, and the new site had drought or no farming. Informal flood-refuge camps also become permanent (Ceel Jaale). Safer land is not a safer life unless the livelihood moves too.",
+    "Political voice is weak and the pattern is neglect, not patronage: no official visits (Chennai 2015), relief only after protest (Chennai 2023), and state absence (Canaan). The one explicit electoral-motive allegation (moving 'unsympathetic voters') is from Mozambique's Idai resettlement, not from the Lower Zambezi case itself.",
+    "Evidence gaps to fill: primary documentation of Beledweyne's 2020 relocation policy; who owned the alternative safe land and what it cost (all cases); procurement records (all cases); the full text of Lauer et al. 2026 (Kasiglahan) and Arnall 2014 (Mozambique); and death tolls specific to the relocation sites (not found for any case)."
+  ]
+}

@@ -1,0 +1,720 @@
+{
+  "meta": {
+    "title": "Counter-examples: post-flood / pre-emptive relocation to genuinely safe land",
+    "purpose": "Contrast cases for the eThekwini (Durban) baseline, where April 2022 flood-displaced families were placed in a 'temporary' riverbank camp that later flooded.",
+    "compiled": "2026-09-27",
+    "method_notes": [
+      "Quotes marked quote_source='pdf_text' were extracted directly from the PDF text of the cited paper by our own text extraction and are verbatim (whitespace normalised).",
+      "Quotes marked quote_source='page_extract' came from a web-page extraction tool. They are believed verbatim but should be re-checked against the URL before publication.",
+      "Quotes marked quote_source='search_snippet' come from search-engine summaries of pages we could not open (paywall/403). Treat them as leads, not confirmed quotes.",
+      "Where sources disagree (e.g. Grantham land area, Vunidogoloa currency) both figures are recorded.",
+      "Candidates checked and rejected or downgraded are listed under rejected_candidates."
+    ]
+  },
+  "cases": [
+    {
+      "id": "grantham_qld_2011",
+      "place": "Grantham, Lockyer Valley Regional Council, Queensland",
+      "country": "Australia",
+      "hazard": "Flash flood, 10 January 2011 (12 deaths in Grantham, 19 in the Lockyer Valley)",
+      "summary": "Within weeks of the 2011 flash flood, the Lockyer Valley Regional Council (LVRC) bought a hillside farm next to the town using its own reserves. It offered flood-affected property owners a voluntary swap of their flooded block for a block of the same size on the new estate. The state declared Grantham a 'reconstruction area' so normal planning rules could be bypassed. Infrastructure was funded with AUD 18m in federal and state money, and the first families moved in about 11 months after the flood. In the 2013 floods only three houses in Grantham were damaged. In 2022 the floodwaters were less destructive than in 2011.",
+      "why_it_worked_short": "Land was secured immediately, before anyone rebuilt on the floodplain. The swap needed no cash, because owners traded title for title. A regulatory fast track removed planning delay. A mayor under national media attention defied state reluctance. The site was next to the old town, so social ties and services were kept.",
+      "success_caveats": "Success held for property OWNERS who could afford to demolish their old house and build a new one (with insurance and grants). Eligibility was framed around 'property owners'. Residents who could not afford to rebuild, or had no insurance, stayed on the floodplain. Businesses were excluded because no commercial land was zoned in the new estate, although a commercial centre was the community's top priority. Renters are not mentioned as eligible in any source found. About 50 houses remained in the old town. The new site is only about 3 m higher than, and about 50 m from, the 2011 flood extent at the closest point. Scholars also questioned whether bypassing the planning system was legitimate. Land area figures differ across sources (377 ha / 935 acres, 485 ha, 'almost 1000 ha').",
+      "confidence_overall": "high",
+      "variables": {
+        "land": {
+          "finding": "The council (LVRC) bought freehold farmland on a hill next to the town in April 2011, paying from its own internal reserves. Owners then made a voluntary like-for-like swap of lot size (500-1500 m2 flooded block for a ~1000 m2 new block, and so on) with no extra payment. The council took title to the vacated flood land and restricted it to non-residential use such as grazing. The purchase price of the land was not found. CoastAdapt says the council invested 'up to $40 million' in the whole project. Sources disagree on the site's size: 377 ha / ~935 acres (Okada et al.; Sipe & Vella; QRA), 485 ha (ABC; Australian Adaptation Database) and 'almost 1000 ha' (CoastAdapt).",
+          "quotes": [
+            {"text": "the new development area was purchased by the LVRC in April 2011. The land parcel included approximately 935 acres of freehold land adjoining the existing township of Grantham on a hill-side not affected by the recent flooding", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "The LVRC funded the land purchase from internal resources and this site was considered large enough to accommodate future growth of the town", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "Where a land-swap has taken place, the LVRC was required to assume ownership of the vacated land and use it for non-residential purposes, such as for grazing or pasture.", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "A 935 acre site was purchased so that landholders could be provided a voluntary swap of equivalent-sized blocks.", "source": "QRA", "quote_source": "page_extract"},
+            {"text": "Council invested up to $40 million in the project", "source": "CoastAdapt", "quote_source": "page_extract"},
+            {"text": "The council bought 485 hectares of cattle country on a hill overlooking Grantham", "source": "Australian Adaptation Database", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://researchonline.jcu.edu.au/34960/1/34960%20Okada%20et%20al%202014.pdf",
+            "https://www.qra.qld.gov.au/news-case-studies/case-studies/rebuilding-grantham-together",
+            "https://coastadapt.com.au/resource-centre/case-studies/planning-for-change-transitions-and-transformations/the-grantham-relocation-more-than-a-decade-later/",
+            "https://australianadaptationdatabase.unimelb.edu.au/grantham-relocation",
+            "https://www.abc.net.au/news/2024-10-10/grantham-floods-lockyer-valley-land-swap-to-move-town/104444910"
+          ],
+          "confidence": "high (mechanism); medium (area and cost figures, which conflict)"
+        },
+        "decision_maker": {
+          "finding": "The council led the scheme; it was not initiated by the community. However, it was paired with intensive, early consultation: public meetings with around 400 residents, planning workshops, and 'enquiry by design'. The master plan went back to the community on 26 March 2011, 10 weeks after the flood. The formal development scheme was open for public comment from 11 May to 23 June 2011 and received six submissions. Taking part was voluntary: residents chose whether to swap and nominated preferred blocks, and final allocation was by independent ballot. Residents who declined had to sign a disclaimer. Residents had individual choice but no collective veto over the scheme.",
+          "quotes": [
+            {"text": "Participation in the program was voluntary and those residents who chose to take part were able to nominate their preferred block(s). The final allocation was determined by a ballot carried out by an independent consultant to ensure transparency.", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "The masterplan for resettlement and recovery, which reflected the local residents' voices collected through the public meetings, was presented back to the community on 26 March 2011 - only 10 weeks after the flood event", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "The non-participating residents, despite the LVRC's strong recommendation to participate, are required to sign a disclaimer stating that they have been informed of the scheme and have declined to participate.", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "Through a series of regular community consultations, visioning meetings, design workshops...the council nurtured a strong sense of trust.", "source": "National Academies 2024, Community-Driven Relocation, ch.3", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://researchonline.jcu.edu.au/34960/1/34960%20Okada%20et%20al%202014.pdf",
+            "https://www.nationalacademies.org/read/27213/chapter/5",
+            "https://coastadapt.com.au/resource-centre/case-studies/planning-for-change-transitions-and-transformations/the-grantham-relocation-more-than-a-decade-later/"
+          ],
+          "confidence": "high"
+        },
+        "legal_status_of_residents": {
+          "finding": "Residents were Australian citizens with freehold title. The swap was an exchange of title between the owner and the council, set out in the Grantham Relocation Policy. Eligibility was defined for 'property owners' whose land lay in a mapped eligible area. No source found mentions any provision for renters. One secondary source says some people got no support and were left on the floodplain. Businesses were explicitly ineligible.",
+          "quotes": [
+            {"text": "property owners that are deemed eligible for the land-swap were given the option to swap their existing block of land for one of similar size within the newly developed area", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "Ownership of the existing and new areas will be exchanged between the project participants and the LVRC, with detailed policy surrounding responsibilities defined clearly in the Grantham Relocation Policy", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "businesses were not eligible to participate in the land swap as no land in the new estate was zoned for commercial use", "source": "CoastAdapt", "quote_source": "page_extract"},
+            {"text": "Some individuals did not receive financial or relocation support and were left on the floodplain.", "source": "Relocating Australian Communities at Risk", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://researchonline.jcu.edu.au/34960/1/34960%20Okada%20et%20al%202014.pdf",
+            "https://coastadapt.com.au/resource-centre/case-studies/planning-for-change-transitions-and-transformations/the-grantham-relocation-more-than-a-decade-later/",
+            "https://relocatingausatrisk.com/Grantham.html"
+          ],
+          "confidence": "high for owners; renters: not_found (no explicit provision found)"
+        },
+        "funding_stream": {
+          "finding": "Money came from several sources. The council's own reserves paid for the land. The federal and state governments gave AUD 18m, mostly for infrastructure; the state came in only after the federal government committed. The state gave AUD 35,000 grants to eligible landholders, and transfer duty on new lots was waived. Households paid for their own houses from insurance payouts plus Premier's Flood Appeal grants. Timeline: flood on 10 January 2011; land purchased in April 2011; reconstruction-area declaration on 8 April 2011; engineering works began on 7 June 2011; first ballot on 6 August 2011 (72 owners); first residents in December 2011, about 11 months after the flood. By July 2013 all 115 blocks were signed up. No temporary-camp phase was documented.",
+          "quotes": [
+            {"text": "once the LVRC received contributions from the federal government, the state government reconsidered their stance. This brought the total financial package to $18 million for the provision of infrastructure for the new site", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "To supplement the costs associated with resettlement, the state government provided special grants of $35,000 for eligible landholders. Residents were also exempt from paying transfer duty on their new lots", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "Residents who swapped lots of land then paid to build their new homes with their insurance payouts backed by special grants from the Premier's Flood Appeal.", "source": "QRA", "quote_source": "page_extract"},
+            {"text": "the first home was built on the new site within 11 months of the flood", "source": "CoastAdapt", "quote_source": "page_extract"},
+            {"text": "the initial ballot was held on 6 August 2011 in which 72 land-owners took up the offer of land swap", "source": "Okada et al. 2014", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://researchonline.jcu.edu.au/34960/1/34960%20Okada%20et%20al%202014.pdf",
+            "https://www.qra.qld.gov.au/news-case-studies/case-studies/rebuilding-grantham-together",
+            "https://coastadapt.com.au/resource-centre/case-studies/planning-for-change-transitions-and-transformations/the-grantham-relocation-more-than-a-decade-later/"
+          ],
+          "confidence": "high"
+        },
+        "flood_risk_information": {
+          "finding": "Eligibility for the swap was mapped against the estimated 2011 flood extent (Okada et al. Fig. 2, sourced from the QRA Floodcheck map). The new site was chosen as land 'not affected by the recent flooding' and 'outside the flood zone'. Caveat: at the closest point the new residential section is only about 50 m from, and about 3 m above, the 2011 flooded area. Once swapped, the vacated flood land was restricted to non-residential use. No formal statewide rule banning rebuilding was found. The council's aim was to 'eliminate' rather than 'mitigate' the risk.",
+          "quotes": [
+            {"text": "The resettlement area (residential section) and the flash flood-affected area in Grantham are physically separated by approximately 50 m at the closest section between them. The difference in ground elevation of the two closest sections is 3 m", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "The LVRC decided on eliminating the risk of future flooding, rather than simply mitigating it.", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "Lockyer Valley Regional Council gave flood-impacted residents the option to move to a new land parcel located adjacent to Grantham but outside the flood zone.", "source": "QRA", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://researchonline.jcu.edu.au/34960/1/34960%20Okada%20et%20al%202014.pdf",
+            "https://www.qra.qld.gov.au/news-case-studies/case-studies/rebuilding-grantham-together"
+          ],
+          "confidence": "medium-high"
+        },
+        "legal_liability": {
+          "finding": "No court case or statutory duty compelling the council to relocate was found. The legal enabler was permissive, not compulsory: the Queensland Reconstruction Authority Act 2011 allowed Grantham to be declared a reconstruction area on 8 April 2011, which fast-tracked approvals past the South East Queensland Regional Plan. Before that, the state had refused to allow development outside the urban footprint. The Queensland Floods Commission of Inquiry wrote a chapter on buy-backs and land swaps, but it could not be retrieved (server refused connection).",
+          "quotes": [
+            {"text": "On 8 April 2011, the Queensland Reconstruction Authority (QRA) under the QRA Act 2011 (QRA Act) declared Grantham as a reconstruction area. This enabled the process to be fast-tracked through the regulatory system", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "the project's legitimacy in terms of existing land use planning procedures in Queensland is open to criticism despite the approvals provided by the QRA", "source": "Okada et al. 2014", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://researchonline.jcu.edu.au/34960/1/34960%20Okada%20et%20al%202014.pdf",
+            "http://www.floodcommission.qld.gov.au/__data/assets/pdf_file/0015/11715/QFCI-Final-Report-Chapter-11-Buy-backs-and-land-swaps.pdf"
+          ],
+          "confidence": "medium (liability regime: not_found; enabling law: high)"
+        },
+        "political_voice": {
+          "finding": "Residents were voting citizens in a disaster watched by the whole country. The mayor used national attention and a direct approach to the Prime Minister to override a reluctant state Premier, who warned it would be 'at your financial and political risk'. The council worked with the media deliberately. No source found discusses electoral consequences.",
+          "quotes": [
+            {"text": "This is an emergency situation. The whole of Australia is watching. Even [if you] do whatever you like, but we are going to build the plots and you have to put us in jail", "source": "LVRC Mayor quoted in Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "I met with the Premier at that time. And I just said 'We will be proceeding.' And she said 'It will be at your financial and political risk.'", "source": "LVRC official quoted in Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "The LVRC also worked closely with media groups throughout the project term to keep the local residents informed and to sustain the significance of the project among political leaders", "source": "Okada et al. 2014", "quote_source": "pdf_text"}
+          ],
+          "urls": ["https://researchonline.jcu.edu.au/34960/1/34960%20Okada%20et%20al%202014.pdf"],
+          "confidence": "high (media/political leadership); electoral consequences: not_found"
+        },
+        "livelihoods": {
+          "finding": "The move was short (next to the existing town), so jobs, schools and services stayed reachable. Agriculture employed 20% of Grantham residents. The council planned an economic development precinct linked to the highway and hired over 600 construction workers. Businesses, however, could not join the swap, and the community's top priority, a commercial centre, was not delivered.",
+          "quotes": [
+            {"text": "Proximity to the existing township is an important advantage of the resettlement project enabling the resettlement area to maintain access to community networks and social services such as schools and hospitals.", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "The LVRC has also accepted more than 600 construction workers, providing training programs for the previously unemployed", "source": "Okada et al. 2014", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://researchonline.jcu.edu.au/34960/1/34960%20Okada%20et%20al%202014.pdf",
+            "https://coastadapt.com.au/resource-centre/case-studies/planning-for-change-transitions-and-transformations/the-grantham-relocation-more-than-a-decade-later/"
+          ],
+          "confidence": "medium"
+        },
+        "outcome": {
+          "finding": "The relocated homes were not re-flooded. In the January 2013 flood only three houses in Grantham were damaged; the 119 destroyed in 2011 is a Lockyer Valley-wide figure. In the 2022 floods the water was less destructive and no rooftop rescues were needed, but 24 more old-town properties were bought under the Resilient Homes Fund. Around 110 houses were built on the new site and about 50 houses remain in the old town. ABC (2024) reports 'just one block remains' unsold in the estate. No resident satisfaction survey was found. Some people left the community; some stayed and repaired in the flood zone.",
+          "quotes": [
+            {"text": "only three houses sustained flood damage in Grantham in the 2013 flood compared with the 119 destroyed in 2011 event", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "People didn't have to be plucked from rooftops by rescue crews", "source": "ABC News 2024", "quote_source": "page_extract"},
+            {"text": "Around 110 houses were built on the new site, leaving about 50 houses remaining in the old town", "source": "CoastAdapt", "quote_source": "page_extract"},
+            {"text": "Some of these residents have left the community, others plan to leave while some have chosen to stay and repair their existing home. Potential reasons for not participating are financial constraints.", "source": "Okada et al. 2014", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://researchonline.jcu.edu.au/34960/1/34960%20Okada%20et%20al%202014.pdf",
+            "https://www.abc.net.au/news/2024-10-10/grantham-floods-lockyer-valley-land-swap-to-move-town/104444910",
+            "https://coastadapt.com.au/resource-centre/case-studies/planning-for-change-transitions-and-transformations/the-grantham-relocation-more-than-a-decade-later/"
+          ],
+          "confidence": "high"
+        },
+        "what_scholars_say": {
+          "finding": "Okada et al. (2014, IJDRR 8:20-31) credit three factors particular to Grantham: a small population, land available right next to the town, and a council with enough reserves to buy it. They add two transferable factors: early community consultation and 'untraditional political decisions'. Sipe & Vella (2014, JAPA 80(4)) conclude that existing planning rules can block quick action and that local political leadership is key. The National Academies (2024) highlight proactive leadership, planning rules that were bypassed, and trust built through consultation.",
+          "quotes": [
+            {"text": "the set of area-specific factors of a relatively small population, immediate availability of the land for resettlement adjacent to the existing township and sufficient reserve in the LVRC significantly facilitated the early-stage success of the resettlement. However, the flexibility demonstrated by the LVRC including the early community consultations and political strategies should be learnt as a potential solution", "source": "Okada, Haynes, Bird, van den Honert & King 2014, IJDRR 8:20-31", "quote_source": "pdf_text"},
+            {"text": "Holding a number of early community consultations facilitated general consensus despite the physical and emotional hardship in the community. The LVRC's untraditional political decisions opened the way and facilitated the process.", "source": "Okada et al. 2014", "quote_source": "pdf_text"},
+            {"text": "the role of existing planning regulations can be a hindrance to quick action, and political leadership, particularly at the local level, is key to implementing the relocation", "source": "Sipe & Vella 2014 (JAPA) - abstract as summarised by search engine", "quote_source": "search_snippet"}
+          ],
+          "urls": [
+            "https://researchonline.jcu.edu.au/34960/1/34960%20Okada%20et%20al%202014.pdf",
+            "https://www.tandfonline.com/doi/abs/10.1080/01944363.2014.976586",
+            "https://www.nationalacademies.org/read/27213/chapter/5"
+          ],
+          "confidence": "high"
+        }
+      }
+    },
+    {
+      "id": "overdiepse_polder_nl",
+      "place": "Overdiepse Polder, Waalwijk, Noord-Brabant (Room for the River)",
+      "country": "Netherlands",
+      "hazard": "Pre-emptive: river Meuse (Bergsche Maas) peak discharge; polder redesigned to take water about once every 25 years",
+      "summary": "In 2000 the state designated the farmers' polder as a possible emergency water-storage area. Rather than fight the plan, farmers drafted their own 'terps plan' with the farmers' union ZLTO: rebuild some farms on 6 m artificial mounds against a new inland dike, and let the polder flood about once every 25 years. The province of Noord-Brabant adopted the plan, and the residents secured a formal seat in the project organisation. Eight of 17 farm families stayed on the mounds; the rest were bought out and moved elsewhere. The project cost EUR 111m and was built between 2011 and 2015 under the permanent national Room for the River programme.",
+      "why_it_worked_short": "It was pre-emptive and permanently funded, with no disaster and no camp. Citizens designed the solution and negotiated conditions in advance: a say in the process and the design, and compensation for lost land and for future inundation. A provincial government acted as a broker between farmers and a top-down national water agency. The flood hazard was engineered into the design: mound height is set against a known return period. Expropriation existed as a backstop, which pushed both sides to deal.",
+      "success_caveats": "Success held mainly for farmers who OWNED land at the future mound locations. The province's 'equal rights, equal opportunities' principle gave way to landowner priority. Farmers who mainly leased land, a pig farmer (mounds were for dairy only) and families without successors were pushed out or disadvantaged. An environmental-justice analysis reports displacement of half of the farmers who had leased their land. A once close-knit community became divided. Those who moved out felt abandoned by the farmers' interest group and the province. The authors themselves ask 'What is considered successful?' No source found confirms that the polder has been inundated since completion, so the design is so far untested by a real event.",
+      "confidence_overall": "high (process); medium (post-completion outcome)",
+      "variables": {
+        "land": {
+          "finding": "The state bought the land. The province bought out farms under a real-estate strategy approved by Rijkswaterstaat (the national water agency) and reallocated land around each mound to those staying. Farmers said the state 'could use its power of compulsory purchase', and the Water Act and Expropriation Act allow expropriation if talks fail. Some farmers delayed until the expropriation deadline. Buy-out money did not fully cover farmers' planned expansion. Total project cost was EUR 111m, with an EU subsidy. The province used an 'inpassingsplan' (provincial zoning plan) to regulate land use.",
+          "quotes": [
+            {"text": "Although all farmers were bought out by the province, the proceeds did not cover the costs needed for increasing the company size from around 60-80 cows to 100-120 cows, which was the aim of most farmers.", "source": "Roth & Winnubst 2015, IJWG", "quote_source": "pdf_text"},
+            {"text": "Frustrating the plans is of no help. Besides, the government could use its power of compulsory purchase.", "source": "vice-chair, Overdiepse Polder Interest Group, in Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "The land would be parcelled around each terp and reallocated to those staying in the polder.", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "The project costs 111 million euro and is to be completed in 2015.", "source": "Dutch Water Sector", "quote_source": "page_extract"},
+            {"text": "the provinces of Noord-Brabant and Limburg have made use of its competence to draft an 'inpassingsplan' (i.e. a type of zoning plan at the provincial level) to regulate land use in the Overdiepse Polder", "source": "Utrecht Law Review", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://research-portal.uu.nl/ws/files/211569892/DOI-_10.7564_13-IJWG34.pdf",
+            "https://www.dutchwatersector.com/news/room-for-the-river-first-dairy-farmer-moves-to-new-farm-on-6-m-high-mound-in-overdiepse-polder",
+            "https://utrechtlawreview.org/articles/10.36633/ulr.860",
+            "https://nl.wikipedia.org/wiki/Overdiepse_Polder"
+          ],
+          "confidence": "high"
+        },
+        "decision_maker": {
+          "finding": "Citizens initiated the plan, which the province then adopted. It was the first Dutch water plan started by citizens and taken into national policy. Farmers set four conditions: process conditions, a say in the design, compensation for lost land and yield, and compensation for damage after inundation. They would not cooperate unless all four were met. A residents' survey of options had a 100% response rate. The farmers' interest group (OPIG) and its water expert sat in project and steering groups. Rijkswaterstaat deliberately obstructed the process until 2004. The farmers held a de facto veto early on, but lost it as the process went on.",
+          "quotes": [
+            {"text": "it was the first plan in Dutch water management practices initiated by citizens, integrated in national policy, and implemented in the framework of Room for the River", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "Different from what was usual in planning processes the farmers asked for a key role in the project, a real say in project matters and decision making. If these four conditions would not be met, the inhabitants would not cooperate.", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "After a survey among the residents, resulting in a 100% response, two options were remaining: the terps plan and the dike in the middle of the polder.", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "Until midway through the planning process in 2004, Rijkswaterstaat deliberately obstructed progress by failing to take decisions or slowing down the process", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "The local agricultural entrepreneurs put their minds together and came up with a 'terpenplan' (mound plan), to be able stay in the polder even during floods.", "source": "Bosch Slabbers (landscape architects)", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://research-portal.uu.nl/ws/files/211569892/DOI-_10.7564_13-IJWG34.pdf",
+            "https://www.boschslabbers.nl/en/project/overdiepse-polder/"
+          ],
+          "confidence": "high"
+        },
+        "legal_status_of_residents": {
+          "finding": "Residents were Dutch citizens and mostly owner-operators of family dairy farms (16 dairy, 1 pig), but many also leased land. Ownership decided who got a mound: farmers owning land at the mound sites had 'a preferential position'. Farmers who mainly leased land had fewer options and were more likely to be displaced. The Springer environmental-justice chapter found that half of the farmers who had leased their land were displaced.",
+          "quotes": [
+            {"text": "those who own land at the location of the terps, have a preferential position to claim a terp, and those who intend to move out will be facilitated", "source": "provincial deputy (2007) as reported in Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "Farmers who owned land had a more comfortable starting position for a new farm enterprise, either inside or outside the polder, than farmers who mainly held land in leasehold.", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "In fact, all may have equal rights, but not equal opportunities.", "source": "vice-chair OPIG, in Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "discernible signs of injustice, notably the displacement of half of the farmers who had leased their land, rendering them more vulnerable than their counterparts", "source": "Springer chapter 'Environmental Justice: A Content Analysis of Room for the River in Overdiepse Polder' (abstract via search)", "quote_source": "search_snippet"}
+          ],
+          "urls": [
+            "https://research-portal.uu.nl/ws/files/211569892/DOI-_10.7564_13-IJWG34.pdf",
+            "https://link.springer.com/chapter/10.1007/978-981-96-0843-0_26"
+          ],
+          "confidence": "high (owners vs lessees mechanism); medium (the 'half of lessees' figure, search snippet only)"
+        },
+        "funding_stream": {
+          "finding": "Funding came from a permanent national programme, Room for the River (about EUR 2.3bn in total for 30+ projects), plus an EU subsidy. The project was pre-emptive, with no emergency budget and no temporary housing. The timeline was long: designation in 2000, farmers' plan in 2000-01, design from 2006 to 2010, and construction from 2011 to 2015. The first dairy farmer moved onto a mound during construction. Because nothing had been destroyed, there was no displacement gap: families stayed in their old farms until the new ones were ready.",
+          "quotes": [
+            {"text": "The mound plan was designed from 2006-2010 with realization occurring from 2011-2015", "source": "Bosch Slabbers (via search summary)", "quote_source": "search_snippet"},
+            {"text": "Het project kreeg subsidie van de Europese Unie en kan (inter-)nationaal op belangstelling rekenen.", "translation": "The project received an EU subsidy and attracts (inter)national interest.", "source": "nl.wikipedia", "quote_source": "page_extract"},
+            {"text": "Thanks to the citizens' collective agency and the provincial agents the terps plan transformed from a citizens' idea towards an official plan with a national status, a project budget and a project planning.", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://www.boschslabbers.nl/en/project/overdiepse-polder/",
+            "https://nl.wikipedia.org/wiki/Overdiepse_Polder",
+            "https://research-portal.uu.nl/ws/files/211569892/DOI-_10.7564_13-IJWG34.pdf",
+            "https://www.greeneuropeanjournal.eu/land-to-the-river-planned-relocation-in-the-netherlands/"
+          ],
+          "confidence": "high"
+        },
+        "flood_risk_information": {
+          "finding": "A government study in the mid-1990s identified the polder as a retention 'search area'. The redesign was engineered to a stated inundation frequency of about once every 25 years. The mounds are 6 m high and 2.25 ha each, set against a new inland dike, and the project lowers high-water levels on the Bergsche Maas by about 27 cm. The national Water Act sets statutory flood-safety standards.",
+          "quotes": [
+            {"text": "in case of extreme discharges, the river water can flow into the polder. This is anticipated to occur on an average of once every 25 years.", "source": "Dutch Water Sector", "quote_source": "page_extract"},
+            {"text": "a working group consisting of various farmers went through various options for living in a retention area that would be inundated once in 25 years on average", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "the high water level in the River Bergsche Maas will be lowered by approximately 27 cm.", "source": "Dutch Water Sector", "quote_source": "page_extract"},
+            {"text": "the yearly individual risk of fatality due to flooding (R) across the country may not exceed 1:100.000", "source": "Utrecht Law Review (on Water Act standards)", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://www.dutchwatersector.com/news/room-for-the-river-first-dairy-farmer-moves-to-new-farm-on-6-m-high-mound-in-overdiepse-polder",
+            "https://research-portal.uu.nl/ws/files/211569892/DOI-_10.7564_13-IJWG34.pdf",
+            "https://utrechtlawreview.org/articles/10.36633/ulr.860"
+          ],
+          "confidence": "high"
+        },
+        "legal_liability": {
+          "finding": "The state has a statutory flood-safety duty under the Water Act's standards. The Water Act and Expropriation Act allow owners to be compelled if negotiation fails, and Articles 7.14-7.15 of the Water Act provide compensation for damage from flood-management designations. The farmers deliberately chose negotiation over litigation. No court case specific to Overdiep was found.",
+          "quotes": [
+            {"text": "Instead of waiting for the national government to come up with retention plans and then fighting them in the courts right up to the Council of State, they drew up their own plan.", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "The province had to take into account that some farmers were postponing a decision until the deadline for expropriation was approaching.", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://research-portal.uu.nl/ws/files/211569892/DOI-_10.7564_13-IJWG34.pdf",
+            "https://utrechtlawreview.org/articles/10.36633/ulr.860"
+          ],
+          "confidence": "medium-high"
+        },
+        "political_voice": {
+          "finding": "Farmers were an organised group backed by the farmers' union ZLTO, with administrative skills and networks. A provincial deputy (later an MP) took up their plan, partly to raise the low profile of the province. The residents' plan was chosen as one of five national 'mirror projects'. The project drew national and international attention. No source found discusses electoral consequences.",
+          "quotes": [
+            {"text": "The provincial deputy agreed to this and seized the opportunity to take the lead in the citizens' initiative ... This implied a new provincial responsibility as well as an opportunity to increase the province's visibility.", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "The provincial deputies turned out to be a relevant political force in the project, particularly in negotiations with the national government.", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"}
+          ],
+          "urls": ["https://research-portal.uu.nl/ws/files/211569892/DOI-_10.7564_13-IJWG34.pdf"],
+          "confidence": "high"
+        },
+        "livelihoods": {
+          "finding": "Protecting livelihoods was the whole design goal: dairy farming continues on the mounds, and stayers expanded their herds using public money for the new 'blue' function of their land. Of 17 families, eight moved onto mounds. The others were bought out and relocated (Wieringermeer, south-west Netherlands, Canada) or stopped farming. Those who left struggled to find land because of high prices and permits, and had to arrange their own permits and infrastructure.",
+          "quotes": [
+            {"text": "thanks to public means available for creating an additional ('blue') function of their land, they were able to modernize their family enterprise", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "Out of the 17 families who originally live in the Overdiepse Polder, eight families will move to the mounds.", "source": "Dutch Water Sector", "quote_source": "page_extract"},
+            {"text": "A pig farmer had to move because the terps were solely meant for dairy farmers.", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "While those who moved out had to organise the permits and all basic infrastructure themselves, the OPIG supported the stayers as much as possible", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://research-portal.uu.nl/ws/files/211569892/DOI-_10.7564_13-IJWG34.pdf",
+            "https://www.dutchwatersector.com/news/room-for-the-river-first-dairy-farmer-moves-to-new-farm-on-6-m-high-mound-in-overdiepse-polder"
+          ],
+          "confidence": "high"
+        },
+        "outcome": {
+          "finding": "Eight mounds were built and are occupied (nl.wikipedia: 'all terps were put into use'). No source found reports whether the polder has actually been used for water storage since 2015. January 2024 saw high water in the Netherlands, but no Overdiep-specific account was found. There was no flood damage because there was no disaster. The social outcome was a divided community. No systematic satisfaction data was found.",
+          "quotes": [
+            {"text": "during the planning and implementation process the Overdiep Polder population changed from being a close-knit community to being divided", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "acht anderen toonden zich bereid hun bedrijf vrijwillig te beeindigen of elders voort te zetten", "translation": "eight others were willing to voluntarily end their business or continue it elsewhere", "source": "nl.wikipedia", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://research-portal.uu.nl/ws/files/211569892/DOI-_10.7564_13-IJWG34.pdf",
+            "https://nl.wikipedia.org/wiki/Overdiepse_Polder"
+          ],
+          "confidence": "medium (re-flooding/inundation record: not_found)"
+        },
+        "what_scholars_say": {
+          "finding": "Roth & Winnubst (2015, International Journal of Water Governance; see also Land Use Policy 41:233-245, 2014) name four crucial factors. First, a window of opportunity for bottom-up plans. Second, the project was delegated to a lower-tier government (the province), which acted as a 'boundary organisation'. Third, committed provincial deputies and project managers. Fourth, a fit between the citizens' plan and national flood policy, so that public safety and private farm viability coincided. The National Academies (2024), citing Bloemen et al. 2019, credit long-term programmatic development kept separate from politics, and 'kitchen table' individual negotiation.",
+          "quotes": [
+            {"text": "First, the 'window of opportunity' that was created by a working group that stimulated bottom-up plans ... Second, the delegation of river projects to a lower-tier government, in this case Noord-Brabant Province. Third, the commitment of, among others, the provincial deputies and the provincial project managers ... Fourth, the terps plan fitted neatly in the national flood risk policy.", "source": "Roth & Winnubst 2015, IJWG, doi:10.7564/13-IJWG34", "quote_source": "pdf_text"},
+            {"text": "This resulted in the commitment of the government and residents because the public interest of water safety as well as the local interest of a viable economic future of the farm enterprises met in the plan.", "source": "Roth & Winnubst 2015", "quote_source": "pdf_text"},
+            {"text": "Key elements of success include (a) long-term programmatic development designed to keep political involvement separate; (b) a clearly stated approach to dealing with uncertainty; and (c) an organizational strategy to allow for adjustments over time.", "source": "National Academies 2024 citing Bloemen et al. 2019", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://research-portal.uu.nl/ws/files/211569892/DOI-_10.7564_13-IJWG34.pdf",
+            "https://www.sciencedirect.com/science/article/abs/pii/S0264837714001215",
+            "https://www.nationalacademies.org/read/27213/chapter/5"
+          ],
+          "confidence": "high"
+        }
+      }
+    },
+    {
+      "id": "gramalote_colombia",
+      "place": "Gramalote, Norte de Santander",
+      "country": "Colombia",
+      "hazard": "Landslide / ground failure triggered by La Nina rains, 16-17 December 2010. Whole urban area destroyed; ~3,000-3,300 people displaced. NOTE: a rain-triggered landslide, not a riverine flood.",
+      "summary": "Colombia relocated an entire town. A national disaster-reconstruction agency (Fondo Adaptacion, created for the 2010-11 La Nina disasters) chose the Miraflores site with a participatory 'Mesa de Trabajo' and a multi-criteria matrix in which geological stability carried the most weight. It bought the land under Law 1523 of 2012 and built about 984-1,007 houses. Every original household, including the roughly 40% who had been renters, ended up as a legal homeowner. Moves began in 2017. The process was slow (six to ten years), over budget and plagued by construction defects.",
+      "why_it_worked_short": "(1) A dedicated, well-funded national agency with legal power to buy or expropriate land after a declared disaster. (2) Site selection that put hazard (stability) first. (3) A participatory governance body with real influence. (4) Tenure was upgraded rather than preserved: renters received titled houses. (5) Old barrios were rebuilt as neighbourhoods, so social networks survived. (6) Family advisers helped households with deeds and registration.",
+      "success_caveats": "This is success with heavy caveats. There was a two-year delay in choosing a site and a six-year wait before the first move. People lived in a 'borrowed town' in Cucuta rather than a camp. Documented cost overruns and waste (Contraloria), construction defects, slopes steeper than the safe gradient, missing utilities, and no working hospital as of December 2020. There was no economic plan for urban residents, and the local mayor opposed the project. Renters got smaller houses than owners. The hazard is a landslide, not a flood, so the case transfers to flood siting only by analogy. Whether the new site stays safe over the long term is not independently verified in the sources found.",
+      "confidence_overall": "medium",
+      "variables": {
+        "land": {
+          "finding": "The state bought private rural land. Fondo Adaptacion acquired parcels in vereda Miraflores 'for reasons of public utility' under Article 73 of Law 1523 of 2012. That article lets national entities, after a declared disaster, acquire property by direct negotiation or by administrative expropriation with prior compensation. The national land agency (IGAC) did commercial appraisals, a law firm did title studies, and a resettlement plan was prepared for existing Miraflores residents displaced by the new town. El Tiempo reported that three years after the disaster only 28 of 100 planned hectares had been formally bought. Land price: not_found.",
+          "quotes": [
+            {"text": "Declarada una situacion de desastre o calamidad publica y hasta tanto se declare el retorno a la normalidad, el Gobierno Nacional ... podran adquirir total o parcialmente los bienes inmuebles o derechos reales que sean indispensables para adelantar el plan de accion especifico, por negociacion directa con los propietarios o mediante expropiacion por via administrativa, previa indemnizacion", "translation": "Once a disaster or public calamity is declared and until normality is declared, the national government ... may acquire in whole or in part the real property or rights indispensable to carry out the specific action plan, by direct negotiation with owners or by administrative expropriation, with prior compensation", "source": "Law 1523/2012 Art. 73 as quoted in Fondo Adaptacion, Plan de Reasentamiento de la poblacion de la vereda Miraflores (Sept 2013)", "quote_source": "pdf_text"},
+            {"text": "El reasentamiento de la poblacion de la vereda Miraflores es motivado por razones de utilidad publica, relacionadas con la necesidad de disponer de suelo urbanizable para el reasentamiento del nuevo casco urbano de Gramalote.", "translation": "The resettlement of the Miraflores population is motivated by public utility, i.e. the need for developable land for the new urban centre of Gramalote.", "source": "Plan de Reasentamiento Miraflores 2013", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://www.unipamplona.edu.co/unipamplona/portalIG/home_76/recursos/octubre/documentos_descarga/plan_reasentamiento_miraflores/17102013/plan_reasentamiento_miraflores.pdf",
+            "https://www.eltiempo.com/archivo/documento/CMS-13293316"
+          ],
+          "confidence": "high (legal mechanism); price not_found"
+        },
+        "decision_maker": {
+          "finding": "The relocation was state-led but co-governed. A 'Mesa de Trabajo' was created by an act of 16 April 2012 with Fondo Adaptacion, the mayor's office, the department, the municipal council, the parish and the ombudsman. Social leaders, citizen oversight groups (veedurias) and community associations joined later. It co-designed the multi-criteria site matrix, in which Miraflores scored 95.84/100. Houses were allocated by old barrio. Before the Mesa existed, the first two years were marked by 'improvisation' and a lack of transparency that damaged trust. Residents had real influence through the Mesa, but no formal veto.",
+          "quotes": [
+            {"text": "Mediante Acta del 16 de abril de 2012 el FONDO ADAPTACION, junto con la Alcaldia de Gramalote, la Gobernacion de Norte de Santander, el Concejo Municipal de Gramalote, la Parroquia y la Personeria de este municipio, acordaron la creacion de una Mesa de Trabajo", "translation": "By an act of 16 April 2012, Fondo Adaptacion together with the mayor's office, departmental government, municipal council, parish and ombudsman agreed to create a Working Group", "source": "Plan de Reasentamiento Miraflores 2013", "quote_source": "pdf_text"},
+            {"text": "Through the Working Group, local authorities and informal community leaders were able to voice their opinions and influence all main decisions regarding the reconstruction.", "source": "Oliver-Smith & Arenas 2015, Natural Hazards Center QR 266", "quote_source": "page_extract"},
+            {"text": "Improvisation, as well as lack of proper communication and transparency in the decision-making process about the relocation site, seriously undermined the trust of the community in the national authorities leading the relocation process.", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://www.unipamplona.edu.co/unipamplona/portalIG/home_76/recursos/octubre/documentos_descarga/plan_reasentamiento_miraflores/17102013/plan_reasentamiento_miraflores.pdf",
+            "https://hazards.colorado.edu/quick-response-report/post-disaster-resettlement"
+          ],
+          "confidence": "high"
+        },
+        "legal_status_of_residents": {
+          "finding": "In the old town about 60% of households owned their homes and 40% rented. In the new town all original households became homeowners. Owners handed over their appraised old house and lot in exchange for a new house. Renters were included as beneficiaries of social-interest housing (VIS) and received smaller houses, scattered across several areas. Family advisers (AECOM) helped households sign deeds and register them at the Cucuta land registry.",
+          "quotes": [
+            {"text": "In the old Gramalote, roughly 60% of people were homeowners and around 40% were renters. In the new Gramalote, 100% of its original population will be homeowners.", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"},
+            {"text": "Former renters will have a new house that is smaller than the houses of people who were owners", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"},
+            {"text": "They have also been assisted during the process of signing the deeds and registering them in the titling office in Cucuta.", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"},
+            {"text": "los arrendatarios se incluyeron como parte de los beneficiarios de VIS; a los propietarios se les recibio su vivienda y lote avaluado y a cambio recibieron la vivienda", "translation": "renters were included as VIS beneficiaries; owners handed over their appraised house and lot and in exchange received the house", "source": "Fondo Adaptacion lessons-learned document (via search summary; PDF returned 502)", "quote_source": "search_snippet"}
+          ],
+          "urls": [
+            "https://hazards.colorado.edu/quick-response-report/post-disaster-resettlement",
+            "https://www.fondoadaptacion.gov.co/phocadownload/LeccionesAprendidas/ReasentamientosAdaptados/Macroproyecto_Gramalote_Reasentamiento_Gramalote_Banco_Mundial.pdf"
+          ],
+          "confidence": "high"
+        },
+        "funding_stream": {
+          "finding": "Funding came from a dedicated national reconstruction fund, Fondo Adaptacion, created for La Nina 2010-11, which took charge in April 2012. El Espectador (2020) reports more than COP 400 billion committed and COP 380 billion obligated, with the Contraloria (comptroller) finding at least COP 8 billion wasted. It also says Fondo Adaptacion initially operated under private-law rules that let it avoid contractor penalties. Timeline: disaster in December 2010; site announced in October-December 2012; first keys in December 2016; first 54 families moved in on 11 March 2017; 860 of about 1,007 homes finished by November 2020. Fondo Adaptacion press releases in 2024 claim completion, but they could not be opened (502). 'Temporary' was not avoided in time (six or more years), though there was no camp: most people lived with family in Cucuta.",
+          "quotes": [
+            {"text": "Most of the people interviewed who witnessed the disaster moved to live with family and friends in Cucuta, a city of approximately 850,000 inhabitants, located around two hours from Gramalote.", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"},
+            {"text": "Ya estamos cansados de vivir en un pueblo prestado", "translation": "We are tired of living in a borrowed town", "source": "Nelly Ayala, quoted in El Espectador 19 Dec 2020", "quote_source": "page_extract"},
+            {"text": "Problems with the project started when it took the Colombian government a full two years after the disaster to select a relocation site.", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://hazards.colorado.edu/quick-response-report/post-disaster-resettlement",
+            "https://www.elespectador.com/colombia/mas-regiones/la-maldicion-de-gramalote-iii-una-reconstruccion-eterna-article/",
+            "https://www.fondoadaptacion.gov.co/index.php/component/content/article/196-prensa/comunicados-de-prensa/comunicados-de-prensa-2024/1327-comunicado-032-24.html?Itemid=101"
+          ],
+          "confidence": "medium (cost figures from press; completion claim unverified)"
+        },
+        "flood_risk_information": {
+          "finding": "Hazard came first in site selection. In the multi-criteria matrix, 'Estabilidad' (stability) carried the largest weight (30 of 100), and Miraflores scored the full 30. Pomarroso, the site originally announced in 2011, scored 22.37. The feasibility stage re-ran drilling, landslide-hazard evaluation and geotechnical studies. Counter-evidence: El Espectador (2020) reports that 2012 studies found problems at both candidate sites, that Miraflores was chosen partly for speed, and that built terrain has slopes steeper than the safe 12% and cracked houses. No law banning reoccupation of the old town was found; it is described as a ghost town.",
+          "quotes": [
+            {"text": "Estabilidad 30 22,37 30,00 15,30 14,25", "translation": "Stability criterion: weight 30; Pomarroso 22.37; Miraflores 30.00; Caimito 15.30; La Franja 14.25", "source": "Plan de Reasentamiento Miraflores 2013, Tabla 1", "quote_source": "pdf_text"},
+            {"text": "dichos estudios permitieron delimitar el area que se requiere para el desarrollo urbano, en terminos de viabilidad ambiental, tecnica y geotecnica", "translation": "those studies made it possible to delimit the area required for urban development in terms of environmental, technical and geotechnical viability", "source": "Plan de Reasentamiento Miraflores 2013", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://www.unipamplona.edu.co/unipamplona/portalIG/home_76/recursos/octubre/documentos_descarga/plan_reasentamiento_miraflores/17102013/plan_reasentamiento_miraflores.pdf",
+            "https://www.elespectador.com/colombia/mas-regiones/la-maldicion-de-gramalote-iii-una-reconstruccion-eterna-article/"
+          ],
+          "confidence": "medium"
+        },
+        "legal_liability": {
+          "finding": "The enabling law is Law 1523 of 2012, the national disaster-risk-management law, whose Article 73 gives acquisition and expropriation powers. The Contraloria (comptroller) found overcosts: Semana reported COP 6,371 million from design and construction deficiencies. No court ruling forcing the relocation was found.",
+          "quotes": [
+            {"text": "Hallan sobrecostos por $6.371 millones en obras para nuevo Gramalote", "translation": "Overcosts of COP 6,371 million found in works for new Gramalote", "source": "Semana (headline)", "quote_source": "search_snippet"}
+          ],
+          "urls": [
+            "https://www.semana.com/pais/articulo/sobrecostos-en-obras-para-nuevo-gramalote/253464/",
+            "https://www.unipamplona.edu.co/unipamplona/portalIG/home_76/recursos/octubre/documentos_descarga/plan_reasentamiento_miraflores/17102013/plan_reasentamiento_miraflores.pdf"
+          ],
+          "confidence": "medium; court-driven duty: not_found"
+        },
+        "political_voice": {
+          "finding": "Gramalote attracted presidential attention: President Santos promised a quick rebuild and announced the site in December 2012. The national press covered it heavily and critically. Locally, the 2015-era mayor opposed the project. No source found gives an electoral analysis.",
+          "quotes": [
+            {"text": "The current mayor and his entire administration are not supporters of the relocation project.", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"},
+            {"text": "Una vez surtida esta fase y realizado el anuncio oficial de la seleccion del sector de Miraflores por parte del Presidente de la Republica, Juan Manuel Santos Calderon, en el mes de diciembre de 2012", "translation": "Once this phase was complete and the President officially announced Miraflores in December 2012", "source": "Plan de Reasentamiento Miraflores 2013", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://hazards.colorado.edu/quick-response-report/post-disaster-resettlement",
+            "https://www.unipamplona.edu.co/unipamplona/portalIG/home_76/recursos/octubre/documentos_descarga/plan_reasentamiento_miraflores/17102013/plan_reasentamiento_miraflores.pdf"
+          ],
+          "confidence": "medium"
+        },
+        "livelihoods": {
+          "finding": "Livelihoods were the weakest point. The town's economy rested on coffee-growing campesinos in the surrounding countryside; urban residents had no economic plan. Fondo Adaptacion, Colombia Humanitaria and the University of Pamplona ran small-business programmes, identifying 90 pre-disaster businesses. The Miraflores resettlement plan included income-loss compensation for the rural families displaced by the new town.",
+          "quotes": [
+            {"text": "The relocation still lacks an economic plan to support urban Gramaloteros.", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"},
+            {"text": "Many people we interviewed in Gramalote insisted that the coffee growing campesinos (peasants) were the economic engine of the municipality.", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"}
+          ],
+          "urls": ["https://hazards.colorado.edu/quick-response-report/post-disaster-resettlement"],
+          "confidence": "medium"
+        },
+        "outcome": {
+          "finding": "No new disaster at the new site was reported in the sources found. Residents almost unanimously liked the houses and expressed pride in the new town. Services lagged: in 2017 only electricity and water worked; in 2020 there was no functioning hospital or market, more than 100 families still had no house, and there were cracks and missing connections. Whether young people will return remains an open question.",
+          "quotes": [
+            {"text": "Almost unanimously they liked the houses provided for them.", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"},
+            {"text": "Apart from electricity and water - very few of the necessary public services (e.g., garbage collection) are functioning.", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"},
+            {"text": "Will the new Gramalote provide enough economic opportunities for young people to return?", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://hazards.colorado.edu/quick-response-report/post-disaster-resettlement",
+            "https://www.elespectador.com/colombia/mas-regiones/la-maldicion-de-gramalote-iii-una-reconstruccion-eterna-article/"
+          ],
+          "confidence": "medium"
+        },
+        "what_scholars_say": {
+          "finding": "Oliver-Smith & Arenas (2015, Natural Hazards Center Quick Response Report 266) credit three things once governance was fixed: a flexible, participatory administration (the Mesa); allocating houses to rebuild pre-disaster barrio networks; and family advisers who built trust and helped with legal processes. They identify slow, opaque site selection as the root of lost trust. A Springer chapter (2024, 'Lessons from the Great Gramalote') exists but was paywalled.",
+          "quotes": [
+            {"text": "Once a relocation plan was decided on, its application has proved to be quite flexible, allowing for necessary adjustments.", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"},
+            {"text": "Having family advisors has proved to be an effective way to build ties and channels of communication.", "source": "Oliver-Smith & Arenas 2015", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://hazards.colorado.edu/quick-response-report/post-disaster-resettlement",
+            "https://link.springer.com/chapter/10.1007/978-3-031-72736-8_5"
+          ],
+          "confidence": "medium-high"
+        }
+      }
+    },
+    {
+      "id": "iwanuma_tamaura_nishi_japan",
+      "place": "Iwanuma City, Miyagi (Tamaura-nishi collective relocation), within Japan's national Bosai Shudan Iten (collective relocation) programme after the 2011 tsunami",
+      "country": "Japan",
+      "hazard": "Tsunami inundation (coastal flood), 11 March 2011. Iwanuma had nearly 180 victims and more than 4,200 houses damaged.",
+      "summary": "Six coastal hamlets in Iwanuma moved together to Tamaura-nishi, farmland bought by the city at the inland edge of an existing district. This was done under Japan's national collective relocation programme, which after 2011 was fully paid for by the national government. The coastal land was designated hazardous and new housing there was banned. The municipality bought residents' old land. Residents then either bought a lot and built, or moved into nationally funded low-rent disaster public housing. A residents' committee (an elder or head, a woman and a youth from each hamlet) met 28 times to design the new district. Iwanuma was the first municipality in Japan to get ministry approval, in March 2012, and the district was inaugurated in January 2015. Nationally the programme developed 8,389 housing lots in 324 districts across 27 municipalities, finishing in March 2020.",
+      "why_it_worked_short": "(1) An existing permanent national programme (in place since 1972) with 100% central funding after 2011, so there was no scramble for money. (2) A legal ban on rebuilding homes in the hazard zone, combined with the state buying the old land. (3) Two tenure paths, purchase for owners and public rental for others, so non-owners were not left out. (4) Communities were kept together at every stage: shelters, temporary housing and the new site were all organised by hamlet. (5) A short move to land next to existing schools and services. (6) Fast, genuine resident co-design.",
+      "success_caveats": "Iwanuma is widely treated as a best case. Elsewhere in Tohoku the same programme produced population loss, vacant lots and 'checkerboard' patterns of bought-out land. Waiting in temporary housing drove many households to leave (Ogatsu, Ishinomaki). Temporary prefab housing was not avoided; it lasted about three to four years even in Iwanuma. The hazard was a tsunami, not a river flood. No comparable tsunami has tested the relocated sites since. Legal-liability and electoral dimensions were not found.",
+      "confidence_overall": "medium-high",
+      "variables": {
+        "land": {
+          "finding": "Two land flows. (1) Old land: inside the designated 'Relocation Promotion Zone', residents could sell their land to the government. (2) New land: the city acquired former agricultural plots on the edge of the existing Tamaura district. Nationally, collective relocation includes compensation for the former, legally hazardous land, and provides new lots that residents can rent or buy. After 2011 the national government covered the whole budget, even though a quarter was normally a local cost. Tamaura-nishi land price: not_found.",
+          "quotes": [
+            {"text": "The at-risk area is referred to as the 'Relocation Promotion Zone' and residents are allowed to sell their land to the government, which offers them two options. The first option is to buy land in the new residential area and build a new house on their own, and the second option is to apply to move into public housing.", "source": "Cosson 2020, Critical Housing Analysis 7(2)", "quote_source": "pdf_text"},
+            {"text": "The town has managed to acquire former agricultural plots at the edge of an existing district (Tamaura) to attach an extension named Tamaura-nishi", "source": "Cosson 2020", "quote_source": "pdf_text"},
+            {"text": "the national government decided to cover the whole project budget, although one quarter of the budget was originally to be borne by local governments", "source": "Tsubouchi et al. 2023, Japan Architectural Review (via search index; page returned 403)", "quote_source": "search_snippet"},
+            {"text": "Collective Relocation in Japan includes both compensation for former land (which is designated as hazardous, and all future residential construction is forbidden by law) along with the provision of new residential lots which residents can rent or buy", "source": "Ghezelloo et al. 2023 / search summary (page 403)", "quote_source": "search_snippet"}
+          ],
+          "urls": [
+            "https://www.housing-critical.com/data/USR_057_DEFAULT/How_to_Support_Social_Resilience_in_Tsunami_Devastated_Communities_Iwanuma_Case_Study.pdf",
+            "https://onlinelibrary.wiley.com/doi/full/10.1002/2475-8876.12335",
+            "https://onlinelibrary.wiley.com/doi/full/10.1002/2475-8876.12344"
+          ],
+          "confidence": "high (mechanism, Iwanuma); medium (national 100% funding: search-index quote)"
+        },
+        "decision_maker": {
+          "finding": "The municipality started the process: it recommended collective relocation and reached consensus with hamlet leaders early on. Design was then handed to a resident Steering Committee. Each of the six hamlets sent three members (the district head or community-council chair, a woman and a youth under 40), joined by neighbouring residents and three experts. It met 28 times between 11 June 2012 and 18 November 2013, and residents chose the public-housing architects through a design competition. Taking part was voluntary: residents could sell and choose purchase or rental. There was no collective veto over the hazard designation.",
+          "quotes": [
+            {"text": "Iwanuma City at the earliest opportunity held meetings with the leaders of the communities such as the chairman of the community council or the head of the district to exchange opinions with the residents, and reached a consensus with them.", "source": "Reconstruction Agency, case examples (provisional translation, Feb 2015)", "quote_source": "pdf_text"},
+            {"text": "The Steering Committee was held 28 times from June 11, 2012, to November 18, 2013.", "source": "Reconstruction Agency 2015", "quote_source": "pdf_text"},
+            {"text": "Since the relocation involves six villages, it was decided that each of them would have three representative members on the Council (one elder, one woman, and one youth).", "source": "Cosson 2020", "quote_source": "pdf_text"},
+            {"text": "the architects involved in the reconstruction of public housing were also selected by the residents after a design competition and a public presentation", "source": "Cosson 2020", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://www.reconstruction.go.jp/files/user/topics/main-cat1/sub-cat1-16/jirei_e.pdf",
+            "https://www.housing-critical.com/data/USR_057_DEFAULT/How_to_Support_Social_Resilience_in_Tsunami_Devastated_Communities_Iwanuma_Case_Study.pdf"
+          ],
+          "confidence": "high"
+        },
+        "legal_status_of_residents": {
+          "finding": "Residents were Japanese citizens, many of them landowning farmers and fishers. Owners were paid for their hazard-zoned land and could buy a new lot. People who could not or did not want to build, including renters and elderly households, could get nationally funded, low-rent disaster public housing, built inside each hamlet's zone. No source found gives a separate figure for renters.",
+          "quotes": [
+            {"text": "Post-disaster public housing is a low-rent housing system provided by local governments. It is funded by the national government to provide a stable life for people who have lost their homes after a disaster.", "source": "Cosson 2020", "quote_source": "pdf_text"},
+            {"text": "The Tamaura-nishi district was divided into six zones (one for each village), mixing private and collective housing.", "source": "Cosson 2020", "quote_source": "pdf_text"}
+          ],
+          "urls": ["https://www.housing-critical.com/data/USR_057_DEFAULT/How_to_Support_Social_Resilience_in_Tsunami_Devastated_Communities_Iwanuma_Case_Study.pdf"],
+          "confidence": "medium-high (renter-specific data: not_found)"
+        },
+        "funding_stream": {
+          "finding": "Funding came from a permanent national programme, the MLIT 'Collective Relocation Promotion Project for Disaster Mitigation' (in place since 1972), with the full cost covered nationally after 2011 (see the land variable). Iwanuma timeline: tsunami in March 2011; ministry approval in March 2012 ('ahead of anywhere in the country'); house construction began in December 2013; district inaugurated in January 2015. Temporary housing was used, but organised by hamlet. Nationally, lot development was completed in March 2020.",
+          "quotes": [
+            {"text": "Obtained the approval from the Minister of Land, Infrastructure, Transport and Tourism in March of the year following the earthquake, the city started the Group Relocation Promotion Projects for Disaster Mitigation, ahead of anywhere in the country.", "source": "Reconstruction Agency 2015", "quote_source": "pdf_text"},
+            {"text": "Since policies for the plotting and public facilities construction works were determined at an early stage, the housing construction was started at the relocation destination in December 2013.", "source": "Reconstruction Agency 2015", "quote_source": "pdf_text"},
+            {"text": "in Iwanuma, the decisions were quick and efficient, and the project was officially inaugurated in January 2015", "source": "Cosson 2020", "quote_source": "pdf_text"},
+            {"text": "27 市町村 ... 324 地区 ... 8,389 戸分", "translation": "27 municipalities, 324 districts, 8,389 housing lots; all lot development completed by end of March 2020", "source": "MLIT press release, 6 March 2020", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://www.reconstruction.go.jp/files/user/topics/main-cat1/sub-cat1-16/jirei_e.pdf",
+            "https://www.housing-critical.com/data/USR_057_DEFAULT/How_to_Support_Social_Resilience_in_Tsunami_Devastated_Communities_Iwanuma_Case_Study.pdf",
+            "https://www.mlit.go.jp/report/press/toshi06_hh_000041.html"
+          ],
+          "confidence": "high"
+        },
+        "flood_risk_information": {
+          "finding": "Coastal land was designated hazardous and new residential construction there was forbidden by law. Other literature ties this to disaster-risk-area designation under Article 39 of the Building Standards Act; we saw references to this but no quotable text. The new site is inland in an existing district. The specific tsunami simulation used for Iwanuma's zoning was not found.",
+          "quotes": [
+            {"text": "the new territorial resilience policies prohibit construction in areas considered too vulnerable", "source": "Cosson 2020", "quote_source": "pdf_text"},
+            {"text": "move residents in 6 areas ... where houses and farmlands there were damaged heavily, into safe inner areas", "source": "Reconstruction Agency 2015", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://www.housing-critical.com/data/USR_057_DEFAULT/How_to_Support_Social_Resilience_in_Tsunami_Devastated_Communities_Iwanuma_Case_Study.pdf",
+            "https://www.reconstruction.go.jp/files/user/topics/main-cat1/sub-cat1-16/jirei_e.pdf",
+            "https://www.fujipress.jp/jdr/dr/dsstr002000050616/"
+          ],
+          "confidence": "medium (simulation details: not_found)"
+        },
+        "legal_liability": {
+          "finding": "not_found. No court case or liability regime compelling relocation was identified. The legal basis is the programme itself plus the hazard-zone building ban.",
+          "quotes": [],
+          "urls": [],
+          "confidence": "not_found"
+        },
+        "political_voice": {
+          "finding": "not_found for electoral effects. Iwanuma was nationally showcased: it was the first approval nationwide and appears in the Reconstruction Agency's case collection.",
+          "quotes": [],
+          "urls": ["https://www.reconstruction.go.jp/files/user/topics/main-cat1/sub-cat1-16/jirei_e.pdf"],
+          "confidence": "low / largely not_found"
+        },
+        "livelihoods": {
+          "finding": "The new district sits in an already developed area with schools, transport and services, and children kept attending Tamaura elementary school. What happened to coastal farming livelihoods was not found. Across Tohoku, research links long waits and relocation to population loss (Ogatsu).",
+          "quotes": [
+            {"text": "The new district is being built in an already developed area and, therefore, already benefits from infrastructures and services (school, transport, services).", "source": "Cosson 2020", "quote_source": "pdf_text"}
+          ],
+          "urls": ["https://www.housing-critical.com/data/USR_057_DEFAULT/How_to_Support_Social_Resilience_in_Tsunami_Devastated_Communities_Iwanuma_Case_Study.pdf"],
+          "confidence": "low-medium"
+        },
+        "outcome": {
+          "finding": "No re-inundation of the relocated sites was reported, though no comparable tsunami has occurred since. A natural experiment on older Iwanuma survivors found that relocating in groups increased informal socializing and social participation, while relocating individually reduced them. The contrast case elsewhere in Tohoku: Ogatsu (Ishinomaki) lost population severely because households would not wait in temporary housing.",
+          "quotes": [
+            {"text": "Relocating in groups, rather than individually, increased informal socializing and social participation among older survivors of the 2011 Great East Japan Earthquake and Tsunami", "source": "ScienceDaily summary of Hikichi et al. 2017, Science Advances 3(7):e1700426", "quote_source": "page_extract"},
+            {"text": "The prospect of living in temporary housing for the length of time needed for permanent housing to be ready was their main reason for deciding to move somewhere else.", "source": "Miyasada & Maly 2021 (Ogatsu), IOP Conf. Ser. EES 630", "quote_source": "page_extract"},
+            {"text": "the implementation and timeline of the government's reconstruction programs may actually contribute to or accelerate population decline", "source": "Miyasada & Maly 2021", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://www.sciencedaily.com/releases/2017/07/170726141642.htm",
+            "https://advances.sciencemag.org/content/3/7/e1700426",
+            "https://iopscience.iop.org/article/10.1088/1755-1315/630/1/012014"
+          ],
+          "confidence": "medium"
+        },
+        "what_scholars_say": {
+          "finding": "Cosson (2020) judges Tamaura-nishi successful because it avoided scattering residents, so it kept existing ties instead of trying to build new ones. Hikichi et al. (2017) give causal evidence that relocating as a group protects social capital. Miyasada & Maly (2021) warn that slow programme timelines can drive the population decline that undermines relocation elsewhere.",
+          "quotes": [
+            {"text": "[it can] be said to be successful because it has achieved the objective of protecting the community that was already there. By simply avoiding the scattering of residents during the relocation process, the city managed to maintain the ties instead of struggling to create new ones.", "source": "Cosson 2020, Critical Housing Analysis 7(2):11-20, doi:10.13060/23362839.2020.7.2.511 (first words partly garbled in extraction)", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://www.housing-critical.com/data/USR_057_DEFAULT/How_to_Support_Social_Resilience_in_Tsunami_Devastated_Communities_Iwanuma_Case_Study.pdf",
+            "https://www.sciencedaily.com/releases/2017/07/170726141642.htm",
+            "https://iopscience.iop.org/article/10.1088/1755-1315/630/1/012014"
+          ],
+          "confidence": "medium-high"
+        }
+      }
+    },
+    {
+      "id": "vunidogoloa_fiji",
+      "place": "Vunidogoloa village (new site 'Kenani'), Cakaudrove Province, Vanua Levu",
+      "country": "Fiji",
+      "hazard": "Chronic coastal flooding, erosion, saltwater intrusion and seawall failure (slow-onset, climate-related)",
+      "summary": "In 2006 the Indigenous (iTaukei) village of about 140 people in 26 households asked the Fiji government to help it move. After a failed first site (2011), the whole village moved together in January 2014 to higher ground about 1 km inland (2 km by road). The new site was on the clan's own customary (mataqali) land, so no land had to be bought. The estimated cost was FJD 978,228, mostly paid by government ministries and donors such as the ILO, with the village contributing materials worth FJD 239,852 by logging its own hardwood. No flooding at the new site has been reported. Access to roads, schools, health care and water improved, but promised infrastructure was left unfinished and some livelihood projects underperformed.",
+      "why_it_worked_short": "(1) Land was not a barrier, because the community already owned suitable higher ground and moving within it preserved tenure, ancestral ties and access to old fishing and farming areas. (2) The community asked for the move, and traditional leaders ran decisions. (3) The distance was short. (4) The whole village moved at once. (5) The national government treated it as a priority climate-adaptation showcase.",
+      "success_caveats": "It is small: 26-32 households. Decision-making was male-dominated ('Moving here was the man's decision'). Kitchens, drainage, a hall and footpaths were promised but never completed, so villagers built kitchens from salvaged materials. The fish-pond and pineapple schemes delivered less than promised. Diets shifted toward packaged food, and alcohol use rose. Exposure to cyclones and heat at the new site is greater. It took eight years from request to move. A September 2026 Fiji Sun report says the village is pleading for help with a church, access roads and facilities for the elderly and disabled. Cost figures conflict across sources (FJD vs USD). This is a Global South success made possible by customary land ownership. It is not transferable where displaced people have no land.",
+      "confidence_overall": "medium-high",
+      "variables": {
+        "land": {
+          "finding": "The village relocated within its own mataqali (clan) customary land, about 1 km inland, so no purchase or expropriation was needed. The community also turned its land into money: it logged hardwood from mataqali land and exchanged it for building timber worth FJD 239,852.",
+          "quotes": [
+            {"text": "In 2014, villagers from Vunidogoloa relocated to a higher site within their mataqali land.", "source": "McMichael et al. 2019, Geographical Journal (doi:10.1111/geoj.12312)", "quote_source": "pdf_text"},
+            {"text": "Relocation within mataqali land enabled ready access to land, but also allowed villagers to maintain physical, sociocultural, ancestral, and spiritual attachments to place, land, and resources", "source": "McMichael et al. 2019", "quote_source": "pdf_text"},
+            {"text": "In Vunidogoloa, residents contributed labour for construction works and building materials worth FJD239,852 by logging hard-wood from their mataqali land which they exchanged for pine-wood from a local logging company.", "source": "McMichael et al. 2019", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC12055693/"
+          ],
+          "confidence": "high"
+        },
+        "decision_maker": {
+          "finding": "The community asked for the move itself in 2006, and village leaders (the Turaga ni Koro and Turaga ni Vanua) led decisions. They engaged with several levels of government: the Office of the Prime Minister, ministries, the military and donors. Women reported having little voice.",
+          "quotes": [
+            {"text": "In 2006, Vunidogoloa's residents approached the Government of Fiji seeking financial assistance for relocation.", "source": "McMichael et al. 2019", "quote_source": "pdf_text"},
+            {"text": "An identified strength of relocation decision-making in Vunidogoloa was the community-initiated process and ongoing engagement with government and partners, and in particular the leadership and involvement of traditional village governance structures and leaders.", "source": "McMichael, Powell, Piggott-McKellar & Yee 2025, Ambio", "quote_source": "page_extract"},
+            {"text": "Moving here was the man's decision", "source": "woman, 2016, in McMichael et al. 2025", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC12055693/"
+          ],
+          "confidence": "high"
+        },
+        "legal_status_of_residents": {
+          "finding": "Residents are iTaukei (Indigenous Fijian) citizens and collective customary landowners. Because the move stayed within mataqali land, it did not challenge land sovereignty and kept customary rights intact. In a comparable village (Narikoso), the Ministry of iTaukei Affairs approved extended village boundaries.",
+          "quotes": [
+            {"text": "relocation and retreat within mataqali or yavusa land did not challenge territorial sovereignty, protected connection to place, had historical precedent, and enabled continuity of everyday practices and livelihoods, including small-scale farming and fishing", "source": "McMichael et al. 2019", "quote_source": "pdf_text"}
+          ],
+          "urls": ["https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf"],
+          "confidence": "high"
+        },
+        "funding_stream": {
+          "finding": "Funding was project-based, pooled from Fiji government ministries and donors (ILO and others) plus community labour and materials. Estimated cost: FJD 978,228 (McMichael et al. 2019). A KTH blog gives 'USD' 980,000 total, with 740,000 from government and 240,000 from the community; this is probably a currency error, since the amounts match the FJD figures. ABC (2023) says 32 houses plus roads and infrastructure cost 'more than $1 million'. Timeline: request in 2006; earthworks at a first site in 2011 hit levelling problems; a second site was found; the move took place in January 2014, eight years after the request. People stayed in the old village until the move, so there was no camp. The promised second funding phase for kitchens and other works never arrived.",
+          "quotes": [
+            {"text": "Vunidogoloa's relocation is estimated to have cost FJD978,228", "source": "McMichael et al. 2019", "quote_source": "pdf_text"},
+            {"text": "In 2011, earthworks were initiated at a new site, but site levelling problems were encountered. A second site was identified 2 km inland from the old village.", "source": "McMichael et al. 2019", "quote_source": "pdf_text"},
+            {"text": "villagers were informed by the government there would be a second phase of work to complete kitchens for each house and other infrastructure works, but as time passed and funds were not forthcoming they decided to construct kitchens using salvaged materials from the old village site", "source": "McMichael et al. 2019", "quote_source": "pdf_text"},
+            {"text": "the move cost a total of 980,000 USD. The Fijian government paid approx. 740,000 USD, and the community paid out approx. 240,000 USD", "source": "Borsa 2020, KTH blog (currency likely FJD)", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+            "https://www.kth.se/blogs/hist/2020/01/vunidogoloa-what-can-we-learn-from-climate-change-relocation/",
+            "https://www.abc.net.au/news/2023-04-06/fiji-climate-change-moving-villages-vunidogoloa/102186670"
+          ],
+          "confidence": "medium-high (figures conflict)"
+        },
+        "flood_risk_information": {
+          "finding": "Villagers and government officials worked together on risk assessment. The first site failed on engineering grounds (levelling). The new site is higher and inland, but a 2023 interview notes greater exposure to cyclones and heat. No formal hazard map or legal rule barring reoccupation of the old coastal site was found, and villagers still use it for fishing and farming.",
+          "quotes": [
+            {"text": "Villagers and village leaders engaged with external actors in relation to risk assessment, funding, site preparation and rehabilitation, village lay-out and construction, extension of village boundaries, and livelihood development.", "source": "McMichael et al. 2019", "quote_source": "pdf_text"},
+            {"text": "we are more exposed", "source": "woman, 2023, on cyclones, in McMichael et al. 2025", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC12055693/"
+          ],
+          "confidence": "medium (formal mapping/zoning: not_found)"
+        },
+        "legal_liability": {
+          "finding": "not_found. No statutory duty or court case was identified. Fiji's national Planned Relocation Guidelines came after this relocation and were not verified in this research.",
+          "quotes": [],
+          "urls": [],
+          "confidence": "not_found"
+        },
+        "political_voice": {
+          "finding": "Several levels of government were involved, including the Office of the Prime Minister, and the case received international media coverage (ABC and others). A search summary says Prime Minister Bainimarama opened the homes in January 2014, but we did not verify this at a primary source. No source found discusses electoral effects.",
+          "quotes": [
+            {"text": "Decision-making around the timing and nature of planned relocation was shaped by multi-scalar engagement including individuals, households, communities, village heads, Provincial Councils, the Office of the Prime Minister, government ministries", "source": "McMichael et al. 2019", "quote_source": "pdf_text"}
+          ],
+          "urls": ["https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf"],
+          "confidence": "medium"
+        },
+        "livelihoods": {
+          "finding": "The new village has four fish ponds, pineapple plantations, a copra drier and farms, funded by government, the community and the ILO. Road access improved market sales. Villagers keep fishing and farming at the old site. Pineapple, cattle and fish-pond inputs were less than promised, and women's fishing access fell.",
+          "quotes": [
+            {"text": "The new village has four fish ponds, pineapple plantations, a copra drier, and farms, with funding for these initiatives provided by the Government of Fiji, community members, and international partners (e.g., International Labour Organization).", "source": "McMichael et al. 2019", "quote_source": "pdf_text"},
+            {"text": "While the new site is on mataqali land, and many people continue to visit the old site for fishing and farming, villagers frequently said they were sad to leave a place of personal and ancestral connection.", "source": "McMichael et al. 2025", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC12055693/"
+          ],
+          "confidence": "high"
+        },
+        "outcome": {
+          "finding": "No flooding at the new site was reported in the 2015-2023 longitudinal research. Residents value being free of direct exposure to flooding, erosion and saltwater, and access to water, sanitation, schools and health care improved. On the other side: unfinished infrastructure, new health risks (diet, alcohol), and cultural loss. No permanent return migration was reported, though people make daily-use visits to the old site. A September 2026 Fiji Sun headline reports the village 'pleads for help' after relocation.",
+          "quotes": [
+            {"text": "are happy that there is a viable future for their village and community, without ongoing direct exposure to flooding, coastal erosion and saltwater intrusion", "source": "McMichael & Powell 2021, IJERPH (PMC8072796)", "quote_source": "page_extract"},
+            {"text": "We have found a new place knowing that the current elders, and our children, will be living peacefully without being worried about the flooding.", "source": "Chief Simione Botu, ABC News 2023", "quote_source": "page_extract"},
+            {"text": "Vunidogoloa pleads for help after $600k relocation", "source": "Fiji Sun headline (Sept 2026)", "quote_source": "page_extract"}
+          ],
+          "urls": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC8072796/",
+            "https://www.abc.net.au/news/2023-04-06/fiji-climate-change-moving-villages-vunidogoloa/102186670",
+            "https://fijisun.com.fj/news/nation/vunidogoloa-pleads-for-help-after-600k-relocation"
+          ],
+          "confidence": "medium-high"
+        },
+        "what_scholars_say": {
+          "finding": "McMichael et al. (2019) argue that moving within customary land plus 'everyday agency' made the relocation workable: the community raised funds, salvaged materials and built consensus. McMichael et al. (2025, Ambio, the first longitudinal study) credit the community-initiated process and traditional leadership, but warn that relocation can harm wellbeing 'even with community participation and extensive funding'.",
+          "quotes": [
+            {"text": "Planned relocation can lead to adverse consequences for wellbeing, even with community participation and extensive funding.", "source": "McMichael et al. 2025, Ambio", "quote_source": "page_extract"},
+            {"text": "Nonetheless, relocation is strongly supported by village leaders and community-level consensus has developed as a result of involvement in decisions related to, for example, location", "source": "McMichael et al. 2019", "quote_source": "pdf_text"}
+          ],
+          "urls": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC12055693/",
+            "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf"
+          ],
+          "confidence": "high"
+        }
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {"candidate": "Chimanimani, Zimbabwe (post-Cyclone Idai)", "verdict": "FAILS as a success case", "evidence": "Sources describe displaced families held in temporary camps. Permanent resettlement went to Runyararo village in a semi-arid area. 'Build-back-better considerations were absent', and government directed operations remotely from Mutare while local structures were not engaged.", "urls": ["https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8521116/", "https://link.springer.com/article/10.1007/s13753-021-00370-6"]},
+    {"candidate": "Vietnam Mekong 'Living with Floods' residential clusters", "verdict": "Mixed to negative; not used", "evidence": "More than 1,000 clusters for about 200,000 households. Danh & Mushtaq (2011) evaluation reports unemployment from a lack of jobs in the clusters and poor-quality houses and infrastructure.", "urls": ["https://link.springer.com/chapter/10.1007/978-94-007-0934-8_11"]},
+    {"candidate": "Noordwaard, Netherlands (Room for the River)", "verdict": "Downgraded in favour of Overdiepse", "evidence": "'Many Noordwaard farmers were unsatisfied with the outcomes of the relocation process; post-landscape engineering, the land is harder to farm.' Of 24 farming households 10 stayed; of 48 non-farming households 25 remained.", "urls": ["https://www.greeneuropeanjournal.eu/land-to-the-river-planned-relocation-in-the-netherlands/"]},
+    {"candidate": "Tohoku programme as a whole", "verdict": "Narrowed to Iwanuma", "evidence": "The programme-wide record includes population loss, vacant lots and withdrawals (Ogatsu). Iwanuma is the best-documented success within the same legal and funding framework, which makes it a useful within-programme contrast.", "urls": ["https://iopscience.iop.org/article/10.1088/1755-1315/630/1/012014"]},
+    {"candidate": "Harris County / Charlotte-Mecklenburg buyouts, Christchurch red zone, Isle de Jean Charles, Sri Lanka/Indonesia post-tsunami, Kenya/Rwanda, Cuba", "verdict": "Not researched in depth in this pass", "evidence": "Time was prioritised on cases with verifiable relocation to safe land. Buyouts (Harris, Charlotte) move people out of flood zones but the state does not supply the destination land, which weakens the comparison with Durban. Christchurch is earthquake-driven.", "urls": []}
+  ],
+  "cross_case_observations": [
+    "LAND IS THE HINGE. Every success had safe land available immediately and legally, before rebuilding or informal settlement could re-occupy the hazard zone. Grantham: a council bought a farm with cash reserves within about 3 months. Overdiep: the state bought farms, with expropriation as a backstop. Gramalote: a disaster law (Law 1523/2012 Art. 73) allowed direct purchase or administrative expropriation. Iwanuma: the city bought farmland on the edge of an existing district. Vunidogoloa: the community already owned it (customary mataqali land). In Durban the question is who owned or supplied the riverbank camp land and why it was chosen. That is the key contrast variable.",
+    "TENURE WAS CONVERTED, NOT MERELY PRESERVED. The success mechanisms are title-for-title swaps (Grantham), bought-out old land plus a new lot or public rental (Japan), renters turned into titled owners (Gramalote) and moves within customary land (Fiji). Each gives the resident a secure, permanent right at the safe site. None used a 'temporary' legal status.",
+    "WHO SUCCESS HELD FOR: success in wealthy countries was concentrated among OWNERS. Grantham's swap was for property owners, and businesses and people without insurance or money were left behind. At Overdiep, owners of land at the mound sites got mounds while leaseholders and a pig farmer were pushed out. Only Gramalote, a middle-income state, explicitly extended ownership to former renters, and Japan's rental track covered non-owners. This contradicts a simple 'it's just wealth' story: the design of tenure rules mattered more than GDP.",
+    "PERMANENT PROGRAMMES BEAT EMERGENCY BUDGETS. Overdiep (Room for the River) and Japan (a 1972 programme with 100% central funding after 2011) ran on standing programmes with legal authority and budgets in place before the event. Grantham improvised, using council reserves and then AUD 18m after political fights. Gramalote needed a new special agency and still took six or more years. Fiji relied on pooled project funds, and the promised second phase never arrived. The more permanent the funding channel, the less 'temporary' the displacement.",
+    "SPEED AND 'TEMPORARY'. Genuinely avoiding a temporary phase happened only where there was no disaster (Overdiep) or the site was bought in weeks (Grantham, about 11 months to first move-in). Japan used temporary housing for about 3-4 years but organised it by community, which scholars link to better social outcomes. Where waits were long, people left (Ogatsu) or lived in a 'borrowed town' (Gramalote). No success case put displaced people on hazard land as an interim measure.",
+    "HAZARD INFORMATION BECAME LAW. Successful cases turned hazard knowledge into binding land-use outcomes. Japan legally banned new housing on hazard-designated coastal land. Grantham restricted swapped flood land to grazing. Overdiep engineered mounds to a stated 1-in-25-year inundation. Gramalote weighted geological stability highest (30/100) in site choice. Caveat: Grantham's new site is only about 3 m above and about 50 m from the 2011 flood extent at its closest point, and Gramalote had documented slope and construction problems.",
+    "LEGAL LIABILITY WAS RARELY THE DRIVER. None of the five cases was forced by a court. The legal tools were enabling: fast-track declarations (Queensland Reconstruction Authority Act), acquisition and expropriation powers (Colombia's Law 1523, the Dutch Water and Expropriation Acts), and hazard-zone building bans (Japan). What forced action was political: a mayor using national media (Grantham), a provincial deputy building profile (Overdiep), a President's promise (Gramalote), and a national climate-adaptation showcase (Fiji). For Durban, the Auditor-General's 2022 finding is an accountability tool that the success cases did not need.",
+    "COMMUNITY VOICE PLUS AN INTERMEDIARY. Every success had a structured channel for residents with real influence: Grantham's workshops and ballot, Overdiep's four conditions and seat in the project group, Gramalote's Mesa de Trabajo, Iwanuma's 18-member committee meeting 28 times, and Vunidogoloa's traditional leaders. It also had an intermediary that brokered between residents and a higher-level agency: a council, a province, the Fondo's consultant and family advisers, a city, or a chiefly structure. Participation did not guarantee equity. Overdiep's community split, and Fiji's decisions were male-dominated.",
+    "SHORT DISTANCE AND KEEPING COMMUNITIES TOGETHER. All five relocated a short distance (tens of metres to a few kilometres) and kept neighbourhoods intact: Grantham adjoining the town, Iwanuma by hamlet zones, Gramalote by barrio, Vunidogoloa within clan land. This preserved livelihoods and access to services. Hikichi et al. (2017) provide causal evidence that group relocation protects social capital.",
+    "GLOBAL SOUTH TEST: Gramalote (Colombia, middle-income) and Vunidogoloa (Fiji) show that relocation to safe land with positive (if caveated) outcomes is not exclusive to rich states. What they shared was legal access to land (expropriation law, or customary ownership), a dedicated funding channel, and a participatory structure. African candidates checked (Chimanimani) did not pass. No verified African success was found in this pass, which is itself a finding worth flagging."
+  ]
+}

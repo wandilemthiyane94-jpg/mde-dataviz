@@ -1,0 +1,612 @@
+{
+  "meta": {
+    "topic": "Structural why: TEAs/TRUs/transit camps on flood-prone land in eThekwini (Durban) and KZN",
+    "compiled": "2026-09-27",
+    "method": "WebSearch + WebFetch. Quotes are verbatim from sources read directly (AGSA media release PDF, National Housing Code Vol 4 PDF, eThekwini presentation to Parliament 8 March 2023) or as extracted from fetched pages. Items drawn only from search-result snippets are marked lower confidence. Victims are not named.",
+    "confidence_scale": "high = read in primary document; medium = fetched secondary/news page; low = search snippet only or single partisan source",
+    "caveats": [
+      "The brief's figure '1,049 families in TEAs in June 2025' was not found verbatim. GroundUp (Sept 2025) reports approximately 1,050 remaining; IOL reports approximately 1,200 families. See legal_status_of_residents and housing_backlog.",
+      "The brief's claim that officials blamed 'unprecedented rainfall' for the Feb 2025 Lamontville deaths could not be verified verbatim; the closest verified official framing is Mayor Xaba's statement on return periods exceeding design standards (see flood_risk_information).",
+      "The AGSA '20% of 30 units on unsuitable land' figure appears in secondary reporting of the 31 Aug 2022 special report; the AGSA media release itself says 'some units were built on unsuitable land'."
+    ]
+  },
+  "variables": {
+    "land": {
+      "findings": [
+        {
+          "finding": "eThekwini's own account to Parliament (March 2023) names scarce well-located land, steep topography and private ownership as binding constraints on relocation. Land occupied by informal settlements is about 58% privately owned and 18% municipal.",
+          "quotes": [
+            "Continued urbanization and scarcity of well located land.",
+            "LAND CONSTRAINTS: Insufficient land to relocate or de-densify all informal settlements in short-medium term. In addition, 41% of the land is privately owned (18% by the Municipality, 18% by provincial government and 18% by the Ingonyama Trust).",
+            "eThekwini unlike many metros has a myriad of land constraints esp. steep topography which inhibits large scale \"land release\" initiatives to cater for the huge influx.",
+            "Well located developable land is scare as well!",
+            "Bulk of settlements located on privately owned land and therefore difficult to provide secure interim tenure.",
+            "TOPOGRAPHIC AND OTHER SITE CONSTRAINTS. Sites are typically steep and often there are other constraints such as challenging geotechnical conditions or flooding."
+          ],
+          "urls": ["https://static.pmg.org.za/230308_Ethekwini_Metro.pdf", "https://pmg.org.za/files/230308_Ethekwini_Metro.pdf"],
+          "confidence": "high"
+        },
+        {
+          "finding": "In its first special report on 2022 flood relief, the AGSA named the unavailability of land for TRUs as an unresolved cause of delivery failure. Secondary reports of the same report say 20% of 30 inspected TRUs were on unsuitable land.",
+          "quotes": [
+            "Some challenges experienced during implementation (such as the unavailability of land for temporary residential units) also remain unresolved, resulting in current and future delivery failures",
+            "Inspections of the TRUs revealed that some units were built on unsuitable land and that some installations did not meet the agreed specifications."
+          ],
+          "urls": [
+            "https://www.agsa.co.za/Portals/0/Reports/Special%20Reports/RealTime/Media%20Statement%20-%20First%20special%20report%20on%202022%20real-time%20audit%20on%20flood%20relief%20funds%20-%2031%20August%202022%20FINAL.pdf?ver=2022-08-31-103740-440",
+            "https://www.news24.com/citypress/news/auditor-general-red-flags-poor-temporary-housing-units-for-kzn-flood-beneficiaries-20220831"
+          ],
+          "confidence": "high"
+        },
+        {
+          "finding": "The same AGSA report documents the siting pattern in another emergency programme: mobile classrooms were put on ground that had just flooded, and had to be vacated when it rained again weeks later.",
+          "quotes": [
+            "Four of the units were constructed on the very same ground previously submerged by the floods and two of the four units had to be vacated due to heavy rains on 21 and 22 May 2022 (subsequent to the initial floods)."
+          ],
+          "urls": ["https://www.agsa.co.za/Portals/0/Reports/Special%20Reports/RealTime/Media%20Statement%20-%20First%20special%20report%20on%202022%20real-time%20audit%20on%20flood%20relief%20funds%20-%2031%20August%202022%20FINAL.pdf?ver=2022-08-31-103740-440"],
+          "confidence": "high"
+        },
+        {
+          "finding": "Lamontville siting: the city put about 100 flood-impacted households in a Temporary Relocation Area on the Umlazi riverbank. It flooded in February 2025 and five people died there, including three children. In 2022 an opinion piece had already described the adjacent Gwala Street camp as low-lying, flood-prone and built over high-voltage cabling.",
+          "quotes": [
+            "relocated around 100 flood-impacted households to a Temporary Relocation Area established in Lamontville, on the banks of the Umlazi river",
+            "Five people, including three children aged 5, 11, and 16, died in the Lamontville TRA during those floods",
+            "low-lying near the Umlaas Canal, which is prone to flooding",
+            "units had been constructed on top of high voltage electricity cabling"
+          ],
+          "urls": [
+            "https://capeargus.co.za/news/south-africa/2025-11-19-how-inadequate-disaster-response-threatens-lives-in-south-africas-informal-settlements/",
+            "https://mg.co.za/opinion/2022-05-09-opinion-ethekwini-refugees-ordered-back-to-flood-prone-damaged-transit-camp/"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Resistance from better-off neighbourhoods: the Human Settlements Minister told the NCOP that Umhlanga residents opposed the relocation. Organised resistance also came in Shallcross (Shallcross Civic and Ratepayers Association) and Montclair. The KZN MEC called it NIMBY. A provincial spokesperson said private landlords had refused to take flood victims.",
+          "quotes": [
+            "Don't bring your people here, they don't belong to the Umhlanga look and feel",
+            "In KZN we need to eradicate, collectively, the 'not in my backyard syndrome'.",
+            "The proposed relocation of the community park to a former dumpsite raises serious health and safety concerns, particularly regarding methane emissions.",
+            "there is no alternative housing available, as other landlords have refused to take them in"
+          ],
+          "urls": [
+            "https://www.ecr.co.za/news/news/umhlanga-look-and-feel-minister-relocation-challenges/",
+            "https://www.timeslive.co.za/news/south-africa/2025-03-31-kzn-community-concerned-about-human-settlements-plans-to-rehome-flood-victims/",
+            "https://capeargus.co.za/sunday-tribune/news/2025-10-05-flood-victims-struggle-with-strict-rules-at-temporary-accommodation/"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Ingonyama Trust land: eThekwini's 2023 slide says 18% of land (context: settlement land) is held by the Trust. After the 2025 floods the province turned to Trust land through traditional leaders. Separately, the absence of an effective eThekwini–Trust agreement means the city services Trust areas with little revenue. The Trust holds about 2.8 million ha in KZN, and uMlazi, KwaMashu and Inanda are on Trust land.",
+          "quotes": [
+            "18% by the Ingonyama Trust"
+          ],
+          "urls": [
+            "https://static.pmg.org.za/230308_Ethekwini_Metro.pdf",
+            "https://www.timeslive.co.za/news/south-africa/2025-03-31-kzn-community-concerned-about-human-settlements-plans-to-rehome-flood-victims/",
+            "https://iol.co.za/mercury/news/2026-03-13-mansions-on-ingonyama-trust-land-strain-ethekwini-municipality-services/"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "finding": "When land was found for Lamontville victims, it was peripheral municipal land at Hammarsdale, and authorities were still searching for suitable land in March 2025. The Minister spoke of land about 15 km away.",
+          "quotes": [
+            "229 Lamontville flood victims will be permanently relocated to land owned by eThekwini Municipality in Hammarsdale.",
+            "are currently in search of suitable land to build houses for displaced families."
+          ],
+          "urls": [
+            "https://witness.co.za/news/kzn/2025/03/05/ethekwini-searches-for-land-to-build-homes-for-displaced-families/",
+            "https://www.ecr.co.za/news/news/umhlanga-look-and-feel-minister-relocation-challenges/"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "finding": "'No land' statements: a ward councillor explained the 15-year KwaDabeka transit camp by lack of land.",
+          "quotes": ["The only problem is the lack of available land to relocate people to"],
+          "urls": ["https://groundup.org.za/article/transit-camp-homes-are-falling-apart-says-durban-residents/"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Price of well-located land in eThekwini (R/ha or market data): not_found in sources consulted.",
+          "quotes": [],
+          "urls": [],
+          "confidence": "not_found"
+        }
+      ]
+    },
+    "funding_stream": {
+      "findings": [
+        {
+          "finding": "National Housing Code (2009) Part 3, Emergency Housing Programme: assistance is temporary by design, funded by provincial allocation at the MEC's discretion, and paid as grants to municipalities. National norms and standards for permanent structures do not apply.",
+          "quotes": [
+            "Assistance to be provided under this Programme will only constitute the provision of temporary aid and be of a temporary nature.",
+            "Norms and standards: The National Norms and Standards in respect of the creation of serviced stands shall not apply to this Programme with regard to temporary aid;",
+            "The National Norms and Standards in respect of permanent residential structures will not apply in temporary settlement areas.",
+            "The amount of the grant will be determined by the MEC based on the nature and extent of the emergency housing situation.",
+            "Funds will be made available by the PDs through the reservation of funds and/or reprioritisation as emergency circumstances arise"
+          ],
+          "urls": ["https://www.dhs.gov.za/sites/default/files/documents/2%20Volume%204%20Emergency%20Housing%20Programme.pdf", "https://dhs.mpg.gov.za/2%20Volume%204%20Emergency%20Housing%20Programme.pdf"],
+          "confidence": "high"
+        },
+        {
+          "finding": "TRU specification under the Code: a minimum lifespan of 5 years, 24-30 m2, dismountable, galvanised steel cladding. This is a product built for temporariness, not for a flood-proof site.",
+          "quotes": [
+            "A minimum lifespan of 5 years. It must be possible to dismantle the shelter for re-use at least 3 times.",
+            "The floor area of a shelter should be at least 24m² and may vary up to 30m² depending on the need and possibilities within the funding limits."
+          ],
+          "urls": ["https://www.dhs.gov.za/sites/default/files/documents/2%20Volume%204%20Emergency%20Housing%20Programme.pdf"],
+          "confidence": "high"
+        },
+        {
+          "finding": "Does the emergency route relax EIA, planning and procurement? Yes, formally. The Code tells implementers to use accelerated or exempting procedures, including for EIAs, and to treat normal procedures as a last resort. It allows tender waivers, three quotes and direct procurement. On paper, 'necessary land use planning and environmental approvals must be obtained' for temporary settlements, and geotechnical checks may be a scoping study only. Flood-line checks are not mentioned as a separate requirement: not_found.",
+          "quotes": [
+            "For the purpose of housing development in emergency housing situations where land use, planning and township establishment including environmental impact assessments, need to be conducted, accelerated procedures as provided for in applicable legislation set out in Annexure C should as far as possible be applied.",
+            "The use of normal procedures as prescribed in existing legislation should only be used as a last resort, since this could cause undue delays with the implementation of emergency housing projects.",
+            "municipalities may employ current legislation authorising the waiver of tender procedures and the introduction of replacement procedures appropriate for use in emergency housing situations.",
+            "The necessary land use planning and environmental approvals must be obtained. Geotechnical investigations may be conducted by way of a scoping study",
+            "FOR PURPOSES OF TOTAL OR PARTIAL EXEMPTION FROM LEGISLATION AND PROCEDURES IN THE CASE OF EMERGENCY OR TEMPORARY HOUSING"
+          ],
+          "urls": ["https://www.dhs.gov.za/sites/default/files/documents/2%20Volume%204%20Emergency%20Housing%20Programme.pdf"],
+          "confidence": "high"
+        },
+        {
+          "finding": "NEMA s30A lets a competent authority direct that listed activities go ahead without environmental authorisation in an 'emergency situation', which includes a declared disaster. KZN EDTEA has a s30A application form. No specific s30A directive for 2022 TRUs was found.",
+          "quotes": [],
+          "urls": [
+            "https://www.polity.org.za/article/when-disaster-strikes-from-an-environmental-law-perspective-an-explanation-of-sections-30-and-30a-of-nema-2020-04-23",
+            "https://www.kznedtea.gov.za/documents/EDTEA_2022%20S30A%20Application_Oct%202022_V4.pdf"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "finding": "National Treasury's disaster procurement instruction (from 1 April 2022) made emergency deviations the accounting officer's responsibility, with no Treasury approval needed and only reporting to COGTA.",
+          "quotes": [],
+          "urls": ["https://pmg.org.za/committee-meeting/35010/"],
+          "confidence": "low"
+        },
+        {
+          "finding": "Grant amounts in 2022/23: Provincial Disaster Response Grant R145m; Municipal Disaster Response Grant R371m; Provincial Emergency Housing Grant R326m; Municipal Emergency Housing Grant R175m. KZN DHS was allocated R342,133,000 for 3,089 displaced families. This funded TEA leases through the HDA and Ithala for 1,200 families for 'a period not exceeding 2-years', the purchase of Transnet's Montclair Lodge, and 1,074 TRUs.",
+          "quotes": [],
+          "urls": [
+            "https://www.treasury.gov.za/comm_media/press/2022/2022070701%20Media%20Statement%20-%20Disaster%20Management%20Funding.pdf",
+            "https://reliefweb.int/report/south-africa/national-treasury-allocates-first-phase-r516m-floods-funding",
+            "https://pmg.org.za/question_replies/251/?filter%5Bcommittee%5D=49"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Costs: R68,000 per TRU (MEC, April 2022). Renting private buildings as TEAs cost 'at least R185-million'. Montclair Lodge cost R33m. 1,200 Cornubia houses cost R600m. eThekwini's 2023 slides record the Disaster Recovery Grant at only 27% spent by January 2023.",
+          "quotes": [
+            "It will start and end with us. We will account for every cent.",
+            "at least R185-million on renting privately owned emergency accommodation"
+          ],
+          "urls": [
+            "https://www.l2b.co.za/Construction-News/R68-000-for-each-temporary-housing-unit-but-MEC-v?Id=b4a1403a-bd5a-40ce-b1f8-87dd8588d2df&strLength=long",
+            "https://groundup.org.za/article/kzn-is-failing-to-build-houses-for-thousands-of-flood-victims/",
+            "https://groundup.org.za/article/housing-project-for-kzn-flood-victims-creeps-forward/",
+            "https://static.pmg.org.za/230308_Ethekwini_Metro.pdf"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Underspending: in 2022/23 KZN DHS left R360m unspent and built none of the 2,224 planned flood units. In 2023/24 R264m was unspent.",
+          "quotes": ["the department building none of the 2,224 units it was supposed to build for flood victims"],
+          "urls": ["https://groundup.org.za/article/kzn-is-failing-to-build-houses-for-thousands-of-flood-victims/"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "AGSA procurement findings (2022 flood relief): the AGSA red-flagged possible splitting of awards to avoid competitive bidding under 'emergency' (at PMTE property repairs) and warned that the emergency does not negate accountability. The DA (partisan) reports that later AGSA work found awards to linked contractors and to firms whose directors were state employees. AGSA findings of 'inflated TRU costs' specifically: not_found.",
+          "quotes": [
+            "a contractor was requested on the basis of an emergency to provide separate quotes for five similar projects to be performed on the same property at a total value of R1,8 million.",
+            "An emergency does not negate the need for accountability for the funds used, the quality of the delivery, or the value derived from the money spent.",
+            "Awards were made to three different contractors with the same director, pointing to possible bid rigging."
+          ],
+          "urls": [
+            "https://www.agsa.co.za/Portals/0/Reports/Special%20Reports/RealTime/Media%20Statement%20-%20First%20special%20report%20on%202022%20real-time%20audit%20on%20flood%20relief%20funds%20-%2031%20August%202022%20FINAL.pdf?ver=2022-08-31-103740-440",
+            "https://www.da.org.za/2023/05/anc-connected-cadres-shamelessly-profited-from-the-misery-of-kwazulu-natal-and-eastern-cape-flood-victims"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "finding": "SIU: Proclamation 265 of 2025 (16 June 2025) covers the HDA and all provincial human settlements departments, including KZN, for maladministration in land identification, acquisition and release, 1 April 2016 to 30 May 2025. It does not name flood relief, emergency housing or TRUs. A proclamation specific to KZN flood-relief tenders: not_found. In October 2023 eThekwini's own Integrity unit investigated up to R32m in flood-housing money paid out with 'not a single house' built.",
+          "quotes": [
+            "investigate serious maladministration regarding the identification, acquisition, holding, development, and release of state, communal, and privately owned land",
+            "not a single house was built",
+            "not a single official had been held accountable"
+          ],
+          "urls": [
+            "https://www.gov.za/news/media-statements/siu-authorised-probe-housing-development-agency-and-all-provincial-human",
+            "https://www.polity.org.za/article/da-welcomes-kzn-human-settlements-siu-probe-calls-for-full-accountability-2025-06-03",
+            "https://iol.co.za/mercury/news/2023-10-13-investigation-under-way-in-ethekwini-municipality-after-money-meant-for-housing-project-disappears/"
+          ],
+          "confidence": "medium"
+        }
+      ]
+    },
+    "flood_risk_information": {
+      "findings": [
+        {
+          "finding": "eThekwini has 1:50 and 1:100 floodline data and publishes a 'Flood Plain 100yr' GIS layer. UKZN's Magidimisha-Chipungu wrote that the city's GIS shows informal settlements encroaching on land within the floodlines, and that the city had not applied the lessons of repeated floods.",
+          "quotes": [
+            "The city's geographic information system shows that some of the vacant land being encroached on by informal settlements falls under the 50- or 100-year flood lines",
+            "Ethekwini municipality hasn't applied lessons from previous incidents of flooding...into its planning."
+          ],
+          "urls": [
+            "https://gis-ethekwini.opendata.arcgis.com/datasets/e33fb655723e49fab434a23a8ca3d1d2_0",
+            "https://www.biznews.com/global-citizen/2022/04/21/ethekwini-floods-disaster-prone"
+          ],
+          "confidence": "high"
+        },
+        {
+          "finding": "At least 164 of 550 eThekwini informal settlements are on floodplains (Daily Maverick, citing April 2022 reporting).",
+          "quotes": ["at least 164 of the 550 informal settlements are built on floodplains"],
+          "urls": ["https://www.dailymaverick.co.za/article/2022-12-20-kzn-floods-exposed-vulnerabilities-in-local-structures-and-disaster-response-south-africans-should-not-forget/"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "National Water Act s144 requires township layout plans to show the 1:100 year floodline. Wording as relayed by the definitions source: 'an indicative line indicating the maximum level likely to be reached by floodwaters on average once in every hundred (100) years'. Whether s144 or the NBR (SANS 10400) floodline rules are applied to state-built temporary units or TEAs: not_found. The Emergency Housing Programme lets temporary settlements bypass township establishment through exemptions, which is where s144 bites, so an obvious gap exists. This is an inference, not a documented finding.",
+          "quotes": [],
+          "urls": ["https://www.lawinsider.com/dictionary/flood-lines", "https://faolex.fao.org/docs/pdf/saf123836.pdf"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Official framing after the February/March 2025 floods: the Mayor pointed to storm size exceeding design standards. Stormwater systems are built for 1:10 at critical points, and past events exceeded 1:100. A verbatim 'unprecedented rainfall' quote: not_found.",
+          "quotes": [
+            "the City's stormwater systems are designed to cope with a one in 10-year storm event flow at critical points.",
+            "cities cannot afford to construct infrastructure to cope with every eventuality related to flooding",
+            "It is important to indicate that flooding during heavy rains is related mainly to the size of the storm event and the capacity of the stormwater systems as well as the nature of the debris."
+          ],
+          "urls": ["https://iol.co.za/news/south-africa/kwazulu-natal/2025-03-04-ethekwini-mayor-details-plans-to-bolster-infrastructure-following-flood-devastation/"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Ward 74 councillor's explanation for Feb 2025 Lamontville camp flooding: a debris-choked stream adjacent to the transit camp overflowed. Residents had warned of the danger beforehand (IOL headline: 'amid previous community warnings').",
+          "quotes": [],
+          "urls": [
+            "https://iol.co.za/dailynews/news/2025-02-26-grieving-mother-calls-for-urgent-relocation-after-deadly-floods-in-durban/",
+            "https://iol.co.za/dailynews/news/2025-02-26-tragedy-strikes-lamontville-as-heavy-rains-claim-lives-amid-previous-community-warnings/"
+          ],
+          "confidence": "low"
+        },
+        {
+          "finding": "A community flood early warning system (Quarry Road West, with UKZN) was activated in April 2022 and no lives were lost there. This shows the risk information and tools exist.",
+          "quotes": [],
+          "urls": ["https://www.durban.gov.za/mayors-blog/Plans+to+mitigate+flood+impacts+in+the+City"],
+          "confidence": "low"
+        }
+      ]
+    },
+    "legal_status_of_residents": {
+      "findings": [
+        {
+          "finding": "Under the Code, emergency assistance gives no ownership. Shelters stay the property of the provincial department. Occupants get lease agreements, and relocation is meant to be temporary. Permanent housing needs separate Housing Subsidy Scheme qualification.",
+          "quotes": [
+            "The ownership of temporary shelters to be provided under the Programme should vest in the PD.",
+            "The municipality should ensure that the persons receive tenure in the form of lease agreements",
+            "Persons requiring temporary assistance under this Programme may subsequently apply for subsidies for permanent housing only if they satisfy the standard qualification criteria of the Housing Subsidy Scheme, and with due regard to priority planning and allocations.",
+            "Assistance provided will not in any way affect the granting or the quantum of housing subsidies to be allocated at a later stage."
+          ],
+          "urls": ["https://www.dhs.gov.za/sites/default/files/documents/2%20Volume%204%20Emergency%20Housing%20Programme.pdf"],
+          "confidence": "high"
+        },
+        {
+          "finding": "The Code even contemplates a 'permanent temporary settlement area', permanent in form while occupants are formally temporary. This is the policy root of 'permanent temporariness'.",
+          "quotes": [
+            "The development will have a more permanent status, but occupants will only stay on a temporary basis, until permanent housing at another location becomes available.",
+            "This approach is one of last resort and should be adopted only if no other course is feasible or practical."
+          ],
+          "urls": ["https://www.dhs.gov.za/sites/default/files/documents/2%20Volume%204%20Emergency%20Housing%20Programme.pdf"],
+          "confidence": "high"
+        },
+        {
+          "finding": "Verification screens TEA residents against subsidy criteria. In July 2025 KZN found 186 non-qualifiers (prior RDP ownership, income over the threshold, foreign nationals, refused ID help). They were told to find other accommodation and that they would be ineligible for future state houses. In 2024 the city issued vacate letters to 26 people found to hold prior RDP allocations. In August 2026 eThekwini said 13 former flood-displaced families qualified neither for TEA nor permanent subsidised housing.",
+          "quotes": [
+            "We conducted this verification process in order to ensure that we do not incur irregular or fruitless expenditure.",
+            "seek alternative accommodation, as they will not be eligible for government-built houses in the future.",
+            "they do not qualify for continued accommodation under the TEA programme or for permanent subsidised housing assistance within the current policy framework."
+          ],
+          "urls": [
+            "https://iol.co.za/news/south-africa/kwazulu-natal/2025-07-14-kzns-verification-process-uncovers-non-qualifying-individuals-in-ethekwinis-temporary-accommodations/",
+            "https://groundup.org.za/article/flood-victims-given-letters-by-ethekwini-municipality-to-vacate-emergency-housing/",
+            "https://www.sanews.gov.za/south-africa/ethekwini-clarifies-position-former-flood-displaced-families-occupying-tea-site"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "finding": "TEA conditions: residents at an Umbilo TEA face rules including no visitors, curfews, no alcohol and eviction for breaches. The province says residents agreed to them.",
+          "quotes": [
+            "We are treated like children",
+            "When they were moved into this building, they were made aware of the rules and agreed to them."
+          ],
+          "urls": ["https://capeargus.co.za/sunday-tribune/news/2025-10-05-flood-victims-struggle-with-strict-rules-at-temporary-accommodation/"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "eThekwini itself frames court-ordered emergency accommodation as 'queue-jumping', which creates a political cost to prioritising the displaced.",
+          "quotes": [
+            "Provision of alternative housing creates social issues in that this is seen as que-jumping as invaders are given priority over other households residing in informal settlements."
+          ],
+          "urls": ["https://static.pmg.org.za/230308_Ethekwini_Metro.pdf"],
+          "confidence": "high"
+        },
+        {
+          "finding": "'Temporary' for decades in eThekwini. The city built 71 transit camps (10,140 units) for disasters and 2010 World Cup clearances, and had eradicated 17 by 2021 with 8,235 families still to relocate. Isipingo M35 camp: residents moved in 2009 on a 6-18 month promise, and the first keys to Kanku Road units came in July 2023. KwaDabeka: 609 prefabs from 2009, 'promised that it would only be for six months, but 15 years later, they are still there'. Amaoti: 11+ years. Lamontville's older Gwala Street camp was described as occupied since 2008.",
+          "quotes": [
+            "They claim they were promised that it would only be for six months, but 15 years later, they are still there",
+            "We were told that we would only stay at the camp for six months, but it's been more than 11 years now"
+          ],
+          "urls": [
+            "https://iol.co.za/news/south-africa/kwazulu-natal/2021-04-16-ethekwini-eradicates-17-out-of-71-transit-camps-built-to-make-way-for-2010-fifa-world-cup/",
+            "https://www.thedailyvox.co.za/10-years-on-the-people-in-isipingo-transit-camp-wait-for-new-homes-lizeka-maduna/",
+            "https://www.citizen.co.za/south-coast-sun/news-headlines/local-news/2023/07/06/first-recipients-get-keys-to-new-houses-in-isipingo/",
+            "https://groundup.org.za/article/transit-camp-homes-are-falling-apart-says-durban-residents/",
+            "https://www.dailymaverick.co.za/article/2023-04-04-residents-languish-in-inhumane-ethekwini-transit-camp-11-years-later/"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "finding": "The Gwala Street / Lamontville displacement chain: the same group lost homes at Mega Village (2012), were flooded in 2016, evacuated in 2019 to Tehuis Hostel tents, moved in March 2021 to a hastily built camp next to Gwala Street, and were flooded again (2021/2022).",
+          "quotes": ["We have been moved from one place to another and we are tired now"],
+          "urls": [
+            "https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/",
+            "https://mg.co.za/opinion/2022-05-09-opinion-ethekwini-refugees-ordered-back-to-flood-prone-damaged-transit-camp/"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Blikkiesdorp (Symphony Way TRA, Delft, Cape Town; not a flood case) was established in 2007 with about 1,600 corrugated-iron units of 18 m2 for people cleared ahead of the 2010 World Cup. Residents were told stays would be about six months and remained for years without maintenance.",
+          "quotes": [],
+          "urls": ["https://en.wikipedia.org/wiki/Blikkiesdorp", "https://groundup.org.za/article/blikkiesdorp-residents-protest-after-years-in-temporary-accommodation/"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Whether TEA/transit status affects voter or ward registration: not_found. Only anecdote was found: Isipingo ward 90 residents protested in 2021 that their names were missing from the IEC roll.",
+          "quotes": [],
+          "urls": ["https://www.iol.co.za/dailynews/news/isipingo-ward-90-residents-protest-over-the-voting-process-during-the-local-government-elections-f78f7a45-c9f4-4449-bc72-33cc9ad51767"],
+          "confidence": "not_found"
+        }
+      ]
+    },
+    "legal_liability": {
+      "findings": [
+        {
+          "finding": "Grootboom (2000): the Constitutional Court held that s26 requires the housing programme to provide relief for people in crisis. The Emergency Housing Programme (2004) is the policy response to this.",
+          "quotes": [
+            "to provide relief for people who have no access to land, no roof over their heads, and who are living in intolerable conditions or crisis situations"
+          ],
+          "urls": ["https://www.saflii.org/za/cases/ZACC/2000/19.html", "https://journals.co.za/doi/pdf/10.10520/AJA1684260X_138", "https://www.academia.edu/95291950/Emergency_Housing_Programme_in_South_Africa_The_Symphony_Way_Temporary_Relocation_Area_in_Delft"],
+          "confidence": "high"
+        },
+        {
+          "finding": "Joe Slovo (2009): the eviction to TRAs was upheld, on conditions. TRA units had to meet minimum standards (size, materials, roads, electricity, water, toilets), 70% of new houses had to go to residents, and there had to be meaningful engagement. The court legitimised TRAs while setting floors on quality, but set no siting or flood-risk condition.",
+          "quotes": [
+            "the alternative temporary accommodation meets minimum standards, including requirements as to size, materials and availability of essentials such as roads, electricity, water and toilet facilities",
+            "70% of the housing which is to be constructed at Joe Slovo be allocated to qualifying current and former Residents"
+          ],
+          "urls": ["https://www.hrlc.org.au/case-summaries/residents-of-joe-slovo-community-v-thubelisha-homes-ors-2009-zacc-16-10-june-2009/", "https://www.saflii.org/za/cases/ZACC/2009/16.html"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Blue Moonlight (2011): the Constitutional Court held that a municipality may not exclude people evicted by private owners from temporary emergency accommodation. eThekwini's 2023 presentation reads this line of cases as an unfunded burden.",
+          "quotes": [
+            "The Courts are clear in that Municipalities must assist and cannot for whatever reason say they cannot.",
+            "Burden on City to provide alternative accommodation as per current legislation when evicting from both Sate and private land."
+          ],
+          "urls": ["https://www.saflii.org/za/cases/ZACC/2011/33.html", "https://www.seri-sa.org/index.php/more-news/36-blue-moonlight-properties-39-pty-ltd-v-occupiers-of-saratoga-avenue-and-another", "https://static.pmg.org.za/230308_Ethekwini_Metro.pdf"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Constitutional duties set a floor of 'some' emergency shelter but no enforceable standard on where it goes. s24 (environment) and s26 have not been litigated against unsafe TEA siting in KZN, as far as found: not_found.",
+          "quotes": [],
+          "urls": [],
+          "confidence": "not_found"
+        },
+        {
+          "finding": "Court case by flood-displaced people: 11 flood victims removed from a Durban TEA building applied for urgent relief against the owner (Pearl Star Investments) and eThekwini. The Durban Magistrate's Court dismissed it on 11 August 2026 on procedure: no reply affidavit was filed. The municipality filed no papers.",
+          "quotes": [
+            "in cases where there was a clear dispute of the facts, where relief was sought, the matter must be decided on the respondent's version when it was not contested."
+          ],
+          "urls": ["https://www.dailymaverick.co.za/article/2026-08-12-durban-flood-victims-left-on-pavement-as-court-rejects-housing-bid/"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Official held liable for the Lamontville deaths or TRU siting: none found. The eThekwini flood-housing money probe reported that 'not a single official had been held accountable'. Earlier, the 2009 Constitutional Court ruling struck down s16 of the KZN Slums Act (Abahlali), which had required landowners and municipalities to evict.",
+          "quotes": ["not a single official had been held accountable"],
+          "urls": [
+            "https://iol.co.za/mercury/news/2023-10-13-investigation-under-way-in-ethekwini-municipality-after-money-meant-for-housing-project-disappears/",
+            "https://abahlali.org/node/5910/"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "finding": "SAHRC monitoring of the 2022 floods found a lack of coordination, inadequate shelters, and unsafe, overcrowded conditions in TRUs. No SAHRC finding of individual liability was found.",
+          "quotes": ["in many of the affected areas there were not enough mattresses and basic living provisions, and no privacy or safety for the occupants."],
+          "urls": ["https://www.dailymaverick.co.za/article/2022-12-20-kzn-floods-exposed-vulnerabilities-in-local-structures-and-disaster-response-south-africans-should-not-forget/", "https://pmg.org.za/committee-meeting/35527/"],
+          "confidence": "medium"
+        }
+      ]
+    },
+    "political_voice": {
+      "findings": [
+        {
+          "finding": "Lamontville is Ward 74. The Ward 74 councillor allegedly told flood victims sheltering at Wema and Tehuis halls in 2022 to go back to the flood-prone camp. In 2025 the councillor blamed a debris-choked stream and awaited municipal and provincial direction.",
+          "quotes": [
+            "allegedly instructed the more than 100 flood victims still sheltering at the Wema and Tehuis community halls to return to their Lamontville transit camp"
+          ],
+          "urls": ["https://mg.co.za/opinion/2022-05-09-opinion-ethekwini-refugees-ordered-back-to-flood-prone-damaged-transit-camp/", "https://iol.co.za/dailynews/news/2025-02-26-grieving-mother-calls-for-urgent-relocation-after-deadly-floods-in-durban/"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Molweni/Hillcrest Ward 9 by-election (25 Oct 2023): the ANC won 70.34% to the DA's 28.07%, taking the seat from the DA. Turnout was split: over 60% in ANC-held Molweni districts, 31% in DA-held Waterfall. None of the coverage mentioned floods or housing.",
+          "quotes": ["Only 31% of registered voters in Waterfall cast their vote"],
+          "urls": ["https://mg.co.za/politics/2023-10-28-anc-takes-ward-off-da-ifp-coalition-in-ethekwini-halting-slide/", "https://www.dailymaverick.co.za/article/2023-10-26-october-by-elections-anc-wins-back-seats-in-kzn-mpumalanga/"],
+          "confidence": "high"
+        },
+        {
+          "finding": "2021 eThekwini council result (Wikipedia): ANC 42.1%, DA 25.9%, EFF 10.5%, IFP 7.1%, with the ANC governing via coalition. Ward 74 results and turnout: not_found.",
+          "quotes": [],
+          "urls": ["https://en.wikipedia.org/wiki/EThekwini_elections"],
+          "confidence": "low"
+        },
+        {
+          "finding": "Patronage in allocation: at Uganda Transit Camp (Isipingo, 2009-2013), residents alleged houses went to people not on the beneficiary list, and party and councillor networks were implicated. A 2026 KZN crackdown alleged that 1,000-2,000 RDP houses were illegally sold, rented or misallocated, with involvement of councillors and officials. The SIU found irregular allocation of 29 Phoenix sites to developers.",
+          "quotes": ["many people who were not on the beneficiary list, and who were newcomers or people from outside Uganda, were also receiving houses."],
+          "urls": [
+            "https://www.dailymaverick.co.za/article/2013-02-13-uganda-transit-camp-durban-a-report-from-the-frontlines-of-the-struggle-for-democracy/",
+            "https://witness.co.za/news/2026/05/25/game-over-kzn-cracks-down-on-r2bn-rdp-housing-fraud-network/",
+            "https://iol.co.za/thepost/news/2025-08-24-investigation-uncovers-corruption-in-ethekwini-housing-development/"
+          ],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Asymmetric voice: organised ratepayer associations (Shallcross/Scara, Umhlanga) blocked or delayed relocation sites, while displaced residents rely on protest and parliamentary visits.",
+          "quotes": ["Don't bring your people here, they don't belong to the Umhlanga look and feel"],
+          "urls": ["https://www.ecr.co.za/news/news/umhlanga-look-and-feel-minister-relocation-challenges/", "https://www.timeslive.co.za/news/south-africa/2025-03-31-kzn-community-concerned-about-human-settlements-plans-to-rehome-flood-victims/"],
+          "confidence": "medium"
+        }
+      ]
+    },
+    "governance": {
+      "findings": [
+        {
+          "finding": "AGSA's causes for the slow KZN flood response were lack of capacity, poor project management and weak contractor monitoring. The AGSA also found the eThekwini metro had no needs assessment for water tankering, with only 62% of its fleet available.",
+          "quotes": [
+            "the slow response in KwaZulu-Natal can be attributed to a lack of capacity, inadequate project management and ineffective monitoring to ensure that contractors completed projects on time and delivered quality goods and services.",
+            "Government was further not adequately prepared for a disaster."
+          ],
+          "urls": ["https://www.agsa.co.za/Portals/0/Reports/Special%20Reports/RealTime/Media%20Statement%20-%20First%20special%20report%20on%202022%20real-time%20audit%20on%20flood%20relief%20funds%20-%2031%20August%202022%20FINAL.pdf?ver=2022-08-31-103740-440"],
+          "confidence": "high"
+        },
+        {
+          "finding": "eThekwini's audit outcome for 2023/24 was unqualified with findings, but its performance information was not credible. The AG advised strengthening procurement monitoring and consequence management. In June 2023 the AGSA flagged eThekwini for 'slow implementation of commitments, lack of disaster readiness'.",
+          "quotes": ["slow implementation of commitments, lack of disaster readiness"],
+          "urls": ["https://www.ecr.co.za/news/news/ethekwini-among-3-metros-unqualified-audits/", "https://pmg.org.za/committee-meeting/37213/", "https://www.iol.co.za/mercury/news/auditor-general-says-ethekwini-needs-to-review-tender-processes-consequence-management-to-improve-audit-outcomes-195d8a18-e9de-4c18-99da-0265f11eeb95"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Vacancies: 58% of water and sanitation infrastructure posts were unfilled (reported June 2025). The AG said she did not understand the high vacancies given the metro's size and budget. An engineer-specific vacancy rate: not_found.",
+          "quotes": [],
+          "urls": ["https://iol.co.za/mercury/2025-06-04-ethekwini-municipality-grapples-with-severe-staff-shortages-in-water-and-sanitation-units/"],
+          "confidence": "low"
+        },
+        {
+          "finding": "Intervention history: in June/July 2024 the KZN COGTA MEC used s154 support (governance experts for 12 months) rather than s139. In September 2024 COGTA's DG said eThekwini was not eligible for s139. The Housing Code itself names s139 as the tool when a municipality cannot deliver.",
+          "quotes": [
+            "Take appropriate steps in accordance with section 139 of the Constitution of the Republic of South Africa, 1996 (Act no. 108 of 1996), to ensure the performance of the duties and obligations provided for in section 7 of the Housing Act 1997 if the municipality is unable to do so;"
+          ],
+          "urls": ["https://www.ewn.co.za/2024/06/28/kzn-cogta-mec-appoints-2-governance-experts-to-assist-struggling-ethekwini-municipality", "https://mg.co.za/politics/2024-09-23-ethekwini-not-eligible-for-section-139-administration-says-cogta-director-general/", "https://www.dhs.gov.za/sites/default/files/documents/2%20Volume%204%20Emergency%20Housing%20Programme.pdf"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "eThekwini's own list of internal constraints: capacity, coordination across line departments and spheres, and slow procurement.",
+          "quotes": [
+            "CAPACITY, INSTITUTIONAL AND COORDINATION CHALLENGES: There is insufficient capacity to respond optimally to the scale of the challenge and also difficulties achieving effective transversal coordination across municipal line departments and with the other spheres of government.",
+            "PROCUREMENT: Slow and cumbersome procurement processes delivery."
+          ],
+          "urls": ["https://static.pmg.org.za/230308_Ethekwini_Metro.pdf"],
+          "confidence": "high"
+        },
+        {
+          "finding": "Split responsibility: the province (KZN DHS) funds, owns the TRUs and leases the TEAs, while the municipality must identify land and manage sites. Parliament's flood committee could not get 'satisfactory information' on TEA rental costs (June 2023). The eThekwini Disaster Management Centre's capacity and budget: not_found. The AGSA noted disaster backlogs dating to 2013.",
+          "quotes": ["The committee was not provided with satisfactory information around the costs of renting the building over a 24-month period."],
+          "urls": ["https://www.parliament.gov.za/press-releases/media-statement-committee-flood-disaster-calls-ethekwini-municipality-find-permanent-accommodation-flood-victims"],
+          "confidence": "medium"
+        }
+      ]
+    },
+    "what_scholars_say": {
+      "findings": [
+        {
+          "finding": "Ranslem (2015, Int. J. Law in the Built Environment) argues that the 'temporariness' of TRAs is a legal device that brackets out housing-rights claims.",
+          "quotes": [
+            "Legal and geographical relegation of citizens to these camps is a tool by which the state is able to bracket-out claims against it because the purported 'temporariness' of accommodation subsumes housing rights concerns to a more general ethics of liberal economism.",
+            "The camps' appellation 'temporary' is betrayed by the cruel irony that for many South Africans, these sites are their de facto permanent residences – sites of interminable waiting."
+          ],
+          "urls": ["https://international.vlex.com/vid/temporary-relocation-spaces-of-772399413", "https://www.researchgate.net/publication/276901272_'Temporary'_relocation_Spaces_of_contradiction_in_South_African_law"],
+          "confidence": "high"
+        },
+        {
+          "finding": "Levenson (2014, SLUM Lab), 'Permanent Temporariness: Relocation Camps in Post-Apartheid Cape Town'. Levenson (2017, International Sociology), 'Precarious welfare states', and 'The road to TRAs is paved with good intentions: Dispossession through delivery'. Greyling (2012, UCT thesis) on the 'permanent temporariness' of waiting for a house.",
+          "quotes": [],
+          "urls": ["https://www.academia.edu/6200921/Permanent_Temporariness_Relocation_Camps_in_Post_Apartheid_Cape_Town", "https://journals.sagepub.com/doi/abs/10.1177/0268580917701586", "https://www.researchgate.net/publication/320937382_The_road_to_TRAs_is_paved_with_good_intentions_Dispossession_through_delivery_in_post-apartheid_Cape_Town", "https://open.uct.ac.za/handle/11427/13829"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Cirolia (2014, Development Southern Africa 31(3)), 'South Africa's Emergency Housing Programme: A prism of urban contest'. It treats the EHP, best known for TRAs, as a site of contest shaped by the Joe Slovo and Blue Moonlight cases.",
+          "quotes": [],
+          "urls": ["https://www.tandfonline.com/doi/full/10.1080/0376835X.2014.887998"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Tissington/SERI: 'A Resource Guide to Housing in South Africa 1994-2010' covers the EHP. SERI's 'Jumping the Queue', Waiting Lists and other Myths examines how opaque housing demand and allocation practices are. Specific quotes were not retrieved.",
+          "quotes": [],
+          "urls": ["http://abahlali.org/node/7836/", "https://www.researchgate.net/publication/259678719_Jumping_the_Queue'_Waiting_Lists_and_other_Myths_Perceptions_and_Practice_around_Housing_Demand_and_Allocation_in_South_Africa", "https://www.seri-sa.org/index.php/research/securing-a-home/sec-home-res-rep"],
+          "confidence": "medium"
+        },
+        {
+          "finding": "Huchzermeyer criticised the KZN Slums Bill as using 'the language of apartheid' and contradicting Breaking New Ground. KZN transit camps are the Durban analogue of Cape Town's TRAs.",
+          "quotes": [],
+          "urls": ["https://abahlali.org/node/5120/", "https://en.wikipedia.org/wiki/Kennedy_Road,_Durban"],
+          "confidence": "low"
+        },
+        {
+          "finding": "Lemanski: critiques of subsidy housing (peripheral location, poor quality, limited asset value): 'Houses without community' (2008), 'Moving up the ladder or stuck on the bottom rung?' (2011), and 'Infrastructural citizenship' (2021). Mark Hunter's Durban work (Race for Education; Umlazi history) covers race-class geography but was not found to address transit camps directly.",
+          "quotes": [],
+          "urls": ["https://journals.sagepub.com/doi/10.1177/0956247808096119", "https://onlinelibrary.wiley.com/doi/10.1111/j.1468-2427.2010.00945.x", "https://www.tandfonline.com/doi/full/10.1080/02673037.2021.1966390", "https://www.cambridge.org/core/books/race-for-education/3B106F334A3A93F5A3988E1A543F3810"],
+          "confidence": "medium"
+        }
+      ]
+    },
+    "housing_backlog": {
+      "findings": [
+        {
+          "finding": "eThekwini (March 2023, to Parliament) estimated the backlog at 469,500 households: 316,000 in informal settlements, 8,500 in transit facilities, 49,000 in backyard shacks and 96,000 in traditional dwellings. The city put clearance at over 80-90 years at current funding. Informal settlements grew from 510 (2015) to 595 (2022), and households from 233,000 to 316,300.",
+          "quotes": [
+            "Transit facilities: 8,500 h/hs",
+            "Estimated Total: 469,500 h/hs",
+            "With limiting funding and an ever-growing backlog, it will take over 80 years to meet the backlog",
+            "Over 90 years to overcome the backlog by means of conventional housing delivery.",
+            "Less than 3% of households earmarked for relocation (due mainly to sites being unsafe for habitation)"
+          ],
+          "urls": ["https://static.pmg.org.za/230308_Ethekwini_Metro.pdf"],
+          "confidence": "high"
+        },
+        {
+          "finding": "The newer city figure is over 603 informal settlements with about 312,000 households. The 2025/26 IDP puts informal settlements at about 66% of housing demand.",
+          "quotes": [],
+          "urls": ["https://durban.gov.za/pages/residents/human-settlements", "https://iol.co.za/business/property/2026-02-04-south-africas-housing-backlog-why-theres-no-end-in-sight/"],
+          "confidence": "low"
+        },
+        {
+          "finding": "KZN: more than one million people are on the housing waiting list and there are more than 1,000 informal settlements (IOL, 2025). An October 2023 report had over 7,500 eThekwini families still in transit camps.",
+          "quotes": [],
+          "urls": ["https://iol.co.za/news/south-africa/kwazulu-natal/2025-08-15-how-grants-are-addressing-the-housing-crisis-in-kwazulu-natals-informal-settlements/", "https://www.news24.com/news24/southafrica/news/over-7-500-ethekwini-families-still-living-in-transit-camps-20231023"],
+          "confidence": "low"
+        },
+        {
+          "finding": "Flood-specific backlog. By 31 July 2022 only 736 of 1,810 planned KZN TRUs were done, and by 10 June 2022 only 1,197 of 4,983 displaced households had been assessed. About 1,050 people were still in TEAs (GroundUp, Sept 2025), and about 1,200 families (IOL). By August 2026, 2,484 people (783 families) still lacked permanent homes (DA). Cornubia: 113 homes were handed over in May 2026, against a December 2025 target.",
+          "quotes": [
+            "only 736 of the 1 810 temporary residential units had been completed and were in use in KwaZulu-Natal",
+            "By 10 June 2022, only 1 197 of the 4 983 displaced households had been assessed."
+          ],
+          "urls": [
+            "https://www.agsa.co.za/Portals/0/Reports/Special%20Reports/RealTime/Media%20Statement%20-%20First%20special%20report%20on%202022%20real-time%20audit%20on%20flood%20relief%20funds%20-%2031%20August%202022%20FINAL.pdf?ver=2022-08-31-103740-440",
+            "https://groundup.org.za/article/kzn-is-failing-to-build-houses-for-thousands-of-flood-victims/",
+            "https://www.iol.co.za/dailynews/news/ethekwini-municipality-extends-emergency-accommodation-for-flood-victims-8f1f2f89-9858-4508-8cfc-2def09f9bde4",
+            "https://www.polity.org.za/article/da-calls-for-urgent-housing-for-2-484-ethekwini-flood-victims-2026-08-19",
+            "https://groundup.org.za/article/housing-project-for-kzn-flood-victims-creeps-forward/"
+          ],
+          "confidence": "medium"
+        }
+      ]
+    }
+  },
+  "key_structural_explanations": [
+    "The land squeeze gets pushed onto the riskiest land. eThekwini's own figures say well-located land is scarce, the terrain is steep, 41% of land is privately owned and 18% is Ingonyama Trust. Better-off neighbourhoods block sites (Umhlanga, Shallcross, Montclair). What is left for quick 'temporary' siting is state-controlled leftover land: riverbanks, canal edges, servitudes (Lamontville/Gwala Street; the AGSA found TRUs 'on unsuitable land' and mobile classrooms on ground that had just flooded).",
+    "'Temporary' is written in as a legal category that lowers the bar. The Emergency Housing Programme says aid is 'of a temporary nature', switches off permanent-structure norms, tells implementers to use accelerated or exempt planning and EIA procedures with normal procedures 'only... as a last resort', and allows tender waivers. It even provides for 'permanent temporary settlement areas'. Floodline checks (NWA s144 attaches to township establishment) are not required separately for temporary sites.",
+    "The money is reactive, discretionary and split across spheres. Funds come from provincial reprioritisation at MEC discretion plus disaster grants, and the province owns the shelters and leases TEAs while the city must find land. The result is underspending (R360m unspent in 2022/23 with none of 2,224 flood units built), costly rentals (at least R185m), and weak accountability ('not a single official' held to account in the R32m probe; SIU Proclamation 265/2025 covers land deals, not flood TRUs).",
+    "Residents' legal status keeps them waiting and conditional. TEA/TRU occupants hold no title; shelters vest in the province. Permanent housing depends on separate subsidy eligibility, and verification drives expel non-qualifiers. The city frames prioritising them as 'que-jumping' against a 469,500-household backlog. So camps become de facto permanent: 71 camps since 2009, KwaDabeka at 15 years, Isipingo at 14.",
+    "Courts protect a floor of shelter, not a safe location. Grootboom, Joe Slovo and Blue Moonlight require emergency accommodation and minimum unit standards, but none imposes siting or flood-risk duties. No court case or official liability for unsafe TEA siting in KZN was found, and the one flood-victim case (Aug 2026) failed on procedure.",
+    "Political voice is asymmetric. Ratepayer associations can veto relocation sites, while the displaced depend on ward councillors (one allegedly ordered victims back to the flood-prone camp in 2022) and on allocation systems with documented patronage and fraud. Repeat flooding of the same camps carries little electoral cost that could be found.",
+    "Capacity and governance gaps turn known risk into repeat disaster. The city has 1:50/1:100 floodline data and knows at least 164 settlements sit on floodplains, yet stormwater is designed to 1:10. The AGSA cites lack of capacity and disaster readiness, and 58% of water/sanitation infrastructure posts are vacant. Intervention stopped at s154 rather than s139. Officials frame deaths as storm magnitude ('the size of the storm event') rather than siting decisions."
+  ]
+}
