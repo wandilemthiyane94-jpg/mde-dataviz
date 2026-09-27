@@ -98,7 +98,7 @@ button.replay:focus-visible,a:focus-visible{outline:2px solid var(--water);outli
   <div class="act"><div class="k">Beyond Durban</div><h2>84 "temporary" sites</h2></div>
   <div class="two">
     <div class="fig"><svg id="sa" viewBox="0 0 620 540" role="img" aria-label="Map of South Africa with 84 temporary relocation sites coloured by why they were created"></svg>
-      <div class="legend" id="saLegend" style="margin-top:8px"></div><p class="src">Source: "South Africa TRAs 2022–2026" site list: 84 sites, each with its own sources (GroundUp, IOL, Daily Maverick, PMG, municipal and provincial records), in <code>data/tra_sites_2022_2026.csv</code>. Why each site was created is coded from the list's type and notes, plus our case research. Reflooding is documented at 6 sites.</p></div>
+      <div class="legend" id="saLegend" style="margin-top:8px"></div><p class="src">Source: "South Africa TRAs 2022–2026" site list: 84 sites, each with its own sources (GroundUp, IOL, Daily Maverick, PMG, municipal and provincial records), in <code>data/tra_sites_2022_2026.csv</code>. Why each site was created is coded from the list's type and notes, plus our case research. Reflooding is documented at 7 sites (plus 2 low-confidence reports), from a sweep of 30 of the 84 sites: <code>data/raw/tra_reflood_sweep.json</code>.</p></div>
     <div style="display:grid;gap:22px">
       <div class="stat"><div class="big camp" id="yrsMax">–</div><p id="yrsMaxTxt"></p></div>
       <div class="fig"><svg id="yrs" viewBox="0 0 520 380" role="img" aria-label="Years that the longest-running temporary sites have existed"></svg></div><p class="src">Years = 2026 minus the "established" year in the site list; active, non-Covid sites only.</p>
@@ -189,7 +189,7 @@ var gCamps=svg.append("g").attr("class","L3").style("opacity",0);
 gCamps.selectAll("circle").data(dsites).join("circle").attr("cx",function(d){return proj([d.lon,d.lat])[0];}).attr("cy",function(d){return proj([d.lon,d.lat])[1];}).attr("r",6.5).attr("fill",C.camp).attr("stroke",C.panel).attr("stroke-width",1.5);
 var gHit=svg.append("g").attr("class","L4").style("opacity",0);
 var hits=dsites.filter(function(d){return d.reflood==="yes";});
-var lbl={26:"Isipingo · flooded 4–5 times",32:"Gwala St · flooded Apr 2022",33:"Lamontville · Feb 2025, 5 dead"};
+var lbl={26:"Isipingo · flooded 4–5 times",32:"Gwala St, Lamontville · 2022 & 2025, 5 dead",29:"Madamfana · water into homes"};
 hits.forEach(function(d,i){var p=proj([d.lon,d.lat]);
   gHit.append("circle").attr("class","pulse").attr("cx",p[0]).attr("cy",p[1]).attr("r",8).attr("fill","none").attr("stroke",C.hit).attr("stroke-width",2);
   gHit.append("circle").attr("cx",p[0]).attr("cy",p[1]).attr("r",7.5).attr("fill",C.hit).attr("stroke",C.panel).attr("stroke-width",1.5);
@@ -209,7 +209,7 @@ var within=S.durban_sites_inside_or_250m, tested=S.durban_sites_tested;
 document.getElementById("durbanStat").textContent=within+" of "+tested;
 document.getElementById("durbanStatTxt").innerHTML="Durban camps inside the city's floodplain or within 250 m of it ("+Math.round(100*within/tested)+"%). Random ground across Durban: "+S.baseline_inside_or_250m_pct+"%. <b style='color:var(--ink)'>The flood map made no difference to where people were put.</b>";
 document.getElementById("refloodTxt").innerHTML="<span class='hit'>"+hits.length+" Durban camps</span> where flooding after the move is documented. "+
-  "One was Lamontville: the Auditor-General flagged unsuitable siting in August 2022, and 5 people died there in February 2025.";
+  "Only "+(S.reflood_searched||30)+" of 84 sites have been searched one by one, so this is a minimum. The Auditor-General flagged unsuitable siting in August 2022; in February 2025, 5 people died at the Gwala Street camp in Lamontville.";
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){document.querySelectorAll(".step").forEach(function(s){s.classList.remove("on");});e.target.classList.add("on");setStep(+e.target.dataset.s);}});},{rootMargin:"-45% 0px -45% 0px"});
 document.querySelectorAll(".step").forEach(function(s){io.observe(s);});
 document.querySelector(".step").classList.add("on");
@@ -219,7 +219,7 @@ document.querySelector(".step").classList.add("on");
   s.append("line").attr("x1",40).attr("x2",1060).attr("y1",150).attr("y2",150).attr("stroke",C.rule).attr("stroke-width",2);
   d3.range(2008,2026).forEach(function(y){s.append("text").attr("x",x(y)).attr("y",240).attr("text-anchor","middle").attr("fill",C.muted).attr("font-family",mono).attr("font-size",12).text(y%2===0?y:"");
     s.append("line").attr("x1",x(y)).attr("x2",x(y)).attr("y1",146).attr("y2",154).attr("stroke",C.muted);});
-  var ev=[[2008.3,"move","Moved to Lamontville transit camps after uMlazi floods"],[2012.2,"hit","Mega Village floods"],[2016.3,"hit","Floods again"],[2019.3,"hit","Floods again → tents"],[2021.2,"move","Moved to Gwala St, by the Umlaas canal"],[2022.28,"hit","Gwala St floods"],[2022.6,"move","TEA on the Umlazi riverbank"],[2022.66,"flag","Auditor-General: 'unsuitable land'"],[2025.15,"hit","Lamontville camp floods · 5 dead"],[2025.55,"move","Moved to Umbilo residence"]];
+  var ev=[[2008.3,"move","Moved to Lamontville transit camps after uMlazi floods"],[2012.2,"hit","Mega Village floods"],[2016.3,"hit","Floods again"],[2019.3,"hit","Floods again → tents"],[2021.2,"move","Moved to Gwala St, by the Umlaas canal"],[2022.28,"hit","Gwala St floods"],[2022.6,"move","TEA on the Umlazi riverbank"],[2022.66,"flag","Auditor-General: 'unsuitable land'"],[2025.15,"hit","Gwala St camp floods again · 5 dead"],[2025.55,"move","Moved to Umbilo residence"]];
   ev.forEach(function(e,i){var X=x(e[0]),up=i%2===0,col=e[1]==="hit"?C.hit:e[1]==="flag"?C.water:C.camp;
     s.append("line").attr("x1",X).attr("x2",X).attr("y1",150).attr("y2",up?92:208).attr("stroke",col).attr("stroke-width",1.2).attr("opacity",.7);
     if(e[1]==="move")s.append("rect").attr("x",X-4).attr("y",142).attr("width",8).attr("height",16).attr("fill",col);

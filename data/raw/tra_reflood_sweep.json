@@ -1,0 +1,117 @@
+{
+  "method": "Targeted web sweep (WebSearch + WebFetch, ~57 tool calls, 2026-09-27). Priority: the 6 pre-flagged sites, then eThekwini transit camps, Cape Town TRAs/emergency sites, Nelson Mandela Bay, Buffalo City, KSD/Mthatha, Johannesburg/Tshwane. Queries combined site names (and local names) with flood/flooded/water/rain/stormwater, plus municipality-level 'transit camp flooded' / 'TRA flooded' queries and city-wide flood-event coverage (Cape Town Jul 2025, May 2026; eThekwini Apr 2022, Feb 2025; Buffalo City Jun 2026). Included only flooding/water ingress/stormwater damage at the relocation site itself after people lived there; excluded the displacing flood. Quotes are copied as returned by page fetches; where a page could not be fetched (403) this is noted and confidence lowered. Sites not listed in found or not_found_ids were not searched individually in this pass (see not_searched_ids).",
+  "searched_sites": 30,
+  "found": [
+    {
+      "id": 26,
+      "site": "Isipingo transit camp",
+      "flood_date": "Repeated events before May 2022 ('four to five' significant floods reported by 25 May 2022); flooding still cited July 2023",
+      "what": "Camp between a river and a highway floods when heavy rain makes the water level rise and overflow; possessions lost to water; a resident died after tripping on live wiring while emptying floodwater.",
+      "quote": "When there are heavy rains, the water level rises and overflows and our homes get flooded.",
+      "url": "https://risingsunnewspapers.co.za/196341/thirteen-years-later-still-no-proper-housing/",
+      "confidence": "high"
+    },
+    {
+      "id": 26,
+      "site": "Isipingo transit camp (TEA)",
+      "flood_date": "Ongoing as of 21 July 2023 (article date)",
+      "what": "Resident relocated out of the Isipingo TEA refers to people left behind still experiencing flooding there.",
+      "quote": "I couldn't sleep comfortably knowing that some people are still experiencing the cold weather and the flooding [at the TEA].",
+      "url": "https://groundup.org.za/article/forgotten-isipingo-emergency-housing-residents-protest-demanding-to-be-moved-immediately/",
+      "confidence": "medium"
+    },
+    {
+      "id": 32,
+      "site": "eMathinini transit camp (Gwala St, Lamontville)",
+      "flood_date": "April 2022",
+      "what": "Residents moved in March 2021 (after 2019 Mega Village floods); units flooded in the April 2022 deluge and residents fled to nearby hostel halls, then were ordered back. Camp is low-lying near the Umlaas Canal.",
+      "quote": "the units flooded during the recent deluge, residents were forced to flee to the nearby hostel halls",
+      "url": "https://mg.co.za/news/south-africa/2022-05-09-opinion-ethekwini-refugees-ordered-back-to-flood-prone-damaged-transit-camp/",
+      "confidence": "high"
+    },
+    {
+      "id": 32,
+      "site": "eMathinini / Gwala Street transit camp, Lamontville",
+      "flood_date": "February 2025 (c. 25-26 Feb 2025)",
+      "what": "Flash flood on the canal bank killed people living in the transit camp, including three children. Search snippets of IOL (26 Feb 2025; page returned 403) name the camp as the 'Gwala Street Transit Camp'; the MEC quote below confirms the victims lived in a transit camp on the canal bank. This is the Feb 2025 event currently attached to id 33 in the source CSV.",
+      "quote": "The people who lost their lives were in a transit camp where they were moved to that camp after the 2022 floods.",
+      "url": "https://www.sabcnews.com/sabcnews/2022-flood-victims-should-not-have-been-moved-to-lamontville-mec/",
+      "confidence": "medium"
+    },
+    {
+      "id": 29,
+      "site": "Madamfana transit camp (Ntuzuma)",
+      "flood_date": "2022 floods (resident moved into a community hall); recurrent whenever it rains (reported 21 Sep 2023)",
+      "what": "Low-lying camp (established 2017) where rainwater enters the houses; residents moved into a community hall during the 2022 floods.",
+      "quote": "The area is low lying and when it rains water goes into the houses.",
+      "url": "https://groundup.org.za/article/families-have-been-waiting-six-years-to-be-moved-from-durban-transit-camp/",
+      "confidence": "high"
+    },
+    {
+      "id": 59,
+      "site": "Denver TRA ('Shalazile')",
+      "flood_date": "January 2024 (reported 9-12 Jan 2024; further flooding reported 31 Jan-2 Feb 2024)",
+      "what": "Usindiso fire survivors moved to Denver in Nov 2023; summer rains flooded their shacks, soaking beds, clothes, food and documents; no drainage on site; residents dug their own stormwater channels.",
+      "quote": "The water seeps in. When it rains, water also comes in from the cracks in the roof.",
+      "url": "https://www.sowetan.co.za/news/south-africa/2024-01-12-rains-flood-marshalltown-fire-victims-shacks-in-denver/",
+      "confidence": "high"
+    },
+    {
+      "id": 74,
+      "site": "Motherwell NU30 bungalows",
+      "flood_date": "c. May 2023 ('recent rains', article dated 16 May 2023)",
+      "what": "Resident of a government-allocated NU30 bungalow (promised a house since 2020) says heavy rain flooded the bungalow floor. Article does not explicitly label it the Covid TRU scheme, hence medium.",
+      "quote": "The recent rains were so heavy that they flooded the floor of the bungalow. We literally swam in it.",
+      "url": "https://groundup.org.za/article/flooding-in-eastern-cape-municipality-blames-residents-residents-blame-municipality/",
+      "confidence": "medium"
+    },
+    {
+      "id": 9,
+      "site": "Kampies (emergency housing site, Philippi)",
+      "flood_date": "Winter 2020 (reported 30 Nov 2020)",
+      "what": "Rainwater enters structures from below; City responded to flooding issues at the emergency site during winter.",
+      "quote": "My roof was leaking, water would come in from the bottom of the structure when it rains.",
+      "url": "https://groundup.org.za/article/kampies-emergency-site-houses-evictees-backyarders-and-homeless/",
+      "confidence": "high"
+    },
+    {
+      "id": 9,
+      "site": "Kampies (emergency housing site)",
+      "flood_date": "11 May 2026",
+      "what": "City Disaster Risk Management listed Kampies among the hardest-hit flooded settlements in the May 2026 cold fronts. (Daily Maverick 6 Jul 2025 also reports 50 homes flooded in 'Strandfontein's Kampies settlement'.) Assumed to be the same City-run site; not explicitly identified as the emergency housing site.",
+      "quote": "flooding reported in informal settlements including Island, Makhaza and Monwabisi in Khayelitsha, Imizamo Yethu, Nomzamo, Lwandle, Phola Park, Gugulethu, Valhalla Park, Vygieskraal, Tafelsig, Delft and Kampies.",
+      "url": "https://www.dailymaverick.co.za/article/2026-05-11-cold-fronts-lash-western-cape-one-dead-communities-flooded-and-schools-shut/",
+      "confidence": "medium"
+    },
+    {
+      "id": 1,
+      "site": "Blikkiesdorp (Symphony Way TRA)",
+      "flood_date": "Winter rains, recurring (reported 8 Mar 2024)",
+      "what": "Blocked stormwater drains leave water running in the streets; residents move beds and furniture to avoid leaks when it rains.",
+      "quote": "The stormwater drains are blocked and water runs in the streets.",
+      "url": "https://groundup.org.za/article/blikkiesdorp-residents-protest-after-years-in-temporary-accommodation/",
+      "confidence": "medium"
+    },
+    {
+      "id": 27,
+      "site": "KwaDabeka transit camp ('Lindelani 1 transit camp in KwaDabeka')",
+      "flood_date": "c. late Oct/early Nov 2023 (statement dated 6 Nov 2023)",
+      "what": "DA statement says prefab units face collapse after heavy rains. Rain damage rather than documented inundation; political statement, not reporting.",
+      "quote": "prefab housing faces collapse following recent heavy rains",
+      "url": "https://kzn.da.org.za/2023/11/dangerous-conditions-at-kwadabeka-transit-camp-after-14-years-as-anc-abandons-residents",
+      "confidence": "low"
+    },
+    {
+      "id": 67,
+      "site": "Mamelodi Hostel TRUs",
+      "flood_date": "Rainy season, before 7 Sep 2021",
+      "what": "Resident says the temporary units, placed without a survey, flood when it rains. Unclear how many units were occupied at the time (454 of 633 built).",
+      "quote": "when it's raining they get flooded. They should have called a surveyor",
+      "url": "https://www.timeslive.co.za/news/south-africa/2021-09-07-why-would-we-vote-mamelodi-hostel-residents-angry-at-half-built-shack-houses/",
+      "confidence": "low"
+    }
+  ],
+  "not_found_ids": [2, 3, 7, 8, 10, 11, 12, 13, 18, 28, 31, 33, 35, 58, 62, 63, 64, 72, 73, 77, 78, 80, 81],
+  "not_searched_ids": [4, 5, 6, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 30, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 60, 61, 65, 66, 68, 69, 70, 71, 75, 76, 79, 82, 83, 84],
+  "notes": "Checks on the existing reflood_documented flags: id 26 CONFIRMED; id 32 CONFIRMED (Apr 2022) and the Feb 2025 Lamontville deaths also belong here (Gwala Street camp); id 59 CONFIRMED. id 2 (Delft TRA 5, 'flooding reported Jul 2026') NOT CONFIRMED: Delft was among flooded areas in the 11 May 2026 storm (GroundUp, Daily Maverick) but no source names TRA 5/6, and nothing found for July 2026. id 13 (Sondela) NOT CONFIRMED and probably misread: the 'flood-prone wetland' in News24 (22 Feb 2023) describes the ORIGINAL Sondela settlement people were moved FROM, not the new TRA. id 33 (Lamontville/Barcelona 2) NOT CONFIRMED as a separate site: the Feb 2025 flood is documented at the Gwala Street transit camp (= id 32); suggest moving that flag to id 32 unless Barcelona 2 is confirmed to be the same camp. Excluded: id 10 Stock Road/Bhekela, where heavy-rain pooling was pumped out in Oct 2023 during site preparation, BEFORE the Dec 2023 moves (PMG 11 Oct 2023); later coverage (DM 7 Aug 2025) mentions only leaking taps causing 'small floods' and muddy puddles. id 73 Van Rooyen TRUs: the Oct 2024 Kariega flood hit before the 29 Oct 2024 move, and the Jan 2026 coverage mentions no flooding. id 8 Wolwerivier: Aug 2023 landspout caused WIND damage (42 structures damaged), not flooding; a search-engine summary about water seeping into floors could not be traced to a fetched article. id 18 Imizamo Yethu: flooded May 2026, but only the wider settlement is named, not the TRAs. id 77/78 Buffalo City: June 2026 flooding at the Ntilini informal settlement in Ziphunzana, not the TRUs. id 28 Amaoti: leaking roofs/pipes only, no flooding. id 80 Mayden Farm, 81 Pola Park: nothing post-move found. Victims are not named. Suggested follow-up: fetch IOL 26 Feb 2025 (403 here) to get a verbatim 'Gwala Street Transit Camp' quote, News24/Daily Sun Jan 2024 Denver pieces, and run individual searches on the not_searched_ids (especially the eThekwini TEAs 42-55, KwaDukuza 56 and Kariega 75-76)."
+}
