@@ -1,0 +1,619 @@
+﻿{
+    "_meta":  {
+                  "compiled":  "2026-09-27",
+                  "note":  "All quotes copied verbatim from the URL given. Items 6, 7 and 8 are marked not_found because the research on them was not finished when this file was written. They were not checked and nothing was inferred. The why-number mapping in seven_whys_support is the compiler\u0027s assumption about the chain."
+              },
+    "items":  [
+                  {
+                      "topic":  "Constitution s40(1): spheres of government",
+                      "finding":  "CORRECTION: the text says \u0027distinctive, interdependent and interrelated\u0027, not \u0027distinct\u0027.",
+                      "quotes":  [
+                                     {
+                                         "text":  "In the Republic, government is constituted as national, provincial and local spheres of government which are distinctive, interdependent and interrelated.",
+                                         "source":  "Constitution of the Republic of South Africa, 1996, Chapter 3, s40(1)",
+                                         "url":  "https://www.gov.za/documents/constitution/chapter-3-co-operative-government"
+                                     }
+                                 ],
+                      "confidence":  "high"
+                  },
+                  {
+                      "topic":  "Constitution s41: principles of co-operative government",
+                      "finding":  "Every sphere must provide \u0027coherent government for the Republic as a whole\u0027 and co-operate. Parliament must legislate for IGR structures. Organs of state must exhaust IGR remedies before going to court.",
+                      "quotes":  [
+                                     {
+                                         "text":  "provide effective, transparent, accountable and coherent government for the Republic as a whole;",
+                                         "source":  "Constitution s41(1)(c)",
+                                         "url":  "https://www.gov.za/documents/constitution/chapter-3-co-operative-government"
+                                     },
+                                     {
+                                         "text":  "exercise their powers and perform their functions in a manner that does not encroach on the geographical, functional or institutional integrity of government in another sphere; and",
+                                         "source":  "Constitution s41(1)(g)",
+                                         "url":  "https://www.gov.za/documents/constitution/chapter-3-co-operative-government"
+                                     },
+                                     {
+                                         "text":  "co-operate with one another in mutual trust and good faith by ­",
+                                         "source":  "Constitution s41(1)(h) (sub-items: fostering friendly relations; assisting and supporting one another; informing and consulting; co-ordinating their actions and legislation; adhering to agreed procedures; avoiding legal proceedings against one another)",
+                                         "url":  "https://www.gov.za/documents/constitution/chapter-3-co-operative-government"
+                                     },
+                                     {
+                                         "text":  "co-ordinating their actions and legislation with one another;",
+                                         "source":  "Constitution s41(1)(h)(iv)",
+                                         "url":  "https://www.gov.za/documents/constitution/chapter-3-co-operative-government"
+                                     },
+                                     {
+                                         "text":  "establish or provide for structures and institutions to promote and facilitate intergovernmental relations; and",
+                                         "source":  "Constitution s41(2)(a)",
+                                         "url":  "https://www.gov.za/documents/constitution/chapter-3-co-operative-government"
+                                     },
+                                     {
+                                         "text":  "An organ of state involved in an intergovernmental dispute must make every reasonable effort to settle the dispute by means of mechanisms and procedures provided for that purpose, and must exhaust all other remedies before it approaches a court to resolve the dispute.",
+                                         "source":  "Constitution s41(3)",
+                                         "url":  "https://www.gov.za/documents/constitution/chapter-3-co-operative-government"
+                                     }
+                                 ],
+                      "confidence":  "high"
+                  },
+                  {
+                      "topic":  "Schedule 4 Part A: concurrent national and provincial functions",
+                      "finding":  "CONFIRMED: \u0027Disaster management\u0027 and \u0027Housing\u0027 are both in Schedule 4 Part A. So are \u0027Environment\u0027, \u0027Regional planning and development\u0027 and \u0027Urban and rural development\u0027.",
+                      "quotes":  [
+                                     {
+                                         "text":  "Functional Areas of Concurrent National and Provincial Legislative Competence",
+                                         "source":  "Constitution, Schedule 4 title",
+                                         "url":  "https://www.justice.gov.za/constitution/SAConstitution-web-eng-s04.pdf"
+                                     },
+                                     {
+                                         "text":  "Disaster management",
+                                         "source":  "Schedule 4 Part A",
+                                         "url":  "https://www.justice.gov.za/constitution/SAConstitution-web-eng-s04.pdf"
+                                     },
+                                     {
+                                         "text":  "Housing",
+                                         "source":  "Schedule 4 Part A",
+                                         "url":  "https://www.justice.gov.za/constitution/SAConstitution-web-eng-s04.pdf"
+                                     },
+                                     {
+                                         "text":  "Urban and rural development",
+                                         "source":  "Schedule 4 Part A",
+                                         "url":  "https://www.justice.gov.za/constitution/SAConstitution-web-eng-s04.pdf"
+                                     }
+                                 ],
+                      "confidence":  "high"
+                  },
+                  {
+                      "topic":  "Schedule 4 Part B: municipal functions (planning, stormwater)",
+                      "finding":  "CORRECTION: \u0027Municipal planning\u0027 and \u0027Stormwater management systems in built-up areas\u0027 are in Schedule 4 Part B, not Schedule 5 Part B. \u0027Firefighting services\u0027 and \u0027Building regulations\u0027 are also in Schedule 4 Part B. Housing is not a municipal function under the Constitution.",
+                      "quotes":  [
+                                     {
+                                         "text":  "The following local government matters to the extent set out in section 155(6)(a) and (7):",
+                                         "source":  "Schedule 4 Part B heading",
+                                         "url":  "https://www.justice.gov.za/constitution/SAConstitution-web-eng-s04.pdf"
+                                     },
+                                     {
+                                         "text":  "Municipal planning",
+                                         "source":  "Schedule 4 Part B",
+                                         "url":  "https://www.justice.gov.za/constitution/SAConstitution-web-eng-s04.pdf"
+                                     },
+                                     {
+                                         "text":  "Stormwater management systems in built-up areas",
+                                         "source":  "Schedule 4 Part B",
+                                         "url":  "https://www.justice.gov.za/constitution/SAConstitution-web-eng-s04.pdf"
+                                     },
+                                     {
+                                         "text":  "Firefighting services",
+                                         "source":  "Schedule 4 Part B",
+                                         "url":  "https://www.justice.gov.za/constitution/SAConstitution-web-eng-s04.pdf"
+                                     }
+                                 ],
+                      "confidence":  "high"
+                  },
+                  {
+                      "topic":  "Constitution s156 and s156(4): municipal powers and assignment",
+                      "finding":  "Municipalities administer the Schedule 4B and 5B matters plus anything assigned to them. National and provincial government MUST assign a Part A matter such as housing to a municipality, but only by agreement and only if the matter is best administered locally and the municipality has capacity. Both conditions are left open to dispute.",
+                      "quotes":  [
+                                     {
+                                         "text":  "A municipality has executive authority in respect of, and has the right to administer—(a) the local government matters listed in Part B of Schedule 4 and Part B of Schedule 5; and (b) any other matter assigned to it by national or provincial legislation.",
+                                         "source":  "Constitution s156(1)",
+                                         "url":  "https://www.justice.gov.za/constitution/chp07.html"
+                                     },
+                                     {
+                                         "text":  "The national government and provincial governments must assign to a municipality, by agreement and subject to any conditions, the administration of a matter listed in Part A of Schedule 4 or Part A of Schedule 5 which necessarily relates to local government, if—(a) that matter would most effectively be administered locally; and (b) the municipality has the capacity to administer it.",
+                                         "source":  "Constitution s156(4)",
+                                         "url":  "https://www.justice.gov.za/constitution/chp07.html"
+                                     },
+                                     {
+                                         "text":  "The national or a provincial government may not compromise or impede a municipality\u0027s ability or right to exercise its powers or perform its functions.",
+                                         "source":  "Constitution s151(4)",
+                                         "url":  "https://www.justice.gov.za/constitution/chp07.html"
+                                     }
+                                 ],
+                      "confidence":  "high"
+                  },
+                  {
+                      "topic":  "Constitution s26 (housing) and s24 (environment)",
+                      "finding":  "Both rights bind \u0027the state\u0027, meaning every sphere together. Neither names one sphere as responsible.",
+                      "quotes":  [
+                                     {
+                                         "text":  "Everyone has the right to have access to adequate housing. The state must take reasonable legislative and other measures, within its available resources, to achieve the progressive realisation of this right.",
+                                         "source":  "Constitution s26(1)-(2)",
+                                         "url":  "https://www.gov.za/documents/constitution/chapter-2-bill-rights"
+                                     },
+                                     {
+                                         "text":  "No one may be evicted from their home, or have their home demolished, without an order of court made after considering all the relevant circumstances.",
+                                         "source":  "Constitution s26(3)",
+                                         "url":  "https://www.gov.za/documents/constitution/chapter-2-bill-rights"
+                                     },
+                                     {
+                                         "text":  "Everyone has the right – to an environment that is not harmful to their health or well-being",
+                                         "source":  "Constitution s24(a)",
+                                         "url":  "https://www.gov.za/documents/constitution/chapter-2-bill-rights"
+                                     }
+                                 ],
+                      "confidence":  "high"
+                  },
+                  {
+                      "topic":  "Disaster Management Act 57 of 2002: three tiers of disaster management centres",
+                      "finding":  "There is a National Centre (s8), a provincial centre in each province (s29) and a municipal centre in each metro and district (s43). Local municipalities only have to build \u0027capacity\u0027 (s43(3), added in 2015).",
+                      "quotes":  [
+                                     {
+                                         "text":  "the establishment and functioning of national, provincial and municipal disaster management centres;",
+                                         "source":  "DMA long title (as substituted by Act 16 of 2015)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "A National Disaster Management Centre is established as an institution within the public service.",
+                                         "source":  "DMA s8",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "Each province must establish a disaster management centre.",
+                                         "source":  "DMA s29(1)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "Each metropolitan and each district municipality must establish in its administration a disaster management centre for its municipal area.",
+                                         "source":  "DMA s43(1)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "A local municipality must establish capacity for the development and co-ordination of a disaster management plan and the implementation of a disaster management function for the municipality",
+                                         "source":  "DMA s43(3) (added by s16 of Act 16 of 2015)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     }
+                                 ],
+                      "confidence":  "high"
+                  },
+                  {
+                      "topic":  "DMA s23 classification and which sphere is responsible (s26, s40, s54)",
+                      "finding":  "The National Centre classifies each disaster as local, provincial or national. The classification sets which sphere has \u0027primary responsibility\u0027. CORRECTION: the responsibility sections are s26(1) national, s40(1) provincial and s54(1) local. Sections s27, s41 and s55 cover declaring a state of disaster. A disaster counts as local until it is classified, and the lead sphere changes if it is reclassified. The declaration powers (s27(2), s41(2), s55(2)) include \u0027evacuation to temporary shelters\u0027 and \u0027temporary emergency accommodation\u0027. Nothing in these sections covers permanent housing.",
+                      "quotes":  [
+                                     {
+                                         "text":  "classify the disaster as a local, provincial or national disaster in accordance with subsections (4), (5) and (6);",
+                                         "source":  "DMA s23(1)(b)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "The National Centre may reclassify a disaster classified in terms of subsection (1) (b) as a local, provincial or national disaster at any time after consultation with the relevant provincial or municipal disaster management centres",
+                                         "source":  "DMA s23(3)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "Until a disaster is classified in terms of this section, the disaster must be regarded as a local disaster.",
+                                         "source":  "DMA s23(7)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "The classification of a disaster in terms of this section designates primary responsibility to a particular sphere of government for the co-ordination and management of the disaster, but an organ of state in another sphere may assist the sphere having primary responsibility to deal with the disaster and its consequences.",
+                                         "source":  "DMA s23(8)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "A disaster is a national disaster if it affects- (a) more than one province; or (b) a single province which is unable to deal with it effectively.",
+                                         "source":  "DMA s23(6)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "The national executive is primarily responsible for the co-ordination and management of national disasters irrespective of whether a national state of disaster has been declared in terms of section 27.",
+                                         "source":  "DMA s26(1)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "The executive of a province is primarily responsible for the co-ordination and management of provincial disasters that occur in the province, irrespective of whether a provincial state of disaster has been declared in terms of section 41.",
+                                         "source":  "DMA s40(1)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "the council of a metropolitan municipality is primarily responsible for the co-ordination and management of local disasters that occur in its area;",
+                                         "source":  "DMA s54(1)(a)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "the evacuation to temporary shelters of all or part of the population from the disaster-stricken or threatened area if such action is necessary for the preservation of life;",
+                                         "source":  "DMA s27(2)(d) / s41(2)(d) / s55(2)(d)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "the provision, control or use of temporary emergency accommodation;",
+                                         "source":  "DMA s27(2)(h) / s41(2)(h) / s55(2)(h)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "determine the relationship between the sphere of government exercising primary responsibility for the co-ordination and management of a disaster in terms of sections 26 (1), 40 (1) and 54 (1) or (2) and the spheres of government performing supportive roles;",
+                                         "source":  "DMA s7(2)(d)(i)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     }
+                                 ],
+                      "confidence":  "high"
+                  },
+                  {
+                      "topic":  "Disaster Management Amendment Act 16 of 2015 (in force 1 May 2016)",
+                      "finding":  "RELEVANT. The amendment added climate change, \u0027disaster risk reduction\u0027 and \u0027risk assessment\u0027 definitions, and requires every organ of state to develop early warning mechanisms. It also added quarterly post-disaster reporting to IGR forums and spending reports to National Treasury. The duties are still split by organ of state and by sphere.",
+                      "quotes":  [
+                                     {
+                                         "text":  "Disaster Management Amendment Act 16 of 2015 | 1 May 2016 | Proc 24 in GG 39943 of 22 April 2016",
+                                         "source":  "Juta consolidated DMA, amendment table",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "develop early warning mechanisms and procedures for risks identified in its functional area; and",
+                                         "source":  "DMA s25(1)(f) (substituted by s11 of Act 16 of 2015); same wording in s38(1)(f), s52(1)(f)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "a list of the measures implemented in order to restore communities and the reconstruction and rehabilitation of infrastructure in a manner that makes those communities less vulnerable to disasters and strengthens their resilience;",
+                                         "source":  "DMA s24(4)(d) (added by s10(b) of Act 16 of 2015)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "Expenditure and performance reports for all funds received must be compiled by each organ of state and submitted to the transferring national officers and the National Treasury in accordance with the annual Division of Revenue Act.",
+                                         "source":  "DMA s24(7) (added by s10(b) of Act 16 of 2015)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     },
+                                     {
+                                         "text":  "The cost of repairing or replacing public sector infrastructure should be borne by the organ of state responsible for the maintenance of such infrastructure.",
+                                         "source":  "DMA s56(2)(b)",
+                                         "url":  "https://jutamedia2.blob.core.windows.net/jutacoza/documents/Disaster_Management_Act_57_of_2002.pdf"
+                                     }
+                                 ],
+                      "confidence":  "high"
+                  },
+                  {
+                      "topic":  "Housing Act 107 of 1997: roles of each sphere and accreditation (s10)",
+                      "finding":  "National sets policy and funds provinces. The provincial MEC administers every national housing programme and approves projects and financing. Municipalities plan, identify land and provide services. Municipalities can only administer programmes if the MEC accredits them under s10, and they then act under the MEC\u0027s direction. CORRECTION: the Housing Act has no section that assigns the housing function. Assignment comes from Constitution s156(4). The Act (as amended to 2001) provides only for accreditation.",
+                      "quotes":  [
+                                     {
+                                         "text":  "to define the functions of national, provincial and local governments in respect of housing development",
+                                         "source":  "Housing Act long title",
+                                         "url":  "https://www.dhs.gov.za/sites/default/files/documents/Housing_Act_107_of_1997.pdf"
+                                     },
+                                     {
+                                         "text":  "The national government acting through the Minister must, after consultation with every MEC and the national organisation representing municipalities as contemplated in section 163 (a) of the Constitution, establish and facilitate a sustainable national housing development process.",
+                                         "source":  "Housing Act s3(1)",
+                                         "url":  "https://www.dhs.gov.za/sites/default/files/documents/Housing_Act_107_of_1997.pdf"
+                                     },
+                                     {
+                                         "text":  "do everything in its power to promote and facilitate the provision of adequate housing in its province within the framework of national housing policy.",
+                                         "source":  "Housing Act s7(1)",
+                                         "url":  "https://www.dhs.gov.za/sites/default/files/documents/Housing_Act_107_of_1997.pdf"
+                                     },
+                                     {
+                                         "text":  "administer every national housing programme and every provincial housing programme which is consistent with national housing policy and section 3 (2) (b)",
+                                         "source":  "Housing Act s7(3)(a) (MEC)",
+                                         "url":  "https://www.dhs.gov.za/sites/default/files/documents/Housing_Act_107_of_1997.pdf"
+                                     },
+                                     {
+                                         "text":  "Every municipality must, as part of the municipality\u0027s process of integrated development planning, take all reasonable and necessary steps within the framework of national and provincial housing legislation and policy to-",
+                                         "source":  "Housing Act s9(1)",
+                                         "url":  "https://www.dhs.gov.za/sites/default/files/documents/Housing_Act_107_of_1997.pdf"
+                                     },
+                                     {
+                                         "text":  "identify and designate land for housing development;",
+                                         "source":  "Housing Act s9(1)(c)",
+                                         "url":  "https://www.dhs.gov.za/sites/default/files/documents/Housing_Act_107_of_1997.pdf"
+                                     },
+                                     {
+                                         "text":  "services in respect of water, sanitation, electricity, roads, stormwater drainage and transport are provided in a manner which is economically efficient;",
+                                         "source":  "Housing Act s9(1)(a)(iii)",
+                                         "url":  "https://www.dhs.gov.za/sites/default/files/documents/Housing_Act_107_of_1997.pdf"
+                                     },
+                                     {
+                                         "text":  "Any municipality may apply in writing to the MEC in the form determined by the MEC to be accredited under subsection (2) for the purposes of administering one or more national housing programmes.",
+                                         "source":  "Housing Act s10(1)",
+                                         "url":  "https://www.dhs.gov.za/sites/default/files/documents/Housing_Act_107_of_1997.pdf"
+                                     },
+                                     {
+                                         "text":  "Subject to the directions of the MEC consistent with the national housing policy, any municipality that has been accredited under subsection (2) may administer any national housing programme in respect of which accreditation has been granted.",
+                                         "source":  "Housing Act s10(3)(a)",
+                                         "url":  "https://www.dhs.gov.za/sites/default/files/documents/Housing_Act_107_of_1997.pdf"
+                                     },
+                                     {
+                                         "text":  "If any such municipality fails to so perform, the MEC may intervene and take the steps necessary to ensure adequate performance.",
+                                         "source":  "Housing Act s10(3)(c)(ii)",
+                                         "url":  "https://www.dhs.gov.za/sites/default/files/documents/Housing_Act_107_of_1997.pdf"
+                                     }
+                                 ],
+                      "confidence":  "high"
+                  },
+                  {
+                      "topic":  "Intergovernmental Relations Framework Act 13 of 2005: purpose",
+                      "finding":  "The Act gives a framework to \u0027facilitate co-ordination\u0027, and coordination runs through forums. It does not give any one sphere responsibility for an outcome. Section 4\u0027s sub-objects (coherent government, effective provision of services, monitoring implementation, realisation of national priorities) are summarised here from acts.co.za and are not quoted.",
+                      "quotes":  [
+                                     {
+                                         "text":  "establish a framework for the national government, provincial governments and local governments to promote and facilitate intergovernmental relations",
+                                         "source":  "IGRFA long title (gov.za summary page)",
+                                         "url":  "https://www.gov.za/documents/intergovernmental-relations-framework-act"
+                                     },
+                                     {
+                                         "text":  "provide for mechanisms and procedures to facilitate the settlement of intergovernmental disputes",
+                                         "source":  "IGRFA long title (gov.za summary page)",
+                                         "url":  "https://www.gov.za/documents/intergovernmental-relations-framework-act"
+                                     },
+                                     {
+                                         "text":  "The object of this Act is to provide within the principle of co-operative government set out in Chapter 3 of the Constitution a framework for the national government, provincial governments and local governments, and all organs of state within those governments, to facilitate co-ordination in the implementation of policy and legislation",
+                                         "source":  "IGRFA s4 (chapeau)",
+                                         "url":  "https://beta.acts.co.za/intergovernmental-relations-framework-act-2005/4_object_of_act.php"
+                                     }
+                                 ],
+                      "confidence":  "high"
+                  },
+                  {
+                      "topic":  "History: assigning the housing function to metros (Level 3), c.2012-2016",
+                      "finding":  "PARTLY CONFIRMED. In November 2014 the department reported that readiness assessments had been done for the metros, including eThekwini, but \u0027No Metro was assigned\u0027, with National Treasury still resolving funding and asset transfers. By April 2016 the department had decided to review accreditation and assignment and to withhold transfers to the six metros. A Ministerial directive required metros to first show they could deliver at scale, and the Municipal Human Settlements Capacity Grant was being phased out. It is best described as stalled or suspended. No source found says it was formally withdrawn. The FFC and National Treasury sources, and the 2012 Cabinet decision itself, are not_found.",
+                      "quotes":  [
+                                     {
+                                         "text":  "The assessment for the readiness of the metros to receive level 3 accreditation was conducted for: City of Johannesburg, City of Tshwane, Ekurhuleni Metro, City of Cape Town, City of Tshwane and eThekwini Metro.",
+                                         "source":  "PMG, Department of Human Settlements 2014/15 Annual Report briefing to NCOP, 18 Nov 2014",
+                                         "url":  "https://pmg.org.za/committee-meeting/17894/"
+                                     },
+                                     {
+                                         "text":  "No Metro was assigned.",
+                                         "source":  "PMG, 18 Nov 2014",
+                                         "url":  "https://pmg.org.za/committee-meeting/17894/"
+                                     },
+                                     {
+                                         "text":  "National Treasury in the process to resolve the funding procedures and transferring of assets and projects",
+                                         "source":  "PMG, 18 Nov 2014",
+                                         "url":  "https://pmg.org.za/committee-meeting/17894/"
+                                     },
+                                     {
+                                         "text":  "This could be attributed to a recent decision by the Department to review the accreditation process, the assignment of housing function and to withhold transfers to the six metropolitan municipalities.",
+                                         "source":  "Report of the Portfolio Committee on Human Settlements on Budget Vote 38, dated 26 April 2016",
+                                         "url":  "https://static.pmg.org.za/150428pcsettlereport.pdf"
+                                     },
+                                     {
+                                         "text":  "On the issue of Accreditation, reference was made to a Ministerial directive that metro politan municipalities had to first demonstrate their capability in the delivery of human settlements at scale.",
+                                         "source":  "Portfolio Committee report, 26 April 2016 (as printed, including \u0027metro politan\u0027)",
+                                         "url":  "https://static.pmg.org.za/150428pcsettlereport.pdf"
+                                     },
+                                     {
+                                         "text":  "This grant would be phased out due to poor performance.",
+                                         "source":  "Portfolio Committee report, 26 April 2016, s5.3 Municipal Human Settlements Capacity Grant",
+                                         "url":  "https://static.pmg.org.za/150428pcsettlereport.pdf"
+                                     },
+                                     {
+                                         "text":  "Municipal Human Settlements Capacity Grant which received R100 million. This was a new grant aimed at developing capacity of municipalities expected to be assigned the housing function.",
+                                         "source":  "Portfolio Committee report, 26 April 2016",
+                                         "url":  "https://static.pmg.org.za/150428pcsettlereport.pdf"
+                                     },
+                                     {
+                                         "text":  "49 municipalities assigned or accredited with the housing function.",
+                                         "source":  "Portfolio Committee report, 26 April 2016 (MTSF 2014-2019 priority)",
+                                         "url":  "https://static.pmg.org.za/150428pcsettlereport.pdf"
+                                     },
+                                     {
+                                         "text":  "That to some degree, there was no coordinated planning between spheres of government which often leads to duplications.",
+                                         "source":  "Portfolio Committee report, 26 April 2016, s8.1 Observations",
+                                         "url":  "https://static.pmg.org.za/150428pcsettlereport.pdf"
+                                     }
+                                 ],
+                      "confidence":  "medium"
+                  },
+                  {
+                      "topic":  "1993-96 negotiations on provincial powers (ANC vs NP/IFP; concurrency compromise)",
+                      "finding":  "not_found. The research on this item was not finished when this file was written, and no verified quotes are available. Do not use this step until it is sourced.",
+                      "quotes":  [
+
+                                 ],
+                      "confidence":  "not_found"
+                  },
+                  {
+                      "topic":  "Apartheid spatial planning in Durban; post-1994 RDP/BNG on peripheral land",
+                      "finding":  "not_found for the specific Durban township siting and the Huchzermeyer / Charlton \u0026 Kihato / Cornubia sources. The research was not finished when this file was written. One adjacent official statement was verified and is quoted below. It is general and not specific to Durban.",
+                      "quotes":  [
+                                     {
+                                         "text":  "Urban management trends continue to reinforce fragmentation and marginisation through the growth of peripheral formal and informal settlements.",
+                                         "source":  "Portfolio Committee on Human Settlements report, 26 April 2016, s2.10 (as printed, \u0027marginisation\u0027)",
+                                         "url":  "https://static.pmg.org.za/150428pcsettlereport.pdf"
+                                     },
+                                     {
+                                         "text":  "The main challenge in South Africa is still the spatial exclusion of low-income families from the main socio-economic facilities of cities and regions.",
+                                         "source":  "Portfolio Committee report, 26 April 2016, s2.10",
+                                         "url":  "https://static.pmg.org.za/150428pcsettlereport.pdf"
+                                     }
+                                 ],
+                      "confidence":  "low"
+                  },
+                  {
+                      "topic":  "Auditor-General: audits per sphere/programme; no cross-sphere outcome measure; consequence management",
+                      "finding":  "Mostly not_found. The research on AGSA was not finished when this file was written. The verified statute text shows audit and accounting lines run per sphere and per fund. Under Housing Act s10(4) and s12(2), money transferred to an accredited municipality is audited by the Auditor-General but stays under the provincial accounting officer. That supports the claim that accountability is split, but it is only an inference. No official statement saying there is \u0027no cross-sphere outcome measure\u0027 was found.",
+                      "quotes":  [
+                                     {
+                                         "text":  "Such accounting officer remains the accounting officer in respect of any money transferred in terms of paragraph (b) (i).",
+                                         "source":  "Housing Act s10(4)(c)",
+                                         "url":  "https://www.dhs.gov.za/sites/default/files/documents/Housing_Act_107_of_1997.pdf"
+                                     },
+                                     {
+                                         "text":  "The books and statements of account and balance sheets in respect of the money transferred in terms of paragraph (b) must be audited by the Auditor-General.",
+                                         "source":  "Housing Act s10(4)(g)(i)",
+                                         "url":  "https://www.dhs.gov.za/sites/default/files/documents/Housing_Act_107_of_1997.pdf"
+                                     },
+                                     {
+                                         "text":  "The Committee sought clarity on what were happened to contractors that were responsible for uncompleted houses and whether there were any consequences for such underperforming.",
+                                         "source":  "Portfolio Committee report, 26 April 2016, s6.5 Limpopo (as printed)",
+                                         "url":  "https://static.pmg.org.za/150428pcsettlereport.pdf"
+                                     }
+                                 ],
+                      "confidence":  "low"
+                  },
+                  {
+                      "topic":  "1993-96 negotiations: ANC unitary vs NP/IFP federal",
+                      "finding":  "ANC and PAC favoured a unitary/strong central state; NP, FF, DP and IFP pushed maximum provincial autonomy; IFP made federalism a condition of settlement.",
+                      "confidence":  "high",
+                      "quotes":  [
+                                     {
+                                         "text":  "For the ANC federalism became a byword for obstructing majoritarian democracy, for a costly, corrupt and inefficient system of government of which apartheid\u0027s bantustans had been demonstrable proof.",
+                                         "source":  "Haysom 2005, The Federalism Debate in the South African Constitution-Making Process, p.656-657",
+                                         "url":  "https://archivos.juridicas.unam.mx/www/bjv/libros/4/1640/23.pdf"
+                                     },
+                                     {
+                                         "text":  "the Zulu-nationalist Inkatha Freedom Party which insisted on federalism as a condition of a final constitutional settlement.",
+                                         "source":  "Schwella 2016, Federalism in South Africa (Hanns Seidel Stiftung), p.88-89",
+                                         "url":  "https://www.hss.de/download/publications/Federalism_2016_06.pdf"
+                                     }
+                                 ]
+                  },
+                  {
+                      "topic":  "The compromise: concurrency + co-operative government",
+                      "finding":  "Negotiators resolved the federal debate with concurrent national/provincial powers and very few exclusive provincial powers, later overlaid with co-operative government.",
+                      "confidence":  "high",
+                      "quotes":  [
+                                     {
+                                         "text":  "This system of concurrency is the pre-eminent prism through which the South African system of federalism must be viewed even if, in the Final Constitution, it was to be overlaid by an emphasis on co-operative governance.",
+                                         "source":  "Haysom 2005, p.660-661",
+                                         "url":  "https://archivos.juridicas.unam.mx/www/bjv/libros/4/1640/23.pdf"
+                                     }
+                                 ]
+                  },
+                  {
+                      "topic":  "Certification: provincial powers",
+                      "finding":  "Constitutional Court first found provincial powers substantially reduced; after amendment, less but not substantially so.",
+                      "confidence":  "high",
+                      "quotes":  [
+                                     {
+                                         "text":  "In the result, the powers and functions of the provinces in terms of the AT are still less than or inferior to those accorded to the provinces in terms of the IC, but not substantially so.",
+                                         "source":  "Certification of the Amended Text, CCT 37/96, para [204](e)",
+                                         "url":  "https://www.justice.gov.za/legislation/constitution/history/CERTIF/COC04126.PDF"
+                                     }
+                                 ]
+                  },
+                  {
+                      "topic":  "IFP suspension from the Constitutional Assembly, 1995",
+                      "finding":  "IFP walked out (Feb 1995) and suspended participation (Apr 1995) over federal powers/mediation.",
+                      "confidence":  "high",
+                      "quotes":  [
+                                     {
+                                         "text":  "On April 8, the IFP national committee announced that the party was suspending participation in the constitutional assembly, until the question of mediation was resolved.",
+                                         "source":  "Human Rights Watch/Africa, South Africa: Threats to a New Democracy, May 1995, p.3",
+                                         "url":  "https://www.justice.gov/sites/default/files/eoir/legacy/2013/06/14/s.africa_0595.pdf"
+                                     }
+                                 ]
+                  },
+                  {
+                      "topic":  "Concurrency blurs accountability (official)",
+                      "finding":  "National Treasury states lines of responsibility in concurrent functions are often blurred.",
+                      "confidence":  "high",
+                      "quotes":  [
+                                     {
+                                         "text":  "In practice the lines of responsibility and accountability are often blurred.",
+                                         "source":  "National Treasury, 2014 Budget Review, ch.7, p.94",
+                                         "url":  "https://www.treasury.gov.za/documents/national%20budget/2014/review/chapter%207.pdf"
+                                     }
+                                 ]
+                  },
+                  {
+                      "topic":  "AG: flood response and intergovernmental coordination",
+                      "finding":  "AGSA 2022 flood audit: response too slow; weak intergovernmental coordination; culture of no accountability and consequences (PFMA 2023-24, MFMA 2022-23).",
+                      "confidence":  "high",
+                      "quotes":  [
+                                     {
+                                         "text":  "compromised control environments of auditees and weaknesses in intergovernmental coordination undermine delivery on even the best disaster response plans",
+                                         "source":  "AGSA media release, 31 Aug 2022",
+                                         "url":  "https://www.agsa.co.za/Portals/0/Reports/Special%20Reports/RealTime/Media%20Statement%20-%20First%20special%20report%20on%202022%20real-time%20audit%20on%20flood%20relief%20funds%20-%2031%20August%202022%20FINAL.pdf?ver=2022-08-31-103740-440"
+                                     },
+                                     {
+                                         "text":  "A culture of no accountability and consequences",
+                                         "source":  "AGSA MFMA 2022-23 media release, 27 Aug 2024",
+                                         "url":  "https://www.agsa.co.za/Portals/0/Reports/MFMA/2022-23/2022-23%20MFMA%20Media%20Release%20-%2027%20August%202024%20FINAL.pdf?ver=KOtgRXSGMkURbBKrWcEnbA%3D%3D"
+                                     },
+                                     {
+                                         "text":  "The Auditor-General must audit and report on the accounts, financial statements and financial management of—",
+                                         "source":  "Public Audit Act 25 of 2004 (as amended), s4(1)",
+                                         "url":  "https://www.agsa.co.za/Portals/0/Legislation/Public_Audit_Act_25_of_2004_Amended.pdf"
+                                     }
+                                 ]
+                  }
+              ],
+    "seven_whys_support":  {
+                               "why2":  {
+                                            "claim":  "No single sphere owns the whole process. The Constitution makes housing and disaster management concurrent and relies on co-operation.",
+                                            "status":  "confirmed_with_corrections",
+                                            "items":  [
+                                                          "Constitution s40(1)",
+                                                          "s41",
+                                                          "Schedule 4 Part A",
+                                                          "Schedule 4 Part B",
+                                                          "s26",
+                                                          "IGRFA s4"
+                                                      ],
+                                            "corrections":  [
+                                                                "s40 wording is \u0027distinctive\u0027, not \u0027distinct\u0027",
+                                                                "Municipal planning and stormwater are Schedule 4 Part B, not Schedule 5 Part B"
+                                                            ]
+                                        },
+                               "why3":  {
+                                            "claim":  "Disaster responsibility changes with how a disaster is classified, and the DMA stops at temporary shelter.",
+                                            "status":  "confirmed_with_corrections",
+                                            "items":  [
+                                                          "DMA s23(1),(3),(7),(8)",
+                                                          "s26(1)",
+                                                          "s40(1)",
+                                                          "s54(1)",
+                                                          "s27/41/55(2)(d),(h)",
+                                                          "2015 amendment"
+                                                      ],
+                                            "corrections":  [
+                                                                "Responsibility sections are s26, s40 and s54. Sections s41 and s55 cover declaring a provincial or local state of disaster."
+                                                            ]
+                                        },
+                               "why4":  {
+                                            "claim":  "Permanent housing is run by the province (the MEC). Metros only act through accreditation, and assigning them the function has stalled.",
+                                            "status":  "confirmed_partially",
+                                            "items":  [
+                                                          "Housing Act s7(3), s9, s10",
+                                                          "Constitution s156(4)",
+                                                          "PMG 18 Nov 2014",
+                                                          "Portfolio Committee report 26 Apr 2016"
+                                                      ],
+                                            "corrections":  [
+                                                                "The Housing Act provides accreditation only. Assignment comes from Constitution s156(4).",
+                                                                "Sources support \u0027stalled / under review / transfers withheld\u0027, not a formal withdrawal."
+                                                            ],
+                                            "not_found":  [
+                                                              "FFC and National Treasury sources",
+                                                              "the 2012 Cabinet decision"
+                                                          ]
+                                        },
+                               "why5":  {
+                                            "claim":  "Concurrency came from the 1993-96 compromise between the ANC (strong centre) and the NP/IFP (federalism).",
+                                            "status":  "not_found",
+                                            "items":  [
+
+                                                      ]
+                                        },
+                               "why7":  {
+                                            "claim":  "Apartheid and post-1994 housing were sited on peripheral, steep or river-valley land, and audits and accountability run per sphere.",
+                                            "status":  "not_found_mostly",
+                                            "items":  [
+                                                          "General official statement on peripheral settlements (PC report 2016)",
+                                                          "Housing Act s10(4) audit and accounting-officer split"
+                                                      ],
+                                            "not_found":  [
+                                                              "Durban township siting sources",
+                                                              "Huchzermeyer",
+                                                              "Charlton \u0026 Kihato",
+                                                              "Cornubia",
+                                                              "AGSA per-sphere/programme and consequence-management statements"
+                                                          ]
+                                        }
+                           }
+}

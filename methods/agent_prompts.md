@@ -96,3 +96,27 @@ Each research task was delegated to a Claude Code sub-agent that had web search 
 > Geocode every death site in death_site_language_flat.json. Prefer census place geometry (centroid); fall back to OpenStreetMap Nominatim (descriptive User-Agent, ≤1 req/s, cached). Record method, query, match, confidence (high/medium/low), and flag sites >30 km from the expected municipality. Deliver a re-runnable PowerShell script and a log. Never invent coordinates.
 
 **Output:** `data/death_sites_geocoded.json`, `methods/scripts/geocode_sites.ps1`, `methods/geocode_log.md`
+
+---
+
+## Later briefs (26–27 September 2026)
+
+Every brief below carried the same hard rules: verbatim quotes with URLs, no invented numbers, quotes or URLs, `not_found` for gaps, a confidence rating (high / medium / low) on every claim, and no victims named. Each is summarised here by its purpose and key instructions, and the full output file is listed.
+
+| # | Purpose | Key instructions | Output |
+|---|---|---|---|
+| 1 | Five international flood incidents compared across 20 natural-experiment indicators (Germany 2021, Pakistan 2022, Mozambique 2019, Valencia 2024, Texas 2025) | Fill each of 20 indicators with a finding, value, URL and confidence; include `who_died`, `blame_framing` and `inquiries` | `data/raw/world_incidents/*.json` |
+| 2 | Governments relocating displaced people into flood-prone areas: Africa | 8–15 cases; later extended with 8 fields for comparison with Durban (risk known before, temporary vs permanent, position, blame, warning at site, resident voice, who was moved at place level, accountability) | `data/raw/relocation_into_floodzones_africa.json` |
+| 3 | The same, rest of the world | 12–18 cases; the same 8 comparison fields; a literature list | `data/raw/relocation_into_floodzones_world.json` |
+| 4 | In-depth review of 5 relocations into risk (Kasiglahan, Chennai, Corail, Lower Zambezi, Beledweyne) | Structural variables: land, decision-maker, residents' legal status, funding, flood-risk information, liability, political voice, livelihoods, blame, outcome, scholarship; find the 14-case comparative study | `data/raw/relocation_deep_does.json` |
+| 5 | In-depth review of 5 relocations out of risk (Grantham, Overdiepse, Gramalote, Iwanuma, Vunidogoloa) | The same variables; "success with caveats"; for whom success held | `data/raw/relocation_deep_doesnt.json` |
+| 6 | The structural reasons in South Africa (eThekwini) | Land, funding stream (Housing Code emergency rules, grants, AGSA/SIU), floodlines, residents' legal status, liability (Grootboom etc.), political voice, governance, scholarship, backlog | `data/raw/relocation_deep_sa_baseline.json` |
+| 7 | Reflooding sweep of the 84 temporary relocation sites | Count only floods at the site after people moved in; not the displacing flood; one quote and URL per finding | `data/raw/tra_reflood_sweep.json` (30 of 84 searched) |
+| 8 | Sourcing the constitutional and legal steps of the "seven whys" | Constitution Ch. 3, Schedule 4A/4B, s156; Disaster Management Act s23/26/40/54; Housing Act s3/7/9/10; IGR Framework Act; metro housing assignment; 1993–96 negotiations; AGSA audit structure | `data/raw/sa_governance_constitution.json` |
+| 9 | Testing the seven whys across the 5 failure and 5 success cases | Verdict per case and step: holds / partly / does_not_hold / not_found | **Not completed: stopped by a usage limit on 27 Sep 2026** |
+
+**Verification passes by the analyst (the AI in the main session, with the student's review):**
+- **Figures in write-ups:** checked against the source JSON by text search (e.g. the checks recorded for `world_incidents_comparison.md`).
+- **Reflood flags:** revised after brief 7. Sondela, Delft TRA 5 and "Barcelona 2" were removed, and the February 2025 deaths were re-attributed to Gwala St (`methods/scripts/apply_reflood_sweep.ps1`).
+- **Constitutional citations:** corrected after brief 8 ("distinctive"; Schedule 4B; DMA s26/40/54).
+- **Floodplain claim:** reframed after the random-point baseline and a binomial test (p = 0.34).
