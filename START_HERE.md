@@ -1,5 +1,7 @@
 # Last Mile: *Same Rain, Different Words*
 
+**Team:** Hollie and Wandile · Harvard GSD MDE
+
 **What this project shows.** Over the last decade, South Africa's flood forecasts were usually right, and 34 of 67 floods had a warning issued beforehand. People still died. The official warnings are in English. The places where people died are overwhelmingly places where almost nobody speaks English as a first language: the median is 3.1%, and 64% of the deaths we could place were in places where fewer than 1 in 10 people do.
 
 ## For reviewers, in this order

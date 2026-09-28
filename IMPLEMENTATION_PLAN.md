@@ -1,5 +1,7 @@
 # Implementation plan: "Who Owns the Flood" (to 7 Oct 2026)
 
+**Team:** Hollie and Wandile · Harvard GSD MDE
+
 **Tools**
 - **Data and code:** Windows PowerShell 5.1 scripts (no Python needed), Git and GitHub (`mde-dataviz`).
 - **Visuals:** D3.js v7 and TopoJSON (maps, charts, scroll-driven "scrollytelling"), HTML and CSS, headless Microsoft Edge (PDF export and screenshots).
@@ -31,8 +33,8 @@
 - **Unchecked outputs.** The rendered PDF and the live pages haven't yet been checked on a phone or by eye.
 - **Sharing.** The web pages must be shared manually (organisation or "anyone with the link").
 
-**Next 9 days** *(rename the owners as agreed)*
-| Days | Wandile | Partner |
+**Next 9 days** *(owners can be swapped as agreed)*
+| Days | Wandile | Hollie |
 |---|---|---|
 | 28–29 Sep | Finish the seven-whys test and source why 7 | Verify site coordinates on satellite imagery (Durban first) |
 | 30 Sep–1 Oct | Reflooding search of the remaining 54 sites; IOL check | Find Cape Town and Nelson Mandela Bay floodline data; extend the floodplain test |

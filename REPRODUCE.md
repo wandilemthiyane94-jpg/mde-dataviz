@@ -1,5 +1,7 @@
 # How to reproduce "Same Rain, Different Words" / "Who Owns the Flood"
 
+**Team:** Hollie and Wandile · Harvard GSD MDE
+
 **What you need**
 - Windows 10 or 11 with Windows PowerShell 5.1. No Python or Node is required.
 - Internet access, for the steps marked 🌐.

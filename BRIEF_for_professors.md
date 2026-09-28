@@ -1,5 +1,7 @@
 # Same Rain, Different Words: research brief
 
+**Team:** Hollie and Wandile · Harvard GSD MDE
+
 **Thesis.** South Africa's flood forecasts are usually right. The warnings still fail at the last mile, because they arrive in a language most of the people at risk don't speak as a first language, and in a form (colour codes, levels, no instruction, no destination) that even fluent readers can't act on. When people die, official explanations blame where people live, or climate change, rather than the warning chain.
 
 ## What we collected

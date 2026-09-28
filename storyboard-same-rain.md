@@ -1,4 +1,6 @@
 # SAME RAIN, DIFFERENT WORDS
+
+**Team:** Hollie and Wandile · Harvard GSD MDE
 ### Storyboard: from the watched sky to the unheard warning (Acts 1–4)
 
 > **Central line:** *People pray in the language they were born into. They were warned in the one they learned at school.*

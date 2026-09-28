@@ -1,11 +1,13 @@
 # Algorithmic Forensics Appendix
 
-**How I use AI.** I used Claude Code, Anthropic's coding agent, as a research assistant and programmer. It did three jobs:
+**Hollie and Wandile** · Same Rain, Different Words · Harvard GSD MDE
+
+**How we use AI.** We used Claude Code, Anthropic's coding agent, as a research assistant and programmer. It did three jobs:
 - **Search:** separate AI sub-agents searched the web for flood events, media coverage, relocation sites and governance evidence.
 - **Code:** it wrote PowerShell scripts that turn that evidence into datasets.
 - **Build:** it built the maps and charts.
 
-I set the questions, the framing and the thesis. Every number in the project comes from a script in `methods/scripts/`, not from AI prose.
+We set the questions, the framing and the thesis. Every number in the project comes from a script in `methods/scripts/`, not from AI prose.
 
 **Workflow and prompts.** Each research prompt, logged in `methods/agent_prompts.md`, carried the same hard rules:
 - record verbatim quotes with URLs;
@@ -15,23 +17,23 @@ I set the questions, the framing and the thesis. Every number in the project com
 
 Agents wrote structured JSON to `data/raw/`. Scripts then merge, geocode and score those files into the published datasets. External data come from official sources: Census 2011 language by place, JRC Global Surface Water (Landsat, 1984–2021), eThekwini's 1-in-100-year floodplain, and WMO station records.
 
-**Checking for error and bias.** I checked in four ways:
+**Checking for error and bias.** We checked in four ways:
 1. **Figures against sources.** Every figure in the write-ups was checked against its source file by text search.
 2. **Second agents.** Separate agents re-verified the claims of earlier ones.
 3. **Baselines.** Each spatial claim was compared with random locations.
-4. **Counterexamples.** I asked for cases where my thesis fails: relocations that worked, and places where warnings in the local language still failed.
+4. **Counterexamples.** We asked for cases where our thesis fails: relocations that worked, and places where warnings in the local language still failed.
 
 To limit bias:
 - **Language:** analysed at the place level only, never by inferring any individual's ethnicity.
 - **Victims:** not named.
-- **Case selection:** I label the international comparison as outcome-selected, meaning a pattern rather than a test.
+- **Case selection:** we label the international comparison as outcome-selected, meaning a pattern rather than a test.
 
-**One example where I caught the AI.** An early dataset flagged six relocation sites as flooded after people moved in. A second verification agent re-checked every source and three flags failed:
+**One example where we caught the AI.** An early dataset flagged six relocation sites as flooded after people moved in. A second verification agent re-checked every source and three flags failed:
 - **Sondela:** the "flood-prone wetland" described the old settlement, not the new site.
 - **Delft TRA 5:** no source named the site.
 - **Lamontville:** the February 2025 deaths were at the Gwala Street camp, not the camp the list called "Barcelona 2".
 
-I corrected the data (`methods/scripts/apply_reflood_sweep.ps1`). I also fixed the AI's constitutional citations: "distinctive", not "distinct"; Schedule 4B, not Schedule 5; Disaster Management Act s26/40/54, not s41/55.
+We corrected the data (`methods/scripts/apply_reflood_sweep.ps1`). We also fixed the AI's constitutional citations: "distinctive", not "distinct"; Schedule 4B, not Schedule 5; Disaster Management Act s26/40/54, not s41/55.
 
 **How the visual metrics are calculated.**
 - **Floodplain exposure:** each Durban site is queried against the city's floodplain as inside, within 250 m, or within 1 km. The share is the count divided by 28 sites.
@@ -40,9 +42,9 @@ I corrected the data (`methods/scripts/apply_reflood_sweep.ps1`). I also fixed t
 - **Factor chart:** 11 cases coded yes, partial or no on 10 factors. The share is (yes + ½ partial) ÷ the number of cases with evidence.
 - **Years "temporary":** 2026 minus the year the site was established.
 
-**Is it statistically defensible?** The visuals are descriptive, and I present them that way.
+**Is it statistically defensible?** The visuals are descriptive, and we present them that way.
 
-The key spatial claim changed because of a test. I expected the camps to cluster in the floodplain. They don't:
+The key spatial claim changed because of a test. We expected the camps to cluster in the floodplain. They don't:
 
 | Measure | Camps | Random ground |
 |---|---|---|
