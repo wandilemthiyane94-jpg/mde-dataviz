@@ -1,0 +1,131 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Who Owns the Flood Wireframes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+@page{size:297mm 210mm;margin:0}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:#999;font-family:"Caveat","Comic Sans MS",cursive;color:#222}
+.page{width:297mm;height:210mm;background:#FBFAF6;padding:10mm 12mm;page-break-after:always;break-after:page;display:grid;grid-template-rows:auto 1fr auto;gap:4mm;margin:0 auto 6mm;overflow:hidden;
+  background-image:linear-gradient(#EEF0EA 1px,transparent 1px),linear-gradient(90deg,#EEF0EA 1px,transparent 1px);background-size:8mm 8mm}
+.page:last-child{page-break-after:auto}
+.top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #222;padding-bottom:1.5mm}
+.st{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:700;font-size:22pt;text-transform:uppercase;letter-spacing:.02em}
+.q{font-size:22pt;color:#444}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:8pt;color:#777}
+svg{width:100%;height:100%;display:block}
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;font-size:15pt;line-height:1.1}
+.notes div{border-top:2px dashed #888;padding-top:1.5mm}
+.notes b{font-family:"IBM Plex Mono",monospace;font-size:8pt;letter-spacing:.1em;color:#777;display:block;font-weight:400}
+</style></head><body>
+
+<section class="page"><div class="top"><span class="st">Who owns the flood? · The flow</span><span class="tag">Wireframes v1 · for discussion · Wandile Mthiyane · Harvard GSD MDE</span></div>
+<svg id="ov" viewBox="0 0 1100 560"></svg>
+<div class="notes"><div><b>WHAT THE VIEWER DOES</b>Scrolls. Each scroll adds one layer. No clicking needed.</div><div><b>HOW THE STORY BUILDS</b>A place, then a pattern, then the world, then a test, then the cause.</div><div><b>WHAT THEY LEAVE WITH</b>"The information existed. Nobody owned the outcome."</div></div></section>
+
+<section class="page"><div class="top"><span class="st">01 · Water → People</span><span class="q">Where does the water go? Where did we put people?</span></div>
+<svg id="f1" viewBox="0 0 1100 560"></svg>
+<div class="notes"><div><b>SEES FIRST</b>Durban from space. Satellite water, then the city's own floodplain.</div><div><b>WHAT CHANGES</b>Scroll: 28 amber camps drop onto the map. A stat card counts them.</div><div><b>TAKEAWAY</b>Camps land on flood ground about as often as chance (39% vs 34%). The map made no difference.</div></div></section>
+
+<section class="page"><div class="top"><span class="st">02 · The return</span><span class="q">What happens when the people we moved flood again?</span></div>
+<svg id="f2" viewBox="0 0 1100 560"></svg>
+<div class="notes"><div><b>SEES</b>The same map. The water pulses back over 3 camps.</div><div><b>WHAT CHANGES</b>A timeline builds beside it: moved, flooded, moved, flooded, 5 dead.</div><div><b>TAKEAWAY</b>It isn't one bad flood. It's a loop along the same river.</div></div></section>
+
+<section class="page"><div class="top"><span class="st">03 · Comparison → Control group</span><span class="q">Is this uniquely South African? So what is different?</span></div>
+<svg id="f3" viewBox="0 0 1100 560"></svg>
+<div class="notes"><div><b>SEES</b>Zoom out: timelines of relocation sites worldwide. Red dots are floods after the move.</div><div><b>WHAT CHANGES</b>Scroll: the control group slides in. Green lines, no dots.</div><div><b>TAKEAWAY</b>Same rain, different outcome. Something in how they're run differs.</div></div></section>
+
+<section class="page"><div class="top"><span class="st">04 · The usual answers → The systems</span><span class="q">Is it that they don't care? That people are poor?</span></div>
+<svg id="f4" viewBox="0 0 1100 560"></svg>
+<div class="notes"><div><b>SEES</b>Six "usual answers" as cards. Each is crossed out, with its evidence.</div><div><b>WHAT CHANGES</b>The cards clear. South Africa's chain draws itself: 8 links, 3 spheres, × at every hand-off.</div><div><b>TAKEAWAY</b>Different institutions, budgets and authority. No end-to-end owner.</div></div></section>
+
+<section class="page"><div class="top"><span class="st">05 · The reveal</span><span class="q">The problem wasn't that nobody knew.</span></div>
+<svg id="f5" viewBox="0 0 1100 560"></svg>
+<div class="notes"><div><b>SEES</b>The first map returns, with the system drawn over it.</div><div><b>WHAT CHANGES</b>Each holder of information lights up: forecast, flood map, audit, shelters. None is connected to the camp.</div><div><b>TAKEAWAY</b>"South Africa has the information. The institutions that possess it do not control the decisions that determine exposure."</div></div></section>
+
+<script>
+(function(){
+var NS="http://www.w3.org/2000/svg",R=function(a){return (Math.random()-.5)*a;};
+function el(p,t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;}
+function line(p,x1,y1,x2,y2,o){o=o||{};var d="M"+(x1+R(2))+","+(y1+R(2));var n=4;for(var i=1;i<=n;i++){var t=i/n;d+=" L"+(x1+(x2-x1)*t+R(o.j||2.5))+","+(y1+(y2-y1)*t+R(o.j||2.5));}
+  return el(p,"path",{d:d,fill:"none",stroke:o.c||"#333","stroke-width":o.w||2,"stroke-dasharray":o.dash||"","stroke-linecap":"round"});}
+function rect(p,x,y,w,h,o){o=o||{};if(o.fill)el(p,"rect",{x:x,y:y,width:w,height:h,fill:o.fill,opacity:o.op||1,rx:3});line(p,x,y,x+w,y,o);line(p,x+w,y,x+w,y+h,o);line(p,x+w,y+h,x,y+h,o);line(p,x,y+h,x,y,o);}
+function txt(p,x,y,s,o){o=o||{};var t=el(p,"text",{x:x,y:y,"font-family":o.f||"Caveat, cursive","font-size":o.s||20,fill:o.c||"#333","text-anchor":o.a||"start","font-weight":o.b?700:400});t.textContent=s;return t;}
+function screen(p,x,y,w,h,lab){rect(p,x,y,w,h,{w:2.5,fill:"#fff"});line(p,x,y+22,x+w,y+22,{w:1.5});[0,1,2].forEach(function(i){el(p,"circle",{cx:x+14+i*14,cy:y+11,r:4,fill:"none",stroke:"#555"});});
+  if(lab)txt(p,x+w-10,y+16,lab,{a:"end",s:15,c:"#777",f:"IBM Plex Mono, monospace"});}
+function river(p,x,y,w,h,col,op){var d="M"+x+","+(y+h*.3);for(var i=1;i<=6;i++)d+=" Q"+(x+w*(i-.5)/6)+","+(y+h*(.3+(i%2?.25:-.1)))+" "+(x+w*i/6)+","+(y+h*(.35+R(.2)));
+  el(p,"path",{d:d,fill:"none",stroke:col||"#4A9BD1","stroke-width":5,opacity:op||.8,"stroke-linecap":"round"});
+  var d2="M"+(x+w*.3)+","+(y+h*.33);for(var j=1;j<=3;j++)d2+=" Q"+(x+w*.3+R(40))+","+(y+h*(.33+j*.18))+" "+(x+w*.3+R(60))+","+(y+h*(.33+j*.22));el(p,"path",{d:d2,fill:"none",stroke:col||"#4A9BD1","stroke-width":3,opacity:op||.7});}
+function hatchBlob(p,x,y,w,h){var id="h"+Math.floor(Math.random()*1e6),pt=el(el(p,"defs",{}),"pattern",{id:id,width:8,height:8,patternUnits:"userSpaceOnUse",patternTransform:"rotate(45)"});el(pt,"line",{x1:0,y1:0,x2:0,y2:8,stroke:"#2F79AD","stroke-width":2});
+  el(p,"path",{d:"M"+x+","+(y+h*.4)+" C"+(x+w*.2)+","+y+" "+(x+w*.7)+","+(y+h*.1)+" "+(x+w)+","+(y+h*.45)+" C"+(x+w*.8)+","+(y+h)+" "+(x+w*.3)+","+(y+h*.9)+" "+x+","+(y+h*.4)+"z",fill:"url(#"+id+")",stroke:"#2F79AD","stroke-width":1.5,opacity:.8});}
+function dot(p,x,y,c,r){el(p,"circle",{cx:x,cy:y,r:r||7,fill:c||"#E0A21E",stroke:"#fff","stroke-width":1.5});}
+function arrow(p,x1,y1,x2,y2,c){line(p,x1,y1,x2,y2,{c:c||"#333",w:2.5});var a=Math.atan2(y2-y1,x2-x1);el(p,"path",{d:"M"+x2+","+y2+" L"+(x2-14*Math.cos(a-.4))+","+(y2-14*Math.sin(a-.4))+" M"+x2+","+y2+" L"+(x2-14*Math.cos(a+.4))+","+(y2-14*Math.sin(a+.4)),stroke:c||"#333","stroke-width":2.5,fill:"none"});}
+function note(p,x,y,s,c){txt(p,x,y,s,{s:21,c:c||"#B8321F"});}
+function mapSketch(g,x,y,w,h,o){o=o||{};rect(g,x,y,w,h,{fill:"#EEF1EE",w:1.5,c:"#999"});el(g,"path",{d:"M"+(x+w*.78)+","+y+" C"+(x+w*.7)+","+(y+h*.4)+" "+(x+w*.9)+","+(y+h*.6)+" "+(x+w*.62)+","+(y+h),fill:"none",stroke:"#1B3550","stroke-width":16,opacity:.35});
+  river(g,x+10,y+h*.15,w*.65,h*.5);river(g,x+20,y+h*.5,w*.55,h*.4);if(o.fp){hatchBlob(g,x+w*.12,y+h*.28,w*.3,h*.2);hatchBlob(g,x+w*.3,y+h*.6,w*.28,h*.22);}
+  var P=[[.2,.36],[.34,.3],[.42,.45],[.25,.62],[.38,.7],[.5,.58],[.55,.3],[.16,.5],[.46,.78],[.6,.68]];
+  if(o.camps)P.forEach(function(q,i){dot(g,x+w*q[0],y+h*q[1],o.hits&&i<3?"#C8352A":"#E0A21E",o.hits&&i<3?9:7);if(o.hits&&i<3){el(g,"circle",{cx:x+w*q[0],cy:y+h*q[1],r:20,fill:"none",stroke:"#C8352A","stroke-width":2,"stroke-dasharray":"4 3"});}});
+  return P;}
+
+/* overview */
+(function(){var s=document.getElementById("ov"),T=[["01","Water → People","map + layers"],["02","The return","floods + timeline"],["03","World → Control","world timelines"],["04","Answers → System","cards → chain"],["05","Reveal","map + system"]];
+  T.forEach(function(t,i){var x=20+i*218,y=70;screen(s,x,y,190,150,"0"+(i+1));var g=s;
+    if(i===0||i===1||i===4){mapSketch(g,x+8,y+30,174,112,{fp:true,camps:i>0||true,hits:i>=1});}
+    if(i===2){for(var r=0;r<5;r++){line(g,x+20,y+48+r*19,x+178,y+48+r*19,{c:r<3?"#999":"#2E9B63",w:r<3?1.5:3});if(r<3)[0,1,2].forEach(function(k){dot(g,x+70+k*35+R(10),y+48+r*19,"#C8352A",5);});}}
+    if(i===3){for(var k=0;k<8;k++){rect(g,x+10+k*22,y+60+(k%3)*25,18,16,{w:1.4,c:["#3F5B8C","#C0762B","#8A5AA8"][k%3]});}txt(g,x+95,y+135,"× × × ×",{a:"middle",c:"#C8352A",s:22});}
+    txt(s,x+95,y+250,t[0]+"  "+t[1],{a:"middle",s:26,b:true});txt(s,x+95,y+278,t[2],{a:"middle",s:19,c:"#666"});
+    if(i<4)arrow(s,x+196,y+75,x+214,y+75);});
+  var qs=["Where does the water go? Where did we put people?","What happens when they flood again?","Only here? What's different elsewhere?","Don't care? Poor? Or no owner?","Nobody owned the whole outcome."];
+  qs.forEach(function(q,i){var x=20+i*218;line(s,x+95,375,x+95,400,{c:"#999",dash:"4 4"});var words=q.split(" "),l1="",l2="";words.forEach(function(w){(l1.length<20?(l1+=" "+w):(l2+=" "+w));});txt(s,x+95,425,l1.trim(),{a:"middle",s:21,c:"#444"});txt(s,x+95,450,l2.trim(),{a:"middle",s:21,c:"#444"});});
+  line(s,20,510,1080,510,{w:3});txt(s,20,545,"PLACE",{s:22,b:true});txt(s,330,545,"PATTERN",{s:22,b:true});txt(s,540,545,"WORLD + TEST",{s:22,b:true});txt(s,760,545,"CAUSE",{s:22,b:true});txt(s,1080,545,"CLARITY →",{s:22,b:true,a:"end"});
+  txt(s,20,40,"The viewer scrolls through 7 states in 5 frames. Each frame adds one layer to the last.",{s:24,c:"#555"});})();
+
+/* F1 */
+(function(){var s=document.getElementById("f1");
+  screen(s,20,20,500,460,"state 01");rect(s,40,60,150,120,{fill:"#F4F4F0",w:1.5});txt(s,50,90,"Layer 1 ·",{s:18,c:"#777"});txt(s,50,114,"satellite water",{s:20});txt(s,50,140,"Layer 2 ·",{s:18,c:"#777"});txt(s,50,164,"city floodplain",{s:20});
+  mapSketch(s,205,55,300,410,{fp:true});note(s,210,500,"bright blue = floods and dries; hatched = the city's 1:100 map");
+  arrow(s,530,250,575,250);txt(s,552,235,"scroll",{a:"middle",s:18});
+  screen(s,585,20,500,460,"state 02");rect(s,605,60,150,170,{fill:"#F4F4F0",w:1.5});txt(s,615,92,"Layer 3 · camps",{s:20});txt(s,615,140,"11 of 28",{s:40,b:true,c:"#C98A0E"});txt(s,615,170,"random ground: 34%",{s:18,c:"#555"});txt(s,615,210,"\"no difference\"",{s:20,c:"#B8321F"});
+  mapSketch(s,770,55,300,410,{fp:true,camps:true});note(s,700,500,"camps drop in one by one; counter ticks up");})();
+
+/* F2 */
+(function(){var s=document.getElementById("f2");screen(s,20,20,1060,470,"state 03");
+  var P=mapSketch(s,40,55,430,420,{fp:true,camps:true,hits:true});
+  txt(s,40+430*.2+26,55+420*.36-10,"Gwala St · 5 dead",{s:20,c:"#B8321F",b:true});txt(s,40+430*.34+26,55+420*.3-26,"Madamfana",{s:19,c:"#B8321F"});txt(s,40+430*.42+26,55+420*.45+26,"Isipingo · 4–5 floods",{s:19,c:"#B8321F"});
+  line(s,560,80,560,450,{w:2});var ev=[["2008","moved",0],["2012","flood",1],["2016","flood",1],["2019","flood → tents",1],["2021","moved: Gwala St",0],["2022","flood",1],["2022","AG: \"unsuitable\"",2],["2025","flood · 5 dead",1],["2025","moved again",0]];
+  ev.forEach(function(e,i){var y=95+i*40;if(e[2]===0)rect(s,553,y-8,14,16,{fill:"#E0A21E",w:1});else dot(s,560,y,e[2]===1?"#C8352A":"#4A9BD1",8);txt(s,520,y+6,e[0],{a:"end",s:19,c:"#777"});txt(s,582,y+6,e[1],{s:21});});
+  note(s,780,150,"red rings pulse");note(s,780,180,"as the timeline");note(s,780,210,"draws downward");arrow(s,775,160,700,120,"#B8321F");
+  txt(s,780,400,"Also: 7 sites nationally",{s:21,c:"#555"});txt(s,780,428,"(30 of 84 searched)",{s:19,c:"#777"});})();
+
+/* F3 */
+(function(){var s=document.getElementById("f3");
+  screen(s,20,20,520,470,"state 04");txt(s,40,75,"Moved, then flooded",{s:28,b:true});
+  ["Durban","Isipingo","Chennai","Kasiglahan","Corail","Cox's Bazar"].forEach(function(n,i){var y=115+i*55;txt(s,40,y+6,n,{s:21});rect(s,165,y-10,4,20,{fill:"#333",w:1});line(s,170,y,520,y,{c:"#999",w:1.5});
+    for(var k=0;k<2+(i%3);k++)dot(s,230+k*70+R(20),y,"#C8352A",8);});
+  arrow(s,550,250,590,250);txt(s,570,235,"scroll",{a:"middle",s:18});
+  screen(s,600,20,480,470,"state 05");txt(s,620,75,"Moved, and dry",{s:28,b:true,c:"#1F8A5B"});
+  ["Grantham","Iwanuma","Gramalote","Overdiepse","Vunidogoloa"].forEach(function(n,i){var y=125+i*62;txt(s,620,y+6,n,{s:21});rect(s,745,y-10,4,20,{fill:"#333",w:1});line(s,750,y,1060,y,{c:"#2E9B63",w:4});});
+  note(s,640,460,"empty green lines = no floods since the move");note(s,40,480,"red dot = a flood after people moved in");})();
+
+/* F4 */
+(function(){var s=document.getElementById("f4");screen(s,20,20,1060,470,"state 06");
+  ["doesn't care","people poor","corruption","incompetence","climate","money"].forEach(function(n,i){var x=45+i*170,y=55;rect(s,x,y,150,70,{fill:"#F4F4F0",w:1.5});txt(s,x+75,y+42,n,{a:"middle",s:22});line(s,x+10,y+36,x+140,y+30,{c:"#C8352A",w:3});});
+  note(s,45,150,"each is crossed out with its evidence: \"makes it worse, doesn't explain it\"");
+  arrow(s,550,165,550,195);
+  var lanes=[235,300,365],spheres=[0,2,2,1,1,2,1,1],cols=["#3F5B8C","#8A5AA8","#C0762B"],names=["SAWS","Disaster Mgmt","Municipality","Province","Housing","Land","Temp shelter","Perm housing"];
+  txt(s,40,lanes[0]+20,"national",{s:18,c:"#777"});txt(s,40,lanes[1]+20,"provincial",{s:18,c:"#777"});txt(s,40,lanes[2]+20,"municipal",{s:18,c:"#777"});
+  var pts=names.map(function(n,i){return [130+i*118,lanes[spheres[i]]];});
+  pts.forEach(function(p,i){if(i<7){var q=pts[i+1];line(s,p[0]+100,p[1]+18,q[0],q[1]+18,{c:"#C8352A",dash:"6 5",w:2});txt(s,(p[0]+100+q[0])/2,Math.min(p[1],q[1])+(p[1]===q[1]?10:45),"×",{a:"middle",s:26,c:"#C8352A",b:true});}
+    rect(s,p[0],p[1],100,36,{fill:"#fff",c:cols[spheres[i]],w:2.2});txt(s,p[0]+50,p[1]+24,names[i],{a:"middle",s:18});});
+  rect(s,130,425,926,40,{fill:"#E6F3EC",c:"#2E9B63",w:2.5});txt(s,593,452,"compare: control group = ONE OWNER across the links + residents at the table",{a:"middle",s:22,c:"#1F8A5B"});})();
+
+/* F5 */
+(function(){var s=document.getElementById("f5");screen(s,20,20,1060,470,"state 07");
+  var P=mapSketch(s,330,50,380,425,{fp:true,camps:true,hits:true});
+  var B=[["SAWS: had the forecast",60,"#3F5B8C",[.6,.2]],["City: had the flood map",140,"#C0762B",[.3,.35]],["Auditor-General: flagged it",220,"#3F5B8C",[.2,.36]],["Province: owns the shelters",300,"#8A5AA8",[.2,.36]],["Councillor: sent families back",380,"#C0762B",[.2,.36]]];
+  B.forEach(function(b){rect(s,40,b[1],250,56,{fill:"#fff",c:b[2],w:2.2});txt(s,52,b[1]+35,b[0],{s:21});line(s,290,b[1]+28,330+380*b[3][0],50+425*b[3][1],{c:b[2],w:1.8,dash:"5 4"});});
+  txt(s,740,120,"The problem wasn't",{s:28});txt(s,740,152,"that nobody knew.",{s:28});
+  txt(s,740,220,"NOBODY OWNED",{s:36,b:true,c:"#B8321F",f:"Barlow Condensed, sans-serif"});txt(s,740,258,"THE WHOLE OUTCOME.",{s:36,b:true,c:"#B8321F",f:"Barlow Condensed, sans-serif"});
+  line(s,740,300,1060,300,{w:2});txt(s,740,335,"\"South Africa has the information.",{s:22});txt(s,740,362,"The institutions that possess it",{s:22});txt(s,740,389,"do not control the decisions",{s:22});txt(s,740,416,"that determine exposure.\"",{s:22});
+  note(s,740,460,"final line fades in last");})();
+})();
+</script></body></html>
