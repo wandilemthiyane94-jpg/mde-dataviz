@@ -70,7 +70,7 @@ button.replay{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-t
 button.replay:focus-visible,a:focus-visible{outline:2px solid var(--water);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.step,.sus .strike{transition:none}.pulse{animation:none!important}}
 .src,.fine,.srcs{overflow-wrap:anywhere}
-#path{display:block;width:100%}
+#path{display:block;width:100%;min-height:320px}
 .pulse{animation:pulse 1.8s ease-out infinite;transform-box:fill-box;transform-origin:center}
 @keyframes pulse{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.2);opacity:0}}
 </style>
@@ -99,7 +99,7 @@ button.replay:focus-visible,a:focus-visible{outline:2px solid var(--water);outli
 
 <section id="moved">
   <div class="act"><div class="k">The same river, 2008–2025</div><h2>"Moved from one place to another"</h2></div>
-  <div class="fig"><svg id="path" role="img" aria-label="Timeline of flood-displaced families in south Durban moved between camps from 2008 to 2025"></svg></div>
+  <div class="fig"><svg id="path" role="img" aria-label="Hand-drawn schematic animation: flood-displaced families in south Durban moved from uMlazi and Mega Village through tents and camps to Gwala St, then to an Umbilo residence, 2008 to 2025, with floods in 2008, 2012, 2016, 2019, 2022 and 2025"></svg></div><button class="replay" id="replayJ" type="button" style="margin-top:8px">Replay</button>
   <p class="fine" style="margin-top:10px">Two overlapping groups of displaced families along the Umlaas and Umlazi rivers in south Durban. </p><p class="src">Sources: <a href="https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/">GroundUp, "We have been moved from one place to another"</a>; <a href="https://www.dailymaverick.co.za/opinionista/2022-03-23-human-rights-day-no-human-rights-for-ethekwinis-umlazi-flood-victims-three-years-down-the-line/">Daily Maverick, 23 Mar 2022</a>; <a href="https://mg.co.za/news/south-africa/2022-05-09-opinion-ethekwini-refugees-ordered-back-to-flood-prone-damaged-transit-camp/">Mail &amp; Guardian, 9 May 2022</a>; <a href="https://www.agsa.co.za/Portals/0/Reports/Special%20Reports/RealTime/Flood%20relief%20SR%20-%20FINAL%20(print).pdf">Auditor-General, Aug 2022</a>; <a href="https://iol.co.za/dailynews/news/2025-02-26-tragedy-strikes-lamontville-as-heavy-rains-claim-lives-amid-previous-community-warnings/">IOL, 26 Feb 2025</a>; <a href="https://www.amnesty.org/en/documents/afr53/0369/2025/en/">Amnesty 2025</a>; Umbilo move, site list #54 (<a href="https://sundaytribune.co.za/news/2025-10-05-flood-victims-struggle-with-strict-rules-at-temporary-accommodation/">Sunday Tribune, Oct 2025</a>).</p>
 </section>
 
@@ -177,6 +177,7 @@ button.replay:focus-visible,a:focus-visible{outline:2px solid var(--water);outli
 <script src="tra-story-data.js"></script>
 <script>(function(){var q=new URLSearchParams(location.search),s=q.get("shot");if(!s)return;var st=document.createElement("style");st.textContent="header,section{display:none!important}#"+s+"{display:block!important;border-top:none!important;padding-block:24px!important}.sus .strike{transition:none!important}.steps{display:none!important}.scrolly{display:block!important}.sticky{position:static!important;height:860px!important}";document.head.appendChild(st);document.querySelectorAll(".sus").forEach(function(e){e.classList.add("out");});})();</script>
 <script src="lib/textfit.js"></script>
+<script src="vendor/rough.min.js"></script>
 <script>(function(){var q=new URLSearchParams(location.search),s=q.get("shot");if(!s)return;var st=document.createElement("style");st.textContent="header,section{display:none!important}#"+s+"{display:block!important;border-top:none!important;padding-block:24px!important}.sus .strike{transition:none!important}.steps{display:none!important}.scrolly{display:block!important}.sticky{position:static!important;height:860px!important}";document.head.appendChild(st);document.querySelectorAll(".sus").forEach(function(e){e.classList.add("out");});})();</script>
 <script>
 (function(){
@@ -291,43 +292,99 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInter
 document.querySelectorAll(".step").forEach(function(s){io.observe(s);});
 document.querySelector(".step").classList.add("on");
 
-/* ---------- moved timeline ---------- */
-/* Responsive: laid out at the container's real pixel width. Wide screens use collision-checked label
-   lanes above/below the axis with leader lines; narrow screens switch to a vertical list. */
-var TL_EV=[[2008.3,"move","Moved to Lamontville transit camps after uMlazi floods"],[2012.2,"hit","Mega Village floods"],[2016.3,"hit","Floods again"],[2019.3,"hit","Floods again → tents"],[2021.2,"move","Moved to Gwala St, by the Umlaas canal"],[2022.28,"hit","Gwala St floods"],[2022.6,"move","TEA on the Umlazi riverbank"],[2022.66,"flag","Auditor-General: 'unsuitable land'"],[2025.15,"hit","Gwala St camp floods again · 5 dead"],[2025.55,"move","Moved to Umbilo residence"]];
-var tlW=0;
-function drawTimeline(){var el=document.getElementById("path"),W2=Math.max(300,el.parentNode.clientWidth);if(W2===tlW)return;tlW=W2;
-  var s=d3.select(el);s.selectAll("*").remove();
-  function colOf(k){return k==="hit"?C.hit:k==="flag"?C.water:C.camp;}
-  function marker(g,k,x,y){if(k==="move")g.append("rect").attr("x",x-4).attr("y",y-8).attr("width",8).attr("height",16).attr("fill",colOf(k));else g.append("circle").attr("cx",x).attr("cy",y).attr("r",k==="hit"?8:6).attr("fill",colOf(k));}
-  var key=s.append("text").attr("x",4).attr("y",16).attr("fill",C.muted).attr("font-family",mono).attr("font-size",12).text("■ moved by the state   ● flooded   ● warned");
-  var keyH=TF.wrap(key,W2-8).height;
-  var H2;
-  if(W2>=700){
-    var m=20,x=d3.scaleLinear([2007.6,2025.8],[m+10,W2-m-10]),lab=s.append("g"),lead=s.insert("g",":first-child");
-    var labels=TL_EV.map(function(e){var t=lab.append("text").attr("fill",C.ink).attr("font-size",14.5).text(e[2]);return {text:t.node(),x:x(e[0]),e:e};});
-    var res=TF.laneTimeline(labels,{minX:4,maxX:W2-4,gap:14,maxRows:6});
-    var rowH=24,top=keyH+26,axisY=top+res.up*rowH+10;
-    labels.forEach(function(L){var X=x(L.e[0]),y=L.row<0?axisY-16-(-L.row-1)*rowH:axisY+26+(L.row-1)*rowH;L.text.setAttribute("y",y);
-      var yEnd=L.row<0?y+5:y-L.asc-2,edge=Math.max(L.lx,Math.min(X,L.lx+L.w));
-      lead.append("path").attr("d","M"+X+","+axisY+" V"+yEnd+(edge!==X?" H"+edge:"")).attr("fill","none").attr("stroke",colOf(L.e[1])).attr("stroke-width",1.1).attr("opacity",.75);});
-    var ax=s.append("g"),yearY=axisY+(res.down?26+res.down*rowH:22);
-    ax.append("line").attr("x1",m).attr("x2",W2-m).attr("y1",axisY).attr("y2",axisY).attr("stroke",C.rule).attr("stroke-width",2);
-    d3.range(2008,2026).forEach(function(yy){ax.append("line").attr("x1",x(yy)).attr("x2",x(yy)).attr("y1",axisY-4).attr("y2",axisY+4).attr("stroke",C.muted);
-      if(yy%2===0)ax.append("text").attr("x",x(yy)).attr("y",yearY).attr("text-anchor","middle").attr("fill",C.muted).attr("font-family",mono).attr("font-size",12).text(yy);});
-    TL_EV.forEach(function(e){marker(ax,e[1],x(e[0]),axisY);});
-    H2=yearY+10;
-  }else{
-    var axisX=60,labX=80,cur=keyH+34,g=s.append("g"),firstY=null,lastY=0;
-    TL_EV.forEach(function(e){var t=g.append("text").attr("x",labX).attr("y",cur).attr("fill",C.ink).attr("font-size",14.5).text(e[2]);
-      var r=TF.wrap(t,W2-labX-6,{lineHeight:1.25});
-      g.append("text").attr("x",axisX-14).attr("y",cur).attr("text-anchor","end").attr("fill",C.muted).attr("font-family",mono).attr("font-size",12).text(Math.floor(e[0]));
-      marker(g,e[1],axisX,cur-5);if(firstY===null)firstY=cur-5;lastY=cur-5;cur+=r.height+16;});
-    s.insert("line",":first-child").attr("x1",axisX).attr("x2",axisX).attr("y1",firstY).attr("y2",lastY).attr("stroke",C.rule).attr("stroke-width",2);
-    H2=cur;
-  }
+/* ---------- moved: hand-drawn journey animation (schematic, not a map) ----------
+   Same events and sources as the former timeline. Positions are schematic: the data has no coordinates for
+   uMlazi, Mega Village or the tents, so nothing here implies real locations or distances. Dots are illustrative. */
+var JR_ST=[
+  {id:"umlazi",label:"uMlazi homes",icon:"house"},
+  {id:"lamont",label:"Lamontville transit camps",icon:"camp"},
+  {id:"mega",label:"Mega Village",icon:"house"},
+  {id:"tents",label:"Tents, 2019–21",icon:"tent"},
+  {id:"gwala",label:"Gwala St camp, by the Umlaas canal",icon:"camp"},
+  {id:"tea",label:"TEA on the Umlazi riverbank",icon:"block"},
+  {id:"umbilo",label:"Umbilo residence",icon:"tower"}];
+var tlW=0,jrRun=0,jrPlayed=false;
+function drawTimeline(force,instant){var el=document.getElementById("path"),W2=Math.max(300,el.parentNode.clientWidth);if(!jrPlayed)return;if(W2===tlW&&!force)return;if(!force)instant=true;tlW=W2;
+  var run=++jrRun,s=d3.select(el);s.selectAll("*").remove();
+  var wide=W2>=700,H2,pos={};
+  if(wide){H2=520;var xs=[.06,.19,.33,.48,.63,.78,.93],ys=[.50,.34,.50,.32,.50,.70,.30];JR_ST.forEach(function(st,i){pos[st.id]=[xs[i]*W2,ys[i]*H2];});}
+  else{var gapY=215;H2=110+JR_ST.length*gapY;JR_ST.forEach(function(st,i){pos[st.id]=[(i%2?.70:.30)*W2,110+i*gapY];});}
   s.attr("viewBox","0 0 "+W2+" "+H2).attr("width",W2).attr("height",H2);
+  var rc=rough.svg(el),seed=7,reduce=(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)||/[?&]instant/.test(location.search)||!!instant;
+  var gRiver=s.append("g"),gPaths=s.append("g"),gIcons=s.append("g"),gWater=s.append("g"),gDots=s.append("g"),gText=s.append("g");
+  function later(ms,fn){if(reduce){fn();return;}setTimeout(function(){if(run===jrRun)fn();},ms);}
+  function put(g,node){g.node().appendChild(node);return d3.select(node);}
+  function sk(opt){var o={stroke:C.muted,strokeWidth:1.4,roughness:1.6,bowing:1.2,seed:++seed};for(var k in opt)o[k]=opt[k];return o;}
+  function fade(sel,ms){if(reduce)return sel;sel.style("opacity",0).transition().duration(ms||500).style("opacity",1);return sel;}
+  /* river: a hand-drawn wavy band behind everything */
+  var rpts=[];if(wide){for(var i=0;i<=24;i++)rpts.push([i/24*W2,H2*.60+Math.sin(i*.9)*10]);}else{var rEnd=pos.umbilo[1]+70;for(var j=0;j<=24;j++)rpts.push([W2*.5+Math.sin(j*.8)*18,40+j/24*(rEnd-40)]);}
+  var river=put(gRiver,rc.curve(rpts,sk({stroke:C.water,strokeWidth:5,roughness:1.2}))).style("opacity",.35);
+  var rlab=gRiver.append("text").attr("fill",C.water).attr("font-family",mono).attr("font-size",11).attr("opacity",.8).text("Umlaas / Umlazi rivers (schematic)");
+  if(wide)rlab.attr("x",W2-8).attr("y",H2*.60+34).attr("text-anchor","end");else rlab.attr("x",8).attr("y",30);
+  /* icons */
+  var drawn={};
+  function icon(id){if(drawn[id])return;drawn[id]=1;var st=JR_ST.filter(function(q){return q.id===id;})[0],p=pos[id],x=p[0],y=p[1],g=gIcons.append("g"),col=C.ink;
+    if(st.icon==="house"){put(g,rc.rectangle(x-18,y-14,36,26,sk({stroke:col})));put(g,rc.polygon([[x-22,y-14],[x,y-32],[x+22,y-14]],sk({stroke:col})));}
+    else if(st.icon==="camp"){[-26,-4,18].forEach(function(dx,k){put(g,rc.rectangle(x+dx,y-12+(k%2)*4,18,20,sk({stroke:C.camp})));put(g,rc.line(x+dx-2,y-12+(k%2)*4,x+dx+20,y-15+(k%2)*4,sk({stroke:C.camp})));});}
+    else if(st.icon==="tent"){put(g,rc.polygon([[x-26,y+10],[x-10,y-16],[x+6,y+10]],sk({stroke:col})));put(g,rc.polygon([[x-2,y+10],[x+13,y-12],[x+28,y+10]],sk({stroke:col})));}
+    else if(st.icon==="block"){put(g,rc.rectangle(x-24,y-18,48,30,sk({stroke:C.camp})));for(var k=0;k<3;k++)put(g,rc.rectangle(x-18+k*14,y-10,8,8,sk({stroke:C.camp,strokeWidth:1})));}
+    else{put(g,rc.rectangle(x-18,y-34,36,50,sk({stroke:C.camp})));for(var r=0;r<3;r++)for(var c2=0;c2<2;c2++)put(g,rc.rectangle(x-11+c2*14,y-27+r*14,7,7,sk({stroke:C.camp,strokeWidth:1})));}
+    var t=gText.append("text").attr("x",x).attr("y",y+36).attr("text-anchor","middle").attr("fill",C.ink).attr("font-size",14).text(st.label);
+    TF.wrap(t,wide?Math.min(150,W2*.13):W2*.52,{lineHeight:1.15});fade(g,450);fade(t,450);}
+  /* year / event stamps stack above each station so they never collide */
+  var stackN={};
+  function stamp(id,text,col){var p=pos[id],n=stackN[id]=(stackN[id]||0)+1,y=p[1]-44-(n-1)*20-(id==="umbilo"?18:0);
+    var t=gText.append("text").attr("x",p[0]).attr("y",y).attr("text-anchor","middle").attr("fill",col||C.muted).attr("font-family",mono).attr("font-size",12.5).attr("paint-order","stroke").attr("stroke",C.panel).attr("stroke-width",4).text(text);fade(t,350);return t;}
+  /* flood: sketchy waves rise over the station, then settle */
+  function flood(id,year,extra){var p=pos[id],g=gWater.append("g");
+    for(var k=0;k<3;k++){var yy=p[1]+6-k*9,pts=[];for(var q=0;q<=8;q++)pts.push([p[0]-34+q*8.5,yy+Math.sin(q*1.4+k)*3]);put(g,rc.curve(pts,sk({stroke:C.water,strokeWidth:2,roughness:1})));}
+    if(!reduce){g.attr("transform","translate(0,26)").style("opacity",0).transition().duration(700).attr("transform","translate(0,0)").style("opacity",1).transition().delay(500).duration(700).style("opacity",.35);}else g.style("opacity",.35);
+    stamp(id,year+" flood"+(extra?" · "+extra:""),C.hit);}
+  /* walk: a sketched dashed route draws, then the group of dots moves along it */
+  var groups={};
+  function spawn(name,id,n){var p=pos[id],rnd=d3.randomLcg(n*31+id.length),pts=d3.range(n).map(function(){var a=rnd()*Math.PI*2,r=Math.sqrt(rnd())*14;return [Math.cos(a)*r*.7+44,Math.sin(a)*r*.7-2];});
+    var sel=gDots.selectAll("circle.g-"+name).data(pts).join("circle").attr("class","g-"+name).attr("r",3).attr("fill",C.ink).attr("cx",function(d){return p[0]+d[0];}).attr("cy",function(d){return p[1]+d[1];});
+    fade(sel,400);groups[name]={sel:sel,at:id};}
+  function walk(name,to,label,dur){var gr=groups[name],a=pos[gr.at],b=pos[to],mx=(a[0]+b[0])/2,my=Math.min(a[1],b[1])-(wide?60:0),mxx=wide?mx:(a[0]+b[0])/2+(b[0]>a[0]?-40:40);
+    var d="M"+(a[0]+44)+","+a[1]+" Q"+mxx+","+(wide?my:(a[1]+b[1])/2)+" "+(b[0]+44)+","+b[1];
+    var rp=put(gPaths,rc.path(d,sk({stroke:C.camp,strokeWidth:1.3,roughness:.9,strokeLineDash:[5,6]})));fade(rp,400);
+    var guide=gPaths.append("path").attr("d",d).attr("fill","none").attr("stroke","none"),pn=guide.node(),L=pn.getTotalLength();
+    icon(to);gr.at=to;
+    if(reduce){gr.sel.attr("cx",function(q){return b[0]+q[0];}).attr("cy",function(q){return b[1]+q[1];});}
+    else gr.sel.transition("walk").delay(function(q,i){return i*40;}).duration(dur||1700).ease(d3.easeCubicInOut)
+      .attrTween("cx",function(q){return function(t){return pn.getPointAtLength(t*L).x-44+q[0];};})
+      .attrTween("cy",function(q){return function(t){return pn.getPointAtLength(t*L).y+q[1];};});
+    if(label)stamp(to,label,C.camp);}
+  /* the sequence (years and events from the sources below) */
+  var T=0;function at(ms,fn){T+=ms;later(T,fn);}
+  at(0,function(){fade(river,900);icon("umlazi");spawn("A","umlazi",7);});
+  at(900,function(){flood("umlazi","2008");});
+  at(1300,function(){walk("A","lamont","2008 · moved");});
+  at(2000,function(){icon("mega");spawn("B","mega",10);});
+  at(700,function(){flood("mega","2012");});
+  at(1000,function(){flood("mega","2016");});
+  at(1000,function(){flood("mega","2019");});
+  at(1100,function(){walk("B","tents","2019 · 2 years in tents");});
+  at(2200,function(){walk("B","gwala","2021 · moved");});
+  at(2300,function(){flood("gwala","2022");});
+  at(1200,function(){icon("tea");spawn("C","tea",6);stamp("tea","2022 · new TEA",C.camp);});
+  at(1200,function(){var p=pos.tea,g=gText.append("g"),bw=wide?220:W2-16,bx=wide?Math.min(W2-bw-8,p[0]-bw/2):8,by=wide?p[1]+78:p[1]+70;
+    var t=g.append("text").attr("x",bx+10).attr("y",by+18).attr("fill",C.water).attr("font-family",mono).attr("font-size",12).text("Aug 2022 · Auditor-General: 'unsuitable land'");
+    TF.wrap(t,bw-20,{lineHeight:1.2});var bb=t.node().getBBox(),box=rc.rectangle(bx,by,bw,bb.height+16,sk({stroke:C.water,strokeWidth:1.2}));g.insert(function(){return box;},":first-child");fade(g,500);});
+  at(1600,function(){flood("gwala","Feb 2025","5 dead");});
+  at(1500,function(){walk("B","umbilo","2025 · moved again");});
+  at(2400,function(){var t=gText.append("text").attr("x",wide?W2/2:12).attr("y",H2-14).attr("text-anchor",wide?"middle":"start").attr("fill",C.ink).attr("font-family",disp).attr("font-weight",700).attr("font-size",wide?22:18).attr("letter-spacing",".03em")
+      .text("ONE GROUP: FLOODED 5 TIMES, MOVED 3 TIMES, 2012–2025");var rr=TF.wrap(t,W2-24);if(!wide)t.attr("y",H2-rr.height-6);var bb=t.node().getBBox();if(bb.y+bb.height+10>H2){H2=bb.y+bb.height+10;s.attr("viewBox","0 0 "+W2+" "+H2).attr("height",H2);}fade(t,600);});
+  var note=gText.append("text").attr("x",W2-8).attr("y",14).attr("text-anchor","end").attr("fill",C.muted).attr("font-family",mono).attr("font-size",11).text("schematic · not to scale · dots are illustrative");
+  if(!wide)note.attr("x",8).attr("text-anchor","start");
 }
+function replayJourney(){jrPlayed=true;tlW=0;drawTimeline(true,false);}
+(function(){var sec=document.getElementById("moved"),b=document.getElementById("replayJ");if(b)b.addEventListener("click",replayJourney);
+  var ioJ=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!jrPlayed){replayJourney();ioJ.disconnect();}});},{threshold:.3});
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){ioJ.observe(sec);
+    function inView(){var r=sec.getBoundingClientRect();return r.top<innerHeight*.75&&r.bottom>0;}
+    if(inView()&&!jrPlayed){replayJourney();ioJ.disconnect();}
+    window.addEventListener("scroll",function chk(){if(!jrPlayed&&inView()){replayJourney();ioJ.disconnect();}if(jrPlayed)window.removeEventListener("scroll",chk);},{passive:true});});})();
 
 /* ---------- national map ---------- */
 (function(){var WT=window.WORLD_TOPO,za=topojson.feature(WT,WT.objects.countries).features.filter(function(f){return +f.id===710;})[0];
