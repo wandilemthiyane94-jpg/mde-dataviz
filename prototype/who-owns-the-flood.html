@@ -188,6 +188,7 @@ a:focus-visible{outline:2px solid var(--water);outline-offset:2px}
 </section>
 </div>
 
+<script src="story/lib/textfit.js"></script>
 <script>
 (function(){
 var NS="http://www.w3.org/2000/svg";
@@ -209,9 +210,10 @@ function rowLabels(svg,rows){rows.forEach(function(r){el("line",{x1:140,x2:1050,
   txt(svg,14,r[1]+BH/2-4,r[0],{anchor:"start",size:12,fill:"var(--muted)",family:"'IBM Plex Mono',monospace",lh:14});});}
 function box(svg,i,y,lines,kind,span){var w=span?span*113-13:BW, x=CX(i)-BW/2;
   var st={n:["var(--panel)","var(--ink)"],veto:["var(--panel)","var(--veto)"],own:["var(--own-soft)","var(--own)"],res:["var(--panel)","var(--muted)"]}[kind||"n"];
-  el("rect",{x:x,y:y,width:w,height:BH,rx:3,fill:st[0],stroke:st[1],"stroke-width":kind==="own"?2:1.2},svg);
+  el("rect",{x:x,y:y,width:w,height:BH,rx:3,fill:st[0],stroke:st[1],"stroke-width":kind==="own"?2:1.2,"data-box-rect":1},svg);
   txt(svg,x+w/2,y+BH/2-(lines.length-1)*7+4,lines,{size:10.5,fill:kind==="veto"?"var(--veto)":"var(--ink)",weight:400});
   if(lines.length&&svg.lastChild.firstChild){svg.lastChild.firstChild.setAttribute("font-weight",600);svg.lastChild.firstChild.setAttribute("font-size",12);}
+  svg.lastChild.setAttribute("data-box",1);
   return {x:x,y:y,w:w,cx:x+w/2,cy:y+BH/2};}
 function pin(svg,x,y,n,good){el("circle",{cx:x,cy:y,r:12,fill:good?"var(--own)":"var(--break)"},svg);
   txt(svg,x,y+4.5,[String(n)],{size:12.5,fill:"var(--ground)",weight:600,family:"'IBM Plex Mono',monospace"});}
@@ -309,7 +311,7 @@ F.forEach(function(f,i){var y=52+i*44;
   if(hi>90){db.lastChild.setAttribute("x",xs(hi)-16);db.lastChild.firstChild.setAttribute("x",xs(hi)-16);db.lastChild.setAttribute("y",y-12);}
 });
 txt(db,24,52+5*44-30,["Risk factors ↓"],{anchor:"start",size:11,fill:"var(--muted)",family:"'IBM Plex Mono',monospace"});
-txt(db,24,40,["Protective factors ↓"],{anchor:"start",size:11,fill:"var(--muted)",family:"'IBM Plex Mono',monospace"});
+txt(db,24,22,["Protective factors ↓"],{anchor:"start",size:11,fill:"var(--muted)",family:"'IBM Plex Mono',monospace"});
 
 /* Matrix (from data/relocation_rootcause_matrix.csv) */
 var cols=[["One owner",1],["Residents co-decide",1],["Permanent tenure",1],["Hazard binding",1],["Cheapest land",0],["Blame shifted",0]];
@@ -332,5 +334,20 @@ function loop(id,nodes,color,center,sub){var s=document.getElementById(id);defs(
   txt(s,cx,cy+14,sub,{size:11,fill:"var(--muted)",family:"'IBM Plex Mono',monospace",lh:13});}
 loop("loopBad",[["No single owner","8 hand-offs"],["Cheapest land wins","ratepayers veto"],["'Emergency'","skips flood checks"],["'Temporary'","withholds rights"],["Flood hits","the same families"],["Blame the rain","or the residents"],["No consequence","21 of 22 no inquiry"]],"var(--break)","REINFORCING",["failure repeats","next flood"]);
 loop("loopGood",[["One owner","+ residents at table"],["Hazard-first site","binding floodline"],["Permanent tenure","from day one"],["Safe years later","Grantham 2013: 3 homes"],["Owner judged","on outcome"],["Next plan better","land bank ready"]],"var(--own)","REINFORCING",["safety compounds"]);
-})();
+/* measured fit for box labels: any line wider than its box is re-wrapped, and the box grows to the text */
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
+  document.querySelectorAll("text[data-box]").forEach(function(t){var r=t.previousElementSibling;if(!r||!r.hasAttribute("data-box-rect"))return;
+    var w=+r.getAttribute("width")-10,spans=[].slice.call(t.querySelectorAll("tspan"));
+    if(!spans.some(function(s){return s.getComputedTextLength()>w;}))return;
+    var x=t.getAttribute("x"),parts=spans.map(function(s){return {txt:s.textContent,fs:s.getAttribute("font-size"),fw:s.getAttribute("font-weight")};});
+    while(t.firstChild)t.removeChild(t.firstChild);
+    var first=true;
+    parts.forEach(function(p){var words=p.txt.split(/\s+/),cur="";
+      function mk(s){var ts=document.createElementNS("http://www.w3.org/2000/svg","tspan");ts.setAttribute("x",x);if(p.fs)ts.setAttribute("font-size",p.fs);if(p.fw)ts.setAttribute("font-weight",p.fw);ts.textContent=s;t.appendChild(ts);return ts;}
+      function push(s){var ts=mk(s);ts.setAttribute("dy",first?0:(parseFloat(p.fs||t.getAttribute("font-size"))*1.15));first=false;}
+      var probe=mk("");words.forEach(function(wd){probe.textContent=cur?cur+" "+wd:wd;if(probe.getComputedTextLength()<=w||!cur)cur=probe.textContent;else{t.removeChild(probe);push(cur);probe=mk("");cur=wd;}});
+      t.removeChild(probe);if(cur)push(cur);});
+    var y0=+r.getAttribute("y"),bb=t.getBBox(),h=Math.max(+r.getAttribute("height"),bb.height+10);r.setAttribute("height",h);
+    t.setAttribute("y",+t.getAttribute("y")+(y0+(h-bb.height)/2-bb.y));});
+});})();
 </script>

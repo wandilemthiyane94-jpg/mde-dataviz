@@ -123,8 +123,8 @@ function mapSketch(g,x,y,w,h,o){o=o||{};rect(g,x,y,w,h,{fill:"#EEF1EE",w:1.5,c:"
   var P=mapSketch(s,330,50,380,425,{fp:true,camps:true,hits:true});
   var B=[["SAWS: had the forecast",60,"#3F5B8C",[.6,.2]],["City: had the flood map",140,"#C0762B",[.3,.35]],["Auditor-General: flagged it",220,"#3F5B8C",[.2,.36]],["Province: owns the shelters",300,"#8A5AA8",[.2,.36]],["Councillor: sent families back",380,"#C0762B",[.2,.36]]];
   B.forEach(function(b){rect(s,40,b[1],250,56,{fill:"#fff",c:b[2],w:2.2});txt(s,52,b[1]+35,b[0],{s:21});line(s,290,b[1]+28,330+380*b[3][0],50+425*b[3][1],{c:b[2],w:1.8,dash:"5 4"});});
-  txt(s,740,120,"The problem wasn't",{s:28});txt(s,740,152,"that nobody knew.",{s:28});
-  txt(s,740,220,"NOBODY OWNED",{s:36,b:true,c:"#B8321F",f:"Barlow Condensed, sans-serif"});txt(s,740,258,"THE WHOLE OUTCOME.",{s:36,b:true,c:"#B8321F",f:"Barlow Condensed, sans-serif"});
+  txt(s,740,120,"The problem wasn't",{s:28});txt(s,740,160,"that nobody knew.",{s:28});
+  txt(s,740,220,"NOBODY OWNED",{s:36,b:true,c:"#B8321F",f:"Barlow Condensed, sans-serif"});txt(s,740,264,"THE WHOLE OUTCOME.",{s:36,b:true,c:"#B8321F",f:"Barlow Condensed, sans-serif"});
   line(s,740,300,1060,300,{w:2});txt(s,740,335,"\"South Africa has the information.",{s:22});txt(s,740,362,"The institutions that possess it",{s:22});txt(s,740,389,"do not control the decisions",{s:22});txt(s,740,416,"that determine exposure.\"",{s:22});
   note(s,740,460,"final line fades in last");})();
 })();

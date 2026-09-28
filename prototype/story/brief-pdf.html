@@ -200,10 +200,11 @@ svg{display:block;width:100%;height:100%}
 </section>
 
 <script src="vendor/d3.v7.min.js"></script>
+<script src="lib/textfit.js"></script>
 <script src="tra-story-data.js"></script>
 
 <script>
-(function(){
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
 var T=window.TRA,S=T.summary,sites=T.sites.filter(function(d){return d.lat!=="";});sites.forEach(function(d){d.lat=+d.lat;d.lon=+d.lon;});
 var cs=getComputedStyle(document.documentElement),V=function(n){return cs.getPropertyValue(n).trim();};
 var C={paper:V("--paper"),ink:V("--ink"),muted:V("--muted"),rule:V("--rule"),water:V("--water"),plain:V("--plain"),camp:V("--camp"),hit:V("--hit"),ok:V("--ok"),nat:V("--nat"),prov:V("--prov"),muni:V("--muni")};
@@ -234,7 +235,7 @@ function durban(id,o){var W=o.W||760,H=860,svg=d3.select(id),M=S.mosaic;
     hits.forEach(function(d){var l=L[d.id];if(!l)return;var p=pr([d.lon,d.lat]),dx=l[2]*26,an=l[2]>0?"start":"end",dy=d.id===26?34:d.id===29?6:-30;
       g.append("text").attr("x",p[0]+dx).attr("y",p[1]+dy).attr("text-anchor",an).attr("font-family",disp).attr("font-weight",700).attr("font-size",22).attr("fill",C.ink).attr("paint-order","stroke").attr("stroke","#fff").attr("stroke-width",4).text(l[0]);
       g.append("text").attr("x",p[0]+dx).attr("y",p[1]+dy+18).attr("text-anchor",an).attr("font-family",mono).attr("font-size",13).attr("fill",C.hit).attr("paint-order","stroke").attr("stroke","#fff").attr("stroke-width",4).text(l[1]);});}
-  [["DURBAN CBD",31.02,-29.858],["UMLAZI",30.885,-29.965],["PINETOWN",30.86,-29.815],["INANDA",30.95,-29.69]].forEach(function(l){var p=pr([l[1],l[2]]);g.append("text").attr("x",p[0]).attr("y",p[1]).attr("text-anchor","middle").attr("font-family",disp).attr("font-size",15).attr("letter-spacing",".12em").attr("fill",C.muted).attr("paint-order","stroke").attr("stroke","#E4E9E6").attr("stroke-width",3).text(l[0]);});
+  [["DURBAN CBD",31.02,-29.858],["UMLAZI",30.885,-29.965],["PINETOWN",30.86,-29.815],["INANDA",30.95,-29.69]].forEach(function(l){var p=pr([l[1],l[2]]);if(p[0]<x0+30||p[0]>x1-30||p[1]<y0+12||p[1]>y1-6)return;g.append("text").attr("x",p[0]).attr("y",p[1]).attr("text-anchor","middle").attr("font-family",disp).attr("font-size",15).attr("letter-spacing",".12em").attr("fill",C.muted).attr("paint-order","stroke").attr("stroke","#E4E9E6").attr("stroke-width",3).text(l[0]);});
   var km=o.bounds?1:10,s0=pr([bb[0][0]+0.004,bb[1][1]+0.004]),s1=pr([bb[0][0]+0.004+km/96.4,bb[1][1]+0.004]);g.append("line").attr("x1",s0[0]).attr("x2",s1[0]).attr("y1",s0[1]).attr("y2",s0[1]).attr("stroke",C.ink).attr("stroke-width",2);
   g.append("text").attr("x",s0[0]).attr("y",s0[1]-7).attr("font-family",mono).attr("font-size",12).attr("fill",C.ink).text(km+" km");
   svg.append("rect").attr("x",x0).attr("y",y0).attr("width",x1-x0).attr("height",y1-y0).attr("fill","none").attr("stroke",C.rule);
@@ -256,7 +257,8 @@ var nLow=sites.filter(function(d){return d.reflood==="low";}).length;document.ge
   var lastY=-99;ev.forEach(function(e){var Y=Math.max(y(e[0]),lastY+30);lastY=Y;var c=e[1]==="h"?C.hit:e[1]==="f"?C.water:C.camp;
     s.append("text").attr("x",0).attr("y",Y+5).attr("font-family",mono).attr("font-size",14).attr("fill",C.muted).text(Math.floor(e[0]));
     if(e[1]==="m")s.append("rect").attr("x",80).attr("y",Y-7).attr("width",12).attr("height",14).attr("fill",c);else s.append("circle").attr("cx",86).attr("cy",Y).attr("r",e[1]==="h"?8:6).attr("fill",c);
-    s.append("text").attr("x",104).attr("y",Y+5).attr("font-family",serif).attr("font-size",17).attr("fill",C.ink).text(e[2]);});
+    var lt=s.append("text").attr("x",104).attr("y",Y+5).attr("font-family",serif).attr("font-size",17).attr("fill",C.ink).text(e[2]);var rr=TF.wrap(lt,490,{lineHeight:1.15});lastY+=rr.height-20;});
+  s.attr("viewBox","0 0 600 "+Math.max(330,lastY+24));
 })();
 
 /* ---------- strips ---------- */
@@ -334,29 +336,26 @@ strips("#good",[["Grantham","Australia · hilltop land swap",2011.9,[],0,"2013 f
   box(R,436,"No flooding since the move","Grantham 2013 flood: 3 homes damaged",C.ok,"#E6F3EC");
   /* examples of the rule */
   var ex=[["Iwanuma","coast declared hazardous; building homes banned"],["Grantham","new site outside the mapped 2011 flood; old land non-residential"],["Gramalote","ground stability weighted 30 of 100 in site scoring"],["Overdiepse","national flood-safety standard; farms on 6 m mounds"]];
-  ex.forEach(function(e,i){var y=530+i*27;s.append("text").attr("x",R).attr("y",y).attr("font-family",disp).attr("font-weight",700).attr("font-size",16).attr("fill",C.ok).text(e[0].toUpperCase());
-    s.append("text").attr("x",R+104).attr("y",y).attr("font-family",serif).attr("font-size",14).attr("fill",C.ink).text(e[1]);});
+  var ey=524;ex.forEach(function(e,i){s.append("text").attr("x",R).attr("y",ey).attr("font-family",disp).attr("font-weight",700).attr("font-size",16).attr("fill",C.ok).text(e[0].toUpperCase());
+    var et=s.append("text").attr("x",R+104).attr("y",ey).attr("font-family",serif).attr("font-size",14).attr("fill",C.ink).text(e[1]);var rr=TF.wrap(et,1000-R-104-6,{lineHeight:1.15});ey+=Math.max(26,rr.height+8);});
+  s.attr("viewBox","0 0 1000 "+Math.max(640,ey));
   s.append("line").attr("x1",520).attr("x2",520).attr("y1",10).attr("y2",630).attr("stroke",C.rule).attr("stroke-width",1.5);
 })();
 
 /* ---------- chains ---------- */
-var LINKS=[["SAWS","forecast & alert level","nat","National vote"],["Disaster Management","passes the warning on","muni","Municipal Disaster Response Grant R371m"],["Municipality","rescue, mass care","muni",""],["Province","disaster funding","prov","Provincial Disaster Response Grant R145m"],["Housing","emergency housing rules & money","prov","Provincial Emergency Housing Grant R326m"],["Land","city must find it; ratepayers veto","muni","Municipal Emergency Housing Grant R175m"],["Temporary shelter","province owns, HDA leases","prov","R360m unspent 2022/23"],["Permanent housing","housing list: 469,500 waiting","prov",""]];
-function chain(id,dark,withBudget){var s=d3.select(id),n=8,w=118,gap=(1080-n*w)/(n-1),lane={nat:40,prov:110,muni:180};
+var LINKS=[["SAWS","forecast & alert level","nat","National vote"],["Disaster Mgmt","passes the warning on","muni","Municipal Disaster Response Grant R371m"],["Municipality","rescue, mass care","muni",""],["Province","disaster funding","prov","Provincial Disaster Response Grant R145m"],["Housing","emergency housing rules & money","prov","Provincial Emergency Housing Grant R326m"],["Land","city must find it; ratepayers veto","muni","Municipal Emergency Housing Grant R175m"],["Temporary shelter","province owns, HDA leases","prov","R360m unspent 2022/23"],["Permanent housing","housing list: 469,500 waiting","prov",""]];
+function chain(id,dark,withBudget){var s=d3.select(id),n=8,w=110,x0c=dark?10:74,gap=(1090-x0c-n*w)/(n-1),lane={nat:40,prov:110,muni:180};
   var col={nat:C.nat,prov:C.prov,muni:C.muni},tx=dark?"#E6EDEF":C.ink,sub=dark?"#9FB0B8":C.muted;
   if(!dark){["NATIONAL","PROVINCIAL","MUNICIPAL"].forEach(function(l,i){s.append("text").attr("x",0).attr("y",[40,110,180][i]-6).attr("font-family",mono).attr("font-size",10).attr("fill",sub).text(l);});}
-  var pts=LINKS.map(function(L,i){return [10+i*(w+gap),lane[L[2]]+(dark?30:12)];});
+  var pts=LINKS.map(function(L,i){return [x0c+i*(w+gap),lane[L[2]]+(dark?30:12)];});
   for(var i=0;i<n-1;i++){var a=pts[i],b=pts[i+1];s.append("path").attr("d","M"+(a[0]+w)+","+(a[1]+26)+" C"+(a[0]+w+gap/2)+","+(a[1]+26)+" "+(b[0]-gap/2)+","+(b[1]+26)+" "+b[0]+","+(b[1]+26)).attr("fill","none").attr("stroke",C.hit).attr("stroke-width",2).attr("stroke-dasharray","5 4");
-    s.append("text").attr("x",(a[0]+w+b[0])/2).attr("y",Math.min(a[1],b[1])+(a[1]===b[1]?18:40)).attr("text-anchor","middle").attr("font-family",mono).attr("font-size",13).attr("font-weight",500).attr("fill",C.hit).text("×");}
+    s.append("text").attr("x",(a[0]+w+b[0])/2).attr("y",(a[1]===b[1]?a[1]+22:Math.min(a[1],b[1])+44)).attr("text-anchor","middle").attr("font-family",mono).attr("font-size",13).attr("font-weight",500).attr("fill",C.hit).text("×");}
   LINKS.forEach(function(L,i){var p=pts[i];
     s.append("rect").attr("x",p[0]).attr("y",p[1]).attr("width",w).attr("height",52).attr("rx",3).attr("fill",dark?"#1B2A33":"#fff").attr("stroke",col[L[2]]).attr("stroke-width",2.2);
     s.append("rect").attr("x",p[0]).attr("y",p[1]).attr("width",w).attr("height",5).attr("fill",col[L[2]]);
-    s.append("text").attr("x",p[0]+w/2).attr("y",p[1]+24).attr("text-anchor","middle").attr("font-family",disp).attr("font-weight",700).attr("font-size",L[0].length>14?15:17).attr("fill",tx).text(L[0].toUpperCase());
-    var words=L[1].split(" "),l1=[],l2=[];words.forEach(function(wd){(l1.join(" ").length<16?l1:l2).push(wd);});
-    s.append("text").attr("x",p[0]+w/2).attr("y",p[1]+38).attr("text-anchor","middle").attr("font-family",serif).attr("font-size",11).attr("fill",sub).text(l1.join(" "));
-    s.append("text").attr("x",p[0]+w/2).attr("y",p[1]+49).attr("text-anchor","middle").attr("font-family",serif).attr("font-size",11).attr("fill",sub).text(l2.join(" "));
-    if(withBudget&&L[3]){var bw=L[3].split(" "),h1=bw.slice(0,Math.ceil(bw.length/2)).join(" "),h2=bw.slice(Math.ceil(bw.length/2)).join(" ");
-      s.append("text").attr("x",p[0]+w/2).attr("y",p[1]+68).attr("text-anchor","middle").attr("font-family",mono).attr("font-size",9.5).attr("fill",col[L[2]]).text(h1);
-      s.append("text").attr("x",p[0]+w/2).attr("y",p[1]+80).attr("text-anchor","middle").attr("font-family",mono).attr("font-size",9.5).attr("fill",col[L[2]]).text(h2);}});
+    TF.truncate(s.append("text").attr("x",p[0]+w/2).attr("y",p[1]+24).attr("text-anchor","middle").attr("font-family",disp).attr("font-weight",700).attr("font-size",16).attr("fill",tx).text(L[0].toUpperCase()),w-8);
+    TF.wrap(s.append("text").attr("x",p[0]+w/2).attr("y",p[1]+38).attr("text-anchor","middle").attr("font-family",serif).attr("font-size",11).attr("fill",sub).text(L[1]),w-8,{maxLines:2,lineHeight:1.0});
+    if(withBudget&&L[3]){TF.wrap(s.append("text").attr("x",p[0]+w/2).attr("y",p[1]+68).attr("text-anchor","middle").attr("font-family",mono).attr("font-size",9.5).attr("fill",col[L[2]]).text(L[3]),w-4,{lineHeight:1.2});}});
   var fy=dark?300:312;
   s.append("text").attr("x",0).attr("y",fy).attr("font-family",disp).attr("font-weight",700).attr("font-size",dark?26:22).attr("fill",C.hit).text("8 LINKS · 3 SPHERES · 7 HAND-OFFS · 0 END-TO-END OWNERS");
   if(!dark)s.append("text").attr("x",1090).attr("y",fy).attr("text-anchor","end").attr("font-family",serif).attr("font-size",15).attr("fill",C.muted).text("Displaced families: lease, no title, no seat at any link");}
@@ -389,8 +388,8 @@ chain("#chainCover",true,false); chain("#chainSA",false,true);
     s.append("text").attr("x",bx+18).attr("y",by+62).attr("font-family",serif).attr("font-size",19).attr("fill",C.muted).text(b[1]);
     if(b[3])s.append("path").attr("d","M"+(bx+bw)+","+(by+bh/2)+" C"+(bx+bw+60)+","+(by+bh/2)+" "+(b[3][0]-60)+","+b[3][1]+" "+(b[3][0]-10)+","+b[3][1]).attr("fill","none").attr("stroke",b[2]).attr("stroke-width",2).attr("opacity",.85);
     else s.append("text").attr("x",bx+bw+10).attr("y",by+bh/2+5).attr("font-family",mono).attr("font-size",14).attr("fill",b[2]).text("→ off the map");});
-  s.append("text").attr("x",10).attr("y",840).attr("font-family",disp).attr("font-weight",700).attr("font-size",26).attr("fill",C.hit).text("7 HOLDERS OF INFORMATION OR MONEY · 0 OWNERS OF THE OUTCOME");
+  TF.wrap(s.append("text").attr("x",10).attr("y",812).attr("font-family",disp).attr("font-weight",700).attr("font-size",26).attr("fill",C.hit).text("7 HOLDERS OF INFORMATION OR MONEY · 0 OWNERS OF THE OUTCOME"),330,{lineHeight:1.05});
 })();
-})();
+});
 </script>
 </body></html>
