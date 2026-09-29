@@ -1,0 +1,234 @@
+<title>Who Holds the Decision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Same palette and faces as the story site (moved-into-the-water.html): one deliberate dark look. */
+:root{
+  --ground:#0A1015; --panel:#101920; --ink:#E6EDEF; --muted:#8C9DA6; --rule:#22313A; --land:#16222A; --landedge:#26363F;
+  --water:#58B7EA; --camp:#F4B942; --hit:#FF5B4F; --ok:#5ED69C; --unk:#56666F;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",Consolas,monospace;
+  color-scheme:dark;
+}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+h1,h2{font-family:var(--display);font-weight:700;text-transform:uppercase;line-height:.98;margin:0;text-wrap:balance}
+h1{font-size:clamp(46px,8vw,96px)}
+h2{font-size:clamp(30px,4.4vw,52px)}
+p{margin:0;max-width:36em}
+.k{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hit{color:var(--hit)} .ok{color:var(--ok)} .camp{color:var(--camp)} .wat{color:var(--water)}
+header{padding-block:52px 30px;display:grid;gap:18px}
+header p{font-size:clamp(19px,2.2vw,24px);color:var(--muted)}
+section{padding-block:56px;border-top:1px solid var(--rule);display:grid;gap:22px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--mono);font-size:12px;color:var(--muted);align-items:center}
+.legend svg{vertical-align:-3px;margin-right:6px}
+.map{position:relative}
+.map svg{display:block;width:100%;height:auto}
+.map .dot{cursor:pointer}
+.map .dot:focus-visible{outline:none}
+.map .dot:focus-visible .m, .map .dot.sel .m{stroke:var(--ink);stroke-width:2}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:16px 18px;display:grid;gap:8px;min-width:0}
+.card h3{font-family:var(--display);font-size:26px;text-transform:uppercase;margin:0;line-height:1.05;overflow-wrap:anywhere}
+.card dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:15.5px}
+.card dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.card dd{margin:0;overflow-wrap:anywhere}
+.card a{color:var(--water)}
+.split{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(260px,1fr);gap:22px;align-items:start}
+@media (max-width:820px){.split{grid-template-columns:1fr}}
+.seg{justify-self:start;display:inline-flex;border:1px solid var(--rule);border-radius:4px;overflow:hidden;flex-wrap:wrap}
+.seg button{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:transparent;border:0;padding:10px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--rule);color:var(--ink)}
+.seg button:focus-visible{outline:2px solid var(--water);outline-offset:-2px}
+.bars svg{display:block;width:100%;height:auto}
+.bars text{font-family:var(--mono);font-size:12px;fill:var(--muted)}
+.bars .lab{font-family:var(--body);font-size:17px;fill:var(--ink)}
+.bars .strong{fill:var(--ink);font-weight:500}
+.find{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.find .card p{font-size:16px;color:var(--muted);line-height:1.45}
+.find .n{font-family:var(--display);font-weight:700;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.cov{overflow-x:auto}.cov svg{display:block;width:100%;height:auto;min-width:560px}
+.cov text{font-family:var(--mono);font-size:12px;fill:var(--muted)}
+.note{font-size:15.5px;color:var(--muted);max-width:44em}
+.note a{color:var(--water)}
+ul.plain{margin:0;padding-left:1.1em;display:grid;gap:6px;font-size:16.5px;color:var(--muted);max-width:44em}
+footer{padding-block:36px 60px;border-top:1px solid var(--rule)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="k">World test · 64 random relocations · Hollie and Wandile</span>
+  <h1>Who holds the decision</h1>
+  <p>We drew 64 planned relocations at random from a global inventory of 408 and coded how each was run before looking at how it ended. Moving people is almost never owned by one agency. The outcome depends on whether the people being moved had a say.</p>
+</header>
+
+<section aria-labelledby="h-map">
+  <span class="k">1 · The sample</span>
+  <h2 id="h-map">Where people were moved, and how it went</h2>
+  <div class="legend" id="legend"></div>
+  <div class="split">
+    <div class="map" id="map"></div>
+    <div class="card" id="case" aria-live="polite"></div>
+  </div>
+  <p class="note">Each mark is one relocation, placed at its community of origin. Tap or click a mark for its coding and source. The star is Durban, which is not in the sample, for reference.</p>
+</section>
+
+<section aria-labelledby="h-bars">
+  <span class="k">2 · The pattern</span>
+  <h2 id="h-bars">What goes with a bad outcome</h2>
+  <div class="seg" role="group" aria-label="Outcome">
+    <button type="button" id="o-bad" aria-pressed="true" data-o="judged failure or mixed">Not a success</button>
+    <button type="button" id="o-hit" aria-pressed="false" data-o="new site hit / exposed">New site hit or exposed</button>
+  </div>
+  <div class="bars" id="bars"></div>
+  <p class="note">Share of cases with a bad outcome, <b style="color:var(--ink)">with</b> the feature (filled) and <b style="color:var(--ink)">without</b> it (hollow). n = cases where both are known. p = two-sided Fisher exact test.</p>
+</section>
+
+<section aria-labelledby="h-find">
+  <span class="k">3 · What we found</span>
+  <h2 id="h-find">Ownership of the decision, not of the org chart</h2>
+  <div class="find">
+    <div class="card"><span class="n">1 of 36</span><p>relocations with a known structure had one public body running it end to end. Almost nobody works that way, so "one owner" can't be tested.</p></div>
+    <div class="card"><span class="n">88% · 87%</span><p>not a success, with or without a clear lead agency. A clear lead agency alone changes nothing.</p></div>
+    <div class="card"><span class="n ok">43%</span><p>not a success when the community started or co-ran the move, against <b class="hit">92%</b> when it didn't (p = 0.014). The same split holds when residents helped choose the land (p = 0.038).</p></div>
+    <div class="card"><span class="n hit">17 of 18</span><p>top-down government relocations were judged mixed or failed.</p></div>
+    <div class="card"><span class="n">33% · 100%</span><p>of new sites flooded or were exposed, with and without a binding hazard check (n = 15, p = 0.077).</p></div>
+    <div class="card"><span class="n">55% · 50%</span><p>of new sites hit or exposed in richer and poorer countries. Money is not the difference.</p></div>
+  </div>
+  <p class="note">South Africa's TRAs combine every bad-outcome feature. The municipality decides alone, residents don't choose the site, and no flood check binds it: camps sit on flood ground at the same rate as random land (39% vs 34%). And the sites are "temporary".</p>
+</section>
+
+<section aria-labelledby="h-cov">
+  <span class="k">4 · How much we know</span>
+  <h2 id="h-cov">Most relocations are never followed up</h2>
+  <div class="cov" id="cov"></div>
+  <ul class="plain">
+    <li>Each test uses between 12 and 35 cases. We ran 30 main tests, and none clears a Bonferroni threshold (0.002). Read these results as a pattern to test further, not as proof.</li>
+    <li>Cases that were written about are not random. They are often community-led, or went badly.</li>
+    <li>One team coded every case from public sources. Every code carries a quote, a URL and a confidence rating so it can be re-coded.</li>
+    <li>The inventory is weighted to Asia, the Americas and the Pacific: Africa has 5 of the 64 cases.</li>
+  </ul>
+</section>
+
+<footer class="note">
+  Frame: <a href="https://disasterdisplacement.org/" target="_blank" rel="noopener">Platform on Disaster Displacement</a>, Kaldor Centre and IOM, <i>Leaving Place, Restoring Home</i> I and II (408 cases). Country data: World Bank income groups and Worldwide Governance Indicators, 2022. Coding, scripts and quotes: <code>data/world_relocation_test.md</code>, <code>methods/scripts/build_world_test.ps1</code>, github.com/wandilemthiyane94-jpg/mde-dataviz. Hollie and Wandile · Harvard GSD MDE · 2026.
+</footer>
+</div>
+
+<script src="vendor/d3.v7.min.js"></script>
+<script src="vendor/topojson-client.min.js"></script>
+<script src="vendor/world-50m.js"></script>
+<script src="world-test-data.js"></script>
+<script>
+(function(){
+const D = window.WORLDTEST, cases = D.cases, tests = D.tests;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const OUT = {success:['Success','--ok'], mixed:['Mixed','--camp'], failure:['Failure','--hit'], unknown:['Not assessed','--unk']};
+const LEAD = {gov_topdown:'Government top-down', gov_community_joint:'Government + community', community_initiated:'Community-initiated', ngo_donor_led:'NGO or donor-led', unknown:'Lead not documented'};
+const shape = l => l==='gov_topdown' ? d3.symbolSquare : (l==='community_initiated'||l==='gov_community_joint') ? d3.symbolCircle : l==='ngo_donor_led' ? d3.symbolTriangle : d3.symbolDiamond;
+const pretty = s => (s||'unknown').replace(/_/g,' ');
+
+// ---- legend ----
+const lg = d3.select('#legend');
+Object.entries(OUT).forEach(([k,[t,c]]) => { const s = lg.append('span'); s.append('svg').attr('width',14).attr('height',14).append('circle').attr('cx',7).attr('cy',7).attr('r',6).attr('fill', k==='unknown' ? 'none' : css(c)).attr('stroke', css(c)).attr('stroke-width',1.5); s.append('span').text(t); });
+['gov_topdown','community_initiated','ngo_donor_led'].forEach(k => { const s = lg.append('span'); s.append('svg').attr('width',14).attr('height',14).append('path').attr('transform','translate(7,7)').attr('d', d3.symbol(shape(k), 90)()).attr('fill','none').attr('stroke', css('--ink')).attr('stroke-width',1.3); s.append('span').text(k==='community_initiated' ? 'Community-led or joint' : LEAD[k]); });
+
+// ---- map ----
+const W = 960, H = 500;
+const land = topojson.feature(window.WORLD_TOPO, window.WORLD_TOPO.objects.countries);
+const proj = d3.geoNaturalEarth1().fitExtent([[6,6],[W-6,H-6]], {type:'Sphere'});
+const path = d3.geoPath(proj);
+const svg = d3.select('#map').append('svg').attr('viewBox',`0 0 ${W} ${H}`).attr('role','img').attr('aria-label','World map of 64 sampled relocations coloured by outcome');
+svg.append('path').attr('d', path({type:'Sphere'})).attr('fill', css('--ground')).attr('stroke', css('--rule'));
+svg.append('path').attr('d', path(land)).attr('fill', css('--land')).attr('stroke', css('--landedge')).attr('stroke-width',.5);
+const pts = cases.filter(c => c.lat !== '' && c.lat != null).map(c => { const p = proj([+c.lon, +c.lat]); return Object.assign({x:p[0], y:p[1]}, c); });
+// nudge overlapping marks apart so every case stays clickable (positions stay within ~10px of the true point)
+const sim = d3.forceSimulation(pts).force('x', d3.forceX(d=>d.x).strength(.4)).force('y', d3.forceY(d=>d.y).strength(.4)).force('c', d3.forceCollide(6.5)).stop();
+pts.forEach(d => { d.x0 = d.x; d.y0 = d.y; }); sim.force('x').x(d=>d.x0); sim.force('y').y(d=>d.y0); for (let i=0;i<160;i++) sim.tick();
+const durban = proj([31.02, -29.86]);
+svg.append('path').attr('transform',`translate(${durban})`).attr('d', d3.symbol(d3.symbolStar, 150)()).attr('fill', css('--water'));
+svg.append('text').attr('x', durban[0]+10).attr('y', durban[1]+4).attr('fill', css('--water')).attr('font-family','IBM Plex Mono, Consolas, monospace').attr('font-size',12).text('Durban');
+const g = svg.append('g').selectAll('g').data(pts).join('g').attr('class','dot').attr('tabindex',0).attr('role','button')
+  .attr('aria-label', d => `${d.place_origin}, ${d.country}: ${OUT[d.overall]?.[0]||'Not assessed'}`)
+  .attr('transform', d => `translate(${d.x},${d.y})`);
+g.append('path').attr('class','m').attr('d', d => d3.symbol(shape(d.lead), d.lead==='unknown' ? 40 : 80)())
+  .attr('fill', d => d.overall==='unknown' ? css('--ground') : css(OUT[d.overall][1]))
+  .attr('stroke', d => d.overall==='unknown' ? css('--unk') : css('--ground')).attr('stroke-width', d => d.overall==='unknown' ? 1.4 : .8);
+g.on('click', (e,d) => show(d)).on('keydown', (e,d) => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); show(d); } });
+
+const host = u => { try { return new URL(u).hostname.replace(/^www\./,''); } catch(e) { return 'source'; } };
+function show(d){
+  g.classed('sel', x => x === d);
+  const src = (d.sources||'').split(/\s+/).filter(Boolean);
+  const oc = OUT[d.overall] || OUT.unknown;
+  const row = (k,v) => `<dt>${k}</dt><dd>${v}</dd>`;
+  const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  document.getElementById('case').innerHTML =
+    `<span class="k">Case ${d.sample_no} · ${esc(d.country)}${d.year_start!=='unknown' ? ' · '+esc(d.year_start) : ''}</span>
+     <h3>${esc(d.place_origin)}</h3>
+     <dl>${row('Moved to', esc(d.place_destination||'not recorded'))}${row('Hazard', esc(d.hazard_original||d.hazard))}
+     ${row('Led by', LEAD[d.lead]||'Lead not documented')}${row('One owner', esc(pretty(d.single_owner)))}
+     ${row('Residents chose site', esc(pretty(d.resident_site_choice)))}${row('Hazard check binding', esc(pretty(d.hazard_binding)))}
+     ${row('New site', d.hazard_at_destination==='exposed_or_hit' ? '<span class="hit">hit or exposed</span>' : d.hazard_at_destination==='none_reported' ? 'no hazard reported' : 'not reported')}
+     ${row('Outcome', `<span style="color:var(${oc[1]})">${oc[0]}</span>`)}${row('Country', esc(d.income_group))}
+     ${src.length ? row('Source', src.slice(0,2).map((u,i)=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(host(u))}</a>`).join(' · ')) : ''}</dl>`;
+}
+show(pts.find(d => d.overall==='success' && d.lead==='gov_community_joint') || pts[0]);
+
+// ---- factor bars ----
+const FACT = [
+  ['community led or joint','Community-led or joint'],
+  ['residents chose site (yes/partial)','Residents helped choose the site'],
+  ['government top-down','Government top-down'],
+  ['hazard assessment binding (yes/partial)','Hazard check binding on the site'],
+  ['above-median government effectiveness','More effective government (WGI)'],
+  ['secure tenure at destination','Secure tenure at the new site'],
+  ['clear lead body (single_owner yes/partial)','One clear lead agency'],
+  ['higher-income country (UMIC/HIC)','Richer country (upper-middle or high income)']
+];
+function bars(outcome){
+  const host = d3.select('#bars'); host.selectAll('*').remove();
+  const w = Math.max(320, host.node().clientWidth), rowH = 62, top = 22, padR = 118;
+  const x = d3.scaleLinear([0,100],[8, w - padR]);
+  const s = host.append('svg').attr('viewBox',`0 0 ${w} ${top + FACT.length*rowH + 8}`).attr('role','img').attr('aria-label','Bad-outcome rate with and without each feature');
+  [0,50,100].forEach(v => { s.append('line').attr('x1',x(v)).attr('x2',x(v)).attr('y1',top-6).attr('y2',top+FACT.length*rowH).attr('stroke',css('--rule'));
+    s.append('text').attr('x',x(v)).attr('y',12).attr('text-anchor', v===0?'start':v===100?'end':'middle').text(v+'%'); });
+  FACT.forEach(([key,label],i) => {
+    const t = tests.find(r => r.stratum==='all' && r.factor===key && r.outcome===outcome); if (!t) return;
+    const y0 = top + i*rowH, y = y0 + 38;
+    const sig = t.fisher_p !== '' && +t.fisher_p < 0.1;
+    s.append('text').attr('class','lab').attr('x',8).attr('y',y0+18).text(label);
+    if (t.with_factor_n === 0 || t.without_factor_n === 0) { s.append('text').attr('x',8).attr('y',y+4).text('not enough cases'); return; }
+    const a = +t.with_factor_bad_pct, b = +t.without_factor_bad_pct;
+    s.append('line').attr('x1',x(Math.min(a,b))).attr('x2',x(Math.max(a,b))).attr('y1',y).attr('y2',y).attr('stroke', css('--muted')).attr('stroke-width',2);
+    s.append('circle').attr('cx',x(b)).attr('cy',y).attr('r',7).attr('fill',css('--ground')).attr('stroke',css('--ink')).attr('stroke-width',2);
+    s.append('circle').attr('cx',x(a)).attr('cy',y).attr('r',7).attr('fill', a < b ? css('--ok') : a > b ? css('--hit') : css('--muted'));
+    s.append('text').attr('class', sig ? 'strong' : null).attr('x', w - padR + 14).attr('y', y+4)
+      .text(`${a}% · ${b}%`);
+    s.append('text').attr('x', w - padR + 14).attr('y', y+19).attr('font-size',11)
+      .text(`n=${t.n}  p=${(+t.fisher_p).toFixed(3)}`);
+  });
+}
+let cur = 'judged failure or mixed';
+document.querySelectorAll('.seg button').forEach(bn => bn.addEventListener('click', () => {
+  cur = bn.dataset.o; document.querySelectorAll('.seg button').forEach(o => o.setAttribute('aria-pressed', o===bn)); bars(cur); }));
+bars(cur); let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => bars(cur), 120); });
+
+// ---- coverage ----
+const COV = [['lead','Who led'],['single_owner','One owner, end to end'],['resident_site_choice','Residents chose the site'],['hazard_binding','Hazard check binding'],['tenure_destination','Tenure at the new site'],['hazard_at_destination','Was the new site hit?'],['overall','Overall judgement'],['return_to_origin','Did people return?']];
+(function(){
+  const host = d3.select('#cov'), w = 760, rowH = 34, lw = 230;
+  const x = d3.scaleLinear([0,cases.length],[lw, w-40]);
+  const s = host.append('svg').attr('viewBox',`0 0 ${w} ${COV.length*rowH+24}`).attr('role','img').attr('aria-label','How many of the 64 cases document each variable');
+  COV.forEach(([k,lab],i) => { const known = cases.filter(c => c[k] && c[k] !== 'unknown').length, y = 10 + i*rowH;
+    s.append('text').attr('x',0).attr('y',y+15).attr('fill',css('--ink')).text(lab);
+    s.append('rect').attr('x',x(0)).attr('y',y+2).attr('width',x(cases.length)-x(0)).attr('height',18).attr('fill','none').attr('stroke',css('--rule'));
+    s.append('rect').attr('x',x(0)).attr('y',y+2).attr('width',x(known)-x(0)).attr('height',18).attr('fill',css('--water')).attr('opacity',.75);
+    s.append('text').attr('x',x(cases.length)+6).attr('y',y+15).text(known); });
+  s.append('text').attr('x',lw).attr('y',COV.length*rowH+20).text('filled = documented, of 64 cases');
+})();
+})();
+</script>

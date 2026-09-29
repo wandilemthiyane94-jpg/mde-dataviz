@@ -1,0 +1,1548 @@
+{
+    "batch":  1,
+    "cases":  [
+                  {
+                      "sample_no":  "1",
+                      "country":  "Mexico",
+                      "place_origin":  "Teziutlán (multiple)",
+                      "place_destination":  "Teziutlán (multiple)",
+                      "year_start":  {
+                                         "code":  "1999",
+                                         "evidence":  "Posterior al impacto del desastre, funcionarios del gobierno local y federal toman la decisión de reubicar a 350 familias que se vieron afectadas en sus viviendas, o que sus casas se encontraban en zonas en riesgo. [disaster = October 1999 rains; land agreement \u0027aproximadamente seis días después del desastre\u0027]",
+                                         "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                         "confidence":  "high"
+                                     },
+                      "households":  {
+                                         "code":  "350 families (decision); 349 houses built at Lomas de Ayotzingo",
+                                         "evidence":  "toman la decisión de reubicar a 350 familias ... La planeación de Ayotzingo estuvo a cargo del IPV y en el trazo original del plano se contemplaron 351 viviendas, aunque sólo se construyeron 349.",
+                                         "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                         "confidence":  "high"
+                                     },
+                      "trigger":  {
+                                      "code":  "post_disaster",
+                                      "evidence":  "Después de las lluvias de octubre de 1999, un gran número de viviendas tuvieron graves afectaciones ... Esta colonia que fue construida específicamente para reubicar a los damnificados del municipio de Teziutlán.",
+                                      "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                      "confidence":  "high"
+                                  },
+                      "lead":  {
+                                   "code":  "gov_topdown",
+                                   "evidence":  "el Presidente Ernesto Zedillo ... hizo el anuncio de que todas las familias afectadas serían reubicadas y que sería el Presidente Municipal José Sánchez Tinoco el encargado de buscar el terreno ... Uno de los principales problemas que se presentó fue que no se tomó en cuenta la opinión de la población que iba a ser reubicada en la planeación de la nueva colonia.",
+                                   "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                   "confidence":  "high"
+                               },
+                      "single_owner":  {
+                                           "code":  "no",
+                                           "evidence":  "El proceso de reubicación fue iniciado por la Secretaría de Desarrollo Social (SEDESOL) y posteriormente, dos semanas después de que inicio el proceso, se delegó la responsabilidad al Instituto Poblano de la Vivienda (IPV) ... La compra venta del terreno fue realizada por el H. Ayuntamiento del Municipio de Teziutlán ... se construyó la colonia Lomas de Ayotzingo, con el presupuesto federal, administrado por SEDESOL, y posteriormente por el Instituto Poblano de la Vivienda (IPV).",
+                                           "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                           "confidence":  "medium"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "no",
+                                                   "evidence":  "sería el Presidente Municipal José Sánchez Tinoco el encargado de buscar el terreno ... Para la elección del terreno donde se construiría Ayotzingo se evaluaron tres probables opciones ... no se tomó en cuenta la opinión de la población que iba a ser reubicada en la planeación de la nueva colonia.",
+                                                   "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                                   "confidence":  "high"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "secure",
+                                                 "evidence":  "La escrituración de las casas se efectuó hasta el año 2008 ... De acuerdo con la información proporcionada por los habitantes de 188 viviendas, 159 de ellas son propias, 21 rentadas y ocho prestadas",
+                                                 "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                                 "confidence":  "medium"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "no",
+                                             "evidence":  "Es importante aclarar que para la elección del predio no se realizó ningún tipo de estudio.",
+                                             "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                             "confidence":  "high"
+                                         },
+                      "funding":  {
+                                      "code":  "emergency_adhoc",
+                                      "evidence":  "Las casas debían ser evaluadas para de esta manera determinar si eran candidatos para ser beneficiarios de alguno de los 6 subprogramas con los que contaba el Programa Emergente de Vivienda de Puebla ... con el presupuesto federal, administrado por SEDESOL",
+                                      "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                      "confidence":  "medium"
+                                  },
+                      "distance":  {
+                                       "code":  "unknown",
+                                       "evidence":  "Se realizó dentro del mismo municipio de Teziutlán en el Rancho de Ayotzingo, al noreste de la cabecera municipal [no distance in km stated]",
+                                       "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                       "confidence":  "low"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "exposed_or_hit",
+                                                    "evidence":  "Del total de las casas de Ayotzingo, 28 se encuentran en riesgo por inundación, ya que se construyeron bajo nivel de calle. [also: ocho de las viviendas, de las manzanas 13 y 14, se encontraban en terrenos inestables]",
+                                                    "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                                    "confidence":  "medium"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "some",
+                                               "evidence":  "no se les pidió que se entregaran las escrituras de las viviendas que dejaban, lo cual se convirtió en un problema a futuro, ya que algunas personas, posteriormente volvieron a habitar sus antiguas casas situadas aún en zona de riesgo.",
+                                               "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                               "confidence":  "medium"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "unknown",
+                                          "evidence":  "El comercio en Ayotzingo es poco regular, lo cual es expresión de una fase de configuración del tejido social que aún está pendiente. [no before/after livelihood comparison given; marginación index is lower in Ayotzingo than La Aurora]",
+                                          "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                          "confidence":  "low"
+                                      },
+                      "overall":  {
+                                      "code":  "mixed",
+                                      "evidence":  "El proceso de reubicación fue irregular por la falta de capacidad administrativa y de planeación ... las condiciones de la población afectada, de alguna manera mejoraron ... todavía no es factible, con los elementos considerados hasta este momento, determinar el grado de éxito de la reubicación. || [para] Global Press Journal, citing a study in the journal Exploraciones: ten years later and despite improvements, residents still felt abandoned; many do not want to live there but for many it is their only option.",
+                                      "url":  "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                      "confidence":  "low"
+                                  },
+                      "sources":  [
+                                      "https://tesiunamdocumentos.dgb.unam.mx/ptd2015/noviembre/0738056/0738056.pdf",
+                                      "https://globalpressjournal.com/americas/mexico/post-flood-relocation-efforts-trigger-second-crisis/es/index.html"
+                                  ],
+                      "notes":  "Coded on the main relocation site, Lomas de Ayotzingo (Salinas Torres 2015, UNAM thesis). The rows file lists the destination as \u0027Teziutlán (multiple)\u0027; the Programa Emergente de Vivienda also had on-site subprograms, but Ayotzingo is the purpose-built relocation colony. The cited Lavell et al. 2015 DPU/FLACSO PDF returned HTTP 403 and was not read. The academia.edu paper \u0027Los damnificados-reubicados de Teziutlán a 10 años\u0027 was also blocked (403). Overall: the thesis explicitly declines to judge success, so \u0027mixed\u0027 is low confidence (process irregular, some improvements, residents dissatisfied). Global Press page was read in Spanish via a translating fetch, so its evidence is marked [para]. Residents formed committees, but only to relay information and later to contest reduced material lists, not to co-decide."
+                  },
+                  {
+                      "sample_no":  "2",
+                      "country":  "Philippines",
+                      "place_origin":  "Cagayan de Oro (multiple)",
+                      "place_destination":  "Calaanan Site (many sub-villages)",
+                      "year_start":  {
+                                         "code":  "2012",
+                                         "evidence":  "[para] Habitat for Humanity Philippines broke ground on 18 January 2012 for permanent housing for typhoon Sendong victims at the Calaanan Relocation Site, barangay Canitoan. || On the outskirts, the government first allocated around 21 hectares of its own city land in Calaanan. The city land was first given for tents, then permanent shelter and some for transitional settlements.",
+                                         "url":  "https://cagayandeorocityinformationoffice.wordpress.com/2012/01/19/habitat-housing-breaks-ground/",
+                                         "confidence":  "medium"
+                                     },
+                      "households":  {
+                                         "code":  "1,500 housing units (Habitat component)",
+                                         "evidence":  "Habitat for Humanity Philippines in partnership with the city government and government shelter agencies such as HUDCC, NHA, DSWD, DEPWH ... 1,500 quadruplex-type housing units",
+                                         "url":  "https://cagayandeorocityinformationoffice.wordpress.com/2012/01/19/habitat-housing-breaks-ground/",
+                                         "confidence":  "medium"
+                                     },
+                      "trigger":  {
+                                      "code":  "post_disaster",
+                                      "evidence":  "Many evacuees returned to rehabilitate their homes, while others were not permitted to return as they formerly lived in government declared \u0027no-build zones\u0027 near the river.",
+                                      "url":  "http://shelterprojects.org/files/CRS-Urban-Transitional-Shelter_Philippines_Oct-2012.pdf",
+                                      "confidence":  "high"
+                                  },
+                      "lead":  {
+                                   "code":  "gov_topdown",
+                                   "evidence":  "The study of Carrasco et al. (2016) examines the actual situation of four villages located in the Barangay Calaanan resettlement site in Cagayan de Oro ... Since it was a government-initiated program, its approach was top-down in terms of decision-making and coordination.",
+                                   "url":  "https://www.rsisinternational.org/journals/ijrias/uploads/vol10-iss12-pg703-717-202601_pdf.pdf",
+                                   "confidence":  "medium"
+                               },
+                      "single_owner":  {
+                                           "code":  "partial",
+                                           "evidence":  "the role of LGU Cagayan de Oro City was enormous as its staff was directly responsible for the resettlement and follow-up of the relocated beneficiaries even after their final stay in the new site. || [para] permanent housing spearheaded by Habitat for Humanity Philippines in partnership with the city government and national shelter agencies HUDCC, NHA, DSWD, DPWH.",
+                                           "url":  "https://www.rsisinternational.org/journals/ijrias/uploads/vol10-iss12-pg703-717-202601_pdf.pdf",
+                                           "confidence":  "medium"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "no",
+                                                   "evidence":  "On the outskirts, the government first allocated around 21 hectares of its own city land in Calaanan. || Since it was a government-initiated program, its approach was top-down in terms of decision-making and coordination.",
+                                                   "url":  "http://shelterprojects.org/files/CRS-Urban-Transitional-Shelter_Philippines_Oct-2012.pdf",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "insecure",
+                                                 "evidence":  "[para] Aug 2025: the mayor signed Deeds of Absolute Sale for 20 fully paid households in Habitat Phase 3 Calaanan; beneficiaries may not sell; the 1,500 individual titles remain registered in the city\u0027s name until recipients complete payment.",
+                                                 "url":  "https://www.cagayandeoro.gov.ph/index.php/item/2992-sendong-survivors-sa-habitat-for-humanity-phase-3-calaanan-makadawat-na-og-titulo-sa-yuta.html",
+                                                 "confidence":  "low"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "unknown",
+                                             "evidence":  "All potential sites should be evaluated by the agency on geo-sciences for hazard assessment ... if the site is planned as a future permanent settlement, the permission is required. [a general MGB clearance rule; no source confirms that Calaanan was screened]",
+                                             "url":  "http://shelterprojects.org/files/CRS-Urban-Transitional-Shelter_Philippines_Oct-2012.pdf",
+                                             "confidence":  "low"
+                                         },
+                      "funding":  {
+                                      "code":  "mixed",
+                                      "evidence":  "[para] city government provided its own land in Calaanan; housing built by Habitat for Humanity Philippines with the city and national shelter agencies (HUDCC, NHA, DSWD, DPWH); CRS and IOM also given parcels for transitional shelter.",
+                                      "url":  "https://cagayandeorocityinformationoffice.wordpress.com/2012/01/19/habitat-housing-breaks-ground/",
+                                      "confidence":  "medium"
+                                  },
+                      "distance":  {
+                                       "code":  "unknown",
+                                       "evidence":  "[para] Aug 2025 mayor\u0027s remarks: beneficiaries at first complained that the site was far (layo). [no km stated]",
+                                       "url":  "https://www.cagayandeoro.gov.ph/index.php/item/2992-sendong-survivors-sa-habitat-for-humanity-phase-3-calaanan-makadawat-na-og-titulo-sa-yuta.html",
+                                       "confidence":  "low"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "exposed_or_hit",
+                                                    "evidence":  "[para] SunStar, 25 Jan 2014: a landslide damaged 8 homes at the LGU-Crayola resettlement site in sitio Calaanan, Barangay Canitoan, and residents were moved to an evacuation centre; city engineering officials described the area as landslide-prone.",
+                                                    "url":  "https://www.sunstar.com.ph/more-articles/landslide-feared-in-oro-relocation-site",
+                                                    "confidence":  "medium"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "unknown",
+                                               "evidence":  "In practice in Cagayan de Oro, the no-build zone has been largely been respected as people are afraid of the risks, though in Iligan City, people are reoccupying the no-build zone. [2012 general statement, not about Calaanan relocatees returning]",
+                                               "url":  "http://shelterprojects.org/files/CRS-Urban-Transitional-Shelter_Philippines_Oct-2012.pdf",
+                                               "confidence":  "low"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "worse",
+                                          "evidence":  "The data would suggest that the sites where they are relocated do not generally provide them significant economic opportunities ... especially those living in Cagayan de Oro City ... Once relocated, they were resettled in remote places with limited access to livelihood means.",
+                                          "url":  "https://www.rsisinternational.org/journals/ijrias/uploads/vol10-iss12-pg703-717-202601_pdf.pdf",
+                                          "confidence":  "medium"
+                                      },
+                      "overall":  {
+                                      "code":  "mixed",
+                                      "evidence":  "The findings indicate that the current situation of the resettled families is not generally in good economic shape ... They have been able to socially adapt to the new environment ... Although it can be said that they have already \u0027bounced back\u0027 after the disaster in many ways, but a complete recovery may still be a work in progress",
+                                      "url":  "https://www.rsisinternational.org/journals/ijrias/uploads/vol10-iss12-pg703-717-202601_pdf.pdf",
+                                      "confidence":  "medium"
+                                  },
+                      "sources":  [
+                                      "https://www.crs.org/sites/default/files/2025-03/cs13_-_philippines.pdf",
+                                      "http://shelterprojects.org/files/CRS-Urban-Transitional-Shelter_Philippines_Oct-2012.pdf",
+                                      "https://cagayandeorocityinformationoffice.wordpress.com/2012/01/19/habitat-housing-breaks-ground/",
+                                      "https://www.cagayandeoro.gov.ph/index.php/item/2992-sendong-survivors-sa-habitat-for-humanity-phase-3-calaanan-makadawat-na-og-titulo-sa-yuta.html",
+                                      "https://www.sunstar.com.ph/more-articles/landslide-feared-in-oro-relocation-site",
+                                      "https://www.rsisinternational.org/journals/ijrias/uploads/vol10-iss12-pg703-717-202601_pdf.pdf"
+                                  ],
+                      "notes":  "Tropical Storm Washi/Sendong, Dec 2011. The Carrasco et al. papers in the rows file (ScienceDirect/ResearchGate) were paywalled or blocked (403). Their content is used only as summarised in the IJRIAS 2026 paper, which covers Iligan and Cagayan de Oro together, so the overall and livelihoods codes lean on CdO-specific statements where they exist. The CRS quotes come from the CRS/Hirano 2012 report, via the shelterprojects.org copy (the CRS tools-research URL returned 404); the trigger, site-choice and hazard_binding quotes are from that report. Lead could arguably be ngo_donor_led, since Habitat for Humanity \u0027spearheaded\u0027 construction, but it was coded gov_topdown following the IJRIAS characterisation of a government-initiated, top-down programme. Tenure was coded insecure (low confidence) because titles are held by the city pending amortisation; it may be better treated as rent-to-own. The SunStar and cagayandeoro.gov.ph pages were read through a summarising fetch, so their evidence is marked [para]. The SunStar landslide was at the LGU-Crayola sub-site of Calaanan."
+                  },
+                  {
+                      "sample_no":  "3",
+                      "country":  "Colombia",
+                      "place_origin":  "Ciudad Bolívar (UPZ Ismael Perdomo, Altos de Estancia)",
+                      "place_destination":  "Multiple",
+                      "year_start":  {
+                                         "code":  "2004",
+                                         "evidence":  "[para] Since 2004 the Caja de la Vivienda Popular has resettled households, achieving \u0027más del 92% de los reasentamientos\u0027.",
+                                         "url":  "https://bogota.gov.co/mi-ciudad/habitat/habitat-se-pronuncia-sobre-situacion-en-altos-de-la-estancia",
+                                         "confidence":  "medium"
+                                     },
+                      "households":  {
+                                         "code":  "3,000 households (as of 2015)",
+                                         "evidence":  "177 de estas familias están vinculadas al Programa de Reasentamiento del Distrito y se encontraban dentro de los 3000 hogares relocalizados de Altos de la Estancia -el mayor deslizamiento urbano en América Latina (73 hectáreas)-",
+                                         "url":  "https://bogota.gov.co/mi-ciudad/habitat/techos-dignos-y-seguros-para-600-personas-que-vivian-en-zonas-de-alto",
+                                         "confidence":  "medium"
+                                     },
+                      "trigger":  {
+                                      "code":  "pre_emptive",
+                                      "evidence":  "[para] The 72.24 ha polygon lies in a zone at risk of \u0027remoción en masa\u0027 and is unfit for housing; resettlement is under the District\u0027s programme for non-mitigable high-risk zones.",
+                                      "url":  "https://bogota.gov.co/mi-ciudad/habitat/habitat-se-pronuncia-sobre-situacion-en-altos-de-la-estancia",
+                                      "confidence":  "low"
+                                  },
+                      "lead":  {
+                                   "code":  "gov_topdown",
+                                   "evidence":  "El Distrito ha gestionado procesos de reasentamiento para garantizar alternativas de vivienda, en aras de preservar la vida y el bienestar de las familias. ... En mayo de 2020 se realizaron desalojos que generaron controversia",
+                                   "url":  "https://bogota.gov.co/mi-ciudad/habitat/firma-del-pacto-altos-de-la-estancia-en-ciudad-bolivar",
+                                   "confidence":  "low"
+                               },
+                      "single_owner":  {
+                                           "code":  "partial",
+                                           "evidence":  "la Caja de la Vivienda Popular les otorgó el Valor Único de Reconocimiento (VUR) ... || [2020 project incl. Altos de la Estancia families] Valor Único de Reconocimiento, cofinanciado por el Subsidio de Vivienda que otorga la Secretaria Distrital de Habitat y el programa VIPA del Ministerio de Vivienda Ciudad y Territorio.",
+                                           "url":  "https://bogota.gov.co/mi-ciudad/entrega-de-viviendas-en-ciudad-bolivar",
+                                           "confidence":  "medium"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "partial",
+                                                   "evidence":  "Las familias beneficiadas de Arboleda Santa Teresita se acogieron, inicialmente, a la relocalización transitoria ofrecida por el Distrito: recibieron el pago de un arriendo temporal y salieron del predio en riesgo, mientras se realizaba la selección de vivienda definitiva. || [para, current CVP programme] the VUR lets families acquire replacement housing, new or used.",
+                                                   "url":  "https://bogota.gov.co/mi-ciudad/habitat/caja-de-vivienda-entrego-36-viviendas-en-arboleda-de-santa-teresita",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "secure",
+                                                 "evidence":  "297 familias que vivían en alto riesgo cumplen su sueño de tener vivienda propia ... tras vivir años en zonas de alto riesgo, como Altos de la Estancia, Arboleda, Santa Teresita ...",
+                                                 "url":  "https://bogota.gov.co/mi-ciudad/entrega-de-viviendas-en-ciudad-bolivar",
+                                                 "confidence":  "medium"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "yes",
+                                             "evidence":  "[para] CVP programme (Decreto 330 de 2020): replacement housing must be \u0027legally viable and technically safe\u0027, outside zones of mass movement, landslide or flooding risk.",
+                                             "url":  "https://cvp.gov.co/programa-de-reasentamientos",
+                                             "confidence":  "low"
+                                         },
+                      "funding":  {
+                                      "code":  "standing_programme",
+                                      "evidence":  "177 de estas familias están vinculadas al Programa de Reasentamiento del Distrito ... la Caja de la Vivienda Popular les otorgó el Valor Único de Reconocimiento (VUR) por 50 SMLMV aproximadamente",
+                                      "url":  "https://bogota.gov.co/mi-ciudad/habitat/techos-dignos-y-seguros-para-600-personas-que-vivian-en-zonas-de-alto",
+                                      "confidence":  "medium"
+                                  },
+                      "distance":  {
+                                       "code":  "unknown",
+                                       "evidence":  "[para] destinations vary: El Ensueño – El Paraíso and Arborizadora Baja (Ciudad Bolívar), Arboleda Santa Teresita (San Cristóbal); no distances stated.",
+                                       "url":  "https://bogota.gov.co/mi-ciudad/entrega-de-viviendas-en-ciudad-bolivar",
+                                       "confidence":  "low"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "unknown",
+                                                    "evidence":  "No source read reports hazards at the destination housing.",
+                                                    "url":  "",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "unknown",
+                                               "evidence":  "[para] After the resettlements, 478 illegal occupations were recorded in the polygon; 394 households were identified, 291 accepted Arriendo Solidario. [the sources do not say whether the occupants are returning resettled families]",
+                                               "url":  "https://bogota.gov.co/mi-ciudad/habitat/habitat-se-pronuncia-sobre-situacion-en-altos-de-la-estancia",
+                                               "confidence":  "low"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "unknown",
+                                          "evidence":  "No source read addresses livelihoods of resettled families.",
+                                          "url":  "",
+                                          "confidence":  "low"
+                                      },
+                      "overall":  {
+                                      "code":  "unknown",
+                                      "evidence":  "No evaluative judgement found in sources read; official sources report \u003e92% of resettlements completed.",
+                                      "url":  "https://bogota.gov.co/mi-ciudad/habitat/habitat-se-pronuncia-sobre-situacion-en-altos-de-la-estancia",
+                                      "confidence":  "low"
+                                  },
+                      "sources":  [
+                                      "https://bogota.gov.co/mi-ciudad/habitat/habitat-se-pronuncia-sobre-situacion-en-altos-de-la-estancia",
+                                      "https://bogota.gov.co/mi-ciudad/habitat/techos-dignos-y-seguros-para-600-personas-que-vivian-en-zonas-de-alto",
+                                      "https://bogota.gov.co/mi-ciudad/entrega-de-viviendas-en-ciudad-bolivar",
+                                      "https://bogota.gov.co/mi-ciudad/habitat/caja-de-vivienda-entrego-36-viviendas-en-arboleda-de-santa-teresita",
+                                      "https://bogota.gov.co/mi-ciudad/habitat/firma-del-pacto-altos-de-la-estancia-en-ciudad-bolivar",
+                                      "https://cvp.gov.co/programa-de-reasentamientos"
+                                  ],
+                      "notes":  "The cited source (Robles 2011 thesis, UNAL) could not be read: Scribd showed only the description, vdocuments returned 404 and the GFDRR/World Bank Colombia resettlement PDFs were blocked or too large. A Universidad del Rosario thesis on the resettlement could not be downloaded (socket closed). Coding relies on Bogotá district press releases (2015–2021) and the current CVP programme page. The hazard_binding and resident_site_choice evidence describes the programme as it now stands (Decreto 330/2020), not necessarily the 2004–2005 period, hence low confidence. Trigger is pre_emptive at low confidence: the district frames it as resettlement from a non-mitigable risk zone, but one source calls it \u0027el mayor deslizamiento urbano\u0027, so an active landslide was under way. Some bogota.gov.co pages were read through a summarising fetch; the quoted Spanish strings are as the fetch returned them."
+                  },
+                  {
+                      "sample_no":  "4",
+                      "country":  "Sri Lanka",
+                      "place_origin":  "Naduvuthu",
+                      "place_destination":  "12k",
+                      "year_start":  {
+                                         "code":  "2006",
+                                         "evidence":  "Naduvuththu village is situated in Kinniya DSD, Trincomalee district. It is a relocated housing scheme for Tsunami affected families, established in 2006.",
+                                         "url":  "http://drr.vau.ac.lk/bitstream/handle/123456789/753/G.%20Vickneswaran.pdf?sequence=1\u0026isAllowed=y",
+                                         "confidence":  "high"
+                                     },
+                      "households":  {
+                                         "code":  "160",
+                                         "evidence":  "[para] Table 1 \u0027Profile of field sites\u0027: Naduvuthu (Trincomalee), Muslim, distance to nearest town 2 km, distance from original village 12 km, no. of households 160.",
+                                         "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                         "confidence":  "medium"
+                                     },
+                      "trigger":  {
+                                      "code":  "post_disaster",
+                                      "evidence":  "It is a relocated housing scheme for Tsunami affected families, established in 2006. People from several coastal villages in Kinnaiya division were brought to Naduvuththu for settlement.",
+                                      "url":  "http://drr.vau.ac.lk/bitstream/handle/123456789/753/G.%20Vickneswaran.pdf?sequence=1\u0026isAllowed=y",
+                                      "confidence":  "high"
+                                  },
+                      "lead":  {
+                                   "code":  "unknown",
+                                   "evidence":  "No source read names the agency that built or ran Naduvuthu.",
+                                   "url":  "",
+                                   "confidence":  "low"
+                               },
+                      "single_owner":  {
+                                           "code":  "unknown",
+                                           "evidence":  "resettlement and related activities were supported by a whole range of agencies, both local and foreign and they did not have the same kind of involvement in the resettlement and reconstruction process. [general statement across all ten study sites, not specific to Naduvuthu]",
+                                           "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                           "confidence":  "low"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "unknown",
+                                                   "evidence":  "People from several coastal villages in Kinnaiya division were brought to Naduvuththu for settlement. [does not say whether residents helped choose the site]",
+                                                   "url":  "http://drr.vau.ac.lk/bitstream/handle/123456789/753/G.%20Vickneswaran.pdf?sequence=1\u0026isAllowed=y",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "unknown",
+                                                 "evidence":  "No Naduvuthu-specific tenure information; the site-level land-rights score in Hettige et al. Appendix B is an image and could not be read.",
+                                                 "url":  "",
+                                                 "confidence":  "low"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "unknown",
+                                             "evidence":  "the authorities declared a buffer zone along the coast to prevent the affected families from setting down again near the coast. [rule applied to the origin, not screening of the destination]",
+                                             "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                             "confidence":  "low"
+                                         },
+                      "funding":  {
+                                      "code":  "unknown",
+                                      "evidence":  "No Naduvuthu-specific funding information found.",
+                                      "url":  "",
+                                      "confidence":  "low"
+                                  },
+                      "distance":  {
+                                       "code":  "5_to_50km",
+                                       "evidence":  "[para] Table 1: Naduvuthu, distance from original village 12 km.",
+                                       "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                       "confidence":  "medium"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "unknown",
+                                                    "evidence":  "No Naduvuthu-specific hazard information found.",
+                                                    "url":  "",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "unknown",
+                                               "evidence":  "Many of them have left their new settlements and returned to their former residential areas along the coast despite the risk of facing a similar disaster in the future. [general statement about Sri Lanka, not specific to Naduvuthu]",
+                                               "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                               "confidence":  "low"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "unknown",
+                                          "evidence":  "The relocated housing schemes are not situated near the sea, causing difficulties in livelihood for fishing communities. [general finding across the eight eastern schemes studied, not specific to Naduvuthu]",
+                                          "url":  "http://drr.vau.ac.lk/bitstream/handle/123456789/753/G.%20Vickneswaran.pdf?sequence=1\u0026isAllowed=y",
+                                          "confidence":  "low"
+                                      },
+                      "overall":  {
+                                      "code":  "unknown",
+                                      "evidence":  "a majority of the communities have achieved an above average recovery level, while three communities remain at a below average level ... all three of the latter category are in the East [the per-site scores in Figure 2 and Appendix B are images and could not be read, so Naduvuthu\u0027s score is unknown]",
+                                      "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                      "confidence":  "low"
+                                  },
+                      "sources":  [
+                                      "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                      "http://drr.vau.ac.lk/bitstream/handle/123456789/753/G.%20Vickneswaran.pdf?sequence=1\u0026isAllowed=y"
+                                  ],
+                      "notes":  "The rows file\u0027s destination \u002712k\u0027 matches Hettige et al. 2018 Table 1, where Naduvuthu is 12 km from the original village. Table 1 text came out of the PDF as columns, so households (160) and distance (12 km) were assigned by column order: 10 communities, Naduvuthu 9th and Sudaikudha 10th. That mapping fits the 12 and 2 km values given in the rows file for cases 4 and 7. Naduvuthu is in Kinniya DS Division, Trincomalee, and is Muslim-occupied. Site-level indicator scores (Appendix B, Fig. 2) are images and could not be read. Most process and outcome variables are unknown because the sources give no Naduvuthu-specific detail. The general statements quoted are not applied to the case."
+                  },
+                  {
+                      "sample_no":  "5",
+                      "country":  "Argentina",
+                      "place_origin":  "La Plata (Ringuelet neighbourhood)",
+                      "place_destination":  "Barrio Nuevo",
+                      "year_start":  {
+                                         "code":  "2015",
+                                         "evidence":  "[para] Residents of the Ciudad Oculta sector moved in March 2015 and those of the other sector in December 2015; the relocation was declared finished in the second half of 2018.",
+                                         "url":  "https://www.redalyc.org/journal/312/31264845006/html/",
+                                         "confidence":  "medium"
+                                     },
+                      "households":  {
+                                         "code":  "390 dwellings",
+                                         "evidence":  "En el segundo semestre de 2018 se dio por concluida la relocalización, con 390 viviendas en total",
+                                         "url":  "https://www.redalyc.org/journal/312/31264845006/html/",
+                                         "confidence":  "medium"
+                                     },
+                      "trigger":  {
+                                      "code":  "post_disaster",
+                                      "evidence":  "El presente trabajo se pregunta por las transformaciones producidas en los modos de habitar a partir de la reubicación de las familias que vivían a la ver del Arroyo El Gato (La Plata, 2013-2018). ... Se requería el espacio donde estaban emplazados los barrios involucrados para efectuar obra hidráulica [following the 2 April 2013 flood]",
+                                      "url":  "https://revistas.unlp.edu.ar/InvJov/article/view/7136",
+                                      "confidence":  "high"
+                                  },
+                      "lead":  {
+                                   "code":  "gov_topdown",
+                                   "evidence":  "el Instituto de la Vivienda de la Provincia de Buenos Aires (IVBA) puso en marcha una política para reubicar a las familias ... los vecinos no tuvieron demasiada incidencia sobre cómo iba a ser su vivienda, ellos solo comunicaban a las autoridades cuál era su composición familiar.",
+                                   "url":  "https://www.redalyc.org/journal/748/74864040017/html/",
+                                   "confidence":  "medium"
+                               },
+                      "single_owner":  {
+                                           "code":  "unknown",
+                                           "evidence":  "[para] Sources name the provincial housing institute (IVBA) as launching/directing the relocation and the Province of Buenos Aires as executing the hydraulic works, but do not say who held land acquisition and budget or whether one body was answerable end to end.",
+                                           "url":  "https://www.redalyc.org/journal/748/74864040017/html/",
+                                           "confidence":  "low"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "no",
+                                                   "evidence":  "[para] Bernat reports that the relocation policy curtailed and on some aspects did not enable resident participation (e.g. house design: \u0027cercenó y sobre algunos aspectos no habilitó\u0027), with no systematic participation mechanisms for territorial decisions; Aversa et al. note deficient public-participation mechanisms.",
+                                                   "url":  "https://www.redalyc.org/journal/312/31264845006/html/",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "unknown",
+                                                 "evidence":  "[para] Sources read mention the move to \u0027viviendas definitivas\u0027 with legal access to services but say nothing about titles/escrituras for the new houses.",
+                                                 "url":  "https://www.redalyc.org/journal/312/31264845006/html/",
+                                                 "confidence":  "low"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "unknown",
+                                             "evidence":  "La relocalización se realizó en un sector con cota de 3.50 m superior a la del arroyo, aunque cercano a una planta de tratamiento cloacal [site elevation stated, but no source says the site was selected or screened by a hazard assessment]",
+                                             "url":  "https://www.redalyc.org/journal/748/74864040017/html/",
+                                             "confidence":  "low"
+                                         },
+                      "funding":  {
+                                      "code":  "unknown",
+                                      "evidence":  "[para] Sources refer only to a \u0027plan de obras ejecutadas por la provincia de Buenos Aires\u0027 and the IVBA; no funding programme is named.",
+                                      "url":  "https://www.redalyc.org/journal/748/74864040017/html/",
+                                      "confidence":  "low"
+                                  },
+                      "distance":  {
+                                       "code":  "under_5km",
+                                       "evidence":  "el Barrio Nuevo se ubica a pocas cuadras del asentamiento. Está localizado del otro lado del arroyo",
+                                       "url":  "https://www.redalyc.org/journal/312/31264845006/html/",
+                                       "confidence":  "high"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "none_reported",
+                                                    "evidence":  "[para] No flooding of Barrio Nuevo is reported; Aversa et al. describe 2017 conditions of \u0027cloacas desbordadas, humedad y, cuando llovía, calles llenas de barro\u0027 (sanitation/mud problems, not a flood event).",
+                                                    "url":  "https://www.redalyc.org/journal/748/74864040017/html/",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "unknown",
+                                               "evidence":  "[para] Bernat notes families not adjacent to the stream still live in the old settlement and that there have been new land occupations (\u0027nuevas tomas de tierra\u0027) there, but does not say relocated families returned.",
+                                               "url":  "https://www.redalyc.org/journal/312/31264845006/html/",
+                                               "confidence":  "low"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "unknown",
+                                          "evidence":  "[para] Bernat notes most Ciudad Oculta families worked in cartoneo (waste picking) but sources read give no post-relocation livelihood outcome.",
+                                          "url":  "https://www.redalyc.org/journal/312/31264845006/html/",
+                                          "confidence":  "low"
+                                      },
+                      "overall":  {
+                                      "code":  "mixed",
+                                      "evidence":  "brindar una vivienda estable a la población, si bien resuelve ciertos problemas y genera mejores condiciones de vida, no es suficiente ... los vecinos del Nuevo Barrio ahora cuentan con una vivienda digna, pero están desconectados de la trama urbana",
+                                      "url":  "https://www.redalyc.org/journal/748/74864040017/html/",
+                                      "confidence":  "medium"
+                                  },
+                      "sources":  [
+                                      "https://www.redalyc.org/journal/748/74864040017/html/",
+                                      "https://www.redalyc.org/journal/312/31264845006/html/",
+                                      "https://revistas.unlp.edu.ar/InvJov/article/view/7136"
+                                  ],
+                      "notes":  "Relocation by the Buenos Aires provincial housing institute (IVBA) after the April 2013 flood, to clear the Arroyo El Gato margins for hydraulic works. Household figures vary by source and date: \u0027more than 300 families\u0027 (Bernat et al. 2019 abstract), ~100 families in Barrio Nuevo by mid-2017 (Aversa et al.), 390 dwellings at completion in 2018 (Bernat 2020); a search snippet mentioned 444 dwellings but I did not verify that. Full texts were read via Redalyc HTML through a summarising fetch tool, so some quotes may be lightly normalised. Resident site choice is coded from general statements about limited participation, not a specific statement about the site, so confidence is low."
+                  },
+                  {
+                      "sample_no":  "6",
+                      "country":  "Fiji",
+                      "place_origin":  "Vunisavisavi",
+                      "place_destination":  "Away from coast (partial relocation)",
+                      "year_start":  {
+                                         "code":  "2015",
+                                         "evidence":  "In late 2015, four households from the coastal village of Vunisavisavi retreated to new homes set back from the inundation zone.",
+                                         "url":  "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+                                         "confidence":  "high"
+                                     },
+                      "households":  {
+                                         "code":  "4 households",
+                                         "evidence":  "In late 2015, four households from the coastal village of Vunisavisavi retreated to new homes set back from the inundation zone.",
+                                         "url":  "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+                                         "confidence":  "high"
+                                     },
+                      "trigger":  {
+                                      "code":  "pre_emptive",
+                                      "evidence":  "In previous decades households retreated as the shoreline encroached. ... the Turaga ni Koro in Vunisavisavi explained that higher tides were a new problem from 10 years ago",
+                                      "url":  "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+                                      "confidence":  "medium"
+                                  },
+                      "lead":  {
+                                   "code":  "ngo_donor_led",
+                                   "evidence":  "United States Agency for International Development (USAID) provided US$120,000 for housing materials and construction through the Coastal Community Adaptation Project (C-CAP), with work sub-contracted to Habitat for Humanity Fiji. Community members provided labour for housing construction and meals for project workers.",
+                                   "url":  "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+                                   "confidence":  "high"
+                               },
+                      "single_owner":  {
+                                           "code":  "no",
+                                           "evidence":  "Unlike Vunidogoloa and Narikoso, the Fijian village of Vunisavisavi was relocated with the assistance of USAID. [McMichael et al.: funding via USAID C-CAP, work sub-contracted to Habitat for Humanity Fiji; no public body is described as running the retreat]",
+                                           "url":  "https://arena.org.au/in-fiji-vunisavisavi-on-the-edge/",
+                                           "confidence":  "low"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "unknown",
+                                                   "evidence":  "Households closest to the shore opted for relocation while those further away voted to address water scarcity. [villagers chose whether to relocate; no source says how the new house sites were chosen]",
+                                                   "url":  "https://arena.org.au/in-fiji-vunisavisavi-on-the-edge/",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "secure",
+                                                 "evidence":  "So, relocation and retreat within mataqali or yavusa land did not challenge territorial sovereignty, protected connection to place, had historical precedent, and enabled continuity of everyday practices and livelihoods",
+                                                 "url":  "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+                                                 "confidence":  "medium"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "yes",
+                                             "evidence":  "In late 2015, four new homes were completed that were set back from the inundation zone (projected for 2090).",
+                                             "url":  "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+                                             "confidence":  "medium"
+                                         },
+                      "funding":  {
+                                      "code":  "unknown",
+                                      "evidence":  "[para] Funded by a single donor project (USAID C-CAP, US$120,000) plus community labour; sources do not say whether this was a standing programme or ad hoc, and the codebook categories do not clearly fit.",
+                                      "url":  "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+                                      "confidence":  "low"
+                                  },
+                      "distance":  {
+                                       "code":  "under_5km",
+                                       "evidence":  "Four houses – including one for Pauline and her family – have already been built on the cliff that directly looks over Vunusavisavi.",
+                                       "url":  "https://talanoa.com.au/vunisavisavi/",
+                                       "confidence":  "medium"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "none_reported",
+                                                    "evidence":  "As the new houses were being completed, the spring the community relied on for water went dry, and villagers were forced to go to a neighbouring village to ask for water. [water scarcity reported; no flooding or other hazard at the new site reported]",
+                                                    "url":  "https://arena.org.au/in-fiji-vunisavisavi-on-the-edge/",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "unknown",
+                                               "evidence":  "[para] Arena reports the relocation effort \u0027risked being abandoned\u0027 because it did not address water scarcity, but no source reports relocated households returning.",
+                                               "url":  "https://arena.org.au/in-fiji-vunisavisavi-on-the-edge/",
+                                               "confidence":  "low"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "maintained_or_improved",
+                                          "evidence":  "In Vunisavisavi, short distance retreat meant villagers were able to continue kava production in nearby plantation land and to produce and sell woven mats.",
+                                          "url":  "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+                                          "confidence":  "medium"
+                                      },
+                      "overall":  {
+                                      "code":  "mixed",
+                                      "evidence":  "Short-distance retreat of a few households has limited disruption to daily lives, livelihoods and place attachment. (FMR) vs. \u0027We can live with sea-level rise, but we cannot live without water\u0027 and the relocation \u0027risked being abandoned because it did not adequately address water scarcity\u0027 (Arena)",
+                                      "url":  "https://www.fmreview.org/issue64/Pacific-mobilities/",
+                                      "confidence":  "medium"
+                                  },
+                      "sources":  [
+                                      "https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/Geographical%20Journal%20-%202019%20-%20McMichael%20-%20Planned%20relocation%20and%20everyday%20agency%20in%20low%E2%80%90lying%20coastal%20villages%20in%20Fiji.pdf",
+                                      "https://www.fmreview.org/issue64/Pacific-mobilities/",
+                                      "https://arena.org.au/in-fiji-vunisavisavi-on-the-edge/",
+                                      "https://talanoa.com.au/vunisavisavi/",
+                                      "https://blog.geographydirections.com/2019/07/23/planned-relocation-in-low-lying-coastal-villages-in-fiji/",
+                                      "https://www.policyforum.net/rising-seas-and-relocation-in-fiji/"
+                                  ],
+                      "notes":  "Partial retreat: 4 new homes built (and 7 existing houses cyclone-proofed) in late 2015 under USAID C-CAP, implemented by Habitat for Humanity Fiji, with community labour. Tenure is coded from McMichael et al.\u0027s statement covering all three study villages (retreat within mataqali/yavusa land), not a Vunisavisavi-specific statement. Single_owner = no because the sources describe a donor project with an NGO implementer and no public body running it; low confidence. The sources disagree on the overall judgement (limited disruption vs. maladaptive/water scarcity), so it is coded mixed. A search-engine summary said the move was \u0027community-initiated\u0027 and that \u0027no Ministry had complete responsibility\u0027, but I could not confirm this in any Vunisavisavi source (it seems to describe Vunidogoloa), so I did not use it. I did not access the Singh et al. 2020 chapter (paywalled)."
+                  },
+                  {
+                      "sample_no":  "7",
+                      "country":  "Sri Lanka",
+                      "place_origin":  "Sudaikudha",
+                      "place_destination":  "2k",
+                      "year_start":  {
+                                         "code":  "unknown",
+                                         "evidence":  "[para] The source says only that the settlements were established after the 2004 Indian Ocean Tsunami; no start year is given for Sudaikudha.",
+                                         "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                         "confidence":  "low"
+                                     },
+                      "households":  {
+                                         "code":  "108 households",
+                                         "evidence":  "Table 1. Profile of field sites ... Trincomalee, Eastern Province ... Sudaikudha 20 2 Tamil 108 [Distance to nearest town (km); Distance from original village (km); Ethnic group; No. of households]",
+                                         "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                         "confidence":  "high"
+                                     },
+                      "trigger":  {
+                                      "code":  "post_disaster",
+                                      "evidence":  "The field study on which this paper is based was conducted between May and September, 2017 in ten new settlements established in Eastern and Southern Sri Lanka after the 2004 Indian Ocean Tsunami.",
+                                      "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                      "confidence":  "high"
+                                  },
+                      "lead":  {
+                                   "code":  "unknown",
+                                   "evidence":  "[para] No site-specific information on who drove the Sudaikudha resettlement; the paper says generally that resettlement was supported by a whole range of local and foreign agencies.",
+                                   "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                   "confidence":  "low"
+                               },
+                      "single_owner":  {
+                                           "code":  "unknown",
+                                           "evidence":  "resettlement and related activities were supported by a whole range of agencies, both local and foreign and they did not have the same kind of involvement in the resettlement and reconstruction process. [general statement across all ten sites; nothing specific to Sudaikudha]",
+                                           "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                           "confidence":  "low"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "unknown",
+                                                   "evidence":  "[para] Not stated in the source.",
+                                                   "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "unknown",
+                                                 "evidence":  "[para] Land rights is one of the ten indicators, but the per-community scores (Appendix B) are an image I could not read; no Sudaikudha-specific tenure text.",
+                                                 "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                                 "confidence":  "low"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "partial",
+                                             "evidence":  "It is against this background that the authorities declared a buffer zone along the coast to prevent the affected families from setting down again near the coast. Many new settlements were built away from the coast",
+                                             "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                             "confidence":  "low"
+                                         },
+                      "funding":  {
+                                      "code":  "unknown",
+                                      "evidence":  "[para] Not stated for this site.",
+                                      "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                      "confidence":  "low"
+                                  },
+                      "distance":  {
+                                       "code":  "under_5km",
+                                       "evidence":  "Sudaikudha 20 2 Tamil 108 [Distance from original village (km) = 2]",
+                                       "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                       "confidence":  "high"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "unknown",
+                                                    "evidence":  "[para] Not stated for this site.",
+                                                    "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "unknown",
+                                               "evidence":  "Many of them have left their new settlements and returned to their former residential areas along the coast despite the risk of facing a similar disaster in the future. [general statement, not specific to Sudaikudha]",
+                                               "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                               "confidence":  "low"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "unknown",
+                                          "evidence":  "[para] The livelihood indicator score for Sudaikudha is in Appendix B (an image) that I could not read.",
+                                          "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                          "confidence":  "low"
+                                      },
+                      "overall":  {
+                                      "code":  "unknown",
+                                      "evidence":  "a majority of the communities have achieved an above average recovery level, while three communities remain at a below average level, namely below 2.5. It is note worthy that all three of the latter category are in the East of the Sri Lanka. [which three is shown only in Figure 2, which I could not read]",
+                                      "url":  "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                      "confidence":  "low"
+                                  },
+                      "sources":  [
+                                      "https://sparc.cmb.ac.lk/wp-content/uploads/2018/03/Prof.-Siri-Hettige-Community-level-indicators-of-long-term-disaster-recovery.pdf",
+                                      "https://www.sciencedirect.com/science/article/pii/S1877705818301929"
+                                  ],
+                      "notes":  "The only source is Hettige, Haigh \u0026 Amaratunga (2018); I read its text by extracting it from the PDF myself. Table 1 gives Sudaikudha (Trincomalee district, Tamil): 108 households, 2 km from the original village, 20 km from the nearest town. Per-community indicator scores (Appendix B) and the composite index (Figure 2) are images and could not be read, so the outcomes are unknown; Sudaikudha may or may not be one of the three eastern communities below 2.5. Hazard_binding = partial rests only on the national coastal buffer-zone rule, which the paper describes generally. Searches for other sources on Sudaikudha (and spellings Sudaikuda/Soodaikuda) found nothing. The ScienceDirect page returned 403, so I read the text from the author-hosted PDF."
+                  },
+                  {
+                      "sample_no":  "8",
+                      "country":  "Peru",
+                      "place_origin":  "Coalaque district (Amata)",
+                      "place_destination":  "Coalaque district (unknown)",
+                      "year_start":  {
+                                         "code":  "unknown",
+                                         "evidence":  "[para] Immediate relocation was first proposed in 2011 after exceptional rains of 28 Jan-5 Feb 2011 caused the landslide; CENEPRED\u0027s 2016 guide reports housing works handed over, but no start year for the move is given.",
+                                         "url":  "https://sigrid.cenepred.gob.pe/sigridv3/storage/biblioteca//17648_evaluacion-de-riesgos-por-movimientos-de-masas-sector-amata-proyecto-mejoramiento-del-servicio-de-informacion-para-la-gestion-del-riesgo-de-desastres-.pdf",
+                                         "confidence":  "low"
+                                     },
+                      "households":  {
+                                         "code":  "140 basic housing modules",
+                                         "evidence":  "Entrega de obras de reubicación: 140 Módulos Básicos de Vivienda, Instalación de Redes Eléctricas",
+                                         "url":  "http://sigrid.cenepred.gob.pe/docs/PARA%20PUBLICAR/CENEPRED/Guia%20Plan%20de%20Reasentamiento%20Poblacional.pdf",
+                                         "confidence":  "high"
+                                     },
+                      "trigger":  {
+                                      "code":  "post_disaster",
+                                      "evidence":  "En el 2011, entre el 28 de enero y el 05 de febrero fuertes precipitaciones excepcionales, afectaron el sur del país; siendo una de las zonas más afectadas el centro poblado de Amata. Donde el terreno se agrieto, llegándose a deslizar y a afectar varias viviendas ... plantea por primera vez la inmediata reubicación de la población",
+                                      "url":  "https://sigrid.cenepred.gob.pe/sigridv3/storage/biblioteca//17648_evaluacion-de-riesgos-por-movimientos-de-masas-sector-amata-proyecto-mejoramiento-del-servicio-de-informacion-para-la-gestion-del-riesgo-de-desastres-.pdf",
+                                      "confidence":  "high"
+                                  },
+                      "lead":  {
+                                   "code":  "unknown",
+                                   "evidence":  "Avances: Instalación Comisión Técnica Multisectorial. Transferencia de presupuesto de S/1´997,348.00 para reubicación del poblado de Amata. [government bodies involved; community role in decisions not described]",
+                                   "url":  "http://sigrid.cenepred.gob.pe/docs/PARA%20PUBLICAR/CENEPRED/Guia%20Plan%20de%20Reasentamiento%20Poblacional.pdf",
+                                   "confidence":  "low"
+                               },
+                      "single_owner":  {
+                                           "code":  "no",
+                                           "evidence":  "Instalación Comisión Técnica Multisectorial. Transferencia de presupuesto de S/1´997,348.00 para reubicación del poblado de Amata. ... Acciones pendientes: ... Titulación individualizada de lotes adjudicados a beneficiarios. Red de desagüe, alcantarillado y planta de tratamiento de aguas residuales (PIP 292987 / Viable ...)",
+                                           "url":  "http://sigrid.cenepred.gob.pe/docs/PARA%20PUBLICAR/CENEPRED/Guia%20Plan%20de%20Reasentamiento%20Poblacional.pdf",
+                                           "confidence":  "low"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "unknown",
+                                                   "evidence":  "Se ha observado un buen interés por las autoridades, directivos y pobladores en trasladarse y reubicarse a una zona segura [interest in relocating; no statement on who chose the site]",
+                                                   "url":  "http://sigrid.cenepred.gob.pe/docs/PARA%20PUBLICAR/GOREs/Moquegua/Estimacion%20de%20Riesgo%20Amata.pdf",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "insecure",
+                                                 "evidence":  "Acciones pendientes ... Titulación individualizada de lotes adjudicados a beneficiarios.",
+                                                 "url":  "http://sigrid.cenepred.gob.pe/docs/PARA%20PUBLICAR/CENEPRED/Guia%20Plan%20de%20Reasentamiento%20Poblacional.pdf",
+                                                 "confidence":  "medium"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "yes",
+                                             "evidence":  "Se ha realizado los Estudios Geológicos y Geotécnicos de la nueva zona de Reubicación definitiva de la Población de Amata (GRM, 2011); INGEMMET (2019): \u0027el terreno propuesto en Amata se considera apto para la reubicación. Sin embargo, este terreno deber ser utilizado únicamente para vivienda.\u0027",
+                                             "url":  "http://sigrid.cenepred.gob.pe/docs/PARA%20PUBLICAR/GOREs/Moquegua/Estimacion%20de%20Riesgo%20Amata.pdf",
+                                             "confidence":  "medium"
+                                         },
+                      "funding":  {
+                                      "code":  "unknown",
+                                      "evidence":  "Transferencia de presupuesto de S/1´997,348.00 para reubicación del poblado de Amata. [the source programme of the transfer is not named]",
+                                      "url":  "http://sigrid.cenepred.gob.pe/docs/PARA%20PUBLICAR/CENEPRED/Guia%20Plan%20de%20Reasentamiento%20Poblacional.pdf",
+                                      "confidence":  "low"
+                                  },
+                      "distance":  {
+                                       "code":  "unknown",
+                                       "evidence":  "[para] No source read gives the distance between old Amata and the relocation site.",
+                                       "url":  "http://sigrid.cenepred.gob.pe/docs/PARA%20PUBLICAR/CENEPRED/Guia%20Plan%20de%20Reasentamiento%20Poblacional.pdf",
+                                       "confidence":  "low"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "exposed_or_hit",
+                                                    "evidence":  "permitió identificar en la zona de reubicación del centro poblado Amata los siguientes peligros geológicos ... a) Peligros por erosión de laderas (Cárcavas) ... b) Peligros por caída o desprendimiento de rocas ... c) Peligros por deslizamientos ... debido a que, a menos de 500 m al noreste de la zona de reubicación, se observa un gran deslizamiento antiguo. Además, este deslizamiento ha presentado reactivación ... d) Peligro volcánico",
+                                                    "url":  "https://sigrid.cenepred.gob.pe/sigridv3/storage/biblioteca//17648_evaluacion-de-riesgos-por-movimientos-de-masas-sector-amata-proyecto-mejoramiento-del-servicio-de-informacion-para-la-gestion-del-riesgo-de-desastres-.pdf",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "some",
+                                               "evidence":  "Declarar la zona intangible, debido a que se ha identificado que los pobladores emplean algunas de las infraestructuras que se han afectado por el deslizamiento como corrales para sus animales: además que la población usa los caminos de herradura para movilizar a sus animales ... teniendo que pasar por medio de la zona de deslizamiento.",
+                                               "url":  "https://sigrid.cenepred.gob.pe/sigridv3/storage/biblioteca//17648_evaluacion-de-riesgos-por-movimientos-de-masas-sector-amata-proyecto-mejoramiento-del-servicio-de-informacion-para-la-gestion-del-riesgo-de-desastres-.pdf",
+                                               "confidence":  "medium"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "unknown",
+                                          "evidence":  "[para] Not stated in the sources read.",
+                                          "url":  "https://sigrid.cenepred.gob.pe/sigridv3/storage/biblioteca//17648_evaluacion-de-riesgos-por-movimientos-de-masas-sector-amata-proyecto-mejoramiento-del-servicio-de-informacion-para-la-gestion-del-riesgo-de-desastres-.pdf",
+                                          "confidence":  "low"
+                                      },
+                      "overall":  {
+                                      "code":  "unknown",
+                                      "evidence":  "[para] No source read gives an overall judgement; CENEPRED (2016) lists pending actions (urban plan, individual titling, sewerage/treatment plant, declaring old Amata non-mitigable high risk, demolition).",
+                                      "url":  "http://sigrid.cenepred.gob.pe/docs/PARA%20PUBLICAR/CENEPRED/Guia%20Plan%20de%20Reasentamiento%20Poblacional.pdf",
+                                      "confidence":  "low"
+                                  },
+                      "sources":  [
+                                      "http://sigrid.cenepred.gob.pe/docs/PARA%20PUBLICAR/CENEPRED/Guia%20Plan%20de%20Reasentamiento%20Poblacional.pdf",
+                                      "http://sigrid.cenepred.gob.pe/docs/PARA%20PUBLICAR/GOREs/Moquegua/Estimacion%20de%20Riesgo%20Amata.pdf",
+                                      "https://sigrid.cenepred.gob.pe/sigridv3/storage/biblioteca//17648_evaluacion-de-riesgos-por-movimientos-de-masas-sector-amata-proyecto-mejoramiento-del-servicio-de-informacion-para-la-gestion-del-riesgo-de-desastres-.pdf",
+                                      "https://sigrid.cenepred.gob.pe/sigridv3/documento/17795"
+                                  ],
+                      "notes":  "Amata (Comunidad Campesina, ~130 families / ~360 people per the Nov 2011 GRM risk estimate) was relocated after the 2011 rotational landslide. CENEPRED\u0027s 2016 guide (annex \u0027Casos de reasentamiento poblacional\u0027) records a multisectoral technical commission, a S/1,997,348 budget transfer, and 140 basic housing modules with electricity and provisional water delivered; titling and sewerage were still pending. The Lavell et al. (2015) UCL PDF returned 403 and was not read. Caveat on hazard_binding and hazard_at_destination: INGEMMET\u0027s 2019 hazard evaluation of a \u0027zona propuesta para reubicación\u0027 (quoted in GORE Moquegua 2023) judged the site \u0027apto\u0027 but documented erosion, rockfall, an old reactivated landslide \u003c500 m away and volcanic ash hazard. It is not certain that the 2019 proposed zone is the same site where the 140 modules were built (reported by 2016), so both variables have low-to-medium confidence. Single_owner = no is coded from the multisectoral commission and budget transfer between levels; low confidence. Return = some refers to residents still using the old slide zone for animal corrals and paths, not re-occupation of homes. I extracted PDF text with a local script; the quotes are verbatim apart from repaired spacing."
+                  },
+                  {
+                      "sample_no":  "9",
+                      "country":  "Solomon Islands",
+                      "place_origin":  "Taro",
+                      "place_destination":  "2k away on mainland",
+                      "year_start":  {
+                                         "code":  "unknown",
+                                         "evidence":  "[para] Physical relocation not yet begun: infrastructure relocation expected to commence \u0027before 2030\u0027, whole process \u002720 years or more\u0027; land acquired 2011; 2008 national grant for land purchase.",
+                                         "url":  "https://www.bmt.org/insights/relocation-only-option-for-solomon-islands-provincial-capital/",
+                                         "confidence":  "medium"
+                                     },
+                      "households":  {
+                                         "code":  "approx. 500 residents (RTCC 2014); 900 people (Albert et al. 2018); about 1000 residents (ABC)",
+                                         "evidence":  "Taro Island is home to approximately 500 residents [RTCC]; Albert et al. describe Taro as \u0027a provincial capital of 900 people\u0027; ABC: about \u00271000 residents of Taro\u0027 remain on the island.",
+                                         "url":  "https://www.climatechangenews.com/2014/08/15/solomon-islands-town-to-relocate-as-climate-pressures-mount/",
+                                         "confidence":  "medium"
+                                     },
+                      "trigger":  {
+                                      "code":  "pre_emptive",
+                                      "evidence":  "[para] The community of Taro Island is relocating to higher ground on the adjacent mainland in response to tsunami risk and sea-level rise; \u0027The only viable option for the long-term safety of the community is the relocation of the entire population to a safer site on the mainland.\u0027",
+                                      "url":  "https://www.bmt.org/insights/relocation-only-option-for-solomon-islands-provincial-capital/",
+                                      "confidence":  "medium"
+                                  },
+                      "lead":  {
+                                   "code":  "gov_topdown",
+                                   "evidence":  "[para] The Choiseul Provincial Government spearheaded the initiative in partnership with the Australian Government\u0027s PACCSAP programme, with consultants (BMT, Buckley Vann, Univ. of Queensland); over 300 residents participated in engagement activities; \u0027project planners have consulted with local communities to design a new town\u0027.",
+                                   "url":  "https://www.bmt.org/insights/relocation-only-option-for-solomon-islands-provincial-capital/",
+                                   "confidence":  "medium"
+                               },
+                      "single_owner":  {
+                                           "code":  "partial",
+                                           "evidence":  "\u0027Land on the adjacent mainland (known as Lot 9 and Lot 277) was acquired in 2011 from customary landowners by the Solomon Islands Government, on behalf of the Choiseul Provincial Government.\u0027 Arch League: national government in Honiara must approve funding; \u0027Foreign aid provides critical support to a province with few resources\u0027.",
+                                           "url":  "https://archleague.org/article/the-relocation-of-taro-island/",
+                                           "confidence":  "medium"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "unknown",
+                                                   "evidence":  "[para] Sources say the CPG acquired Lot 9 (early 1990s) and Lot 277 (2011) from customary owners; community engagement identified locations within the lots for fishing, gardens, cultural sites, but no source says residents chose the destination.",
+                                                   "url":  "https://archleague.org/article/the-relocation-of-taro-island/",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "unknown",
+                                                 "evidence":  "[para] Land purchased by the Solomon Islands Government on behalf of the Choiseul Provincial Government; residents\u0027 tenure at the new site not stated.",
+                                                 "url":  "https://www.bmt.org/insights/relocation-only-option-for-solomon-islands-provincial-capital/",
+                                                 "confidence":  "low"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "partial",
+                                             "evidence":  "[para] Computer modelling (1-in-100-year tsunami inundating ~95% of the island) informed the planning and the conclusion to relocate to a safer mainland site; but the land (Lots 9 and 277) had been acquired before the plan and \u0027much of Lot 277 is low swampland\u0027.",
+                                             "url":  "https://www.bmt.org/insights/relocation-only-option-for-solomon-islands-provincial-capital/",
+                                             "confidence":  "low"
+                                         },
+                      "funding":  {
+                                      "code":  "mixed",
+                                      "evidence":  "Solomon Islands government allocated $3 million in 2008 to purchase the relocation land; Australian government funding design through an A$32 million project with UN fast-start finance support.",
+                                      "url":  "https://www.climatechangenews.com/2014/08/15/solomon-islands-town-to-relocate-as-climate-pressures-mount/",
+                                      "confidence":  "medium"
+                                  },
+                      "distance":  {
+                                       "code":  "under_5km",
+                                       "evidence":  "[para] Taro is \u0027less than a mile from the landmass of Choiseul\u0027; Albert et al.: small island 1 km offshore.",
+                                       "url":  "https://archleague.org/article/the-relocation-of-taro-island/",
+                                       "confidence":  "high"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "exposed_or_hit",
+                                                    "evidence":  "\u0027Lot 9, which sits at a secure 50 feet above MSL, has some existing development.\u0027 However, \u0027much of Lot 277 is low swampland, still susceptible to sea level rise and tsunami risks.\u0027",
+                                                    "url":  "https://archleague.org/article/the-relocation-of-taro-island/",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "unknown",
+                                               "evidence":  "[para] No residents have relocated yet; residents remain on Taro awaiting the new township.",
+                                               "url":  "https://www.abc.net.au/pacific/programs/pacific-prepared/solomon-islands-taro-town-relocates/13363588",
+                                               "confidence":  "medium"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "unknown",
+                                          "evidence":  "[para] Relocation not yet carried out; only planning notes that on the new site community living areas are set back from the coast.",
+                                          "url":  "https://archleague.org/article/the-relocation-of-taro-island/",
+                                          "confidence":  "medium"
+                                      },
+                      "overall":  {
+                                      "code":  "unknown",
+                                      "evidence":  "[para] Work \u0027is slow and the project is behind schedule\u0027; \u0027Nearly three years after the LPS was approved, Lots 9 and 277 appear untouched\u0027. No source gives an overall success/failure judgement.",
+                                      "url":  "https://www.abc.net.au/pacific/programs/pacific-prepared/solomon-islands-taro-town-relocates/13363588",
+                                      "confidence":  "medium"
+                                  },
+                      "sources":  [
+                                      "https://www.climatechangenews.com/2014/08/15/solomon-islands-town-to-relocate-as-climate-pressures-mount/",
+                                      "https://www.bmt.org/insights/relocation-only-option-for-solomon-islands-provincial-capital/",
+                                      "https://archleague.org/article/the-relocation-of-taro-island/",
+                                      "https://www.abc.net.au/pacific/programs/pacific-prepared/solomon-islands-taro-town-relocates/13363588"
+                                  ],
+                      "notes":  "Relocation is planned and ongoing (Choiseul Bay Township); population not yet moved, so outcome variables mostly unknown. Albert et al. 2018 (population 900, 1 km offshore) seen only via search-result summary; the PDF could not be text-extracted. Tabe 2019 (MDPI) returned 403. Construction on Lot 9 road network reported by Solomon Star (search result only, not read)."
+                  },
+                  {
+                      "sample_no":  "10",
+                      "country":  "Senegal",
+                      "place_origin":  "Saint-Louis (Langue de Barbarie, multiple neighourhoods)",
+                      "place_destination":  "Gandon commune (Diougop)",
+                      "year_start":  {
+                                         "code":  "2019",
+                                         "evidence":  "[para] Families displaced by the August 2017 and February 2018 coastal floods lived in tents in Khar Yalla; by September 2019 authorities had \u0027relocated all the families living in tents in Khar Yalla to Djougop.\u0027",
+                                         "url":  "https://www.hrw.org/report/2025/08/18/waiting-for-god/flood-displacement-and-planned-relocation-of-fisherfolk-in-saint",
+                                         "confidence":  "medium"
+                                     },
+                      "households":  {
+                                         "code":  "4,500 people in 167 completed houses (Feb 2025); planned ~15,000 people",
+                                         "evidence":  "As of February 2025, \u00274,500 people have been relocated to 167 completed houses in Djougop.\u0027 ADM (Jan 2024): 171 villas completed, 167 assigned, 91 occupied, ~2,570 individuals relocated; programme planned for ~15,000 displaced and affected persons.",
+                                         "url":  "https://www.hrw.org/report/2025/08/18/waiting-for-god/flood-displacement-and-planned-relocation-of-fisherfolk-in-saint",
+                                         "confidence":  "medium"
+                                     },
+                      "trigger":  {
+                                      "code":  "post_disaster",
+                                      "evidence":  "Coastal floods in August 2017 and February 2018 displaced 199 and 59 families respectively [para]; SERRP Component 2 also covers planned relocation of vulnerable populations from the high-risk 20-metre coastal zone [para].",
+                                      "url":  "https://www.hrw.org/report/2025/08/18/waiting-for-god/flood-displacement-and-planned-relocation-of-fisherfolk-in-saint",
+                                      "confidence":  "medium"
+                                  },
+                      "lead":  {
+                                   "code":  "gov_topdown",
+                                   "evidence":  "[para] The Municipal Development Agency (ADM) coordinates the World Bank-funded SERRP; the government permanently relocated displaced families to government-built houses in Djougop. No source describes co-decision with residents.",
+                                   "url":  "https://www.hrw.org/report/2025/08/18/waiting-for-god/flood-displacement-and-planned-relocation-of-fisherfolk-in-saint",
+                                   "confidence":  "low"
+                               },
+                      "single_owner":  {
+                                           "code":  "partial",
+                                           "evidence":  "[para] ADM is the implementing body of SERRP; implementation involves multiple communes, national ministries, deconcentrated structures and regional development agencies.",
+                                           "url":  "https://www.adm.sn/en/serrp",
+                                           "confidence":  "medium"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "unknown",
+                                                   "evidence":  "[para] HRW report does not specify resident consultation on site selection.",
+                                                   "url":  "https://www.hrw.org/report/2025/08/18/waiting-for-god/flood-displacement-and-planned-relocation-of-fisherfolk-in-saint",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "unknown",
+                                                 "evidence":  "[para] No source read states land tenure arrangements at Djougop.",
+                                                 "url":  "https://www.hrw.org/report/2025/08/18/waiting-for-god/flood-displacement-and-planned-relocation-of-fisherfolk-in-saint",
+                                                 "confidence":  "low"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "yes",
+                                             "evidence":  "Djougop was \u0027selected in part because it is not prone to flooding\u0027; the World Bank rejected Khar Yalla because it \u0027was already identified as a flood prone risk area.\u0027",
+                                             "url":  "https://www.hrw.org/report/2025/08/18/waiting-for-god/flood-displacement-and-planned-relocation-of-fisherfolk-in-saint",
+                                             "confidence":  "medium"
+                                         },
+                      "funding":  {
+                                      "code":  "emergency_adhoc",
+                                      "evidence":  "[para] Funded through the World Bank Saint-Louis Emergency Recovery and Resilience Project (loans of at least US$30 million initial phase; total budget US$93.3 million over seven years).",
+                                      "url":  "https://www.adm.sn/en/serrp",
+                                      "confidence":  "medium"
+                                  },
+                      "distance":  {
+                                       "code":  "5_to_50km",
+                                       "evidence":  "[para] Djougop is located ten kilometres inland in neighbouring Gandon Municipality.",
+                                       "url":  "https://www.hrw.org/report/2025/08/18/waiting-for-god/flood-displacement-and-planned-relocation-of-fisherfolk-in-saint",
+                                       "confidence":  "high"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "none_reported",
+                                                    "evidence":  "[para] No flooding or hazard at Djougop is reported in the sources read (HRW 2025, The World 2023).",
+                                                    "url":  "https://theworld.org/stories/2023/07/14/important-fishing-village-senegal-verge-disappearing-sea-levels-rise",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "unknown",
+                                               "evidence":  "[para] Residents say \u0027We really miss the beachside\u0027 and fishermen commute to the sea; no source reports people moving back to the Langue de Barbarie.",
+                                               "url":  "https://theworld.org/stories/2023/07/14/important-fishing-village-senegal-verge-disappearing-sea-levels-rise",
+                                               "confidence":  "low"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "worse",
+                                          "evidence":  "\u0027Fishermen in Djougop, whose livelihoods already are physically demanding, must rise even earlier\u0027; \u0027Those fishermen who stayed on Guet Ndar often leave without them\u0027.",
+                                          "url":  "https://phys.org/news/2021-10-senegal-capital-frontline-sea.html",
+                                          "confidence":  "medium"
+                                      },
+                      "overall":  {
+                                      "code":  "mixed",
+                                      "evidence":  "[para] New houses with electricity, clinic and school under construction and livelihood support (vehicle, fish-processing equipment, retraining) versus residents \u0027decidedly unenthusiastic about the prospect of Djougop\u0027, described as \u0027a bland expanse of blue-roofed bungalows built in the desert, far from the sea\u0027.",
+                                      "url":  "https://www.hrw.org/report/2025/08/18/waiting-for-god/flood-displacement-and-planned-relocation-of-fisherfolk-in-saint",
+                                      "confidence":  "low"
+                                  },
+                      "sources":  [
+                                      "https://www.hrw.org/report/2025/08/18/waiting-for-god/flood-displacement-and-planned-relocation-of-fisherfolk-in-saint",
+                                      "https://www.adm.sn/en/serrp",
+                                      "https://phys.org/news/2021-10-senegal-capital-frontline-sea.html",
+                                      "https://theworld.org/stories/2023/07/14/important-fishing-village-senegal-verge-disappearing-sea-levels-rise"
+                                  ],
+                      "notes":  "World Bank PAR documents and ARD SERRP page could not be read (PDF / 404). A 2025 IJDRR study (sciencedirect S2212420925004509) reportedly finds higher socio-economic vulnerability at Diougop than a control site, but only its search snippet was seen (403), so it was not used for coding. HRW notes 2015-2016 displaced families were left in Khar Yalla and not relocated. The World (2023) describes Diougop as a UN-funded displacement camp 5 miles inland, which conflicts with HRW\u0027s 10 km."
+                  },
+                  {
+                      "sample_no":  "11",
+                      "country":  "Japan",
+                      "place_origin":  "Higashimatshishima, Ushiami",
+                      "place_destination":  "Ushiami",
+                      "year_start":  {
+                                         "code":  "unknown",
+                                         "evidence":  "[para] Relocation followed the 2011 tsunami; no source read gives the start year for the Ushiami site.",
+                                         "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                         "confidence":  "low"
+                                     },
+                      "households":  {
+                                         "code":  "unknown",
+                                         "evidence":  "[para] City-wide: \u0027About 3,000 households destroyed by the tsunami were relocated to seven relocation points in Higashi Matsushima.\u0027 No Ushiami-specific figure found.",
+                                         "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                         "confidence":  "low"
+                                     },
+                      "trigger":  {
+                                      "code":  "post_disaster",
+                                      "evidence":  "After the 2011 tsunami, Japan prevented residential reconstruction in much of the inundation zone; the city of Higashimatsushima began building seven all-new communities for displaced residents [para].",
+                                      "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                      "confidence":  "high"
+                                  },
+                      "lead":  {
+                                   "code":  "gov_community_joint",
+                                   "evidence":  "\u0027Collective relocation was prioritized in the city, as this was expressed by over 80% of residents who participated in the workshops.\u0027 \u0027building back better means building with the community\u0027.",
+                                   "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                   "confidence":  "low"
+                               },
+                      "single_owner":  {
+                                           "code":  "partial",
+                                           "evidence":  "[para] City of Higashimatsushima implemented the collective relocation; \u0027Financial support for the reconstruction was covered by the national government under the country\u0027s Disaster Response Basic Law.\u0027",
+                                           "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                           "confidence":  "low"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "unknown",
+                                                   "evidence":  "[para] Residents chose collective relocation in workshops, but no source read says whether they helped choose the Ushiami site.",
+                                                   "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "unknown",
+                                                 "evidence":  "[para] Not stated in sources read.",
+                                                 "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                                 "confidence":  "low"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "partial",
+                                             "evidence":  "The relocation followed \u0027a set of building restrictions and guidelines (by-laws on tsunami disaster prevention area) that delineates which areas should be kept free from structures.\u0027",
+                                             "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                             "confidence":  "low"
+                                         },
+                      "funding":  {
+                                      "code":  "standing_programme",
+                                      "evidence":  "\u0027Financial support for the reconstruction was covered by the national government under the country\u0027s Disaster Response Basic Law.\u0027",
+                                      "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                      "confidence":  "low"
+                                  },
+                      "distance":  {
+                                       "code":  "unknown",
+                                       "evidence":  "[para] Not stated for Ushiami in sources read.",
+                                       "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                       "confidence":  "low"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "unknown",
+                                                    "evidence":  "[para] No Ushiami-specific outcome information in sources read.",
+                                                    "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "unknown",
+                                               "evidence":  "[para] No Ushiami-specific outcome information in sources read.",
+                                               "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                               "confidence":  "low"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "unknown",
+                                          "evidence":  "[para] Only city-wide sector recovery reported (\u0027As of 2015, 90% of farmlands were restored\u0027), not relocatee livelihoods.",
+                                          "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                          "confidence":  "low"
+                                      },
+                      "overall":  {
+                                      "code":  "unknown",
+                                      "evidence":  "[para] No Ushiami-specific judgement found; case source (Pinter et al. 2019) not accessible.",
+                                      "url":  "https://development.asia/case-study/using-community-driven-model-build-back-better",
+                                      "confidence":  "low"
+                                  },
+                      "sources":  [
+                                      "https://development.asia/case-study/using-community-driven-model-build-back-better"
+                                  ],
+                      "notes":  "Weakly documented. The case citation (Pinter et al. 2019, Natural Hazards) returned 403 on Springer, ResearchGate and UC Davis; the only content seen was a search snippet stating the city built seven new communities. JICA and Reconstruction Agency PDFs could not be text-extracted. All process codes rest on city-wide ADB (Development Asia) evidence, not Ushiami-specific evidence, so confidence is low throughout."
+                  },
+                  {
+                      "sample_no":  "12",
+                      "country":  "Fiji",
+                      "place_origin":  "Korolevu",
+                      "place_destination":  "Uphill",
+                      "year_start":  {
+                                         "code":  "unknown",
+                                         "evidence":  "[para] The relocation \u0027is still going on\u0027; no start year given.",
+                                         "url":  "https://www.seacology.org/project/korolevu-village/",
+                                         "confidence":  "low"
+                                     },
+                      "households":  {
+                                         "code":  "two-thirds of 100-plus residents",
+                                         "evidence":  "\u0027Two-thirds of the village\u0027s 100-plus residents\u0027 relocated voluntarily.",
+                                         "url":  "https://devex.shorthandstories.com/balancing-climate-culture-and-community-fijis-relocation-challenge/index.html",
+                                         "confidence":  "medium"
+                                     },
+                      "trigger":  {
+                                      "code":  "pre_emptive",
+                                      "evidence":  "\u0027The rising of sea levels and increased flooding due to climate change was damaging homes and families\u0027 lives.\u0027 \u0027As king tides became higher and more dangerous, people have been forced to move to higher ground.\u0027",
+                                      "url":  "https://devex.shorthandstories.com/balancing-climate-culture-and-community-fijis-relocation-challenge/index.html",
+                                      "confidence":  "medium"
+                                  },
+                      "lead":  {
+                                   "code":  "community_initiated",
+                                   "evidence":  "[para] The elected Turaga ni Koro (village head) of Korolevu \u0027oversaw something unprecedented — the voluntary relocation of residents.\u0027 Government role not described.",
+                                   "url":  "https://devex.shorthandstories.com/balancing-climate-culture-and-community-fijis-relocation-challenge/index.html",
+                                   "confidence":  "low"
+                               },
+                      "single_owner":  {
+                                           "code":  "no",
+                                           "evidence":  "[para] Sources describe the village head overseeing a voluntary relocation; no public body is described as responsible for land, budget and implementation.",
+                                           "url":  "https://devex.shorthandstories.com/balancing-climate-culture-and-community-fijis-relocation-challenge/index.html",
+                                           "confidence":  "low"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "unknown",
+                                                   "evidence":  "[para] Not stated in sources read.",
+                                                   "url":  "https://devex.shorthandstories.com/balancing-climate-culture-and-community-fijis-relocation-challenge/index.html",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "unknown",
+                                                 "evidence":  "[para] Not stated in sources read.",
+                                                 "url":  "https://devex.shorthandstories.com/balancing-climate-culture-and-community-fijis-relocation-challenge/index.html",
+                                                 "confidence":  "low"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "unknown",
+                                             "evidence":  "[para] Not stated in sources read.",
+                                             "url":  "https://devex.shorthandstories.com/balancing-climate-culture-and-community-fijis-relocation-challenge/index.html",
+                                             "confidence":  "low"
+                                         },
+                      "funding":  {
+                                      "code":  "unknown",
+                                      "evidence":  "[para] Seacology funded a community hall/evacuation centre, not the relocation itself; relocation funding not stated. \u0027a lack of financial resources\u0027 is why some villagers remained.",
+                                      "url":  "https://www.seacology.org/project/korolevu-village/",
+                                      "confidence":  "low"
+                                  },
+                      "distance":  {
+                                       "code":  "under_5km",
+                                       "evidence":  "The new site is \u00272 kilometers (1.2 miles) away and uphill from the coast.\u0027",
+                                       "url":  "https://devex.shorthandstories.com/balancing-climate-culture-and-community-fijis-relocation-challenge/index.html",
+                                       "confidence":  "high"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "none_reported",
+                                                    "evidence":  "[para] No hazard impact at the new site reported; during Cyclone Yasa (Dec 2020) \u0027One hundred percent of the village was evacuated to the center\u0027 for shelter.",
+                                                    "url":  "https://devex.shorthandstories.com/balancing-climate-culture-and-community-fijis-relocation-challenge/index.html",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "unknown",
+                                               "evidence":  "[para] \u0027some villagers have remained at the old, flood-prone location\u0027 (never moved); no report of relocated people returning.",
+                                               "url":  "https://devex.shorthandstories.com/balancing-climate-culture-and-community-fijis-relocation-challenge/index.html",
+                                               "confidence":  "low"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "worse",
+                                          "evidence":  "\u0027Before when we were staying in the old Korolevu, we would go fishing every day. At the new Korolevu, sometimes we only go fishing one or two days a week.\u0027",
+                                          "url":  "https://devex.shorthandstories.com/balancing-climate-culture-and-community-fijis-relocation-challenge/index.html",
+                                          "confidence":  "medium"
+                                      },
+                      "overall":  {
+                                      "code":  "unknown",
+                                      "evidence":  "[para] Sources note both benefits (relocated homes uphill, more accessible) and costs (loss of daily connection to the sea) but give no overall judgement.",
+                                      "url":  "https://devex.shorthandstories.com/balancing-climate-culture-and-community-fijis-relocation-challenge/index.html",
+                                      "confidence":  "low"
+                                  },
+                      "sources":  [
+                                      "https://devex.shorthandstories.com/balancing-climate-culture-and-community-fijis-relocation-challenge/index.html",
+                                      "https://www.seacology.org/project/korolevu-village/"
+                                  ],
+                      "notes":  "The case citation (McMichael \u0026 Katonivualiku 2020, Geoforum) could not be read (ScienceDirect 403; mirror PDF not text-extractable). Coding relies on the Devex story (2021) and Seacology project page. Partial relocation: some residents remain at the old site due to lack of financial resources."
+                  },
+                  {
+                      "sample_no":  13,
+                      "country":  "Philippines",
+                      "place_origin":  "Tacloban City (multiple)",
+                      "place_destination":  "Natubgan",
+                      "year_start":  {
+                                         "code":  "unknown",
+                                         "evidence":  "[para] Paper reports that surveyed households had lived in the relocation sites on average two years by the start of the survey (fieldwork 2016-2018); no start year is given for Natubgan specifically.",
+                                         "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                         "confidence":  "low"
+                                     },
+                      "households":  {
+                                         "code":  "923 households (validated occupancy, Oct. 2017; planned occupancy 1000)",
+                                         "evidence":  "Table 1: \"Natubgan NHA 1000 923 80 9 60.0%\" (Site, Project Type, Planned Occupancy, Validated Occupancy (Oct. 2017), Sample Size, Percent Surveyed, Surveyed Women)",
+                                         "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                         "confidence":  "high"
+                                     },
+                      "trigger":  {
+                                      "code":  "post_disaster",
+                                      "evidence":  "Following Typhoon Haiyan, the city government decided to relocate informal settlers (up to 40 percent of the city\u0027s population) to the largely undeveloped northern edges of the city",
+                                      "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                      "confidence":  "high"
+                                  },
+                      "lead":  {
+                                   "code":  "gov_topdown",
+                                   "evidence":  "Natubgan is an NHA (National Housing Authority) project; \"Following Typhoon Haiyan, the city government decided to relocate informal settlers...\" and \"Notably, none of the case communities included community members in decision-making, such as where to develop the relocation site.\"",
+                                   "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                   "confidence":  "medium"
+                               },
+                      "single_owner":  {
+                                           "code":  "partial",
+                                           "evidence":  "\"Five sites managed by the government, (National Housing Authority, NHA), achieved built livability\" (Natubgan among them); but \"government service providers prioritized government projects, and offices like the Department of Public Works and Highways worked with the NHA to provide basic services to government projects at a minimum\"; city official on NHA sites: \"we had minimal supervision over those settlements. In fact, they [the NHA] have railroaded everything. They did not get the necessary development permits beforehand\"",
+                                           "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                           "confidence":  "medium"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "no",
+                                                   "evidence":  "Notably, none of the case communities included community members in decision-making, such as where to develop the relocation site. (Natubgan participation fuzzy score = 0 in Table 4)",
+                                                   "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                                   "confidence":  "high"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "unknown",
+                                                 "evidence":  "[para] Tenure is folded into the composite \u0027societal livability\u0027 score; no site-specific tenure information for Natubgan is reported.",
+                                                 "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                                 "confidence":  "low"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "unknown",
+                                             "evidence":  "[para] No information on hazard screening of the Natubgan site in the source read.",
+                                             "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                             "confidence":  "low"
+                                         },
+                      "funding":  {
+                                      "code":  "unknown",
+                                      "evidence":  "[para] Source states the NHA committed to more than 14,000 houses and the city later sought national funding for the Tacloban North Integrated Development Plan, but does not describe the funding instrument for Natubgan.",
+                                      "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                      "confidence":  "low"
+                                  },
+                      "distance":  {
+                                       "code":  "5_to_50km",
+                                       "evidence":  "[para] \u0027Close to Tacloban City center\u0027 was calibrated with fully in = less than 5 km to city hall, crossover 10 km, fully out = more than 15 km; Natubgan scores 0.06 (Table 4), i.e. well over 10 km from city hall, within Tacloban North. \"each site was further from the city center than we could theoretically justify as even partially in the set of \u0027close\u0027\"",
+                                       "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                       "confidence":  "medium"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "unknown",
+                                                    "evidence":  "[para] No hazard events or exposure at Natubgan reported in the source read.",
+                                                    "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "unknown",
+                                               "evidence":  "[para] Not reported for Natubgan; occupancy was 923 of 1000 planned units.",
+                                               "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                               "confidence":  "low"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "unknown",
+                                          "evidence":  "[para] Livelihood outcomes are not reported for Natubgan in the source read.",
+                                          "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                          "confidence":  "low"
+                                      },
+                      "overall":  {
+                                      "code":  "mixed",
+                                      "evidence":  "Table 4, Natubgan: Built Livability 0.78, Societal Livability 0.29, Livability 0.29; \"Pangasugan differed from the other two NHA sites that achieved built livability... Unlike Gandara and Natubgan\" [para: Natubgan in set for built livability but out of set for societal and overall livability]",
+                                      "url":  "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                      "confidence":  "medium"
+                                  },
+                      "sources":  [
+                                      "https://pdfs.semanticscholar.org/7cf5/36ba73aaf1a56cb9314fd844a68185eab7f3.pdf",
+                                      "https://doi.org/10.3390/su12083474"
+                                  ],
+                      "notes":  "Coded from Palagi \u0026 Javernick-Will (2020) Sustainability 12(8):3474 (full text read via Semantic Scholar PDF). The other two cited Palagi papers (J. Manage. Eng. 2020; IJDRR 2019) were not accessible. Natubgan = pseudonymous NHA (government) site in Tacloban North after Typhoon Haiyan (Nov 2013). Distance coded from the paper\u0027s fuzzy-set calibration, not a stated km figure. Outcome \u0027mixed\u0027 reflects built livability achieved but societal/overall livability not achieved."
+                  },
+                  {
+                      "sample_no":  14,
+                      "country":  "Dominica",
+                      "place_origin":  "Petite Savanne",
+                      "place_destination":  "unknown",
+                      "year_start":  {
+                                         "code":  "2016",
+                                         "evidence":  "the Government of Dominica launched the Bellevue Chopin Housing Project in September 2016 to resettle the affected residents to a safer place.",
+                                         "url":  "https://mmce.ae/mmcdevelopment/housing/bellevue-chopin/",
+                                         "confidence":  "medium"
+                                     },
+                      "households":  {
+                                         "code":  "823 people evacuated; 353 housing units built at Bellevue Chopin",
+                                         "evidence":  "\"The destruction of Petite Savanne forced the evacuation of 823 people\" (Wikipedia); \"The housing project consists of three hundred fifty-three (353) residential units\" (MMCE)",
+                                         "url":  "https://mmce.ae/mmcdevelopment/housing/bellevue-chopin/",
+                                         "confidence":  "medium"
+                                     },
+                      "trigger":  {
+                                      "code":  "post_disaster",
+                                      "evidence":  "Heavy rainfall during the storm resulted in massive flooding in the island and left the whole town of Petite Savanne uninhabitable and residents were needed to be evacuated on a permanent basis.",
+                                      "url":  "https://mmce.ae/mmcdevelopment/housing/bellevue-chopin/",
+                                      "confidence":  "high"
+                                  },
+                      "lead":  {
+                                   "code":  "gov_topdown",
+                                   "evidence":  "\"The government contracted Montreal Management Consultants Est (MMCE) in September 2016\"; \"Bellevue Chopin was selected as the best site to resettle the displaced residents.\" (WIC News); IOM: government \"declared the area unsafe, ordering a permanent evacuation\"",
+                                   "url":  "https://wicnews.com/caribbean/cbi-funded-housing-project-38-dominica-families-moved-new-homes-bellevue-chopin-262813716",
+                                   "confidence":  "medium"
+                               },
+                      "single_owner":  {
+                                           "code":  "unknown",
+                                           "evidence":  "[para] Government contracted a private developer (MMCE) funded by the CBI programme; ownership transfer later handled by the Ministry of Housing and Urban Development with the Land Registry. Sources do not say whether one public body held land, budget and implementation end to end.",
+                                           "url":  "https://pressroomopm.gov.dm/housing-beneficiaries-at-bellevue-chopin-sign-documents-for-issuance-of-certificates-of-title/",
+                                           "confidence":  "low"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "unknown",
+                                                   "evidence":  "[para] Sources state only that Bellevue Chopin \"was selected as the best site\"; no information on residents\u0027 role in selection. (Consultations reported in 2026 concerned terms of title transfer, not site choice.)",
+                                                   "url":  "https://wicnews.com/caribbean/cbi-funded-housing-project-38-dominica-families-moved-new-homes-bellevue-chopin-262813716",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "insecure",
+                                                 "evidence":  "IOM (2025): \"we don\u0027t have property titles, so if your mother gets sick and you need a quick loan, you can\u0027t get one.\" [para] OPM (May 2026): first 22 families signed Agreement of Transfer and Memorandum of Encumbrance; Certificates of Title still pending.",
+                                                 "url":  "https://storyteller.iom.int/stories/ten-years-after-tropical-storm-erika-dominica-still-bears-scars",
+                                                 "confidence":  "medium"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "unknown",
+                                             "evidence":  "[para] Sources say the project aimed to move residents \"to a safer place\" but report no hazard assessment or rule used to select Bellevue Chopin.",
+                                             "url":  "https://mmce.ae/mmcdevelopment/housing/bellevue-chopin/",
+                                             "confidence":  "low"
+                                         },
+                      "funding":  {
+                                      "code":  "standing_programme",
+                                      "evidence":  "The innovative project in Dominica to provide affordable houses in Bellevue Chopin to house displaced residents of Petite Savanne is financed by the island\u0027s citizenship by investment (CBI) programme",
+                                      "url":  "https://wicnews.com/caribbean/cbi-funded-housing-project-38-dominica-families-moved-new-homes-bellevue-chopin-262813716",
+                                      "confidence":  "low"
+                                  },
+                      "distance":  {
+                                       "code":  "unknown",
+                                       "evidence":  "[para] IOM describes Bellevue Chopin only as \"safer and closer to the city\"; no distance given in sources read.",
+                                       "url":  "https://storyteller.iom.int/stories/ten-years-after-tropical-storm-erika-dominica-still-bears-scars",
+                                       "confidence":  "low"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "unknown",
+                                                    "evidence":  "[para] Hurricane Maria struck Dominica during construction (2017) and the developer revised designs to be more hurricane-resilient; sources do not report the new site being hit or documented as exposed.",
+                                                    "url":  "https://mmce.ae/mmcdevelopment/housing/bellevue-chopin/",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "some",
+                                               "evidence":  "\"As of 2025, the original village remains largely abandoned, though approximately 60 residents continue to live there, sustaining limited livelihoods on the land\" (Wikipedia, citing IOM); IOM: \"Peter, one of the few who returned, defied warnings to stay away\"",
+                                               "url":  "https://storyteller.iom.int/stories/ten-years-after-tropical-storm-erika-dominica-still-bears-scars",
+                                               "confidence":  "medium"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "worse",
+                                          "evidence":  "After a life in the mountains, former residents of Petite Savanne left behind the land where they once grew their own food and now rely on buying what they need.",
+                                          "url":  "https://storyteller.iom.int/stories/ten-years-after-tropical-storm-erika-dominica-still-bears-scars",
+                                          "confidence":  "medium"
+                                      },
+                      "overall":  {
+                                      "code":  "mixed",
+                                      "evidence":  "[para] IOM (2025): Bellevue Chopin is \"safer and closer to the city\" but felt \"nothing like home\"; residents lack titles, still pay mortgages on Petite Savanne homes they cannot reclaim, and depend on buying food.",
+                                      "url":  "https://storyteller.iom.int/stories/ten-years-after-tropical-storm-erika-dominica-still-bears-scars",
+                                      "confidence":  "low"
+                                  },
+                      "sources":  [
+                                      "https://storyteller.iom.int/stories/ten-years-after-tropical-storm-erika-dominica-still-bears-scars",
+                                      "https://mmce.ae/mmcdevelopment/housing/bellevue-chopin/",
+                                      "https://wicnews.com/caribbean/cbi-funded-housing-project-38-dominica-families-moved-new-homes-bellevue-chopin-262813716",
+                                      "https://pressroomopm.gov.dm/housing-beneficiaries-at-bellevue-chopin-sign-documents-for-issuance-of-certificates-of-title/",
+                                      "https://en.wikipedia.org/wiki/Petite_Savanne",
+                                      "https://www.studioak.co/Projects/View/1059?c=0"
+                                  ],
+                      "notes":  "Trigger: Tropical Storm Erika, Aug 2015. Sources consistently name Bellevue Chopin as the resettlement site, but place_destination kept as \u0027unknown\u0027 per rows file. Cited GIS article (news.gov.dm/news/2871) returned 404; Vinke et al. (2020) Home Lands PDF exceeded fetch size limit; Dominica News Online and IMI Daily returned 403. Unit counts differ by source (340 residential units per WIC News/studioAK vs 353 per MMCE/Wikipedia). Funding coded standing_programme because the CBI programme is an existing permanent programme, though not a relocation fund (low confidence). Tenure coded as of 2025 IOM reporting; title transfer began 2026."
+                  },
+                  {
+                      "sample_no":  15,
+                      "country":  "Indonesia",
+                      "place_origin":  "Saney Village",
+                      "place_destination":  "500 meters",
+                      "year_start":  {
+                                         "code":  "2007",
+                                         "evidence":  "In 2007, the Government relocated Saney Village about 500 m from the coast, located in the hills of Utamong Village.",
+                                         "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                         "confidence":  "high"
+                                     },
+                      "households":  {
+                                         "code":  "60 housing units",
+                                         "evidence":  "relocating 60 units of type 36 housing complexes with an area of 200 - 300 m2, on a clove plantation area in the hills about 750 meters from the coast.",
+                                         "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                         "confidence":  "medium"
+                                     },
+                      "trigger":  {
+                                      "code":  "post_disaster",
+                                      "evidence":  "Development after the 2004 tsunami in Aceh province included the relocation of housing to disaster-safe areas",
+                                      "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                      "confidence":  "high"
+                                  },
+                      "lead":  {
+                                   "code":  "gov_topdown",
+                                   "evidence":  "\"In 2007, the Government relocated Saney Village about 500 m from the coast\"; [para] NGOs (World Vision, Torch, Mamamia, Genesis) helped rebuild the village area; no description of community decision-making.",
+                                   "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                   "confidence":  "low"
+                               },
+                      "single_owner":  {
+                                           "code":  "unknown",
+                                           "evidence":  "[para] Source names the Government and several NGOs but does not describe which body held land, budget and implementation.",
+                                           "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                           "confidence":  "low"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "unknown",
+                                                   "evidence":  "[para] Not described in the source.",
+                                                   "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "secure",
+                                                 "evidence":  "In terms of land ownership, the plantation is owned by the people in the three villages, so the relocation process is relatively easy.",
+                                                 "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                                 "confidence":  "low"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "unknown",
+                                             "evidence":  "[para] Paper refers generally to relocation \u0027to disaster-safe areas\u0027 in Aceh but reports no hazard assessment or rule applied to the Saney site.",
+                                             "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                             "confidence":  "low"
+                                         },
+                      "funding":  {
+                                      "code":  "unknown",
+                                      "evidence":  "[para] Funding source not stated.",
+                                      "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                      "confidence":  "low"
+                                  },
+                      "distance":  {
+                                       "code":  "under_5km",
+                                       "evidence":  "In 2007, the Government relocated Saney Village about 500 m from the coast ... (elsewhere: \"about 750 meters from the coast\")",
+                                       "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                       "confidence":  "high"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "none_reported",
+                                                    "evidence":  "[para] No hazard impact on the hillside relocation site reported; \"Neatly arranged housing construction with grid space patterns and well-developed regional infrastructure makes the relocation housing area better conditioned than traditional housing before the tsunami.\"",
+                                                    "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "some",
+                                               "evidence":  "\"people returned to their original activities\"; \"The development of fishing activities in the coastal area has led to the construction of a shaft road to the old hill of the old village. This phenomenon has encouraged the growth of several houses on the side of the shaft road.\"; former coastal hillside site cultivated \"by building a cottage for resting, which also often stays in the garden\"",
+                                               "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                               "confidence":  "medium"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "maintained_or_improved",
+                                          "evidence":  "\"Fish catch is relative surplus, so it is marketed up to Banda Aceh. This phenomenon shows the start of improving people\u0027s economic life.\"; \"economic activity becomes more diverse between land and sea\"",
+                                          "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                          "confidence":  "medium"
+                                      },
+                      "overall":  {
+                                      "code":  "success",
+                                      "evidence":  "Disasters that change the coast\u0027s physiographic have increased the diversity of natural resources and made more effectiveness to village spatial arrangements that improve the sustainability system of community life.",
+                                      "url":  "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf",
+                                      "confidence":  "medium"
+                                  },
+                      "sources":  [
+                                      "https://iopscience.iop.org/article/10.1088/1755-1315/452/1/012117/pdf"
+                                  ],
+                      "notes":  "Single source: Elysa et al. (2020) IOP Conf. Ser.: Earth Environ. Sci. 452 012117 (full text read). Gampong Saney, Lhoong, Aceh Besar; 2004 Indian Ocean tsunami; residents lived in barracks ~4 years before relocation to former clove plantation in hills of Gampong Utamong. Paper gives both ~500 m and ~750 m from coast. Hazard coded \u0027other\u0027 in rows file (tsunami). Lead coded low confidence: government named as relocating agent, NGOs assisted rebuilding, no process detail. Tenure \u0027secure\u0027 rests on statement that the destination plantation land is owned by the people of the three villages (low confidence)."
+                  },
+                  {
+                      "sample_no":  16,
+                      "country":  "Mexico",
+                      "place_origin":  "Acapulco",
+                      "place_destination":  "unknown",
+                      "year_start":  {
+                                         "code":  "2014",
+                                         "evidence":  "[para] SEDATU bulletin (7 April 2014): 112 homes to be relocated in Venta Vieja, Acapulco, on \"11 hectáreas de terreno, donde se inició el plan de urbanización\"",
+                                         "url":  "https://www.gob.mx/sedatu/prensa/6247",
+                                         "confidence":  "low"
+                                     },
+                      "households":  {
+                                         "code":  "112 dwellings (viviendas)",
+                                         "evidence":  "112 viviendas en esta comunidad de Acapulco",
+                                         "url":  "https://www.gob.mx/sedatu/prensa/6247",
+                                         "confidence":  "low"
+                                     },
+                      "trigger":  {
+                                      "code":  "post_disaster",
+                                      "evidence":  "[para] El Financiero (8 April 2014), \u0027Continúa reubicación de viviendas afectadas por huracanes en Guerrero\u0027: relocation of 112 homes in Venta Vieja, Acapulco, after the 2013 hurricanes.",
+                                      "url":  "https://www.elfinanciero.com.mx/sociedad/continua-reubicacion-de-viviendas-afectadas-por-huracanes-en-guerrero/",
+                                      "confidence":  "low"
+                                  },
+                      "lead":  {
+                                   "code":  "gov_topdown",
+                                   "evidence":  "\"Sedatu canalizará los recursos del FONDEN\"; \"las casas se edificarán a través de la autoconstrucción, para lo cual los pobladores recibirán capacitación y un salario\" [para: federal agency led; residents participated as paid self-builders, no co-decision described]",
+                                   "url":  "https://www.elfinanciero.com.mx/sociedad/continua-reubicacion-de-viviendas-afectadas-por-huracanes-en-guerrero/",
+                                   "confidence":  "low"
+                               },
+                      "single_owner":  {
+                                           "code":  "partial",
+                                           "evidence":  "[para] SEDATU channelled FONDEN resources and led the project, with the Guerrero state government, the Acapulco municipality and Fundación Azteca also involved.",
+                                           "url":  "https://www.gob.mx/sedatu/prensa/6247",
+                                           "confidence":  "low"
+                                       },
+                      "resident_site_choice":  {
+                                                   "code":  "unknown",
+                                                   "evidence":  "[para] Not described in sources read.",
+                                                   "url":  "https://www.gob.mx/sedatu/prensa/6247",
+                                                   "confidence":  "low"
+                                               },
+                      "tenure_destination":  {
+                                                 "code":  "secure",
+                                                 "evidence":  "se les entregarán las escrituras del inmueble, para que tengan la certeza de la propiedad",
+                                                 "url":  "https://www.gob.mx/sedatu/prensa/6247",
+                                                 "confidence":  "low"
+                                             },
+                      "hazard_binding":  {
+                                             "code":  "unknown",
+                                             "evidence":  "[para] No hazard assessment of the destination described in sources read.",
+                                             "url":  "https://www.gob.mx/sedatu/prensa/6247",
+                                             "confidence":  "low"
+                                         },
+                      "funding":  {
+                                      "code":  "mixed",
+                                      "evidence":  "\"Sedatu canalizará los recursos del FONDEN\" más \"la aportación de Fundación Azteca\"",
+                                      "url":  "https://www.elfinanciero.com.mx/sociedad/continua-reubicacion-de-viviendas-afectadas-por-huracanes-en-guerrero/",
+                                      "confidence":  "low"
+                                  },
+                      "distance":  {
+                                       "code":  "unknown",
+                                       "evidence":  "[para] Distance from origin not stated.",
+                                       "url":  "https://www.gob.mx/sedatu/prensa/6247",
+                                       "confidence":  "low"
+                                   },
+                      "hazard_at_destination":  {
+                                                    "code":  "unknown",
+                                                    "evidence":  "[para] No outcome information found for the Acapulco relocation.",
+                                                    "url":  "https://www.gob.mx/sedatu/prensa/6247",
+                                                    "confidence":  "low"
+                                                },
+                      "return_to_origin":  {
+                                               "code":  "unknown",
+                                               "evidence":  "[para] No outcome information found.",
+                                               "url":  "https://www.gob.mx/sedatu/prensa/6247",
+                                               "confidence":  "low"
+                                           },
+                      "livelihoods":  {
+                                          "code":  "unknown",
+                                          "evidence":  "[para] No outcome information found.",
+                                          "url":  "https://www.gob.mx/sedatu/prensa/6247",
+                                          "confidence":  "low"
+                                      },
+                      "overall":  {
+                                      "code":  "unknown",
+                                      "evidence":  "[para] Proceso (2018) reports that of 43 Plan Nuevo Guerrero housing developments (incl. in the Acapulco region) 20 were abandoned unfinished, but gives no Acapulco-specific judgement.",
+                                      "url":  "https://www.proceso.com.mx/reportajes/2018/6/29/en-marco-electoral-derriban-viviendas-mal-construidas-tras-paso-de-ingrid-manuel-por-guerrero-en-2013-207664.html",
+                                      "confidence":  "low"
+                                  },
+                      "sources":  [
+                                      "https://www.gob.mx/sedatu/prensa/6247",
+                                      "https://www.elfinanciero.com.mx/sociedad/continua-reubicacion-de-viviendas-afectadas-por-huracanes-en-guerrero/",
+                                      "https://www.proceso.com.mx/reportajes/2018/6/29/en-marco-electoral-derriban-viviendas-mal-construidas-tras-paso-de-ingrid-manuel-por-guerrero-en-2013-207664.html"
+                                  ],
+                      "notes":  "CAUTION: the case citation (KNOMAD 2018 synthesis note) could not be read: the PDF URL redirects to a generic World Bank page and web.archive.org is blocked. It is therefore NOT verified which Acapulco relocation the note describes. Process variables are coded (all low confidence) from the one Acapulco post-hurricane (Ingrid/Manuel 2013) relocation found: SEDATU\u0027s 112-home Venta Vieja project (April 2014). Treat as provisional; recheck against the KNOMAD note. No outcome sources were found."
+                  }
+              ],
+    "note":  "merged from four parallel coding agents (parts a-d)"
+}

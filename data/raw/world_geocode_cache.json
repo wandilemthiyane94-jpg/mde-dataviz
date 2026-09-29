@@ -1,0 +1,253 @@
+﻿{
+    "Colombia":  {
+                     "lat":  4.099917,
+                     "lon":  -72.9088133
+                 },
+    "Aceh, Indonesia":  {
+                            "lat":  4.3685491,
+                            "lon":  97.0253024
+                        },
+    "Vunidogoloa, Vanua Levu, Fiji":  null,
+    "Solomon Islands":  {
+                            "lat":  -8.7053941,
+                            "lon":  159.1070694
+                        },
+    "Hanguranketha DSD, Central Province, Nuwara Eliya District, Sri Lanka":  null,
+    "Tamil Nadu, Nagapattinam District, India":  {
+                                                     "lat":  10.3885963,
+                                                     "lon":  79.8487509
+                                                 },
+    "Viti Levu, Cakaudrove Province, Fiji":  null,
+    "Eastern Province, Trincomalee District, Sri Lanka":  {
+                                                              "lat":  8.3636973,
+                                                              "lon":  81.397085
+                                                          },
+    "Sijeruk, Central Java, Indonesia":  {
+                                             "lat":  -6.9295528,
+                                             "lon":  109.548553
+                                         },
+    "Tacloban City (multiple), Leyte, Philippines":  null,
+    "Sichuan Province, China":  {
+                                    "lat":  30.5000001,
+                                    "lon":  102.4999999
+                                },
+    "Muani, Kadavu, Fiji":  {
+                                "lat":  -19.1509402,
+                                "lon":  178.1454993
+                            },
+    "Angangueo, Michoacán, Mexico":  {
+                                         "lat":  19.6281736,
+                                         "lon":  -100.3008116
+                                     },
+    "Sudaikudha, Eastern Province, Trincomalee District, Sri Lanka":  null,
+    "Teziutlán (multiple), Puebla, Mexico":  null,
+    "Point Hope, Alaska, United States of America":  {
+                                                         "lat":  68.3493054,
+                                                         "lon":  -166.7392068
+                                                     },
+    "Northern Mindanao, Philippines":  {
+                                           "lat":  8.3979549,
+                                           "lon":  124.710688
+                                       },
+    "Aoulef, Adrar Province, Algeria":  {
+                                            "lat":  26.9722077,
+                                            "lon":  1.0786817
+                                        },
+    "Samatnthanpettai, Tamil Nadu, Nagapattinam District, India":  null,
+    "Three coastal communities (unknown), São Tomé Island, Príncipe Island, São Tomé and Príncipe":  null,
+    "Tacloban City, Leyte, Philippines":  {
+                                              "lat":  11.2275065,
+                                              "lon":  125.0274758
+                                          },
+    "La Plata (Ringuelet neighbourhood), Buenos Aires Province, Argentina":  null,
+    "Gunayala, Panama":  null,
+    "Yucatán, Mexico":  {
+                            "lat":  20.6845957,
+                            "lon":  -88.8755669
+                        },
+    "Toki, Ovalau Island, Lomaiviti Province, Fiji":  null,
+    "San Juan de la Costa, San Juan River Delta, Colombia":  null,
+    "Ciudad Bolívar (UPZ Ismael Perdomo, Altos de Estancia), Bogotá, Colombia":  null,
+    "San Martín Region, Peru":  {
+                                    "lat":  -5.2000172,
+                                    "lon":  -80.6571486
+                                },
+    "Taro, Choiseul province, Solomon Islands":  null,
+    "Parque Juliana, São Paulo, Brazil":  {
+                                              "lat":  -23.0459593,
+                                              "lon":  -47.0101018
+                                          },
+    "Alaska, United States of America":  {
+                                             "lat":  64.4459613,
+                                             "lon":  -149.680909
+                                         },
+    "Higashimatshishima, Nobiru, Tohoku, Japan":  null,
+    "Vanua Levu, Fiji":  {
+                             "lat":  -16.5788332,
+                             "lon":  179.1930927
+                         },
+    "unclear, Northern Mindanao, Philippines":  {
+                                                    "lat":  8.3785795,
+                                                    "lon":  124.5171486
+                                                },
+    "Shamboyacu, San Martín Region, Peru":  null,
+    "Kivalina, Alaska, United States of America":  {
+                                                       "lat":  67.7278764,
+                                                       "lon":  -164.540719
+                                                   },
+    "Lateu, Tegua Island, Vanuatu":  null,
+    "Central Province, Nuwara Eliya District, Sri Lanka":  {
+                                                               "lat":  7.0003798,
+                                                               "lon":  80.7738433
+                                                           },
+    "Napakiak, Alaska, United States of America":  {
+                                                       "lat":  60.6939091,
+                                                       "lon":  -161.975446
+                                                   },
+    "Cerzeto (Cavallerizzo), Calabria, Italy":  {
+                                                    "lat":  39.5144237,
+                                                    "lon":  16.1237014
+                                                },
+    "La Paz, La Paz, Bolivia":  {
+                                    "lat":  -16.4955455,
+                                    "lon":  -68.1336229
+                                },
+    "Taholah, Washington, United States of America":  {
+                                                          "lat":  47.326252,
+                                                          "lon":  -124.2670459
+                                                      },
+    "Tagnob, Khatlon Province, Tajikistan":  {
+                                                 "lat":  37.6555667,
+                                                 "lon":  69.4909339
+                                             },
+    "Puebla, Mexico":  {
+                           "lat":  18.833333,
+                           "lon":  -98
+                       },
+    "Karoko, Viti Levu, Cakaudrove Province, Fiji":  null,
+    "Saney Village, Aceh, Indonesia":  {
+                                           "lat":  5.225485,
+                                           "lon":  95.260394
+                                       },
+    "Western Province, Ranogha Island, Solomon Islands":  null,
+    "Tres Unidos district (Nuevo Porvenir), San Martín Region, Peru":  null,
+    "Cagayan de Oro (multiple), Northern Mindanao, Philippines":  null,
+    "Dominican Republic":  {
+                               "lat":  19.0974031,
+                               "lon":  -70.3028026
+                           },
+    "Coalaque district (Amata), Moquegua Region, Peru":  null,
+    "Tohoku, Japan":  {
+                          "lat":  39.1736184,
+                          "lon":  140.7319147
+                      },
+    "Buenos Aires Province, Argentina":  {
+                                             "lat":  -34.5121516,
+                                             "lon":  -58.5248182
+                                         },
+    "Fiji":  {
+                 "lat":  -18.1239696,
+                 "lon":  179.0122737
+             },
+    "Choluteca, Choluteca, Honduras":  {
+                                           "lat":  13.306131,
+                                           "lon":  -87.1955618
+                                       },
+    "São Tomé and Príncipe":  {
+                                  "lat":  0.9713095,
+                                  "lon":  7.02255
+                              },
+    "Petite Savanne, Saint Patrick Parish, Dominica":  {
+                                                           "lat":  15.2544166,
+                                                           "lon":  -61.2681718
+                                                       },
+    "Allakeet, Alaska, United States of America":  null,
+    "Loardstar village, Southern Province, Matara District, Sri Lanka":  null,
+    "Guédiawaye Department (Wakhinane-Nimzatt), Dakar, Senegal":  {
+                                                                      "lat":  14.7854253,
+                                                                      "lon":  -17.3809671
+                                                                  },
+    "Constitución (La Poza district), Maule Region, Chile":  null,
+    "Moquegua Region, Peru":  {
+                                  "lat":  -5.2024721,
+                                  "lon":  -80.623832
+                              },
+    "Southern Province, Matara District, Sri Lanka":  {
+                                                          "lat":  5.9460112,
+                                                          "lon":  80.4584816
+                                                      },
+    "Matancita (La Playa), María Trinidad Sánche province, Dominican Republic":  null,
+    "Tamil Nadu, Kanchipuram District, India":  {
+                                                    "lat":  12.8410187,
+                                                    "lon":  79.9494965
+                                                },
+    "Manhiça District, Maputo Province, Mozambique":  null,
+    "Dabashan Village, Sichuan Province, China":  null,
+    "Tamil Nadu, Villupuram District, India":  {
+                                                   "lat":  11.3972643,
+                                                   "lon":  79.6956744
+                                               },
+    "Saint-Louis Region, Senegal":  {
+                                        "lat":  16.0915413,
+                                        "lon":  -14.7337786
+                                    },
+    "Naduvuthu, Eastern Province, Trincomalee District, Sri Lanka":  null,
+    "Panama":  {
+                   "lat":  8.559559,
+                   "lon":  -81.1308434
+               },
+    "Shaktoolik, Alaska, United States of America":  {
+                                                         "lat":  64.3535999,
+                                                         "lon":  -161.1928805
+                                                     },
+    "São Tomé Island, Príncipe Island, São Tomé and Príncipe":  null,
+    "Vunisavisavi, Vanua Levu, Fiji":  null,
+    "Ovalau Island, Lomaiviti Province, Fiji":  null,
+    "Leyte, Philippines":  {
+                               "lat":  10.7841157,
+                               "lon":  124.892321
+                           },
+    "Pudhu Nemmelikuppam, Tamil Nadu, Kanchipuram District, India":  null,
+    "Unkown, Manhiça District, Maputo Province, Mozambique":  null,
+    "Tegua Island, Vanuatu":  {
+                                  "lat":  -13.2465715,
+                                  "lon":  166.6233259
+                              },
+    "Bogotá, Colombia":  {
+                             "lat":  4.6533817,
+                             "lon":  -74.0836331
+                         },
+    "María Trinidad Sánche province, Dominican Republic":  null,
+    "Mozambique":  {
+                       "lat":  -19.302233,
+                       "lon":  34.9144977
+                   },
+    "Korolevu, Viti Levu, Cakaudrove Province, Fiji":  null,
+    "Acapulco, Guerrero, Mexico":  {
+                                       "lat":  16.8680495,
+                                       "lon":  -99.8940182
+                                   },
+    "Old village 5k away, Aceh, Indonesia":  null,
+    "Labeemwatta, Southern Province, Matara District, Sri Lanka":  null,
+    "Higashimatshishima, Ushiami, Tohoku, Japan":  null,
+    "Maule Region, Chile":  {
+                                "lat":  -35.5972284,
+                                "lon":  -71.48868
+                            },
+    "Gemendhoo Island, Dhaalu Atoll, Maldives":  null,
+    "Choiseul province, Solomon Islands":  null,
+    "San Juan River Delta, Colombia":  null,
+    "Gardi Sugdub and Playón Chico (Ukupseni), Gunayala, Panama":  null,
+    "Mandavai Pudu Kuppam, Tamil Nadu, Villupuram District, India":  null,
+    "Dhaalu Atoll, Maldives":  {
+                                   "lat":  2.8349032,
+                                   "lon":  72.9319326
+                               },
+    "Allenville, Arizona, United States of America":  {
+                                                          "lat":  33.352604,
+                                                          "lon":  -112.5878691
+                                                      },
+    "Mondo Village, Western Province, Ranogha Island, Solomon Islands":  null,
+    "Mérida (South), Yucatán, Mexico":  null,
+    "Saint-Louis (Langue de Barbarie, multiple neighourhoods), Saint-Louis Region, Senegal":  null
+}
