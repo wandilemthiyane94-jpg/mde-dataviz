@@ -1,0 +1,16 @@
+{
+  // VS Code offers to install these when the folder is opened ("Show Recommendations").
+  "recommendations": [
+    "ritwickdey.LiveServer",               // local server with auto-reload: right-click an .html file > Open with Live Server
+    "ms-edgedevtools.vscode-edge-devtools",// Edge DevTools inside VS Code (console, elements, device sizes)
+    "RandomFractalsInc.geo-data-viewer",   // preview .geojson layers on a map
+    "mechatroner.rainbow-csv",             // readable CSV columns + simple queries
+    "ms-python.python",                    // Python + pandas data cleaning
+    "ms-toolsai.jupyter",                  // notebooks for the data steps
+    "esbenp.prettier-vscode",              // consistent formatting on save
+    "dbaeumer.vscode-eslint",              // catches JavaScript errors while typing
+    "ms-vsliveshare.vsliveshare",          // Hollie + Wandile co-editing in real time
+    "eamodio.gitlens",                     // who changed what, line by line
+    "anthropic.claude-code"                // AI pair programmer (see ALGORITHMIC_FORENSICS.md)
+  ]
+}

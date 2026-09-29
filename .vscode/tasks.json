@@ -1,0 +1,37 @@
+{
+  // Terminal > Run Task... (or Ctrl+Shift+P > "Tasks: Run Task")
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Data: rebuild relocation-site exposure (floodplain + satellite, ~10 min)",
+      "type": "shell",
+      "command": "powershell -ExecutionPolicy Bypass -File methods/scripts/build_tra_exposure.ps1",
+      "problemMatcher": []
+    },
+    {
+      "label": "Data: apply reflooding sweep",
+      "type": "shell",
+      "command": "powershell -ExecutionPolicy Bypass -File methods/scripts/apply_reflood_sweep.ps1",
+      "problemMatcher": []
+    },
+    {
+      "label": "Data: rebuild root-cause matrix (11 cases x 10 factors)",
+      "type": "shell",
+      "command": "powershell -ExecutionPolicy Bypass -File methods/scripts/build_relocation_rootcause.ps1",
+      "problemMatcher": []
+    },
+    {
+      "label": "Data: rebuild manifest (SHA-256 of every data file)",
+      "type": "shell",
+      "command": "powershell -ExecutionPolicy Bypass -File methods/scripts/build_manifest.ps1",
+      "problemMatcher": []
+    },
+    {
+      "label": "Check: layout audit (overflow + label collisions) at desktop width",
+      "type": "shell",
+      "command": "Start-Process msedge \"file:///${workspaceFolder}/prototype/story/moved-into-the-water.html?audit\"; Write-Host 'Open DevTools > Console and look for: TF.audit {...} (all four lists should be empty)'",
+      "options": { "shell": { "executable": "powershell.exe" } },
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  // Run and Debug (F5): opens the story in Edge with breakpoints in the page scripts.
+  // Start Live Server first (status bar "Go Live"), which serves the repo at http://127.0.0.1:5500
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug story (Edge, desktop)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://127.0.0.1:5500/prototype/story/moved-into-the-water.html",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Debug story: jump to displacement moment (state 5)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://127.0.0.1:5500/prototype/story/moved-into-the-water.html?shot=durban&step=5",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}

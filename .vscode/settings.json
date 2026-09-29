@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": false,
+  "files.encoding": "utf8",
+  "liveServer.settings.root": "/",
+  "liveServer.settings.CustomBrowser": "microsoftedge",
+  "files.associations": { "*.geojson": "json" },
+  "search.exclude": { "data/raw/census_kml": true, "data/raw/gsw_tiles": true, "data/raw/observing_network": true }
+}
