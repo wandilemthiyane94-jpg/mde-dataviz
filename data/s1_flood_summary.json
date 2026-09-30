@@ -1,0 +1,24 @@
+﻿{
+    "method":  "Sentinel-1 RTC VV, 5x5 mean, water \u003c -16 dB, new flood = water after \u0026 not before \u0026 drop \u003e= 3 dB; sea and permanent water (JRC GSW \u003e= 50%, +30 m) excluded",
+    "pairs":  {
+                  "apr2022":  {
+                                  "label":  "April 2022 floods (peak 11-12 Apr)",
+                                  "before":  "2022-04-05",
+                                  "after":  "2022-04-17",
+                                  "before_id":  "S1A_IW_GRDH_1SDV_20220405T163741_20220405T163806_042640_05165E_rtc",
+                                  "after_id":  "S1A_IW_GRDH_1SDV_20220417T163742_20220417T163807_042815_051C3F_rtc",
+                                  "new_water_km2":  0.46,
+                                  "permanent_water_km2":  0.54
+                              },
+                  "feb2025":  {
+                                  "label":  "February 2025 Lamontville flood (c. 25-26 Feb)",
+                                  "before":  "2025-02-24",
+                                  "after":  "2025-03-08",
+                                  "before_id":  "S1A_IW_GRDH_1SDV_20250224T163745_20250224T163810_058040_072A69_rtc",
+                                  "after_id":  "S1A_IW_GRDH_1SDV_20250308T163745_20250308T163810_058215_07318D_rtc",
+                                  "new_water_km2":  0,
+                                  "permanent_water_km2":  0
+                              }
+              },
+    "pixel_m":  0.4
+}

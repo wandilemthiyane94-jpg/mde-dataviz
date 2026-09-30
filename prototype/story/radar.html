@@ -1,0 +1,134 @@
+<title>Durban Flood Radar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Same single dark look as the story site. */
+:root{--ground:#0A1015;--panel:#101920;--ink:#E6EDEF;--muted:#8C9DA6;--rule:#22313A;--water:#58B7EA;--plain:#2F79AD;--camp:#F4B942;--hit:#FF5B4F;color-scheme:dark}
+body{background:var(--ground);color:var(--ink);font:18px/1.5 Newsreader,Georgia,serif}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:20px;padding-block:36px 60px;display:grid;gap:22px}
+h1{font:700 clamp(40px,6vw,76px)/.95 "Barlow Condensed","Arial Narrow",sans-serif;text-transform:uppercase;margin:0;text-wrap:balance}
+.k{font:500 12px/1.3 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+p{margin:0;max-width:40em}
+.lede{color:var(--muted);font-size:clamp(18px,2vw,22px)}
+.grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:24px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+.viewer{position:relative;background:var(--panel);border:1px solid var(--rule);border-radius:4px;overflow:hidden;touch-action:none}
+.viewer svg{display:block;width:100%;height:auto;cursor:grab}
+.controls{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font:500 12px/1 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.seg button,.btn{font:500 12px/1 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:transparent;border:0;padding:10px 12px;cursor:pointer}
+.btn{border:1px solid var(--rule);border-radius:4px}
+.seg button[aria-pressed="true"]{background:var(--rule);color:var(--ink)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--water);outline-offset:2px}
+label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
+input[type=range]{accent-color:var(--water);width:min(260px,100%)}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:18px;display:grid;gap:12px}
+.big{font:700 58px/1 "Barlow Condensed",sans-serif;font-variant-numeric:tabular-nums}
+.hit{color:var(--hit)} .muted{color:var(--muted)}
+.card p{font-size:16.5px;color:var(--muted)}
+.card b{color:var(--ink);font-weight:500}
+.legend{display:grid;gap:6px;font:13px/1.3 "IBM Plex Mono",monospace;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;margin-right:8px;vertical-align:-1px;border-radius:2px}
+.note{font-size:15px;color:var(--muted)}
+.note a{color:var(--water)}
+code{font:13px "IBM Plex Mono",monospace;overflow-wrap:anywhere}
+</style>
+
+<div class="wrap">
+  <span class="k">Sentinel-1 radar · eThekwini · Hollie and Wandile</span>
+  <h1>What the satellite saw</h1>
+  <p class="lede">Radar sees through cloud, so it's the best free way to map flood water. Drag the slider to compare the pass before each flood with the pass after it. Red is water that wasn't there before.</p>
+
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Flood event">
+      <button type="button" id="ev-apr2022" aria-pressed="true">April 2022</button>
+      <button type="button" id="ev-feb2025" aria-pressed="false">February 2025</button>
+    </div>
+    <label for="cmp">Before <input type="range" id="cmp" min="0" max="100" value="50"> After</label>
+    <label><input type="checkbox" id="t-flood" checked> New water</label>
+    <label><input type="checkbox" id="t-fp"> City floodplain</label>
+    <label><input type="checkbox" id="t-camps" checked> Camps</label>
+    <button type="button" class="btn" id="z-lam">Zoom: Lamontville</button>
+    <button type="button" class="btn" id="z-all">Whole city</button>
+  </div>
+
+  <div class="grid">
+    <div class="viewer" id="viewer"></div>
+    <div style="display:grid;gap:14px">
+      <div class="card" id="card" aria-live="polite"></div>
+      <div class="card">
+        <div class="legend">
+          <span><i style="background:#FF5B4F"></i>new water after the flood</span>
+          <span><i style="background:#163047"></i>sea, dams, permanent rivers (JRC)</span>
+          <span><i style="border:2px solid #58B7EA"></i>city's 1-in-100-year floodplain</span>
+          <span><i style="background:#F4B942;border-radius:50%"></i>temporary camp</span>
+          <span><i style="background:#8C9DA6"></i>radar: dark = smooth (water), light = rough (land, buildings)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="k">What this does and doesn't show</span>
+    <p><b>Durban floods drain fast.</b> The satellite passes over every 12 days. The first pass after the April 2022 peak came 5 days later, and by then only swollen river channels were left. For February 2025 the next pass came about 10 days after the flash flood, and no new water shows up. A missing red patch here doesn't mean a place stayed dry.</p>
+    <p><b>So the radar can't settle where the water went.</b> The city's floodplain map, field reports and high-resolution images of damage (which we have requested from SANSA) have to do that. This is why the story leans on the floodplain map.</p>
+    <p class="note">Method: Sentinel-1 RTC gamma0 VV, 10 m, same orbit (relative orbit 43) for each pair, cropped by the <a href="https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc" target="_blank" rel="noopener">Microsoft Planetary Computer</a> data API. 5×5 mean filter; water below −16 dB; new water means water after, not water before, and at least 3 dB darker. Sea and permanent water from JRC Global Surface Water (occurrence ≥ 50%) are masked out. Script: <code>methods/scripts/build_s1_flood.ps1</code>. The −16 dB threshold is a common default and hasn't been calibrated against field data here.</p>
+  </div>
+</div>
+
+<script src="vendor/d3.v7.min.js"></script>
+<script src="tra-story-data.js"></script>
+<script>
+(function(){
+const EV={
+  apr2022:{name:"April 2022 floods",before:"5 Apr 2022",after:"17 Apr 2022",peak:"peak rain 11–12 Apr",lag:"5 days after the peak",km2:0.46,
+    text:"New water sits almost entirely in river channels: the uMngeni and others still running high and wide five days later. The rest of the flood had drained."},
+  feb2025:{name:"February 2025 Lamontville flood",before:"24 Feb 2025",after:"8 Mar 2025",peak:"flash flood c. 25–26 Feb",lag:"about 10 days after the flood",km2:0,
+    text:"No new water detected. The flash flood at the Gwala St camp was over long before the satellite came back. The radar can't confirm or rule out the flood, and the news and Amnesty record is the evidence."}};
+const S=window.TRA.summary, sites=window.TRA.sites.filter(d=>d.muni==="eThekwini"&&d.lat).map(d=>Object.assign({},d,{lat:+d.lat,lon:+d.lon}));
+const B={type:"Feature",geometry:{type:"Polygon",coordinates:[[[30.74,-29.53],[31.14,-29.53],[31.14,-30.06],[30.74,-30.06],[30.74,-29.53]]]}};
+const W=1000, pj=d3.geoMercator().fitWidth(W,B), bb=d3.geoPath(pj).bounds(B), H=Math.round(bb[1][1]-bb[0][1]);
+pj.translate([pj.translate()[0]-bb[0][0],pj.translate()[1]-bb[0][1]]);
+const path=d3.geoPath(pj);
+const svg=d3.select("#viewer").append("svg").attr("viewBox",`0 0 ${W} ${H}`).attr("role","img").attr("aria-label","Before and after Sentinel-1 radar images of eThekwini");
+const defs=svg.append("defs"), clip=defs.append("clipPath").attr("id","afterClip").append("rect").attr("y",-1e4).attr("height",3e4);
+const z=svg.append("g");
+const imgB=z.append("image").attr("width",W).attr("height",H).attr("preserveAspectRatio","none");
+const gA=z.append("g").attr("clip-path","url(#afterClip)");
+const imgA=gA.append("image").attr("width",W).attr("height",H).attr("preserveAspectRatio","none");
+const imgF=gA.append("image").attr("width",W).attr("height",H).attr("preserveAspectRatio","none").style("image-rendering","pixelated");
+const gFP=z.append("g").style("display","none");
+gFP.selectAll("path").data(window.FLOODPLAIN.features).join("path").attr("d",path).attr("fill","none").attr("stroke","#58B7EA").attr("stroke-width",1.1).attr("vector-effect","non-scaling-stroke");
+const gC=z.append("g");
+const cs=gC.selectAll("circle").data(sites).join("circle").attr("cx",d=>pj([d.lon,d.lat])[0]).attr("cy",d=>pj([d.lon,d.lat])[1]).attr("r",5).attr("fill","#F4B942").attr("stroke","#0A1015").attr("stroke-width",1.2);
+cs.append("title").text(d=>d.site+" (#"+d.id+")");
+const lam=sites.filter(d=>d.id===32)[0];
+const lamLbl=gC.append("text").attr("font-family","IBM Plex Mono, monospace").attr("font-size",13).attr("fill","#E6EDEF").attr("paint-order","stroke").attr("stroke","#0A1015").attr("stroke-width",4).text("Gwala St camp");
+const divider=svg.append("line").attr("y1",0).attr("y2",H).attr("stroke","#E6EDEF").attr("stroke-width",2);
+const tagB=svg.append("text").attr("y",28).attr("x",14).attr("font-family","IBM Plex Mono, monospace").attr("font-size",15).attr("fill","#E6EDEF").attr("paint-order","stroke").attr("stroke","#0A1015").attr("stroke-width",4);
+const tagA=svg.append("text").attr("y",28).attr("text-anchor","end").attr("x",W-14).attr("font-family","IBM Plex Mono, monospace").attr("font-size",15).attr("fill","#E6EDEF").attr("paint-order","stroke").attr("stroke","#0A1015").attr("stroke-width",4);
+let k=1,cur="apr2022";
+const zoom=d3.zoom().scaleExtent([1,12]).translateExtent([[0,0],[W,H]]).on("zoom",e=>{z.attr("transform",e.transform);k=e.transform.k;cs.attr("r",5/k).attr("stroke-width",1.2/k);lamLbl.attr("font-size",13/k).attr("stroke-width",4/k).attr("x",pj([lam.lon,lam.lat])[0]+9/k).attr("y",pj([lam.lon,lam.lat])[1]+4/k);setCmp();});
+svg.call(zoom);
+function setCmp(){const v=+document.getElementById("cmp").value/100, t=d3.zoomTransform(svg.node()), sx=v*W;
+  // the divider sits at a screen position; convert to map space for the clip
+  clip.attr("x",(sx-t.x)/t.k).attr("width",1e5);divider.attr("x1",sx).attr("x2",sx);}
+function show(ev){cur=ev;const E=EV[ev];
+  imgB.attr("href",`s1/${ev}_before.jpg`);imgA.attr("href",`s1/${ev}_after.jpg`);imgF.attr("href",`s1/${ev}_flood.png`);
+  tagB.text("BEFORE · "+E.before);tagA.text("AFTER · "+E.after);
+  document.querySelectorAll(".seg button").forEach(b=>b.setAttribute("aria-pressed",b.id==="ev-"+ev));
+  document.getElementById("card").innerHTML=`<span class="k">${E.name}</span><span class="big ${E.km2>0?"hit":"muted"}">${E.km2>0?E.km2.toFixed(2)+" km²":"0 km²"}</span>
+    <p>of new water detected inland · after-image taken <b>${E.lag}</b> (${E.peak})</p><p>${E.text}</p>`;}
+document.getElementById("ev-apr2022").onclick=()=>show("apr2022");document.getElementById("ev-feb2025").onclick=()=>show("feb2025");
+document.getElementById("cmp").oninput=setCmp;
+document.getElementById("t-flood").onchange=e=>imgF.style("display",e.target.checked?null:"none");
+document.getElementById("t-fp").onchange=e=>gFP.style("display",e.target.checked?null:"none");
+document.getElementById("t-camps").onchange=e=>gC.style("display",e.target.checked?null:"none");
+function zoomTo(lon0,lat0,lon1,lat1){const a=pj([lon0,lat0]),b=pj([lon1,lat1]),kk=Math.min(12,.9*Math.min(W/Math.abs(b[0]-a[0]),H/Math.abs(b[1]-a[1]))),cx=(a[0]+b[0])/2,cy=(a[1]+b[1])/2;
+  svg.transition().duration(900).call(zoom.transform,d3.zoomIdentity.translate(W/2-kk*cx,H/2-kk*cy).scale(kk));}
+document.getElementById("z-lam").onclick=()=>zoomTo(30.94,-29.855,31.005,-29.96);
+document.getElementById("z-all").onclick=()=>svg.transition().duration(700).call(zoom.transform,d3.zoomIdentity);
+show("apr2022");svg.call(zoom.transform,d3.zoomIdentity);setCmp();
+})();
+</script>
