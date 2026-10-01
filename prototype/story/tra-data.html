@@ -1,0 +1,141 @@
+<title>Temporary Relocation Sites Data</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F3F5F4;--paper:#FFFFFF;--ink:#14202A;--muted:#5A6A74;--rule:#D5DDE1;--chip:#E8EEF1;
+  --flood:#1F7FB8;--covid:#7B5CC4;--clear:#B7791F;--evict:#C8382E;--fire:#D9682B;--upg:#8A8A3D;--unk:#9AA7AE;--hit:#C8382E;--link:#1F6FA3;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;--body:Newsreader,Georgia,serif;--mono:"IBM Plex Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1015;--paper:#101920;--ink:#E6EDEF;--muted:#8C9DA6;--rule:#22313A;--chip:#16232C;--flood:#58B7EA;--covid:#B08CF0;--clear:#F4B942;--evict:#FF5B4F;--fire:#F28C5B;--upg:#C9C28A;--unk:#56666F;--hit:#FF5B4F;--link:#7CC4F0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0A1015;--paper:#101920;--ink:#E6EDEF;--muted:#8C9DA6;--rule:#22313A;--chip:#16232C;--flood:#58B7EA;--covid:#B08CF0;--clear:#F4B942;--evict:#FF5B4F;--fire:#F28C5B;--upg:#C9C28A;--unk:#56666F;--hit:#FF5B4F;--link:#7CC4F0;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:17px/1.5 var(--body)}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:20px;padding-block:40px 72px;display:grid;gap:36px}
+.k{font:500 12px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 clamp(40px,6vw,72px)/.95 var(--display);text-transform:uppercase;margin:0;text-wrap:balance}
+h2{font:700 clamp(26px,3.6vw,36px)/1 var(--display);text-transform:uppercase;margin:0}
+p{margin:0;max-width:44em}
+header,section{display:grid;gap:14px}
+.lede{font-size:clamp(19px,2.2vw,22px);color:var(--muted)}
+.bars{display:grid;gap:8px;max-width:900px}
+.bar{display:grid;grid-template-columns:minmax(150px,280px) 1fr;gap:12px;align-items:center;font-size:16px}
+.track{display:flex;height:22px;background:var(--chip);border-radius:2px;overflow:hidden}
+.track i{display:block;height:100%}
+.bar .n{font:500 13px var(--mono);color:var(--muted);margin-left:8px;white-space:nowrap}
+.keyrow{display:flex;flex-wrap:wrap;gap:6px 16px;font:13px var(--mono);color:var(--muted)}
+.keyrow b{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.filters input,.filters select{font:15px var(--body);color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:8px 10px}
+.filters input{flex:1 1 220px}
+.filters input:focus-visible,.filters select:focus-visible,a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+#count{font:13px var(--mono);color:var(--muted)}
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:4px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:1100px;font-size:14.5px}
+th,td{text-align:left;padding:9px 10px;border-top:1px solid var(--rule);vertical-align:top}
+th{font:500 11px/1.3 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);border-top:0;background:var(--chip);position:sticky;top:0}
+td.id{font:13px var(--mono);color:var(--muted)}
+td .sub{display:block;color:var(--muted);font-size:13px;margin-top:3px;max-width:34em}
+.who{display:inline-flex;align-items:center;gap:6px;font-weight:600}
+.who b{width:10px;height:10px;border-radius:50%;flex:none}
+.tag{display:inline-block;font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.05em;padding:4px 6px;border-radius:3px;background:var(--chip);white-space:nowrap}
+.tag.hit{background:color-mix(in srgb,var(--hit) 18%,transparent);color:var(--hit)}
+a{color:var(--link)}
+td a{font:12.5px var(--mono);word-break:break-all}
+.src{display:grid;gap:12px}
+.src li{margin-bottom:6px}
+ul{margin:0;padding-left:1.1em;max-width:52em}
+.note{font-size:15px;color:var(--muted)}
+code{font:13px var(--mono);overflow-wrap:anywhere}
+footer{font-size:14px;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="k">Data behind “Who Owns the Flood” · Hollie and Wandile · Harvard GSD MDE</span>
+  <h1>Who was moved into temporary sites</h1>
+  <p class="lede">All 84 temporary relocation sites in our dataset: who was moved there and why, how big each site is, its current status, whether it has flooded since, and the sources for each one. Durban (eThekwini) rows also show our floodplain test.</p>
+</header>
+
+<section>
+  <h2>Who was moved</h2>
+  <div class="bars" id="bars"></div>
+  <div class="keyrow" id="key"></div>
+  <p class="note">“Who was moved” is our coding of each site's origin, taken from the site list's type and notes plus our own case research. The basis for each code is shown in the table. For 26 sites the sources don't say why people were moved, so they're left as “not stated” rather than guessed.</p>
+</section>
+
+<section>
+  <h2>All sites and their sources</h2>
+  <div class="filters">
+    <label class="k" for="q">Search</label><input id="q" type="search" placeholder="Site, place, municipality…">
+    <label class="k" for="fw">Who</label><select id="fw"><option value="">All</option></select>
+    <label class="k" for="fp">Province</label><select id="fp"><option value="">All</option></select>
+    <span id="count"></span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>#</th><th>Site</th><th>Established · size</th><th>Who was moved</th><th>Status (latest source)</th><th>Floodplain (eThekwini)</th><th>Flooded since?</th><th>Sources</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Closed, planned and context sites</h2>
+  <p class="note">Sites from the same list that are closed, proposed or refused. They aren't counted in the 84.</p>
+  <div class="tbl"><table style="min-width:860px">
+    <thead><tr><th>Province</th><th>Municipality</th><th>Site</th><th>What happened</th><th>Status</th><th>Source</th></tr></thead>
+    <tbody id="ctx"></tbody>
+  </table></div>
+</section>
+
+<section class="src">
+  <h2>Data sources and method</h2>
+  <ul>
+    <li><b>Site list.</b> “Temporary Relocation Areas (TRAs) in South Africa, compiled from 2022–2026 online sources” (compiled 27 Sep 2026). It covers TRAs, transit camps, temporary residential units (TRUs) and temporary emergency accommodation (TEA). Each row has one or two sources, a dated status note, the size as reported, and the status. Sources are mainly GroundUp, IOL, Daily Maverick, the Mail &amp; Guardian, the Parliamentary Monitoring Group, and municipal and provincial records. File: <code>data/raw/South_Africa_TRAs_2022-2026.xlsx</code>.</li>
+    <li><b>Who was moved (our coding).</b> One code per site (flood survivors, evicted, cleared for a project, Covid-19 de-densification, fire survivors, upgrading decant, or not stated), with its basis recorded. File: <code>data/tra_sites_exposure.csv</code> (column <code>origin</code>).</li>
+    <li><b>Coordinates.</b> Estimated from named landmarks (±1–3 km) unless marked “Published”. Locations are approximate on purpose, and nothing identifies individual homes.</li>
+    <li><b>Floodplain test (eThekwini only).</b> 28 Durban sites with coordinates were tested against eThekwini Municipality's <a href="https://gis-ethekwini.opendata.arcgis.com/datasets/e33fb655723e49fab434a23a8ca3d1d2_0" target="_blank" rel="noopener">Flood Plain 100yr</a> open data: inside, within 250 m, within 1 km, or beyond. The same test on 300 seeded random points gives the baseline: 11 of 28 sites (39%) are inside or within 250 m, against 34% of random ground (binomial p = 0.34). Script: <code>methods/scripts/build_tra_exposure.ps1</code>.</li>
+    <li><b>Flooded since?</b> A site-by-site news search of 30 of the 84 sites for flooding after people moved in. It found 7 documented cases plus 2 low-confidence ones. Each has its evidence and a confidence rating. A blank means not found or not yet searched, not “never flooded”. File: <code>data/raw/tra_reflood_sweep.json</code>.</li>
+    <li><b>What this data can't tell you.</b> How many people live in each site today (sizes are as reported, in mixed units), who they are as individuals (we don't name residents), and whether moving them was justified.</li>
+  </ul>
+  <p class="note">Combined table: <code>data/tra_sites_full.csv</code> (rebuild with <code>methods/scripts/build_tra_sources.ps1</code>). Repository: github.com/wandilemthiyane94-jpg/mde-dataviz.</p>
+</section>
+
+<footer>Hollie and Wandile · Harvard GSD MDE · built from the files listed above.</footer>
+</div>
+
+<script src="tra-sources-data.js"></script>
+<script>
+(function(){
+const D=window.TRASRC, S=D.sites;
+const COLV={"Flood survivors":"--flood","Covid-19 de-densification":"--covid","Cleared for a housing or infrastructure project":"--clear","Evicted":"--evict","Fire survivors":"--fire","Decanted for in-situ upgrading":"--upg","De-densification of an informal settlement":"--upg","Other":"--unk","Not stated in sources":"--unk"};
+const ORDER=["Flood survivors","Cleared for a housing or infrastructure project","Evicted","Covid-19 de-densification","Fire survivors","Decanted for in-situ upgrading","De-densification of an informal settlement","Other","Not stated in sources"];
+const col=w=>"var("+(COLV[w]||"--unk")+")";
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const host=u=>{try{return new URL(u).hostname.replace(/^www\./,"");}catch(e){return u;}};
+const isDbn=d=>/eThekwini/.test(d.municipality);
+// bars: all 84, eThekwini, elsewhere
+function bar(label,arr){const n=arr.length,parts=ORDER.map(w=>[w,arr.filter(d=>d.who_was_moved===w).length]).filter(p=>p[1]);
+  const fl=arr.filter(d=>d.who_was_moved==="Flood survivors").length;
+  return `<div class="bar"><span>${label}</span><div style="display:flex;align-items:center"><div class="track" style="flex:1" role="img" aria-label="${label}: ${parts.map(p=>p[1]+" "+p[0]).join(", ")}">${parts.map(p=>`<i title="${esc(p[0])}: ${p[1]}" style="width:${100*p[1]/n}%;background:${col(p[0])}"></i>`).join("")}</div><span class="n">${n} sites · ${fl} flood</span></div></div>`;}
+document.getElementById("bars").innerHTML=bar("All South Africa",S)+bar("eThekwini (Durban)",S.filter(isDbn))+bar("Everywhere else",S.filter(d=>!isDbn(d)));
+document.getElementById("key").innerHTML=ORDER.filter(w=>S.some(d=>d.who_was_moved===w)).map(w=>`<span><b style="background:${col(w)}"></b>${esc(w)} (${S.filter(d=>d.who_was_moved===w).length})</span>`).join("");
+// filters
+const fw=document.getElementById("fw"),fp=document.getElementById("fp"),q=document.getElementById("q");
+ORDER.filter(w=>S.some(d=>d.who_was_moved===w)).forEach(w=>fw.add(new Option(w,w)));
+[...new Set(S.map(d=>d.province))].sort().forEach(p=>fp.add(new Option(p,p)));
+function render(){const t=q.value.trim().toLowerCase();
+  const rows=S.filter(d=>(!fw.value||d.who_was_moved===fw.value)&&(!fp.value||d.province===fp.value)&&(!t||[d.site,d.municipality,d.suburb_landmark,d.province].join(" ").toLowerCase().includes(t)));
+  document.getElementById("count").textContent=rows.length+" of "+S.length+" sites";
+  document.getElementById("rows").innerHTML=rows.map(d=>`<tr>
+    <td class="id">${esc(d.id)}</td>
+    <td><b>${esc(d.site)}</b><span class="sub">${esc(d.municipality)} · ${esc(d.province)}${d.suburb_landmark?" · "+esc(d.suburb_landmark):""}</span></td>
+    <td>${esc(d.established||"–")}<span class="sub">${esc(d.size)}</span></td>
+    <td><span class="who"><b style="background:${col(d.who_was_moved)}"></b>${esc(d.who_was_moved)}</span>${d.who_basis?`<span class="sub">${esc(d.who_basis)}</span>`:""}</td>
+    <td>${esc(d.status)}${d.latest_source_date?` <span class="tag">${esc(d.latest_source_date)}</span>`:""}<span class="sub">${esc(d.status_detail)}</span></td>
+    <td>${d.ethekwini_floodplain?`<span class="tag${/inside|250/.test(d.ethekwini_floodplain)?" hit":""}">${esc(d.ethekwini_floodplain)}</span>`:"–"}</td>
+    <td>${d.reflood_documented==="yes"?'<span class="tag hit">yes</span>':d.reflood_documented==="low"?'<span class="tag">low-confidence report</span>':"–"}${d.reflood_evidence?`<span class="sub">${esc(d.reflood_evidence.replace(/https?:\/\/\S+/g,"").replace(/\s*\|\|\s*/g," · "))}</span>`:""}</td>
+    <td>${[d.source_1,d.source_2].filter(Boolean).map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(host(u))}</a>`).join("<br>")}${(d.reflood_evidence.match(/https?:\/\/\S+/g)||[]).map(u=>`<br><a href="${esc(u)}" target="_blank" rel="noopener">${esc(host(u))}</a> <span class="tag">flood</span>`).join("")}</td></tr>`).join("");}
+[q,fw,fp].forEach(el=>el.addEventListener("input",render));render();
+document.getElementById("ctx").innerHTML=D.context.map(c=>`<tr><td>${esc(c.Province)}</td><td>${esc(c.Municipality)}</td><td><b>${esc(c.Site)}</b></td><td>${esc(c["What happened"])}</td><td>${esc(c.Status)}</td><td>${c.Source?`<a href="${esc(c.Source)}" target="_blank" rel="noopener">${esc(host(c.Source))}</a>`:""}</td></tr>`).join("");
+})();
+</script>
