@@ -1,0 +1,16 @@
+<!-- Coordinate sensitivity check for the Durban floodplain test: distance from each estimated site point to the floodplain edge,
+ and the share of positions within 3 km (the stated coordinate uncertainty) that would fall in the inside/250 m band. Open in a browser. -->
+<script src="../../prototype/story/vendor/d3.v7.min.js"></script><script src="../../prototype/story/tra-story-data.js"></script>
+<pre id="o"></pre><script>
+const F=FLOODPLAIN.features, segs=[];
+F.forEach(f=>{const g=f.geometry,P=g.type==="Polygon"?[g.coordinates]:g.coordinates;P.forEach(p=>p.forEach(r=>{for(let i=1;i<r.length;i++)segs.push([r[i-1],r[i]]);}));});
+const kx=111320*Math.cos(29.9*Math.PI/180),ky=110574;
+function dist(lon,lat){let b=1e12;for(const [a,c] of segs){const ax=(a[0]-lon)*kx,ay=(a[1]-lat)*ky,bx=(c[0]-lon)*kx,by=(c[1]-lat)*ky,dx=bx-ax,dy=by-ay,L=dx*dx+dy*dy,t=L?Math.max(0,Math.min(1,-(ax*dx+ay*dy)/L)):0,px=ax+t*dx,py=ay+t*dy;b=Math.min(b,Math.hypot(px,py));}return Math.round(b);}
+function inside(lon,lat){return F.some(f=>d3.geoContains(f,[lon,lat]));}
+const out=["segments "+segs.length+" features "+F.length];
+TRA.sites.filter(s=>s.muni==="eThekwini"&&s.lat).forEach(s=>{const lon=+s.lon,lat=+s.lat,ins=inside(lon,lat),d=ins?0:dist(lon,lat);
+ // how far could the true site be from here and still be on the floodplain band? sample a 3 km disc
+ let hit=0,n=0;for(let r=250;r<=3000;r+=250)for(let a=0;a<360;a+=15){n++;const L=lon+Math.cos(a*Math.PI/180)*r/kx,B=lat+Math.sin(a*Math.PI/180)*r/ky;if(inside(L,B)||dist(L,B)<=250)hit++;}
+ out.push([s.id,s.site.slice(0,40),s.conf,s.fp,ins?"INSIDE":d+" m",Math.round(100*hit/n)+"% of 3km disc in band"].join(" | "));});
+document.getElementById("o").textContent=out.join("\n");
+</script>

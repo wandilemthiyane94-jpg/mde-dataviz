@@ -1,0 +1,102 @@
+<title>Film Data and Sources</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F3F5F4;--paper:#FFFFFF;--ink:#14202A;--muted:#5A6A74;--rule:#D5DDE1;--chip:#E8EEF1;
+  --ok:#2E8B5E;--warn:#B7791F;--hit:#C8382E;--link:#1F6FA3;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;--body:Newsreader,Georgia,serif;--mono:"IBM Plex Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1015;--paper:#101920;--ink:#E6EDEF;--muted:#8C9DA6;--rule:#22313A;--chip:#16232C;--ok:#5ED69C;--warn:#F4B942;--hit:#FF5B4F;--link:#7CC4F0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0A1015;--paper:#101920;--ink:#E6EDEF;--muted:#8C9DA6;--rule:#22313A;--chip:#16232C;--ok:#5ED69C;--warn:#F4B942;--hit:#FF5B4F;--link:#7CC4F0;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:17px/1.5 var(--body)}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:20px;padding-block:40px 72px;display:grid;gap:34px}
+.k{font:500 12px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 clamp(40px,6vw,72px)/.95 var(--display);text-transform:uppercase;margin:0;text-wrap:balance}
+h2{font:700 clamp(24px,3.2vw,32px)/1 var(--display);text-transform:uppercase;margin:0}
+p{margin:0;max-width:46em}
+header,section{display:grid;gap:14px}
+.lede{font-size:clamp(19px,2.2vw,22px);color:var(--muted)}
+.tally{display:flex;flex-wrap:wrap;gap:8px 18px;font:14px var(--mono);color:var(--muted)}
+.pill{display:inline-block;font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 7px;border-radius:3px;white-space:nowrap}
+.verified{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}
+.caveat{background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--warn)}
+.check{background:color-mix(in srgb,var(--hit) 18%,transparent);color:var(--hit)}
+.alert{background:var(--paper);border:1px solid var(--rule);border-left:4px solid var(--hit);padding:16px 18px;display:grid;gap:10px}
+.alert ul{margin:0;padding-left:1.1em;display:grid;gap:6px}
+.claim{background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:16px 18px;display:grid;gap:10px}
+.claim .top{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.claim q{font-size:19px;font-weight:500;quotes:"“" "”"}
+.claim dl{display:grid;grid-template-columns:9.5em 1fr;gap:6px 14px;margin:0;font-size:15.5px}
+.claim dt{font:500 11.5px/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.claim dd{margin:0;overflow-wrap:anywhere}
+.claim .note{font-size:15px;color:var(--muted);border-top:1px solid var(--rule);padding-top:8px}
+@media (max-width:620px){.claim dl{grid-template-columns:1fr}.claim dt{margin-top:6px}}
+code{font:13px var(--mono);overflow-wrap:anywhere}
+a{color:var(--link)}
+a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.scene{display:grid;gap:12px}
+.datasets{display:grid;gap:8px;margin:0;padding-left:1.1em}
+footer{font-size:14px;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="k">Who Owns the Flood? · data film · Hollie and Wandile · Harvard GSD MDE</span>
+  <h1>Every number and source in the film</h1>
+  <p class="lede">Each claim that appears on screen, scene by scene: the value, how it was computed, the file it comes from and its original sources. Each claim is marked verified, has a caveat to state alongside it, or still needs checking.</p>
+  <div class="tally" id="tally"></div>
+</header>
+
+<section class="alert" aria-labelledby="h-check">
+  <h2 id="h-check">Check before the crit</h2>
+  <ul id="checks"></ul>
+</section>
+
+<div id="scenes" style="display:grid;gap:30px"></div>
+
+<section>
+  <h2>Datasets at a glance</h2>
+  <ul class="datasets">
+    <li><b>Site list:</b> “Temporary Relocation Areas (TRAs) in South Africa”, compiled 27 Sep 2026 from 2022–2026 online sources. 84 sites, each with sources. <code>data/raw/South_Africa_TRAs_2022-2026.xlsx</code> → <code>data/tra_sites_full.csv</code></li>
+    <li><b>eThekwini Flood Plain 100yr</b> (municipal open data) and <b>300 seeded random points</b>. <code>data/tra_sites_exposure.csv</code>, <code>data/raw/durban_random_baseline.csv</code></li>
+    <li><b>JRC Global Surface Water</b>, occurrence 1984–2021 (Pekel et al. 2016). <code>prototype/story/film-data.js</code></li>
+    <li><b>World Weather Attribution (2022)</b>: the KwaZulu-Natal rainfall attribution.</li>
+    <li><b>Reflooding search</b>: 30 of 84 sites, with evidence and confidence. <code>data/raw/tra_reflood_sweep.json</code></li>
+    <li><b>Global Dataset of Planned Relocation Cases</b> (PDD, Kaldor Centre, IOM; <i>Leaving Place, Restoring Home</i> I and II): 408 cases, of which 64 were sampled at random and coded. <code>data/world_relocation_coded.csv</code>, <code>data/world_relocation_test.csv</code></li>
+    <li><b>World Bank income groups</b>. <code>data/raw/wb_country_covariates.csv</code></li>
+    <li><b>11-case root-cause matrix</b>. <code>data/relocation_rootcause_matrix.csv</code></li>
+    <li><b>Published research and reports:</b> Bower et al. 2023 (<i>Nature Climate Change</i>); the Auditor-General's 2022 flood relief report; eThekwini to Parliament (8 Mar 2023); The Durban Coalition, <i>From Crisis to Coalition</i>.</li>
+  </ul>
+  <p style="font-size:15px;color:var(--muted)">This page is generated from <code>data/film_claims.csv</code>. Code and data: github.com/wandilemthiyane94-jpg/mde-dataviz.</p>
+</section>
+<footer>Hollie and Wandile · Harvard GSD MDE · Project 2, Information Design.</footer>
+</div>
+
+<script src="film-sources-data.js"></script>
+<script>
+(function(){
+const C=window.FILMCLAIMS, esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const LABEL={verified:"verified",caveat:"say the caveat",check:"needs checking"};
+// sources are "Label <url>; Label <url>"
+const srcHTML=s=>!s?"–":s.split(/;\s+(?=[^<]*(?:<|$))/).map(part=>{const m=/^(.*?)\s*<(https?:\/\/[^>]+)>\s*$/.exec(part.trim());return m?`${esc(m[1])} <a href="${esc(m[2])}" target="_blank" rel="noopener">${esc(m[2].replace(/^https?:\/\/(www\.)?/,"").split("/")[0])}</a>`:esc(part);}).join("<br>");
+const n=k=>C.filter(c=>c.status===k).length;
+document.getElementById("tally").innerHTML=`<span>${C.length} claims</span><span><span class="pill verified">verified</span> ${n("verified")}</span><span><span class="pill caveat">say the caveat</span> ${n("caveat")}</span><span><span class="pill check">needs checking</span> ${n("check")}</span>`;
+document.getElementById("checks").innerHTML=C.filter(c=>c.status==="check").map(c=>`<li><b>${esc(c.scene)}:</b> “${esc(c.on_screen)}”. ${esc(c.note)}</li>`).join("")+
+  `<li><b>02 The sites:</b> the headline “After the 2022 floods, the city moved people into camps” overstates it, because the 28 include camps from 2008–2019. Change it to “Durban's temporary camps”.</li>
+   <li><b>Coordinates:</b> all Durban site locations are estimates (±1–3 km). Place the camps precisely and rerun the 250 m test before relying on any single camp's result.</li>`;
+const scenes=[...new Set(C.map(c=>c.scene))];
+document.getElementById("scenes").innerHTML=scenes.map(s=>`<section class="scene"><h2>${esc(s)}</h2>${C.filter(c=>c.scene===s).map(c=>`
+  <article class="claim">
+    <div class="top"><q>${esc(c.on_screen)}</q><span class="pill ${esc(c.status)}">${esc(LABEL[c.status]||c.status)}</span></div>
+    <dl>
+      <dt>Value</dt><dd>${esc(c.value)}</dd>
+      ${c.how_computed?`<dt>How</dt><dd>${esc(c.how_computed)}</dd>`:""}
+      ${c.data_file?`<dt>Data file</dt><dd><code>${esc(c.data_file)}</code></dd>`:""}
+      <dt>Sources</dt><dd>${srcHTML(c.sources)}</dd>
+    </dl>
+    ${c.note?`<div class="note">${esc(c.note)}</div>`:""}
+  </article>`).join("")}</section>`).join("");
+})();
+</script>
