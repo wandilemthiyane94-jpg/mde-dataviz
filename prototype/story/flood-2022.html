@@ -1,0 +1,140 @@
+<title>The Night the Water Came</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#04080B;--ink:#E6EDEF;--muted:#8C9DA6;--rule:#22313A;--water:#58B7EA;--camp:#F4B942;--hit:#FF5B4F;color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:16px/1.45 Newsreader,Georgia,serif;margin:0}
+.wrap{max-width:1500px;margin:0 auto;padding-inline:16px;padding-block:18px 40px;display:grid;gap:12px}
+#stage{position:relative;width:min(100%,calc((100vh - 120px)*16/9));aspect-ratio:16/9;margin-inline:auto;max-width:100%}
+canvas#c{display:block;width:100%;height:100%;background:#000;border:1px solid var(--rule)}
+#poster{position:absolute;inset:0;display:grid;place-items:center;background:rgba(4,8,11,.6);text-align:center}
+#poster[hidden]{display:none!important}
+#poster h1{font:700 clamp(30px,6vw,80px)/.95 "Barlow Condensed","Arial Narrow",sans-serif;text-transform:uppercase;margin:0 0 8px}
+#poster p{font-size:clamp(14px,1.6vw,19px);color:var(--muted);margin:0 0 20px;max-width:34em}
+button{font:500 12px/1 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--water);border:0;border-radius:3px;padding:11px 18px;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;width:min(100%,calc((100vh - 120px)*16/9));margin-inline:auto}
+#scrub{flex:1 1 260px;accent-color:var(--water)}
+#time{font:13px "IBM Plex Mono",monospace;color:var(--muted);min-width:150px}
+.note{font-size:14.5px;color:var(--muted);width:min(100%,calc((100vh - 120px)*16/9));margin-inline:auto}
+.note b{color:var(--ink);font-weight:500}
+code{font:12.5px "IBM Plex Mono",monospace}
+</style>
+<div class="wrap">
+  <div id="stage">
+    <canvas id="c" width="1920" height="1080" aria-label="Simulated flood during the April 2022 storm, Lamontville, Durban"></canvas>
+    <div id="poster"><div><h1>The night the water came</h1><p>A simulation of the April 2022 storm over the uMlazi valley, Durban: real rainfall, real terrain, water running downhill hour by hour, ending at the Lamontville riverside camp.</p><button type="button" id="go">Play</button></div></div>
+  </div>
+  <div class="bar"><button type="button" id="play">Play</button><span id="time"></span><input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Simulation time"></div>
+  <p class="note"><b>Layers.</b> Satellite photo: Sentinel-2, 29 March 2022, two weeks before the floods. Terrain and hillshade: AWS Terrain Tiles. Rain: ERA5 hourly reanalysis at the camp (Open-Meteo); reanalysis smooths out local downpours, so the real rain was heavier in places. Water: a simplified rain-on-grid model on 33 m cells (terrain pits filled, 70% runoff, Manning flow), plus river water entering from upstream: the uMlazi (905 km² catchment) and five smaller streams, traced from wider terrain and routed at 1.5 m/s. Scripts: <code>build_upstream_inflow.ps1</code>, <code>build_flood_sim.ps1</code>. Camp location: our site map.</p>
+  <p class="note"><b>What it is and isn't.</b> It's a visual simulation built to show how rain becomes flooding, not an engineering flood model. It uses one rain gauge point for the whole catchment and doesn't represent canal walls, culverts or storm drains. The 33 m cells blur the canal bank, so the camp depth includes the channel next to it. Read depths as indicative. The camp did flood in April 2022 (Mail &amp; Guardian, 9 May 2022), and again in February 2025, when three children were swept away (GroundUp).</p>
+</div>
+<script src="hollie-data.js"></script>
+<script>
+(async function(){
+const cv=document.getElementById("c"),ctx=cv.getContext("2d"),W=1920,H=1080;
+const [meta,sim]=await Promise.all([fetch("rem/meta.json").then(r=>r.json()),fetch("rem/sim.json").then(r=>r.json())]);
+const load=s=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=s;});
+const [s2,hill,sprite]=await Promise.all([load("rem/s2.jpg"),load("rem/hill.png"),load("rem/sim_frames.png")]);
+await Promise.all([document.fonts.load("700 40px 'Barlow Condensed'"),document.fonts.load("400 20px Newsreader"),document.fonts.load("400 14px 'IBM Plex Mono'")]).catch(()=>{});
+const GW=sim.grid[0],GH=sim.grid[1],NF=sim.frames,COLS=sim.cols;
+// decode depth frames
+const sc=document.createElement("canvas");sc.width=sprite.width;sc.height=sprite.height;const sx=sc.getContext("2d");sx.drawImage(sprite,0,0);const sd=sx.getImageData(0,0,sc.width,sc.height).data;
+const FR=[];for(let f=0;f<NF;f++){const a=new Uint8Array(GW*GH),ox=(f%COLS)*GW,oy=Math.floor(f/COLS)*GH;for(let y=0;y<GH;y++)for(let x=0;x<GW;x++)a[y*GW+x]=sd[((oy+y)*sc.width+ox+x)*4];FR.push(a);}
+// base map: satellite x hillshade (1280 px source)
+const MS=meta.width,base=document.createElement("canvas");base.width=MS;base.height=MS;const bx=base.getContext("2d");
+bx.drawImage(s2,0,0,MS,MS);bx.globalCompositeOperation="multiply";bx.globalAlpha=.55;bx.drawImage(hill,0,0,MS,MS);bx.globalCompositeOperation="source-over";bx.globalAlpha=1;
+// water layer (sim grid, upscaled smoothly)
+const wc=document.createElement("canvas");wc.width=GW;wc.height=GH;const wx=wc.getContext("2d"),wimg=wx.createImageData(GW,GH);
+function waterAt(fpos,shimmer){const f0=Math.floor(fpos),f1=Math.min(NF-1,f0+1),k=fpos-f0,A=FR[Math.max(0,f0)],B=FR[f1];
+  for(let i=0;i<GW*GH;i++){const d=((A[i]*(1-k)+B[i]*k)/sim.depth_scale);if(d<0.05){wimg.data[i*4+3]=0;continue;}
+    const t=Math.min(1,d/2.5),wob=shimmer?Math.sin(i*.37+shimmer)*.04:0;
+    wimg.data[i*4]=Math.round(40-20*t);wimg.data[i*4+1]=Math.round(150-60*t+(wob*200));wimg.data[i*4+2]=Math.round(225-40*t);wimg.data[i*4+3]=Math.round(255*Math.min(.92,.35+t*.6));}
+  wx.putImageData(wimg,0,0);}
+// geometry
+const my=lat=>Math.log(Math.tan(Math.PI/4+lat*Math.PI/360)),mN=my(meta.north),mS=my(meta.south);
+const toPx=(lon,lat)=>[(lon-meta.west)/(meta.east-meta.west)*MS,(mN-my(lat))/(mN-mS)*MS];
+const lam=HOLLIE.sites.find(s=>s.id==="lamontville"),CAMP=toPx(lam.lon,lam.lat);
+const SITES=HOLLIE.sites.map(s=>({s,p:toPx(s.lon,s.lat)})).filter(o=>o.p[0]>0&&o.p[0]<MS&&o.p[1]>0&&o.p[1]<MS);
+// timeline: sim frames are 15 min apart starting 11 Apr 06:00
+const RAIN=sim.rain_mm_per_hour,HRS=RAIN.length,TOTAL=62; // seconds of playback
+const CUM=[];RAIN.reduce((a,v,i)=>(CUM[i]=a+v,a+v),0);
+const peakH=RAIN.indexOf(Math.max(...RAIN));
+const heavyStart=RAIN.findIndex(v=>v>=5),heavyEnd=HRS-1-[...RAIN].reverse().findIndex(v=>v>=5);
+const hourAt=T=>T/TOTAL*HRS; // simulated hours elapsed
+const label=h=>{const d=new Date(2022,3,11,6,0);d.setMinutes(d.getMinutes()+Math.round(h*60));return d.toLocaleDateString("en-GB",{day:"numeric",month:"long"})+" · "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");};
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x)),ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,seg=(t,a,b)=>clamp((t-a)/(b-a),0,1);
+function txt(s,x,y,o){o=o||{};ctx.save();ctx.globalAlpha=o.a===undefined?1:o.a;ctx.font=(o.w||400)+" "+(o.size||20)+"px "+(o.f||"Newsreader");ctx.fillStyle=o.c||"#E6EDEF";ctx.textAlign=o.al||"left";if("letterSpacing" in ctx)ctx.letterSpacing=(o.ls||0)+"px";if(o.sh){ctx.shadowColor="rgba(0,0,0,.8)";ctx.shadowBlur=8;}ctx.fillText(o.up?s.toUpperCase():s,x,y);ctx.restore();}
+const DISP="'Barlow Condensed',sans-serif",MONO="'IBM Plex Mono',monospace";
+const drops=Array.from({length:1400},()=>({x:Math.random()*1080,y:Math.random()*1080,v:22+Math.random()*20,l:12+Math.random()*22}));
+// camera: regional view, then zoom to the camp around the peak, then out
+const zIn0=hourAt(0)+0, Z1=(peakH-2)/HRS*TOTAL, Z2=(peakH+0.5)/HRS*TOTAL, Z3=(heavyEnd+3)/HRS*TOTAL, Z4=Z3+4;
+function camera(T){const k=ease(seg(T,Z1,Z2))*(1-ease(seg(T,Z3,Z4)));const s=1+k*4.2;const cx=MS/2+(CAMP[0]-MS/2)*k,cy=MS/2+(CAMP[1]-MS/2)*k;return {s,cx,cy,k};}
+function frame(T){
+  const h=clamp(hourAt(T),0,HRS-0.001),hi=Math.floor(h),rate=RAIN[hi],fpos=clamp(h*60/sim.frame_minutes-1,0,NF-1);
+  ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle="#04080B";ctx.fillRect(0,0,W,H);
+  // map panel 1080x1080
+  const cam=camera(T),view=MS/cam.s,sx0=cam.cx-view/2,sy0=cam.cy-view/2,S=1080/view;
+  ctx.save();ctx.beginPath();ctx.rect(0,0,1080,1080);ctx.clip();
+  ctx.imageSmoothingEnabled=true;ctx.drawImage(base,sx0,sy0,view,view,0,0,1080,1080);
+  // storm darkening
+  const dark=Math.min(.45,rate/18*.45);ctx.fillStyle=`rgba(8,16,28,${dark})`;ctx.fillRect(0,0,1080,1080);
+  waterAt(fpos,T*3);const g=MS/GW;ctx.drawImage(wc,sx0/g,sy0/g,view/g,view/g,0,0,1080,1080);
+  // sites + camp
+  SITES.forEach(o=>{const X=(o.p[0]-sx0)*S,Y=(o.p[1]-sy0)*S;if(X<-20||X>1100||Y<-20||Y>1100)return;const c=o.s.id==="lamontville";ctx.beginPath();ctx.arc(X,Y,c?9+cam.k*6:6,0,6.283);ctx.fillStyle=c?"#F4B942":"rgba(244,185,66,.8)";ctx.fill();ctx.lineWidth=2;ctx.strokeStyle="#04080B";ctx.stroke();});
+  const CX=(CAMP[0]-sx0)*S,CY=(CAMP[1]-sy0)*S;
+  if(cam.k>.2){const a=seg(cam.k,.2,.6);ctx.save();ctx.globalAlpha=a;ctx.strokeStyle="#F4B942";ctx.lineWidth=2;ctx.setLineDash([6,6]);ctx.beginPath();ctx.arc(CX,CY,70,0,6.283);ctx.stroke();ctx.restore();
+    txt("LAMONTVILLE RIVERSIDE CAMP",CX+84,CY-14,{f:DISP,w:700,size:30,a,sh:1});txt("Gwala Street · about 100 households · opened 2021",CX+84,CY+14,{f:MONO,size:14,a,sh:1,c:"#DDE6EA"});}
+  // rain
+  if(rate>0.3){const n=Math.round(Math.min(1400,rate/18*1400));ctx.strokeStyle=`rgba(205,225,255,${.25+Math.min(.35,rate/18*.35)})`;ctx.lineWidth=1.3;ctx.beginPath();
+    for(let i=0;i<n;i++){const d=drops[i];const y=(d.y+T*d.v*40)%1100-20,x=(d.x-T*d.v*7)%1080;const X=x<0?x+1080:x;ctx.moveTo(X,y);ctx.lineTo(X+d.l*.2,y-d.l);}ctx.stroke();}
+  // scale bar
+  const km=1000/(meta.pixel_m)*S;ctx.fillStyle="#fff";ctx.fillRect(28,1046,km,4);txt("1 km",28,1036,{f:MONO,size:13,sh:1});
+  ctx.restore();
+  // ===== right panel =====
+  const X0=1130;
+  txt("APRIL 2022 · uMLAZI VALLEY, DURBAN",X0,70,{f:MONO,size:15,ls:2,c:"#8C9DA6"});
+  txt(label(h),X0,140,{f:DISP,w:700,size:64});
+  txt(rate.toFixed(1)+" mm of rain this hour",X0,190,{size:26,c:rate>=10?"#FF8A73":rate>=5?"#9FD4F2":"#C9D4D9"});
+  // hyetograph
+  const gx=X0,gy=420,gw=720,gh=170,bw=gw/HRS,mx=20;
+  txt("RAINFALL, MM PER HOUR",gx,gy-gh-24,{f:MONO,size:13,ls:2,c:"#8C9DA6"});
+  RAIN.forEach((v,i)=>{const bh=v/mx*gh;ctx.fillStyle=i<=hi?(v>=10?"#FF8A73":"#58B7EA"):"#22313A";ctx.fillRect(gx+i*bw+1,gy-bh,bw-2,bh);});
+  ctx.strokeStyle="#E6EDEF";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(gx+h*bw,gy-gh-6);ctx.lineTo(gx+h*bw,gy+6);ctx.stroke();
+  [0,12,24,35].forEach(i=>txt(label(i).split(" · ")[1]+(i===0||i===24?" ·"+label(i).split(" ")[0]+" Apr":""),gx+i*bw,gy+24,{f:MONO,size:12,c:"#8C9DA6"}));
+  [[heavyStart,"heavy rain begins"],[peakH,"peak: "+RAIN[peakH]+" mm/h"],[heavyEnd,"rain eases"]].forEach(([i,s])=>{if(hi>=i)txt(s,gx+i*bw,gy-RAIN[i]/mx*gh-10,{f:MONO,size:12,c:"#E6EDEF",al:i===peakH?"center":"left"});});
+  // cumulative + flooded area
+  const cum=(hi?CUM[hi-1]:0)+rate*(h-hi);
+  txt(Math.round(cum)+" mm",gx,gy+110,{f:DISP,w:700,size:58});txt("rain so far",gx,gy+138,{f:MONO,size:13,c:"#8C9DA6"});
+  const fa=sim.flooded_km2[Math.round(fpos)]||0;txt(fa.toFixed(1)+" km²",gx+300,gy+110,{f:DISP,w:700,size:58,c:"#9FD4F2"});txt("ground under 10 cm+ of water (model)",gx+300,gy+138,{f:MONO,size:13,c:"#8C9DA6"});
+  // camp gauge: water depth at the camp cell vs a person
+  const dep=Math.min(4.25,(sim.camp_depth_m[Math.floor(fpos)]||0)*(1-(fpos%1))+(sim.camp_depth_m[Math.min(NF-1,Math.floor(fpos)+1)]||0)*(fpos%1));
+  const ga=Math.max(.35,cam.k);const gX=X0,gY=980,mpp=95;
+  txt("DEEPEST WATER WITHIN 50 M OF THE CAMP (MODEL)",gX,gY-330,{f:MONO,size:13,ls:2,c:"#8C9DA6",a:ga});
+  ctx.save();ctx.globalAlpha=ga;ctx.strokeStyle="#22313A";ctx.lineWidth=1;for(let m=0;m<=3;m++){ctx.beginPath();ctx.moveTo(gX,gY-m*mpp);ctx.lineTo(gX+360,gY-m*mpp);ctx.stroke();txt(m+" m",gX+372,gY-m*mpp+5,{f:MONO,size:12,c:"#8C9DA6",a:ga});}
+  // person 1.7 m and a shack 2.4 m
+  ctx.fillStyle="#8C9DA6";const px=gX+90,ph=1.7*mpp;ctx.beginPath();ctx.arc(px,gY-ph+12,11,0,6.283);ctx.fill();ctx.fillRect(px-11,gY-ph+26,22,ph*.45);ctx.fillRect(px-10,gY-ph*.48,8,ph*.48);ctx.fillRect(px+2,gY-ph*.48,8,ph*.48);
+  ctx.strokeStyle="#F4B942";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(gX+190,gY);ctx.lineTo(gX+190,gY-2*mpp);ctx.lineTo(gX+250,gY-2.5*mpp);ctx.lineTo(gX+310,gY-2*mpp);ctx.lineTo(gX+310,gY);ctx.stroke();
+  const wl=Math.min(3.3,dep);ctx.fillStyle="rgba(88,183,234,.6)";ctx.fillRect(gX,gY-wl*mpp,360,wl*mpp);ctx.restore();
+  txt(dep.toFixed(1)+" m",gX+470,gY-wl*mpp+20,{f:DISP,w:700,size:52,a:ga,c:dep>1?"#FF8A73":"#9FD4F2"});
+  txt("1.7 m person · temporary unit",gX,gY+28,{f:MONO,size:12,c:"#8C9DA6",a:ga});
+  // captions by phase
+  const cap=T<4?"Rain has been falling for a day. The ground is already wet.":hi<heavyStart?"Steady rain over the valley.":hi<peakH-2?"The rain gets heavier. Water starts collecting in the valley floors.":hi<=peakH+3?"Peak of the storm. The valley floor fills, and the camp sits in it.":hi<=heavyEnd?"Heavy rain through the night.":"The rain eases. The water stays.";
+
+  ctx.save();ctx.fillStyle="rgba(4,8,11,.72)";ctx.fillRect(0,0,1080,64);ctx.restore();txt(cap,30,42,{size:27,sh:1});
+  txt("Simulation · indicative depths · ERA5 rain · river inflow traced from terrain",1050,1066,{f:MONO,size:12,c:"#C9D4D9",al:"right",sh:1});
+}
+// player
+let T=0,playing=false,last=0;const scrub=document.getElementById("scrub"),tm=document.getElementById("time"),pb=document.getElementById("play");
+function ui(){scrub.value=Math.round(T/TOTAL*1000);tm.textContent=label(clamp(hourAt(T),0,HRS));pb.textContent=playing?"Pause":"Play";}
+function loop(n){if(playing){T+=Math.min(.1,(n-last)/1000);if(T>=TOTAL){T=TOTAL;playing=false;}frame(T);ui();}last=n;requestAnimationFrame(loop);}
+function play(on){playing=on;document.getElementById("poster").hidden=true;last=performance.now();if(on&&T>=TOTAL)T=0;ui();}
+pb.onclick=()=>play(!playing);document.getElementById("go").onclick=()=>{T=0;play(true);};
+scrub.oninput=()=>{document.getElementById("poster").hidden=true;playing=false;T=scrub.value/1000*TOTAL;frame(T);ui();};
+addEventListener("keydown",e=>{if(e.key===" "&&e.target.tagName!=="INPUT"){e.preventDefault();play(!playing);}});
+const q=/[?&]t=([\d.]+)/.exec(location.search);if(q){document.getElementById("poster").hidden=true;T=+q[1];}else T=Z2;
+frame(T);ui();requestAnimationFrame(loop);
+})();
+</script>
