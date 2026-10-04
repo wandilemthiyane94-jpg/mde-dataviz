@@ -1,0 +1,104 @@
+<title>The uMlazi Valley in Layers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Light, drawing-sheet look, like an architectural exploded axonometric. */
+:root{--paper:#F6F5F1;--ink:#1D2328;--muted:#6B747B;--rule:#D9DCD8;color-scheme:light}
+body{background:var(--paper);color:var(--ink);font:17px/1.5 Newsreader,Georgia,serif;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:36px 60px;display:grid;gap:16px}
+.k{font:500 12px/1.3 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 clamp(38px,6vw,66px)/.95 "Barlow Condensed","Arial Narrow",sans-serif;text-transform:uppercase;margin:0}
+p{margin:0;max-width:46em}
+.lede{color:var(--muted);font-size:clamp(17px,2vw,20px)}
+.fig{background:#fff;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+canvas{display:block;width:100%;height:auto}
+.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font:500 12px "IBM Plex Mono",monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+input[type=range]{accent-color:#2E6FA8;width:min(320px,70vw)}
+input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.note{font-size:15px;color:var(--muted);max-width:60em}
+.note b{color:var(--ink);font-weight:500}
+</style>
+<div class="wrap">
+  <span class="k">Who Owns the Flood? · Lamontville & the uMlazi River, Durban · Hollie and Wandile</span>
+  <h1>The valley in layers</h1>
+  <p class="lede">The same 10 km of Durban, pulled apart. Ground, height, the city's own flood line, the April 2022 flood, the water that feeds it, and where people were placed. Read it from the bottom up.</p>
+  <div class="controls"><label for="ex">Pull apart <input type="range" id="ex" min="0" max="100" value="100"></label></div>
+  <div class="fig"><canvas id="c" width="1700" height="2480" aria-label="Exploded axonometric of the uMlazi valley in six data layers"></canvas></div>
+  <p class="note"><b>Layers, bottom to top.</b> <b>Existing ground:</b> Sentinel-2, 29 March 2022, with terrain shading. <b>Height above river:</b> our relative elevation model (AWS Terrain Tiles, IDW method). <b>City flood line:</b> eThekwini Flood Plain 100yr. <b>Flood:</b> our rain-on-grid simulation at 03:00 on 12 April 2022 (ERA5 rain plus upstream river inflow; indicative depths). <b>Water in:</b> rivers entering from upstream catchments, traced from terrain, with the peak inflow. <b>Temporary sites:</b> our site map.</p>
+</div>
+<script src="tra-story-data.js"></script>
+<script src="hollie-data.js"></script>
+<script>
+(async function(){
+const cv=document.getElementById("c"),ctx=cv.getContext("2d"),CW=cv.width,CH=cv.height;
+const [meta,sim,inflow]=await Promise.all([fetch("rem/meta.json").then(r=>r.json()),fetch("rem/sim.json").then(r=>r.json()),fetch("rem/upstream_inflow.json").then(r=>r.json()).catch(()=>({entries:[]}))]);
+const load=s=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=s;});
+const [s2,hill,rem,sprite]=await Promise.all([load("rem/s2.jpg"),load("rem/hill.png"),load("rem/rem.png"),load("rem/sim_frames.png")]);
+await Promise.all([document.fonts.load("700 30px 'Barlow Condensed'"),document.fonts.load("400 14px 'IBM Plex Mono'")]).catch(()=>{});
+const MS=meta.width;
+const my=lat=>Math.log(Math.tan(Math.PI/4+lat*Math.PI/360)),mN=my(meta.north),mS=my(meta.south);
+const P=(lon,lat)=>[(lon-meta.west)/(meta.east-meta.west)*MS,(mN-my(lat))/(mN-mS)*MS];
+const mk=()=>{const c=document.createElement("canvas");c.width=MS;c.height=MS;return c;};
+// layer 1: ground
+const L1=mk(),g1=L1.getContext("2d");g1.drawImage(s2,0,0,MS,MS);g1.globalCompositeOperation="multiply";g1.globalAlpha=.5;g1.drawImage(hill,0,0,MS,MS);
+// layer 2: height above river (colour ramp)
+const L2=mk(),g2=L2.getContext("2d");{const t=mk().getContext("2d");t.drawImage(rem,0,0);const src=t.getImageData(0,0,MS,MS).data,h=t.createImageData(MS,MS);t.drawImage(hill,0,0);const hs=t.getImageData(0,0,MS,MS).data;
+  const stops=[[0,[214,245,255]],[1.5,[127,211,234]],[4,[59,143,196]],[7,[43,79,138]],[12,[21,30,62]],[25.5,[7,10,22]]];
+  const ramp=v=>{for(let i=1;i<stops.length;i++)if(v<=stops[i][0]){const [a,ca]=stops[i-1],[b,cb]=stops[i],k=(v-a)/(b-a);return ca.map((c,j)=>c+(cb[j]-c)*k);}return [7,10,22];};
+  for(let i=0;i<MS*MS;i++){const c=ramp(src[i*4]/10),s=.4+.8*hs[i*4]/255;h.data[i*4]=Math.min(255,c[0]*s);h.data[i*4+1]=Math.min(255,c[1]*s);h.data[i*4+2]=Math.min(255,c[2]*s);h.data[i*4+3]=255;}g2.putImageData(h,0,0);}
+// layer 3: city flood line (hatched, transparent sheet)
+const L3=mk(),g3=L3.getContext("2d");const fp=new Path2D();(FLOODPLAIN.features||[]).forEach(f=>{const g=f.geometry,ps=g.type==="Polygon"?[g.coordinates]:g.coordinates;ps.forEach(p=>p.forEach(r=>{r.forEach((c,i)=>{const q=P(c[0],c[1]);i?fp.lineTo(q[0],q[1]):fp.moveTo(q[0],q[1]);});fp.closePath();}));});
+g3.fillStyle="rgba(255,255,255,.55)";g3.fillRect(0,0,MS,MS);g3.fillStyle="rgba(31,95,168,.28)";g3.fill(fp);g3.strokeStyle="#1F5FA8";g3.lineWidth=3;g3.stroke(fp);
+// layer 4: simulated flood at 03:00, 12 April
+const L4=mk(),g4=L4.getContext("2d");{const GW=sim.grid[0],GH=sim.grid[1],COLS=sim.cols,f=Math.min(sim.frames-1,Math.round(21*60/sim.frame_minutes)-1);
+  const sc=document.createElement("canvas");sc.width=sprite.width;sc.height=sprite.height;const sx=sc.getContext("2d");sx.drawImage(sprite,0,0);const ox=(f%COLS)*GW,oy=Math.floor(f/COLS)*GH;const d=sx.getImageData(ox,oy,GW,GH).data;
+  const wc=document.createElement("canvas");wc.width=GW;wc.height=GH;const wx=wc.getContext("2d"),im=wx.createImageData(GW,GH);
+  for(let i=0;i<GW*GH;i++){const dep=d[i*4]/sim.depth_scale;if(dep<.05){im.data[i*4+3]=0;continue;}const t=Math.min(1,dep/2.5);im.data[i*4]=40-20*t;im.data[i*4+1]=150-60*t;im.data[i*4+2]=225-40*t;im.data[i*4+3]=255*Math.min(.95,.45+t*.5);}
+  wx.putImageData(im,0,0);g4.fillStyle="rgba(255,255,255,.55)";g4.fillRect(0,0,MS,MS);g4.imageSmoothingEnabled=true;g4.drawImage(wc,0,0,MS,MS);}
+// layer 5: water in (rivers entering + rain)
+const L5=mk(),g5=L5.getContext("2d");g5.fillStyle="rgba(255,255,255,.4)";g5.fillRect(0,0,MS,MS);
+const ENTR=(inflow.entries||[]).map(e=>({e,p:P(e.lon,e.lat),q:Math.max(...e.inflow_m3s)}));
+ENTR.forEach(({e,p,q})=>{const L=60+Math.sqrt(e.catchment_km2)*9,w=6+Math.sqrt(q)*.9;const cx=MS/2,cy=MS/2,dx=cx-p[0],dy=cy-p[1],n=Math.hypot(dx,dy)||1,ux=dx/n,uy=dy/n;
+  const x0=p[0]-ux*L*.2,y0=p[1]-uy*L*.2,x1=p[0]+ux*L,y1=p[1]+uy*L;g5.strokeStyle="#C8382E";g5.lineWidth=w;g5.lineCap="round";g5.beginPath();g5.moveTo(x0,y0);g5.lineTo(x1,y1);g5.stroke();
+  g5.fillStyle="#C8382E";g5.beginPath();g5.moveTo(x1+ux*w*2.2,y1+uy*w*2.2);g5.lineTo(x1-uy*w*1.6,y1+ux*w*1.6);g5.lineTo(x1+uy*w*1.6,y1-ux*w*1.6);g5.closePath();g5.fill();});
+for(let i=0;i<140;i++){const x=(i*397)%MS,y=(i*733)%MS;g5.strokeStyle="rgba(46,111,168,.6)";g5.lineWidth=3;g5.beginPath();g5.moveTo(x,y);g5.lineTo(x-8,y+30);g5.stroke();}
+// projection: oblique axonometric
+const A=.8,B=.38,OX=CW*.5+80,TOP=-110;
+const LAY=[{c:L5,n:"Water in",s:"rivers entering from upstream · April 2022 rain"},{c:L4,n:"The flood",s:"simulated · 03:00, 12 April 2022"},{c:L3,n:"City flood line",s:"eThekwini 1-in-100-year floodplain"},{c:L2,n:"Height above river",s:"relative elevation model"},{c:L1,n:"Existing ground",s:"Sentinel-2 · 29 March 2022"}];
+const SITES=HOLLIE.sites.map(s=>({s,p:P(s.lon,s.lat)})).filter(o=>o.p[0]>0&&o.p[0]<MS&&o.p[1]>0&&o.p[1]<MS);
+const proj=(x,y,z)=>[OX+(x-y)*A*.5,z+(x+y)*B*.5];
+function plate(img,z,thick){ctx.save();ctx.setTransform(A*.5,B*.5,-A*.5,B*.5,OX,z);
+  if(thick){ctx.fillStyle="#3A4248";ctx.save();ctx.setTransform(1,0,0,1,0,0);const a=proj(0,MS,z),b=proj(MS,MS,z),c=proj(MS,0,z);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.lineTo(b[0],b[1]+thick);ctx.lineTo(a[0],a[1]+thick);ctx.closePath();ctx.fillStyle="#4A5258";ctx.fill();ctx.beginPath();ctx.moveTo(b[0],b[1]);ctx.lineTo(c[0],c[1]);ctx.lineTo(c[0],c[1]+thick);ctx.lineTo(b[0],b[1]+thick);ctx.closePath();ctx.fillStyle="#2E353A";ctx.fill();ctx.restore();}
+  ctx.drawImage(img,0,0);ctx.strokeStyle="rgba(29,35,40,.55)";ctx.lineWidth=2/(A*.5);ctx.strokeRect(0,0,MS,MS);ctx.restore();}
+function draw(ex){ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle="#fff";ctx.fillRect(0,0,CW,CH);
+  const gap=40+330*ex, baseZ=TOP+170+gap*LAY.length;
+  const zs=LAY.map((_,i)=>baseZ-(LAY.length-1-i)*gap); // top layer first
+  const pinZ=zs[0]-150-90*ex;
+  // leaders from sites (behind plates' fronts is fine for a diagram)
+  ctx.save();ctx.setLineDash([5,6]);ctx.strokeStyle="rgba(29,35,40,.55)";ctx.lineWidth=1.4;SITES.forEach(o=>{const t=proj(o.p[0],o.p[1],pinZ),b=proj(o.p[0],o.p[1],zs[zs.length-1]);ctx.beginPath();ctx.moveTo(t[0],t[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();});ctx.restore();
+  for(let i=LAY.length-1;i>=0;i--)plate(LAY[i].c,zs[i],i===LAY.length-1?34:0);
+  // re-draw leader segments in front (light) so they read through plates
+  ctx.save();ctx.setLineDash([5,6]);ctx.strokeStyle="rgba(29,35,40,.35)";ctx.lineWidth=1.2;SITES.forEach(o=>{const t=proj(o.p[0],o.p[1],pinZ),b=proj(o.p[0],o.p[1],zs[zs.length-1]);ctx.beginPath();ctx.moveTo(t[0],t[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();});ctx.restore();
+  // site pins (top layer: "Temporary sites")
+  SITES.forEach(o=>{const t=proj(o.p[0],o.p[1],pinZ),lam=o.s.id==="lamontville";ctx.fillStyle=lam?"#C8382E":"#B7791F";ctx.beginPath();ctx.ellipse(t[0],t[1],lam?18:12,lam?9:6,0,0,6.283);ctx.fill();ctx.fillRect(t[0]-2,t[1]-(lam?46:32),4,lam?46:32);ctx.beginPath();ctx.arc(t[0],t[1]-(lam?50:36),lam?11:8,0,6.283);ctx.fill();
+    if(o.s.id==="gwala")return;ctx.textAlign=lam?"right":"left";const lx2=lam?t[0]-22:t[0]+16;
+    ctx.font=(lam?"700 28px ":"600 19px ")+"'Barlow Condensed',sans-serif";ctx.fillStyle="#1D2328";ctx.fillText((lam?"Lamontville riverside camp + Gwala St camp":o.s.name).toUpperCase(),lx2,t[1]-(lam?56:38));
+    if(lam){ctx.font="13px 'IBM Plex Mono',monospace";ctx.fillStyle="#C8382E";ctx.fillText("flooded April 2022 and February 2025",lx2,t[1]-34);}ctx.textAlign="left";});
+  // inflow labels on the water-in layer
+  ENTR.slice(0,3).forEach(({e,p,q},k)=>{const t=proj(p[0],p[1],zs[0]);ctx.font="600 20px 'Barlow Condensed',sans-serif";ctx.fillStyle="#C8382E";const lab=(k===0?"uMlazi River · ":"stream · ")+Math.round(e.catchment_km2)+" km² upstream";ctx.fillText(lab.toUpperCase(),t[0]-10-(k===0?260:0),t[1]-14);
+    ctx.font="13px 'IBM Plex Mono',monospace";ctx.fillText("peak inflow ≈ "+Math.round(q)+" m³/s",t[0]-10-(k===0?260:0),t[1]+4);});
+  // left labels
+  const lx=40;const lab=(n,s,z)=>{const y=proj(0,MS*.5,z)[1];ctx.font="700 30px 'Barlow Condensed',sans-serif";ctx.fillStyle="#1D2328";ctx.fillText(n.toUpperCase(),lx,y);ctx.font="13px 'IBM Plex Mono',monospace";ctx.fillStyle="#6B747B";ctx.fillText(s,lx,y+22);
+    ctx.strokeStyle="rgba(29,35,40,.25)";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(lx,y+34);ctx.lineTo(proj(0,MS*.5,z)[0]-10,y+34);ctx.stroke();};
+  lab("Temporary sites","where people were placed",pinZ-30);
+  LAY.forEach((L,i)=>lab(L.n,L.s,zs[i]));
+  // compass + scale
+  ctx.font="13px 'IBM Plex Mono',monospace";ctx.fillStyle="#6B747B";ctx.fillText("about 10 km across · N ↗ (grid north toward upper right)",CW-560,CH-30);
+}
+const ex=document.getElementById("ex");let cur=0,target=1;
+function anim(){cur+=(target-cur)*.08;draw(cur);if(Math.abs(target-cur)>.002)requestAnimationFrame(anim);else draw(target);}
+ex.oninput=()=>{target=ex.value/100;requestAnimationFrame(anim);};
+anim();
+})();
+</script>
