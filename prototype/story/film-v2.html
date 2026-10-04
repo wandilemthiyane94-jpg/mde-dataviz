@@ -1,0 +1,532 @@
+<title>Who Owns the Flood: Version 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* One deliberate dark look, same palette and faces as the story site. The film is drawn on one 1920x1080 canvas. */
+:root{--ground:#05090C;--panel:#101920;--ink:#E6EDEF;--muted:#8C9DA6;--rule:#22313A;--water:#58B7EA;--camp:#F4B942;--hit:#FF5B4F;color-scheme:dark}
+html,body{height:100%}
+body{background:var(--ground);color:var(--ink);font:15px/1.4 "IBM Plex Mono",Consolas,monospace;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding-inline:16px;box-sizing:border-box;overflow-x:hidden}
+#stage{position:relative;width:min(100%,calc((100vh - 110px) * 16 / 9));aspect-ratio:16/9;max-width:100%}
+canvas{display:block;width:100%;height:100%;background:#05090C;border:1px solid var(--rule)}
+#poster{position:absolute;inset:0;display:grid;place-items:center;background:rgba(5,9,12,.72);text-align:center}
+#poster[hidden]{display:none!important}
+#poster h1{font:700 clamp(34px,7vw,92px)/.95 "Barlow Condensed","Arial Narrow",sans-serif;text-transform:uppercase;margin:0 0 10px}
+#poster p{font:clamp(14px,1.6vw,20px)/1.4 Newsreader,Georgia,serif;color:var(--muted);margin:0 0 22px}
+#poster button,.bar button{font:500 13px/1 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--ground);background:var(--water);border:0;border-radius:3px;padding:12px 20px;cursor:pointer}
+.bar{width:min(100%,calc((100vh - 110px) * 16 / 9));display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.bar button{padding:8px 12px}
+.bar button:focus-visible,#poster button:focus-visible,.chaps button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#time{color:var(--muted);font-variant-numeric:tabular-nums;min-width:96px}
+#scrub{flex:1 1 240px;accent-color:var(--water)}
+.chaps{display:flex;flex-wrap:wrap;gap:6px;width:min(100%,calc((100vh - 110px) * 16 / 9))}
+.chaps button{font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--rule);border-radius:3px;padding:6px 8px;cursor:pointer}
+.chaps button.on{color:var(--ink);border-color:var(--muted)}
+</style>
+
+<div id="stage">
+  <canvas id="c" width="1920" height="1080" aria-label="Animated data film: Who Owns the Flood"></canvas>
+  <div id="poster">
+    <div>
+      <h1>Who owns the flood?</h1>
+      <p>Why doesn't knowing the risk change where people are moved? A data film by Hollie and Wandile, Harvard GSD MDE.</p>
+      <button type="button" id="go">Play film</button>
+    </div>
+  </div>
+</div>
+<div class="bar">
+  <button type="button" id="play" aria-label="Play or pause">Play</button>
+  <span id="time">0:00 / 0:00</span>
+  <input type="range" id="scrub" min="0" max="1000" value="0" step="1" aria-label="Film position">
+</div>
+<div class="chaps" id="chaps"></div>
+
+<script>/* test hook: with ?t=, draw any script error onto the page so headless screenshots show it */
+if(/[?&]t=/.test(location.search))window.onerror=function(m,s,l,c){var d=document.createElement("pre");d.style.cssText="position:fixed;top:0;left:0;right:0;color:#fff;background:#b00;font:14px monospace;z-index:9;white-space:pre-wrap;margin:0;padding:8px";d.textContent="ERR "+m+" @"+l+":"+c;document.body.appendChild(d);};addEventListener("unhandledrejection",e=>{var d=document.createElement("pre");d.id="rej";d.textContent="REJ "+(e.reason&&e.reason.stack||e.reason);document.body.appendChild(d);});</script>
+<script src="vendor/d3.v7.min.js"></script>
+<script src="vendor/topojson-client.min.js"></script>
+<script src="vendor/world-50m.js"></script>
+<script src="tra-story-data.js"></script>
+<script src="world-test-data.js"></script>
+<script src="film-data.js"></script>
+<script src="hollie-data.js"></script>
+<script>
+(function(){
+"use strict";
+/* ============================================================================================
+   WHO OWNS THE FLOOD — the film. Every mark is drawn from project data:
+   tra-story-data.js (84 sites, eThekwini floodplain, exposure test), film-data.js (JRC GSW occurrence
+   raster, 300 random Durban points, the 408-case LPRH frame), world-test-data.js (64 coded cases + tests).
+   The renderer is stateless: frame(T) draws the film at time T, so scrubbing and recording are exact.
+   ============================================================================================ */
+const cv=document.getElementById("c"), ctx=cv.getContext("2d"), W=1920, H=1080;
+const COL={bg:"#05090C",panel:"#101920",ink:"#E6EDEF",muted:"#8C9DA6",rule:"#22313A",water:"#58B7EA",sea:"#163047",plain:"#2F79AD",camp:"#F4B942",hit:"#FF5B4F",ok:"#5ED69C",unk:"#56666F",landDry:"#1C2328",landWet:"#12232D",rnd:"#6E7F89"};
+const DISP="'Barlow Condensed','Arial Narrow',sans-serif", BODY="Newsreader,Georgia,serif", MONO="'IBM Plex Mono',Consolas,monospace";
+const clamp=(x,a,b)=>Math.max(a===undefined?0:a,Math.min(b===undefined?1:b,x));
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const E=(t,a,b)=>ease(seg(t,a,b));
+const lerp=(a,b,k)=>a+(b-a)*k;
+const hash=i=>{const x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x);};
+const fadeIO=(t,a,b,f)=>Math.min(seg(t,a,a+(f||.6)),1-seg(t,b-(f||.6),b));
+function rgba(hex,a){const n=parseInt(hex.slice(1),16);return "rgba("+(n>>16)+","+(n>>8&255)+","+(n&255)+","+a+")";}
+
+/* ---------- text ---------- */
+function text(s,x,y,o){o=o||{};if((o.alpha===undefined?1:o.alpha)<=0.001)return 0;
+  ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.globalAlpha=o.alpha===undefined?1:o.alpha;
+  ctx.font=(o.weight||400)+" "+(o.size||28)+"px "+(o.font||BODY);ctx.fillStyle=o.color||COL.ink;ctx.textAlign=o.align||"left";ctx.textBaseline=o.base||"alphabetic";
+  if("letterSpacing" in ctx)ctx.letterSpacing=(o.ls||0)+"px";
+  const str=o.upper?s.toUpperCase():s, lines=o.maxW?wrap(str,o.maxW):[str], lh=o.lh||(o.size||28)*1.2;
+  lines.forEach((l,i)=>ctx.fillText(l,x,y+i*lh));ctx.restore();return lines.length*lh;}
+function wrap(s,maxW){const words=s.split(" "),out=[];let cur="";words.forEach(w=>{const t=cur?cur+" "+w:w;if(ctx.measureText(t).width>maxW&&cur){out.push(cur);cur=w;}else cur=t;});if(cur)out.push(cur);return out;}
+const head=(s,x,y,a,o)=>text(s,x,y,Object.assign({font:DISP,weight:700,size:64,upper:true,alpha:a,ls:1},o||{}));
+const body=(s,x,y,a,o)=>text(s,x,y,Object.assign({font:BODY,size:30,alpha:a,color:COL.ink},o||{}));
+const mono=(s,x,y,a,o)=>text(s,x,y,Object.assign({font:MONO,size:17,alpha:a,color:COL.muted,ls:1},o||{}));
+function chapter(n,name,a){mono(n+" · "+name,60,64,a,{upper:true,size:16,ls:3});}
+function source(s,a){mono(s,60,1050,a*.9,{size:14,maxW:1500});}
+function dot(x,y,r,fill,a,stroke,sw){if(a<=0.001)return;ctx.globalAlpha=a;ctx.beginPath();ctx.arc(x,y,Math.max(.1,r),0,6.2832);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=sw||1.5;ctx.stroke();}ctx.globalAlpha=1;}
+
+/* =================================== DATA =================================== */
+const T0=window.TRA, S=T0.summary, SITES=T0.sites.map(d=>Object.assign({},d,{lat:+d.lat,lon:+d.lon}));
+const CAMPS=SITES.filter(d=>d.muni==="eThekwini"&&d.fp&&!isNaN(d.lat));
+const inBand=d=>d.fp==="inside"||d.fp==="within_250m";
+const BASE=FILM.baseline.map(b=>({lat:b[0],lon:b[1],fp:b[2]}));
+const campHit=CAMPS.filter(inBand).length, baseHit=BASE.filter(inBand).length;
+const WT=window.WORLDTEST, CASES=WT.cases.slice().sort((a,b)=>a.sample_no-b.sample_no);
+const test=(f,o)=>WT.tests.find(r=>r.stratum==="all"&&r.factor===f&&r.outcome===o);
+console.log("camps",CAMPS.length,"in band",campHit,"| baseline",BASE.length,"in band",baseHit,"| cases",CASES.length);
+
+/* ---------- Durban map space (Web Mercator, 2000 px tall) ---------- */
+const BOUNDS={type:"Feature",geometry:{type:"Polygon",coordinates:[[[30.74,-29.53],[31.14,-29.53],[31.14,-30.06],[30.74,-30.06],[30.74,-29.53]]]}};
+const MH=2000, pj0=d3.geoMercator().fitSize([100000,MH],BOUNDS), bb0=d3.geoPath(pj0).bounds(BOUNDS);
+const proj=pj0.translate([pj0.translate()[0]-bb0[0][0],pj0.translate()[1]-bb0[0][1]]), MW=Math.ceil(bb0[1][0]-bb0[0][0]);
+const P=(lon,lat)=>proj([lon,lat]);
+const kmPx=(()=>{const a=P(31,-29.8),b=P(31+1/96.4,-29.8);return Math.hypot(b[0]-a[0],b[1]-a[1]);})();   // px per km
+const FP=(window.FLOODPLAIN&&FLOODPLAIN.features)||[];
+const fpPath=new Path2D(d3.geoPath(proj)({type:"FeatureCollection",features:FP}));
+const fpRings=[];FP.forEach(f=>{const g=f.geometry,polys=g.type==="Polygon"?[g.coordinates]:g.type==="MultiPolygon"?g.coordinates:[];polys.forEach(p=>p.forEach(r=>{const pts=r.map(c=>P(c[0],c[1]));let L=0;for(let i=1;i<pts.length;i++)L+=Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]);if(L>6)fpRings.push({pts,L});}));});
+CAMPS.forEach(d=>{d.m=P(d.lon,d.lat);});BASE.forEach(d=>{d.m=P(d.lon,d.lat);});
+
+/* water raster -> per-pixel occurrence, floodplain mask and distance to the floodplain (for the "drain") */
+const waterCv=document.createElement("canvas");waterCv.width=MW;waterCv.height=MH;const wctx=waterCv.getContext("2d");
+let WPIX=null, waterImg=null, waterKey="";
+function buildWater(img){
+  const tmp=document.createElement("canvas");tmp.width=MW;tmp.height=MH;const t=tmp.getContext("2d");
+  const a=P(FILM.water.west,FILM.water.north),b=P(FILM.water.east,FILM.water.south);t.imageSmoothingEnabled=false;t.drawImage(img,a[0],a[1],b[0]-a[0],b[1]-a[1]);
+  const occ=t.getImageData(0,0,MW,MH).data;
+  t.clearRect(0,0,MW,MH);t.fillStyle="#fff";t.fill(fpPath);const mk=t.getImageData(0,0,MW,MH).data;
+  const N=MW*MH,dist=new Float32Array(N);for(let i=0;i<N;i++)dist[i]=mk[i*4+3]>100?0:1e9;
+  for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){const i=y*MW+x;let v=dist[i];if(!v)continue;if(x>0)v=Math.min(v,dist[i-1]+1);if(y>0){v=Math.min(v,dist[i-MW]+1);if(x>0)v=Math.min(v,dist[i-MW-1]+1.414);if(x<MW-1)v=Math.min(v,dist[i-MW+1]+1.414);}dist[i]=v;}
+  for(let y=MH-1;y>=0;y--)for(let x=MW-1;x>=0;x--){const i=y*MW+x;let v=dist[i];if(!v)continue;if(x<MW-1)v=Math.min(v,dist[i+1]+1);if(y<MH-1){v=Math.min(v,dist[i+MW]+1);if(x<MW-1)v=Math.min(v,dist[i+MW+1]+1.414);if(x>0)v=Math.min(v,dist[i+MW-1]+1.414);}dist[i]=v;}
+  const idx=[],oc=[],ds=[];for(let i=0;i<N;i++){if(occ[i*4+3]>100&&occ[i*4]>0){idx.push(i);oc.push(occ[i*4]);ds.push(dist[i]);}}
+  const outside=ds.filter((d,k)=>d>0&&oc[k]<128).sort((p,q)=>p-q), maxD=outside.length?outside[Math.floor(outside.length*.95)]:1;
+  WPIX={idx:Int32Array.from(idx),occ:Uint8Array.from(oc),dn:Float32Array.from(ds.map(d=>Math.min(1,d/maxD)))};
+  waterImg=wctx.createImageData(MW,MH);}
+function paint(hex,a){const n=parseInt(hex.slice(1),16);return ((Math.round(a*255)&255)<<24)|((n&255)<<16)|((n>>8&255)<<8)|(n>>16);}
+const SEA=[...Array(11)].map((_,i)=>paint(COL.sea,i/10)), WET=[...Array(11)].map((_,i)=>paint(COL.water,i/10));
+function renderWater(revealPerm,revealInt,drain,ghost){
+  const key=[revealPerm,revealInt,drain,ghost].map(v=>v.toFixed(3)).join();if(!WPIX||key===waterKey)return;waterKey=key;
+  const buf=new Uint32Array(waterImg.data.buffer);buf.fill(0);
+  const tP=lerp(256,128,revealPerm), tI=lerp(128,1,revealInt);
+  for(let k=0;k<WPIX.idx.length;k++){const o=WPIX.occ[k];
+    if(o>=128){if(o>=tP)buf[WPIX.idx[k]]=SEA[10];continue;}
+    if(o<tI)continue;
+    const dn=WPIX.dn[k];let a=1;if(dn>0){const p=clamp((drain-(1-dn))/.12);a=lerp(1,ghost,p);}
+    buf[WPIX.idx[k]]=WET[Math.round(a*10)];}
+  wctx.putImageData(waterImg,0,0);}
+
+/* map transforms: M=[a,b,c,d,e,f]; flat view = scale s, origin (x,y) */
+const flat=(s,x,y)=>[s,0,0,s,x,y];
+const BASEV=flat(1000/MH,150,40);
+function zoomView(mx,my,s,sx,sy){return flat(s,sx-s*mx,sy-s*my);}
+function iso(s,cx,cy,k,h){const th=lerp(0,-.72,k),q=lerp(1,.5,k),co=Math.cos(th),si=Math.sin(th);
+  const a=s*co,c=-s*si,b=s*si*q,d=s*co*q;return [a,b,c,d,cx-(a*MW/2+c*MH/2),cy-h-(b*MW/2+d*MH/2)];}
+const mixM=(A,B,k)=>A.map((v,i)=>lerp(v,B[i],k));
+const ap=(M,p)=>[M[0]*p[0]+M[2]*p[1]+M[4],M[1]*p[0]+M[3]*p[1]+M[5]];
+let hatch=null;function mkHatch(){const c=document.createElement("canvas");c.width=c.height=14;const x=c.getContext("2d");x.fillStyle=rgba(COL.plain,.28);x.fillRect(0,0,14,14);x.strokeStyle=rgba(COL.plain,.9);x.lineWidth=3;x.beginPath();x.moveTo(-2,16);x.lineTo(16,-2);x.stroke();hatch=ctx.createPattern(c,"repeat");}
+
+function drawMapPlate(M,o){ // o: wet, water, fpOutline(0..1), fpFill, buffer, alpha, plateColor, win (stage clip)
+  ctx.save();if(o.win){ctx.setTransform(1,0,0,1,0,0);ctx.beginPath();ctx.rect(o.win[0],o.win[1],o.win[2],o.win[3]);ctx.clip();}
+  ctx.setTransform(M[0],M[1],M[2],M[3],M[4],M[5]);ctx.beginPath();ctx.rect(0,0,MW,MH);ctx.clip();ctx.globalAlpha=o.alpha===undefined?1:o.alpha;
+  ctx.fillStyle=o.plateColor||(o.wet!==undefined?d3.interpolateRgb(COL.landDry,COL.landWet)(o.wet):COL.landDry);ctx.fillRect(0,0,MW,MH);
+  if(o.water){ctx.globalAlpha*=o.water;ctx.imageSmoothingEnabled=true;ctx.drawImage(waterCv,0,0);ctx.globalAlpha=o.alpha===undefined?1:o.alpha;}
+  if(o.buffer>0){ctx.globalAlpha=(o.alpha||1)*o.buffer*.35;ctx.strokeStyle=COL.plain;ctx.lineJoin="round";ctx.lineWidth=kmPx*.5;ctx.stroke(fpPath);ctx.globalAlpha=o.alpha===undefined?1:o.alpha;}
+  if(o.fpFill>0){ctx.globalAlpha=(o.alpha||1)*o.fpFill;ctx.fillStyle=hatch;ctx.fill(fpPath);ctx.globalAlpha=o.alpha===undefined?1:o.alpha;}
+  if(o.fpOutline>0){ctx.strokeStyle=o.fpColor||"#8FD0F5";ctx.lineWidth=(o.fpW||2.4)/Math.hypot(M[0],M[1]);ctx.beginPath();
+    fpRings.forEach(r=>{let need=r.L*o.fpOutline,acc=0;ctx.moveTo(r.pts[0][0],r.pts[0][1]);for(let i=1;i<r.pts.length&&acc<need;i++){const a=r.pts[i-1],b=r.pts[i],l=Math.hypot(b[0]-a[0],b[1]-a[1]);if(acc+l>need){const k=(need-acc)/l;ctx.lineTo(a[0]+(b[0]-a[0])*k,a[1]+(b[1]-a[1])*k);}else ctx.lineTo(b[0],b[1]);acc+=l;}});ctx.stroke();}
+  if(o.border!==false){ctx.globalAlpha=(o.alpha||1)*.8;ctx.strokeStyle=COL.rule;ctx.lineWidth=2/Math.hypot(M[0],M[1]);ctx.strokeRect(0,0,MW,MH);}
+  ctx.restore();}
+
+/* ---------- South Africa + world ---------- */
+const TOPO=window.WORLD_TOPO, COUNTRIES=topojson.feature(TOPO,TOPO.objects.countries).features, LAND=topojson.merge(TOPO,TOPO.objects.countries.geometries);
+let ZA=COUNTRIES.find(f=>+f.id===710);if(ZA&&ZA.geometry.type==="MultiPolygon")ZA={type:"Feature",geometry:{type:"MultiPolygon",coordinates:ZA.geometry.coordinates.filter(p=>p[0][0][1]>-36)}};
+const saProj=d3.geoMercator().fitExtent([[90,150],[930,960]],ZA), saPath=new Path2D(d3.geoPath(saProj)(ZA));
+const SA_SITES=SITES.filter(d=>!isNaN(d.lat));
+const GANTT=SITES.filter(d=>/^\d{4}$/.test(d.est)&&/^Active/.test(d.status)&&d.origin!=="covid").map(d=>({n:d.site.replace(/\s*\(.*\)/,"").replace(/ TRA$| transit camp$/,""),m:d.muni.replace(/ \(.*\)/,"").replace("City of ",""),y:+d.est,hit:d.reflood==="yes"})).sort((a,b)=>a.y-b.y||a.n.localeCompare(b.n));
+const REFLOOD_ALL=SITES.filter(d=>d.reflood==="yes").length;
+const ALIAS={"Democratic Republic of the Congo":"Dem. Rep. Congo","Dominican Republic":"Dominican Rep.","Solomon Islands":"Solomon Is.","São Tomé and Príncipe":"São Tomé and Principe","Bosnia and Herzegovina":"Bosnia and Herz.","Marshall Islands":"Marshall Is."};
+const byName={};COUNTRIES.forEach(f=>{if(f.properties&&f.properties.name)byName[f.properties.name]=f;});
+const caseByNo={};CASES.forEach(c=>{caseByNo[c.sample_no]=c;});
+const FRAME=FILM.frame.map((r,i)=>{let ll=null;
+  if(r.s&&caseByNo[r.s]&&caseByNo[r.s].lat!=="")ll=[+caseByNo[r.s].lon,+caseByNo[r.s].lat];
+  else{const f=byName[ALIAS[r.c]||r.c];if(f){const c=d3.geoCentroid(f),a=hash(i)*6.283,rr=Math.sqrt(hash(i+999))*1.8;ll=[c[0]+Math.cos(a)*rr,c[1]+Math.sin(a)*rr];}else if(FILM.pts[r.c])ll=[FILM.pts[r.c][1],FILM.pts[r.c][0]];}
+  return {ll,e:r.e,s:r.s,i};}).filter(d=>d.ll);
+console.log("frame placed",FRAME.length,"of",FILM.frame.length);
+function worldProj(k){ // k: 0 = zoomed on South Africa, 1 = whole world
+  const full=d3.geoNaturalEarth1().fitExtent([[40,170],[1150,900]],{type:"Sphere"}), s1=full.scale(), t1=full.translate();
+  const sZ=s1*6.5, ks=Math.exp(lerp(Math.log(sZ),Math.log(s1),k)), cen=[lerp(25,0,k),lerp(-29,0,k)];
+  const p=d3.geoNaturalEarth1().scale(ks).rotate([-cen[0],0]).translate([0,0]), c=p([cen[0],cen[1]]);
+  const tx=lerp(510,t1[0],k), ty=lerp(555,t1[1],k);return p.translate([tx-c[0],ty-c[1]]);}
+
+/* ---------- world-test dots and layouts ---------- */
+const OUTC={success:COL.ok,mixed:COL.camp,failure:COL.hit};
+const outColor=c=>OUTC[c.overall]||null;
+const hitColor=c=>c.hazard_at_destination==="exposed_or_hit"?COL.hit:c.hazard_at_destination==="none_reported"?COL.ok:null;
+const ORDER_O={failure:0,mixed:1,success:2,unknown:3}, ORDER_H={exposed_or_hit:0,none_reported:1,unknown:2};
+function gridL(){const L={};CASES.forEach((c,i)=>{L[c.sample_no]=[1250+(i%8)*60,300+Math.floor(i/8)*60];});return L;}
+function columnsL(groupFn,orderFn,xs,baseY,cell,cols){const L={},groups={};
+  CASES.forEach(c=>{const g=groupFn(c);(groups[g]=groups[g]||[]).push(c);});
+  Object.keys(groups).forEach(g=>{const arr=groups[g].sort((a,b)=>orderFn(a)-orderFn(b)||a.sample_no-b.sample_no), cc=g==="pile"?(cols.pile||12):cols.lane, ce=g==="pile"?cell*.62:cell;
+    arr.forEach((c,i)=>{const col=i%cc,row=Math.floor(i/cc);L[c.sample_no]=[xs[g]-(cc-1)*ce/2+col*ce,(g==="pile"?baseY.pile:baseY.lane)-row*ce];});});
+  return {L,groups};}
+const G_INCOME=c=>c.income_group==="unknown"?"pile":(c.income_group==="High income"||c.income_group==="Upper middle income")?"yes":"no";
+const G_OWNER=c=>c.single_owner==="unknown"?"pile":(c.single_owner==="yes"||c.single_owner==="partial")?"yes":"no";
+const G_SAY=c=>c.lead==="unknown"?"pile":(c.lead==="gov_community_joint"||c.lead==="community_initiated")?"yes":"no";
+const G_HAZ=c=>c.hazard_binding==="unknown"?"pile":(c.hazard_binding==="yes"||c.hazard_binding==="partial")?"yes":"no";
+const oO=c=>ORDER_O[c.overall]===undefined?3:ORDER_O[c.overall], oH=c=>ORDER_H[c.hazard_at_destination]===undefined?2:ORDER_H[c.hazard_at_destination];
+const SUS_X={yes:700,no:1150,pile:1640}, GATE_X={yes:620,no:1300,pile:960};
+const L_GRID=gridL();
+const L_INC=columnsL(G_INCOME,oO,SUS_X,{lane:900,pile:900},34,{lane:6,pile:6});
+const L_OWN=columnsL(G_OWNER,oO,SUS_X,{lane:900,pile:900},34,{lane:6,pile:6});
+const L_SAY=columnsL(G_SAY,oO,GATE_X,{lane:880,pile:955},36,{lane:6,pile:14});
+const L_HAZ=columnsL(G_HAZ,oH,GATE_X,{lane:880,pile:955},36,{lane:6,pile:14});
+function moveDots(t,a,b,LA,LB,colorFn,opt){opt=opt||{};const n=CASES.length;
+  CASES.forEach((c,i)=>{const d=(opt.stagger===undefined?.9:opt.stagger)*(i/n),k=ease(seg(t,a+d,b-(opt.stagger===undefined?.9:opt.stagger)+d)),A=LA[c.sample_no],B=LB[c.sample_no];
+    let x,y;if(opt.via&&k>0&&k<1){const V=[opt.via[0]+((c.sample_no*37)%60-30),opt.via[1]];if(k<.5){const q=k*2;x=lerp(A[0],V[0],q);y=lerp(A[1],V[1],q);}else{const q=(k-.5)*2;x=lerp(V[0],B[0],q);y=lerp(V[1],B[1],q);}}
+    else{x=lerp(A[0],B[0],k);y=lerp(A[1],B[1],k)-Math.sin(k*Math.PI)*(opt.hop||0);}
+    const fc=colorFn?colorFn(c):null, r=opt.r||11;
+    if(fc)dot(x,y,r,fc,opt.alpha===undefined?1:opt.alpha);else dot(x,y,r-1.5,null,(opt.alpha===undefined?1:opt.alpha)*.9,COL.unk,2);});}
+function laneLabels(t,a,b,xs,labels,test,baseY,unitWord,off){off=off||300;const al=fadeIO(t,a,b,.5);if(al<=0)return;
+  ["yes","no"].forEach((g,j)=>{const x=xs[g];mono(labels[j],x,baseY+56,al,{align:"center",size:17,color:COL.ink,upper:true,maxW:330});});
+  if(test){const k=E(t,a+.8,a+2.4),v1=Math.round(test.with_factor_bad_pct*k),v2=Math.round(test.without_factor_bad_pct*k);
+    head(v1+"%",xs.yes,baseY-off,al*seg(t,a+.6,a+1),{align:"center",size:96,color:COL.ink});head(v2+"%",xs.no,baseY-off,al*seg(t,a+.6,a+1),{align:"center",size:96,color:COL.ink});
+    mono(unitWord+" · n="+test.with_factor_n,xs.yes,baseY-off+32,al,{align:"center",size:15});mono(unitWord+" · n="+test.without_factor_n,xs.no,baseY-off+32,al,{align:"center",size:15});}}
+
+/* =================================== SCENES (v2: built on Hollie's site map) =================================== */
+const SC=[];let acc=0;function scene(id,name,dur,draw){SC.push({id,name,a:acc,b:acc+dur,draw});acc+=dur;}
+
+/* ---------- Hollie's sites: precise locations, tested against the city's floodplain ---------- */
+const HL=window.HOLLIE, HS=HL.sites.map(s=>Object.assign({},s));
+const fpSegs=[];FP.forEach(f=>{const g=f.geometry,ps=g.type==="Polygon"?[g.coordinates]:g.type==="MultiPolygon"?g.coordinates:[];ps.forEach(p=>p.forEach(r=>{for(let i=1;i<r.length;i++)fpSegs.push([r[i-1],r[i]]);}));});
+const KX=111320*Math.cos(29.9*Math.PI/180),KY=110574;
+function fpDist(lon,lat){if(FP.some(f=>d3.geoContains(f,[lon,lat])))return 0;let b=1e12;for(const [a,c] of fpSegs){const ax=(a[0]-lon)*KX,ay=(a[1]-lat)*KY,bx=(c[0]-lon)*KX,by=(c[1]-lat)*KY,dx=bx-ax,dy=by-ay,L=dx*dx+dy*dy,t=L?Math.max(0,Math.min(1,-(ax*dx+ay*dy)/L)):0;b=Math.min(b,Math.hypot(ax+t*dx,ay+t*dy));}return b;}
+HS.forEach(s=>{s.m=P(s.lon,s.lat);s.d=fpDist(s.lon,s.lat);s.band=s.d<=250;});
+const HS_ORDER=HS.slice().sort((a,b)=>a.d-b.d);
+const hsBand=HS.filter(s=>s.band).length;
+const LAM=HS.find(s=>s.id==="lamontville");
+console.log("Hollie sites",HS.length,"in band",hsBand,HS.map(s=>s.id+":"+Math.round(s.d)).join(" "));
+
+/* 00 · COLD OPEN — journey j1 from Hollie's map: Mega Village → tents → riverside camp → hotel → Umbilo */
+const C2=[[1.4,"flood","April 2019 · homes flooded"],[2.9,"move","2019 · two years in tents"],[4.6,"move","2021 · a riverside camp"],[6.1,"flood","April 2022 · camp floods"],[7.6,"flood","Feb 2025 · camp floods again"],[9.1,"move","Feb 2025 · a city-rented hotel"],[10.6,"move","July 2025 · evicted, moved again"]];
+const C2ST=[[420,560],[700,500],[980,590],[1260,520],[1540,580]];
+scene("open","Cold open",17,function(t){
+  const A=fadeIO(t,0,17,1),moves=C2.filter(e=>e[1]==="move");let pos=C2ST[0].slice(),st=0;
+  moves.forEach((m,j)=>{const k=E(t,m[0],m[0]+1.1);if(k>0){const a=C2ST[j],b=C2ST[j+1];pos=[lerp(a[0],b[0],k),lerp(a[1],b[1],k)-Math.sin(k*Math.PI)*70];st=j+(k>=1?1:0);}});
+  for(let j=0;j<st;j++)dot(C2ST[j][0],C2ST[j][1],34,null,A*.35,COL.muted,1.5);
+  let fl=0,mv=0;C2.forEach(e=>{if(t>=e[0]){if(e[1]==="flood")fl++;else mv++;}});
+  C2.forEach(e=>{const k=seg(t,e[0],e[0]+1.4);if(k<=0||k>=1)return;const lv=Math.sin(k*Math.PI);
+    if(e[1]==="flood"){ctx.save();ctx.globalAlpha=A*.85;ctx.fillStyle=COL.water;ctx.beginPath();const top=pos[1]+60-lv*120;ctx.moveTo(pos[0]-120,pos[1]+90);for(let x=-120;x<=120;x+=8)ctx.lineTo(pos[0]+x,top+Math.sin(x*.07+t*9)*6);ctx.lineTo(pos[0]+120,pos[1]+90);ctx.closePath();ctx.fill();ctx.restore();}
+    mono(e[2],pos[0],pos[1]-80,A*Math.min(1,lv*2),{align:"center",color:e[1]==="flood"?COL.water:COL.camp,size:18});});
+  for(let i=0;i<12;i++){const a=hash(i)*6.283,r=Math.sqrt(hash(i+50))*24;dot(pos[0]+Math.cos(a)*r,pos[1]+Math.sin(a)*r,4.2,COL.ink,A*seg(t,.2,1.2));}
+  const ty=860;mono("FLOODS",700,ty,A*seg(t,1,2),{size:16,ls:3});mono("MOVES",700,ty+56,A*seg(t,1,2),{size:16,ls:3});
+  for(let i=0;i<3;i++)dot(840+i*44,ty-6,14,i<fl?COL.water:null,A*seg(t,1,2),i<fl?null:COL.rule,2);
+  for(let i=0;i<4;i++)dot(840+i*44,ty+50,14,i<mv?COL.camp:null,A*seg(t,1,2),i<mv?null:COL.rule,2);
+  head("Flooded three times. Moved four times.",960,200,A*seg(t,12,13),{align:"center",size:72});
+  body("One group of families in Durban, 2019 to 2025.",960,260,A*seg(t,13,14),{align:"center",color:COL.muted});
+  mono("schematic · dots are illustrative",1860,1050,A*.8,{align:"right",size:13});
+  source("Sources: GroundUp Jun 2022 & Mar 2025; Mail & Guardian May 2022; The Witness Jul 2025; Amnesty International Nov 2025. Journey from our site map.",A);
+});
+
+/* ACT 1 · WE KNOW */
+scene("water","We know",18,function(t){
+  // text now runs alongside each animation: rain + climate line with the coastline, satellite line with the water reveal,
+  // "the city mapped this" with the drain into the floodplain
+  const A=fadeIO(t,0,18,.8), rp=E(t,.3,3), ri=E(t,2.5,8), dr=E(t,8.5,13);
+  renderWater(rp,ri,dr,.14);
+  drawMapPlate(BASEV,{alpha:A,wet:ri*(1-dr),water:1,fpOutline:E(t,8.5,13),fpFill:E(t,12.5,14.5)*.9});
+  const rain=fadeIO(t,.3,9,1.2);if(rain>0){ctx.save();ctx.strokeStyle=rgba(COL.water,.35*rain*A);ctx.lineWidth=1.2;ctx.beginPath();for(let i=0;i<260;i++){const x=150+hash(i)*660,y=40+((t*900+hash(i+7)*1000)%1000);ctx.moveTo(x,y);ctx.lineTo(x-4,y+18);}ctx.stroke();ctx.restore();}
+  chapter("1","We know",A);
+  const X=920;
+  // top block: the rain (Patzek link, WWA 2022) then, as the water drains, the city's map
+  const a1=fadeIO(t,.3,9,.5);
+  mono("April 2022 · KwaZulu-Natal",X,200,a1,{size:17,upper:true,ls:2});
+  head("The rain is changing.",X,270,a1,{size:72});
+  body("Climate change made rain like this twice as likely, and 4–8% heavier.",X,330,a1,{maxW:880,color:COL.muted});
+  const k=E(t,1.5,4.5);const n=Math.round(lerp(40,20,k)),cw=Math.min(21,860/n);
+  for(let i=0;i<n;i++){ctx.globalAlpha=a1;ctx.fillStyle=i===0?COL.water:COL.rule;ctx.fillRect(X+i*cw,440,cw-4,54);}ctx.globalAlpha=1;
+  mono("one cell = one year · this rain: 1 in "+n+" years",X,530,a1,{size:17});
+  const a2=fadeIO(t,9,18,.5);
+  head("The city mapped this itself.",X,270,a2,{size:64});
+  body("eThekwini's official 1-in-100-year floodplain: where the water goes.",X,330,a2,{maxW:860,color:COL.muted});
+  // bottom block: what the blue pixels are, while they appear
+  body("Every blue pixel is ground a satellite saw under water, 1984–2021.",X,690,fadeIO(t,2.8,10,.5),{maxW:860});
+  mono("always wet → only sometimes wet",X,740,fadeIO(t,3.4,10,.5),{size:17,color:COL.water});
+  mono("the water drains into the city's flood lines",X,690,fadeIO(t,10,18,.5),{size:17,color:COL.water});
+  mono(dr<.5?"JRC Global Surface Water · 1984–2021":"eThekwini Flood Plain 100yr · faint pixels: other satellite water",170,1010,A*.9,{size:14});
+  source(t<8.5?"Sources: World Weather Attribution (2022), KwaZulu-Natal floods; EC JRC Global Surface Water (Pekel et al. 2016, Nature).":"Sources: EC JRC Global Surface Water occurrence 1984–2021; eThekwini Municipality, Flood Plain 100yr (open data).",A);
+});
+
+/* ACT 2 · WE MOVE — 16 sites at their real locations, measured against the city's flood line */
+scene("move","We move",26,function(t){
+  const A=fadeIO(t,0,26,.8);renderWater(1,1,1,.14);
+  drawMapPlate(BASEV,{alpha:A,water:1,fpOutline:1,fpFill:.9,buffer:E(t,10,12)});
+  chapter("2","We move",A);const X=920;
+  head("A disaster creates urgency.",X,190,fadeIO(t,.5,9.5,.6),{size:56,maxW:880});
+  body("People need somewhere to go. Land gets chosen fast: camps, rented buildings, a hotel.",X,250,fadeIO(t,1.2,9.5,.6),{maxW:860,color:COL.muted});
+  HS_ORDER.forEach((s,i)=>{const td=1.5+HS.indexOf(s)*.35,k=E(t,td,td+.5);if(k<=0)return;const mp=ap(BASEV,s.m),lit=s.band&&t>12+i*.2;
+    if(mp[0]<152||mp[0]>150+MW*1000/MH-2||mp[1]<42||mp[1]>1038)return;if(k<1&&k>.3)dot(mp[0],mp[1],lerp(6,26,(k-.3)/.7),null,A*(1-k),COL.camp,2);
+    dot(mp[0],mp[1]-(1-k)*60,8,lit?COL.hit:COL.camp,A*k,COL.bg,1.5);});
+  const cnt=Math.min(HS.length,Math.max(0,Math.floor((t-1.5)/.35)+1));
+  head(t<10?String(cnt):hsBand+" of "+HS.length,X,430,A*fadeIO(t,1.5,26,.4),{size:150,color:t<10?COL.camp:COL.hit});
+  mono(t<10?"temporary sites for flood survivors · eThekwini · precise locations":"sit inside the city's flood line or within 250 m of it",X,480,A*fadeIO(t,1.5,26,.4),{size:17,maxW:880});
+  body("Does the flood map constrain where people are put?",X,640,A*seg(t,15,16),{maxW:860,size:34});
+  body("Random ground across Durban: "+S.baseline_inside_or_250m_pct+"% falls in the same band.",X,720,A*seg(t,17.5,18.5),{maxW:860,color:COL.muted});
+  head("Now look closer at one camp.",X,840,A*seg(t,21,22),{size:48,color:COL.ink});
+  if(LAM){const mp=ap(BASEV,LAM.m);dot(mp[0],mp[1],lerp(10,40,(Math.sin(t*4)+1)/2),null,A*seg(t,21,22),COL.ink,2);}
+  source("Sites: our site map (16 locations placed from GroundUp, Parliament, SAnews, IOL, The Witness, Amnesty). Flood line: eThekwini Flood Plain 100yr. Baseline: 300 seeded random points.",A);
+});
+
+/* ACT 2b · THE CUT — zoom to the Lamontville riverside camp, then the cross-section */
+scene("cut","One camp, side-on",24,function(t){
+  const A=fadeIO(t,0,24,.6);renderWater(1,1,1,.14);
+  // 0–6s: zoom into the camp on the map
+  const mA=1-E(t,5.5,7);
+  if(mA>0){const V=mixM(BASEV,zoomView(LAM.m[0],LAM.m[1],1000/MH*9,560,560),E(t,0,4));
+    drawMapPlate(V,{alpha:A*mA,water:1,fpOutline:1,fpFill:.9,fpW:3,win:[0,0,1100,1080]});
+    const p=ap(V,LAM.m);dot(p[0],p[1],10,COL.hit,A*mA,COL.bg,2);
+    mono("LAMONTVILLE RIVERSIDE CAMP · GWALA STREET",p[0]+22,p[1]-20,A*mA*seg(t,3,4),{color:COL.ink,size:16});
+    mono("opened 2021 · about 100 households",p[0]+22,p[1]+2,A*mA*seg(t,3.5,4.5),{size:14});
+    head("2 metres from the city's flood line.",1160,300,A*mA*seg(t,3.5,4.5),{size:52,maxW:700});}
+  // 6–24s: the cross-section (heights from our terrain analysis)
+  const cA=A*seg(t,6,7);if(cA<=0)return;
+  const PR=HL.profile,CU=HL.cut,x0=230,x1=1690,yb=880,ppm=62,dmax=PR[PR.length-1][0];
+  const X=d=>x0+(d/dmax)*(x1-x0),Y=h=>yb-(h+1.2)*ppm;
+  const draw=E(t,6.5,9.5),lvl=lerp(CU.river,CU.level,E(t,13,18));
+  // axis
+  ctx.globalAlpha=cA;ctx.strokeStyle=COL.rule;ctx.lineWidth=1;[0,2,4,6].forEach(h=>{ctx.beginPath();ctx.moveTo(x0-10,Y(h));ctx.lineTo(x1,Y(h));ctx.stroke();mono((h?"+":"")+h+" m",x0-18,Y(h)+5,cA,{align:"right",size:14});});ctx.globalAlpha=1;
+  mono("height above the river",x0-18,Y(7.2),cA,{align:"right",size:13});
+  // camp
+  const cp=E(t,10,11);if(cp>0){const cx0=X(CU.campFrom),cx1=X(CU.campTo),drop=(1-cp)*80;ctx.globalAlpha=cA*cp;ctx.fillStyle=COL.camp;ctx.strokeStyle=COL.bg;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(cx0,Y(CU.campBase)-drop);ctx.lineTo(cx0,Y(CU.campRoof)-drop);ctx.lineTo((cx0+cx1)/2,Y(CU.campPeak)-drop);ctx.lineTo(cx1,Y(CU.campRoof)-drop);ctx.lineTo(cx1,Y(CU.campBase)-drop);ctx.closePath();ctx.fill();ctx.stroke();ctx.globalAlpha=1;
+    mono("CAMP",(cx0+cx1)/2,Y(CU.campPeak)-18-drop,cA*cp,{align:"center",color:COL.camp,size:16});}
+  // water up to the current level, then the ground on top
+  ctx.save();ctx.globalAlpha=cA*.6;ctx.fillStyle=COL.water;ctx.fillRect(x0,Y(lvl),x1-x0,yb-Y(lvl)+40);ctx.restore();
+  const n=Math.max(2,Math.round(PR.length*draw));
+  ctx.save();ctx.globalAlpha=cA;ctx.beginPath();ctx.moveTo(X(PR[0][0]),yb+40);PR.slice(0,n).forEach(p=>ctx.lineTo(X(p[0]),Y(p[1])));ctx.lineTo(X(PR[n-1][0]),yb+40);ctx.closePath();
+  const g=ctx.createLinearGradient(0,Y(6),0,yb+40);g.addColorStop(0,"#5E5139");g.addColorStop(1,"#241E16");ctx.fillStyle=g;ctx.fill();
+  ctx.beginPath();PR.slice(0,n).forEach((p,i)=>i?ctx.lineTo(X(p[0]),Y(p[1])):ctx.moveTo(X(p[0]),Y(p[1])));ctx.strokeStyle="#7FA35A";ctx.lineWidth=3;ctx.stroke();ctx.restore();
+  mono("uMlazi River",X(99),Y(-.6),cA*seg(t,9,10),{align:"center",color:"#BFD9E2",size:15});
+  // flood level line + bracket
+  const fl=seg(t,17.5,18.5);if(fl>0){ctx.save();ctx.globalAlpha=cA*fl;ctx.setLineDash([10,7]);ctx.strokeStyle="#CFE0FF";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x0,Y(CU.level));ctx.lineTo(x1,Y(CU.level));ctx.stroke();ctx.setLineDash([]);
+    const bx=X(CU.campTo)+24;ctx.strokeStyle=COL.ink;ctx.beginPath();ctx.moveTo(bx,Y(CU.level));ctx.lineTo(bx+10,Y(CU.level));ctx.lineTo(bx+10,Y(CU.campBase));ctx.lineTo(bx,Y(CU.campBase));ctx.stroke();ctx.restore();
+    head((CU.level-CU.campBase).toFixed(1)+" m of water",bx+24,Y((CU.level+CU.campBase)/2)+14,cA*fl,{size:44});
+    mono("water level in the city's 1-in-100-year flood",x0+10,Y(CU.level)-14,cA*fl,{size:15,color:"#CFE0FF"});}
+  head("In the flood the city plans for,",960,170,cA*seg(t,19,20),{align:"center",size:60});
+  head("the camp is under water.",960,236,cA*seg(t,20,21),{align:"center",size:60,color:COL.hit});
+  mono("A → B, 0–"+Math.round(dmax)+" m · vertical scale exaggerated about 10×",x1,yb+30,cA,{align:"right",size:13});
+  chapter("2","We move",A);
+  source("Cross-section: our terrain analysis along a line through the camp (elevation source to be cited). Flood level: eThekwini 1-in-100-year flood. Floods: GroundUp, Mail & Guardian.",A);
+});
+
+/* ACT 3 · WE WAIT — journey j1 on the real map */
+const J1=HL.journeys.j1, J1P=J1.pts.map(p=>{if(p.site){const s=HS.find(x=>x.id===p.site);return {n:s.name,lon:s.lon,lat:s.lat};}return p;}).map(p=>Object.assign(p,{m:P(p.lon,p.lat)}));
+const J1EV=[ // leg index, label, extra (all from our site map / its sources)
+  ["April 2019","Mega Village floods. Families move into tents at Tehuis Hostel."],
+  ["2021","After two years in tents: the Lamontville riverside camp."],
+  ["April 2022","The camp, open one year, floods. Families are ordered back."],
+  ["February 2025","It floods again: 40+ units destroyed, three children swept away. Moved to a city-rented hotel."],
+  ["July 2025","Evicted after about five months when the hotel bill went unpaid. Moved to a former student residence in Umbilo."],
+  ["Today","Still temporary."]];
+scene("journey","We wait",36,function(t){
+  const A=fadeIO(t,0,36,.6);renderWater(1,1,1,.14);
+  const xs=J1P.map(p=>p.m[0]),ys=J1P.map(p=>p.m[1]),cx=(Math.min(...xs)+Math.max(...xs))/2,cy=(Math.min(...ys)+Math.max(...ys))/2;
+  const sc=Math.min(760/(Math.max(...xs)-Math.min(...xs)),760/(Math.max(...ys)-Math.min(...ys)))*.8;
+  const V=mixM(BASEV,zoomView(cx,cy,sc,540,560),E(t,0,3.5));
+  drawMapPlate(V,{alpha:A,water:1,fpOutline:1,fpFill:.9,fpW:2.5,win:[0,0,1080,1080]});
+  HS.forEach(s=>{const p=ap(V,s.m);if(p[0]<1070)dot(p[0],p[1],6,s.band?COL.hit:COL.camp,A*.3,COL.bg,1);});
+  // stations
+  const T0=4,LEG=5;
+  J1P.forEach((p,i)=>{const sp=ap(V,p.m),on=t>=T0+Math.max(0,i-1)*LEG+(i?LEG*.8:0);
+    dot(sp[0],sp[1],9,i===2?COL.hit:COL.camp,A*(on?1:.25),COL.bg,2);
+    if(on)mono(p.n.toUpperCase(),sp[0]+14,sp[1]+(i%2?18:-12),A*.95,{size:13,color:COL.ink});});
+  // the group moving leg by leg (leg 2 = the floods at the camp, no move)
+  const legOf=[0,1,null,2,3];let pos=ap(V,J1P[0].m);
+  const moveAt=[T0,T0+LEG,null,T0+3*LEG,T0+4*LEG];
+  [[0,1,moveAt[0]],[1,2,moveAt[1]],[2,3,moveAt[3]],[3,4,moveAt[4]]].forEach(([a,b,ts])=>{const k=E(t,ts+.8,ts+3.5);if(k>0){const A2=ap(V,J1P[a].m),B2=ap(V,J1P[b].m),mx=(A2[0]+B2[0])/2,my=Math.min(A2[1],B2[1])-60;
+      ctx.save();ctx.globalAlpha=A*.7;ctx.strokeStyle=COL.camp;ctx.setLineDash([6,7]);ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(A2[0],A2[1]);for(let q=0;q<=k;q+=.04){ctx.lineTo((1-q)*(1-q)*A2[0]+2*(1-q)*q*mx+q*q*B2[0],(1-q)*(1-q)*A2[1]+2*(1-q)*q*my+q*q*B2[1]);}ctx.stroke();ctx.restore();
+      pos=[(1-k)*(1-k)*A2[0]+2*(1-k)*k*mx+k*k*B2[0],(1-k)*(1-k)*A2[1]+2*(1-k)*k*my+k*k*B2[1]];}});
+  // floods at Mega Village (2019) and at the camp (2022, 2025)
+  [[0,T0],[2,T0+2*LEG],[2,T0+3*LEG]].forEach(([si,ts])=>{const k=seg(t,ts,ts+1.6);if(k>0&&k<1){const sp=ap(V,J1P[si].m);[0,.3,.6].forEach(o=>{const q=clamp((k-o)/.4);if(q>0&&q<1)dot(sp[0],sp[1],lerp(10,90,q),null,A*(1-q),COL.water,3);});}});
+  for(let i=0;i<12;i++){const a=hash(i+7)*6.283,r=Math.sqrt(hash(i+70))*14;dot(pos[0]+Math.cos(a)*r,pos[1]+Math.sin(a)*r,3.2,COL.ink,A*seg(t,3,4));}
+  // story column
+  const X=1150;chapter("3","We wait",A);
+  head(J1.title,X,150,A*seg(t,1,2),{size:46});mono(J1.sub.toUpperCase(),X,190,A*seg(t,1.5,2.5),{size:15,ls:2});
+  J1EV.forEach((e,i)=>{const ts=T0+i*LEG,a=A*seg(t,ts,ts+.8),cur=t<T0+(i+1)*LEG||i===J1EV.length-1,y=270+i*112;
+    mono(e[0].toUpperCase(),X,y,a,{size:15,ls:2,color:i===2||i===3?COL.water:COL.camp});
+    body(e[1],X,y+32,a*(cur?1:.5),{size:i===J1EV.length-1?40:24,maxW:700,lh:30,color:i===J1EV.length-1?COL.hit:COL.ink});});
+  source("Journey and events: our site map, from GroundUp (Jun 2022, Mar 2025), Mail & Guardian (May 2022), The Witness (Jul 2025), Amnesty International (Nov 2025), Sunday Tribune (Oct 2025).",A);
+});
+/* 04b · 84 TEMPORARY SITES — dots appear as the years pass; each bar is a site's age */
+scene("temporary","84 sites",24,function(t){
+  const A=fadeIO(t,0,24,.6), yr=Math.floor(lerp(2002,2026,E(t,3,15)));
+  ctx.save();ctx.globalAlpha=A;ctx.fillStyle=COL.panel;ctx.fill(saPath);ctx.strokeStyle=COL.muted;ctx.lineWidth=1.2;ctx.stroke(saPath);ctx.restore();
+  const dz=saProj([31.02,-29.86]);dot(dz[0],dz[1],lerp(40,6,E(t,0,3)),null,A*(1-E(t,2.5,3.5)),COL.water,2);
+  SA_SITES.forEach(d=>{const y=/^\d{4}$/.test(d.est)?+d.est:2026, p=saProj([d.lon,d.lat]);if(yr<y&&t<15)return;const k=t<15?seg(yr,y,y+1):1, age=Math.max(0,yr-y);
+    if(age>0)dot(p[0],p[1],3+age*.9,null,A*.25*k,COL.camp,1);
+    dot(p[0],p[1],d.reflood==="yes"&&t>19?6.5:4.6,d.origin==="flood"?COL.water:COL.camp,A*k,d.reflood==="yes"&&t>19?COL.hit:COL.bg,d.reflood==="yes"&&t>19?2.6:1);});
+  head(String(yr),90,230,A*fadeIO(t,3,16,.4),{size:120,color:COL.ink});
+  // gantt
+  const gx=1060,gw=780,gy=260,gh=720,rh=gh/GANTT.length,xs=y=>gx+(y-2002)/(2026-2002)*gw;
+  mono("ACTIVE “TEMPORARY” SITES · FROM THE YEAR ESTABLISHED TO 2026",gx,gy-24,A,{size:15,ls:2,color:COL.ink});
+  [2002,2010,2018,2026].forEach(y=>{mono(String(y),xs(y),gy+gh+30,A,{size:14,align:"center"});ctx.globalAlpha=A*.4;ctx.strokeStyle=COL.rule;ctx.beginPath();ctx.moveTo(xs(y),gy);ctx.lineTo(xs(y),gy+gh);ctx.stroke();ctx.globalAlpha=1;});
+  GANTT.forEach((g,i)=>{if(yr<g.y)return;const x0=xs(g.y),x1=xs(Math.max(g.y,yr)),y=gy+i*rh;ctx.globalAlpha=A;ctx.fillStyle=g.hit&&t>19?COL.hit:COL.camp;ctx.fillRect(x0,y+1,Math.max(3,x1-x0),Math.max(2,rh-3));ctx.globalAlpha=1;});
+  const old=GANTT[0];
+  
+  head(SITES.length+" “temporary” sites.",gx,120,A*seg(t,16,17),{size:56});
+  body("The oldest: "+(old?old.n+", "+old.m+", since "+old.y:"")+". "+(2026-(old?old.y:2002))+" years.",gx,172,A*seg(t,17,18),{size:24,color:COL.camp,maxW:800});
+  
+  mono("red: flooding documented after the move ("+REFLOOD_ALL+" sites; only 30 of 84 searched)",90,1000,A*seg(t,19,20),{size:15,color:COL.hit});
+  chapter("3","We wait",A);
+  source("Source: “South Africa TRAs 2022–2026” site list, 84 sites with per-site sources (GroundUp, IOL, Daily Maverick, PMG, municipal records). Bars: active, non-Covid sites with a known start year.",A);
+});
+
+/* 05 · THE WORLD — 408 → 292 → 64 */
+scene("world","The world",26,function(t){
+  const A=fadeIO(t,0,26,.6), zk=E(t,0,4), pr=worldProj(zk), path=d3.geoPath(pr,ctx);
+  ctx.save();ctx.globalAlpha=A;ctx.beginPath();path({type:"Sphere"});ctx.fillStyle="#070D11";ctx.fill();ctx.beginPath();path(LAND);ctx.fillStyle=COL.panel;ctx.fill();ctx.strokeStyle=rgba(COL.muted,.5);ctx.lineWidth=.7;ctx.stroke();ctx.restore();
+  const zp=pr([31.02,-29.86]);dot(zp[0],zp[1],6,COL.water,A*(1-seg(t,3,5)));
+  let shown=0,elig=0;
+  FRAME.forEach((f,j)=>{const td=4.2+j*.011;if(t<td)return;shown++;const p=pr(f.ll);if(!p)return;const out=!f.e&&t>10,fo=out?1-seg(t,10+hash(j)*1.2,10.6+hash(j)*1.2):1;if(f.e)elig++;
+    if(f.s&&t>13.5){const c=caseByNo[f.s],i=CASES.indexOf(c),G=L_GRID[f.s],k=E(t,13.5+i*.04,16+i*.04);const x=lerp(p[0],G[0],k),y=lerp(p[1],G[1],k)-Math.sin(k*Math.PI)*60;
+      const fc=t>19?outColor(c):COL.ink;if(fc)dot(x,y,lerp(3,11,k),fc,A);else dot(x,y,lerp(3,9.5,k),null,A,COL.unk,2);return;}
+    dot(p[0],p[1],2.6,f.e?COL.ink:COL.muted,A*fo*(f.s&&t>12.5?1:.8));});
+  const counter=t<10?Math.min(FILM.frame.length,Math.round(FILM.frame.length*seg(t,4.2,4.2+FRAME.length*.011))):t<13?Math.round(lerp(FILM.frame.length,FILM.eligible,seg(t,10,11.5))):t<16?Math.round(lerp(FILM.eligible,CASES.length,seg(t,13.5,15.5))):CASES.length;
+  head(String(counter),60,220,A*seg(t,4,4.6),{size:140,color:COL.ink});
+  mono(t<10?"planned relocations worldwide":t<13.5?"water and slope hazards · one community each":"drawn at random",60,262,A*seg(t,4,4.6),{size:18,upper:true,ls:2});
+  head("Maybe this isn't inevitable.",60,150,A*fadeIO(t,1,4.5,.5),{size:60});
+  if(t>19){const la=seg(t,19,20);[["success",COL.ok],["mixed",COL.camp],["failure",COL.hit]].forEach((o,j)=>{dot(1256+j*150,850,9,o[1],A*la);mono(o[0],1274+j*150,856,A*la,{size:16,color:COL.ink});});
+    dot(1256,892,8,null,A*la,COL.unk,2);mono("never assessed",1274,898,A*la,{size:16});
+    dot(1780,300,11,null,A*la,COL.water,2.5);mono("Durban",1800,306,A*la,{size:15,color:COL.water});mono("not in sample",1800,326,A*la,{size:12});}
+  head("How did each move turn out?",1250,230,A*seg(t,19.5,20.5),{size:40});
+  chapter("4","We compare",A);
+  source("Frame: PDD, Kaldor Centre & IOM, Leaving Place, Restoring Home I & II (408 cases). Sample: 64, seed 20260928. Dots placed by country unless geocoded.",A);
+});
+
+/* 06 · THE SUSPECTS — fast: money? one owner? */
+scene("suspects","The suspects",24,function(t){
+  const A=fadeIO(t,0,24,.4);
+  const Ti=test("higher-income country (UMIC/HIC)","judged failure or mixed"), To=test("clear lead body (single_owner yes/partial)","judged failure or mixed");
+  if(t<11)moveDots(t,.3,2.6,L_GRID,L_INC.L,outColor,{r:12,hop:40});else moveDots(t,11,13.2,L_INC.L,L_OWN.L,outColor,{r:12,hop:40});
+  head("Money?",960,130,A*fadeIO(t,.2,11,.3),{size:80,align:"center"});
+  laneLabels(t,1.5,11,SUS_X,["richer countries","poorer countries"],Ti,900,"not a success",440);
+  head("One owner?",960,130,A*fadeIO(t,11,24,.3),{size:80,align:"center"});
+  laneLabels(t,12.5,21,SUS_X,["one clear lead agency","no clear lead"],To,900,"not a success",440);
+  mono("not recorded",SUS_X.pile,956,A,{align:"center",size:15});
+  const n1=seg(t,6.5,7),n2=seg(t,17,17.5);
+  head("NO.",960,360,A*n1*(1-seg(t,10,10.6)),{size:150,align:"center",color:COL.hit});head("NO.",960,360,A*n2*(1-seg(t,20.5,21)),{size:150,align:"center",color:COL.hit});
+  // the old thesis, struck
+  const s=seg(t,21,21.6),st=E(t,22,23);
+  if(s>0){ctx.save();ctx.globalAlpha=A*s;ctx.fillStyle="rgba(5,9,12,.82)";ctx.fillRect(0,380,1920,300);ctx.restore();
+    head("“Nobody owns it”",960,560,A*s,{size:110,align:"center",color:COL.ink});
+    ctx.save();ctx.globalAlpha=A*s;ctx.strokeStyle=COL.hit;ctx.lineWidth=9;ctx.beginPath();ctx.moveTo(560,528);ctx.lineTo(lerp(560,1360,st),528);ctx.stroke();ctx.restore();
+    body("Our first theory. The random sample broke it.",960,630,A*seg(t,22.5,23.2),{align:"center",color:COL.muted});}
+  mono("share of cases judged mixed or failed, among cases with a known outcome · dot colour = outcome",960,1010,A*.9,{align:"center",size:14});
+  chapter("4","We compare",A);
+  source("64-case world test: Fisher exact p = 0.64 (income) and 1.0 (lead agency). Coding: world_coding_batch1–4.json; tests: world_relocation_test.csv.",A);
+});
+
+/* 07 · THE GATES — slow */
+function gate(x,y,w,label,a,state){if(a<=0)return;ctx.save();ctx.globalAlpha=a;ctx.strokeStyle=COL.ink;ctx.lineWidth=5;
+  ctx.beginPath();ctx.moveTo(x-w/2,y+70);ctx.lineTo(x-w/2,y-70);ctx.lineTo(x+w/2,y-70);ctx.lineTo(x+w/2,y+70);if(state==="missing"){ctx.setLineDash([10,12]);ctx.strokeStyle=COL.muted;}ctx.stroke();ctx.setLineDash([]);
+  if(state==="shut"){ctx.strokeStyle=COL.hit;ctx.lineWidth=10;ctx.beginPath();ctx.moveTo(x-w/2,y);ctx.lineTo(x+w/2,y);ctx.stroke();}
+  ctx.restore();text(label,x,y-100,{font:DISP,weight:700,size:44,upper:true,align:"center",alpha:a,maxW:1100,lh:46});}
+scene("gates","The gates",40,function(t){
+  const A=fadeIO(t,0,40,.5);
+  const T1=test("community led or joint","judged failure or mixed"), T1b=test("residents chose site (yes/partial)","judged failure or mixed"), T2=test("hazard assessment binding (yes/partial)","new site hit / exposed");
+  const gy=330;
+  if(t<20){
+    gate(960,gy,320,"Did the people being moved have a say?",A*fadeIO(t,.3,19.5,.6));
+    moveDots(t,1.5,7.5,L_OWN.L,L_SAY.L,outColor,{via:[960,gy],r:12,stagger:2.5});
+    laneLabels(t,7.5,19.5,GATE_X,["community-led or co-run","top-down or other"],T1,880,"not a success");
+    mono("same split when residents helped choose the site: "+T1b.with_factor_bad_pct+"% vs "+T1b.without_factor_bad_pct+"%",960,1024,A*fadeIO(t,11,19.5,.5),{align:"center",size:15,color:COL.ink});
+  }else{
+    gate(960,gy,320,"Could the flood risk stop the site?",A*fadeIO(t,20.3,40,.6));
+    moveDots(t,21,27,L_SAY.L,L_HAZ.L,hitColor,{via:[960,gy],r:12,stagger:2.5});
+    laneLabels(t,27,40,GATE_X,["binding hazard check","no binding check"],T2,880,"new site hit or exposed");
+    if(t>28){[["new site hit or exposed",COL.hit],["no hazard reported",COL.ok]].forEach((o,j)=>{dot(1520,560+j*34,8,o[1],A*seg(t,28,29));mono(o[0],1538,566+j*34,A*seg(t,28,29),{size:15,color:COL.ink});});}
+    mono("pattern, not proof · 15–31 cases per comparison · none survives strict correction for 30 tests",960,1024,A*seg(t,31,32),{align:"center",size:15,color:COL.ink});}
+  const pileN=CASES.filter(c=>(t<20?G_SAY:G_HAZ)(c)==="pile").length;
+  mono("never recorded: "+pileN,960,992,A*seg(t,t<20?7:27,t<20?8:28),{align:"center",size:15});
+  chapter("4","We compare",A);
+  source("64-case world test: community-led or joint p = 0.014; residents chose site p = 0.038; binding hazard check p = 0.077 (n = 15). Two-sided Fisher exact tests.",A);
+});
+
+
+/* ACT 5 · WE ASK — knowledge, decision, people: no binding line between them */
+scene("ask","We ask",30,function(t){
+  const A=fadeIO(t,0,30,.8);chapter("5","We ask",A);
+  const B=[[420,"KNOWLEDGE","the city's flood map"],[960,"DECISION","where people are put"],[1500,"PEOPLE","the families who are moved"]],y=470,bw=330,bh=170;
+  const bA=A*(1-seg(t,15,16.5));
+  B.forEach(([x,k,s],i)=>{const a=bA*seg(t,.5+i*.6,1.3+i*.6);if(a<=0)return;ctx.save();ctx.globalAlpha=a;ctx.strokeStyle=COL.ink;ctx.lineWidth=3;ctx.strokeRect(x-bw/2,y-bh/2,bw,bh);ctx.restore();
+    head(k,x,y-6,a,{align:"center",size:54});body(s,x,y+42,a,{align:"center",size:24,color:COL.muted});});
+  // lines try to connect, then break
+  [[0,1],[1,2]].forEach(([a,b],j)=>{const k=E(t,3+j*.8,5+j*.8),br=seg(t,6.5,7.5);const xa=B[a][0]+bw/2+8,xb=B[b][0]-bw/2-8,xm=(xa+xb)/2;if(k<=0||bA<=0)return;
+    ctx.save();ctx.globalAlpha=bA;ctx.strokeStyle=COL.water;ctx.lineWidth=4;const reach=lerp(xa,xb,k*(1-br*.5));
+    ctx.beginPath();ctx.moveTo(xa,y);ctx.lineTo(Math.min(reach,xm-14+br*0),y);ctx.stroke();
+    if(k>.5){ctx.beginPath();ctx.moveTo(Math.max(xb-(reach-xa),xm+14),y);ctx.lineTo(xb,y);ctx.stroke();}
+    ctx.restore();if(br>0)head("?",xm,y+16,bA*br,{align:"center",size:56,color:COL.hit});});
+  body("Our evidence suggests these three aren't bound together.",960,720,bA*seg(t,8,9),{align:"center",size:38});
+  body("The flood map can't stop a site. The people being moved don't choose it.",960,780,bA*seg(t,10,11),{align:"center",size:28,color:COL.muted});
+  mono("rulebook check pending: whether any rule requires a flood check before a site is used",960,1000,bA*seg(t,10,11),{align:"center",size:14});
+  // what worked elsewhere
+  const wA=A*seg(t,16.5,17.5)*(1-seg(t,23.5,24.5));
+  mono("WHERE RELOCATIONS WENT BETTER",960,360,wA,{align:"center",size:18,ls:4});
+  head("Voice.",960,500,wA*seg(t,17.5,18.3),{align:"center",size:130,color:COL.ok});
+  head("Veto.",960,640,wA*seg(t,19,19.8),{align:"center",size:130,color:COL.water});
+  mono("people had a say in the site · a risk check could stop it",960,720,wA*seg(t,20,21),{align:"center",size:16});
+  // closing questions
+  const qA=A*seg(t,24.5,25.5);
+  head("Who decides where people go?",960,450,qA,{align:"center",size:76});
+  head("What can stop an unsafe move?",960,550,A*seg(t,26,27),{align:"center",size:76,color:COL.hit});
+  mono("WHO OWNS THE FLOOD? · HOLLIE AND WANDILE · HARVARD GSD MDE",960,660,A*seg(t,27.5,28.5),{align:"center",size:16,ls:3});
+  source("Pattern from our 64-case world test and 11-case comparison; Bower et al. 2023, Nature Climate Change.",A*seg(t,16.5,17.5));
+});
+const TOTAL=acc;
+
+/* =================================== PLAYER =================================== */
+let T=0,playing=false,last=0;
+function frame(Tg){ctx.setTransform(1,0,0,1,0,0);ctx.globalAlpha=1;ctx.fillStyle=COL.bg;ctx.fillRect(0,0,W,H);
+  SC.forEach(s=>{if(Tg>=s.a&&Tg<s.b){ctx.save();s.draw(Tg-s.a,Tg);ctx.restore();}});}
+const fmt=s=>Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0");
+const scrub=document.getElementById("scrub"),timeEl=document.getElementById("time"),playB=document.getElementById("play"),chaps=document.getElementById("chaps");
+SC.forEach((s,i)=>{const b=document.createElement("button");b.type="button";b.textContent=(i<10?"0":"")+i+" "+s.name;b.dataset.a=s.a;b.addEventListener("click",()=>{seek(s.a+.01);});chaps.appendChild(b);});
+function ui(){scrub.value=Math.round(T/TOTAL*1000);timeEl.textContent=fmt(T)+" / "+fmt(TOTAL);playB.textContent=playing?"Pause":"Play";
+  [...chaps.children].forEach((b,i)=>b.classList.toggle("on",T>=SC[i].a&&T<SC[i].b));}
+function seek(x){T=clamp(x,0,TOTAL-.01);frame(T);ui();}
+function loop(now){if(playing){T+=Math.min(.1,(now-last)/1000);if(T>=TOTAL-.01){T=TOTAL-.01;playing=false;}frame(T);ui();}last=now;requestAnimationFrame(loop);}
+function play(on){playing=on;document.getElementById("poster").hidden=true;last=performance.now();ui();}
+playB.addEventListener("click",()=>{if(!playing&&T>=TOTAL-.02)T=0;play(!playing);});
+document.getElementById("go").addEventListener("click",()=>{T=0;play(true);});
+scrub.addEventListener("input",()=>{document.getElementById("poster").hidden=true;seek(scrub.value/1000*TOTAL);});
+addEventListener("keydown",e=>{if(e.target.tagName==="INPUT"&&e.key!==" ")return;if(e.key===" "){e.preventDefault();play(!playing);}if(e.key==="ArrowRight")seek(T+5);if(e.key==="ArrowLeft")seek(T-5);});
+
+const img=new Image();
+Promise.all([new Promise(r=>{img.onload=r;img.onerror=r;img.src=FILM.water.png;}),document.fonts?Promise.all([document.fonts.load("700 40px 'Barlow Condensed'"),document.fonts.load("400 30px Newsreader"),document.fonts.load("400 17px 'IBM Plex Mono'")]).catch(()=>{}):Promise.resolve()])
+.then(()=>{mkHatch();try{buildWater(img);}catch(err){console.warn("water raster unavailable",err);}
+  const q=/[?&]t=([\d.]+)/.exec(location.search), hashS=/^#(\w+)$/.exec(location.hash);
+  if(q){document.getElementById("poster").hidden=true;seek(+q[1]);}
+  else if(hashS&&SC.find(s=>s.id===hashS[1])){document.getElementById("poster").hidden=true;seek(SC.find(s=>s.id===hashS[1]).a+.01);}
+  else{frame(SC.find(s=>s.id==="cut").a+21);ui();timeEl.textContent="0:00 / "+fmt(TOTAL);}
+  if(/[?&]play/.test(location.search))play(true);
+  requestAnimationFrame(loop);window.__filmReady=true;});
+})();
+</script>

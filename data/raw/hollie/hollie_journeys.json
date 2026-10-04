@@ -1,0 +1,112 @@
+{
+ "j1": {
+  "title": "From uMlazi to Umbilo",
+  "sub": "Four moves in six years",
+  "pts": [
+   {
+    "n": "Mega Village, uMlazi",
+    "lat": -29.966,
+    "lon": 30.905
+   },
+   {
+    "n": "Tehuis Hostel",
+    "lat": -29.966,
+    "lon": 30.924
+   },
+   {
+    "site": "lamontville"
+   },
+   {
+    "site": "bayside"
+   },
+   {
+    "site": "umbilo"
+   }
+  ],
+  "legs": [
+   [
+    "Mega Village → tents at Tehuis Hostel",
+    "April 2019 · homes flooded"
+   ],
+   [
+    "Tehuis Hostel → Lamontville riverside camp",
+    "2021 · after two years in tents"
+   ],
+   [
+    "Lamontville camp → Bayside Hotel",
+    "February 2025 · camp flooded a second time"
+   ],
+   [
+    "Bayside Hotel → Umbilo residence",
+    "July 2025 · evicted from the hotel"
+   ]
+  ]
+ },
+ "j2": {
+  "title": "From Isipingo to Montclair",
+  "sub": "Two moves in four years",
+  "pts": [
+   {
+    "n": "Isipingo settlements",
+    "lat": -29.99,
+    "lon": 30.94
+   },
+   {
+    "site": "point"
+   },
+   {
+    "site": "montclair"
+   }
+  ],
+  "legs": [
+   [
+    "Isipingo → Point Road",
+    "2022 · informal settlements flooded"
+   ],
+   [
+    "Point Road → Montclair Lodge",
+    "June 2026 · 84 families moved before the building closed"
+   ]
+  ]
+ },
+ "j3": {
+  "title": "From Shallcross to KwaDimba",
+  "sub": "One move",
+  "pts": [
+   {
+    "n": "Shallcross",
+    "lat": -29.893,
+    "lon": 30.872
+   },
+   {
+    "site": "kwadimba"
+   }
+  ],
+  "legs": [
+   [
+    "Shallcross → KwaDimba",
+    "2022 · after the April floods"
+   ]
+  ]
+ },
+ "j4": {
+  "title": "From Nhlungwane to the Congo camp",
+  "sub": "One move, by way of a community hall",
+  "pts": [
+   {
+    "n": "Nhlungwane",
+    "lat": -29.709,
+    "lon": 30.957
+   },
+   {
+    "site": "congo"
+   }
+  ],
+  "legs": [
+   [
+    "Nhlungwane → community hall → Congo camp",
+    "2022 · after the April floods"
+   ]
+  ]
+ }
+}

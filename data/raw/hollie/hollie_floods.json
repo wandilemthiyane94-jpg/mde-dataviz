@@ -1,0 +1,21 @@
+{
+ "2019": {
+  "when": "April 2019",
+  "text": "Floods hit Durban. Families from uMlazi lose their homes and spend the next two years in tents.",
+  "sites": []
+ },
+ "2022": {
+  "when": "April 2022",
+  "text": "The uMlazi River bursts its banks. The Lamontville riverside camp, open for one year, floods.",
+  "sites": [
+   "lamontville"
+  ]
+ },
+ "2025": {
+  "when": "February 2025",
+  "text": "The Lamontville riverside camp floods again. More than 40 units are destroyed.",
+  "sites": [
+   "lamontville"
+  ]
+ }
+}
