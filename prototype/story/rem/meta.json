@@ -1,0 +1,11 @@
+﻿{
+    "west":  30.8935546875,
+    "east":  31.00341796875,
+    "north":  -29.897805610155867,
+    "south":  -29.993002284551071,
+    "width":  1280,
+    "height":  1280,
+    "pixel_m":  8.28,
+    "river_cells":  190126,
+    "method":  "REM by IDW: DEM (AWS Terrain Tiles, Terrarium z14) minus a river surface interpolated from DEM heights at JRC Global Surface Water cells"
+}

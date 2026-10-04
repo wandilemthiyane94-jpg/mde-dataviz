@@ -1,0 +1,102 @@
+<title>Rain on Lamontville</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#05090C;--panel:#0E171D;--ink:#E6EDEF;--muted:#8C9DA6;--rule:#22313A;--water:#58B7EA;--camp:#F4B942;--hit:#FF5B4F;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:17px/1.5 Newsreader,Georgia,serif}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:20px;padding-block:28px 56px;display:grid;gap:18px}
+.k{font:500 12px/1.3 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 clamp(38px,6vw,68px)/.95 "Barlow Condensed","Arial Narrow",sans-serif;text-transform:uppercase;margin:0}
+p{margin:0;max-width:46em}
+.lede{color:var(--muted);font-size:clamp(17px,2vw,20px)}
+.stage{position:relative;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:#000;aspect-ratio:1/1;max-height:82vh;max-width:100%;margin-inline:auto;width:min(100%,82vh)}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.hud{position:absolute;left:14px;top:12px;display:grid;gap:2px;pointer-events:none;text-shadow:0 1px 4px #000}
+.lvl{font:700 56px/1 "Barlow Condensed",sans-serif;font-variant-numeric:tabular-nums}
+.hud .k{color:#C7D3D8}
+.controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:center;font:500 12px "IBM Plex Mono",monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+button{font:500 12px/1 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--bg);background:var(--water);border:0;border-radius:3px;padding:10px 16px;cursor:pointer}
+button.ghost{background:transparent;color:var(--muted);border:1px solid var(--rule)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+input[type=range]{accent-color:var(--water);width:min(340px,80vw)}
+label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
+.legend{display:flex;justify-content:center;align-items:center;gap:10px;font:12px "IBM Plex Mono",monospace;color:var(--muted)}
+.ramp{width:220px;height:10px;border-radius:2px}
+.note{font-size:15px;color:var(--muted);max-width:60em}
+.note b{color:var(--ink);font-weight:500}
+code{font:13px "IBM Plex Mono",monospace}
+</style>
+<div class="wrap">
+  <span class="k">Height-above-river model · Lamontville & the uMlazi River, Durban · Hollie and Wandile</span>
+  <h1>Rain on Lamontville</h1>
+  <p class="lede">Each pixel is coloured by how high it sits above the nearest river. Press play: rain falls, and water rises above river level, metre by metre, filling the low ground first. The yellow dot is the Lamontville riverside camp.</p>
+  <div class="stage" id="stage">
+    <canvas id="base" width="1280" height="1280"></canvas>
+    <canvas id="flood" width="1280" height="1280"></canvas>
+    <canvas id="fx" width="1280" height="1280"></canvas>
+    <div class="hud"><span class="k">Water above river level</span><span class="lvl" id="lvl">0.0 m</span><span class="k" id="area"></span></div>
+  </div>
+  <div class="controls">
+    <button type="button" id="play">Play the storm</button>
+    <label for="lv">Water level <input type="range" id="lv" min="0" max="12" step="0.1" value="0"></label>
+    <label><input type="checkbox" id="fp" checked> City 1-in-100-year flood line</label>
+    <label><input type="checkbox" id="sites" checked> Temporary sites</label>
+    <button type="button" class="ghost" id="six">Jump to 6 m</button>
+  </div>
+  <div class="legend"><span>0 m</span><canvas class="ramp" id="ramp" width="220" height="10"></canvas><span>12 m+ above the river</span></div>
+  <p class="note"><b>How it's made.</b> A relative elevation model built with the IDW method from the REM tutorials Josh shared (Dan Coe; OpenTopography's RiverREM). The terrain is AWS Terrain Tiles at zoom 14 (8.3 m pixels, about 30 m source data here). River channels are traced from the terrain itself (sink filling, D8 flow accumulation, catchments of 0.2 km² or more), plus JRC Global Surface Water cells. The river surface is interpolated from those cells, and the model is the terrain minus that surface. Script: <code>methods/scripts/build_rem.ps1</code>.</p>
+  <p class="note"><b>What it is and isn't.</b> The rising water is a "bathtub" fill: everything below the chosen height floods at once. Real floods have flow, timing and drainage, so this <b>shows exposure, not a flood forecast</b>. At this resolution the camp sits on the <b>valley floor</b>, on a traced drainage line. Our team's sharper cross-section puts it 2–4 m above the river. The coarse terrain blurs riverbanks and canal walls, so the pattern across the valley is reliable but single-site heights are not, until we use finer elevation data (city LiDAR).</p>
+</div>
+<script src="vendor/d3.v7.min.js"></script>
+<script src="tra-story-data.js"></script>
+<script src="hollie-data.js"></script>
+<script>
+(async function(){
+const meta=await fetch("rem/meta.json").then(r=>r.json()).catch(()=>null);
+const M=meta||{west:30.8935546875,east:31.00341796875,north:-29.897805610155867,south:-29.993002284551071,width:1280,height:1280};
+const W=M.width,H=M.height;
+const load=src=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src;});
+const [remImg,hillImg]=await Promise.all([load("rem/rem.png"),load("rem/hill.png")]);
+const tmp=document.createElement("canvas");tmp.width=W;tmp.height=H;const tc=tmp.getContext("2d");
+tc.drawImage(remImg,0,0);const remD=tc.getImageData(0,0,W,H).data;tc.drawImage(hillImg,0,0);const hillD=tc.getImageData(0,0,W,H).data;
+const REM=new Float32Array(W*H),HS=new Float32Array(W*H);for(let i=0;i<W*H;i++){REM[i]=remD[i*4]/10;HS[i]=hillD[i*4]/255;}
+// colour ramp: light near the river, dark high ground
+const stops=[[0,"#D6F5FF"],[1.5,"#7FD3EA"],[4,"#3B8FC4"],[7,"#2B4F8A"],[12,"#151E3E"],[25.5,"#070A16"]].map(([v,c])=>[v,d3.rgb(c)]);
+function ramp(v){for(let i=1;i<stops.length;i++)if(v<=stops[i][0]){const [a,ca]=stops[i-1],[b,cb]=stops[i],k=(v-a)/(b-a);return [ca.r+(cb.r-ca.r)*k,ca.g+(cb.g-ca.g)*k,ca.b+(cb.b-ca.b)*k];}return [7,10,22];}
+const LUT=[];for(let q=0;q<=255;q++)LUT.push(ramp(q/10));
+const base=document.getElementById("base").getContext("2d"),bimg=base.createImageData(W,H);
+for(let i=0;i<W*H;i++){const c=LUT[remD[i*4]],s=.35+.85*HS[i];bimg.data[i*4]=Math.min(255,c[0]*s);bimg.data[i*4+1]=Math.min(255,c[1]*s);bimg.data[i*4+2]=Math.min(255,c[2]*s);bimg.data[i*4+3]=255;}
+base.putImageData(bimg,0,0);
+const rc=document.getElementById("ramp").getContext("2d");for(let x=0;x<220;x++){const c=ramp(x/220*12);rc.fillStyle=`rgb(${c})`;rc.fillRect(x,0,1,10);}
+// projection: Web Mercator tile grid
+const my=lat=>Math.log(Math.tan(Math.PI/4+lat*Math.PI/360)),mN=my(M.north),mS=my(M.south);
+const px=(lon,lat)=>[(lon-M.west)/(M.east-M.west)*W,(mN-my(lat))/(mN-mS)*H];
+// flood layer
+const fctx=document.getElementById("flood").getContext("2d"),fimg=fctx.createImageData(W,H);let lastQ=-1;
+const pxArea=Math.pow(M.pixel_m||8.28,2);
+function setLevel(L){const q=Math.round(L*10);document.getElementById("lvl").textContent=(q/10).toFixed(1)+" m";if(q===lastQ)return;lastQ=q;let n=0;
+  for(let i=0;i<W*H;i++){const r=REM[i];if(q>0&&r<=q/10){const d=q/10-r,a=Math.min(.85,.35+d*.12);fimg.data[i*4]=40;fimg.data[i*4+1]=150+Math.min(60,d*8);fimg.data[i*4+2]=235;fimg.data[i*4+3]=a*255;n++;}else fimg.data[i*4+3]=0;}
+  fctx.putImageData(fimg,0,0);document.getElementById("area").textContent=q?("ground below this height: "+(n*pxArea/1e6).toFixed(1)+" km²"):"";
+  camp.under=q>0&&q/10>=camp.h;}
+// effects: rain, flood line, sites
+const fx=document.getElementById("fx").getContext("2d");
+const FPpath=new Path2D();(FLOODPLAIN.features||[]).forEach(f=>{const g=f.geometry,ps=g.type==="Polygon"?[g.coordinates]:g.coordinates;ps.forEach(p=>p.forEach(r=>{r.forEach((c,i)=>{const q=px(c[0],c[1]);i?FPpath.lineTo(q[0],q[1]):FPpath.moveTo(q[0],q[1]);});FPpath.closePath();}));});
+const SITES=HOLLIE.sites.map(s=>Object.assign({p:px(s.lon,s.lat)},s)).filter(s=>s.p[0]>0&&s.p[0]<W&&s.p[1]>0&&s.p[1]<H);
+const camp={under:false,h:0};{const lam=HOLLIE.sites.find(s=>s.id==="lamontville"),p=px(lam.lon,lam.lat),v=[];for(let dy=-7;dy<=7;dy++)for(let dx=-7;dx<=7;dx++)if(dx*dx+dy*dy<=49)v.push(REM[(Math.round(p[1])+dy)*W+Math.round(p[0])+dx]);v.sort((a,b)=>a-b);camp.h=Math.max(.5,v[Math.floor(v.length/2)]);}
+const drops=Array.from({length:900},()=>({x:Math.random()*W,y:Math.random()*H,v:14+Math.random()*16,l:10+Math.random()*16}));
+let raining=0,playing=false,level=0,t0=0;
+function frame(now){fx.clearRect(0,0,W,H);
+  if(document.getElementById("fp").checked){fx.save();fx.strokeStyle="rgba(255,255,255,.9)";fx.setLineDash([6,5]);fx.lineWidth=1.8;fx.stroke(FPpath);fx.restore();}
+  if(document.getElementById("sites").checked)SITES.forEach(s=>{const c=s.id==="lamontville";fx.beginPath();fx.arc(s.p[0],s.p[1],c?11:7,0,6.283);fx.fillStyle=c?(camp.under?"#FF5B4F":"#F4B942"):"rgba(244,185,66,.85)";fx.fill();fx.lineWidth=2;fx.strokeStyle="#05090C";fx.stroke();
+    if(c){fx.font="600 26px 'Barlow Condensed', sans-serif";fx.fillStyle="#fff";fx.strokeStyle="rgba(0,0,0,.7)";fx.lineWidth=5;const tx=camp.under?"LAMONTVILLE RIVERSIDE CAMP · UNDER WATER":"LAMONTVILLE RIVERSIDE CAMP · valley floor";fx.strokeText(tx,s.p[0]+16,s.p[1]-12);fx.fillText(tx,s.p[0]+16,s.p[1]-12);}});
+  if(raining>0){fx.strokeStyle=`rgba(200,225,255,${.45*raining})`;fx.lineWidth=1.4;fx.beginPath();drops.forEach(d=>{d.y+=d.v;d.x-=d.v*.18;if(d.y>H){d.y=-20;d.x=Math.random()*W*1.2;}fx.moveTo(d.x,d.y);fx.lineTo(d.x+d.l*.18,d.y-d.l);});fx.stroke();
+    fx.fillStyle=`rgba(5,9,12,${.18*raining})`;fx.fillRect(0,0,W,H);}
+  if(playing){const s=(now-t0)/1000;raining=Math.min(1,s/2)*(s<20?1:Math.max(0,1-(s-20)/3));level=s<2?0:Math.min(12,(s-2)*0.6);document.getElementById("lv").value=level;setLevel(level);if(s>24){playing=false;raining=0;document.getElementById("play").textContent="Play the storm";}}
+  requestAnimationFrame(frame);}
+document.getElementById("play").onclick=()=>{playing=!playing;if(playing){t0=performance.now();document.getElementById("play").textContent="Stop";}else{raining=0;document.getElementById("play").textContent="Play the storm";}};
+document.getElementById("lv").oninput=e=>{playing=false;raining=0;setLevel(+e.target.value);};
+document.getElementById("six").onclick=()=>{playing=false;raining=0;document.getElementById("lv").value=6;setLevel(6);};
+setLevel(6);document.getElementById("lv").value=6;requestAnimationFrame(frame);
+})();
+</script>
