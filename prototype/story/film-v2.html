@@ -226,6 +226,14 @@ const hsBand=HS.filter(s=>s.band).length;
 const LAM=HS.find(s=>s.id==="lamontville");
 console.log("Hollie sites",HS.length,"in band",hsBand,HS.map(s=>s.id+":"+Math.round(s.d)).join(" "));
 
+/* OPENING QUESTION (studio note: start with a question) */
+scene("question","The question",7,function(t){
+  const A=fadeIO(t,0,7,.8);
+  mono("WHO OWNS THE FLOOD?",960,380,A*seg(t,.3,1.2),{align:"center",size:18,ls:6});
+  head("Why do families end up",960,500,A*seg(t,.8,1.8),{align:"center",size:96});
+  head("back in flood zones?",960,600,A*seg(t,1.4,2.4),{align:"center",size:96,color:COL.water});
+  body("Durban, South Africa · 2019 to 2026",960,680,A*seg(t,2.6,3.4),{align:"center",color:COL.muted,size:28});
+});
 /* 00 · COLD OPEN — journey j1 from Hollie's map: Mega Village → tents → riverside camp → hotel → Umbilo */
 const C2=[[1.4,"flood","April 2019 · homes flooded"],[2.9,"move","2019 · two years in tents"],[4.6,"move","2021 · a riverside camp"],[6.1,"flood","April 2022 · camp floods"],[7.6,"flood","Feb 2025 · camp floods again"],[9.1,"move","Feb 2025 · a city-rented hotel"],[10.6,"move","July 2025 · evicted, moved again"]];
 const C2ST=[[420,560],[700,500],[980,590],[1260,520],[1540,580]];
@@ -276,12 +284,36 @@ scene("water","We know",18,function(t){
   source(t<8.5?"Sources: World Weather Attribution (2022), KwaZulu-Natal floods; EC JRC Global Surface Water (Pekel et al. 2016, Nature).":"Sources: EC JRC Global Surface Water occurrence 1984–2021; eThekwini Municipality, Flood Plain 100yr (open data).",A);
 });
 
+/* ACT 2 · THE ORDER OF THINGS (studio note: flood + mobilisation, in order, with who holds each step) */
+const STEPS=[["Forecast & warning","SA Weather Service","nat"],["Disaster declared","National Disaster Mgmt Centre","nat"],["Rescue & evacuation","City disaster centre","muni"],["Emergency shelter","Province · TRAs, TRUs","prov"],["Land found","City (Housing Act s9)","muni"],["People moved","City","muni"],["“Temporary”","years pass · up to 24","gap"],["Permanent home","Province · 469,500 waiting","prov"]];
+const SPH={nat:["National","#8FB8E8"],prov:["Provincial","#F4B942"],muni:["Municipal","#5ED69C"],gap:["","#56666F"]};
+scene("order","The order of things",18,function(t){
+  const A=fadeIO(t,0,18,.6);chapter("2","We move",A);
+  head("After the flood: who does what, in order",960,150,A*seg(t,.3,1.2),{align:"center",size:54});
+  const x0=96,dx=220,y=520,bw=196,bh=128;
+  STEPS.forEach(([a,b,s],i)=>{const k=seg(t,1+i*.7,1.6+i*.7);if(k<=0)return;const x=x0+i*dx,col=SPH[s][1];
+    ctx.save();ctx.globalAlpha=A*k;ctx.strokeStyle=col;ctx.lineWidth=i===4?4:2;ctx.strokeRect(x,y-bh/2,bw,bh);ctx.fillStyle=col;ctx.fillRect(x,y-bh/2,bw,6);ctx.restore();
+    mono(String(i+1),x+12,y-bh/2+30,A*k,{size:14,color:col});
+    body(a,x+bw/2,y-6,A*k,{align:"center",size:23,maxW:bw-16,lh:26});
+    mono(b,x+bw/2,y+40,A*k,{align:"center",size:12,maxW:bw-14,lh:15});
+    if(i<STEPS.length-1&&t>1.6+i*.7){ctx.save();ctx.globalAlpha=A*.7;ctx.strokeStyle=COL.muted;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x+bw+4,y);ctx.lineTo(x+dx-6,y);ctx.stroke();ctx.restore();}});
+  // legend
+  ["nat","prov","muni"].forEach((s,i)=>{const a=A*seg(t,6.5,7.5);ctx.globalAlpha=a;ctx.fillStyle=SPH[s][1];ctx.fillRect(540+i*320,700,18,18);ctx.globalAlpha=1;mono(SPH[s][0]+" government",566+i*320,714,a,{size:15,color:COL.ink});});
+  // the flood map hovers above step 5 and doesn't connect
+  const fm=seg(t,8.5,9.5),fx=x0+4*dx+bw/2,fy=300;
+  if(fm>0){ctx.save();ctx.globalAlpha=A*fm;ctx.strokeStyle=COL.water;ctx.lineWidth=2.5;ctx.strokeRect(fx-120,fy-40,240,80);ctx.setLineDash([8,8]);ctx.beginPath();ctx.moveTo(fx,fy+40);ctx.lineTo(fx,lerp(fy+40,y-bh/2-30,E(t,9.5,11)));ctx.stroke();ctx.restore();
+    head("Flood map",fx,fy+10,A*fm,{align:"center",size:34,color:COL.water});
+    head("?",fx+26,y-bh/2-22,A*seg(t,11,12),{align:"center",size:46,color:COL.hit});}
+  body("Where does the flood map come in? We haven't found a step that requires it.",960,820,A*seg(t,12,13),{align:"center",size:32,maxW:1500});
+  mono("rulebook check pending · Disaster Management Act 2002, Housing Act 1997, National Housing Code vol. 4",960,870,A*seg(t,13,14),{align:"center",size:14});
+  source("Roles: Disaster Management Act s23, s26, s40, s54; Housing Act s7, s9; National Housing Code vol. 4 (Emergency Housing Programme); site list (up to 24 years); eThekwini housing backlog.",A);
+});
 /* ACT 2 · WE MOVE — 16 sites at their real locations, measured against the city's flood line */
 scene("move","We move",26,function(t){
   const A=fadeIO(t,0,26,.8);renderWater(1,1,1,.14);
   drawMapPlate(BASEV,{alpha:A,water:1,fpOutline:1,fpFill:.9,buffer:E(t,10,12)});
   chapter("2","We move",A);const X=920;
-  head("A disaster creates urgency.",X,190,fadeIO(t,.5,9.5,.6),{size:56,maxW:880});
+  head("Then: where do people go?",X,190,fadeIO(t,.5,9.5,.6),{size:56,maxW:880});
   body("People need somewhere to go. Land gets chosen fast: camps, rented buildings, a hotel.",X,250,fadeIO(t,1.2,9.5,.6),{maxW:860,color:COL.muted});
   HS_ORDER.forEach((s,i)=>{const td=1.5+HS.indexOf(s)*.35,k=E(t,td,td+.5);if(k<=0)return;const mp=ap(BASEV,s.m),lit=s.band&&t>12+i*.2;
     if(mp[0]<152||mp[0]>150+MW*1000/MH-2||mp[1]<42||mp[1]>1038)return;if(k<1&&k>.3)dot(mp[0],mp[1],lerp(6,26,(k-.3)/.7),null,A*(1-k),COL.camp,2);
