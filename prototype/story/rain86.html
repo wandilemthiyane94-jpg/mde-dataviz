@@ -1,0 +1,83 @@
+<title>86 Years of Durban Rain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{--bg:#1E2A2A;--ink:#F3EBD8;--muted:#B9B19C;color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:14px/1.4 "IBM Plex Mono",monospace;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding-inline:16px;box-sizing:border-box}
+#stage{position:relative;width:min(100%,calc((100vh - 120px)*16/9));aspect-ratio:16/9;max-width:100%}
+canvas{display:block;width:100%;height:100%;background:#E9DFC6}
+.bar{width:min(100%,calc((100vh - 120px)*16/9));display:flex;gap:12px;align-items:center}
+button{font:400 13px/1 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#1E2A2A;background:#F3EBD8;border:0;border-radius:3px;padding:10px 18px;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#scrub{flex:1;accent-color:#5E9A9A}
+#tm{color:var(--muted);min-width:90px;font-variant-numeric:tabular-nums}
+.src{width:min(100%,calc((100vh - 120px)*16/9));font-size:12px;color:var(--muted)}
+</style>
+<div id="stage"><canvas id="c" width="1920" height="1080" aria-label="86 years of the wettest three days of rain each year at Lamontville, Durban, 1940 to 2025"></canvas></div>
+<div class="bar"><button type="button" id="play">Play</button><span id="tm"></span><input type="range" id="scrub" min="0" max="1000" value="1000" aria-label="Position"></div>
+<p class="src">Bars: the wettest three days of each year at the camp's location, ERA5 reanalysis (Open-Meteo), 1940–2025. ERA5 is a coarse grid and underestimates short local downpours. The 86-year record shows no statistically significant trend (Mann–Kendall z = 0.62); what stands out is the recent cluster of very large storms. Family floods: April 2019 (245 mm), April 2022 (233 mm), February 2025 (46 mm). Attribution: World Weather Attribution (2022), KwaZulu-Natal floods.</p>
+<script src="rain86-data.js"></script>
+<script>
+(async function(){
+const cv=document.getElementById("c"),ctx=cv.getContext("2d"),W=1920,H=1080;
+await Promise.all([document.fonts.load("italic 400 40px Newsreader")]).catch(()=>{});
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x)),seg=(t,a,b)=>clamp((t-a)/(b-a),0,1),ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,E=(t,a,b)=>ease(seg(t,a,b));
+const fadeIO=(t,a,b,f)=>Math.min(seg(t,a,a+(f||.3)),1-seg(t,b-(f||.3),b));
+const Y=RAIN86.years,N=Y.length;
+// family floods: the storm that hit them, not the year's maximum
+const FAM={2019:{mm:244.7,label:"April 2019 · Mega Village"},2022:{mm:233.2,label:"April 2022 · the camp"},2025:{mm:46.2,label:"February 2025 · the camp"}};
+// paper grain
+const grain=document.createElement("canvas");grain.width=W;grain.height=H;{const g=grain.getContext("2d"),im=g.createImageData(W,H);for(let i=0;i<W*H;i++){const v=Math.random();im.data[i*4]=im.data[i*4+1]=im.data[i*4+2]=v>.5?255:0;im.data[i*4+3]=v*16;}g.putImageData(im,0,0);}
+function ptext(s,x,y,o){o=o||{};const a=o.a===undefined?1:o.a;if(a<=0)return;ctx.save();ctx.globalAlpha=a;ctx.font="italic 400 "+(o.size||40)+"px Newsreader";ctx.textAlign=o.al||"left";ctx.shadowColor="rgba(246,240,226,.95)";ctx.shadowBlur=10;ctx.fillStyle=o.c||"#24302F";ctx.fillText(s,x,y);ctx.restore();}
+// chart frame
+const X0=140,X1=1800,BASE=860,TOPMM=400,SC=(BASE-200)/TOPMM,bw=(X1-X0)/N;
+const xOf=i=>X0+i*bw+bw/2,yOf=mm=>BASE-mm*SC;
+const TOTAL=16;
+function frame(t){
+  ctx.fillStyle="#EEE3C8";ctx.fillRect(0,0,W,H);
+  // soft wash
+  const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,"rgba(255,250,236,.6)");g.addColorStop(1,"rgba(190,170,130,.25)");ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  // title
+  ptext("The wettest three days of every year",X0,110,{size:58,a:seg(t,0,.6)});
+  ptext("Lamontville, Durban · 1940 to 2025",X0,160,{size:30,c:"#5A564A",a:seg(t,.2,.8)});
+  // gridlines
+  [100,200,300].forEach(mm=>{ctx.save();ctx.globalAlpha=.35*seg(t,.3,1);ctx.strokeStyle="#7A7260";ctx.setLineDash([4,8]);ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(X0,yOf(mm));ctx.lineTo(X1,yOf(mm));ctx.stroke();ctx.restore();ptext(mm+" mm",X0-16,yOf(mm)+8,{size:22,al:"right",c:"#6B6250",a:seg(t,.3,1)});});
+  // the 200 mm line
+  const la=seg(t,7.6,8.4);ctx.save();ctx.globalAlpha=la;ctx.strokeStyle="#B5532F";ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(X0,yOf(200));ctx.lineTo(X1,yOf(200));ctx.stroke();ctx.restore();
+  ptext("200 mm in three days",xOf(1948-1940),yOf(200)-12,{size:24,c:"#8E3A22",a:la});
+  {const ca=seg(t,10.2,10.9);if(ca>0){const x0=X0+(2017-1940)*bw,x1=X1;ctx.save();ctx.globalAlpha=ca*.22;ctx.fillStyle="#C9875F";ctx.fillRect(x0,190,x1-x0,BASE-190);ctx.restore();ptext("2017 – 2025",(x0+x1)/2,220,{size:26,al:"center",c:"#8E3A22",a:ca});}}
+  // bars grow year by year (0.8–7.4 s), each like a column of water
+  const grow=seg(t,.8,7.4)*N;
+  Y.forEach((r,i)=>{const k=clamp(grow-i,0,1);if(k<=0)return;const h=r.mm*SC*ease(k),x=X0+i*bw+2,big=r.mm>=200&&t>8.4;
+    const gg=ctx.createLinearGradient(0,BASE-h,0,BASE);gg.addColorStop(0,big?"rgba(181,83,47,.95)":"rgba(86,140,138,.92)");gg.addColorStop(1,big?"rgba(140,60,36,.95)":"rgba(58,104,104,.95)");
+    ctx.fillStyle=gg;ctx.fillRect(x,BASE-h,bw-4,h);ctx.fillStyle="rgba(240,246,242,.5)";ctx.fillRect(x,BASE-h,bw-4,2);});
+  // baseline + decade ticks
+  ctx.fillStyle="#5A5040";ctx.fillRect(X0,BASE,X1-X0,3);
+  for(let y=1940;y<=2020;y+=10){const i=y-1940;ptext(String(y),xOf(i),BASE+42,{size:24,al:"center",c:"#5A5040",a:seg(t,.4,1)});}
+  // the running year counter
+  if(t<7.6){const yi=clamp(Math.floor(grow),0,N-1);ptext(String(Y[yi].y),X1,250,{size:72,al:"right",a:seg(t,.8,1.2)});}
+  // big storms: labels (8.4–)
+  const BIG=Y.map((r,i)=>({r,i})).filter(o=>o.r.mm>=200);
+  BIG.forEach((o,k)=>{const a=seg(t,8.6+k*.25,9.0+k*.25);const recent=o.r.y>=2017;ptext(String(o.r.y),xOf(o.i)+(o.r.y===2017?-10:o.r.y===2019?-6:6),yOf(o.r.mm)-(o.r.y===2019?52:16),{size:recent?30:24,al:"center",c:recent?"#8E3A22":"#6B6250",a});});
+  // the cluster
+  const ca=seg(t,10.2,10.9);if(ca>0){
+    ptext("3 storms of 200 mm+ in the 77 years to 2016.",X0,300,{size:38,a:ca});ptext("3 more in the 9 years since.",X0,350,{size:38,c:"#8E3A22",a:seg(t,10.8,11.4)});}
+  // the family's three floods (12–)
+  Object.entries(FAM).forEach(([y,f],k)=>{const a=seg(t,12+k*.6,12.5+k*.6);if(a<=0)return;const i=+y-1940,x=xOf(i),yy=yOf(f.mm);
+    ctx.save();ctx.globalAlpha=a;ctx.fillStyle="#24302F";ctx.beginPath();ctx.moveTo(x,yy-30);ctx.quadraticCurveTo(x+13,yy-8,x,yy);ctx.quadraticCurveTo(x-13,yy-8,x,yy-30);ctx.fill();ctx.strokeStyle="#24302F";ctx.lineWidth=1.5;ctx.setLineDash([3,4]);ctx.beginPath();ctx.moveTo(x,yy+4);ctx.lineTo(x,BASE+60);ctx.stroke();ctx.restore();
+    ptext(f.label+" · "+Math.round(f.mm)+" mm"+(y==="2025"?": a small storm, and the worst outcome":""),x-24,BASE+96+k*36,{size:24,al:"right",a,c:y==="2025"?"#8E3A22":"#24302F"});});
+  
+  ptext("Climate change made April 2022's rain twice as likely.",X0,1050,{size:30,c:"#3E4A48",a:seg(t,14.4,15)});
+  ctx.drawImage(grain,0,0);}
+let t=TOTAL,playing=false,last=0;const sc=document.getElementById("scrub"),tm=document.getElementById("tm"),pb=document.getElementById("play");
+const ui=()=>{sc.value=Math.round(t/TOTAL*1000);tm.textContent=t.toFixed(1)+" / "+TOTAL+" s";pb.textContent=playing?"Pause":"Play";};
+function loop(n){if(playing){t+=Math.min(.05,(n-last)/1000);if(t>=TOTAL){t=TOTAL;playing=false;}}frame(t);ui();last=n;requestAnimationFrame(loop);}
+pb.onclick=()=>{playing=!playing;if(playing&&t>=TOTAL)t=0;last=performance.now();ui();};
+sc.oninput=()=>{playing=false;t=sc.value/1000*TOTAL;};
+addEventListener("keydown",e=>{if(e.key===" "&&e.target.tagName!=="INPUT"){e.preventDefault();pb.click();}});
+const q=/[?&]t=([\d.]+)/.exec(location.search);if(q)t=+q[1];
+requestAnimationFrame(loop);
+})();
+</script>
