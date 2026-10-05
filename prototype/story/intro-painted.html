@@ -210,7 +210,7 @@ function sil(kind,t){const c=SILC[kind]||"#0B0C0B";ctx.fillStyle=c;ctx.strokeSty
   ctx.lineCap="butt";}
 function drawFalls(t,cx,place){FALLS.forEach(([t0,kind,ox],i)=>{if(t<t0||t>t0+1.1)return;if((t0<6&&place!==0)||(t0>11&&place!==2))return;const k=seg(t,t0,t0+1.1);
   const x=lerp(cx+ox,cx+Math.sin(i*2.3)*20,ease(Math.min(1,k*2.2))),y=lerp(GROUND_Y-30,H+40,k*k),sc=lerp(1,.35,k),a=1-seg(k,.7,1);
-  ctx.save();ctx.globalAlpha=a;ctx.translate(x,y);ctx.rotate(k*5*(i%2?1:-1));ctx.scale(sc,sc);sil(kind,t);ctx.restore();});}function drawDrift(t,cx,place,level,roof){const wl=Math.min(level,GROUND_Y)+6;
+  ctx.save();ctx.globalAlpha=a;ctx.translate(x,y);ctx.rotate(k*5*(i%2?1:-1));ctx.scale(sc,sc);sil(kind,t);ctx.restore();});}function drawDrift(t,cx,place,level,roof){if(level>=GROUND_Y)return;const wl=Math.min(level,GROUND_Y)+6;
   FALLS.forEach(([t0,kind,ox],i)=>{if(t<t0||t>t0+3.2)return;if((t0<6&&place!==0)||(t0>11&&place!==2))return;const k=t-t0;
     // slips off the house and tumbles into the water, then the current carries it away
     const drop=seg(k,0,.45),x0=cx+ox,x=k<.45?x0+ox*.15*drop:x0+ox*.15-(k-.45)*260,y=k<.45?lerp(FROMROOF[kind]?roof:GROUND_Y-80,wl,drop*drop):wl+Math.sin(t*3+i)*5,a=1-seg(k,2.4,3.2);
