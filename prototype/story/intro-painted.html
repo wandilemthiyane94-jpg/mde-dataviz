@@ -113,13 +113,13 @@ function state(t){
   return {cur,next,k,lift,place,level,depth,year,storm,night,rain};}
 function drop(t,t0,x){if(t<t0||t>t0+1.1)return;const k=seg(t,t0,t0+.55);const y=lerp(-60,GROUND_Y-10,k*k);if(k<1){ctx.fillStyle="rgba(86,140,138,.9)";ctx.beginPath();ctx.moveTo(x,y-34);ctx.quadraticCurveTo(x+14,y,x,y+10);ctx.quadraticCurveTo(x-14,y,x,y-34);ctx.fill();}
   else{const r=seg(t,t0+.55,t0+1.1);ctx.strokeStyle=`rgba(86,140,138,${1-r})`;ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(x,GROUND_Y-6,20+r*120,4+r*18,0,0,6.283);ctx.stroke();}}
-// ---------- one text plane: italic Newsreader, no boxes, soft glow ----------
+// ---------- one text plane: solid fill, no shadows, no outlines, no boxes ----------
 let LIGHTBG=false;
-function ptext(s,x,y,o){o=o||{};const a=o.a===undefined?1:o.a;if(a<=0)return;ctx.save();ctx.globalAlpha=a;const sz=o.size||48;if(o.f==="mono"){s=String(s).toUpperCase();ctx.font=(o.w||400)+" "+sz+"px 'IBM Plex Mono'";ctx.letterSpacing=(sz*.14).toFixed(1)+"px";}else if(o.f==="cond"){s=String(s).toUpperCase();ctx.font="700 "+sz+"px 'Barlow Condensed'";ctx.letterSpacing=(sz*.02).toFixed(1)+"px";}else ctx.font="italic 400 "+sz+"px Newsreader";ctx.textAlign=o.al||"left";if(o.stroke)o=Object.assign({},o,{stroke:Math.min(o.stroke,2)});if(o.f==="mono"&&!o.stroke)o=Object.assign({},o,{stroke:3,halo:1});
-  const light=o.auto&&LIGHTBG?false:o.light!==false;if(o.auto&&LIGHTBG)o=Object.assign({},o,{c:o.cd||"#24302F"});if(o.stroke){ctx.lineJoin="round";ctx.lineWidth=light?o.stroke:o.stroke*.5;ctx.strokeStyle=light?(o.halo?"rgba(16,20,19,.6)":"rgba(16,20,19,.92)"):(o.halo?"rgba(248,243,230,.8)":"rgba(248,243,230,.96)");ctx.strokeText(s,x,y);}
-  ctx.shadowColor=light?"rgba(20,24,22,.85)":"rgba(246,240,226,.95)";ctx.shadowBlur=o.blur||14;ctx.fillStyle=o.c||(light?"#F6F0E2":"#24302F");
-  ctx.fillText(s,x,y);ctx.shadowBlur=(o.blur||14)*.5;ctx.fillText(s,x,y);ctx.restore();}
-let MAPFULL=false;function caption(s,a,sub){if(a<=0)return;const o=MAPFULL?{light:false,c:"#24302F"}:{};ptext(s,70,H-104,Object.assign({a,size:54},o));if(sub)ptext(sub,72,H-58,Object.assign({a,size:20,f:"mono",c:"#D8D0BC"},MAPFULL?{light:false,c:"#4E473A"}:{}));}
+function ptext(s,x,y,o){o=o||{};const a=o.a===undefined?1:o.a;if(a<=0)return;ctx.save();ctx.globalAlpha=a;const sz=o.size||48;if(o.f==="mono"){s=String(s).toUpperCase();ctx.font=(o.w||400)+" "+sz+"px 'IBM Plex Mono'";ctx.letterSpacing=(sz*.14).toFixed(1)+"px";}else if(o.f==="cond"){s=String(s).toUpperCase();ctx.font="700 "+sz+"px 'Barlow Condensed'";ctx.letterSpacing=(sz*.02).toFixed(1)+"px";}else ctx.font="italic 400 "+sz+"px Newsreader";ctx.textAlign=o.al||"left";if(o.stroke)o=Object.assign({},o,{stroke:Math.min(o.stroke,2)});
+  const light=o.auto&&LIGHTBG?false:o.light!==false;if(o.auto&&LIGHTBG)o=Object.assign({},o,{c:o.cd||"#24302F"});
+  ctx.shadowBlur=0;ctx.fillStyle=o.c||(light?"#F6F0E2":"#24302F");
+  ctx.fillText(s,x,y);ctx.restore();}
+let MAPFULL=false;function caption(s,a,sub){if(a<=0)return;const o=MAPFULL?{light:false,c:"#24302F"}:{};ptext(s,70,H-104,Object.assign({a,size:54},o));if(sub)ptext(sub,72,H-58,Object.assign({a,size:20,f:"mono",c:"#F3EBD8"},MAPFULL?{light:false,c:"#4E473A"}:{}));}
 const fadeIO=(t,a,b,f)=>Math.min(seg(t,a,a+(f||.25)),1-seg(t,b-(f||.25),b));
 // ---------- comedic props (not used in the February 2025 beat) ----------
 function fig(x,y,s,c,pose,wig){const h=(pose==="sit"?58:92)*s;ctx.fillStyle=c;ctx.beginPath();ctx.ellipse(x,y-h*.55,14*s,h*.42,0,0,6.283);ctx.fill();ctx.fillStyle="#2B2420";ctx.beginPath();ctx.arc(x,y-h-6*s,12*s,0,6.283);ctx.fill();
@@ -246,7 +246,7 @@ function drawMapBG(t,s,alpha){const cam=mapCam(t,s);
   if(cam.span>1.5){ctx.beginPath();path(BORDERS);ctx.strokeStyle="rgba(90,90,80,.45)";ctx.lineWidth=1.2;ctx.setLineDash([6,5]);ctx.stroke();ctx.setLineDash([]);}
   if(cam.span<2){const fa=1-seg(cam.span,.8,2);ctx.globalAlpha=alpha*fa;ctx.beginPath();path(FLOODPLAIN);ctx.fillStyle="rgba(62,110,140,.3)";ctx.fill();ctx.save();ctx.clip();ctx.strokeStyle="rgba(46,96,128,.45)";ctx.lineWidth=2;for(let k=-H;k<W;k+=16){ctx.beginPath();ctx.moveTo(k,H);ctx.lineTo(k+H,0);ctx.stroke();}ctx.restore();ctx.beginPath();path(FLOODPLAIN);ctx.strokeStyle="rgba(36,86,120,.95)";ctx.lineWidth=2.4;ctx.stroke();const fl=FLASH(t);if(fl>0){ctx.beginPath();path(FLOODPLAIN);ctx.strokeStyle="rgba(255,250,235,"+fl+")";ctx.lineWidth=9;ctx.stroke();ctx.strokeStyle="rgba(30,80,118,1)";ctx.lineWidth=3.2;ctx.stroke();}
     // flood-line label once, near the camp
-    if(cam.span<.2){const q=proj([30.952,-29.957]);ptext("city flood line (1-in-100-year)",q[0]+20,q[1]+44,{size:19+FLASH(t)*8,f:"mono",w:500,c:"#DDEAF2",cd:"#1E4A6E",blur:10,auto:1});}
+    if(cam.span<.2){const q=proj([30.952,-29.957]);ptext("city flood line (1-in-100-year)",Math.min(q[0]+20,860),q[1]+44,{size:19+FLASH(t)*8,f:"mono",w:500,c:"#DDEAF2",cd:"#1E4A6E",blur:10,auto:1});}
     ctx.globalAlpha=alpha;}
   // place names
   ctx.fillStyle="#4E473A";
@@ -281,13 +281,13 @@ function gauge(t){const a=Math.min(seg(t,2.6,3.0),1-seg(t,23.3,23.7));if(a<=0)re
   ctx.restore();
   // text: same italic plane as the captions
   ptext(Math.round(cum)+" mm",X-30,TOP-70,{auto:1,a,size:64,f:"cond",al:"right",c:"#F3EBD8"});
-  ptext(cur?(active?"of rain · hour "+hr+" of "+hrs:"of rain · "+cur.ev.label):"of rain",X-30,TOP-38,{auto:1,a,size:19,f:"mono",al:"right",c:"#C9C3B4",blur:8});
-  [0,50,100,150,200,250].forEach(mm=>ptext(String(mm),X+46,yOf(mm)+7,{auto:1,a,size:19,f:"mono",c:"#C9C3B4",blur:8}));
-  ptext("a normal month",X-24,ny+6,{auto:1,a,size:17,f:"mono",al:"right",c:"#B4AE9F",blur:8});
+  ptext(cur?(active?"of rain · hour "+hr+" of "+hrs:"of rain · "+cur.ev.label):"of rain",X-30,TOP-38,{auto:1,a,size:19,f:"mono",al:"right",c:"#EDE6D4",blur:8});
+  [0,50,100,150,200,250].forEach(mm=>ptext(String(mm),X+46,yOf(mm)+7,{auto:1,a,size:19,f:"mono",c:"#EDE6D4",blur:8}));
+  ptext("a normal month",X-24,ny+6,{auto:1,a,size:17,f:"mono",al:"right",c:"#EDE6D4",blur:8});
   RAINEV.forEach(r=>{if(t<=r.f[3]+.3||(r===cur&&active))return;ptext(r.y+" · "+Math.round(r.ev.total)+" mm",X-24,yOf(r.ev.total)+6,{auto:1,a,size:18,f:"mono",w:500,al:"right",c:"#EE9A80",cd:"#8E3A22",blur:8});});
   const pools=Math.round(cum/1000*INTRO_RAIN.catchment_km2*1e6/2500/1000)*1000;
-  ptext("≈ "+pools.toLocaleString("en-US")+" Olympic pools",X+34,BOT+108,{auto:1,stroke:2,a,size:40,al:"right",c:"#A9D6CC",cd:"#2F5F5E"});
-  ptext("of rain on the river's catchment",X+34,BOT+140,{auto:1,a,size:17,f:"mono",al:"right",c:"#C9C3B4",blur:8});}
+  ptext("≈ "+pools.toLocaleString("en-US")+" Olympic pools",X+34,BOT+108,{a,size:40,al:"right",c:"#CFEDE6"});
+  ptext("of rain on the river's catchment",X+34,BOT+140,{a,size:17,f:"mono",al:"right",c:"#F3EBD8"});}
 function tally(t){const o={al:"right",light:false},X=W-110,out=1-seg(t,26.7,27.1);if(t<24.5||out<=0)return;
   ptext("2019 – 2025",X,370,Object.assign({a:seg(t,24.5,24.8)*out,size:20,f:"mono",w:500,c:"#4E473A"},o));
   ptext("Moved 4 times",X,460,Object.assign({a:seg(t,24.7,25.0)*out,size:84,f:"cond",c:"#24302F"},o));
@@ -299,7 +299,7 @@ function card(lines,a){ctx.fillStyle="#141A19";ctx.fillRect(0,0,W,H);ctx.drawIma
 let now=0;
 function frame(t){now=t;
   if(t>=Q_MID){card(["WHY DO FLOOD VICTIMS KEEP","ENDING UP IN FLOOD ZONES?"],t<Q_END?seg(t,Q_MID,Q_MID+.2):0);return;}
-  const s=state(t);LIGHTBG=s.night<.35&&s.storm<.55;
+  const s=state(t);LIGHTBG=s.night<.35;
   // sky over the map
   let sky=mix(SKY_DAY,SKY_STORM,s.storm);sky=mix(sky,SKY_NIGHT,s.night);const sg=ctx.createLinearGradient(0,0,0,GROUND_Y);sg.addColorStop(0,rgb(mix(sky,[255,255,255],.12)));sg.addColorStop(1,rgb(sky));
   drawMapBG(t,s,1);ctx.save();ctx.globalAlpha=.14+s.storm*.3+s.night*.42;ctx.fillStyle=sg;ctx.fillRect(0,0,W,H);ctx.restore();
