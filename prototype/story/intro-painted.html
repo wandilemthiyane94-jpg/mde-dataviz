@@ -150,10 +150,11 @@ function family(t,s,cx,geo,mode){ // mode: "calm" | "comic" | "chaos" | "quiet"
     const y=lerp(GROUND_Y,roofY,ease(climb));fig(x,y,sc,c,climb>0?"climb":"stand",t*20+i);});
   // props: the TV held aloft, the chair, the goat, the chicken
   const top=rise>=.95;
-  if(mode!=="calm"&&rise>0){const ad=FAM[0],ax=top?cx+ad[0]*.75:lerp(cx+ad[0],wallX,seg(rise,0,.4)),ay=top?roofY-58:lerp(GROUND_Y,roofY,ease(seg(rise,.4,1)))-92;tv(ax,ay-18,Math.sin(t*(mode==="chaos"?10:5))*.15);
-    if(mode==="chaos")chair(cx+40,top?roofY-60:GROUND_Y-60-rise*(GROUND_Y-roofY),Math.sin(t*8)*.3);
-    if(rise>.45){if(s.year==="2019"){dog(cx+96,roofY+2,t,-1,false);cat(cx-96,roofY+2,t);}else goat(cx+90,roofY+2,t,12);}
-    const ck=seg(rise,.15,.75);chicken(lerp(cx-140,cx-40,ck),lerp(GROUND_Y,roofY,ck)-Math.abs(Math.sin(t*12))*20*(ck<1?1:0),t);}
+  if(s.year==="2019"){if(t<4.15)peckChicken(cx+150,GROUND_Y,t);if(t<4.45)cat(cx+geo.w/2+70,GROUND_Y-128,t);
+    if(rise>0){const ad=FAM[0],ax=top?cx+ad[0]*.75:lerp(cx+ad[0],wallX,seg(rise,0,.4)),ay=top?roofY-58:lerp(GROUND_Y,roofY,ease(seg(rise,.4,1)))-92;tv(ax,ay-18,Math.sin(t*5)*.15);}
+    if(rise>.45)dog(cx+96,roofY+2,t,-1,false);}
+  if(s.year==="2022"&&t<13.2&&rise>.25)dog(cx+96,roofY+2,t,-1,true);
+  if(mode==="calm"&&t>6&&t<11.6)dog(cx+120,GROUND_Y,t,-1,false);
   return rise;}
 // ---------- an ordinary day at Mega Village, before the first drop ----------
 function banana(x,y,t,picked){ctx.save();ctx.strokeStyle="#6E7A3E";ctx.lineWidth=16;ctx.lineCap="round";ctx.beginPath();ctx.moveTo(x,y);ctx.quadraticCurveTo(x+6,y-110,x+2,y-220);ctx.stroke();
@@ -180,7 +181,34 @@ function ordinaryDay(t,cx,geo){const bx=cx-340,picked=t>1.45;
   fig(kx,ky,.72,FAM[2][2],"climb",t*16);fly(kx+dir*70+Math.sin(t*9)*14,GROUND_Y-140+Math.sin(t*6)*24,t);
   dog(kx-dir*110,GROUND_Y,t,dir,true);
   // the cat on the lean-to
-  cat(cx+geo.w/2+70,GROUND_Y-128,t);}// ---------- map camera and token (the family as a game piece) ----------
+  cat(cx+geo.w/2+70,GROUND_Y-128,t);}// ---------- the sunken place: a cone of light into darkness beneath the house; it opens wider with each flood ----------
+const coneTex=document.createElement("canvas");coneTex.width=600;coneTex.height=400;{const g=coneTex.getContext("2d"),im=g.createImageData(600,400);
+  for(let y=0;y<400;y++)for(let x=0;x<600;x++){const u=(x-300)/300,dens=Math.exp(-u*u*3.2)*(.55+.45*(1-y/400));if(Math.random()<dens*.75){const i=(y*600+x)*4;im.data[i]=im.data[i+1]=im.data[i+2]=255;im.data[i+3]=170+Math.random()*85;}}g.putImageData(im,0,0);}
+function voidSize(t){if(t<3.3)return 0;if(t<5.8)return .28*E(t,3.3,5.8);if(t<12.0)return .28;if(t<14.2)return lerp(.28,.58,E(t,12.0,14.2));if(t<19.4)return .58;return lerp(.58,1,E(t,19.4,20.8));}
+function drawVoid(t,cx,alpha){const V=voidSize(t);if(V<=0||alpha<=0)return;ctx.save();ctx.globalAlpha=alpha;ctx.beginPath();ctx.rect(0,GROUND_Y-2,W,H-GROUND_Y+2);ctx.clip();
+  // darkness pooling beneath the house
+  const R=160+V*600,dg=ctx.createRadialGradient(cx,H+40,0,cx,H+40,R);dg.addColorStop(0,"rgba(6,7,7,.97)");dg.addColorStop(.7,"rgba(6,7,7,.9)");dg.addColorStop(1,"rgba(6,7,7,0)");ctx.fillStyle=dg;ctx.fillRect(cx-R,GROUND_Y-2,2*R,H-GROUND_Y+44);
+  // the opening under the floor
+  ctx.fillStyle="rgba(4,5,5,.95)";ctx.beginPath();ctx.ellipse(cx,GROUND_Y+6,40+V*300,8+V*20,0,0,6.283);ctx.fill();
+  // grainy cone of light falling into it
+  const cw=30+V*280;ctx.save();ctx.beginPath();ctx.moveTo(cx-8-V*30,GROUND_Y);ctx.lineTo(cx+8+V*30,GROUND_Y);ctx.lineTo(cx+cw,H);ctx.lineTo(cx-cw,H);ctx.closePath();ctx.clip();ctx.globalAlpha=alpha*(.55+V*.35);ctx.drawImage(coneTex,cx-cw,GROUND_Y,2*cw,H-GROUND_Y);ctx.restore();
+  ctx.restore();}
+// what falls: illustrative belongings and animals (no source enumerates them); never people
+const FALLS=[[3.4,"chair",-120],[3.65,"pot",70],[3.9,"mat",-40],[4.15,"chicken",150],[4.45,"cat",260],
+  [12.0,"mattress",-110],[12.3,"pot",90],[12.55,"tv",-60],[12.85,"chair",130],[13.2,"dog",96]];
+function sil(kind,t){ctx.fillStyle="#0B0C0B";ctx.strokeStyle="#0B0C0B";ctx.lineCap="round";
+  if(kind==="chair"){ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(-18,20);ctx.lineTo(-18,-22);ctx.moveTo(-18,0);ctx.lineTo(18,0);ctx.lineTo(18,20);ctx.moveTo(-18,0);ctx.lineTo(-18,20);ctx.stroke();}
+  else if(kind==="pot"){ctx.beginPath();ctx.ellipse(0,4,22,16,0,0,6.283);ctx.fill();ctx.fillRect(-26,-14,52,6);ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(-26,-8);ctx.lineTo(-34,-14);ctx.moveTo(26,-8);ctx.lineTo(34,-14);ctx.stroke();}
+  else if(kind==="mat"){ctx.fillRect(-36,-10,72,20);ctx.beginPath();ctx.ellipse(36,0,6,10,0,0,6.283);ctx.fill();}
+  else if(kind==="mattress"){ctx.beginPath();ctx.roundRect?ctx.roundRect(-50,-12,100,24,8):ctx.rect(-50,-12,100,24);ctx.fill();}
+  else if(kind==="tv"){ctx.fillRect(-26,-20,52,38);ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(-6,-20);ctx.lineTo(-16,-38);ctx.moveTo(6,-20);ctx.lineTo(16,-38);ctx.stroke();}
+  else if(kind==="cat"){ctx.beginPath();ctx.ellipse(0,-6,14,16,0,0,6.283);ctx.fill();ctx.beginPath();ctx.arc(0,-28,10,0,6.283);ctx.fill();ctx.beginPath();ctx.moveTo(-9,-32);ctx.lineTo(-6,-44);ctx.lineTo(-1,-35);ctx.moveTo(9,-32);ctx.lineTo(6,-44);ctx.lineTo(1,-35);ctx.fill();ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(10,4);ctx.quadraticCurveTo(30,0,26,-24);ctx.stroke();}
+  else if(kind==="chicken"){ctx.beginPath();ctx.ellipse(0,0,14,11,0,0,6.283);ctx.fill();ctx.beginPath();ctx.arc(12,-10,6,0,6.283);ctx.fill();ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(-4,-2);ctx.lineTo(-20,-16-Math.sin(t*30)*10);ctx.stroke();}
+  else if(kind==="dog"){ctx.beginPath();ctx.ellipse(0,-6,30,13,0,0,6.283);ctx.fill();ctx.beginPath();ctx.ellipse(30,-20,12,10,0,0,6.283);ctx.fill();ctx.lineWidth=6;ctx.beginPath();[-20,-8,12,22].forEach(dx=>{ctx.moveTo(dx,4);ctx.lineTo(dx+Math.sin(t*20+dx)*6,20);});ctx.moveTo(-28,-8);ctx.lineTo(-44,-20);ctx.stroke();}
+  ctx.lineCap="butt";}
+function drawFalls(t,cx,place){FALLS.forEach(([t0,kind,ox],i)=>{if(t<t0||t>t0+1.1)return;if((t0<6&&place!==0)||(t0>11&&place!==2))return;const k=seg(t,t0,t0+1.1);
+  const x=lerp(cx+ox,cx+Math.sin(i*2.3)*20,ease(Math.min(1,k*2.2))),y=lerp(GROUND_Y-30,H+40,k*k),sc=lerp(1,.35,k),a=1-seg(k,.7,1);
+  ctx.save();ctx.globalAlpha=a;ctx.translate(x,y);ctx.rotate(k*5*(i%2?1:-1));ctx.scale(sc,sc);sil(kind,t);ctx.restore();});}// ---------- map camera and token (the family as a game piece) ----------
 function mapCam(t,s){
   const changing=s.lift&&s.lift[2]!==s.lift[3];
   let focus=changing?ll(JLL[s.lift[2]],JLL[s.lift[3]],E(s.k,.15,.9)):JLL[s.cur];
@@ -287,6 +315,8 @@ function frame(t){now=t;
     ctx.globalAlpha=.16;ctx.translate(0,2*s.level);ctx.scale(1,-1);ctx.beginPath();ctx.rect(0,s.level-(H-s.level),W,H-s.level);ctx.clip();PLACES[s.place].f(posCur,GROUND_Y);ctx.restore();
     ctx.save();ctx.strokeStyle=`rgba(232,240,236,${.55-s.night*.3})`;ctx.lineWidth=2.5;seed=17;for(let i=0;i<60;i++){const y=s.level+8+rnd()*(H-s.level),x=((rnd()*W+t*(20+rnd()*30))%W),w=40+rnd()*160;ctx.beginPath();ctx.moveTo(x,y);ctx.bezierCurveTo(x+w*.3,y-4,x+w*.6,y+4,x+w,y);ctx.stroke();}
     ctx.strokeStyle=`rgba(232,240,236,.8)`;ctx.lineWidth=3;ctx.beginPath();for(let x=0;x<=W;x+=14)ctx.lineTo(x,s.level+Math.sin(x*.02+t*2)*4);ctx.stroke();ctx.restore();if(mode!=="quiet")debris(t,s.level);}
+  drawVoid(t,posCur,1-seg(t,24.3,24.9));drawFalls(t,posCur,s.place);
+  ptext("What families lost in belongings is not individually recorded. Shown illustratively, from residents' own accounts.",W-40,H-28,{size:22,al:"right",stroke:4,a:fadeIO(t,3.1,6.0)});
   gauge(t);
   MAPFULL=t>24.8;if(t>24.3){drawMapBG(t,s,seg(t,24.3,25.0));}
   ctx.drawImage(grain,0,0);const vg=ctx.createRadialGradient(W/2,H/2,H*.4,W/2,H/2,H*.95);vg.addColorStop(0,"rgba(0,0,0,0)");vg.addColorStop(1,"rgba(30,26,18,.28)");ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
