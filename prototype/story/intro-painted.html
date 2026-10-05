@@ -84,7 +84,7 @@ const JLL=JP.map(p=>[p.lon,p.lat]);
 const DUR=[30.99,-29.89],ZA_C=[25.2,-28.9];
 const ll=(a,b,k)=>[lerp(a[0],b[0],k),lerp(a[1],b[1],k)],lgl=(a,b,k)=>Math.exp(lerp(Math.log(a),Math.log(b),k));
 // ---------- timeline (seconds): ~29 s, per intro-painted-FINAL-spec ----------
-const TITLE_END=0,Q_START=27.6,Q_MID=29.2,Q_END=30.9,TOTAL=31.0;
+const TITLE_END=0,Q_START=27.0,Q_MID=29.2,Q_END=30.9,TOTAL=31.0;
 // moves: [start,end,from,to,kind]. "rope" = the city's rope lifts them; "cut" = hard cut in the fast sequence
 const L=[[6.2,7.6,0,1,"rope"],[8.8,10.4,1,2,"rope"],[14.5,15.9,2,2,"rope"],[22.0,22.3,2,3,"cut"],[22.6,22.9,3,4,"cut"]];
 // floods: [drop1, drop2, rainStart, rainEnd, year]
@@ -288,16 +288,21 @@ function gauge(t){const a=Math.min(seg(t,2.6,3.0),1-seg(t,23.3,23.7));if(a<=0)re
   const pools=Math.round(cum/1000*INTRO_RAIN.catchment_km2*1e6/2500/1000)*1000;
   ptext("≈ "+pools.toLocaleString("en-US")+" Olympic pools",X+34,BOT+108,{a,size:40,al:"right",c:"#CFEDE6"});
   ptext("of rain on the river's catchment",X+34,BOT+140,{a,size:17,f:"mono",al:"right",c:"#F3EBD8"});}
-function tally(t){const o={al:"right",light:false},X=W-110,out=1-seg(t,26.7,27.1);if(t<24.5||out<=0)return;
+function tally(t){const o={al:"right",light:false},X=W-110,out=1;if(t<24.5||t>=Q_START)return;
   ptext("2019 – 2025",X,370,Object.assign({a:seg(t,24.5,24.8)*out,size:20,f:"mono",w:500,c:"#4E473A"},o));
   ptext("Moved 4 times",X,460,Object.assign({a:seg(t,24.7,25.0)*out,size:84,f:"cond",c:"#24302F"},o));
   ptext("Flooded 3 times",X,550,Object.assign({a:seg(t,25.1,25.4)*out,size:84,f:"cond",c:"#8E3A22"},o));}
 // the thesis, as the camera settles on the country
 function thesis(t){const a=Math.min(seg(t,26.9,27.4),1-seg(t,Q_MID-.25,Q_MID));if(a<=0)return;const o={a,al:"center",light:false,size:104,f:"cond",c:"#24302F"};
   ptext("Why does the water keep",W/2-120,430,o);ptext("finding the same people?",W/2-120,540,o);}
-function card(lines,a){ctx.fillStyle="#141A19";ctx.fillRect(0,0,W,H);ctx.drawImage(grain,0,0);lines.forEach((l,i)=>ptext(l,W/2,H/2+30+i*104-(lines.length-1)*52,{a,size:96,f:"cond",al:"center",c:"#F3EBD8"}));}
+function ghosts(){ctx.save();ctx.strokeStyle="rgba(243,235,216,.2)";ctx.lineWidth=2.5;ctx.setLineDash([3,9]);ctx.lineCap="round";const G=H-70;
+  [[-272,560],[-88,580],[70,400],[200,350],[320,300]].forEach(([dx,h])=>{const x=W/2+dx,r=h*.11,bw=h*.32,top=G-h+2*r+10;ctx.beginPath();ctx.arc(x,G-h+r,r,0,6.283);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(x-bw/2,G);ctx.lineTo(x-bw/2,top+bw*.4);ctx.quadraticCurveTo(x-bw/2,top,x,top);ctx.quadraticCurveTo(x+bw/2,top,x+bw/2,top+bw*.4);ctx.lineTo(x+bw/2,G);ctx.stroke();});
+  ctx.setLineDash([2,10]);ctx.beginPath();ctx.moveTo(W/2-480,G);ctx.lineTo(W/2+480,G);ctx.stroke();ctx.restore();}
+function card(lines,a){ctx.fillStyle="#141A19";ctx.fillRect(0,0,W,H);ghosts();ctx.drawImage(grain,0,0);lines.forEach((l,i)=>ptext(l,W/2,H/2+30+i*104-(lines.length-1)*52,{a,size:96,f:"cond",al:"center",c:"#F3EBD8"}));}
 let now=0;
 function frame(t){now=t;
+  if(t>=Q_START&&t<Q_MID){card(["WHY DOES THE WATER KEEP","FINDING THE SAME PEOPLE?"],Math.min(seg(t,Q_START+.12,Q_START+.4),1-seg(t,Q_MID-.25,Q_MID)));return;}
   if(t>=Q_MID){card(["WHY DO FLOOD VICTIMS KEEP","ENDING UP IN FLOOD ZONES?"],t<Q_END?seg(t,Q_MID,Q_MID+.2):0);return;}
   const s=state(t);LIGHTBG=s.night<.35;
   // sky over the map
@@ -348,7 +353,7 @@ function frame(t){now=t;
   caption("Three children are swept away.",fadeIO(t,19.6,21.9,.5));
   caption("A hotel. Evicted. A student residence.",fadeIO(t,22.0,23.6),"2025");
   caption("Still temporary.",fadeIO(t,23.6,24.8));
-  tally(t);thesis(t);
+  tally(t);
   caption("Durban, South Africa.",fadeIO(t,25.0,26.9),"one city · 84 “temporary” sites found nationally");
 }
 let t=0,playing=false,last=0;const sc=document.getElementById("scrub"),tm=document.getElementById("tm"),pb=document.getElementById("play");
