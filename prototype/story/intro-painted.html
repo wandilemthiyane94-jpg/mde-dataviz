@@ -116,7 +116,8 @@ function drop(t,t0,x){if(t<t0||t>t0+1.1)return;const k=seg(t,t0,t0+.55);const y=
 // ---------- one text plane: italic Newsreader, no boxes, soft glow ----------
 let LIGHTBG=false;
 function ptext(s,x,y,o){o=o||{};const a=o.a===undefined?1:o.a;if(a<=0)return;ctx.save();ctx.globalAlpha=a;ctx.font="italic 400 "+(o.size||48)+"px Newsreader";ctx.textAlign=o.al||"left";
-  const light=o.auto&&LIGHTBG?false:o.light!==false;if(o.auto&&LIGHTBG)o=Object.assign({},o,{c:o.cd||"#24302F"});ctx.shadowColor=light?"rgba(20,24,22,.85)":"rgba(246,240,226,.95)";ctx.shadowBlur=o.blur||14;ctx.fillStyle=o.c||(light?"#F6F0E2":"#24302F");
+  const light=o.auto&&LIGHTBG?false:o.light!==false;if(o.auto&&LIGHTBG)o=Object.assign({},o,{c:o.cd||"#24302F"});if(o.stroke){ctx.lineJoin="round";ctx.lineWidth=light?o.stroke:o.stroke*.5;ctx.strokeStyle=light?"rgba(16,20,19,.92)":"rgba(248,243,230,.96)";ctx.strokeText(s,x,y);}
+  ctx.shadowColor=light?"rgba(20,24,22,.85)":"rgba(246,240,226,.95)";ctx.shadowBlur=o.blur||14;ctx.fillStyle=o.c||(light?"#F6F0E2":"#24302F");
   ctx.fillText(s,x,y);ctx.shadowBlur=(o.blur||14)*.5;ctx.fillText(s,x,y);ctx.restore();}
 let MAPFULL=false;function caption(s,a,sub){if(a<=0)return;const o=MAPFULL?{light:false,c:"#24302F"}:{};ptext(s,70,H-104,Object.assign({a,size:54},o));if(sub)ptext(sub,72,H-58,Object.assign({a,size:30,c:"#E6DCC4"},MAPFULL?{light:false,c:"#4E473A"}:{}));}
 const fadeIO=(t,a,b,f)=>Math.min(seg(t,a,a+(f||.25)),1-seg(t,b-(f||.25),b));
@@ -199,27 +200,27 @@ function drawMapBG(t,s,alpha){const cam=mapCam(t,s);
   ctx.restore();}// ---------- flood gauge: real rain (ERA5 hourly), a mark left for each storm; drawn object, text on the same plane ----------
 const RAINEV=FLOODS.map(f=>({y:f[4],f,ev:INTRO_RAIN.events[f[4]]}));
 function gauge(t){const a=Math.min(seg(t,2.6,3.0),1-seg(t,23.3,23.7));if(a<=0)return;
-  const X=1730,TOP=200,BOT=680,MAX=250,yOf=mm=>BOT-(mm/MAX)*(BOT-TOP);
+  const X=1730,TOP=290,BOT=GROUND_Y,MAX=250,yOf=mm=>BOT-(mm/MAX)*(BOT-TOP);
   let cur=null;RAINEV.forEach(r=>{if(t>=r.f[2]-.6)cur=r;});
   let cum=0,hr=0,hrs=0,rate=0,active=false;
   if(cur){const mm=cur.ev.mm;hrs=mm.length;const k=seg(t,cur.f[2],cur.f[3]);const h=k*hrs,hi=Math.min(hrs-1,Math.floor(h));for(let i=0;i<hi;i++)cum+=mm[i];cum+=mm[hi]*(h-hi);hr=k>0?Math.min(hrs,hi+1):0;rate=mm[hi];active=t>=cur.f[2]&&t<=cur.f[3]+1.5;}
   ctx.save();ctx.globalAlpha=a;
   // the post (a thing in the world, like the rope and the units)
-  ctx.fillStyle="#8A6A44";ctx.fillRect(X,TOP-10,34,BOT-TOP+70);ctx.fillStyle="#F6F1E4";ctx.fillRect(X+4,TOP,26,BOT-TOP);
+  ctx.fillStyle="#8A6A44";ctx.fillRect(X,TOP-10,34,BOT-TOP+14);ctx.fillStyle="#F6F1E4";ctx.fillRect(X+4,TOP,26,BOT-TOP);
   for(let mm=0;mm<=MAX;mm+=10){const y=yOf(mm),big=mm%50===0;ctx.fillStyle="#2B3436";ctx.fillRect(X+4,y-1,big?26:14,big?3:2);}
   const wy=yOf(cum);ctx.fillStyle="rgba(86,140,138,.8)";ctx.fillRect(X+4,wy,26,BOT-wy);ctx.strokeStyle="#2F5F5E";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(X-8,wy);ctx.lineTo(X+44,wy);ctx.stroke();
   const ny=yOf(INTRO_RAIN.normal_month_mm);ctx.setLineDash([5,5]);ctx.strokeStyle="#8C7A5A";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(X-14,ny);ctx.lineTo(X+60,ny);ctx.stroke();ctx.setLineDash([]);
   RAINEV.forEach(r=>{if(t<=r.f[3]+.3||(r===cur&&active))return;const y=yOf(r.ev.total);ctx.strokeStyle="#B5532F";ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(X-12,y);ctx.lineTo(X+46,y);ctx.stroke();});
   ctx.restore();
   // text: same italic plane as the captions
-  ptext(Math.round(cum)+" mm",X-30,TOP-74,{auto:1,a,size:54,al:"right"});
-  ptext(cur?(active?"of rain · hour "+hr+" of "+hrs:"of rain · "+cur.ev.label):"of rain",X-30,TOP-38,{auto:1,a,size:24,al:"right",c:"#E6DCC4"});
-  [0,50,100,150,200,250].forEach(mm=>ptext(String(mm),X+44,yOf(mm)+8,{auto:1,a,size:18,c:"#E6DCC4",blur:8}));
-  ptext("a normal month",X-24,ny+8,{auto:1,a,size:20,al:"right",c:"#E6DCC4",blur:8});
-  RAINEV.forEach(r=>{if(t<=r.f[3]+.3||(r===cur&&active))return;ptext(r.y+" · "+Math.round(r.ev.total)+" mm",X-24,yOf(r.ev.total)+8,{auto:1,a,size:22,al:"right",c:"#F2C6A8",cd:"#8E3A22"});});
+  ptext(Math.round(cum)+" mm",X-30,TOP-74,{auto:1,stroke:5,a,size:54,al:"right"});
+  ptext(cur?(active?"of rain · hour "+hr+" of "+hrs:"of rain · "+cur.ev.label):"of rain",X-30,TOP-38,{auto:1,stroke:5,a,size:24,al:"right",c:"#E6DCC4"});
+  [0,50,100,150,200,250].forEach(mm=>ptext(String(mm),X+46,yOf(mm)+9,{auto:1,stroke:5,a,size:24,c:"#E6DCC4",blur:8}));
+  ptext("a normal month",X-24,ny+8,{auto:1,stroke:5,a,size:24,al:"right",c:"#E6DCC4",blur:8});
+  RAINEV.forEach(r=>{if(t<=r.f[3]+.3||(r===cur&&active))return;ptext(r.y+" · "+Math.round(r.ev.total)+" mm",X-24,yOf(r.ev.total)+8,{auto:1,stroke:5,a,size:22,al:"right",c:"#F2C6A8",cd:"#8E3A22"});});
   const pools=Math.round(cum/1000*INTRO_RAIN.catchment_km2*1e6/2500/1000)*1000;
-  ptext("≈ "+pools.toLocaleString("en-US")+" Olympic pools",X+34,BOT+108,{auto:1,a,size:30,al:"right"});
-  ptext("of rain on the river's catchment",X+34,BOT+140,{auto:1,a,size:22,al:"right",c:"#E6DCC4"});}
+  ptext("≈ "+pools.toLocaleString("en-US")+" Olympic pools",X+34,BOT+108,{auto:1,stroke:5,a,size:30,al:"right"});
+  ptext("of rain on the river's catchment",X+34,BOT+140,{auto:1,stroke:5,a,size:22,al:"right",c:"#E6DCC4"});}
 function card(lines,a){ctx.fillStyle="#141A19";ctx.fillRect(0,0,W,H);ctx.drawImage(grain,0,0);lines.forEach((l,i)=>ptext(l,W/2,H/2-30+i*92-(lines.length-1)*46+30,{a,size:78,al:"center"}));}
 let now=0;
 function frame(t){now=t;
