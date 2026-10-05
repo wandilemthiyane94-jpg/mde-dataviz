@@ -114,7 +114,7 @@ function state(t){
 function drop(t,t0,x){if(t<t0||t>t0+1.1)return;const k=seg(t,t0,t0+.55);const y=lerp(-60,GROUND_Y-10,k*k);if(k<1){ctx.fillStyle="rgba(86,140,138,.9)";ctx.beginPath();ctx.moveTo(x,y-34);ctx.quadraticCurveTo(x+14,y,x,y+10);ctx.quadraticCurveTo(x-14,y,x,y-34);ctx.fill();}
   else{const r=seg(t,t0+.55,t0+1.1);ctx.strokeStyle=`rgba(86,140,138,${1-r})`;ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(x,GROUND_Y-6,20+r*120,4+r*18,0,0,6.283);ctx.stroke();}}
 // ---------- one text plane: solid fill, no shadows, no outlines, no boxes ----------
-let LIGHTBG=false;
+let LIGHTBG=false,CALMBG=false;
 function ptext(s,x,y,o){o=o||{};const a=o.a===undefined?1:o.a;if(a<=0)return;ctx.save();ctx.globalAlpha=a;const sz=o.size||48;if(o.f==="mono"){s=String(s).toUpperCase();ctx.font=(o.w||400)+" "+sz+"px 'IBM Plex Mono'";ctx.letterSpacing=(sz*.14).toFixed(1)+"px";}else if(o.f==="cond"){s=String(s).toUpperCase();ctx.font="700 "+sz+"px 'Barlow Condensed'";ctx.letterSpacing=(sz*.02).toFixed(1)+"px";}else ctx.font="italic 400 "+sz+"px Newsreader";ctx.textAlign=o.al||"left";if(o.stroke)o=Object.assign({},o,{stroke:Math.min(o.stroke,2)});
   const light=o.auto&&LIGHTBG?false:o.light!==false;if(o.auto&&LIGHTBG)o=Object.assign({},o,{c:o.cd||"#24302F"});
   ctx.shadowBlur=0;ctx.fillStyle=o.c||(light?"#F6F0E2":"#24302F");
@@ -281,10 +281,10 @@ function gauge(t){const a=Math.min(seg(t,2.6,3.0),1-seg(t,23.3,23.7));if(a<=0)re
   ctx.restore();
   // text: same italic plane as the captions
   ptext(Math.round(cum)+" mm",X-30,TOP-70,{auto:1,a,size:64,f:"cond",al:"right",c:"#F3EBD8"});
-  ptext(cur?(active?"of rain · hour "+hr+" of "+hrs:"of rain · "+cur.ev.label):"of rain",X-30,TOP-38,{auto:1,a,size:19,f:"mono",al:"right",c:"#EDE6D4",blur:8});
+  ptext(cur?(active?"of rain · hour "+hr+" of "+hrs:"of rain · "+cur.ev.label):"of rain",X-30,TOP-38,CALMBG?{a,size:19,f:"mono",w:500,al:"right",c:"#FFFFFF"}:{auto:1,a,size:19,f:"mono",al:"right",c:"#EDE6D4"});
   [0,50,100,150,200,250].forEach(mm=>ptext(String(mm),X+46,yOf(mm)+7,{auto:1,a,size:19,f:"mono",c:"#EDE6D4",blur:8}));
   ptext("a normal month",X-24,ny+6,{auto:1,a,size:17,f:"mono",al:"right",c:"#EDE6D4",blur:8});
-  RAINEV.forEach(r=>{if(t<=r.f[3]+.3||(r===cur&&active))return;ptext(r.y+" · "+Math.round(r.ev.total)+" mm",X-24,yOf(r.ev.total)+6,{auto:1,a,size:18,f:"mono",w:500,al:"right",c:"#EE9A80",cd:"#8E3A22",blur:8});});
+  RAINEV.forEach(r=>{if(t<=r.f[3]+.3||(r===cur&&active))return;ptext(r.y+" · "+Math.round(r.ev.total)+" mm",X-24,yOf(r.ev.total)+6,CALMBG?{a,size:18,f:"mono",w:500,al:"right",c:"#FFFFFF"}:{auto:1,a,size:18,f:"mono",w:500,al:"right",c:"#EE9A80",cd:"#8E3A22"});});
   const pools=Math.round(cum/1000*INTRO_RAIN.catchment_km2*1e6/2500/1000)*1000;
   ptext("≈ "+pools.toLocaleString("en-US")+" Olympic pools",X+34,BOT+108,{a,size:40,al:"right",c:"#CFEDE6"});
   ptext("of rain on the river's catchment",X+34,BOT+140,{a,size:17,f:"mono",al:"right",c:"#F3EBD8"});}
@@ -304,7 +304,7 @@ let now=0;
 function frame(t){now=t;
   if(t>=Q_START&&t<Q_MID){card(["WHY DOES THE WATER KEEP","FINDING THE SAME PEOPLE?"],Math.min(seg(t,Q_START+.12,Q_START+.4),1-seg(t,Q_MID-.25,Q_MID)));return;}
   if(t>=Q_MID){card(["WHY DO FLOOD VICTIMS KEEP","ENDING UP IN FLOOD ZONES?"],t<Q_END?seg(t,Q_MID,Q_MID+.2):0);return;}
-  const s=state(t);LIGHTBG=s.night<.35;
+  const s=state(t);LIGHTBG=s.night<.35;CALMBG=s.night<.35&&s.storm<.5;
   // sky over the map
   let sky=mix(SKY_DAY,SKY_STORM,s.storm);sky=mix(sky,SKY_NIGHT,s.night);const sg=ctx.createLinearGradient(0,0,0,GROUND_Y);sg.addColorStop(0,rgb(mix(sky,[255,255,255],.12)));sg.addColorStop(1,rgb(sky));
   drawMapBG(t,s,1);ctx.save();ctx.globalAlpha=.14+s.storm*.3+s.night*.42;ctx.fillStyle=sg;ctx.fillRect(0,0,W,H);ctx.restore();
