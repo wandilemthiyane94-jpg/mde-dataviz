@@ -19,7 +19,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-of
 </style>
 <div id="stage"><canvas id="c" width="1920" height="1080" aria-label="Painted illustration: a family flooded and moved again and again, Durban 2019 to 2025"></canvas><div id="poster"><button type="button" id="go">Play</button></div></div>
 <div class="bar"><button type="button" id="play">Play</button><span id="tm"></span><input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Position"></div>
-<p class="src">Illustration of one group of families' journey, 2019–2025 (people and buildings shown are illustrative, not portraits). Events: GroundUp (Jun 2022, Mar 2025), Mail &amp; Guardian (9 May 2022), The Witness (10 Jul 2025), Amnesty International (Nov 2025), Sunday Tribune (5 Oct 2025); our site map. Gauge: ERA5 hourly rain at the camp (Open-Meteo), which smooths short local downpours; "a normal month" = 82 mm (1991–2020); pools = rain on the uMlazi's 905 km² catchment, assuming the same rain fell across it (order of magnitude; 1 pool = 2,500 m³).</p>
+<p class="src">Illustration of one group of families' journey, 2019–2025 (people and buildings shown are illustrative, not portraits). Events: GroundUp (Jun 2022, Mar 2025), Mail &amp; Guardian (9 May 2022), The Witness (10 Jul 2025), Amnesty International (Nov 2025), Sunday Tribune (5 Oct 2025); our site map. Gauge: ERA5 hourly rain at the camp (Open-Meteo), which smooths short local downpours; "a normal month" = 82 mm (1991–2020); pools = rain on the uMlazi's 905 km² catchment, assuming the same rain fell across it (order of magnitude; 1 pool = 2,500 m³). <b>Water levels in the scene are illustrative.</b> We ran our rain-on-grid flood model for all three storms (2019, 2022, 2025), but at 33 m resolution it cannot resolve the camp: the camp's own cell sits above the modelled water while the neighbouring cells are the canal (up to 3.2 m deep in 2022). Only the rainfall on the gauge is measured data.</p>
 <script src="vendor/d3.v7.min.js"></script>
 <script src="vendor/topojson-client.min.js"></script>
 <script src="vendor/world-50m.js"></script>
@@ -74,82 +74,93 @@ const PLACES=[{f:house,name:"Mega Village, uMlazi"},{f:tents,name:"Tents at a ho
 function people(x,y,sit,a){ctx.save();ctx.globalAlpha=a===undefined?1:a;const P=[[-58,1,"#3E4A52"],[-18,1,"#4B3B36"],[22,.72,"#5A6A5E"],[52,.6,"#7A5A44"]];
   P.forEach(([dx,s,c])=>{const px=x+dx,h=(sit?58:92)*s;ctx.fillStyle=c;ctx.beginPath();ctx.ellipse(px,y-h*.55,14*s,h*.42,0,0,6.283);ctx.fill();ctx.fillStyle="#2B2420";ctx.beginPath();ctx.arc(px,y-h-6*s,12*s,0,6.283);ctx.fill();
     if(sit){ctx.fillStyle=c;ctx.fillRect(px-4,y-10,26*s,8);}else{ctx.fillStyle="#2B2420";ctx.fillRect(px-8*s,y-h*.18,6*s,h*.18);ctx.fillRect(px+2*s,y-h*.18,6*s,h*.18);}});ctx.restore();}
-// ---------- timeline (seconds) ----------
-// place index at each moment, lifts move to the next place (or back to the same one)
-const L=[ // [start, end, from, to, label]
-  [9,12.4,0,1],[14.6,17.6,1,2],[23,26.2,2,2],[31.2,34,2,3],[34.6,37.4,3,4]];
-const FLOODS=[[2,3,4,7.4,560,"april 2019"],[19.4,null,20.2,23,600,"april 2022"],[28.4,null,29,31,580,"february 2025"]]; // [drop1, drop2, rainStart, rainEnd, level]
-const TOTAL=47;
-function state(t){
-  // place + horizontal pan
-  let cur=0,next=0,k=0,lift=null;
-  for(const l of L){if(t>=l[1]){cur=l[3];}else if(t>=l[0]){cur=l[2];next=l[3];k=(t-l[0])/(l[1]-l[0]);lift=l;break;}}
-  // water level: rises during each flood, recedes during the following lift
-  let level=H+40;
-  FLOODS.forEach((f,i)=>{const up=E(t,f[2],f[3]),endL=L.find(l=>l[0]>=f[3]-.01),down=endL?E(t,endL[0]+.3,endL[0]+(endL[1]-endL[0])*.8):0;const lv=lerp(H+40,f[4],up*(1-down));if(t>=f[2])level=Math.min(level,lv);});
-  // sky: storm while raining, night in 2025
-  const storm=Math.max(...FLOODS.map(f=>Math.min(seg(t,f[2]-1,f[2]+.4),1-seg(t,f[3]+.6,f[3]+2.2))));
-  const night=Math.min(seg(t,26.8,28.2),1-seg(t,32,34));
-  const rain=Math.max(...FLOODS.map(f=>Math.min(seg(t,f[2],f[2]+.8),1-seg(t,f[3]-.4,f[3]+.6))));
-  return {cur,next,k,lift,level,storm,night,rain};}
-function drop(t,t0,x){if(t<t0||t>t0+1.4)return;const k=seg(t,t0,t0+.7);const y=lerp(-60,GROUND_Y-10,k*k);if(k<1){ctx.fillStyle="rgba(86,140,138,.9)";ctx.beginPath();ctx.moveTo(x,y-34);ctx.quadraticCurveTo(x+14,y,x,y+10);ctx.quadraticCurveTo(x-14,y,x,y-34);ctx.fill();}
-  else{const r=seg(t,t0+.7,t0+1.4);ctx.strokeStyle=`rgba(86,140,138,${1-r})`;ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(x,GROUND_Y-6,20+r*120,4+r*18,0,0,6.283);ctx.stroke();}}
-function caption(s,a,sub){if(a<=0)return;ctx.save();ctx.globalAlpha=a;ctx.fillStyle="rgba(243,235,216,.92)";ctx.font="italic 400 46px Newsreader";const w=ctx.measureText(s).width;ctx.fillRect(56,H-150,w+56,sub?100:76);ctx.fillStyle="#2B3436";ctx.fillText(s,84,H-98);if(sub){ctx.font="400 24px 'IBM Plex Mono'";ctx.fillStyle="#5A6466";ctx.fillText(sub.toUpperCase(),86,H-64);}ctx.restore();}
-const fadeIO=(t,a,b,f)=>Math.min(seg(t,a,a+(f||.5)),1-seg(t,b-(f||.5),b));
 // ---------- sketch map of Durban: where the moves happen (real locations from our site map) ----------
 const MAPW=470,MAPH=400,MX=1410,MY=40;
 const JP=HOLLIE.journeys.j1.pts.map(p=>{if(p.site){const s=HOLLIE.sites.find(x=>x.id===p.site);return {n:s.name,lon:s.lon,lat:s.lat};}return p;});
 const JLAB=["Mega Village","Tehuis Hostel (tents)","Lamontville camp","Hotel, city centre","Umbilo residence"];
-const mapCv=document.createElement("canvas");mapCv.width=MAPW;mapCv.height=MAPH;
-const MBOX={type:"Feature",geometry:{type:"Polygon",coordinates:[[[30.885,-29.84],[31.055,-29.84],[31.055,-29.985],[30.885,-29.985],[30.885,-29.84]]]}};
-const mproj=d3.geoMercator().fitExtent([[18,46],[MAPW-18,MAPH-18]],MBOX);
-const MP=(lon,lat)=>mproj([lon,lat]);
-(function(){const g=mapCv.getContext("2d");g.fillStyle="#F1E8D2";g.fillRect(0,0,MAPW,MAPH);
-  // sea (sketch hatch) from the country outline
-  const za=topojson.feature(WORLD_TOPO,WORLD_TOPO.objects.countries).features.find(f=>+f.id===710);
-  g.save();g.beginPath();g.rect(0,0,MAPW,MAPH);const path=d3.geoPath(mproj,g);g.fillStyle="#B9CFC9";g.fill();
-  g.beginPath();path(za);g.fillStyle="#F1E8D2";g.fill();g.strokeStyle="#5A6E6A";g.lineWidth=2;g.stroke();g.restore();
-  g.save();g.beginPath();g.rect(0,0,MAPW,MAPH);g.beginPath();path(za);g.rect(MAPW,0,-MAPW,MAPH);g.clip("evenodd");g.strokeStyle="rgba(90,120,116,.35)";g.lineWidth=1.2;for(let k=-MAPH;k<MAPW;k+=9){g.beginPath();g.moveTo(k,0);g.lineTo(k+MAPH,MAPH);g.stroke();}g.restore();
-  // rivers: the city's floodplain traced as sketchy blue lines
-  g.strokeStyle="rgba(62,110,140,.38)";g.lineWidth=1.1;(FLOODPLAIN.features||[]).forEach(f=>{const gg=f.geometry,ps=gg.type==="Polygon"?[gg.coordinates]:gg.coordinates;ps.forEach(p=>{const r=p[0];g.beginPath();r.forEach((c,i)=>{const q=MP(c[0],c[1]);i?g.lineTo(q[0]+(Math.random()-.5)*.8,q[1]+(Math.random()-.5)*.8):g.moveTo(q[0],q[1]);});g.stroke();});});
-  // place names
-  g.fillStyle="#6B6250";g.font="italic 15px Newsreader";[["uMLAZI",30.893,-29.945],["the Bluff",31.03,-29.925]].forEach(([n,lo,la])=>{const q=MP(lo,la);g.fillText(n,q[0]-22,q[1]);});
-  g.fillStyle="#3E4A48";g.font="italic 22px Newsreader";g.fillText("Durban",16,30);g.font="12px 'IBM Plex Mono'";g.fillStyle="#7A7260";g.fillText("WHERE THEY WERE MOVED",112,30);
-  const k5=MP(30.925,-29.981),k5b=MP(30.925+2/96.4,-29.981);g.strokeStyle="#5A5040";g.lineWidth=2;g.beginPath();g.moveTo(k5[0],k5[1]);g.lineTo(k5b[0],k5b[1]);g.stroke();g.fillStyle="#5A5040";g.font="11px 'IBM Plex Mono'";g.fillText("2 km",k5[0],k5[1]-6);
-  g.font="italic 13px Newsreader";g.fillText("Indian Ocean",MAPW-120,MAPH-26);})();
-function drawMap(t,s){
-  // how far along the journey: stops reached and the leg in progress
-  let reached=0,leg=null,lk=0;L.forEach((l,i)=>{if(t>=l[1])reached=Math.max(reached,l[3]);else if(t>=l[0]&&!leg){leg=l;lk=E(seg(t,l[0],l[1]),.2,.9);}});
-  const big=leg?Math.min(1,E(seg(t,leg[0],leg[0]+.6),0,1),1-seg(t,leg[1]-.4,leg[1])):0;const sc=1+big*.12;
-  ctx.save();ctx.translate(MX+MAPW/2,MY+MAPH/2);ctx.rotate(.012);ctx.scale(sc,sc);ctx.translate(-MAPW/2,-MAPH/2);
-  ctx.shadowColor="rgba(40,30,20,.35)";ctx.shadowBlur=18;ctx.shadowOffsetY=6;ctx.drawImage(mapCv,0,0);ctx.shadowColor="transparent";
-  if(s.night>.3){ctx.fillStyle=`rgba(30,40,44,${(s.night-.3)*.5})`;ctx.fillRect(0,0,MAPW,MAPH);}
-  const pts=JP.map(p=>MP(p.lon,p.lat));
-  const seq=[[0,1],[1,2],[2,3],[3,4]];
-  ctx.strokeStyle="#B5532F";ctx.lineWidth=3;ctx.setLineDash([7,6]);ctx.lineCap="round";
-  seq.forEach(([a,b])=>{let k=0;if(reached>=b)k=1;else if(leg&&leg[2]===a&&leg[3]===b)k=lk;if(k<=0)return;const A=pts[a],B=pts[b],mx=(A[0]+B[0])/2,my=Math.min(A[1],B[1])-26;ctx.beginPath();ctx.moveTo(A[0],A[1]);for(let q=0;q<=k+1e-6;q+=.04){ctx.lineTo((1-q)*(1-q)*A[0]+2*(1-q)*q*mx+q*q*B[0],(1-q)*(1-q)*A[1]+2*(1-q)*q*my+q*q*B[1]);}ctx.stroke();});
-  ctx.setLineDash([]);
-  // "sent back" loop at the camp (April 2022)
-  if(t>=23){const c=pts[2],k=t<26.2?seg(t,23.4,26):1;ctx.beginPath();ctx.arc(c[0],c[1]-16,14,Math.PI/2,Math.PI/2+k*Math.PI*2);ctx.stroke();}
-  // stops
-  const curIdx=leg?(lk>.98?leg[3]:leg[2]):reached;
-  pts.forEach((p,i)=>{if(i>Math.max(reached,curIdx))return;const cur=i===curIdx;ctx.fillStyle=i===2?"#B8463A":"#3E4A48";ctx.beginPath();ctx.arc(p[0],p[1],cur?7:5,0,6.283);ctx.fill();
-    if(cur){ctx.strokeStyle="rgba(184,70,58,.6)";ctx.lineWidth=2;ctx.beginPath();ctx.arc(p[0],p[1],10+((t*14)%14),0,6.283);ctx.stroke();}
-    ctx.fillStyle="#2E3533";ctx.font=(cur?"600 ":"")+"13px 'IBM Plex Mono'";const off=[[-104,22],[10,22],[12,-12],[-150,-10],[12,5]][i],dx=off[0],dy=off[1];ctx.fillText(JLAB[i],p[0]+dx,p[1]+dy);});
-  ctx.restore();}// ---------- the map as a seamless backdrop: the family's marker hops across Durban; at the end the camera pulls back ----------
 const LANDALL=topojson.merge(WORLD_TOPO,WORLD_TOPO.objects.countries.geometries);
 const BORDERS=topojson.mesh(WORLD_TOPO,WORLD_TOPO.objects.countries,(a,b)=>a!==b);
 const JLL=JP.map(p=>[p.lon,p.lat]);
 const DUR=[30.99,-29.89],ZA_C=[25.2,-28.9];
 const ll=(a,b,k)=>[lerp(a[0],b[0],k),lerp(a[1],b[1],k)],lgl=(a,b,k)=>Math.exp(lerp(Math.log(a),Math.log(b),k));
+// ---------- timeline (seconds): ~29 s, per intro-painted-FINAL-spec ----------
+const TITLE_END=2.0,Q_START=27.6,Q_END=29.1,TOTAL=29.2;
+// moves: [start,end,from,to,kind]. "rope" = the city's rope lifts them; "cut" = hard cut in the fast sequence
+const L=[[6.2,7.6,0,1,"rope"],[8.8,10.4,1,2,"rope"],[14.5,15.9,2,2,"rope"],[22.0,22.3,2,3,"cut"],[22.6,22.9,3,4,"cut"]];
+// floods: [drop1, drop2, rainStart, rainEnd, year]
+const FLOODS=[[2.3,2.8,3.1,6.0,"2019"],[11.0,null,11.6,14.3,"2022"],[16.6,null,17.0,19.0,"2025"]];
+const PXM=52; // pixels per metre of water (a 1.7 m adult is drawn ~92 px tall)
+// ---------- modelled water depth (rain-on-grid simulation, one per storm) ----------
+const SIMS={},MODELLED=[]; // see note below the player: the model ran for all three storms but cannot resolve the camp at 33 m
+async function loadSims(){const get=u=>fetch(u).then(r=>r.ok?r.json():null).catch(()=>null);
+  const [a,b,b0,c]=await Promise.all([get("rem/sim_2019.json"),get("rem/sim_2022.json"),get("rem/sim.json"),get("rem/sim_2025.json")]);
+  [["2019",a],["2022",b||b0],["2025",c]].forEach(([y,s])=>{if(s)SIMS[y]={series:s.site_cell_depth_m||s.camp_depth_m,fm:s.frame_minutes,off:3};});}
+const runMax={};
+const ILLUS={"2019":4.0,"2022":2.4,"2025":2.3}; // illustrative peak depths (m) where no usable modelled depth exists
+function depthFor(y,k){const S=MODELLED.includes(y)?SIMS[y]:null;if(!S)return ILLUS[y]*ease(k);const hrs=INTRO_RAIN.events[y].mm.length,idx=clamp(Math.round((S.off+k*hrs)*60/S.fm)-1,0,S.series.length-1);let m=0;for(let i=0;i<=idx;i++)m=Math.max(m,S.series[i]);return m;}
+function state(t){
+  let cur=0,next=0,k=0,lift=null;
+  for(const l of L){if(t>=l[1])cur=l[3];else if(t>=l[0]){cur=l[2];next=l[3];k=(t-l[0])/(l[1]-l[0]);lift=l;break;}}
+  const place=lift&&lift[4]==="cut"?lift[3]:cur;
+  let depth=0,year=null;
+  FLOODS.forEach(f=>{if(t<f[2])return;const endL=L.find(l=>l[0]>=f[3]-.01);
+    const down=!endL?0:endL[4]==="cut"?(t>=endL[0]?1:0):E(t,endL[0]+.25,endL[0]+(endL[1]-endL[0])*.8);
+    const d=depthFor(f[4],seg(t,f[2],f[3]))*(1-down);if(d>0.01){depth=d;year=f[4];}});
+  const level=depth>0.02?GROUND_Y-depth*PXM:H+40;
+  const storm=Math.max(...FLOODS.map(f=>Math.min(seg(t,f[2]-.8,f[2]+.3),1-seg(t,f[3]+.4,f[3]+1.4))));
+  const night=Math.min(seg(t,15.9,16.7),t<22?1:0);
+  const rain=Math.max(...FLOODS.map(f=>Math.min(seg(t,f[2],f[2]+.5),1-seg(t,f[3]-.3,f[3]+.4))));
+  return {cur,next,k,lift,place,level,depth,year,storm,night,rain};}
+function drop(t,t0,x){if(t<t0||t>t0+1.1)return;const k=seg(t,t0,t0+.55);const y=lerp(-60,GROUND_Y-10,k*k);if(k<1){ctx.fillStyle="rgba(86,140,138,.9)";ctx.beginPath();ctx.moveTo(x,y-34);ctx.quadraticCurveTo(x+14,y,x,y+10);ctx.quadraticCurveTo(x-14,y,x,y-34);ctx.fill();}
+  else{const r=seg(t,t0+.55,t0+1.1);ctx.strokeStyle=`rgba(86,140,138,${1-r})`;ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(x,GROUND_Y-6,20+r*120,4+r*18,0,0,6.283);ctx.stroke();}}
+// ---------- one text plane: italic Newsreader, no boxes, soft glow ----------
+let LIGHTBG=false;
+function ptext(s,x,y,o){o=o||{};const a=o.a===undefined?1:o.a;if(a<=0)return;ctx.save();ctx.globalAlpha=a;ctx.font="italic 400 "+(o.size||48)+"px Newsreader";ctx.textAlign=o.al||"left";
+  const light=o.auto&&LIGHTBG?false:o.light!==false;if(o.auto&&LIGHTBG)o=Object.assign({},o,{c:o.cd||"#24302F"});ctx.shadowColor=light?"rgba(20,24,22,.85)":"rgba(246,240,226,.95)";ctx.shadowBlur=o.blur||14;ctx.fillStyle=o.c||(light?"#F6F0E2":"#24302F");
+  ctx.fillText(s,x,y);ctx.shadowBlur=(o.blur||14)*.5;ctx.fillText(s,x,y);ctx.restore();}
+let MAPFULL=false;function caption(s,a,sub){if(a<=0)return;const o=MAPFULL?{light:false,c:"#24302F"}:{};ptext(s,70,H-104,Object.assign({a,size:54},o));if(sub)ptext(sub,72,H-58,Object.assign({a,size:30,c:"#E6DCC4"},MAPFULL?{light:false,c:"#4E473A"}:{}));}
+const fadeIO=(t,a,b,f)=>Math.min(seg(t,a,a+(f||.25)),1-seg(t,b-(f||.25),b));
+// ---------- comedic props (not used in the February 2025 beat) ----------
+function fig(x,y,s,c,pose,wig){const h=(pose==="sit"?58:92)*s;ctx.fillStyle=c;ctx.beginPath();ctx.ellipse(x,y-h*.55,14*s,h*.42,0,0,6.283);ctx.fill();ctx.fillStyle="#2B2420";ctx.beginPath();ctx.arc(x,y-h-6*s,12*s,0,6.283);ctx.fill();
+  if(pose==="climb"){ctx.strokeStyle=c;ctx.lineWidth=6*s;ctx.lineCap="round";const w=Math.sin(wig)*10*s;ctx.beginPath();ctx.moveTo(x-8*s,y-h*.75);ctx.lineTo(x-16*s,y-h*1.15+w);ctx.moveTo(x+8*s,y-h*.75);ctx.lineTo(x+16*s,y-h*1.15-w);ctx.stroke();ctx.lineCap="butt";}
+  if(pose==="sit"){ctx.fillStyle=c;ctx.fillRect(x-4,y-10,26*s,8);}else{ctx.fillStyle="#2B2420";ctx.fillRect(x-8*s,y-h*.18,6*s,h*.18);ctx.fillRect(x+2*s,y-h*.18,6*s,h*.18);}}
+function tv(x,y,r){ctx.save();ctx.translate(x,y);ctx.rotate(r||0);ctx.fillStyle="#3A3A36";ctx.fillRect(-26,-20,52,38);ctx.fillStyle="#7FA0A0";ctx.fillRect(-20,-14,40,26);ctx.strokeStyle="#3A3A36";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(-6,-20);ctx.lineTo(-16,-38);ctx.moveTo(6,-20);ctx.lineTo(16,-38);ctx.stroke();ctx.restore();}
+function chair(x,y,r){ctx.save();ctx.translate(x,y);ctx.rotate(r||0);ctx.strokeStyle="#7A5A3A";ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(-18,0);ctx.lineTo(-18,-40);ctx.moveTo(-18,-18);ctx.lineTo(18,-18);ctx.lineTo(18,0);ctx.stroke();ctx.restore();}
+function goat(x,y,t,hopAmp){const hop=Math.abs(Math.sin(t*7))*(hopAmp||6);ctx.save();ctx.translate(x,y-hop);ctx.fillStyle="#E8E2D2";ctx.beginPath();ctx.ellipse(0,-24,26,14,0,0,6.283);ctx.fill();ctx.beginPath();ctx.ellipse(26,-36,9,8,0,0,6.283);ctx.fill();
+  ctx.strokeStyle="#E8E2D2";ctx.lineWidth=5;ctx.beginPath();[-16,-6,8,18].forEach(dx=>{ctx.moveTo(dx,-14);ctx.lineTo(dx,0);});ctx.stroke();ctx.strokeStyle="#6E6450";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(24,-42);ctx.lineTo(18,-52);ctx.moveTo(30,-42);ctx.lineTo(30,-53);ctx.stroke();ctx.restore();}
+function chicken(x,y,t){const flap=Math.sin(t*30)*.8;ctx.save();ctx.translate(x,y);ctx.fillStyle="#C9A06A";ctx.beginPath();ctx.ellipse(0,-12,12,10,0,0,6.283);ctx.fill();ctx.beginPath();ctx.arc(9,-22,6,0,6.283);ctx.fill();ctx.fillStyle="#B8463A";ctx.fillRect(8,-30,5,5);
+  ctx.strokeStyle="#B88A55";ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(-4,-14);ctx.lineTo(-20,-14-flap*16);ctx.stroke();ctx.restore();}
+function stamp(text,x,y,t,t0,rot){if(t<t0)return;const k=seg(t,t0,t0+.16),sc=lerp(2.4,1,ease(k)),a=Math.min(1,k*2);ctx.save();ctx.translate(x,y);ctx.rotate(rot||-.12);ctx.scale(sc,sc);ctx.globalAlpha=a*.92;
+  ctx.font="italic 400 64px Newsreader";const w=ctx.measureText(text).width+56;ctx.strokeStyle="#B5302A";ctx.lineWidth=7;ctx.strokeRect(-w/2,-50,w,92);ctx.lineWidth=2.5;ctx.strokeRect(-w/2+9,-41,w-18,74);ctx.fillStyle="#B5302A";ctx.textAlign="center";ctx.fillText(text,0,16);ctx.restore();}
+function suitcase(x,y,t,t0){if(t<t0||t>t0+1)return;const k=seg(t,t0,t0+.6);const X=x+k*260,Y=y-Math.sin(k*Math.PI)*160+k*40;ctx.save();ctx.translate(X,Y);ctx.rotate(k*6);ctx.fillStyle="#7A4A2E";ctx.fillRect(-24,-16,48,32);ctx.strokeStyle="#3A2A1E";ctx.lineWidth=3;ctx.strokeRect(-24,-16,48,32);ctx.beginPath();ctx.moveTo(-8,-16);ctx.lineTo(-8,-24);ctx.lineTo(8,-24);ctx.lineTo(8,-16);ctx.stroke();ctx.restore();}
+// the family on the scene: standing, scrambling up when the water rises, sitting on the roof
+const FAM=[[-58,1,"#3E4A52"],[-18,1,"#4B3B36"],[22,.72,"#5A6A5E"],[52,.6,"#7A5A44"]];
+function family(t,s,cx,geo,mode){ // mode: "calm" | "comic" | "chaos" | "quiet"
+  const roofY=geo.roof+4,wallX=cx-geo.w/2+30;
+  const rise=s.level>GROUND_Y-8?0:clamp((GROUND_Y-s.level)/Math.max(40,(GROUND_Y-roofY))*1.7,0,1);
+  if(mode==="quiet"){FAM.forEach(([dx,sc,c],i)=>{const p=rise>0?1:0;fig(cx+dx*.9,p?roofY:GROUND_Y,sc,c,p?"sit":"stand");});return rise;}
+  FAM.forEach(([dx,sc,c],i)=>{const p=clamp((rise-(sc<1?0:.12)-i*.03)/.7,0,1);
+    if(p<=0){fig(cx+dx,GROUND_Y,sc,c,"stand");return;}
+    if(p>=1){const j=mode==="chaos"?Math.sin(t*9+i*2)*7:Math.sin(t*3+i)*2;fig(cx+dx*.75+j,roofY,sc,c,"sit");return;}
+    const walk=seg(p,0,.3),climb=seg(p,.3,1),x0=cx+dx,xw=wallX+i*18;
+    const x=lerp(lerp(x0,xw,walk),cx+dx*.75,seg(climb,.85,1))+Math.sin(t*(mode==="chaos"?34:26)+i*3)*5*(climb>0&&climb<1?1:0);
+    const y=lerp(GROUND_Y,roofY,ease(climb));fig(x,y,sc,c,climb>0?"climb":"stand",t*20+i);});
+  // props: the TV held aloft, the chair, the goat, the chicken
+  const top=rise>=.95;
+  if(mode!=="calm"&&rise>0){const ad=FAM[0],ax=top?cx+ad[0]*.75:lerp(cx+ad[0],wallX,seg(rise,0,.4)),ay=top?roofY-58:lerp(GROUND_Y,roofY,ease(seg(rise,.4,1)))-92;tv(ax,ay-18,Math.sin(t*(mode==="chaos"?10:5))*.15);
+    if(mode==="chaos")chair(cx+40,top?roofY-60:GROUND_Y-60-rise*(GROUND_Y-roofY),Math.sin(t*8)*.3);
+    if(rise>.45)goat(cx+90,roofY+2,t,mode==="chaos"?12:6);
+    const ck=seg(rise,.15,.75);chicken(lerp(cx-140,cx-40,ck),lerp(GROUND_Y,roofY,ck)-Math.abs(Math.sin(t*12))*20*(ck<1?1:0),t);}
+  return rise;}
+// ---------- map camera and token (the family as a game piece) ----------
 function mapCam(t,s){
   const changing=s.lift&&s.lift[2]!==s.lift[3];
   let focus=changing?ll(JLL[s.lift[2]],JLL[s.lift[3]],E(s.k,.15,.9)):JLL[s.cur];
-  const KF=[[0,.045],[9,.045],[12.4,.07],[14.6,.07],[17.6,.09],[23,.1],[26,.11],[31.2,.13],[37.4,.17]];
+  const KF=[[2,.045],[6.2,.045],[7.6,.065],[8.8,.065],[10.4,.085],[14.5,.1],[16,.11],[22,.13],[23.6,.16]];
   let span=KF[KF.length-1][1];for(let i=1;i<KF.length;i++)if(t<=KF[i][0]){span=lgl(KF[i-1][1],KF[i][1],ease(seg(t,KF[i-1][0],KF[i][0])));break;}
   let ty=250;
-  if(t>38.6){const k=E(t,38.6,40);focus=ll(focus,DUR,k);span=lgl(.17,.55,k);ty=lerp(250,430,k);}
-  if(t>40){const k=E(t,40,42.2);focus=ll(DUR,ZA_C,k);span=lgl(.55,20,k);ty=lerp(430,540,k);}
+  if(t>24.4){const k=E(t,24.4,25.4);focus=ll(focus,DUR,k);span=lgl(.16,.55,k);ty=lerp(250,430,k);}
+  if(t>25.4){const k=E(t,25.4,26.9);focus=ll(DUR,ZA_C,k);span=lgl(.55,20,k);ty=lerp(430,540,k);}
   return {focus,span,ty};}
 function tokenPos(t,s){const changing=s.lift&&s.lift[2]!==s.lift[3];
   if(!s.lift)return {ll:JLL[s.cur],hop:0,squash:0};
@@ -157,6 +168,7 @@ function tokenPos(t,s){const changing=s.lift&&s.lift[2]!==s.lift[3];
   const hk=seg(k,.18,.82),p=ll(a,b,ease(hk)),hop=Math.sin(hk*Math.PI)*(changing?150:90);
   const land=seg(k,.82,1),bounce=Math.abs(Math.sin(land*Math.PI*2))*30*(1-land);
   return {ll:p,hop:hop+bounce,squash:k>.82?Math.sin(land*Math.PI*4)*(1-land):0};}
+const FLASH=t=>t<9.4||t>11.4?0:fadeIO(t,9.4,11.4,.3)*(.55+.45*Math.sin(t*14));
 function drawMapBG(t,s,alpha){const cam=mapCam(t,s);
   const proj=d3.geoMercator().center(cam.focus).scale(W/(cam.span*Math.PI/180)).translate([W/2,cam.ty]),path=d3.geoPath(proj,ctx);
   ctx.save();ctx.globalAlpha=alpha;
@@ -164,120 +176,112 @@ function drawMapBG(t,s,alpha){const cam=mapCam(t,s);
   ctx.save();ctx.beginPath();ctx.rect(0,0,W,H);path(LANDALL);ctx.clip("evenodd");ctx.strokeStyle="rgba(90,120,116,.3)";ctx.lineWidth=1.4;for(let k=-H;k<W;k+=14){ctx.beginPath();ctx.moveTo(k,0);ctx.lineTo(k+H,H);ctx.stroke();}ctx.restore();
   ctx.beginPath();path(LANDALL);ctx.fillStyle="#EDE3CB";ctx.fill();ctx.strokeStyle="#5A6E6A";ctx.lineWidth=2.4;ctx.stroke();
   if(cam.span>1.5){ctx.beginPath();path(BORDERS);ctx.strokeStyle="rgba(90,90,80,.45)";ctx.lineWidth=1.2;ctx.setLineDash([6,5]);ctx.stroke();ctx.setLineDash([]);}
-  if(cam.span<2){const fa=1-seg(cam.span,.8,2);ctx.globalAlpha=alpha*fa;ctx.beginPath();path(FLOODPLAIN);ctx.fillStyle="rgba(62,110,140,.3)";ctx.fill();ctx.save();ctx.clip();ctx.strokeStyle="rgba(46,96,128,.45)";ctx.lineWidth=2;for(let k=-H;k<W;k+=16){ctx.beginPath();ctx.moveTo(k,H);ctx.lineTo(k+H,0);ctx.stroke();}ctx.restore();ctx.beginPath();path(FLOODPLAIN);ctx.strokeStyle="rgba(36,86,120,.95)";ctx.lineWidth=2.4;ctx.stroke();
+  if(cam.span<2){const fa=1-seg(cam.span,.8,2);ctx.globalAlpha=alpha*fa;ctx.beginPath();path(FLOODPLAIN);ctx.fillStyle="rgba(62,110,140,.3)";ctx.fill();ctx.save();ctx.clip();ctx.strokeStyle="rgba(46,96,128,.45)";ctx.lineWidth=2;for(let k=-H;k<W;k+=16){ctx.beginPath();ctx.moveTo(k,H);ctx.lineTo(k+H,0);ctx.stroke();}ctx.restore();ctx.beginPath();path(FLOODPLAIN);ctx.strokeStyle="rgba(36,86,120,.95)";ctx.lineWidth=2.4;ctx.stroke();const fl=FLASH(t);if(fl>0){ctx.beginPath();path(FLOODPLAIN);ctx.strokeStyle="rgba(255,250,235,"+fl+")";ctx.lineWidth=9;ctx.stroke();ctx.strokeStyle="rgba(30,80,118,1)";ctx.lineWidth=3.2;ctx.stroke();}
     // flood-line label once, near the camp
-    if(cam.span<.2){const q=proj([30.952,-29.957]);ctx.fillStyle="rgba(46,96,128,.9)";ctx.font="italic 22px Newsreader";ctx.fillText("city flood line (1-in-100-year)",q[0]+20,q[1]+40);}
+    if(cam.span<.2){const q=proj([30.952,-29.957]);ptext("city flood line (1-in-100-year)",q[0]+20,q[1]+44,{size:26+FLASH(t)*16,c:"#DDEAF2",cd:"#1E4A6E",blur:10,auto:1});}
     ctx.globalAlpha=alpha;}
   // place names
   ctx.fillStyle="#4E473A";
-  if(cam.span<.3){ctx.font="italic 32px Newsreader";[["uMlazi",30.885,-29.962],["Lamontville",30.93,-29.94],["Umbilo",30.98,-29.875],["the Bluff",31.02,-29.925],["city centre",31.03,-29.85]].forEach(([n,lo,la])=>{const q=proj([lo,la]);ctx.fillText(n,q[0],q[1]);});}
-  else if(cam.span<3){ctx.font="600 34px 'Newsreader'";const q=proj(DUR);ctx.fillText("DURBAN",q[0]+30,q[1]-20);}
-  else{ctx.font="600 40px 'Newsreader'";const q=proj([24.2,-30.4]);ctx.fillText("SOUTH AFRICA",q[0]-150,q[1]);const d=proj(DUR);ctx.fillStyle="#B8463A";ctx.beginPath();ctx.arc(d[0],d[1],10,0,6.283);ctx.fill();ctx.strokeStyle="#B8463A";ctx.lineWidth=3;ctx.beginPath();ctx.arc(d[0],d[1],24+((t*20)%22),0,6.283);ctx.stroke();ctx.fillStyle="#2E3533";ctx.font="600 30px 'Newsreader'";ctx.fillText("Durban",d[0]+26,d[1]+8);}
+  if(cam.span<.3){ctx.font="italic 34px Newsreader";[["uMlazi",30.885,-29.962],["Lamontville",30.93,-29.94],["Umbilo",30.98,-29.875],["the Bluff",31.02,-29.925],["city centre",31.03,-29.85]].forEach(([n,lo,la])=>{const q=proj([lo,la]);ctx.fillText(n,q[0],q[1]);});}
+  else if(cam.span<3){const q=proj(DUR);ptext("Durban",q[0]+30,q[1]-20,{size:46,blur:10,auto:1});}
+  else{const q=proj([24.2,-30.4]);ptext("South Africa",q[0]-150,q[1],{size:52,blur:10,auto:1});const d=proj(DUR);ctx.fillStyle="#B8463A";ctx.beginPath();ctx.arc(d[0],d[1],10,0,6.283);ctx.fill();ctx.strokeStyle="#B8463A";ctx.lineWidth=3;ctx.beginPath();ctx.arc(d[0],d[1],24+((t*20)%22),0,6.283);ctx.stroke();ptext("Durban",d[0]+26,d[1]+10,{size:36,blur:10,auto:1});}
   // trail and stops
   let reached=0;L.forEach(l=>{if(t>=l[1])reached=Math.max(reached,l[3]);});
   const tk=tokenPos(t,s),tp=proj(tk.ll);
   if(cam.span<3){ctx.strokeStyle="#B5532F";ctx.lineWidth=cam.span<.3?4:3;ctx.setLineDash([10,8]);ctx.lineCap="round";ctx.beginPath();
     const P=JLL.slice(0,reached+1).map(c=>proj(c));P.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));if(s.lift&&s.lift[2]!==s.lift[3])ctx.lineTo(tp[0],tp[1]);ctx.stroke();ctx.setLineDash([]);
     const upto=Math.max(reached,s.lift?s.lift[2]:0);JLL.forEach((c,i)=>{if(i>upto)return;const q=proj(c);ctx.fillStyle=i===2?"#B8463A":"#3E4A48";ctx.beginPath();ctx.arc(q[0],q[1],cam.span<.3?9:6,0,6.283);ctx.fill();
-      if(cam.span<.3){ctx.fillStyle="#2E3533";ctx.font="600 20px 'IBM Plex Mono'";const o=[[-150,34],[16,34],[16,-16],[16,-16],[16,30]][i];ctx.fillText(JLAB[i],q[0]+o[0],q[1]+o[1]);}});
+      if(cam.span<.3){ctx.fillStyle="#2E3533";const o=[[-170,40],[16,40],[16,-18],[16,-18],[16,34]][i];ptext(JLAB[i],q[0]+o[0],q[1]+o[1],{size:28,blur:10,auto:1});}});
     // the token: the family as a game piece, hopping
     if(cam.span<1){const sx=1+tk.squash*.25,sy=1-tk.squash*.25;ctx.fillStyle="rgba(40,30,20,.25)";ctx.beginPath();ctx.ellipse(tp[0],tp[1]+6,26*(1-tk.hop/400),8*(1-tk.hop/400),0,0,6.283);ctx.fill();
       ctx.save();ctx.translate(tp[0],tp[1]-tk.hop);ctx.scale(sx,sy);ctx.fillStyle="#F3EBD8";ctx.strokeStyle="#2E3533";ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,-18,26,0,6.283);ctx.fill();ctx.stroke();
       [[-10,-24,"#3E4A52"],[2,-26,"#4B3B36"],[12,-14,"#5A6A5E"],[-2,-10,"#7A5A44"]].forEach(([x,y,c])=>{ctx.fillStyle=c;ctx.beginPath();ctx.arc(x,y,6,0,6.283);ctx.fill();});ctx.restore();}}
-  ctx.restore();}// ---------- flood gauge: real rain for each storm (ERA5 hourly), marks left for comparison ----------
-const RAINEV=[["2019",FLOODS[0]],["2022",FLOODS[1]],["2025",FLOODS[2]]].map(([y,f])=>({y,f,ev:INTRO_RAIN.events[y]}));
-function drawGauge(t){const a=Math.min(seg(t,1.6,2.6),1-seg(t,37.6,38.6));if(a<=0)return;
-  const X=1700,TOP=150,BOT=690,MAX=250,yOf=mm=>BOT-(mm/MAX)*(BOT-TOP);
-  // current storm
-  let cur=null;RAINEV.forEach(r=>{if(t>=r.f[2]-1.2)cur=r;});
+  ctx.restore();}// ---------- flood gauge: real rain (ERA5 hourly), a mark left for each storm; drawn object, text on the same plane ----------
+const RAINEV=FLOODS.map(f=>({y:f[4],f,ev:INTRO_RAIN.events[f[4]]}));
+function gauge(t){const a=Math.min(seg(t,2.6,3.0),1-seg(t,23.3,23.7));if(a<=0)return;
+  const X=1730,TOP=200,BOT=680,MAX=250,yOf=mm=>BOT-(mm/MAX)*(BOT-TOP);
+  let cur=null;RAINEV.forEach(r=>{if(t>=r.f[2]-.6)cur=r;});
   let cum=0,hr=0,hrs=0,rate=0,active=false;
-  if(cur){const mm=cur.ev.mm;hrs=mm.length;const k=seg(t,cur.f[2],cur.f[3]);const h=k*hrs,hi=Math.min(hrs-1,Math.floor(h));for(let i=0;i<hi;i++)cum+=mm[i];cum+=mm[hi]*(h-hi);hr=k>0?Math.min(hrs,hi+1):0;rate=mm[hi];active=t>=cur.f[2]&&t<=cur.f[3]+2.5;}
+  if(cur){const mm=cur.ev.mm;hrs=mm.length;const k=seg(t,cur.f[2],cur.f[3]);const h=k*hrs,hi=Math.min(hrs-1,Math.floor(h));for(let i=0;i<hi;i++)cum+=mm[i];cum+=mm[hi]*(h-hi);hr=k>0?Math.min(hrs,hi+1):0;rate=mm[hi];active=t>=cur.f[2]&&t<=cur.f[3]+1.5;}
   ctx.save();ctx.globalAlpha=a;
-  // card
-  ctx.fillStyle="rgba(243,235,216,.88)";ctx.fillRect(X-40,TOP-110,260,(BOT-TOP)+250);
-  ctx.fillStyle="#2B3436";ctx.font="400 15px 'IBM Plex Mono'";ctx.fillText("RAIN THIS STORM",X-22,TOP-80);
-  ctx.font="italic 400 54px Newsreader";ctx.fillText(Math.round(cum)+" mm",X-22,TOP-30);
-  ctx.font="400 14px 'IBM Plex Mono'";ctx.fillStyle="#5A6466";ctx.fillText(cur?(active?"hour "+hr+" of "+hrs+(rate>=10?" · "+rate.toFixed(0)+" mm/h":""):cur.ev.label):"",X-22,TOP-6);
-  // staff gauge post
-  ctx.fillStyle="#8A6A44";ctx.fillRect(X,TOP,34,BOT-TOP);ctx.fillStyle="#F6F1E4";ctx.fillRect(X+4,TOP,26,BOT-TOP);
-  for(let mm=0;mm<=MAX;mm+=10){const y=yOf(mm),big=mm%50===0;ctx.fillStyle="#2B3436";ctx.fillRect(X+4,y-1,big?26:14,big?3:2);if(big){ctx.font="13px 'IBM Plex Mono'";ctx.fillText(String(mm),X+40,y+5);}}
-  // water in the gauge
-  const wy=yOf(cum);ctx.fillStyle="rgba(86,140,138,.75)";ctx.fillRect(X+4,wy,26,BOT-wy);ctx.strokeStyle="#2F5F5E";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(X-8,wy);ctx.lineTo(X+44,wy);ctx.stroke();
-  // a normal month
-  const ny=yOf(INTRO_RAIN.normal_month_mm);ctx.setLineDash([5,5]);ctx.strokeStyle="#8C7A5A";ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(X-14,ny);ctx.lineTo(X+80,ny);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle="#8C7A5A";ctx.font="italic 15px Newsreader";ctx.fillText("a normal month",X+86,ny+5);
-  // marks left by earlier storms
-  RAINEV.forEach(r=>{if(t<=r.f[3]+.4||r===cur&&active)return;const y=yOf(r.ev.total);ctx.strokeStyle="#B5532F";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(X-12,y);ctx.lineTo(X+46,y);ctx.stroke();ctx.fillStyle="#B5532F";ctx.font="600 15px 'IBM Plex Mono'";ctx.fillText(r.y+" · "+Math.round(r.ev.total)+" mm",X+86,y+5);});
-  // volume on the river's catchment
+  // the post (a thing in the world, like the rope and the units)
+  ctx.fillStyle="#8A6A44";ctx.fillRect(X,TOP-10,34,BOT-TOP+70);ctx.fillStyle="#F6F1E4";ctx.fillRect(X+4,TOP,26,BOT-TOP);
+  for(let mm=0;mm<=MAX;mm+=10){const y=yOf(mm),big=mm%50===0;ctx.fillStyle="#2B3436";ctx.fillRect(X+4,y-1,big?26:14,big?3:2);}
+  const wy=yOf(cum);ctx.fillStyle="rgba(86,140,138,.8)";ctx.fillRect(X+4,wy,26,BOT-wy);ctx.strokeStyle="#2F5F5E";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(X-8,wy);ctx.lineTo(X+44,wy);ctx.stroke();
+  const ny=yOf(INTRO_RAIN.normal_month_mm);ctx.setLineDash([5,5]);ctx.strokeStyle="#8C7A5A";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(X-14,ny);ctx.lineTo(X+60,ny);ctx.stroke();ctx.setLineDash([]);
+  RAINEV.forEach(r=>{if(t<=r.f[3]+.3||(r===cur&&active))return;const y=yOf(r.ev.total);ctx.strokeStyle="#B5532F";ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(X-12,y);ctx.lineTo(X+46,y);ctx.stroke();});
+  ctx.restore();
+  // text: same italic plane as the captions
+  ptext(Math.round(cum)+" mm",X-30,TOP-74,{auto:1,a,size:54,al:"right"});
+  ptext(cur?(active?"of rain · hour "+hr+" of "+hrs:"of rain · "+cur.ev.label):"of rain",X-30,TOP-38,{auto:1,a,size:24,al:"right",c:"#E6DCC4"});
+  [0,50,100,150,200,250].forEach(mm=>ptext(String(mm),X+44,yOf(mm)+8,{auto:1,a,size:18,c:"#E6DCC4",blur:8}));
+  ptext("a normal month",X-24,ny+8,{auto:1,a,size:20,al:"right",c:"#E6DCC4",blur:8});
+  RAINEV.forEach(r=>{if(t<=r.f[3]+.3||(r===cur&&active))return;ptext(r.y+" · "+Math.round(r.ev.total)+" mm",X-24,yOf(r.ev.total)+8,{auto:1,a,size:22,al:"right",c:"#F2C6A8",cd:"#8E3A22"});});
   const pools=Math.round(cum/1000*INTRO_RAIN.catchment_km2*1e6/2500/1000)*1000;
-  ctx.fillStyle="#2B3436";ctx.font="italic 400 30px Newsreader";ctx.fillText("≈ "+pools.toLocaleString("en-US"),X-22,BOT+50);ctx.font="13px 'IBM Plex Mono'";ctx.fillStyle="#5A6466";ctx.fillText("OLYMPIC POOLS OF RAIN ON",X-22,BOT+74);ctx.fillText("THE RIVER'S CATCHMENT",X-22,BOT+92);
-  ctx.restore();}let now=0;
-function frame(t){now=t;const s=state(t);
-  if(t>=43){ctx.fillStyle="#1E2A2A";ctx.fillRect(0,0,W,H);ctx.drawImage(grain,0,0);ctx.globalAlpha=seg(t,43.2,44.2);ctx.fillStyle="#F3EBD8";ctx.font="italic 400 84px Newsreader";ctx.textAlign="center";ctx.fillText("Who decides where people go?",W/2,H/2+20);ctx.globalAlpha=1;ctx.textAlign="left";return;}
-  // sky
-  let sky=mix(SKY_DAY,SKY_STORM,s.storm);sky=mix(sky,SKY_NIGHT,s.night);const sg=ctx.createLinearGradient(0,0,0,GROUND_Y);sg.addColorStop(0,rgb(mix(sky,[255,255,255],.12)));sg.addColorStop(1,rgb(sky));drawMapBG(t,s,1);ctx.save();ctx.globalAlpha=.14+s.storm*.3+s.night*.42;ctx.fillStyle=sg;ctx.fillRect(0,0,W,H);ctx.restore();
-  // clouds (soft blobs), heavier in storms
+  ptext("≈ "+pools.toLocaleString("en-US")+" Olympic pools",X+34,BOT+108,{auto:1,a,size:30,al:"right"});
+  ptext("of rain on the river's catchment",X+34,BOT+140,{auto:1,a,size:22,al:"right",c:"#E6DCC4"});}
+function card(lines,a){ctx.fillStyle="#141A19";ctx.fillRect(0,0,W,H);ctx.drawImage(grain,0,0);lines.forEach((l,i)=>ptext(l,W/2,H/2-30+i*92-(lines.length-1)*46+30,{a,size:78,al:"center"}));}
+let now=0;
+function frame(t){now=t;
+  if(t<TITLE_END){card(["WHY DOES THE WATER KEEP","FINDING THE SAME PEOPLE?"],Math.min(seg(t,0,.3),1-seg(t,TITLE_END-.25,TITLE_END)));return;}
+  if(t>=Q_START){card(["WHY DO FLOOD VICTIMS KEEP","ENDING UP IN FLOOD ZONES?"],t<Q_END?seg(t,Q_START,Q_START+.2):0);return;}
+  const s=state(t);LIGHTBG=s.night<.35&&s.storm<.55;
+  // sky over the map
+  let sky=mix(SKY_DAY,SKY_STORM,s.storm);sky=mix(sky,SKY_NIGHT,s.night);const sg=ctx.createLinearGradient(0,0,0,GROUND_Y);sg.addColorStop(0,rgb(mix(sky,[255,255,255],.12)));sg.addColorStop(1,rgb(sky));
+  drawMapBG(t,s,1);ctx.save();ctx.globalAlpha=.14+s.storm*.3+s.night*.42;ctx.fillStyle=sg;ctx.fillRect(0,0,W,H);ctx.restore();
   seed=99;for(let i=0;i<26;i++){const cx=((rnd()*W*1.3+t*(8+rnd()*10))%(W*1.3))-W*.15,cy=60+rnd()*360,r=120+rnd()*220,a=(.1+s.storm*.3)*(1-s.night*.5);const gr=ctx.createRadialGradient(cx,cy,0,cx,cy,r);gr.addColorStop(0,rgb(mix(CLOUD,[70,82,84],s.storm*.6+s.night*.4),a));gr.addColorStop(1,rgb(CLOUD,0));ctx.fillStyle=gr;ctx.fillRect(cx-r,cy-r,2*r,2*r);}
-  // sun (quiet moments)
   const sun=(1-s.storm)*(1-s.night);if(sun>.05){const gr=ctx.createRadialGradient(1520,200,0,1520,200,260);gr.addColorStop(0,`rgba(255,236,190,${.55*sun})`);gr.addColorStop(1,"rgba(255,236,190,0)");ctx.fillStyle=gr;ctx.fillRect(1260,-60,520,520);}
   if(s.night>.5){ctx.fillStyle=`rgba(240,230,200,${(s.night-.5)*1.4})`;ctx.beginPath();ctx.arc(1500,180,34,0,6.283);ctx.fill();}
-  // birds in calm
   if(sun>.6){ctx.strokeStyle=`rgba(60,60,55,${sun*.8})`;ctx.lineWidth=3;[[1180,250],[1240,220],[1300,262],[1350,236]].forEach(([bx,by],i)=>{const x=bx+((t*30+i*40)%300)-150,fl=Math.sin(t*6+i)*6;ctx.beginPath();ctx.moveTo(x-16,by+fl);ctx.quadraticCurveTo(x-6,by-8,x,by);ctx.quadraticCurveTo(x+6,by-8,x+16,by+fl);ctx.stroke();});}
-  // ground
   ctx.fillStyle=rgb(mix([150,138,104],[60,70,66],s.night*.7));ctx.fillRect(0,GROUND_Y,W,H-GROUND_Y);ctx.fillStyle=rgb(mix([122,140,96],[50,62,56],s.night*.7));ctx.fillRect(0,GROUND_Y-8,W,14);
   palms(t,s.night);
-  // buildings: current, and next sliding in during a lift that changes place
-  const changing=s.lift&&s.lift[2]!==s.lift[3],pk=changing?E(s.k,.25,.85):0;
+  // buildings: slide during a rope move; switch instantly on a hard cut
+  const rl=s.lift&&s.lift[4]==="rope"?s.lift:null,changing=rl&&rl[2]!==rl[3],pk=changing?E(s.k,.25,.85):0;
   const posCur=lerp(W/2,-700,pk),posNext=lerp(W+700,W/2,pk);
-  const geo=PLACES[s.cur].f(posCur,GROUND_Y);let geoN=null;if(changing)geoN=PLACES[s.next].f(posNext,GROUND_Y);
-  // lanterns (February 2025): three small warm lights that go out
-  if(t>28&&t<31.4&&s.cur===2){const la=1-seg(t,30,30.9);for(let i=0;i<3;i++){ctx.save();ctx.globalAlpha=la;ctx.fillStyle="#FFE2A0";ctx.shadowColor="#FFD27A";ctx.shadowBlur=24;ctx.beginPath();ctx.arc(posCur+130+i*34,GROUND_Y-150,7,0,6.283);ctx.fill();ctx.restore();}}
-  // people: on the ground when dry, on the roof when flooded, on the rope when lifted
-  const roofY=geo.roof;let px=W/2,py=GROUND_Y,sit=false,onRope=false;
-  const flooded=s.level<GROUND_Y-40;
-  if(flooded){py=roofY+4;sit=true;}
-  let ropeY=null;
-  if(s.lift){const lk=s.k;const down=E(lk,0,.18),up=E(lk,.18,.45),lower=E(lk,.7,.95);const startY=flooded||t<12.5||(t>23&&t<26.4)||(t>31&&t<31.5)?roofY+4:GROUND_Y;
-    const targetGeo=changing?geoN:geo;const endY=GROUND_Y;py=lerp(lerp(startY,240,up),endY,lower);ropeY=lerp(-20,startY-120,down);if(lk>.18)ropeY=py-120;if(lk>.95)ropeY=lerp(py-120,-40,seg(lk,.95,1));onRope=lk>.18&&lk<.95;sit=false;
-    if(t>23&&t<26.4){} }
-  else if(L.some(l=>t>=l[0]-1.6&&t<l[0])){const l=L.find(l=>t>=l[0]-1.6&&t<l[0]);const dk=E(t,l[0]-1.6,l[0]);ropeY=lerp(-20,py-120,dk);}
-  if(ropeY!==null&&ropeY>-30){ctx.strokeStyle="#5B4A33";ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(px+4,-20);for(let y=-20;y<ropeY;y+=20)ctx.lineTo(px+4+Math.sin(y*.05+t*3)*3,y);ctx.stroke();ctx.lineWidth=4;ctx.beginPath();ctx.ellipse(px+4,ropeY+18,16,22,0,0,6.283);ctx.stroke();}
-  people(px,py+(onRope?60:0),sit);
-  if(onRope){ctx.strokeStyle="#5B4A33";ctx.lineWidth=3;[-58,-18,22,52].forEach(dx=>{ctx.beginPath();ctx.moveTo(px+dx,py+60-70);ctx.lineTo(px+4,ropeY+30);ctx.stroke();});}
-  // single drops before each flood, and the last ominous drop
-  FLOODS.forEach(f=>{drop(t,f[0],W/2-380);if(f[1])drop(t,f[1],W/2+300);});drop(t,38.6,W/2+120);
-  // rain
+  const geo=PLACES[s.place].f(posCur,GROUND_Y);if(changing)PLACES[s.next].f(posNext,GROUND_Y);
+  const mode=(t>16.4&&t<22)?"quiet":s.year==="2022"?"chaos":s.year==="2019"?"comic":"calm";
+  // February 2025: three small warm lights above the roof go out. Nothing else.
+  if(t>16.8&&t<22&&s.place===2){const la=1-seg(t,19.4,20.4);for(let i=0;i<3;i++){const li=clamp(1-seg(t,19.4+i*.3,19.7+i*.3),0,1);ctx.save();ctx.globalAlpha=la*li;ctx.fillStyle="#FFE2A0";ctx.shadowColor="#FFD27A";ctx.shadowBlur=24;ctx.beginPath();ctx.arc(W/2+150+i*34,geo.roof-44,7,0,6.283);ctx.fill();ctx.restore();}}
+  // people
+  const px=W/2;let ropeY=null,onRope=false;
+  if(rl){const lk=s.k,up=E(lk,.18,.45),lower=E(lk,.7,.95),dn=E(lk,0,.18);const startY=(rl===L[0]||rl===L[2])?geo.roof+4:GROUND_Y;
+    const py=lerp(lerp(startY,240,up),GROUND_Y,lower);ropeY=lk<.18?lerp(-20,startY-130,dn):py-130;if(lk>.95)ropeY=lerp(py-130,-60,seg(lk,.95,1));onRope=lk>.18&&lk<.95;
+    FAM.forEach(([dx,sc,c],i)=>fig(px+dx,py+(onRope?60:0),sc,c,onRope?"climb":"stand",t*6+i));
+    if(onRope){ctx.strokeStyle="#5B4A33";ctx.lineWidth=3;FAM.forEach(([dx])=>{ctx.beginPath();ctx.moveTo(px+dx,py-10);ctx.lineTo(px+4,ropeY+30);ctx.stroke();});}}
+  else{const nl=L.find(l=>l[4]==="rope"&&t>=l[0]-.6&&t<l[0]);if(nl)ropeY=lerp(-20,((nl===L[0]||nl===L[2])?geo.roof:GROUND_Y)-130,E(t,nl[0]-.6,nl[0]));family(t,s,px,geo,mode);}
+  if(ropeY!==null&&ropeY>-50){ctx.strokeStyle="#5B4A33";ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(px+4,-20);for(let y=-20;y<ropeY;y+=20)ctx.lineTo(px+4+Math.sin(y*.05+t*3)*3,y);ctx.stroke();ctx.lineWidth=4;ctx.beginPath();ctx.ellipse(px+4,ropeY+18,16,22,0,0,6.283);ctx.stroke();}
+  // deadpan stamps
+  if(t>=7.62&&t<8.8)stamp("TEMPORARY",W/2,GROUND_Y-230,t,7.62);
+  if(t>=22.3&&t<22.6){suitcase(W/2-10,GROUND_Y-50,t,22.3);stamp("EVICTED",W/2,GROUND_Y-250,t,22.34,.1);}
+  FLOODS.forEach(f=>{drop(t,f[0],W/2-380);if(f[1])drop(t,f[1],W/2+300);});drop(t,23.6,W/2+120);
   if(s.rain>0){ctx.save();ctx.strokeStyle=`rgba(230,236,232,${.35*s.rain})`;ctx.lineWidth=1.6;ctx.beginPath();seed=5;for(let i=0;i<700*s.rain;i++){const x0=rnd()*W*1.2,sp=1100+rnd()*500,y=((t*sp+rnd()*H*4)%(H+80))-40,x=(x0-t*sp*.2)%W;const X=x<0?x+W:x;ctx.moveTo(X,y);ctx.lineTo(X+7,y-28);}ctx.stroke();ctx.restore();}
-  // water with light streaks and the building's reflection
   if(s.level<H){ctx.save();const wg=ctx.createLinearGradient(0,s.level,0,H);wg.addColorStop(0,rgb(mix(WATER,[40,60,62],s.night*.7),.93));wg.addColorStop(1,rgb(mix(WATER_DEEP,[24,38,40],s.night*.7),.97));ctx.fillStyle=wg;ctx.fillRect(0,s.level,W,H-s.level);
-    ctx.globalAlpha=.16;ctx.translate(0,2*s.level);ctx.scale(1,-1);ctx.beginPath();ctx.rect(0,s.level-(H-s.level),W,H-s.level);ctx.clip();PLACES[s.cur].f(posCur,GROUND_Y);ctx.restore();
+    ctx.globalAlpha=.16;ctx.translate(0,2*s.level);ctx.scale(1,-1);ctx.beginPath();ctx.rect(0,s.level-(H-s.level),W,H-s.level);ctx.clip();PLACES[s.place].f(posCur,GROUND_Y);ctx.restore();
     ctx.save();ctx.strokeStyle=`rgba(232,240,236,${.55-s.night*.3})`;ctx.lineWidth=2.5;seed=17;for(let i=0;i<60;i++){const y=s.level+8+rnd()*(H-s.level),x=((rnd()*W+t*(20+rnd()*30))%W),w=40+rnd()*160;ctx.beginPath();ctx.moveTo(x,y);ctx.bezierCurveTo(x+w*.3,y-4,x+w*.6,y+4,x+w,y);ctx.stroke();}
-    ctx.strokeStyle=`rgba(232,240,236,.8)`;ctx.lineWidth=3;ctx.beginPath();for(let x=0;x<=W;x+=14)ctx.lineTo(x,s.level+Math.sin(x*.02+t*2)*4);ctx.stroke();ctx.restore();debris(t,s.level);}
-  drawGauge(t);
-  if(t>38.6){const a=seg(t,38.6,39.6);drawMapBG(t,s,a);ctx.save();ctx.globalAlpha=a*.18;ctx.fillStyle="#EDE3CB";ctx.fillRect(0,0,W,H);ctx.restore();}
-  // grain + vignette
+    ctx.strokeStyle=`rgba(232,240,236,.8)`;ctx.lineWidth=3;ctx.beginPath();for(let x=0;x<=W;x+=14)ctx.lineTo(x,s.level+Math.sin(x*.02+t*2)*4);ctx.stroke();ctx.restore();if(mode!=="quiet")debris(t,s.level);}
+  gauge(t);
+  MAPFULL=t>24.8;if(t>24.3){drawMapBG(t,s,seg(t,24.3,25.0));}
   ctx.drawImage(grain,0,0);const vg=ctx.createRadialGradient(W/2,H/2,H*.4,W/2,H/2,H*.95);vg.addColorStop(0,"rgba(0,0,0,0)");vg.addColorStop(1,"rgba(30,26,18,.28)");ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
-  // captions
-  caption("Mega Village, Durban.",fadeIO(t,.3,3.8),"2019");
-  caption("The river rises.",fadeIO(t,4.2,8.8),"april 2019");
-  caption("The city moves them. Tents.",fadeIO(t,9.6,12.5));
-  caption("Two years pass.",fadeIO(t,12.6,14.8),"2019 – 2021");
-  caption("A camp on the riverbank.",fadeIO(t,15.2,19.8),"march 2021");
-  caption("The camp floods.",fadeIO(t,20.4,23.6),"april 2022");
-  caption("They're sent back.",fadeIO(t,23.8,26.6));
-  caption("It floods again, at night.",fadeIO(t,28.4,30.2),"february 2025");
-  caption("Three children are swept away.",fadeIO(t,30.2,32.4));
-  caption("A hotel.",fadeIO(t,32.6,34.6),"2025");
-  caption("Evicted. A student residence.",fadeIO(t,35,38.2),"july 2025");
-  caption("Still temporary.",fadeIO(t,38.2,40));caption("Durban, South Africa.",fadeIO(t,40.2,42.9),"one city. 84 “temporary” sites nationally");
+  // captions: one plane, italic, no boxes
+  caption("Mega Village, Durban.",fadeIO(t,2.1,5.9),"April 2019");
+  caption("Tents. Two years.",fadeIO(t,7.7,8.8),"2019 – 2021");
+  caption("A camp on the riverbank.",fadeIO(t,9.9,11.3),"March 2021");
+  caption("The camp floods.",fadeIO(t,11.8,14.4),"April 2022");
+  caption("They're sent back.",fadeIO(t,14.6,16.0));
+  caption("It floods again, at night.",fadeIO(t,17.0,19.3,.5),"February 2025");
+  caption("Three children are swept away.",fadeIO(t,19.6,21.9,.5));
+  caption("A hotel. Evicted. A student residence.",fadeIO(t,22.0,23.6),"2025");
+  caption("Still temporary.",fadeIO(t,23.6,24.8));
+  caption("Durban, South Africa.",fadeIO(t,25.4,27.4),"one city · 84 “temporary” sites nationally");
 }
 let t=0,playing=false,last=0;const sc=document.getElementById("scrub"),tm=document.getElementById("tm"),pb=document.getElementById("play");
 const ui=()=>{sc.value=Math.round(t/TOTAL*1000);tm.textContent=t.toFixed(1)+" / "+TOTAL+" s";pb.textContent=playing?"Pause":"Play";};
-function loop(n){if(playing){t+=Math.min(.05,(n-last)/1000);if(t>=TOTAL){t=TOTAL;playing=false;}}frame(t);ui();last=n;requestAnimationFrame(loop);}
+function loop(n){if(playing){t+=Math.min(.05,(n-last)/1000);if(t>=TOTAL){t=TOTAL;playing=false;}}frame(t);ui();last=n;loadSims().then(()=>requestAnimationFrame(loop));}
 function play(on){playing=on;document.getElementById("poster").hidden=true;if(on&&t>=TOTAL)t=0;last=performance.now();ui();}
 pb.onclick=()=>play(!playing);document.getElementById("go").onclick=()=>{t=0;play(true);};
 sc.oninput=()=>{playing=false;document.getElementById("poster").hidden=true;t=sc.value/1000*TOTAL;};
 addEventListener("keydown",e=>{if(e.key===" "&&e.target.tagName!=="INPUT"){e.preventDefault();play(!playing);}});
-const q=/[?&]t=([\d.]+)/.exec(location.search);if(q){document.getElementById("poster").hidden=true;t=+q[1];}else t=6.5;
-requestAnimationFrame(loop);
+const q=/[?&]t=([\d.]+)/.exec(location.search);if(q){document.getElementById("poster").hidden=true;t=+q[1];}else t=12.8;
+loadSims().then(()=>requestAnimationFrame(loop));
 })();
 </script>

@@ -4,6 +4,7 @@
 #          with a catchment of 5 km2 or more; for each, record upstream area binned by flow distance (travel time at 1.5 m/s).
 #          Hydrograph Q(t) = sum over bins of area x runoff x rain(t - lag) (same ERA5 hourly rain everywhere; 70% runoff).
 # Output : data/raw/upstream_inflow.json (entry points with lon/lat, catchment km2, hourly inflow m3/s for the 36-hour window)
+param([string]$Start = '2022-04-11T06:00', [int]$Hours = 36, [string]$Suffix = '')
 $ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue'
 $root = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 $cache = "$root\data\raw\terrain_tiles"; New-Item -ItemType Directory -Force $cache | Out-Null
@@ -13,9 +14,12 @@ function TX([double]$lon) { [math]::Floor(($lon + 180) / 360 * [math]::Pow(2, $Z
 function TY([double]$lat) { $r = $lat * [math]::PI / 180; [math]::Floor((1 - [math]::Log([math]::Tan($r) + 1 / [math]::Cos($r)) / [math]::PI) / 2 * [math]::Pow(2, $ZZ)) }
 $x0 = TX $W0; $x1 = TX $E0; $y0 = TY $N0; $y1 = TY $S0
 foreach ($x in $x0..$x1) { foreach ($y in $y0..$y1) { $f = "$cache\${ZZ}_${x}_${y}.png"; if (-not (Test-Path $f)) { Invoke-WebRequest "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/$ZZ/$x/$y.png" -OutFile $f -TimeoutSec 60 } } }
-$rj = Get-Content "$root\data\raw\era5_rain_lamontville_2022-04.json" -Raw | ConvertFrom-Json
-$si = [array]::IndexOf($rj.hourly.time, '2022-04-11T06:00'); $pre = 12   # include 12 h before the window so lagged rain is counted
-$rainAll = @(0..(36 + $pre - 1) | ForEach-Object { [double]$rj.hourly.precipitation[$si - $pre + $_] })
+$rainFile = if ($Suffix) { "$root\data\raw\era5_rain_lamontville_$Suffix.json" } else { "$root\data\raw\era5_rain_lamontville_2022-04.json" }
+if (-not (Test-Path $rainFile)) { $d0 = ([datetime]$Start).AddDays(-2).ToString('yyyy-MM-dd'); $d1 = ([datetime]$Start).AddHours($Hours + 24).ToString('yyyy-MM-dd')
+  Invoke-WebRequest "https://archive-api.open-meteo.com/v1/archive?latitude=-29.95&longitude=30.95&start_date=$d0&end_date=$d1&hourly=precipitation&timezone=Africa%2FJohannesburg&models=era5" -OutFile $rainFile -TimeoutSec 60 }
+$rj = Get-Content $rainFile -Raw | ConvertFrom-Json
+$si = [array]::IndexOf($rj.hourly.time, $Start); $pre = 12   # include 12 h before the window so lagged rain is counted
+$rainAll = @(0..($Hours + $pre - 1) | ForEach-Object { [double]$rj.hourly.precipitation[$si - $pre + $_] })
 Add-Type -ReferencedAssemblies System.Drawing -Language CSharp -TypeDefinition @"
 using System; using System.Drawing; using System.Drawing.Imaging; using System.Runtime.InteropServices; using System.Collections.Generic;
 public static class UP {
@@ -56,8 +60,8 @@ for ($y = $ya; $y -le $yb; $y++) { for ($x = $xa; $x -le $xb; $x++) { $isIn[$y *
 $minCells = [int][math]::Ceiling(5e6 / $cellA); $maxLag = 30
 $rows = [UP]::Entries($to, $isIn, $W, $H, $cellm, 1.5, $minCells, $maxLag)
 $entries = foreach ($row in $rows) { $j = [int]$row[0]
-  $Q = @(0..35 | ForEach-Object { $t2 = $_ + $pre; $s = 0.0; for ($b = 0; $b -le $maxLag; $b++) { $ti = $t2 - $b; if ($ti -ge 0) { $s += $row[3 + $b] * $cellA * 0.7 * $rainAll[$ti] / 1000 / 3600 } }; [math]::Round($s, 1) })
+  $Q = @(0..($Hours - 1) | ForEach-Object { $t2 = $_ + $pre; $s = 0.0; for ($b = 0; $b -le $maxLag; $b++) { $ti = $t2 - $b; if ($ti -ge 0) { $s += $row[3 + $b] * $cellA * 0.7 * $rainAll[$ti] / 1000 / 3600 } }; [math]::Round($s, 1) })
   $ml = 0; for ($b = 0; $b -le $maxLag; $b++) { if ($row[3 + $b] -gt 0) { $ml = $b } }
   [pscustomobject][ordered]@{ lon = [math]::Round((LonOf ($j % $W)), 5); lat = [math]::Round((LatOf ([math]::Floor($j / $W))), 5); catchment_km2 = [math]::Round($row[1] * $cellA / 1e6, 1); max_lag_h = $ml; inflow_m3s = $Q } }$entries = $entries | Sort-Object catchment_km2 -Descending
-@{ cell_m = [math]::Round($cellm, 1); runoff = 0.7; velocity_ms = 1.5; entries = @($entries) } | ConvertTo-Json -Depth 5 | Out-File "$root\data\raw\upstream_inflow.json" -Encoding utf8
+@{ cell_m = [math]::Round($cellm, 1); runoff = 0.7; velocity_ms = 1.5; entries = @($entries) } | ConvertTo-Json -Depth 5 | Out-File $(if ($Suffix) { "$root\data\raw\upstream_inflow_$Suffix.json" } else { "$root\data\raw\upstream_inflow.json" }) -Encoding utf8
 $entries | ForEach-Object { "{0},{1}  {2} km2  peak {3} m3/s  lag<= {4} h" -f $_.lon, $_.lat, $_.catchment_km2, ($_.inflow_m3s | Measure-Object -Maximum).Maximum, $_.max_lag_h }

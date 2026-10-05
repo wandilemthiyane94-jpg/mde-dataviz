@@ -10,6 +10,7 @@
 #   Missing : storm-water drains, canal walls and culverts are not represented at 33 m
 # Outputs  : prototype/story/rem/sim_frames.png (12x12 sprite of 144 frames, 15 min apart; depth*60 in red channel, 0-4.25 m)
 #            prototype/story/rem/sim.json (rain series, per-frame flooded area, depth at the camp)
+param([string]$Start = '2022-04-11T06:00', [int]$Hours = 36, [string]$Suffix = '', [double]$SiteLon = 30.9455, [double]$SiteLat = -29.9537)
 $ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue'
 $root = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 $cache = "$root\data\raw\terrain_tiles"; $out = "$root\prototype\story\rem"
@@ -18,10 +19,11 @@ function TX([double]$lon) { [math]::Floor(($lon + 180) / 360 * [math]::Pow(2, $Z
 function TY([double]$lat) { $r = $lat * [math]::PI / 180; [math]::Floor((1 - [math]::Log([math]::Tan($r) + 1 / [math]::Cos($r)) / [math]::PI) / 2 * [math]::Pow(2, $Z)) }
 $x0 = TX $W0; $x1 = TX $E0; $y0 = TY $N0; $y1 = TY $S0
 # rainfall (cached)
-$rainFile = "$root\data\raw\era5_rain_lamontville_2022-04.json"
-if (-not (Test-Path $rainFile)) { Invoke-WebRequest "https://archive-api.open-meteo.com/v1/archive?latitude=-29.95&longitude=30.95&start_date=2022-04-10&end_date=2022-04-13&hourly=precipitation&timezone=Africa%2FJohannesburg&models=era5" -OutFile $rainFile -TimeoutSec 60 }
+$rainFile = if ($Suffix) { "$root\data\raw\era5_rain_lamontville_$Suffix.json" } else { "$root\data\raw\era5_rain_lamontville_2022-04.json" }
+if (-not (Test-Path $rainFile)) { $d0 = ([datetime]$Start).AddDays(-2).ToString('yyyy-MM-dd'); $d1 = ([datetime]$Start).AddHours($Hours + 24).ToString('yyyy-MM-dd'); Invoke-WebRequest "https://archive-api.open-meteo.com/v1/archive?latitude=-29.95&longitude=30.95&start_date=$d0&end_date=$d1&hourly=precipitation&timezone=Africa%2FJohannesburg&models=era5" -OutFile $rainFile -TimeoutSec 60 }
+if ($Suffix -and -not (Test-Path "$root\data\raw\upstream_inflow_$Suffix.json")) { throw "run build_upstream_inflow.ps1 -Suffix $Suffix first" }
 $rj = Get-Content $rainFile -Raw | ConvertFrom-Json
-$startIdx = [array]::IndexOf($rj.hourly.time, '2022-04-11T06:00'); $hours = 36
+$startIdx = [array]::IndexOf($rj.hourly.time, $Start); $hours = $Hours
 $rain = @(0..($hours - 1) | ForEach-Object { [double]$rj.hourly.precipitation[$startIdx + $_] })
 $times = @(0..($hours - 1) | ForEach-Object { $rj.hourly.time[$startIdx + $_] })
 Add-Type -ReferencedAssemblies System.Drawing -Language CSharp -TypeDefinition @"
@@ -73,23 +75,24 @@ public static class SIM {
 $F = 4; $W = 0; $H = 0; $terrain = [SIM]::Dem($cache, $Z, $x0, $x1, $y0, $y1, $F, [ref]$W, [ref]$H); $terrain = [SIM]::Fill($terrain, $W, $H)
 $pxm = 40075016.686 * [math]::Cos(29.95 * [math]::PI / 180) / ([math]::Pow(2, $Z) * 256) * $F
 # camp cell (Lamontville riverside camp, from the site map)
-$n = [math]::Pow(2, $Z); $fx = (30.9455 + 180) / 360 * $n; $r = -29.9537 * [math]::PI / 180; $fy = (1 - [math]::Log([math]::Tan($r) + 1 / [math]::Cos($r)) / [math]::PI) / 2 * $n
+$n = [math]::Pow(2, $Z); $fx = ($SiteLon + 180) / 360 * $n; $r = $SiteLat * [math]::PI / 180; $fy = (1 - [math]::Log([math]::Tan($r) + 1 / [math]::Cos($r)) / [math]::PI) / 2 * $n
 $cx = [int](($fx - $x0) * 256 / $F); $cy = [int](($fy - $y0) * 256 / $F); $campIdx = $cy * $W + $cx
 $frameMin = 15; $nF = $hours * 60 / $frameMin; $campD = New-Object double[] $nF; $area = New-Object double[] $nF
 # upstream inflow entry points (build_upstream_inflow.ps1), snapped to the lowest cell within 3 cells of the box edge
 $srcI = @(); $srcQ = @()
-$upF = "$root\data\raw\upstream_inflow.json"
+$upF = if ($Suffix) { "$root\data\raw\upstream_inflow_$Suffix.json" } else { "$root\data\raw\upstream_inflow.json" }
 if (Test-Path $upF) { $up = Get-Content $upF -Raw | ConvertFrom-Json
   foreach ($en in $up.entries) { $efx = ($en.lon + 180) / 360 * $n; $er = $en.lat * [math]::PI / 180; $efy = (1 - [math]::Log([math]::Tan($er) + 1 / [math]::Cos($er)) / [math]::PI) / 2 * $n
     $ex = [math]::Max(0, [math]::Min($W - 1, [int](($efx - $x0) * 256 / $F))); $ey = [math]::Max(0, [math]::Min($H - 1, [int](($efy - $y0) * 256 / $F)))
     $best = $ey * $W + $ex; for ($a = -3; $a -le 3; $a++) { for ($b = -3; $b -le 3; $b++) { $xx = $ex + $b; $yy = $ey + $a; if ($xx -ge 0 -and $yy -ge 0 -and $xx -lt $W -and $yy -lt $H -and $terrain[$yy * $W + $xx] -lt $terrain[$best]) { $best = $yy * $W + $xx } } }
     $srcI += $best; $srcQ += @($en.inflow_m3s | ForEach-Object { [double]$_ }) } }
 $frames = [SIM]::Run($terrain, $W, $H, $pxm, [double[]]$rain, 0.7, 10.0, $frameMin, $campIdx, $campD, $area, [int[]]$srcI, [double[]]$srcQ)
-[SIM]::Sprite($frames, $W, $H, 12, "$out\sim_frames.png")
+if (-not $Suffix) { [SIM]::Sprite($frames, $W, $H, 12, "$out\sim_frames.png") }
+$campC = @(for ($fi = 0; $fi -lt $nF; $fi++) { [math]::Round($frames[$fi][$campIdx] / 60.0, 3) })   # depth in the single 33 m cell (frames store depth*60, capped 4.25 m)
 $inv = [Globalization.CultureInfo]::InvariantCulture
 $sim = [ordered]@{ grid = @($W, $H); cell_m = [math]::Round($pxm, 1); frame_minutes = $frameMin; frames = $nF; cols = 12; depth_scale = 60
   start = $times[0]; rain_mm_per_hour = $rain; rain_times = $times; camp_cell = @($cx, $cy)
-  camp_depth_m = @($campD | ForEach-Object { [math]::Round($_, 3) }); flooded_km2 = @($area | ForEach-Object { [math]::Round($_, 3) })
+  camp_depth_m = @($campD | ForEach-Object { [math]::Round($_, 3) }); site_cell_depth_m = $campC; site = @($SiteLon, $SiteLat); flooded_km2 = @($area | ForEach-Object { [math]::Round($_, 3) })
   source = 'pits filled; ERA5 hourly precipitation via Open-Meteo; AWS Terrain Tiles z14; simplified rain-on-grid flow, runoff 0.7, Manning n 0.05; upstream river inflow from terrain-traced catchments (velocity 1.5 m/s, runoff 0.7)' }
-($sim | ConvertTo-Json -Depth 4 -Compress) | Out-File "$out\sim.json" -Encoding utf8
+($sim | ConvertTo-Json -Depth 4 -Compress) | Out-File $(if ($Suffix) { "$out\sim_$Suffix.json" } else { "$out\sim.json" }) -Encoding utf8
 "grid ${W}x${H} @ $([math]::Round($pxm,1)) m; rain total $([math]::Round(($rain|Measure-Object -Sum).Sum,1)) mm; peak camp depth $([math]::Round(($campD|Measure-Object -Maximum).Maximum,2)) m; peak flooded $([math]::Round(($area|Measure-Object -Maximum).Maximum,2)) km2"
