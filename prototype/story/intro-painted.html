@@ -52,6 +52,8 @@ function house(x,y){seed=31;const w=380,h=200,rh=110;
   ctx.strokeStyle="rgba(60,70,72,.5)";for(let k=0;k<10;k++){ctx.beginPath();ctx.moveTo(x+w/2+k*15,y-150+k*4);ctx.lineTo(x+w/2+k*15,y);ctx.stroke();}
   [[x-120,y-150],[x+60,y-150]].forEach(([wx,wy])=>{ctx.fillStyle="#3B3A33";ctx.fillRect(wx,wy,54,58);ctx.strokeStyle="#8C7A5A";ctx.lineWidth=4;ctx.strokeRect(wx,wy,54,58);});
   ctx.fillStyle="#5B6E64";ctx.fillRect(x-30,y-112,56,112);
+  // satellite dish on the wall by the lean-to
+  ctx.save();ctx.translate(x+w/2-34,y-h+34);ctx.strokeStyle="#6E7476";ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(10,-26);ctx.stroke();ctx.rotate(-.5);ctx.fillStyle="#D9DCD8";ctx.beginPath();ctx.ellipse(14,-40,30,20,0,0,6.283);ctx.fill();ctx.strokeStyle="#9AA0A0";ctx.lineWidth=3;ctx.stroke();ctx.fillStyle="#7A8082";ctx.beginPath();ctx.ellipse(14,-40,22,13,0,0,6.283);ctx.fill();ctx.strokeStyle="#5C6264";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(14,-40);ctx.lineTo(34,-62);ctx.stroke();ctx.fillStyle="#3E4446";ctx.fillRect(30,-68,10,8);ctx.restore();
   return {roof:y-h-rh+30,w};}
 function palms(t,night){const col=night>.5?"#3A4A44":"#5E7A52",trunk=night>.5?"#3E3A30":"#7A6544";
   [[110,GROUND_Y,1.1],[330,GROUND_Y,.8],[1620,GROUND_Y,1],[1830,GROUND_Y,.85],[1460,GROUND_Y,.6]].forEach(([px,py,s],i)=>{const sw=Math.sin(t*1.3+i)*6*s;
@@ -84,7 +86,7 @@ const JLL=JP.map(p=>[p.lon,p.lat]);
 const DUR=[30.99,-29.89],ZA_C=[25.2,-28.9];
 const ll=(a,b,k)=>[lerp(a[0],b[0],k),lerp(a[1],b[1],k)],lgl=(a,b,k)=>Math.exp(lerp(Math.log(a),Math.log(b),k));
 // ---------- timeline (seconds): ~29 s, per intro-painted-FINAL-spec ----------
-const TITLE_END=2.0,Q_START=27.6,Q_END=29.1,TOTAL=29.2;
+const TITLE_END=0,Q_START=27.6,Q_MID=29.0,Q_END=30.5,TOTAL=30.6;
 // moves: [start,end,from,to,kind]. "rope" = the city's rope lifts them; "cut" = hard cut in the fast sequence
 const L=[[6.2,7.6,0,1,"rope"],[8.8,10.4,1,2,"rope"],[14.5,15.9,2,2,"rope"],[22.0,22.3,2,3,"cut"],[22.6,22.9,3,4,"cut"]];
 // floods: [drop1, drop2, rainStart, rainEnd, year]
@@ -150,10 +152,35 @@ function family(t,s,cx,geo,mode){ // mode: "calm" | "comic" | "chaos" | "quiet"
   const top=rise>=.95;
   if(mode!=="calm"&&rise>0){const ad=FAM[0],ax=top?cx+ad[0]*.75:lerp(cx+ad[0],wallX,seg(rise,0,.4)),ay=top?roofY-58:lerp(GROUND_Y,roofY,ease(seg(rise,.4,1)))-92;tv(ax,ay-18,Math.sin(t*(mode==="chaos"?10:5))*.15);
     if(mode==="chaos")chair(cx+40,top?roofY-60:GROUND_Y-60-rise*(GROUND_Y-roofY),Math.sin(t*8)*.3);
-    if(rise>.45)goat(cx+90,roofY+2,t,mode==="chaos"?12:6);
+    if(rise>.45){if(s.year==="2019"){dog(cx+96,roofY+2,t,-1,false);cat(cx-96,roofY+2,t);}else goat(cx+90,roofY+2,t,12);}
     const ck=seg(rise,.15,.75);chicken(lerp(cx-140,cx-40,ck),lerp(GROUND_Y,roofY,ck)-Math.abs(Math.sin(t*12))*20*(ck<1?1:0),t);}
   return rise;}
-// ---------- map camera and token (the family as a game piece) ----------
+// ---------- an ordinary day at Mega Village, before the first drop ----------
+function banana(x,y,t,picked){ctx.save();ctx.strokeStyle="#6E7A3E";ctx.lineWidth=16;ctx.lineCap="round";ctx.beginPath();ctx.moveTo(x,y);ctx.quadraticCurveTo(x+6,y-110,x+2,y-220);ctx.stroke();
+  ctx.fillStyle="#6F9A4E";[[-1,0],[1,.3],[-1,.7],[1,1.1],[-1,1.5]].forEach(([s,k],i)=>{const sw=Math.sin(t*1.4+i)*.06;ctx.save();ctx.translate(x+2,y-200-k*12);ctx.rotate(s*(.9+k*.15)+sw);ctx.beginPath();ctx.ellipse(s*70,0,80,20,0,0,6.283);ctx.fill();ctx.strokeStyle="rgba(60,80,40,.5)";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(s*150,0);ctx.stroke();ctx.restore();});
+  if(!picked){ctx.fillStyle="#C9B23E";for(let r=0;r<4;r++)for(let c=0;c<3;c++){ctx.beginPath();ctx.ellipse(x+18+c*9,y-150+r*12,6,11,.3,0,6.283);ctx.fill();}ctx.fillStyle="#7A2E46";ctx.beginPath();ctx.ellipse(x+28,y-92,8,14,0,0,6.283);ctx.fill();}
+  ctx.lineCap="butt";ctx.restore();}
+function basket(x,y,full){ctx.fillStyle="#9A7448";ctx.beginPath();ctx.moveTo(x-30,y-34);ctx.lineTo(x+30,y-34);ctx.lineTo(x+22,y);ctx.lineTo(x-22,y);ctx.closePath();ctx.fill();ctx.strokeStyle="rgba(70,50,30,.5)";ctx.lineWidth=2;for(let k=-20;k<=20;k+=10){ctx.beginPath();ctx.moveTo(x+k,y-34);ctx.lineTo(x+k*.75,y);ctx.stroke();}
+  if(full){ctx.fillStyle="#C9B23E";for(let c=0;c<4;c++){ctx.beginPath();ctx.ellipse(x-15+c*10,y-38,6,11,.4,0,6.283);ctx.fill();}}}
+function dog(x,y,t,dir,run){const b=run?Math.abs(Math.sin(t*14))*8:0;ctx.save();ctx.translate(x,y-b);ctx.scale(dir||1,1);ctx.fillStyle="#8A5A34";ctx.beginPath();ctx.ellipse(0,-26,30,13,0,0,6.283);ctx.fill();ctx.beginPath();ctx.ellipse(30,-40,12,10,0,0,6.283);ctx.fill();ctx.beginPath();ctx.ellipse(40,-36,8,5,0,0,6.283);ctx.fill();
+  ctx.fillStyle="#6A4224";ctx.beginPath();ctx.ellipse(26,-48,5,9,-.4,0,6.283);ctx.fill();ctx.strokeStyle="#8A5A34";ctx.lineWidth=6;ctx.lineCap="round";const s=run?Math.sin(t*14)*8:0;ctx.beginPath();ctx.moveTo(-20,-16);ctx.lineTo(-20-s,0);ctx.moveTo(-8,-16);ctx.lineTo(-8+s,0);ctx.moveTo(12,-16);ctx.lineTo(12-s,0);ctx.moveTo(22,-16);ctx.lineTo(22+s,0);ctx.moveTo(-28,-28);ctx.lineTo(-44,-40+Math.sin(t*16)*6);ctx.stroke();ctx.lineCap="butt";ctx.restore();}
+function cat(x,y,t){ctx.save();ctx.translate(x,y);ctx.fillStyle="#3A3632";ctx.beginPath();ctx.ellipse(0,-16,14,16,0,0,6.283);ctx.fill();ctx.beginPath();ctx.arc(0,-38,10,0,6.283);ctx.fill();ctx.beginPath();ctx.moveTo(-9,-42);ctx.lineTo(-6,-54);ctx.lineTo(-1,-45);ctx.moveTo(9,-42);ctx.lineTo(6,-54);ctx.lineTo(1,-45);ctx.fill();
+  ctx.strokeStyle="#3A3632";ctx.lineWidth=5;ctx.lineCap="round";ctx.beginPath();ctx.moveTo(10,-6);ctx.quadraticCurveTo(30,-10,26+Math.sin(t*3)*8,-34);ctx.stroke();ctx.lineCap="butt";ctx.restore();}
+function fly(x,y,t){ctx.save();ctx.translate(x,y);ctx.fillStyle="#2B2420";ctx.beginPath();ctx.ellipse(0,0,5,3.5,0,0,6.283);ctx.fill();const w=Math.abs(Math.sin(t*60));ctx.fillStyle="rgba(220,230,235,.85)";ctx.beginPath();ctx.ellipse(-3,-5*w-2,5,3,-.5,0,6.283);ctx.ellipse(3,-5*w-2,5,3,.5,0,6.283);ctx.fill();ctx.restore();}
+function peckChicken(x,y,t){const p=Math.max(0,Math.sin(t*5));ctx.save();ctx.translate(x,y);ctx.fillStyle="#E8E2D2";ctx.beginPath();ctx.ellipse(0,-14,14,11,0,0,6.283);ctx.fill();ctx.save();ctx.translate(10,-22);ctx.rotate(p*1.1);ctx.beginPath();ctx.arc(4,-2,6,0,6.283);ctx.fill();ctx.fillStyle="#B8463A";ctx.fillRect(2,-10,5,5);ctx.fillStyle="#D9A441";ctx.beginPath();ctx.moveTo(9,-3);ctx.lineTo(15,-1);ctx.lineTo(9,1);ctx.fill();ctx.restore();ctx.strokeStyle="#D9A441";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(-3,-4);ctx.lineTo(-4,0);ctx.moveTo(4,-4);ctx.lineTo(5,0);ctx.stroke();ctx.restore();}
+function ordinaryDay(t,cx,geo){const bx=cx-340,picked=t>1.45;
+  banana(bx,GROUND_Y,t,picked);basket(bx+92,GROUND_Y,t>1.85);
+  // father harvesting: reaching up, then the bunch drops into the basket
+  fig(bx+44,GROUND_Y,1,FAM[0][2],t<1.6?"climb":"stand",t*2.4);
+  if(t>1.45&&t<1.85){const k=seg(t,1.45,1.85),X=lerp(bx+32,bx+92,k),Y=lerp(GROUND_Y-150,GROUND_Y-40,k*k);ctx.fillStyle="#C9B23E";for(let c=0;c<3;c++){ctx.beginPath();ctx.ellipse(X+c*9,Y,6,11,.3,0,6.283);ctx.fill();}}
+  // mother at the door, the toddler by the chicken
+  fig(cx-14,GROUND_Y,1,FAM[1][2],"stand");fig(cx+86,GROUND_Y,.6,FAM[3][2],"stand");peckChicken(cx+150+Math.sin(t*.8)*20,GROUND_Y,t);
+  // the kid chasing a fly, the dog bounding after
+  const dir=Math.cos(t*1.9)>=0?1:-1,kx=cx+440+Math.sin(t*1.9)*120,ky=GROUND_Y-Math.abs(Math.sin(t*10))*12;
+  fig(kx,ky,.72,FAM[2][2],"climb",t*16);fly(kx+dir*70+Math.sin(t*9)*14,GROUND_Y-140+Math.sin(t*6)*24,t);
+  dog(kx-dir*110,GROUND_Y,t,dir,true);
+  // the cat on the lean-to
+  cat(cx+geo.w/2+70,GROUND_Y-128,t);}// ---------- map camera and token (the family as a game piece) ----------
 function mapCam(t,s){
   const changing=s.lift&&s.lift[2]!==s.lift[3];
   let focus=changing?ll(JLL[s.lift[2]],JLL[s.lift[3]],E(s.k,.15,.9)):JLL[s.cur];
@@ -224,8 +251,8 @@ function gauge(t){const a=Math.min(seg(t,2.6,3.0),1-seg(t,23.3,23.7));if(a<=0)re
 function card(lines,a){ctx.fillStyle="#141A19";ctx.fillRect(0,0,W,H);ctx.drawImage(grain,0,0);lines.forEach((l,i)=>ptext(l,W/2,H/2-30+i*92-(lines.length-1)*46+30,{a,size:78,al:"center"}));}
 let now=0;
 function frame(t){now=t;
-  if(t<TITLE_END){card(["WHY DOES THE WATER KEEP","FINDING THE SAME PEOPLE?"],Math.min(seg(t,0,.3),1-seg(t,TITLE_END-.25,TITLE_END)));return;}
-  if(t>=Q_START){card(["WHY DO FLOOD VICTIMS KEEP","ENDING UP IN FLOOD ZONES?"],t<Q_END?seg(t,Q_START,Q_START+.2):0);return;}
+  if(t>=Q_START&&t<Q_MID){card(["WHY DOES THE WATER KEEP","FINDING THE SAME PEOPLE?"],Math.min(seg(t,Q_START,Q_START+.25),1-seg(t,Q_MID-.2,Q_MID)));return;}
+  if(t>=Q_MID){card(["WHY DO FLOOD VICTIMS KEEP","ENDING UP IN FLOOD ZONES?"],t<Q_END?seg(t,Q_MID,Q_MID+.2):0);return;}
   const s=state(t);LIGHTBG=s.night<.35&&s.storm<.55;
   // sky over the map
   let sky=mix(SKY_DAY,SKY_STORM,s.storm);sky=mix(sky,SKY_NIGHT,s.night);const sg=ctx.createLinearGradient(0,0,0,GROUND_Y);sg.addColorStop(0,rgb(mix(sky,[255,255,255],.12)));sg.addColorStop(1,rgb(sky));
@@ -239,7 +266,7 @@ function frame(t){now=t;
   // buildings: slide during a rope move; switch instantly on a hard cut
   const rl=s.lift&&s.lift[4]==="rope"?s.lift:null,changing=rl&&rl[2]!==rl[3],pk=changing?E(s.k,.25,.85):0;
   const posCur=lerp(W/2,-700,pk),posNext=lerp(W+700,W/2,pk);
-  const geo=PLACES[s.place].f(posCur,GROUND_Y);if(changing)PLACES[s.next].f(posNext,GROUND_Y);
+  if(s.place===0&&t>=3.2&&!rl)banana(posCur-340,GROUND_Y,t,true);const geo=PLACES[s.place].f(posCur,GROUND_Y);if(changing)PLACES[s.next].f(posNext,GROUND_Y);
   const mode=(t>16.4&&t<22)?"quiet":s.year==="2022"?"chaos":s.year==="2019"?"comic":"calm";
   // February 2025: three small warm lights above the roof go out. Nothing else.
   if(t>16.8&&t<22&&s.place===2){const la=1-seg(t,19.4,20.4);for(let i=0;i<3;i++){const li=clamp(1-seg(t,19.4+i*.3,19.7+i*.3),0,1);ctx.save();ctx.globalAlpha=la*li;ctx.fillStyle="#FFE2A0";ctx.shadowColor="#FFD27A";ctx.shadowBlur=24;ctx.beginPath();ctx.arc(W/2+150+i*34,geo.roof-44,7,0,6.283);ctx.fill();ctx.restore();}}
@@ -249,7 +276,7 @@ function frame(t){now=t;
     const py=lerp(lerp(startY,240,up),GROUND_Y,lower);ropeY=lk<.18?lerp(-20,startY-130,dn):py-130;if(lk>.95)ropeY=lerp(py-130,-60,seg(lk,.95,1));onRope=lk>.18&&lk<.95;
     FAM.forEach(([dx,sc,c],i)=>fig(px+dx,py+(onRope?60:0),sc,c,onRope?"climb":"stand",t*6+i));
     if(onRope){ctx.strokeStyle="#5B4A33";ctx.lineWidth=3;FAM.forEach(([dx])=>{ctx.beginPath();ctx.moveTo(px+dx,py-10);ctx.lineTo(px+4,ropeY+30);ctx.stroke();});}}
-  else{const nl=L.find(l=>l[4]==="rope"&&t>=l[0]-.6&&t<l[0]);if(nl)ropeY=lerp(-20,((nl===L[0]||nl===L[2])?geo.roof:GROUND_Y)-130,E(t,nl[0]-.6,nl[0]));family(t,s,px,geo,mode);}
+  else{const nl=L.find(l=>l[4]==="rope"&&t>=l[0]-.6&&t<l[0]);if(nl)ropeY=lerp(-20,((nl===L[0]||nl===L[2])?geo.roof:GROUND_Y)-130,E(t,nl[0]-.6,nl[0]));if(s.place===0&&t<3.2&&!s.lift)ordinaryDay(t,px,geo);else family(t,s,px,geo,mode);}
   if(ropeY!==null&&ropeY>-50){ctx.strokeStyle="#5B4A33";ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(px+4,-20);for(let y=-20;y<ropeY;y+=20)ctx.lineTo(px+4+Math.sin(y*.05+t*3)*3,y);ctx.stroke();ctx.lineWidth=4;ctx.beginPath();ctx.ellipse(px+4,ropeY+18,16,22,0,0,6.283);ctx.stroke();}
   // deadpan stamps
   if(t>=7.62&&t<8.8)stamp("TEMPORARY",W/2,GROUND_Y-230,t,7.62);
@@ -264,7 +291,7 @@ function frame(t){now=t;
   MAPFULL=t>24.8;if(t>24.3){drawMapBG(t,s,seg(t,24.3,25.0));}
   ctx.drawImage(grain,0,0);const vg=ctx.createRadialGradient(W/2,H/2,H*.4,W/2,H/2,H*.95);vg.addColorStop(0,"rgba(0,0,0,0)");vg.addColorStop(1,"rgba(30,26,18,.28)");ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
   // captions: one plane, italic, no boxes
-  caption("Mega Village, Durban.",fadeIO(t,2.1,5.9),"April 2019");
+  caption("Mega Village, Durban.",fadeIO(t,.3,5.9),"April 2019");
   caption("Tents. Two years.",fadeIO(t,7.7,8.8),"2019 – 2021");
   caption("A camp on the riverbank.",fadeIO(t,9.9,11.3),"March 2021");
   caption("The camp floods.",fadeIO(t,11.8,14.4),"April 2022");
