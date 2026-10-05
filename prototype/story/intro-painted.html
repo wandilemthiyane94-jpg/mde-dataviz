@@ -4,18 +4,18 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{--bg:#1E2A2A;--ink:#F3EBD8;--muted:#B9B19C;color-scheme:dark}
-html,body{height:100%}
-body{background:var(--bg);color:var(--ink);font:14px/1.4 "IBM Plex Mono",monospace;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding-inline:16px;box-sizing:border-box}
-#stage{position:relative;width:min(100%,calc((100vh - 110px)*16/9));aspect-ratio:16/9;max-width:100%}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font:14px/1.4 "IBM Plex Mono",monospace;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;padding:24px 16px 16px;box-sizing:border-box}
+#stage{position:relative;width:min(100%,calc((100vh - 190px)*16/9));aspect-ratio:16/9;max-width:100%}
 canvas{display:block;width:100%;height:100%;background:#E9DFC6}
 #poster{position:absolute;inset:0;display:grid;place-items:center;background:rgba(30,42,42,.35)}
 #poster[hidden]{display:none!important}
 button{font:400 13px/1 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#1E2A2A;background:#F3EBD8;border:0;border-radius:3px;padding:12px 20px;cursor:pointer}
 button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.bar{width:min(100%,calc((100vh - 110px)*16/9));display:flex;gap:12px;align-items:center}
+.bar{width:min(100%,calc((100vh - 190px)*16/9));display:flex;gap:12px;align-items:center}
 #scrub{flex:1;accent-color:#5E9A9A}
 #tm{color:var(--muted);min-width:90px;font-variant-numeric:tabular-nums}
-.src{width:min(100%,calc((100vh - 110px)*16/9));font-size:12px;color:var(--muted)}
+.src{width:min(100%,calc((100vh - 190px)*16/9));font-size:12px;color:var(--muted);max-height:4.4em;overflow-y:auto;margin:0}
 </style>
 <div id="stage"><canvas id="c" width="1920" height="1080" aria-label="Painted illustration: a family flooded and moved again and again, Durban 2019 to 2025"></canvas><div id="poster"><button type="button" id="go">Play</button></div></div>
 <div class="bar"><button type="button" id="play">Play</button><span id="tm"></span><input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Position"></div>

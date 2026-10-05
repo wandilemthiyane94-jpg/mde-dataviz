@@ -4,18 +4,18 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{--bg:#1E2A2A;--ink:#F3EBD8;--muted:#B9B19C;color-scheme:dark}
-html,body{height:100%}
-body{background:var(--bg);color:var(--ink);font:14px/1.4 "IBM Plex Mono",monospace;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding-inline:16px;box-sizing:border-box}
-#stage{position:relative;width:min(100%,calc((100vh - 110px)*16/9));aspect-ratio:16/9;max-width:100%}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font:14px/1.4 "IBM Plex Mono",monospace;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;padding:24px 16px 16px;box-sizing:border-box}
+#stage{position:relative;width:min(100%,calc((100vh - 190px)*16/9));aspect-ratio:16/9;max-width:100%}
 canvas{display:block;width:100%;height:100%;background:#E9DFC6}
 #poster{position:absolute;inset:0;display:grid;place-items:center;background:rgba(30,42,42,.35)}
 #poster[hidden]{display:none!important}
 button{font:400 13px/1 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#1E2A2A;background:#F3EBD8;border:0;border-radius:3px;padding:12px 20px;cursor:pointer}
 button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.bar{width:min(100%,calc((100vh - 110px)*16/9));display:flex;gap:12px;align-items:center}
+.bar{width:min(100%,calc((100vh - 190px)*16/9));display:flex;gap:12px;align-items:center}
 #scrub{flex:1;accent-color:#5E9A9A}
 #tm{color:var(--muted);min-width:90px;font-variant-numeric:tabular-nums}
-.src{width:min(100%,calc((100vh - 110px)*16/9));font-size:12px;color:var(--muted)}
+.src{width:min(100%,calc((100vh - 190px)*16/9));font-size:12px;color:var(--muted);max-height:4.4em;overflow-y:auto;margin:0}
 </style>
 <div id="stage"><canvas id="c" width="1920" height="1080" aria-label="Painted illustration: a family flooded and moved again and again, Durban 2019 to 2025"></canvas><div id="poster"><button type="button" id="go">Play</button></div></div>
 <div class="bar"><button type="button" id="play">Play</button><span id="tm"></span><input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Position"></div>
@@ -84,22 +84,22 @@ const JLL=JP.map(p=>[p.lon,p.lat]);
 const DUR=[30.99,-29.89],ZA_C=[25.2,-28.9];
 const ll=(a,b,k)=>[lerp(a[0],b[0],k),lerp(a[1],b[1],k)],lgl=(a,b,k)=>Math.exp(lerp(Math.log(a),Math.log(b),k));
 // ---------- timeline (seconds): ~29 s, per intro-painted-FINAL-spec ----------
-const TITLE_END=0,Q_START=28.6,Q_MID=30.8,Q_END=32.5,TOTAL=32.6;
+const TITLE_END=0,Q_START=28.5,Q_MID=30.7,Q_END=32.4,TOTAL=32.5;
 // Short cut: an edit list over the full intro. [source start, source end, speed]. Hard cuts between rows.
 // Opens on the ordinary day; scene-setting compressed; floods tightened; Feb 2025 untouched; ends on the question.
 const EDL=[
   [2.4,4.6,1.3],    // 2019: the rain, the furniture goes
   [6.2,7.6,4],      // rope lift
-  [7.6,8.8,1.8],    // TEMPORARY. Tents. Two years.
+  [7.6,8.8,2],      // TEMPORARY. Tents. Two years.
   [8.8,10.0,4],     // rope to the camp
   [10.0,11.0,2],    // A camp on the riverbank.
   [11.6,13.3,1.2],  // 2022: the camp floods, the animals go
-  [14.5,16.0,2.4],  // They are sent back.
+  [14.6,15.9,2.6],  // They are sent back.
   [18.0,21.4,1],    // February 2025: protected
   [22.0,23.6,1.8],  // hotel, evicted, residence
-  [24.4,25.4,1.6],  // pull back, tally
-  [25.4,28.6,1],    // the argument: 86 years of rain, the cluster, climate
-  [28.6,29.9,1]     // hard cut to dark: the question, held to the last frame
+  [24.4,25.6,1.1],  // pull back to Durban: moved 4 times, flooded 3 times
+  [25.6,28.5,1],    // hard cut: 86 years of rain, then the climate statement
+  [28.5,29.8,1]     // bang: the question, held to the last frame
 ];
 const OUT=EDL.reduce((s,[a,b,v])=>s+(b-a)/v,0);
 function SRC(x){for(const [a,b,v] of EDL){const d=(b-a)/v;if(x<d)return a+x*v;x-=d;}const l=EDL[EDL.length-1];return l[1];}
@@ -246,7 +246,7 @@ function mapCam(t,s){
   let span=KF[KF.length-1][1];for(let i=1;i<KF.length;i++)if(t<=KF[i][0]){span=lgl(KF[i-1][1],KF[i][1],ease(seg(t,KF[i-1][0],KF[i][0])));break;}
   let ty=250;
   if(t>24.4){const k=E(t,24.4,24.9);focus=ll(focus,DUR,k);span=lgl(.16,.55,k);ty=lerp(250,430,k);}
-  if(t>24.9){const k=E(t,24.9,25.8);focus=ll(DUR,ZA_C,k);span=lgl(.55,20,k);ty=lerp(430,540,k);}
+  // short cut: the camera stops at Durban
   return {focus,span,ty};}
 function tokenPos(t,s){const changing=s.lift&&s.lift[2]!==s.lift[3];
   if(!s.lift)return {ll:JLL[s.cur],hop:0,squash:0};
@@ -317,30 +317,31 @@ function strip86(t){if(!R86.length)return;const a=fadeIO(t,25.3,27.0,.2);if(a<=0
   ptext("1987",X0+(1987-1940)*bw+bw/2,B-383*S-10,Object.assign({a:a*seg(t,25.8,26),size:14,f:"mono",c:"#5A5244",al:"center",light:false}));
   ptext("2019 · 2022",X0+(2020.5-1940)*bw,B-270*S-10,Object.assign({a:a*ra,size:14,f:"mono",w:500,c:"#B5302A",al:"right",light:false}));
   ptext("Feb 2025 · 46 mm: it still flooded the camp",X1,B+30,Object.assign({a:a*seg(t,26.2,26.4),size:15,f:"mono",w:500,c:"#B5302A",al:"right",light:false}));}// the argument: 86 years of rain as one line growing across the frame
-function argue86(t){if(!R86.length||t<25.4||t>=Q_START)return;const n=R86.length,X0=90,X1=1830,B=968,S=330/383,xi=i=>X0+i*(X1-X0)/(n-1),yv=mm=>B-mm*S;
-  const wa=seg(t,25.4,25.65);ctx.save();ctx.globalAlpha=.62*wa;ctx.fillStyle="#ECE2CC";ctx.fillRect(0,0,W,H);ctx.restore();
-  const p=seg(t,25.55,26.85)*(n-1),k=Math.floor(p),fr=p-k,o={light:false};
+function argue86(t){if(!R86.length||t<25.6||t>=Q_START)return;const n=R86.length,X0=90,X1=1830,B=968,S=330/383,xi=i=>X0+i*(X1-X0)/(n-1),yv=mm=>B-mm*S;
+  const wa=1;ctx.fillStyle="#ECE2CC";ctx.fillRect(0,0,W,H);ctx.drawImage(grain,0,0);
+  const p=seg(t,25.65,26.95)*(n-1),k=Math.floor(p),fr=p-k,o={light:false};
   ctx.save();ctx.globalAlpha=wa;ctx.fillStyle="#4E473A";ctx.fillRect(X0,B,X1-X0,2);
   ctx.beginPath();ctx.moveTo(xi(0),yv(R86[0].mm));for(let i=1;i<=k&&i<n;i++)ctx.lineTo(xi(i),yv(R86[i].mm));let hx=xi(k),hy=yv(R86[k].mm);if(k<n-1){hx=lerp(xi(k),xi(k+1),fr);hy=lerp(yv(R86[k].mm),yv(R86[k+1].mm),fr);ctx.lineTo(hx,hy);}
   ctx.strokeStyle="#24302F";ctx.lineWidth=3;ctx.lineJoin="round";ctx.stroke();ctx.lineTo(hx,B);ctx.lineTo(X0,B);ctx.closePath();ctx.fillStyle="rgba(36,48,47,.07)";ctx.fill();
   if(k<n-1){ctx.fillStyle="#24302F";ctx.beginPath();ctx.arc(hx,hy,6,0,6.283);ctx.fill();}
   // the top four storms, lit as the line reaches them
   [[1987,383.1,"#24302F"],[2019,244.7,"#B5302A"],[2022,269.8,"#B5302A"],[2022,233.2,"#B5302A"]].forEach(([y,mm,c])=>{const i=y-1940;if(p<i)return;ctx.fillStyle=c;ctx.beginPath();ctx.arc(xi(i),yv(mm),8,0,6.283);ctx.fill();});
-  const e=seg(t,27.5,27.7);if(e>0){ctx.globalAlpha=wa*e;ctx.fillStyle="#B5302A";ctx.beginPath();ctx.arc(xi(85),yv(46.2),6,0,6.283);ctx.fill();}
   ctx.restore();
   ptext("1940",X0,B+32,Object.assign({a:wa,size:15,f:"mono",c:"#4E473A"},o));
   if(p>=47)ptext("1987",xi(47),yv(383.1)-18,Object.assign({a:wa,size:15,f:"mono",c:"#4E473A",al:"center"},o));
   if(p>=79)ptext("2019",xi(79)-14,yv(244.7)-18,Object.assign({a:wa,size:15,f:"mono",w:500,c:"#B5302A",al:"right"},o));
   if(p>=82)ptext("2022 · twice",xi(82),yv(269.8)-18,Object.assign({a:wa,size:15,f:"mono",w:500,c:"#B5302A",al:"center"},o));
-  ptext("Feb 2025 · 46 mm: it still flooded the camp",X1,B+32,Object.assign({a:wa*e,size:15,f:"mono",w:500,c:"#B5302A",al:"right"},o));
-  // the words build with the line
-  ptext("3 of the top 4 heaviest",X0,200,Object.assign({a:seg(t,25.65,25.9),size:92,f:"cond",c:"#24302F"},o));
-  ptext("3-day rains in 86 years",X0,296,Object.assign({a:seg(t,25.8,26.05),size:92,f:"cond",c:"#24302F"},o));
-  ptext("fell in 3 years: 2019 – 2022.",X0,392,Object.assign({a:seg(t,26.75,26.95),size:92,f:"cond",c:"#B5302A"},o));
-  ptext("Climate change made April 2022's rain about twice as likely · World Weather Attribution",X0,452,Object.assign({a:seg(t,27.15,27.35),size:18,f:"mono",w:500,c:"#24302F"},o));}function tally(t){const o={al:"right",light:false},X=W-110,out=1-seg(t,25.45,25.65);if(t<24.5||out<=0)return;
-  ptext("2019 – 2025",X,370,Object.assign({a:seg(t,24.5,24.8)*out,size:20,f:"mono",w:500,c:"#4E473A"},o));
-  ptext("Moved 4 times",X,460,Object.assign({a:seg(t,24.7,25.0)*out,size:84,f:"cond",c:"#24302F"},o));
-  ptext("Flooded 3 times",X,550,Object.assign({a:seg(t,25.1,25.4)*out,size:84,f:"cond",c:"#8E3A22"},o));}
+  ptext("2025",X1,B+32,Object.assign({a:wa*seg(t,26.9,27),size:15,f:"mono",c:"#4E473A",al:"right"},o));
+  // the words build with the line, then the statement
+  ptext("3 of the top 4 heaviest 3-day rains in 86 years",X0,170,Object.assign({a:seg(t,25.7,25.9),size:60,f:"cond",c:"#24302F"},o));
+  ptext("fell in 3 years: 2019 – 2022.",X0,236,Object.assign({a:seg(t,26.8,27.0),size:60,f:"cond",c:"#24302F"},o));
+  ptext("Climate change made April 2022's rain",X0,368,Object.assign({a:seg(t,27.15,27.35),size:100,f:"cond",c:"#B5302A"},o));
+  ptext("about twice as likely.",X0,468,Object.assign({a:seg(t,27.15,27.35),size:100,f:"cond",c:"#B5302A"},o));
+  ptext("World Weather Attribution, 2022",X0,516,Object.assign({a:seg(t,27.3,27.5),size:17,f:"mono",w:500,c:"#4E473A"},o));}
+function tally(t){const o={al:"right",light:false},X=W-110,out=1;if(t<24.45||t>=25.6)return;
+  ptext("2019 – 2025",X,370,Object.assign({a:seg(t,24.45,24.65)*out,size:20,f:"mono",w:500,c:"#4E473A"},o));
+  ptext("Moved 4 times",X,460,Object.assign({a:seg(t,24.55,24.75)*out,size:84,f:"cond",c:"#24302F"},o));
+  ptext("Flooded 3 times",X,550,Object.assign({a:seg(t,24.75,24.95)*out,size:84,f:"cond",c:"#8E3A22"},o));}
 // the thesis, as the camera settles on the country
 function thesis(t){const a=Math.min(seg(t,26.9,27.4),1-seg(t,Q_MID-.25,Q_MID));if(a<=0)return;const o={a,al:"center",light:false,size:104,f:"cond",c:"#24302F"};
   ptext("Why does the water keep",W/2-120,430,o);ptext("finding the same people?",W/2-120,540,o);}
@@ -403,7 +404,7 @@ function frame(t){now=t;
   caption("A hotel. Evicted. A student residence.",fadeIO(t,22.0,23.6),"2025");
   caption("Still temporary.",fadeIO(t,23.6,24.8));
   tally(t);argue86(t);
-  caption("Durban, South Africa.",fadeIO(t,25.0,25.65,.15),"one city · 84 “temporary” sites found nationally");
+  caption("Durban, South Africa.",t<25.6?seg(t,24.6,24.8):0,"one city · 84 “temporary” sites found nationally");
 }
 let t=0,playing=false,last=0;const sc=document.getElementById("scrub"),tm=document.getElementById("tm"),pb=document.getElementById("play");
 const ui=()=>{sc.value=Math.round(t/OUT*1000);tm.textContent=t.toFixed(1)+" / "+OUT.toFixed(1)+" s";pb.textContent=playing?"Pause":"Play";};
