@@ -19,7 +19,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-of
 </style>
 <div id="stage"><canvas id="c" width="1920" height="1080" aria-label="Painted illustration: a family flooded and moved again and again, Durban 2019 to 2025"></canvas><div id="poster"><button type="button" id="go">Play</button></div></div>
 <div class="bar"><button type="button" id="play">Play</button><span id="tm"></span><input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Position"></div>
-<p class="src">Rain line: wettest 3-day total of each year, ERA5 daily (Open-Meteo), 1940–2025; dots mark the four heaviest 3-day storms on record (Sept 1987, 383 mm; May 2022, 270 mm; April 2019, 245 mm; April 2022, 233 mm) and the February 2025 storm (46 mm). Attribution: World Weather Attribution (2022), KwaZulu-Natal floods. Rain strip: wettest 3-day total of each year at the camp, ERA5 daily (Open-Meteo), 1940–2025; red marks the storms that flooded the family (April 2019, 245 mm; April 2022, 233 mm; February 2025, 46 mm over 3 days, 38 mm in the 6-hour downpour shown on the gauge). The grey 2022 and 2025 ticks are those years' wettest storms (May 2022, April 2025). Moved 4 times: Mega Village → Tehuis Hostel tents → Lamontville camp → Bayside Hotel → Umbilo residence (the 2022 evacuation and return to the camp is not counted). Flooded 3 times: April 2019, April 2022, February 2025. Illustration of one group of families' journey, 2019–2025 (people and buildings shown are illustrative, not portraits). Events: GroundUp (Jun 2022, Mar 2025), Mail &amp; Guardian (9 May 2022), The Witness (10 Jul 2025), Amnesty International (Nov 2025), Sunday Tribune (5 Oct 2025); our site map. Gauge: ERA5 hourly rain at the camp (Open-Meteo), which smooths short local downpours; "a normal month" = 82 mm (1991–2020); pools = rain on the uMlazi's 905 km² catchment, assuming the same rain fell across it (order of magnitude; 1 pool = 2,500 m³). <b>Water levels in the scene are illustrative.</b> We ran our rain-on-grid flood model for all three storms (2019, 2022, 2025), but at 33 m resolution it cannot resolve the camp: the camp's own cell sits above the modelled water while the neighbouring cells are the canal (up to 3.2 m deep in 2022). Only the rainfall on the gauge is measured data.</p>
+<p class="src">Rain line: wettest 3-day total of each year, ERA5 daily (Open-Meteo), 1940–2025; dots mark the four heaviest 3-day storms on record (Sept 1987, 383 mm; May 2022, 270 mm; April 2019, 245 mm; April 2022, 233 mm) and the February 2025 storm (46 mm). Flood lines: eThekwini 1-in-100-year floodplain, shown enlarged on the South Africa silhouette. Rain strip: wettest 3-day total of each year at the camp, ERA5 daily (Open-Meteo), 1940–2025; red marks the storms that flooded the family (April 2019, 245 mm; April 2022, 233 mm; February 2025, 46 mm over 3 days, 38 mm in the 6-hour downpour shown on the gauge). The grey 2022 and 2025 ticks are those years' wettest storms (May 2022, April 2025). Moved 4 times: Mega Village → Tehuis Hostel tents → Lamontville camp → Bayside Hotel → Umbilo residence (the 2022 evacuation and return to the camp is not counted). Flooded 3 times: April 2019, April 2022, February 2025. Illustration of one group of families' journey, 2019–2025 (people and buildings shown are illustrative, not portraits). Events: GroundUp (Jun 2022, Mar 2025), Mail &amp; Guardian (9 May 2022), The Witness (10 Jul 2025), Amnesty International (Nov 2025), Sunday Tribune (5 Oct 2025); our site map. Gauge: ERA5 hourly rain at the camp (Open-Meteo), which smooths short local downpours; "a normal month" = 82 mm (1991–2020); pools = rain on the uMlazi's 905 km² catchment, assuming the same rain fell across it (order of magnitude; 1 pool = 2,500 m³). <b>Water levels in the scene are illustrative.</b> We ran our rain-on-grid flood model for all three storms (2019, 2022, 2025), but at 33 m resolution it cannot resolve the camp: the camp's own cell sits above the modelled water while the neighbouring cells are the canal (up to 3.2 m deep in 2022). Only the rainfall on the gauge is measured data.</p>
 <script src="vendor/d3.v7.min.js"></script>
 <script src="vendor/topojson-client.min.js"></script>
 <script src="vendor/world-50m.js"></script>
@@ -80,6 +80,7 @@ const JP=HOLLIE.journeys.j1.pts.map(p=>{if(p.site){const s=HOLLIE.sites.find(x=>
 const JLAB=["Mega Village","Tehuis Hostel (tents)","Lamontville camp","Hotel, city centre","Umbilo residence"];
 const LANDALL=topojson.merge(WORLD_TOPO,WORLD_TOPO.objects.countries.geometries);
 const ZAF=(()=>{const g=WORLD_TOPO.objects.countries.geometries.find(g=>+g.id===710);if(!g)return null;const f=topojson.feature(WORLD_TOPO,g);if(f.geometry.type==="MultiPolygon"){const big=f.geometry.coordinates.map(c=>({type:"Polygon",coordinates:c})).sort((a,b)=>d3.geoArea(b)-d3.geoArea(a))[0];return {type:"Feature",geometry:big};}return f;})();
+let FPQ=null,FPBIG;const findFP=(()=>{const fs=(FLOODPLAIN&&FLOODPLAIN.features)||[];const c=JLL[2];const near=fs.filter(f=>{const g=d3.geoCentroid(f);return Math.hypot(g[0]-c[0],g[1]-c[1])<.06;});for(let r=.006;r<.04;r+=.002)for(let a=-20;a<340;a+=20){const p=[c[0]+r*Math.cos(a*Math.PI/180),c[1]+r*Math.sin(a*Math.PI/180)*.87];if(near.some(f=>d3.geoContains(f,p)))return p;}return null;});
 const BORDERS=topojson.mesh(WORLD_TOPO,WORLD_TOPO.objects.countries,(a,b)=>a!==b);
 const JLL=JP.map(p=>[p.lon,p.lat]);
 const DUR=[30.99,-29.89],ZA_C=[25.2,-28.9];
@@ -96,11 +97,11 @@ const EDL=[
   [10.4,11.0,1.5],  // A camp on the riverbank.
   [11.7,13.2,1.3],  // 2022: the camp floods, the animals go
   [13.9,15.9,2],    // the rope: sent back
-  [18.5,21.2,1],    // February 2025: protected
+  [18.6,21.2,1],    // February 2025: protected
   [21.4,24.4,1.9],  // the rope: camp to hotel; EVICTED; the rope: hotel to residence
-  [24.4,25.6,1.2],  // pull back to Durban: moved 4 times, flooded 3 times
+  [24.4,25.6,1.0],  // pull back to Durban: moved 4 times, flooded 3 times, the 1-in-100-year flood map
   [25.6,27.2,1],    // 86 years of rain over South Africa, the climate statement
-  [27.2,28.45,1]    // fade into the question, held to the last frame
+  [27.2,28.35,1]    // fade into the question, held to the last frame
 ];
 const OUT=EDL.reduce((s,[a,b,v])=>s+(b-a)/v,0);
 function SRC(x){for(const [a,b,v] of EDL){const d=(b-a)/v;if(x<d)return a+x*v;x-=d;}const l=EDL[EDL.length-1];return l[1];}
@@ -263,7 +264,7 @@ function drawMapBG(t,s,alpha){const cam=mapCam(t,s);
   ctx.save();ctx.beginPath();ctx.rect(0,0,W,H);path(LANDALL);ctx.clip("evenodd");ctx.strokeStyle="rgba(90,120,116,.3)";ctx.lineWidth=1.4;for(let k=-H;k<W;k+=14){ctx.beginPath();ctx.moveTo(k,0);ctx.lineTo(k+H,H);ctx.stroke();}ctx.restore();
   ctx.beginPath();path(LANDALL);ctx.fillStyle="#EDE3CB";ctx.fill();ctx.strokeStyle="#5A6E6A";ctx.lineWidth=2.4;ctx.stroke();
   if(cam.span>1.5){ctx.beginPath();path(BORDERS);ctx.strokeStyle="rgba(90,90,80,.45)";ctx.lineWidth=1.2;ctx.setLineDash([6,5]);ctx.stroke();ctx.setLineDash([]);}
-  if(cam.span<2){const fa=1-seg(cam.span,.8,2);ctx.globalAlpha=alpha*fa;ctx.beginPath();path(FLOODPLAIN);ctx.fillStyle="rgba(62,110,140,.3)";ctx.fill();ctx.save();ctx.clip();ctx.strokeStyle="rgba(46,96,128,.45)";ctx.lineWidth=2;for(let k=-H;k<W;k+=16){ctx.beginPath();ctx.moveTo(k,H);ctx.lineTo(k+H,0);ctx.stroke();}ctx.restore();ctx.beginPath();path(FLOODPLAIN);ctx.strokeStyle="rgba(36,86,120,.95)";ctx.lineWidth=2.4;ctx.stroke();const fl=FLASH(t);if(fl>0){ctx.beginPath();path(FLOODPLAIN);ctx.strokeStyle="rgba(255,250,235,"+fl+")";ctx.lineWidth=9;ctx.stroke();ctx.strokeStyle="rgba(30,80,118,1)";ctx.lineWidth=3.2;ctx.stroke();}
+  if(cam.span<2){if(FPBIG===undefined)FPBIG=findFP();if(FPBIG)FPQ=proj(FPBIG);const fa=1-seg(cam.span,.8,2);ctx.globalAlpha=alpha*fa;ctx.beginPath();path(FLOODPLAIN);ctx.fillStyle="rgba(62,110,140,.3)";ctx.fill();ctx.save();ctx.clip();ctx.strokeStyle="rgba(46,96,128,.45)";ctx.lineWidth=2;for(let k=-H;k<W;k+=16){ctx.beginPath();ctx.moveTo(k,H);ctx.lineTo(k+H,0);ctx.stroke();}ctx.restore();ctx.beginPath();path(FLOODPLAIN);ctx.strokeStyle="rgba(36,86,120,.95)";ctx.lineWidth=2.4;ctx.stroke();const fl=FLASH(t);if(fl>0){ctx.beginPath();path(FLOODPLAIN);ctx.strokeStyle="rgba(255,250,235,"+fl+")";ctx.lineWidth=9;ctx.stroke();ctx.strokeStyle="rgba(30,80,118,1)";ctx.lineWidth=3.2;ctx.stroke();}
     // flood-line label once, near the camp
     if(cam.span<.2){const q=proj([30.952,-29.957]);ptext("city flood line (1-in-100-year)",Math.min(q[0]+20,860),q[1]+44,{size:19+FLASH(t)*8,f:"mono",w:500,c:"#DDEAF2",cd:"#1E4A6E",blur:10,auto:1});}
     ctx.globalAlpha=alpha;}
@@ -320,7 +321,10 @@ function strip86(t){if(!R86.length)return;const a=fadeIO(t,25.3,27.0,.2);if(a<=0
   ptext("Feb 2025 · 46 mm: it still flooded the camp",X1,B+30,Object.assign({a:a*seg(t,26.2,26.4),size:15,f:"mono",w:500,c:"#B5302A",al:"right",light:false}));}// the argument: 86 years of rain as one line growing across the frame
 function argue86(t,force){if(!R86.length||t<25.6||(t>=Q_START&&!force))return;const n=R86.length,X0=90,X1=1830,B=968,S=330/383,xi=i=>X0+i*(X1-X0)/(n-1),yv=mm=>B-mm*S;
   const wa=1;ctx.fillStyle="#ECE2CC";ctx.fillRect(0,0,W,H);
-  if(ZAF){const pj=d3.geoMercator().fitExtent([[1000,70],[1830,760]],ZAF),pa=d3.geoPath(pj,ctx);ctx.save();ctx.beginPath();pa(ZAF);ctx.fillStyle="rgba(36,48,47,.08)";ctx.fill();ctx.setLineDash([3,7]);ctx.strokeStyle="rgba(36,48,47,.42)";ctx.lineWidth=1.6;ctx.stroke();ctx.setLineDash([]);const d=pj(DUR);ctx.fillStyle="#B5302A";ctx.beginPath();ctx.arc(d[0],d[1],9,0,6.283);ctx.fill();ctx.strokeStyle="#B5302A";ctx.lineWidth=2;ctx.beginPath();ctx.arc(d[0],d[1],20,0,6.283);ctx.stroke();ctx.restore();ptext("Durban",d[0]+28,d[1]+6,{size:16,f:"mono",w:500,c:"#B5302A",light:false});}
+  if(ZAF){const pj=d3.geoMercator().fitExtent([[1000,70],[1830,760]],ZAF),pa=d3.geoPath(pj,ctx);ctx.save();ctx.beginPath();pa(ZAF);ctx.fillStyle="rgba(36,48,47,.08)";ctx.fill();ctx.save();ctx.clip();ctx.strokeStyle="rgba(46,96,128,.5)";ctx.lineWidth=1.6;ctx.beginPath();let rs=7;const rr=()=>(rs=(rs*16807)%2147483647)/2147483647;for(let i=0;i<220;i++){const x0=1000+rr()*860,sp=900+rr()*400,y=70+((t*sp+rr()*700)%700),x=x0-(y-70)*.18;ctx.moveTo(x,y);ctx.lineTo(x+4,y-22);}ctx.stroke();ctx.restore();
+  ctx.setLineDash([3,7]);ctx.strokeStyle="rgba(36,48,47,.42)";ctx.lineWidth=1.6;ctx.beginPath();pa(ZAF);ctx.stroke();ctx.setLineDash([]);const d=pj(DUR);
+  {const sr=seg(t,25.75,26.7)*200;if(sr>0&&FLOODPLAIN){const fp=d3.geoMercator().fitExtent([[d[0]-160,d[1]-160],[d[0]+160,d[1]+160]],FLOODPLAIN),fpa=d3.geoPath(fp,ctx);ctx.save();ctx.beginPath();ctx.arc(d[0],d[1],sr,0,6.283);ctx.clip();ctx.beginPath();fpa(FLOODPLAIN);ctx.fillStyle="rgba(62,110,140,.32)";ctx.fill();ctx.save();ctx.clip();ctx.strokeStyle="rgba(46,96,128,.5)";ctx.lineWidth=1.6;ctx.beginPath();for(let k=d[0]-400;k<d[0]+400;k+=10){ctx.moveTo(k,d[1]+200);ctx.lineTo(k+400,d[1]-200);}ctx.stroke();ctx.restore();ctx.beginPath();fpa(FLOODPLAIN);ctx.strokeStyle="rgba(36,86,120,.95)";ctx.lineWidth=1.8;ctx.stroke();ctx.restore();
+    ptext("1-in-100-year flood lines · Durban, enlarged",d[0]+150,d[1]+188,{a:seg(t,26.2,26.4),size:15,f:"mono",w:500,c:"#1E4A6E",al:"right",light:false});}}ctx.fillStyle="#B5302A";ctx.beginPath();ctx.arc(d[0],d[1],9,0,6.283);ctx.fill();ctx.strokeStyle="#B5302A";ctx.lineWidth=2;ctx.beginPath();ctx.arc(d[0],d[1],20,0,6.283);ctx.stroke();ctx.restore();ptext("Durban",d[0]+28,d[1]+6,{size:16,f:"mono",w:500,c:"#B5302A",light:false});}
   ctx.drawImage(grain,0,0);
   const p=n-1,k=Math.floor(p),fr=p-k,o={light:false};
   ctx.save();ctx.globalAlpha=wa;ctx.fillStyle="#4E473A";ctx.fillRect(X0,B,X1-X0,2);
@@ -335,15 +339,17 @@ function argue86(t,force){if(!R86.length||t<25.6||(t>=Q_START&&!force))return;co
   if(p>=79)ptext("2019",xi(79)-14,yv(244.7)-18,Object.assign({a:wa,size:15,f:"mono",w:500,c:"#B5302A",al:"right"},o));
   if(p>=82)ptext("2022 · twice",xi(82),yv(269.8)-18,Object.assign({a:wa,size:15,f:"mono",w:500,c:"#B5302A",al:"center"},o));
   ptext("2025",X1,B+32,Object.assign({a:wa,size:15,f:"mono",c:"#4E473A",al:"right"},o));
-  // the words build with the line, then the statement
-  ptext("3 of the top 4 heaviest 3-day rains in 86 years",X0,170,Object.assign({a:seg(t,25.6,25.72),size:60,f:"cond",c:"#24302F"},o));
-  ptext("fell in 3 years: 2019 – 2022.",X0,236,Object.assign({a:seg(t,25.8,25.92),size:60,f:"cond",c:"#24302F"},o));
-  ptext("Climate change made April 2022's rain",X0,368,Object.assign({a:seg(t,26.0,26.15),size:100,f:"cond",c:"#B5302A"},o));
-  ptext("about twice as likely.",X0,468,Object.assign({a:seg(t,26.0,26.15),size:100,f:"cond",c:"#B5302A"},o));
-  ptext("World Weather Attribution, 2022",X0,516,Object.assign({a:seg(t,26.1,26.25),size:17,f:"mono",w:500,c:"#4E473A"},o));}
+  // the words: one claim, then let the picture carry it
+  ptext("3 of the top 4 heaviest 3-day rains in 86 years",X0,190,Object.assign({a:seg(t,25.6,25.72),size:76,f:"cond",c:"#24302F"},o));
+  ptext("fell in 3 years: 2019 – 2022.",X0,276,Object.assign({a:seg(t,25.8,25.92),size:76,f:"cond",c:"#B5302A"},o));}
 function tally(t){const o={al:"right",light:false},X=W-110,out=1;if(t<24.45||t>=25.6)return;
   ptext("2019 – 2025",X,370,Object.assign({a:seg(t,24.45,24.65)*out,size:20,f:"mono",w:500,c:"#4E473A"},o));
   ptext("Moved 4 times",X,460,Object.assign({a:seg(t,24.55,24.75)*out,size:84,f:"cond",c:"#24302F"},o));
+  if(FPQ){const k=seg(t,24.85,25.15)*out;if(k>0){const ex=X-372,ey=640,[sx,sy]=FPQ,mx=(sx+ex)/2,my=Math.max(sy,ey)+70;ctx.save();ctx.strokeStyle="#24302F";ctx.lineCap="round";
+    [[0,0,2.2],[2,-1.5,1.1]].forEach(([ox,oy,lw])=>{ctx.lineWidth=lw;ctx.beginPath();for(let i=0;i<=40*k;i++){const u=i/40,x=(1-u)*(1-u)*sx+2*u*(1-u)*mx+u*u*ex+ox+Math.sin(u*31)*1.6,y=(1-u)*(1-u)*sy+2*u*(1-u)*my+u*u*ey+oy+Math.cos(u*27)*1.6;i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.stroke();});
+    ctx.beginPath();ctx.arc(sx,sy,7,0,6.283);ctx.lineWidth=2;ctx.stroke();ctx.restore();}
+    ptext("1-in-100-year flood map",X,650,Object.assign({a:seg(t,25.05,25.2)*out,size:22,f:"mono",w:500,c:"#1E4A6E"},o));
+    ptext("eThekwini Municipality",X,680,Object.assign({a:seg(t,25.1,25.25)*out,size:15,f:"mono",c:"#4E473A"},o));}
   ptext("Flooded 3 times",X,550,Object.assign({a:seg(t,24.75,24.95)*out,size:84,f:"cond",c:"#8E3A22"},o));}
 // the thesis, as the camera settles on the country
 function thesis(t){const a=Math.min(seg(t,26.9,27.4),1-seg(t,Q_MID-.25,Q_MID));if(a<=0)return;const o={a,al:"center",light:false,size:104,f:"cond",c:"#24302F"};
