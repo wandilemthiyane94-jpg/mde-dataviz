@@ -78,7 +78,7 @@ function people(x,y,sit,a){ctx.save();ctx.globalAlpha=a===undefined?1:a;const P=
 const L=[ // [start, end, from, to, label]
   [9,12.4,0,1],[14.6,17.6,1,2],[23,26.2,2,2],[31.2,34,2,3],[34.6,37.4,3,4]];
 const FLOODS=[[2,3,4,7.4,560,"april 2019"],[19.4,null,20.2,23,600,"april 2022"],[28.4,null,29,31,580,"february 2025"]]; // [drop1, drop2, rainStart, rainEnd, level]
-const TOTAL=44;
+const TOTAL=47;
 function state(t){
   // place + horizontal pan
   let cur=0,next=0,k=0,lift=null;
@@ -135,13 +135,59 @@ function drawMap(t,s){
   pts.forEach((p,i)=>{if(i>Math.max(reached,curIdx))return;const cur=i===curIdx;ctx.fillStyle=i===2?"#B8463A":"#3E4A48";ctx.beginPath();ctx.arc(p[0],p[1],cur?7:5,0,6.283);ctx.fill();
     if(cur){ctx.strokeStyle="rgba(184,70,58,.6)";ctx.lineWidth=2;ctx.beginPath();ctx.arc(p[0],p[1],10+((t*14)%14),0,6.283);ctx.stroke();}
     ctx.fillStyle="#2E3533";ctx.font=(cur?"600 ":"")+"13px 'IBM Plex Mono'";const off=[[-104,22],[10,22],[12,-12],[-150,-10],[12,5]][i],dx=off[0],dy=off[1];ctx.fillText(JLAB[i],p[0]+dx,p[1]+dy);});
+  ctx.restore();}// ---------- the map as a seamless backdrop: the family's marker hops across Durban; at the end the camera pulls back ----------
+const LANDALL=topojson.merge(WORLD_TOPO,WORLD_TOPO.objects.countries.geometries);
+const BORDERS=topojson.mesh(WORLD_TOPO,WORLD_TOPO.objects.countries,(a,b)=>a!==b);
+const JLL=JP.map(p=>[p.lon,p.lat]);
+const DUR=[30.99,-29.89],ZA_C=[25.2,-28.9];
+const ll=(a,b,k)=>[lerp(a[0],b[0],k),lerp(a[1],b[1],k)],lgl=(a,b,k)=>Math.exp(lerp(Math.log(a),Math.log(b),k));
+function mapCam(t,s){
+  const changing=s.lift&&s.lift[2]!==s.lift[3];
+  let focus=changing?ll(JLL[s.lift[2]],JLL[s.lift[3]],E(s.k,.15,.9)):JLL[s.cur];
+  let span=lgl(.07,.13,E(t,29.6,31.4)),ty=250;
+  if(t>38.6){const k=E(t,38.6,40);focus=ll(focus,DUR,k);span=lgl(span,.55,k);ty=lerp(250,430,k);}
+  if(t>40){const k=E(t,40,42.2);focus=ll(DUR,ZA_C,k);span=lgl(.55,20,k);ty=lerp(430,540,k);}
+  return {focus,span,ty};}
+function tokenPos(t,s){const changing=s.lift&&s.lift[2]!==s.lift[3];
+  if(!s.lift)return {ll:JLL[s.cur],hop:0,squash:0};
+  const a=JLL[s.lift[2]],b=JLL[s.lift[3]],k=s.k;
+  const hk=seg(k,.18,.82),p=ll(a,b,ease(hk)),hop=Math.sin(hk*Math.PI)*(changing?150:90);
+  const land=seg(k,.82,1),bounce=Math.abs(Math.sin(land*Math.PI*2))*30*(1-land);
+  return {ll:p,hop:hop+bounce,squash:k>.82?Math.sin(land*Math.PI*4)*(1-land):0};}
+function drawMapBG(t,s,alpha){const cam=mapCam(t,s);
+  const proj=d3.geoMercator().center(cam.focus).scale(W/(cam.span*Math.PI/180)).translate([W/2,cam.ty]),path=d3.geoPath(proj,ctx);
+  ctx.save();ctx.globalAlpha=alpha;
+  ctx.fillStyle="#BCD0C9";ctx.fillRect(0,0,W,H);
+  ctx.save();ctx.beginPath();ctx.rect(0,0,W,H);path(LANDALL);ctx.clip("evenodd");ctx.strokeStyle="rgba(90,120,116,.3)";ctx.lineWidth=1.4;for(let k=-H;k<W;k+=14){ctx.beginPath();ctx.moveTo(k,0);ctx.lineTo(k+H,H);ctx.stroke();}ctx.restore();
+  ctx.beginPath();path(LANDALL);ctx.fillStyle="#EDE3CB";ctx.fill();ctx.strokeStyle="#5A6E6A";ctx.lineWidth=2.4;ctx.stroke();
+  if(cam.span>1.5){ctx.beginPath();path(BORDERS);ctx.strokeStyle="rgba(90,90,80,.45)";ctx.lineWidth=1.2;ctx.setLineDash([6,5]);ctx.stroke();ctx.setLineDash([]);}
+  if(cam.span<2){const fa=1-seg(cam.span,.8,2);ctx.globalAlpha=alpha*fa;ctx.beginPath();path(FLOODPLAIN);ctx.fillStyle="rgba(62,110,140,.3)";ctx.fill();ctx.save();ctx.clip();ctx.strokeStyle="rgba(46,96,128,.45)";ctx.lineWidth=2;for(let k=-H;k<W;k+=16){ctx.beginPath();ctx.moveTo(k,H);ctx.lineTo(k+H,0);ctx.stroke();}ctx.restore();ctx.beginPath();path(FLOODPLAIN);ctx.strokeStyle="rgba(36,86,120,.95)";ctx.lineWidth=2.4;ctx.stroke();
+    // flood-line label once, near the camp
+    if(cam.span<.2){const q=proj([30.952,-29.957]);ctx.fillStyle="rgba(46,96,128,.9)";ctx.font="italic 22px Newsreader";ctx.fillText("city flood line (1-in-100-year)",q[0]+20,q[1]+40);}
+    ctx.globalAlpha=alpha;}
+  // place names
+  ctx.fillStyle="#4E473A";
+  if(cam.span<.3){ctx.font="italic 32px Newsreader";[["uMlazi",30.885,-29.962],["Lamontville",30.93,-29.94],["Umbilo",30.98,-29.875],["the Bluff",31.02,-29.925],["city centre",31.03,-29.85]].forEach(([n,lo,la])=>{const q=proj([lo,la]);ctx.fillText(n,q[0],q[1]);});}
+  else if(cam.span<3){ctx.font="600 34px 'Newsreader'";const q=proj(DUR);ctx.fillText("DURBAN",q[0]+30,q[1]-20);}
+  else{ctx.font="600 40px 'Newsreader'";const q=proj([24.2,-30.4]);ctx.fillText("SOUTH AFRICA",q[0]-150,q[1]);const d=proj(DUR);ctx.fillStyle="#B8463A";ctx.beginPath();ctx.arc(d[0],d[1],10,0,6.283);ctx.fill();ctx.strokeStyle="#B8463A";ctx.lineWidth=3;ctx.beginPath();ctx.arc(d[0],d[1],24+((t*20)%22),0,6.283);ctx.stroke();ctx.fillStyle="#2E3533";ctx.font="600 30px 'Newsreader'";ctx.fillText("Durban",d[0]+26,d[1]+8);}
+  // trail and stops
+  let reached=0;L.forEach(l=>{if(t>=l[1])reached=Math.max(reached,l[3]);});
+  const tk=tokenPos(t,s),tp=proj(tk.ll);
+  if(cam.span<3){ctx.strokeStyle="#B5532F";ctx.lineWidth=cam.span<.3?4:3;ctx.setLineDash([10,8]);ctx.lineCap="round";ctx.beginPath();
+    const P=JLL.slice(0,reached+1).map(c=>proj(c));P.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));if(s.lift&&s.lift[2]!==s.lift[3])ctx.lineTo(tp[0],tp[1]);ctx.stroke();ctx.setLineDash([]);
+    const upto=Math.max(reached,s.lift?s.lift[2]:0);JLL.forEach((c,i)=>{if(i>upto)return;const q=proj(c);ctx.fillStyle=i===2?"#B8463A":"#3E4A48";ctx.beginPath();ctx.arc(q[0],q[1],cam.span<.3?9:6,0,6.283);ctx.fill();
+      if(cam.span<.3){ctx.fillStyle="#2E3533";ctx.font="600 20px 'IBM Plex Mono'";const o=[[-150,34],[16,34],[16,-16],[16,-16],[16,30]][i];ctx.fillText(JLAB[i],q[0]+o[0],q[1]+o[1]);}});
+    // the token: the family as a game piece, hopping
+    if(cam.span<1){const sx=1+tk.squash*.25,sy=1-tk.squash*.25;ctx.fillStyle="rgba(40,30,20,.25)";ctx.beginPath();ctx.ellipse(tp[0],tp[1]+6,26*(1-tk.hop/400),8*(1-tk.hop/400),0,0,6.283);ctx.fill();
+      ctx.save();ctx.translate(tp[0],tp[1]-tk.hop);ctx.scale(sx,sy);ctx.fillStyle="#F3EBD8";ctx.strokeStyle="#2E3533";ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,-18,26,0,6.283);ctx.fill();ctx.stroke();
+      [[-10,-24,"#3E4A52"],[2,-26,"#4B3B36"],[12,-14,"#5A6A5E"],[-2,-10,"#7A5A44"]].forEach(([x,y,c])=>{ctx.fillStyle=c;ctx.beginPath();ctx.arc(x,y,6,0,6.283);ctx.fill();});ctx.restore();}}
   ctx.restore();}let now=0;
 function frame(t){now=t;const s=state(t);
-  if(t>=40.2){ctx.fillStyle="#1E2A2A";ctx.fillRect(0,0,W,H);ctx.drawImage(grain,0,0);ctx.globalAlpha=seg(t,40.4,41.4);ctx.fillStyle="#F3EBD8";ctx.font="italic 400 84px Newsreader";ctx.textAlign="center";ctx.fillText("Who decides where people go?",W/2,H/2+20);ctx.globalAlpha=1;ctx.textAlign="left";return;}
+  if(t>=43){ctx.fillStyle="#1E2A2A";ctx.fillRect(0,0,W,H);ctx.drawImage(grain,0,0);ctx.globalAlpha=seg(t,43.2,44.2);ctx.fillStyle="#F3EBD8";ctx.font="italic 400 84px Newsreader";ctx.textAlign="center";ctx.fillText("Who decides where people go?",W/2,H/2+20);ctx.globalAlpha=1;ctx.textAlign="left";return;}
   // sky
-  let sky=mix(SKY_DAY,SKY_STORM,s.storm);sky=mix(sky,SKY_NIGHT,s.night);const sg=ctx.createLinearGradient(0,0,0,GROUND_Y);sg.addColorStop(0,rgb(mix(sky,[255,255,255],.12)));sg.addColorStop(1,rgb(sky));ctx.fillStyle=sg;ctx.fillRect(0,0,W,H);
+  let sky=mix(SKY_DAY,SKY_STORM,s.storm);sky=mix(sky,SKY_NIGHT,s.night);const sg=ctx.createLinearGradient(0,0,0,GROUND_Y);sg.addColorStop(0,rgb(mix(sky,[255,255,255],.12)));sg.addColorStop(1,rgb(sky));drawMapBG(t,s,1);ctx.save();ctx.globalAlpha=.14+s.storm*.3+s.night*.42;ctx.fillStyle=sg;ctx.fillRect(0,0,W,H);ctx.restore();
   // clouds (soft blobs), heavier in storms
-  seed=99;for(let i=0;i<26;i++){const cx=((rnd()*W*1.3+t*(8+rnd()*10))%(W*1.3))-W*.15,cy=60+rnd()*360,r=120+rnd()*220,a=(.18+s.storm*.35)*(1-s.night*.5);const gr=ctx.createRadialGradient(cx,cy,0,cx,cy,r);gr.addColorStop(0,rgb(mix(CLOUD,[70,82,84],s.storm*.6+s.night*.4),a));gr.addColorStop(1,rgb(CLOUD,0));ctx.fillStyle=gr;ctx.fillRect(cx-r,cy-r,2*r,2*r);}
+  seed=99;for(let i=0;i<26;i++){const cx=((rnd()*W*1.3+t*(8+rnd()*10))%(W*1.3))-W*.15,cy=60+rnd()*360,r=120+rnd()*220,a=(.1+s.storm*.3)*(1-s.night*.5);const gr=ctx.createRadialGradient(cx,cy,0,cx,cy,r);gr.addColorStop(0,rgb(mix(CLOUD,[70,82,84],s.storm*.6+s.night*.4),a));gr.addColorStop(1,rgb(CLOUD,0));ctx.fillStyle=gr;ctx.fillRect(cx-r,cy-r,2*r,2*r);}
   // sun (quiet moments)
   const sun=(1-s.storm)*(1-s.night);if(sun>.05){const gr=ctx.createRadialGradient(1520,200,0,1520,200,260);gr.addColorStop(0,`rgba(255,236,190,${.55*sun})`);gr.addColorStop(1,"rgba(255,236,190,0)");ctx.fillStyle=gr;ctx.fillRect(1260,-60,520,520);}
   if(s.night>.5){ctx.fillStyle=`rgba(240,230,200,${(s.night-.5)*1.4})`;ctx.beginPath();ctx.arc(1500,180,34,0,6.283);ctx.fill();}
@@ -177,7 +223,7 @@ function frame(t){now=t;const s=state(t);
     ctx.globalAlpha=.16;ctx.translate(0,2*s.level);ctx.scale(1,-1);ctx.beginPath();ctx.rect(0,s.level-(H-s.level),W,H-s.level);ctx.clip();PLACES[s.cur].f(posCur,GROUND_Y);ctx.restore();
     ctx.save();ctx.strokeStyle=`rgba(232,240,236,${.55-s.night*.3})`;ctx.lineWidth=2.5;seed=17;for(let i=0;i<60;i++){const y=s.level+8+rnd()*(H-s.level),x=((rnd()*W+t*(20+rnd()*30))%W),w=40+rnd()*160;ctx.beginPath();ctx.moveTo(x,y);ctx.bezierCurveTo(x+w*.3,y-4,x+w*.6,y+4,x+w,y);ctx.stroke();}
     ctx.strokeStyle=`rgba(232,240,236,.8)`;ctx.lineWidth=3;ctx.beginPath();for(let x=0;x<=W;x+=14)ctx.lineTo(x,s.level+Math.sin(x*.02+t*2)*4);ctx.stroke();ctx.restore();debris(t,s.level);}
-  drawMap(t,s);
+  if(t>38.6){const a=seg(t,38.6,39.6);drawMapBG(t,s,a);ctx.save();ctx.globalAlpha=a*.18;ctx.fillStyle="#EDE3CB";ctx.fillRect(0,0,W,H);ctx.restore();}
   // grain + vignette
   ctx.drawImage(grain,0,0);const vg=ctx.createRadialGradient(W/2,H/2,H*.4,W/2,H/2,H*.95);vg.addColorStop(0,"rgba(0,0,0,0)");vg.addColorStop(1,"rgba(30,26,18,.28)");ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
   // captions
@@ -192,7 +238,7 @@ function frame(t){now=t;const s=state(t);
   caption("Three children are swept away.",fadeIO(t,30.2,32.4));
   caption("A hotel.",fadeIO(t,32.6,34.6),"2025");
   caption("Evicted. A student residence.",fadeIO(t,35,38.2),"july 2025");
-  caption("Still temporary.",fadeIO(t,38.2,40.2));
+  caption("Still temporary.",fadeIO(t,38.2,40));caption("Durban, South Africa.",fadeIO(t,40.2,42.9),"one city. 84 “temporary” sites nationally");
 }
 let t=0,playing=false,last=0;const sc=document.getElementById("scrub"),tm=document.getElementById("tm"),pb=document.getElementById("play");
 const ui=()=>{sc.value=Math.round(t/TOTAL*1000);tm.textContent=t.toFixed(1)+" / "+TOTAL+" s";pb.textContent=playing?"Pause":"Play";};
