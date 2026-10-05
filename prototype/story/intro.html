@@ -1,0 +1,140 @@
+<title>Moved Into the Water: Intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#05090C;--ink:#E6EDEF;--muted:#8C9DA6;--rule:#22313A;--water:#58B7EA;color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:15px/1.4 "IBM Plex Mono",monospace;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding-inline:16px;box-sizing:border-box}
+#stage{position:relative;width:min(100%,calc((100vh - 110px)*16/9));aspect-ratio:16/9;max-width:100%}
+canvas{display:block;width:100%;height:100%;border:1px solid var(--rule);background:#0A1218}
+#poster{position:absolute;inset:0;display:grid;place-items:center;background:rgba(5,9,12,.7)}
+#poster[hidden]{display:none!important}
+button{font:500 13px/1 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--water);border:0;border-radius:3px;padding:12px 20px;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.bar{width:min(100%,calc((100vh - 110px)*16/9));display:flex;gap:12px;align-items:center}
+#scrub{flex:1;accent-color:var(--water)}
+#tm{color:var(--muted);min-width:90px;font-variant-numeric:tabular-nums}
+.src{width:min(100%,calc((100vh - 110px)*16/9));font-size:12px;color:var(--muted)}
+</style>
+<div id="stage"><canvas id="c" width="1920" height="1080" aria-label="Illustrated intro: one group of families, flooded and moved, 2019 to 2025"></canvas><div id="poster"><button type="button" id="go">Play</button></div></div>
+<div class="bar"><button type="button" id="play">Play</button><span id="tm"></span><input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Position"></div>
+<p class="src">Schematic illustration. Events: GroundUp (Jun 2022, Mar 2025), Mail &amp; Guardian (9 May 2022), The Witness (10 Jul 2025), Amnesty International (Nov 2025), Sunday Tribune (5 Oct 2025); our site map. Rain: ERA5 hourly reanalysis at the camp (Open-Meteo), which smooths short local downpours. 1 bucket = a normal month of rain here (82 mm, 1991–2020). Pools: rain on the uMlazi's 905 km² catchment upstream of the camp, assuming the same rain fell across it (order of magnitude; 1 Olympic pool = 2,500 m³).</p>
+<script src="vendor/rough.min.js"></script>
+<script src="intro-data.js"></script>
+<script>
+(async function(){
+const cv=document.getElementById("c"),ctx=cv.getContext("2d"),W=1920,H=1080,rc=rough.canvas(cv);
+await Promise.all([document.fonts.load("700 40px 'Barlow Condensed'"),document.fonts.load("400 30px Newsreader"),document.fonts.load("400 16px 'IBM Plex Mono'")]).catch(()=>{});
+const D=window.INTRO_RAIN,EV=D.events,NM=D.normal_month_mm,CATCH=D.catchment_km2;
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x)),seg=(t,a,b)=>clamp((t-a)/(b-a),0,1),ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,E=(t,a,b)=>ease(seg(t,a,b)),lerp=(a,b,k)=>a+(b-a)*k;
+const fade=(t,a,b,f)=>Math.min(seg(t,a,a+(f||.5)),1-seg(t,b-(f||.5),b));
+function txt(s,x,y,o){o=o||{};if((o.a===undefined?1:o.a)<=0)return;ctx.save();ctx.globalAlpha=o.a===undefined?1:o.a;ctx.font=(o.w||400)+" "+(o.size||30)+"px "+(o.f||"Newsreader");ctx.fillStyle=o.c||"#E6EDEF";ctx.textAlign=o.al||"left";if("letterSpacing" in ctx)ctx.letterSpacing=(o.ls||0)+"px";ctx.fillText(s,x,y);ctx.restore();}
+const DISP="'Barlow Condensed',sans-serif",MONO="'IBM Plex Mono',monospace";
+const S=(o)=>Object.assign({roughness:1.4,bowing:1.1,seed:7,strokeWidth:2},o);
+// ---------- landscape (schematic) ----------
+const GROUND=[[0,720],[150,728],[330,734],[380,800],[500,862],[620,800],[662,748],[820,738],[1000,684],[1200,604],[1400,566],[1920,548]];
+const groundY=x=>{for(let i=1;i<GROUND.length;i++)if(x<=GROUND[i][0]){const [a,ya]=GROUND[i-1],[b,yb]=GROUND[i];return ya+(yb-ya)*(x-a)/(b-a);}return 548;};
+const RIVER0=842;
+const HOMES=[[150],[235],[315]].map(([x])=>[x,groundY(x)]);
+const TENTS=[[1110],[1185],[1260]].map(([x])=>[x,groundY(x)]);
+const CAMP=[[690],[745],[800],[855]].map(([x])=>[x,groundY(x)]);
+const HOTEL=[1560,groundY(1560)],RES=[1760,groundY(1760)];
+function drawGround(){ctx.save();ctx.beginPath();ctx.moveTo(0,H);GROUND.forEach(p=>ctx.lineTo(p[0],p[1]));ctx.lineTo(W,H);ctx.closePath();const g=ctx.createLinearGradient(0,540,0,H);g.addColorStop(0,"#2A3A2E");g.addColorStop(1,"#141C17");ctx.fillStyle=g;ctx.fill();ctx.restore();
+  rc.curve(GROUND,S({stroke:"#8FB08A",strokeWidth:2.5,roughness:1}));}
+function drawWater(level,a){ctx.save();ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(W,0);for(let i=GROUND.length-1;i>=0;i--)ctx.lineTo(GROUND[i][0],GROUND[i][1]);ctx.closePath();ctx.clip();
+  ctx.globalAlpha=a;ctx.fillStyle="#2E86C1";ctx.fillRect(0,level,W,H-level);ctx.globalAlpha=a*.8;ctx.strokeStyle="#9AD3F2";ctx.lineWidth=2;ctx.beginPath();for(let x=0;x<=W;x+=12)ctx.lineTo(x,level+Math.sin(x*.03+now*4)*3);ctx.stroke();ctx.restore();}
+function house(x,y,col,sub){const s=sub||0;rc.rectangle(x-28,y-44,56,44,S({stroke:col,fill:"rgba(230,237,239,.08)",fillStyle:"solid",seed:11+x|0}));rc.polygon([[x-34,y-44],[x,y-70],[x+34,y-44]],S({stroke:col,seed:13+x|0}));}
+function tent(x,y,col){rc.polygon([[x-30,y],[x,y-48],[x+30,y]],S({stroke:col,seed:21+x|0}));rc.line(x,y-48,x,y,S({stroke:col,seed:23+x|0,strokeWidth:1.2}));}
+function unit(x,y,col,tilt){ctx.save();ctx.translate(x,y);ctx.rotate(tilt||0);rc.rectangle(-22,-36,44,36,S({stroke:col,seed:31+x|0}));rc.line(-26,-36,26,-40,S({stroke:col,seed:33+x|0}));ctx.restore();}
+function family(cx,cy,a,spread){for(let i=0;i<8;i++){const an=i/8*6.283+.4,r=(i%2?14:7)*(spread||1);ctx.globalAlpha=a;ctx.fillStyle="#F2E6C9";ctx.beginPath();ctx.arc(cx+Math.cos(an)*r,cy-10+Math.sin(an)*r*.6,5,0,6.283);ctx.fill();}ctx.globalAlpha=1;}
+function hook(x,y,a){if(a<=0)return;ctx.save();ctx.globalAlpha=a;rc.line(x,0,x,y-34,S({stroke:"#C9D4D9",strokeWidth:2.5,roughness:.6,seed:41}));rc.arc(x,y-24,28,28,0,Math.PI*1.4,false,S({stroke:"#C9D4D9",strokeWidth:3,roughness:.6,seed:43}));
+  txt("THE CITY",x+18,Math.max(40,y-120),{f:MONO,size:16,ls:3,c:"#C9D4D9",a});ctx.restore();}
+function rain(rate,a){if(rate<=.2||a<=0)return;const n=Math.round(Math.min(900,rate/18*900+60));ctx.save();ctx.globalAlpha=a*clamp(.25+rate/18*.5,0,.75);ctx.strokeStyle="#CFE3F5";ctx.lineWidth=1.3;ctx.beginPath();
+  for(let i=0;i<n;i++){const hx=Math.sin(i*12.9898)*43758.5453,hy=Math.sin(i*78.233)*12543.13,sx=(hx-Math.floor(hx))*W,sp=900+(hy-Math.floor(hy))*400,y=((now*sp+(hy-Math.floor(hy))*H*3)%(H+60))-30,x=(sx-now*sp*.15)%W;const X=x<0?x+W:x;ctx.moveTo(X,y);ctx.lineTo(X+5,y-22);}ctx.stroke();ctx.restore();}
+// ---------- rain HUD (real hourly data drives it) ----------
+function storm(ev,k){const mm=EV[ev].mm,hrs=mm.length,h=k*hrs,hi=Math.min(hrs-1,Math.floor(h));let cum=0;for(let i=0;i<hi;i++)cum+=mm[i];cum+=mm[hi]*(h-hi);return {h,hrs,rate:mm[hi],cum,total:EV[ev].total};}
+function hud(ev,k,a,dateTxt){if(a<=0)return;const s=storm(ev,k),X=1200;
+  ctx.save();ctx.globalAlpha=a*.82;ctx.fillStyle="#05090C";ctx.fillRect(X-30,24,W-X+6,300);ctx.restore();
+  txt(dateTxt,X,66,{f:MONO,size:16,ls:2,c:"#8C9DA6",a});
+  txt("HOUR "+Math.min(s.hrs,Math.floor(s.h)+(k>0?1:0))+" OF "+s.hrs,X,126,{f:DISP,w:700,size:58,a});
+  txt(s.rate.toFixed(1)+" mm of rain this hour",X,162,{size:24,a,c:s.rate>=10?"#FF8A73":s.rate>=5?"#9FD4F2":"#C9D4D9"});
+  // buckets: 1 bucket = a normal month of rain
+  const nb=Math.max(1,Math.ceil(s.total/NM));for(let b=0;b<nb;b++){const bx=X+b*92,by=300,bw=66,bh=92,f=clamp(s.cum/NM-b,0,1);
+    ctx.save();ctx.globalAlpha=a;ctx.fillStyle="#2E86C1";ctx.fillRect(bx+4,by-f*(bh-6),bw-8,f*(bh-6));ctx.restore();
+    rc.polygon([[bx-4,by-bh],[bx+bw+4,by-bh],[bx+bw,by],[bx,by]],S({stroke:"#E6EDEF",strokeWidth:2,roughness:.8,seed:51+b}));}
+  txt((s.cum/NM).toFixed(1)+" months of rain",X+nb*92+10,262,{f:DISP,w:700,size:36,a});txt("1 bucket = a normal month here",X+nb*92+10,288,{f:MONO,size:13,c:"#8C9DA6",a});
+  const pools=Math.round(s.cum/1000*CATCH*1e6/2500/1000)*1000;txt("≈ "+pools.toLocaleString("en-US")+" Olympic pools",X,354,{f:DISP,w:700,size:34,a,c:"#9FD4F2"});
+  txt("of rain on the river's catchment upstream",X,380,{f:MONO,size:13,c:"#8C9DA6",a});}
+function caption(s,a,y,o){txt(s,70,y||110,Object.assign({f:DISP,w:700,size:54,a},o||{}));}
+// ---------- timeline ----------
+const T={r19:[.6,7],tents:[9,12],camp:[12,16.2],r22:[16.6,23],back:[23,25.2],r25:[25.8,29.6],moves:[31,34.4],tally:[34.4,38],q:[38,42]},TOTAL=42.5;
+let now=0;
+function famPos(t){ // where the family is, by keyframes
+  const M=[[0,[240,734]],[9.6,[240,734]],[11.2,[1185,604]],[12.8,[1185,604]],[15.2,[775,738]],[20.5,[775,738]],[21.6,[1000,684]],[23.6,[1000,684]],[24.8,[775,738]],[31,[775,738]],[31.9,HOTEL],[32.6,HOTEL],[33.6,RES],[99,RES]];
+  for(let i=1;i<M.length;i++)if(t<=M[i][0]){const [ta,pa]=M[i-1],[tb,pb]=M[i],k=ease(seg(t,ta,tb));return [lerp(pa[0],pb[0],k),lerp(pa[1],pb[1],k)-Math.sin(k*Math.PI)*(tb-ta>.9&&pa!==pb?90:0)];}return RES;}
+function hookOn(t){return (t>9.3&&t<11.6)||(t>12.6&&t<15.6)||(t>23.3&&t<25)||(t>31&&t<33.9);}
+function frame(t){now=t;ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle="#0A1218";ctx.fillRect(0,0,W,H);
+  if(t>=T.q[0]){ctx.fillStyle="#05090C";ctx.fillRect(0,0,W,H);const a=seg(t,T.q[0],T.q[0]+.8);txt("Who decides where people go?",W/2,H/2+20,{f:DISP,w:700,size:96,al:"center",a});return;}
+  // sky tint per storm
+  const st19=seg(t,T.r19[0],T.r19[0]+1)*(1-seg(t,8.6,9.4)),st22=seg(t,T.r22[0],T.r22[0]+1)*(1-seg(t,24.6,25.4)),st25=seg(t,25,25.8)*(1-seg(t,30.6,31.2));
+  ctx.fillStyle=`rgba(4,8,14,${.35*Math.max(st19,st22)+.7*st25})`;ctx.fillRect(0,0,W,H);
+  // water level from the storms (rises with cumulative rain, then recedes)
+  const k19=seg(t,T.r19[0],T.r19[1]),k22=seg(t,T.r22[0],T.r22[1]),k25=seg(t,T.r25[0],T.r25[1]);
+  const s19=storm("2019",k19).cum/EV["2019"].total,s22=storm("2022",k22).cum/EV["2022"].total,s25=storm("2025",k25).cum/EV["2025"].total;
+  let level=RIVER0;
+  level=Math.min(level,lerp(RIVER0,650,s19)*(1)+0)+(t>T.r19[1]?(RIVER0-650)*seg(t,7.6,9.4):0);
+  if(t>T.r22[0]&&t<26)level=Math.min(RIVER0,lerp(RIVER0,676,s22)+(t>T.r22[1]?(RIVER0-676)*seg(t,23.4,25.6):0));
+  if(t>T.r25[0]&&t<31.4)level=Math.min(RIVER0,lerp(RIVER0,684,Math.pow(s25,.7))+(t>T.r25[1]?(RIVER0-684)*seg(t,29.8,31.2):0));
+  drawGround();
+  // settlements
+  const homesA=1-seg(t,9.5,10.5)*.6;HOMES.forEach(([x,y])=>house(x,y,`rgba(230,237,239,${homesA})`));
+  TENTS.forEach(([x,y])=>{if(t>10.4)tent(x,y,"#E6EDEF");});
+  const unitsOn=t>13.6,tilt25=E(t,28.4,29.4);
+  if(unitsOn)CAMP.forEach(([x,y],i)=>unit(x+(i>=2?tilt25*30:0),y+(i>=2?tilt25*8:0),t>=T.r25[0]?"#F4B942":"#F4B942",i>=2?tilt25*.5:0));
+  if(t>31)[[HOTEL,"HOTEL"],[RES,"RESIDENCE"]].forEach(([p,l],i)=>{if(i===1&&t<32.6)return;rc.rectangle(p[0]-40,p[1]-(i?150:120),80,i?150:120,S({stroke:"#C9D4D9",seed:61+i}));for(let r=0;r<(i?5:4);r++)for(let c=0;c<2;c++)rc.rectangle(p[0]-28+c*32,p[1]-(i?138:108)+r*28,18,16,S({stroke:"#C9D4D9",strokeWidth:1,seed:70+r*3+c+i*20}));txt(l,p[0],p[1]+30,{f:MONO,size:14,al:"center",c:"#C9D4D9"});
+    if(i===0&&t>32.1){const a=seg(t,32.1,32.4);rc.line(p[0]-30,p[1]-60,p[0]+30,p[1]-10,S({stroke:"#FF5B4F",strokeWidth:4,seed:81}));rc.line(p[0]+30,p[1]-60,p[0]-30,p[1]-10,S({stroke:"#FF5B4F",strokeWidth:4,seed:82}));}});
+  drawWater(level,.85);
+  // the map: the city's own flood line, consulted and ignored (March 2021)
+  const ma=fade(t,12.4,15.4,.4);if(ma>0){ctx.save();ctx.globalAlpha=ma;ctx.fillStyle="#EFE8D6";ctx.translate(560,330);ctx.rotate(-.05);ctx.fillRect(-150,-95,300,190);ctx.strokeStyle="#2E6FA8";ctx.lineWidth=3;ctx.setLineDash([8,6]);ctx.beginPath();ctx.moveTo(-150,30);ctx.bezierCurveTo(-60,-10,40,60,150,10);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle="rgba(46,111,168,.25)";ctx.beginPath();ctx.moveTo(-150,30);ctx.bezierCurveTo(-60,-10,40,60,150,10);ctx.lineTo(150,95);ctx.lineTo(-150,95);ctx.closePath();ctx.fill();ctx.fillStyle="#1D2328";ctx.font="600 20px 'Barlow Condensed'";ctx.fillText("CITY FLOOD LINE",-136,-62);ctx.fillStyle="#C8382E";ctx.beginPath();ctx.arc(-10,48,9,0,6.283);ctx.fill();ctx.restore();}
+  // family + hook
+  const fp=famPos(t);let spread=1;if(t>20.4&&t<23.6)spread=1.4;
+  const famA=t>T.r25[0]+3.2&&t<31?1:1;family(fp[0],fp[1],famA,spread);
+  // three lights go out (February 2025)
+  if(t>T.r25[0]&&t<31){const la=1-seg(t,28.6,29.6);for(let i=0;i<3;i++){ctx.save();ctx.globalAlpha=la;ctx.fillStyle="#FFE7A3";ctx.shadowColor="#FFE7A3";ctx.shadowBlur=18;ctx.beginPath();ctx.arc(830+i*26,710,6,0,6.283);ctx.fill();ctx.restore();}}
+  hook(fp[0],fp[1]-40,hookOn(t)?1:0);
+  rain(t<9?storm("2019",k19).rate*st19:t<26?storm("2022",k22).rate*st22:storm("2025",k25).rate*st25,1);
+  // HUD during storms
+  if(t<9)hud("2019",k19,fade(t,.5,8.8,.4),"22 APRIL 2019 · FROM 9 AM");
+  else if(t>16&&t<25.6)hud("2022",k22,fade(t,16.4,25.4,.4),"11 APRIL 2022 · FROM 9 AM");
+  else if(t>25.4&&t<31)hud("2025",k25,fade(t,25.6,30.8,.4),"26 FEBRUARY 2025 · FROM 1 AM");
+  // captions
+  caption("April 2019. It starts to rain.",fade(t,.4,4,.4));
+  caption("The river floods their homes.",fade(t,4.2,8.8,.4));
+  caption("They're moved into tents.",fade(t,9.2,12.2,.3));txt("for two years",70,160,{size:30,c:"#C9D4D9",a:fade(t,10.2,12.2,.3)});
+  caption("March 2021. Moved again.",fade(t,12.4,16.2,.3));txt("To the river's edge.",70,166,{f:DISP,w:700,size:54,c:"#FF8A73",a:fade(t,14.2,16.2,.3)});
+  caption("April 2022. It rains again.",fade(t,16.6,20.4,.4));
+  caption("The camp floods.",fade(t,20.6,23.2,.3));
+  caption("They're sent back.",fade(t,23.3,25.4,.3),null,{c:"#FF8A73"});
+  caption("February 2025. Five hours, at night.",fade(t,25.8,28.4,.3));
+  caption("It floods again. Three children are swept away.",fade(t,28.6,31,.3));
+  caption("A hotel.",fade(t,31,32.1,.2));caption("Evicted: the bill wasn't paid.",fade(t,32.1,33.1,.2),null,{c:"#FF8A73"});caption("A student residence.",fade(t,33.1,34.4,.2));
+  // tally
+  if(t>=T.tally[0]){const a=seg(t,T.tally[0],T.tally[0]+.5);ctx.save();ctx.globalAlpha=a*.85;ctx.fillStyle="#05090C";ctx.fillRect(0,0,W,H);ctx.restore();
+    [["4","moves"],["2","floods in the camp"],["6","years"]].forEach(([n,l],i)=>{const aa=seg(t,T.tally[0]+.3+i*.5,T.tally[0]+.8+i*.5);txt(n,420+i*540,500,{f:DISP,w:700,size:200,al:"center",a:aa,c:i===1?"#58B7EA":"#E6EDEF"});txt(l,420+i*540,560,{size:34,al:"center",a:aa,c:"#C9D4D9"});});
+    txt("Still “temporary.”",W/2,740,{f:DISP,w:700,size:72,al:"center",a:seg(t,T.tally[0]+2,T.tally[0]+2.6),c:"#FF8A73"});}
+  txt("schematic illustration",W-24,H-20,{f:MONO,size:13,al:"right",c:"#8C9DA6"});
+}
+// player
+let t=0,playing=false,last=0;const sc=document.getElementById("scrub"),tm=document.getElementById("tm"),pb=document.getElementById("play");
+const ui=()=>{sc.value=Math.round(t/TOTAL*1000);tm.textContent=t.toFixed(1)+" / "+TOTAL.toFixed(0)+" s";pb.textContent=playing?"Pause":"Play";};
+function loop(n){if(playing){t+=Math.min(.05,(n-last)/1000);if(t>=TOTAL){t=TOTAL;playing=false;}}frame(t);ui();last=n;requestAnimationFrame(loop);}
+function play(on){playing=on;document.getElementById("poster").hidden=true;if(on&&t>=TOTAL)t=0;last=performance.now();ui();}
+pb.onclick=()=>play(!playing);document.getElementById("go").onclick=()=>{t=0;play(true);};
+sc.oninput=()=>{playing=false;document.getElementById("poster").hidden=true;t=sc.value/1000*TOTAL;};
+addEventListener("keydown",e=>{if(e.key===" "&&e.target.tagName!=="INPUT"){e.preventDefault();play(!playing);}});
+const q=/[?&]t=([\d.]+)/.exec(location.search);if(q){document.getElementById("poster").hidden=true;t=+q[1];}else t=21;
+requestAnimationFrame(loop);
+})();
+</script>
