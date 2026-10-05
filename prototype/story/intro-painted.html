@@ -25,7 +25,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-of
 <script src="vendor/world-50m.js"></script>
 <script src="tra-story-data.js"></script>
 <script src="hollie-data.js"></script>
-<script src="intro-data.js"></script>
+<script src="intro-data.js"></script><script src="rain86-data.js"></script>
 <script>
 (async function(){
 const cv=document.getElementById("c"),ctx=cv.getContext("2d"),W=1920,H=1080;
@@ -288,7 +288,17 @@ function gauge(t){const a=Math.min(seg(t,2.6,3.0),1-seg(t,23.3,23.7));if(a<=0)re
   const pools=Math.round(cum/1000*INTRO_RAIN.catchment_km2*1e6/2500/1000)*1000;
   ptext("≈ "+pools.toLocaleString("en-US")+" Olympic pools",X+34,BOT+108,{a,size:40,al:"right",c:"#CFEDE6"});
   ptext("of rain on the river's catchment",X+34,BOT+140,{a,size:17,f:"mono",al:"right",c:"#F3EBD8"});}
-function tally(t){const o={al:"right",light:false},X=W-110,out=1;if(t<24.5||t>=Q_START)return;
+// 86 years of rain, in the gauge's language: each year's wettest 3 days as a tick; red = the storms that flooded them
+const R86=(window.RAIN86||{years:[]}).years,FAMSTORM=[[2019,244.7,"2019 · 245 mm"],[2022,233.2,"2022 · 233 mm"],[2025,46.2,""]];
+function strip86(t){if(!R86.length)return;const a=fadeIO(t,25.3,27.0,.2);if(a<=0)return;const X0=1000,X1=1810,B=905,S=190/383,bw=(X1-X0)/R86.length,grow=seg(t,25.35,25.95)*R86.length,o={al:"left",light:false};
+  ctx.save();ctx.globalAlpha=a;ctx.fillStyle="#4E473A";ctx.fillRect(X0,B,X1-X0,2);
+  R86.forEach((r,i)=>{const k=clamp(grow-i,0,1);if(k<=0)return;const h=r.mm*S*k;ctx.fillStyle=r.y===1987?"#5A5244":"#9A8F78";ctx.fillRect(X0+i*bw+2,B-h,bw-4,h);});
+  const ra=seg(t,25.95,26.15);FAMSTORM.forEach(([y,mm])=>{const i=y-1940,x=X0+i*bw;ctx.globalAlpha=a*ra;ctx.fillStyle="#B5302A";ctx.fillRect(x+1,B-mm*S,bw-2,mm*S);ctx.fillRect(x-4,B-mm*S-2,bw+8,3);});
+  ctx.restore();
+  ptext("Wettest 3 days, each year",X0,B-238,Object.assign({a,size:15,f:"mono",w:500,c:"#4E473A"},o));ptext("1940",X0,B+30,Object.assign({a,size:14,f:"mono",c:"#4E473A"},o));
+  ptext("1987",X0+(1987-1940)*bw+bw/2,B-383*S-10,Object.assign({a:a*seg(t,25.8,26),size:14,f:"mono",c:"#5A5244",al:"center",light:false}));
+  ptext("2019 · 2022",X0+(2020.5-1940)*bw,B-270*S-10,Object.assign({a:a*ra,size:14,f:"mono",w:500,c:"#B5302A",al:"right",light:false}));
+  ptext("Feb 2025 · 46 mm: it still flooded the camp",X1,B+30,Object.assign({a:a*seg(t,26.2,26.4),size:15,f:"mono",w:500,c:"#B5302A",al:"right",light:false}));}function tally(t){const o={al:"right",light:false},X=W-110,out=1;if(t<24.5||t>=Q_START)return;
   ptext("2019 – 2025",X,370,Object.assign({a:seg(t,24.5,24.8)*out,size:20,f:"mono",w:500,c:"#4E473A"},o));
   ptext("Moved 4 times",X,460,Object.assign({a:seg(t,24.7,25.0)*out,size:84,f:"cond",c:"#24302F"},o));
   ptext("Flooded 3 times",X,550,Object.assign({a:seg(t,25.1,25.4)*out,size:84,f:"cond",c:"#8E3A22"},o));}
@@ -353,7 +363,7 @@ function frame(t){now=t;
   caption("Three children are swept away.",fadeIO(t,19.6,21.9,.5));
   caption("A hotel. Evicted. A student residence.",fadeIO(t,22.0,23.6),"2025");
   caption("Still temporary.",fadeIO(t,23.6,24.8));
-  tally(t);
+  tally(t);strip86(t);
   caption("Durban, South Africa.",fadeIO(t,25.0,26.9),"one city · 84 “temporary” sites found nationally");
 }
 let t=0,playing=false,last=0;const sc=document.getElementById("scrub"),tm=document.getElementById("tm"),pb=document.getElementById("play");
