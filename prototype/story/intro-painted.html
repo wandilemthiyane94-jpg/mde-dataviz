@@ -20,6 +20,11 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-of
 <div id="stage"><canvas id="c" width="1920" height="1080" aria-label="Painted illustration: a family flooded and moved again and again, Durban 2019 to 2025"></canvas><div id="poster"><button type="button" id="go">Play</button></div></div>
 <div class="bar"><button type="button" id="play">Play</button><span id="tm"></span><input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Position"></div>
 <p class="src">Illustration of one group of families' journey, 2019–2025 (people and buildings shown are illustrative, not portraits). Events: GroundUp (Jun 2022, Mar 2025), Mail &amp; Guardian (9 May 2022), The Witness (10 Jul 2025), Amnesty International (Nov 2025), Sunday Tribune (5 Oct 2025); our site map.</p>
+<script src="vendor/d3.v7.min.js"></script>
+<script src="vendor/topojson-client.min.js"></script>
+<script src="vendor/world-50m.js"></script>
+<script src="tra-story-data.js"></script>
+<script src="hollie-data.js"></script>
 <script>
 (async function(){
 const cv=document.getElementById("c"),ctx=cv.getContext("2d"),W=1920,H=1080;
@@ -90,7 +95,47 @@ function drop(t,t0,x){if(t<t0||t>t0+1.4)return;const k=seg(t,t0,t0+.7);const y=l
   else{const r=seg(t,t0+.7,t0+1.4);ctx.strokeStyle=`rgba(86,140,138,${1-r})`;ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(x,GROUND_Y-6,20+r*120,4+r*18,0,0,6.283);ctx.stroke();}}
 function caption(s,a,sub){if(a<=0)return;ctx.save();ctx.globalAlpha=a;ctx.fillStyle="rgba(243,235,216,.92)";ctx.font="italic 400 46px Newsreader";const w=ctx.measureText(s).width;ctx.fillRect(56,H-150,w+56,sub?100:76);ctx.fillStyle="#2B3436";ctx.fillText(s,84,H-98);if(sub){ctx.font="400 24px 'IBM Plex Mono'";ctx.fillStyle="#5A6466";ctx.fillText(sub.toUpperCase(),86,H-64);}ctx.restore();}
 const fadeIO=(t,a,b,f)=>Math.min(seg(t,a,a+(f||.5)),1-seg(t,b-(f||.5),b));
-let now=0;
+// ---------- sketch map of Durban: where the moves happen (real locations from our site map) ----------
+const MAPW=470,MAPH=400,MX=1410,MY=40;
+const JP=HOLLIE.journeys.j1.pts.map(p=>{if(p.site){const s=HOLLIE.sites.find(x=>x.id===p.site);return {n:s.name,lon:s.lon,lat:s.lat};}return p;});
+const JLAB=["Mega Village","Tehuis Hostel (tents)","Lamontville camp","Hotel, city centre","Umbilo residence"];
+const mapCv=document.createElement("canvas");mapCv.width=MAPW;mapCv.height=MAPH;
+const MBOX={type:"Feature",geometry:{type:"Polygon",coordinates:[[[30.885,-29.84],[31.055,-29.84],[31.055,-29.985],[30.885,-29.985],[30.885,-29.84]]]}};
+const mproj=d3.geoMercator().fitExtent([[18,46],[MAPW-18,MAPH-18]],MBOX);
+const MP=(lon,lat)=>mproj([lon,lat]);
+(function(){const g=mapCv.getContext("2d");g.fillStyle="#F1E8D2";g.fillRect(0,0,MAPW,MAPH);
+  // sea (sketch hatch) from the country outline
+  const za=topojson.feature(WORLD_TOPO,WORLD_TOPO.objects.countries).features.find(f=>+f.id===710);
+  g.save();g.beginPath();g.rect(0,0,MAPW,MAPH);const path=d3.geoPath(mproj,g);g.fillStyle="#B9CFC9";g.fill();
+  g.beginPath();path(za);g.fillStyle="#F1E8D2";g.fill();g.strokeStyle="#5A6E6A";g.lineWidth=2;g.stroke();g.restore();
+  g.save();g.beginPath();g.rect(0,0,MAPW,MAPH);g.beginPath();path(za);g.rect(MAPW,0,-MAPW,MAPH);g.clip("evenodd");g.strokeStyle="rgba(90,120,116,.35)";g.lineWidth=1.2;for(let k=-MAPH;k<MAPW;k+=9){g.beginPath();g.moveTo(k,0);g.lineTo(k+MAPH,MAPH);g.stroke();}g.restore();
+  // rivers: the city's floodplain traced as sketchy blue lines
+  g.strokeStyle="rgba(62,110,140,.38)";g.lineWidth=1.1;(FLOODPLAIN.features||[]).forEach(f=>{const gg=f.geometry,ps=gg.type==="Polygon"?[gg.coordinates]:gg.coordinates;ps.forEach(p=>{const r=p[0];g.beginPath();r.forEach((c,i)=>{const q=MP(c[0],c[1]);i?g.lineTo(q[0]+(Math.random()-.5)*.8,q[1]+(Math.random()-.5)*.8):g.moveTo(q[0],q[1]);});g.stroke();});});
+  // place names
+  g.fillStyle="#6B6250";g.font="italic 15px Newsreader";[["uMLAZI",30.893,-29.945],["the Bluff",31.03,-29.925]].forEach(([n,lo,la])=>{const q=MP(lo,la);g.fillText(n,q[0]-22,q[1]);});
+  g.fillStyle="#3E4A48";g.font="italic 22px Newsreader";g.fillText("Durban",16,30);g.font="12px 'IBM Plex Mono'";g.fillStyle="#7A7260";g.fillText("WHERE THEY WERE MOVED",112,30);
+  const k5=MP(30.925,-29.981),k5b=MP(30.925+2/96.4,-29.981);g.strokeStyle="#5A5040";g.lineWidth=2;g.beginPath();g.moveTo(k5[0],k5[1]);g.lineTo(k5b[0],k5b[1]);g.stroke();g.fillStyle="#5A5040";g.font="11px 'IBM Plex Mono'";g.fillText("2 km",k5[0],k5[1]-6);
+  g.font="italic 13px Newsreader";g.fillText("Indian Ocean",MAPW-120,MAPH-26);})();
+function drawMap(t,s){
+  // how far along the journey: stops reached and the leg in progress
+  let reached=0,leg=null,lk=0;L.forEach((l,i)=>{if(t>=l[1])reached=Math.max(reached,l[3]);else if(t>=l[0]&&!leg){leg=l;lk=E(seg(t,l[0],l[1]),.2,.9);}});
+  const big=leg?Math.min(1,E(seg(t,leg[0],leg[0]+.6),0,1),1-seg(t,leg[1]-.4,leg[1])):0;const sc=1+big*.12;
+  ctx.save();ctx.translate(MX+MAPW/2,MY+MAPH/2);ctx.rotate(.012);ctx.scale(sc,sc);ctx.translate(-MAPW/2,-MAPH/2);
+  ctx.shadowColor="rgba(40,30,20,.35)";ctx.shadowBlur=18;ctx.shadowOffsetY=6;ctx.drawImage(mapCv,0,0);ctx.shadowColor="transparent";
+  if(s.night>.3){ctx.fillStyle=`rgba(30,40,44,${(s.night-.3)*.5})`;ctx.fillRect(0,0,MAPW,MAPH);}
+  const pts=JP.map(p=>MP(p.lon,p.lat));
+  const seq=[[0,1],[1,2],[2,3],[3,4]];
+  ctx.strokeStyle="#B5532F";ctx.lineWidth=3;ctx.setLineDash([7,6]);ctx.lineCap="round";
+  seq.forEach(([a,b])=>{let k=0;if(reached>=b)k=1;else if(leg&&leg[2]===a&&leg[3]===b)k=lk;if(k<=0)return;const A=pts[a],B=pts[b],mx=(A[0]+B[0])/2,my=Math.min(A[1],B[1])-26;ctx.beginPath();ctx.moveTo(A[0],A[1]);for(let q=0;q<=k+1e-6;q+=.04){ctx.lineTo((1-q)*(1-q)*A[0]+2*(1-q)*q*mx+q*q*B[0],(1-q)*(1-q)*A[1]+2*(1-q)*q*my+q*q*B[1]);}ctx.stroke();});
+  ctx.setLineDash([]);
+  // "sent back" loop at the camp (April 2022)
+  if(t>=23){const c=pts[2],k=t<26.2?seg(t,23.4,26):1;ctx.beginPath();ctx.arc(c[0],c[1]-16,14,Math.PI/2,Math.PI/2+k*Math.PI*2);ctx.stroke();}
+  // stops
+  const curIdx=leg?(lk>.98?leg[3]:leg[2]):reached;
+  pts.forEach((p,i)=>{if(i>Math.max(reached,curIdx))return;const cur=i===curIdx;ctx.fillStyle=i===2?"#B8463A":"#3E4A48";ctx.beginPath();ctx.arc(p[0],p[1],cur?7:5,0,6.283);ctx.fill();
+    if(cur){ctx.strokeStyle="rgba(184,70,58,.6)";ctx.lineWidth=2;ctx.beginPath();ctx.arc(p[0],p[1],10+((t*14)%14),0,6.283);ctx.stroke();}
+    ctx.fillStyle="#2E3533";ctx.font=(cur?"600 ":"")+"13px 'IBM Plex Mono'";const off=[[-104,22],[10,22],[12,-12],[-150,-10],[12,5]][i],dx=off[0],dy=off[1];ctx.fillText(JLAB[i],p[0]+dx,p[1]+dy);});
+  ctx.restore();}let now=0;
 function frame(t){now=t;const s=state(t);
   if(t>=40.2){ctx.fillStyle="#1E2A2A";ctx.fillRect(0,0,W,H);ctx.drawImage(grain,0,0);ctx.globalAlpha=seg(t,40.4,41.4);ctx.fillStyle="#F3EBD8";ctx.font="italic 400 84px Newsreader";ctx.textAlign="center";ctx.fillText("Who decides where people go?",W/2,H/2+20);ctx.globalAlpha=1;ctx.textAlign="left";return;}
   // sky
@@ -132,6 +177,7 @@ function frame(t){now=t;const s=state(t);
     ctx.globalAlpha=.16;ctx.translate(0,2*s.level);ctx.scale(1,-1);ctx.beginPath();ctx.rect(0,s.level-(H-s.level),W,H-s.level);ctx.clip();PLACES[s.cur].f(posCur,GROUND_Y);ctx.restore();
     ctx.save();ctx.strokeStyle=`rgba(232,240,236,${.55-s.night*.3})`;ctx.lineWidth=2.5;seed=17;for(let i=0;i<60;i++){const y=s.level+8+rnd()*(H-s.level),x=((rnd()*W+t*(20+rnd()*30))%W),w=40+rnd()*160;ctx.beginPath();ctx.moveTo(x,y);ctx.bezierCurveTo(x+w*.3,y-4,x+w*.6,y+4,x+w,y);ctx.stroke();}
     ctx.strokeStyle=`rgba(232,240,236,.8)`;ctx.lineWidth=3;ctx.beginPath();for(let x=0;x<=W;x+=14)ctx.lineTo(x,s.level+Math.sin(x*.02+t*2)*4);ctx.stroke();ctx.restore();debris(t,s.level);}
+  drawMap(t,s);
   // grain + vignette
   ctx.drawImage(grain,0,0);const vg=ctx.createRadialGradient(W/2,H/2,H*.4,W/2,H/2,H*.95);vg.addColorStop(0,"rgba(0,0,0,0)");vg.addColorStop(1,"rgba(30,26,18,.28)");ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
   // captions
