@@ -86,9 +86,8 @@ const ll=(a,b,k)=>[lerp(a[0],b[0],k),lerp(a[1],b[1],k)],lgl=(a,b,k)=>Math.exp(le
 // ---------- timeline (seconds): ~29 s, per intro-painted-FINAL-spec ----------
 const TITLE_END=0,Q_START=27.0,Q_MID=29.2,Q_END=30.9,TOTAL=31.0;
 // Short cut: an edit list over the full intro. [source start, source end, speed]. Hard cuts between rows.
-// Hook first; scene-setting compressed; floods tightened; Feb 2025 and the closing question untouched.
+// Opens on the ordinary day; scene-setting compressed; floods tightened; Feb 2025 and the closing question untouched.
 const EDL=[
-  [27.4,28.9,1],    // hook: the question, first frame
   [1.6,5.6,1],      // 2019: the ordinary day turns, furniture goes
   [6.2,7.6,3],      // rope lift: compressed hard
   [7.6,8.8,1.25],   // TEMPORARY. Tents. Two years. (caption stays readable)
@@ -99,7 +98,7 @@ const EDL=[
   [16.6,22.0,1],    // February 2025: protected
   [22.0,24.4,1.15], // hotel, evicted, residence
   [24.4,26.8,1.6],  // pull back + tally: compressed
-  [29.2,30.9,1]     // closing question: protected
+  [27.0,30.9,1]     // hard cut to dark: both questions, protected
 ];
 const OUT=EDL.reduce((s,[a,b,v])=>s+(b-a)/v,0);
 function SRC(x){for(const [a,b,v] of EDL){const d=(b-a)/v;if(x<d)return a+x*v;x-=d;}const l=EDL[EDL.length-1];return l[1];}
