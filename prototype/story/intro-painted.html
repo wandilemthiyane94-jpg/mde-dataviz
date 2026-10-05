@@ -19,12 +19,13 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-of
 </style>
 <div id="stage"><canvas id="c" width="1920" height="1080" aria-label="Painted illustration: a family flooded and moved again and again, Durban 2019 to 2025"></canvas><div id="poster"><button type="button" id="go">Play</button></div></div>
 <div class="bar"><button type="button" id="play">Play</button><span id="tm"></span><input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Position"></div>
-<p class="src">Illustration of one group of families' journey, 2019–2025 (people and buildings shown are illustrative, not portraits). Events: GroundUp (Jun 2022, Mar 2025), Mail &amp; Guardian (9 May 2022), The Witness (10 Jul 2025), Amnesty International (Nov 2025), Sunday Tribune (5 Oct 2025); our site map.</p>
+<p class="src">Illustration of one group of families' journey, 2019–2025 (people and buildings shown are illustrative, not portraits). Events: GroundUp (Jun 2022, Mar 2025), Mail &amp; Guardian (9 May 2022), The Witness (10 Jul 2025), Amnesty International (Nov 2025), Sunday Tribune (5 Oct 2025); our site map. Gauge: ERA5 hourly rain at the camp (Open-Meteo), which smooths short local downpours; "a normal month" = 82 mm (1991–2020); pools = rain on the uMlazi's 905 km² catchment, assuming the same rain fell across it (order of magnitude; 1 pool = 2,500 m³).</p>
 <script src="vendor/d3.v7.min.js"></script>
 <script src="vendor/topojson-client.min.js"></script>
 <script src="vendor/world-50m.js"></script>
 <script src="tra-story-data.js"></script>
 <script src="hollie-data.js"></script>
+<script src="intro-data.js"></script>
 <script>
 (async function(){
 const cv=document.getElementById("c"),ctx=cv.getContext("2d"),W=1920,H=1080;
@@ -144,8 +145,10 @@ const ll=(a,b,k)=>[lerp(a[0],b[0],k),lerp(a[1],b[1],k)],lgl=(a,b,k)=>Math.exp(le
 function mapCam(t,s){
   const changing=s.lift&&s.lift[2]!==s.lift[3];
   let focus=changing?ll(JLL[s.lift[2]],JLL[s.lift[3]],E(s.k,.15,.9)):JLL[s.cur];
-  let span=lgl(.07,.13,E(t,29.6,31.4)),ty=250;
-  if(t>38.6){const k=E(t,38.6,40);focus=ll(focus,DUR,k);span=lgl(span,.55,k);ty=lerp(250,430,k);}
+  const KF=[[0,.045],[9,.045],[12.4,.07],[14.6,.07],[17.6,.09],[23,.1],[26,.11],[31.2,.13],[37.4,.17]];
+  let span=KF[KF.length-1][1];for(let i=1;i<KF.length;i++)if(t<=KF[i][0]){span=lgl(KF[i-1][1],KF[i][1],ease(seg(t,KF[i-1][0],KF[i][0])));break;}
+  let ty=250;
+  if(t>38.6){const k=E(t,38.6,40);focus=ll(focus,DUR,k);span=lgl(.17,.55,k);ty=lerp(250,430,k);}
   if(t>40){const k=E(t,40,42.2);focus=ll(DUR,ZA_C,k);span=lgl(.55,20,k);ty=lerp(430,540,k);}
   return {focus,span,ty};}
 function tokenPos(t,s){const changing=s.lift&&s.lift[2]!==s.lift[3];
@@ -181,6 +184,32 @@ function drawMapBG(t,s,alpha){const cam=mapCam(t,s);
     if(cam.span<1){const sx=1+tk.squash*.25,sy=1-tk.squash*.25;ctx.fillStyle="rgba(40,30,20,.25)";ctx.beginPath();ctx.ellipse(tp[0],tp[1]+6,26*(1-tk.hop/400),8*(1-tk.hop/400),0,0,6.283);ctx.fill();
       ctx.save();ctx.translate(tp[0],tp[1]-tk.hop);ctx.scale(sx,sy);ctx.fillStyle="#F3EBD8";ctx.strokeStyle="#2E3533";ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,-18,26,0,6.283);ctx.fill();ctx.stroke();
       [[-10,-24,"#3E4A52"],[2,-26,"#4B3B36"],[12,-14,"#5A6A5E"],[-2,-10,"#7A5A44"]].forEach(([x,y,c])=>{ctx.fillStyle=c;ctx.beginPath();ctx.arc(x,y,6,0,6.283);ctx.fill();});ctx.restore();}}
+  ctx.restore();}// ---------- flood gauge: real rain for each storm (ERA5 hourly), marks left for comparison ----------
+const RAINEV=[["2019",FLOODS[0]],["2022",FLOODS[1]],["2025",FLOODS[2]]].map(([y,f])=>({y,f,ev:INTRO_RAIN.events[y]}));
+function drawGauge(t){const a=Math.min(seg(t,1.6,2.6),1-seg(t,37.6,38.6));if(a<=0)return;
+  const X=1700,TOP=150,BOT=690,MAX=250,yOf=mm=>BOT-(mm/MAX)*(BOT-TOP);
+  // current storm
+  let cur=null;RAINEV.forEach(r=>{if(t>=r.f[2]-1.2)cur=r;});
+  let cum=0,hr=0,hrs=0,rate=0,active=false;
+  if(cur){const mm=cur.ev.mm;hrs=mm.length;const k=seg(t,cur.f[2],cur.f[3]);const h=k*hrs,hi=Math.min(hrs-1,Math.floor(h));for(let i=0;i<hi;i++)cum+=mm[i];cum+=mm[hi]*(h-hi);hr=k>0?Math.min(hrs,hi+1):0;rate=mm[hi];active=t>=cur.f[2]&&t<=cur.f[3]+2.5;}
+  ctx.save();ctx.globalAlpha=a;
+  // card
+  ctx.fillStyle="rgba(243,235,216,.88)";ctx.fillRect(X-40,TOP-110,260,(BOT-TOP)+250);
+  ctx.fillStyle="#2B3436";ctx.font="400 15px 'IBM Plex Mono'";ctx.fillText("RAIN THIS STORM",X-22,TOP-80);
+  ctx.font="italic 400 54px Newsreader";ctx.fillText(Math.round(cum)+" mm",X-22,TOP-30);
+  ctx.font="400 14px 'IBM Plex Mono'";ctx.fillStyle="#5A6466";ctx.fillText(cur?(active?"hour "+hr+" of "+hrs+(rate>=10?" · "+rate.toFixed(0)+" mm/h":""):cur.ev.label):"",X-22,TOP-6);
+  // staff gauge post
+  ctx.fillStyle="#8A6A44";ctx.fillRect(X,TOP,34,BOT-TOP);ctx.fillStyle="#F6F1E4";ctx.fillRect(X+4,TOP,26,BOT-TOP);
+  for(let mm=0;mm<=MAX;mm+=10){const y=yOf(mm),big=mm%50===0;ctx.fillStyle="#2B3436";ctx.fillRect(X+4,y-1,big?26:14,big?3:2);if(big){ctx.font="13px 'IBM Plex Mono'";ctx.fillText(String(mm),X+40,y+5);}}
+  // water in the gauge
+  const wy=yOf(cum);ctx.fillStyle="rgba(86,140,138,.75)";ctx.fillRect(X+4,wy,26,BOT-wy);ctx.strokeStyle="#2F5F5E";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(X-8,wy);ctx.lineTo(X+44,wy);ctx.stroke();
+  // a normal month
+  const ny=yOf(INTRO_RAIN.normal_month_mm);ctx.setLineDash([5,5]);ctx.strokeStyle="#8C7A5A";ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(X-14,ny);ctx.lineTo(X+80,ny);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle="#8C7A5A";ctx.font="italic 15px Newsreader";ctx.fillText("a normal month",X+86,ny+5);
+  // marks left by earlier storms
+  RAINEV.forEach(r=>{if(t<=r.f[3]+.4||r===cur&&active)return;const y=yOf(r.ev.total);ctx.strokeStyle="#B5532F";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(X-12,y);ctx.lineTo(X+46,y);ctx.stroke();ctx.fillStyle="#B5532F";ctx.font="600 15px 'IBM Plex Mono'";ctx.fillText(r.y+" · "+Math.round(r.ev.total)+" mm",X+86,y+5);});
+  // volume on the river's catchment
+  const pools=Math.round(cum/1000*INTRO_RAIN.catchment_km2*1e6/2500/1000)*1000;
+  ctx.fillStyle="#2B3436";ctx.font="italic 400 30px Newsreader";ctx.fillText("≈ "+pools.toLocaleString("en-US"),X-22,BOT+50);ctx.font="13px 'IBM Plex Mono'";ctx.fillStyle="#5A6466";ctx.fillText("OLYMPIC POOLS OF RAIN ON",X-22,BOT+74);ctx.fillText("THE RIVER'S CATCHMENT",X-22,BOT+92);
   ctx.restore();}let now=0;
 function frame(t){now=t;const s=state(t);
   if(t>=43){ctx.fillStyle="#1E2A2A";ctx.fillRect(0,0,W,H);ctx.drawImage(grain,0,0);ctx.globalAlpha=seg(t,43.2,44.2);ctx.fillStyle="#F3EBD8";ctx.font="italic 400 84px Newsreader";ctx.textAlign="center";ctx.fillText("Who decides where people go?",W/2,H/2+20);ctx.globalAlpha=1;ctx.textAlign="left";return;}
@@ -223,6 +252,7 @@ function frame(t){now=t;const s=state(t);
     ctx.globalAlpha=.16;ctx.translate(0,2*s.level);ctx.scale(1,-1);ctx.beginPath();ctx.rect(0,s.level-(H-s.level),W,H-s.level);ctx.clip();PLACES[s.cur].f(posCur,GROUND_Y);ctx.restore();
     ctx.save();ctx.strokeStyle=`rgba(232,240,236,${.55-s.night*.3})`;ctx.lineWidth=2.5;seed=17;for(let i=0;i<60;i++){const y=s.level+8+rnd()*(H-s.level),x=((rnd()*W+t*(20+rnd()*30))%W),w=40+rnd()*160;ctx.beginPath();ctx.moveTo(x,y);ctx.bezierCurveTo(x+w*.3,y-4,x+w*.6,y+4,x+w,y);ctx.stroke();}
     ctx.strokeStyle=`rgba(232,240,236,.8)`;ctx.lineWidth=3;ctx.beginPath();for(let x=0;x<=W;x+=14)ctx.lineTo(x,s.level+Math.sin(x*.02+t*2)*4);ctx.stroke();ctx.restore();debris(t,s.level);}
+  drawGauge(t);
   if(t>38.6){const a=seg(t,38.6,39.6);drawMapBG(t,s,a);ctx.save();ctx.globalAlpha=a*.18;ctx.fillStyle="#EDE3CB";ctx.fillRect(0,0,W,H);ctx.restore();}
   // grain + vignette
   ctx.drawImage(grain,0,0);const vg=ctx.createRadialGradient(W/2,H/2,H*.4,W/2,H/2,H*.95);vg.addColorStop(0,"rgba(0,0,0,0)");vg.addColorStop(1,"rgba(30,26,18,.28)");ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
