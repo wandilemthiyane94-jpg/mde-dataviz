@@ -150,9 +150,17 @@ table.cmp th{font:500 10px var(--mono);letter-spacing:.08em;text-transform:upper
 .story .quote{font:italic 16px/1.4 var(--serif);color:var(--ink);border-left:3px solid var(--amber);padding:2px 0 2px 12px;margin:0}
 .story .quote small{display:block;font:500 11px var(--sans);font-style:normal;color:var(--mut);margin-top:4px}
 .story .note{font-size:11.5px;color:var(--dim);margin:0}
-.story .btns{display:flex;flex-wrap:wrap;gap:8px}
-.story .btns .cta{padding:10px 14px;font-size:13px}
 .ghostb{background:none;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:10px 14px;font-size:13px;cursor:pointer}
+.stats3.ic div{grid-template-columns:26px 1fr;column-gap:8px;align-items:center}
+.stats3.ic svg{grid-row:span 2;opacity:.85}
+.photo a{color:#ddd}
+.sthumbs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sthumb{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#111;aspect-ratio:16/10}
+.sthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.sthumb .lab{position:absolute;left:0;right:0;top:0;padding:7px 34px 14px 9px;font-size:11.5px;color:#fff;background:linear-gradient(rgba(0,0,0,.65),transparent)}
+.sthumb .cr{position:absolute;left:6px;bottom:6px;font:500 9px var(--mono);background:rgba(0,0,0,.6);padding:1px 5px;border-radius:3px;color:#ddd}
+.sthumb .ex{position:absolute;right:6px;top:6px;width:24px;height:24px;border-radius:5px;background:rgba(0,0,0,.55);display:grid;place-items:center;color:#fff;text-decoration:none;font-size:12px}
+.sec{font:500 10.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:2px 0 -4px}
 details.acc{margin-top:16px;border-top:1px solid var(--line)}
 details.acc summary{cursor:pointer;padding:12px 0;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between}
 details.acc summary::-webkit-details-marker{display:none}
@@ -391,20 +399,35 @@ const distTxt=d=>d<=250?`${d} m from the line`:(d>=1000?(d/1000).toFixed(1)+' km
 const near=d=>d<=60?'At the line':d<=250?'Near':d<=1000?'Within 1 km':'Beyond 1 km';
 
 /* The default panel: one family's story, from published reports only. */
-function storyHTML(){ const j=JOURNEYS.j1;
-  return '<div class="story"><div class="kick">Gwala Street, Lamontville · 25 February 2025</div><h2 style="margin-top:6px">She lost three children to the water</h2>'+
-  '<p class="sub">A camp the government called temporary</p><div class="pane">'+
-  '<p>On the night of Tuesday 25 February 2025, a mother living in the Gwala Street transit camp lost three of her children: two girls, aged 5 and 16, and a boy aged 11. They were swept away as the family fled the floodwater.</p>'+
-  '<p>She, her husband and their seven children lived in a one-room tin house. They were brought to the camp in 2021 after a flood in uMlazi. The camp sits beside a stream that residents say was blocked with debris, and it had already flooded in April 2022.</p>'+
-  '<p>Five people from the camp died that night: two women aged 56 and 60, and the three children. Afterwards she asked to be moved somewhere safe.</p>'+
-  '<p class="quote">"We have been moved from one place to another and we are tired now."<small>Another mother in the same camp, speaking to GroundUp in June 2022</small></p>'+
-  '<p><b>Moved, and moved again.</b> The path reporting traces for families from this camp:</p>'+
-  '<div class="jl">'+j.legs.map(l=>'<b>'+l[2]+'</b><span>'+esc(l[0])+'<i>'+esc(l[1])+'</i></span>').join('')+'</div>'+
-  '<p class="note">We have not named her. Reports do not say whether her family made every one of these moves.</p>'+
-  '<div class="btns"><button class="cta" id="sj">Show the journey on the map</button><button class="ghostb" id="ss">Open the camp</button></div>'+
-  '<p class="note srcs">Sources: <a target="_blank" rel="noopener" href="https://iol.co.za/news/south-africa/2025-02-26-a-mothers-plea-for-help-after-losing-her-three-children-in-kzn-floods/">IOL, 26 Feb 2025 ↗</a> · <a target="_blank" rel="noopener" href="https://www.amnesty.org/en/documents/afr53/0369/2025/en/">Amnesty International, 2025 ↗</a> · <a target="_blank" rel="noopener" href="https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/">GroundUp, Jun 2022 ↗</a></p>'+
-  '</div></div>'+
-  '<details class="acc" id="acc"><summary>All 12 mapped sites</summary><div class="list">'+SITES.map(x=>'<button data-id="'+x.id+'">'+esc(x.name)+'<span>'+x.yin+(x.yclosed?'–'+x.yclosed:'–')+'</span></button>').join('')+'</div></details>'; }
+function storyHTML(){ const j=JOURNEYS.j1, L=byId.lamontville;
+  const IC={home:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="1.6"><path d="M3 11l9-7 9 7v9H3z"/><path d="M9 20v-6h6v6"/></svg>',
+    cal:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+    wave:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="1.6"><path d="M2 8c3-3 5 3 8 0s5 3 8 0 3 0 4 0M2 13c3-3 5 3 8 0s5 3 8 0 3 0 4 0M2 18c3-3 5 3 8 0s5 3 8 0 3 0 4 0"/></svg>'};
+  let h='<div class="story"><h2>Her three children were swept away</h2><p class="sub">Gwala Street transit camp, Lamontville · 25 February 2025</p>';
+  h+='<div class="photo"><img src="assets/photos/gu_lamontville_relocation_2025.jpg" alt="Residents of the Lamontville camp pack up their belongings among tin rooms and floodwater, March 2025"><span>The camp after the flood, Mar 2025 · Photo: Tsoanelo Sefoloko / <a target="_blank" rel="noopener" href="https://groundup.org.za/article/over-20-people-died-and-hundreds-relocated-following-recent-kzn-floods/">GroundUp</a> · CC BY-ND 4.0</span></div>';
+  h+='<div class="stats3 ic"><div>'+IC.home+'<b>9</b><span>people in one tin room</span></div><div>'+IC.cal+'<b>2021</b><span>moved here</span></div><div>'+IC.wave+'<b>'+DIST.lamontville+' m</b><span>from the flood line</span></div></div>';
+  const T=[['story','Her story'],['moves','Movement'],['conditions','Conditions'],['risk','Flood Risk'],['evidence','Evidence']];
+  h+='<div class="tabs" role="tablist">'+T.map(t=>'<button role="tab" data-st="'+t[0]+'" aria-selected="'+(stab===t[0])+'">'+t[1]+'</button>').join('')+'</div><div class="pane">';
+  if(stab==='story'){ h+='<p class="sec">About her story</p>'+
+    '<p>On the night of Tuesday 25 February 2025, a mother living in the Gwala Street camp lost three of her children: two girls, aged 5 and 16, and a boy aged 11. They were swept away as the family fled the floodwater.</p>'+
+    '<p>She, her husband and their seven children lived in a one-room tin house. They were brought here in 2021 after a flood in uMlazi. The camp sits beside a stream that residents say was blocked with debris, and it had already flooded in April 2022.</p>'+
+    '<p>Five people from the camp died that night: two women aged 56 and 60, and the three children. Afterwards she asked to be moved somewhere safe.</p>'+
+    '<p class="quote">"We have been moved from one place to another and we are tired now."<small>Another mother in the same camp, speaking to GroundUp in June 2022</small></p>'+
+    '<p class="note">We have not named her or shown her picture. The photos show the camp, not her.</p>'; }
+  if(stab==='moves') h+='<p><b>Moved, and moved again.</b> The path reporting traces for families from this camp:</p><div class="jl">'+j.legs.map(l=>'<b>'+l[2]+'</b><span>'+esc(l[0])+'<i>'+esc(l[1])+'</i></span>').join('')+'</div><p class="note">Reports do not say whether her family made every one of these moves.</p><button class="cta" id="sj" style="justify-self:start">Show the journey on the map</button>';
+  if(stab==='conditions') h+=condCards(L);
+  if(stab==='risk') h+='<p>The camp sits <b>'+DIST.lamontville+' m</b> from the city\'s own 1-in-100-year flood line, beside the uMlazi River. It flooded in <b>April 2022</b> and again in <b>February 2025</b>.</p><p>Our model of the April 2022 storm, run on the city\'s 2 m contours, puts about 2 m of water on the riverside camp by 01:30 on 12 April. It is a model, not a measurement.</p><button class="cta" id="bc2" style="justify-self:start">Show a side-cut through the camp</button>';
+  if(stab==='evidence') h+='<div class="srcs"><p><a target="_blank" rel="noopener" href="https://iol.co.za/news/south-africa/2025-02-26-a-mothers-plea-for-help-after-losing-her-three-children-in-kzn-floods/">IOL, 26 Feb 2025: a mother\'s plea after losing her three children ↗</a></p><p><a target="_blank" rel="noopener" href="https://www.amnesty.org/en/documents/afr53/0369/2025/en/">Amnesty International, 2025 report ↗</a></p><p><a target="_blank" rel="noopener" href="https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/">GroundUp, Jun 2022: moved four times · photo by Nokulunga Majola ↗</a></p><p><a target="_blank" rel="noopener" href="https://groundup.org.za/article/over-20-people-died-and-hundreds-relocated-following-recent-kzn-floods/">GroundUp, Mar 2025: residents relocated · photo by Tsoanelo Sefoloko ↗</a></p></div><p class="note">GroundUp photos are used unchanged under CC BY-ND 4.0.</p>';
+  h+='<p class="sec">The water, and the place</p><div class="sthumbs">'+
+    '<div class="sthumb"><img id="arcimg" src="assets/arc/f00.jpg" alt="ArcGIS Pro flood simulation of the uMlazi River rising over the Gwala Street area"><div class="lab">ArcGIS flood simulation · 2022 storm</div><span class="cr" id="arct">hour 0</span><a class="ex" target="_blank" rel="noopener" href="'+LINK.lamontville+'" aria-label="Open the 3D flood model">↗</a></div>'+
+    '<div class="sthumb"><img src="assets/photos/gu_lamontville_camp_2022.jpg" alt="Rows of tin rooms at the Lamontville transit camp on a dry day, 2022"><div class="lab">Gwala Street camp, 2022</div><span class="cr">Photo: Nokulunga Majola / GroundUp</span><a class="ex" target="_blank" rel="noopener" href="https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/" aria-label="Open the GroundUp article">↗</a></div></div>';
+  h+='</div></div><details class="acc" id="acc"><summary>All 12 mapped sites</summary><div class="list">'+SITES.map(x=>'<button data-id="'+x.id+'">'+esc(x.name)+'<span>'+x.yin+(x.yclosed?'–'+x.yclosed:'–')+'</span></button>').join('')+'</div></details>';
+  return h; }
+let stab='story', arcTimer=null;
+const ARCN=31, ARCF=[...Array(ARCN)].map((_,i)=>'assets/arc/f'+String(i).padStart(2,'0')+'.jpg');
+function startArc(){ clearInterval(arcTimer); const im=$('arcimg'); if(!im) return; ARCF.forEach(u=>{const x=new Image();x.src=u;});
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){ im.src=ARCF[20]; return; } let k=0;
+  arcTimer=setInterval(()=>{ const el=$('arcimg'); if(!el){clearInterval(arcTimer);return;} k=(k+1)%(ARCN+6); const f=Math.min(k,ARCN-1); el.src=ARCF[f]; $('arct').textContent='hour '+Math.round(f/(ARCN-1)*25); },160); }
 
 /* Community reports. On claude.ai they go to the artifact's database, in each reporter's own space,
    readable only by the project owner until reviewed. Copies without a backend keep them on the device. */
@@ -438,11 +461,12 @@ function panel(){ const box=$('panel'), foot=$('panelfoot'), s=selected&&byId[se
     foot.innerHTML=''; $('toRep').onclick=()=>{view2='report';setNav();panel();}; box.querySelectorAll('button[data-id]').forEach(b=>b.onclick=()=>{view2='map';setNav();select(b.dataset.id,true);}); return; }
   if(view2==='about'){ box.innerHTML=aboutHTML(); foot.innerHTML=''; $('back').onclick=()=>{view2='map';setNav();panel();}; return; }
   if(view2==='report'){ box.innerHTML=reportHTML(); foot.innerHTML=''; $('rep').onsubmit=sendReport; return; }
-  if(!s){ box.innerHTML=storyHTML(); foot.innerHTML=ABOUTLINK;
+  if(!s){ box.innerHTML=storyHTML(); foot.innerHTML='<a class="explore" target="_blank" rel="noopener" href="'+LINK.lamontville+'">Explore this site <span aria-hidden="true">→</span></a>'+ABOUTLINK;
     $('aboutb').onclick=()=>{view2='about';setNav();panel();};
-    $('sj').onclick=()=>{select('lamontville',true);setTimeout(()=>{tab='movement';toggleJourney();},950);};
-    $('ss').onclick=()=>select('lamontville',true);
-    box.querySelectorAll('.list button').forEach(b=>b.onclick=()=>select(b.dataset.id,true)); return; }
+    box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{stab=b.dataset.st;panel();});
+    if($('sj')) $('sj').onclick=()=>{select('lamontville',true);setTimeout(()=>{tab='movement';toggleJourney();},950);};
+    if($('bc2')) $('bc2').onclick=()=>{select('lamontville',true);setTimeout(()=>{tab='risk';toggleCut();},950);};
+    box.querySelectorAll('.list button').forEach(b=>b.onclick=()=>select(b.dataset.id,true)); startArc(); return; }
   const i=SITES.indexOf(s), d=DIST[s.id], n=yearsOpen(s,2026);
   let h='<div class="top"><button class="back" id="back">← Back to all sites</button><div class="nav2"><button id="prev" aria-label="Previous site">‹</button><button id="next" aria-label="Next site">›</button></div></div>';
   h+='<h2>'+esc(s.name)+'</h2><p class="sub">'+esc(s.type)+' · '+esc(s.addr)+'</p>';
