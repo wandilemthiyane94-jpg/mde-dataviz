@@ -7,13 +7,13 @@
 :root{--bg:#0B0F19;--fg:#F8FAFC;--mut:#A0ACBE;--amber:#F5A524;--night:#AABEFF;--line:rgba(248,250,252,.14);
   --disp:"Barlow Condensed","Arial Narrow",Arial,sans-serif;--mono:"IBM Plex Mono",Consolas,monospace;color-scheme:dark}
 html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font:13px/1.4 var(--mono);overflow:hidden}
-#view{position:fixed;left:0;top:0;bottom:70px;width:55%;cursor:grab}
+#view{position:fixed;left:0;top:0;bottom:120px;width:55%;cursor:grab}
 .arc{position:fixed;right:24px;top:50%;transform:translateY(-55%);width:calc(45% - 48px);display:grid;gap:8px}
 .arc img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:3px;background:#000}
 .arc span{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
 @media (max-width:900px){#view{width:100%;bottom:46%}.arc{left:16px;right:16px;top:auto;bottom:80px;transform:none;width:auto}}
 #view:active{cursor:grabbing}
-.bar{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;max-width:1100px;margin:0 auto}
+.bar{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:end;max-width:1180px;margin:0 auto}
 button{font:600 14px var(--disp);letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--amber);border:0;border-radius:3px;padding:8px 14px;cursor:pointer}
 button.ghost{color:var(--fg);background:none;border:1px solid var(--line)}
 button:focus-visible,input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
@@ -22,6 +22,25 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--fg);outline-off
 input[type=range]{position:relative;width:100%;margin:0;height:20px;accent-color:var(--amber)}
 .clock{font:700 24px/1 var(--disp);min-width:132px;text-align:right;font-variant-numeric:tabular-nums}
 .clock.night{color:var(--night)}
+.rainbars{position:relative;height:46px;margin-bottom:4px}
+.rainbars i{position:absolute;bottom:0;background:#5a7da0;border-radius:1px 1px 0 0}
+.rainbars i.past{background:#8fc4ea}
+.rainbars i b{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font:500 9px var(--mono);color:var(--mut);white-space:nowrap;padding-bottom:1px}
+.tod{position:relative;height:16px;margin-top:3px;color:var(--mut);font-size:10.5px}
+.tod span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.nightband{top:auto;bottom:22px;height:70px}
+.panel{position:fixed;left:16px;top:calc(40px + env(safe-area-inset-top,0px));width:min(330px,calc(55% - 32px));background:rgba(17,24,39,.9);border:1px solid var(--line);border-radius:4px;padding:12px;display:grid;gap:10px;z-index:3}
+.panel[hidden]{display:none!important}
+.panel h2{font:700 18px/1 var(--disp);text-transform:uppercase;letter-spacing:.04em;margin:0}
+.panel .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.panel label{display:grid;gap:2px;font-size:10px;color:var(--mut)}
+.panel input[type=number]{width:100%;box-sizing:border-box;font:500 13px var(--mono);color:var(--fg);background:#0B0F19;border:1px solid var(--line);border-radius:3px;padding:4px 5px}
+.panel .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.panel .res{font:500 12px var(--mono);color:var(--fg)}
+.panel .res b{color:#4FB6D8;font-weight:500}
+.panel .note{font-size:10.5px;color:var(--mut);margin:0}
+.toggle{position:fixed;left:16px;top:calc(8px + env(safe-area-inset-top,0px));z-index:4}
+.status{font-size:11px;color:var(--amber)}
 .hint{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:0;width:55%;text-align:center;color:#5F6C80;font-size:11px;pointer-events:none}
 #loading{position:fixed;inset:0;display:grid;place-items:center;color:var(--mut)}
 @media (max-width:640px){.bar{grid-template-columns:auto 1fr auto}.bar .ghost{display:none}.clock{font-size:18px;min-width:96px}}
@@ -32,10 +51,20 @@ input[type=range]{position:relative;width:100%;margin:0;height:20px;accent-color
 <div id="view" aria-label="3D model of Gwala Street, Lamontville, flooding in the April 2022 storm. Drag to turn it."></div>
 <div id="loading">Loading…</div>
 <div class="arc"><img id="arcimg" src="gwala-arcfull/a00.jpg" alt="ArcGIS Pro flood simulation at the same moment of the storm"><span>ArcGIS Pro simulation · timing approximate</span></div>
+<button type="button" class="ghost toggle" id="ptoggle" aria-expanded="false" aria-controls="panel">Change the rain</button>
+<div class="panel" id="panel" hidden>
+  <h2>What if it rained differently?</h2>
+  <div class="grid" id="rgrid"></div>
+  <div class="row"><label style="flex:1">uMlazi river flow (x)<input type="number" id="river" min="0" max="3" step="0.1" value="1"></label>
+    <button type="button" class="ghost" id="reset">Reset to 2022</button></div>
+  <div class="res" id="res"></div>
+  <span class="status" id="status" aria-live="polite"></span>
+  <p class="note">Rain in mm for each hour. Changes re-run a simplified flood model in your browser on the LiDAR terrain (30 m grid). The ArcGIS panel shows your original run.</p>
+</div>
 <div class="hint">Drag to turn · scroll to zoom · right-drag to move</div>
 <div class="bar">
   <button type="button" id="play">Play</button>
-  <div class="track"><div class="nightband" id="band" aria-hidden="true"></div><input type="range" id="t" min="0" max="33" step="1" value="0" aria-label="Time in the storm"></div>
+  <div class="track"><div class="nightband" id="band" aria-hidden="true"></div><div class="rainbars" id="rainbars" aria-hidden="true"></div><input type="range" id="t" min="0" max="33" step="1" value="0" aria-label="Time in the storm"><div class="tod" id="tod" aria-hidden="true"></div></div>
   <div class="clock" id="clock">11 APR 09:00</div>
 </div>
 
@@ -44,7 +73,31 @@ import * as THREE from "three";
 import {OrbitControls} from "three/addons/controls/OrbitControls.js";
 const D=window.ORBIT, w=D.w, h=D.h, CELL=D.cell, EX=4.8, N=w*h;
 const raw=atob(D.d), DEP=new Uint8Array(raw.length); for(let i=0;i<raw.length;i++) DEP[i]=raw.charCodeAt(i);
-const Z=D.z, zmin=D.zmin, zmax=D.zmax, GAP=170, BASE=40;
+const Z=D.z, zmin=D.zmin, zmax=D.zmax, GAP=170, BASE=40, KMAX=33, NF=KMAX+1;
+// scenario model: Manning overland flow on the pit-filled 30 m grid; edges held to the full model's depths (x river factor)
+const ZF=new Float32Array(D.zf), DEF_RAIN=D.rain_hourly.slice();
+let SNAP=null;                                   // Float32Array(NF*N): depth every 30 min, 09:00 to 01:30
+const baseDepth=(k,c)=>DEP[k*N+c]/D.depth_scale;
+function runModel(rain,riverX){
+  const d=new Float64Array(N), nd=new Float64Array(N), snap=new Float32Array(NF*N), dt=10, nMan=0.05, dx=CELL;
+  const edge=new Uint8Array(N); for(let i=0;i<h;i++)for(let j=0;j<w;j++)if(i===0||j===0||i===h-1||j===w-1)edge[i*w+j]=1;
+  for(let c=0;c<N;c++){d[c]=baseDepth(0,c); snap[c]=d[c];}
+  const steps=KMAX*1800/dt, per=1800/dt;
+  for(let s=1;s<=steps;s++){
+    const tsec=s*dt, hr=Math.min(rain.length-1,Math.floor(tsec/3600)), r=rain[hr]/1000*0.7/3600*dt;
+    const kf=tsec/1800, k0=Math.min(KMAX,Math.floor(kf)), k1=Math.min(KMAX,k0+1), a=kf-k0;
+    for(let c=0;c<N;c++){ if(edge[c]) d[c]=(baseDepth(k0,c)*(1-a)+baseDepth(k1,c)*a)*riverX; else d[c]+=r; }
+    nd.set(d);
+    for(let i=1;i<h-1;i++)for(let j=1;j<w-1;j++){const c=i*w+j, di=d[c]; if(di<=1e-5)continue; const si=ZF[c]+di, p23=Math.pow(di,2/3)/nMan;
+      const nb=[c-1,c+1,c-w,c+w]; let q0=0,q1=0,q2=0,q3=0,tot=0; const qs=[0,0,0,0];
+      for(let k=0;k<4;k++){const n=nb[k], diff=si-(ZF[n]+d[n]); if(diff<=0)continue; const v=p23*Math.sqrt(diff/dx); const q=Math.min(v*dt/dx*di,diff/2); qs[k]=q; tot+=q;}
+      if(tot<=0)continue; const sc=tot>di?di/tot:1;
+      for(let k=0;k<4;k++){if(qs[k]<=0)continue; const m=qs[k]*sc; nd[c]-=m; nd[nb[k]]+=m;}}
+    for(let c=0;c<N;c++) d[c]=nd[c]<0?0:nd[c];
+    if(s%per===0){const k=s/per; for(let c=0;c<N;c++) snap[k*N+c]=d[c];}
+  }
+  return snap;
+}
 const X=j=>(j-(w-1)/2)*CELL, Zp=i=>(i-(h-1)/2)*CELL, Y=z=>(z-zmin)*EX;
 
 const host=document.getElementById("view"), renderer=new THREE.WebGLRenderer({antialias:true});
@@ -134,29 +187,47 @@ function stepFlow(dt){
 // time
 const tEl=document.getElementById("t"), clock=document.getElementById("clock"), play=document.getElementById("play");
 const H0=9; const info=k=>{const hh=H0+k*.5,day=11+Math.floor(hh/24),hr=Math.floor(hh%24),mm=(hh%1)?"30":"00";return {lab:`${day} APR ${String(hr).padStart(2,"0")}:${mm}`,night:(hh%24)>=17.5||(hh%24)<6.25};};
-const KMAX=33, band=document.getElementById("band"),pc=k=>k/KMAX*100,kh=hh=>(hh-H0)/.5; band.style.left=pc(kh(17.5))+"%"; band.style.width=(pc(KMAX)-pc(kh(17.5)))+"%";
+const band=document.getElementById("band"),pc=k=>k/KMAX*100,kh=hh=>(hh-H0)/.5; band.style.left=pc(kh(17.5))+"%"; band.style.width=(pc(KMAX)-pc(kh(17.5)))+"%";
 let fpos=0, playing=false, nightK=0;
-function setWater(f){const f0=Math.floor(f),f1=Math.min(D.frames-1,f0+1),a=f-f0,o0=f0*N,o1=f1*N;let p=0,q=0;
-  const dep=(i,j)=>(DEP[o0+i*w+j]*(1-a)+DEP[o1+i*w+j]*a)/D.depth_scale;
+function setWater(f){const f0=Math.min(KMAX,Math.floor(f)),f1=Math.min(KMAX,f0+1),a=f-f0,o0=f0*N,o1=f1*N;let p=0,q=0;
+  const dep=(i,j)=>SNAP?(SNAP[o0+i*w+j]*(1-a)+SNAP[o1+i*w+j]*a):0;
   for(let i=0;i<h-1;i++)for(let j=0;j<w-1;j++){const d=dep(i,j), wet=d>.08, base=Y(Z[i*w+j]);
     const v=[[i,j],[i,j+1],[i+1,j+1],[i+1,j]].map(([r,c])=>[X(c),(wet?Math.max(Y(Z[r*w+c]),base)+d*EX:Y(Z[r*w+c])-5)+1.5,Zp(r)]);
     for(const tri of [[0,3,1],[1,3,2]])for(const k of tri){wpos[p++]=v[k][0];wpos[p++]=v[k][1];wpos[p++]=v[k][2];walpha[q++]=wet?Math.min(1,.25+d/3):0;}}
   wg.attributes.position.needsUpdate=true; wg.attributes.alpha.needsUpdate=true; wg.computeBoundingSphere();
   wetCells.length=0; for(let i=0;i<h;i++)for(let j=0;j<w;j++){const d=dep(Math.min(h-2,i),Math.min(w-2,j)); DEPN[i*w+j]=d; SURF[i*w+j]=Z[i*w+j]+(d>.08?d:0); if(d>.15)wetCells.push(i*w+j);}}
-function show(k){k=Math.max(0,Math.min(KMAX,k)); fpos=k; tEl.value=Math.round(k); const n=info(Math.round(k)); clock.textContent=n.lab; clock.classList.toggle("night",n.night); setWater(k); arcImg.src=`gwala-arcfull/a${String(Math.round(k*60/KMAX)).padStart(2,"0")}.jpg`;}
+// rain inputs, bars and time-of-day labels
+const rgrid=document.getElementById("rgrid"), riverEl=document.getElementById("river"), resEl=document.getElementById("res"), statusEl=document.getElementById("status");
+const hourLab=i=>{const hh=(9+i)%24;return String(hh).padStart(2,"0")+":00";};
+rgrid.innerHTML=DEF_RAIN.map((v,i)=>`<label>${hourLab(i)}<input type="number" min="0" max="200" step="0.5" value="${v}" data-i="${i}"></label>`).join("");
+const rainNow=()=>[...rgrid.querySelectorAll("input")].map(e=>Math.max(0,+e.value||0));
+const bars=document.getElementById("rainbars"), tod=document.getElementById("tod");
+function drawBars(){const rn=rainNow(), mx=Math.max(20,...rn); bars.innerHTML=rn.map((v,i)=>{const x0=pc(i*2), wd=pc(Math.min(KMAX,i*2+2))-x0;
+  return `<i class="${i*2<fpos?"past":""}" style="left:${x0}%;width:calc(${wd}% - 2px);height:${Math.max(1,v/mx*40)}px"><b>${v>=10?Math.round(v):v}</b></i>`;}).join("");}
+tod.innerHTML=[0,6,12,18,24,30].map(k=>{const hh=(9+k/2)%24;return `<span style="left:${pc(k)}%">${String(Math.floor(hh)).padStart(2,"0")}:00</span>`;}).join("")+`<span style="left:100%">01:30</span>`;
+const campDepth=(c,k)=>{if(!SNAP)return 0;const [cj,ci]=c.c,I=Math.round(ci),J=Math.round(cj);let m=0;for(let a=-1;a<=1;a++)for(let b=-1;b<=1;b++){const ii=I+a,jj=J+b;if(ii>=0&&jj>=0&&ii<h&&jj<w)m=Math.max(m,SNAP[k*N+ii*w+jj]);}return m;};
+function results(){const k=Math.round(fpos);let wet=0;if(SNAP)for(let c=0;c<N;c++)if(SNAP[k*N+c]>.1)wet++;
+  resEl.innerHTML=`Riverside camp <b>${campDepth(D.camps[0],k).toFixed(2)} m</b> · camp next door <b>${campDepth(D.camps[1],k).toFixed(2)} m</b><br>Flooded area <b>${(wet*CELL*CELL/1e6).toFixed(2)} km2</b> at this time`;}
+let timer=null;
+function rerun(){statusEl.textContent="Running the flood…"; clearTimeout(timer); timer=setTimeout(()=>{SNAP=runModel(rainNow(),Math.max(0,+riverEl.value||0)); statusEl.textContent=""; show(fpos); drawBars();},60);}
+rgrid.addEventListener("input",()=>{drawBars();rerun();}); riverEl.addEventListener("input",rerun);
+document.getElementById("reset").onclick=()=>{rgrid.querySelectorAll("input").forEach((e,i)=>e.value=DEF_RAIN[i]); riverEl.value=1; drawBars(); rerun();};
+const ptoggle=document.getElementById("ptoggle"), panel=document.getElementById("panel");
+ptoggle.onclick=()=>{const open=panel.hidden; panel.hidden=!open; ptoggle.setAttribute("aria-expanded",open);};
+function show(k){k=Math.max(0,Math.min(KMAX,k)); fpos=k; tEl.value=Math.round(k); const n=info(Math.round(k)); clock.textContent=n.lab; clock.classList.toggle("night",n.night); setWater(k); results(); drawBars(); arcImg.src=`gwala-arcfull/a${String(Math.round(k*60/KMAX)).padStart(2,"0")}.jpg`;}
 tEl.addEventListener("input",()=>{playing=false;play.textContent="Play";show(+tEl.value);});
 play.onclick=()=>{playing=!playing;play.textContent=playing?"Pause":"Play";if(playing&&fpos>=KMAX)fpos=0;};
 addEventListener("keydown",e=>{if(e.target.tagName==="INPUT")return;if(e.key===" "){e.preventDefault();play.click();}});
 addEventListener("resize",()=>{cam.aspect=VW()/VH();cam.updateProjectionMatrix();renderer.setSize(VW(),VH());});
 
 cam.position.set(4600,4100,4900); controls.target.set(0,Y(zmax)*.9,0); controls.update();
-show(0); document.getElementById("loading").remove();
+SNAP=runModel(DEF_RAIN,1); show(0); document.getElementById("loading").remove();
 let last=performance.now();
 renderer.setAnimationLoop(now=>{const dt=Math.min(.05,(now-last)/1000);last=now;
   if(playing){fpos+=dt*2.2; if(fpos>=KMAX){fpos=KMAX;playing=false;play.textContent="Play";} show(fpos);}
   const n=info(Math.round(fpos)), target=n.night?1:0; nightK+=(target-nightK)*Math.min(1,dt*3);
   sun.intensity=1.25-0.7*nightK; hemi.intensity=0.55-0.25*nightK; wmat.uniforms.night.value=nightK;
-  const rain=D.rain[Math.min(D.frames-1,Math.round(fpos))]||0, active=Math.round(NDROP*Math.min(1,rain/12));
+  const rain=rainNow()[Math.min(16,Math.floor(fpos/2))]||0, active=Math.round(NDROP*Math.min(1,rain/12));
   for(let k=0;k<NDROP;k++){const d=drops[k];let o=k*6;
     if(k>=active){dpos[o+1]=dpos[o+4]=-1e5;continue;}
     d.y-=d.v*dt; if(d.y<d.floor){d.y=TOP;}
