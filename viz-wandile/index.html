@@ -178,6 +178,15 @@ table.cmp th{font:500 10px var(--mono);letter-spacing:.08em;text-transform:upper
 .footrow a.sbtn{background:#fff;color:#0B0F19;border:0;border-radius:6px;padding:7px 12px;font-size:12.5px;font-weight:600}
 .footrow a{color:var(--ink);font-weight:500;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:1px}
 .footrow a:hover{border-bottom-color:#fff}
+.vbox{position:fixed;inset:0;z-index:100;background:rgba(3,6,12,.88);display:grid;place-items:center;padding:24px}
+.vbox .in{position:relative;width:min(960px,100%);}
+.vbox .fr{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden}
+.vbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vbox .x{position:absolute;right:0;top:-40px;background:none;border:0;color:#fff;font-size:26px;cursor:pointer}
+.vbox .cap{color:var(--mut);font-size:12px;margin:8px 0 0}
+.vbox .fb{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;gap:12px;padding:28px;color:var(--txt);font-size:14px}
+.vbox .fb input{font:13px var(--mono);background:#0B0F19;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:9px;width:100%;box-sizing:border-box}
+.vbox.blocked .fb{display:flex}.vbox.blocked iframe{display:none}
 .sthumbs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .sthumb{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#111;aspect-ratio:16/10}
 .sthumb img{width:100%;height:100%;object-fit:cover;display:block}
@@ -432,7 +441,7 @@ function storyHTML(){ const j=JOURNEYS.j1, L=byId.lamontville;
     '<span class="cr">Photo: Tsoanelo Sefoloko / <a target="_blank" rel="noopener" href="https://groundup.org.za/article/over-20-people-died-and-hundreds-relocated-following-recent-kzn-floods/">GroundUp</a> · CC BY-ND</span>'+
     '<div class="hl"><b>Mother Loses Three Children in Flood at Durban Relocation Camp</b></div>'+
     '<button class="play" id="vplay" aria-label="Play the news report">▶</button><i class="bar" id="vbar"></i></div>'+
-    '<p class="vsrc">Video: <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v='+VID+'">Newzroom Afrika, 26 Feb 2025 ↗</a></p>'+
+    '<p class="vsrc">Video: <a target="_blank" rel="noopener" class="yt" href="https://www.youtube.com/watch?v='+VID+'">Newzroom Afrika, 26 Feb 2025 ↗</a></p>'+
     '<p class="dek">At the Gwala Street transit camp in Lamontville, Lulama Dingiswayo lost three children during the February 2025 floods.</p>';
   h+='<div class="facts"><div><span>Camp</span><b>Gwala Street transit camp</b></div><div><span>Area</span><b>Lamontville</b></div><div><span>Date</span><b>25 Feb 2025</b></div><div><span>Loss</span><b>3 children</b></div></div>';
   const T=[['story','Her story'],['moves','Movement'],['conditions','Conditions'],['risk','Flood Risk'],['evidence','Evidence']];
@@ -446,7 +455,7 @@ function storyHTML(){ const j=JOURNEYS.j1, L=byId.lamontville;
   if(stab==='moves') h+='<p class="quote">"We have been moved from one place to another and we are tired now."<small>Another mother in the same camp, to GroundUp, June 2022</small></p><p><b>Moved, and moved again.</b> The path reporting traces for families from this camp:</p><div class="jl">'+j.legs.map(l=>'<b>'+l[2]+'</b><span>'+esc(l[0])+'<i>'+esc(l[1])+'</i></span>').join('')+'</div><p class="note">Reports do not say whether her family made every one of these moves.</p><button class="cta" id="sj" style="justify-self:start">Show the journey on the map</button>';
   if(stab==='conditions') h+=condCards(L);
   if(stab==='risk') h+='<p>The camp sits <b>'+DIST.lamontville+' m</b> from the city\'s own 1-in-100-year flood line, beside the uMlazi River. It flooded in <b>April 2022</b> and again in <b>February 2025</b>.</p><p>Our model of the April 2022 storm, run on the city\'s 2 m contours, puts about 2 m of water on the riverside camp by 01:30 on 12 April. It is a model, not a measurement.</p><button class="cta" id="bc2" style="justify-self:start">Show a side-cut through the camp</button>';
-  if(stab==='evidence') h+='<div class="srcs"><p><a target="_blank" rel="noopener" href="https://iol.co.za/news/south-africa/2025-02-26-a-mothers-plea-for-help-after-losing-her-three-children-in-kzn-floods/">IOL, 26 Feb 2025: a mother\'s plea after losing her three children ↗</a></p><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v='+VID+'">Newzroom Afrika, 26 Feb 2025: Lamontville family mourns loss of three children (video) ↗</a></p><p><a target="_blank" rel="noopener" href="https://www.amnesty.org/en/documents/afr53/0369/2025/en/">Amnesty International, 2025 report ↗</a></p><p><a target="_blank" rel="noopener" href="https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/">GroundUp, Jun 2022: moved four times · photo by Nokulunga Majola ↗</a></p><p><a target="_blank" rel="noopener" href="https://groundup.org.za/article/over-20-people-died-and-hundreds-relocated-following-recent-kzn-floods/">GroundUp, Mar 2025: residents relocated · photo by Tsoanelo Sefoloko ↗</a></p></div><p class="note">GroundUp photos are used unchanged under CC BY-ND 4.0.</p>';
+  if(stab==='evidence') h+='<div class="srcs"><p><a target="_blank" rel="noopener" href="https://iol.co.za/news/south-africa/2025-02-26-a-mothers-plea-for-help-after-losing-her-three-children-in-kzn-floods/">IOL, 26 Feb 2025: a mother\'s plea after losing her three children ↗</a></p><p><a target="_blank" rel="noopener" class="yt" href="https://www.youtube.com/watch?v='+VID+'">Newzroom Afrika, 26 Feb 2025: Lamontville family mourns loss of three children (video) ↗</a></p><p><a target="_blank" rel="noopener" href="https://www.amnesty.org/en/documents/afr53/0369/2025/en/">Amnesty International, 2025 report ↗</a></p><p><a target="_blank" rel="noopener" href="https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/">GroundUp, Jun 2022: moved four times · photo by Nokulunga Majola ↗</a></p><p><a target="_blank" rel="noopener" href="https://groundup.org.za/article/over-20-people-died-and-hundreds-relocated-following-recent-kzn-floods/">GroundUp, Mar 2025: residents relocated · photo by Tsoanelo Sefoloko ↗</a></p></div><p class="note">GroundUp photos are used unchanged under CC BY-ND 4.0.</p>';
   h+='<p class="sec">The water, and the place</p><div class="sthumbs">'+
     '<div class="sthumb"><img id="arcimg" src="assets/arc/f00.jpg" alt="ArcGIS Pro flood simulation of the uMlazi River rising over the Gwala Street area"><div class="lab">ArcGIS flood simulation · 2022 storm</div><span class="cr" id="arct">hour 0</span><a class="ex" target="_blank" rel="noopener" href="'+LINK.lamontville+'" aria-label="Open the 3D flood model">↗</a></div>'+
     '<div class="sthumb"><img src="assets/photos/gu_lamontville_camp_2022.jpg" alt="Rows of tin rooms at the Lamontville transit camp on a dry day, 2022"><div class="lab">Gwala Street camp, 2022</div><span class="cr">Photo: Nokulunga Majola / GroundUp</span><a class="ex" target="_blank" rel="noopener" href="https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/" aria-label="Open the GroundUp article">↗</a></div></div>';
@@ -456,9 +465,22 @@ let stab='story', arcTimer=null, vidTimer=null, vidBlocked=location.protocol==='
 const VID='MQCQF-rsvB4';
 /* The photo is the poster; after a few seconds the news report plays in its place (muted, as browsers require).
    If this host's security policy blocks YouTube, the play button opens it on YouTube instead. */
-document.addEventListener('securitypolicyviolation',e=>{ if(/youtube/.test(e.blockedURI||'')){ vidBlocked=true; const m=$('hmedia'), f=m&&m.querySelector('iframe'); if(f){ f.remove(); m.classList.remove('playing'); } } });
+document.addEventListener('securitypolicyviolation',e=>{ if(/youtube/.test(e.blockedURI||'')){ vidBlocked=true; document.querySelectorAll('.vbox').forEach(b=>b.classList.add('blocked')); const m=$('hmedia'), f=m&&m.querySelector('iframe'); if(f){ f.remove(); m.classList.remove('playing'); } } });
+/* YouTube watch pages refuse to open from inside a sandboxed page (claude.ai), so links open the
+   embeddable player over the page instead. Opened from a file, a normal new tab works. */
+const YTW='https://www.youtube.com/watch?v='+VID;
+function openVideo(){ if(location.protocol==='file:'){ window.open(YTW,'_blank'); return; }
+  const m=$('hmedia'), f0=m&&m.querySelector('iframe'); if(f0){ f0.remove(); m.classList.remove('playing'); }
+  const v=document.createElement('div'); v.className='vbox'+(vidBlocked?' blocked':''); v.setAttribute('role','dialog'); v.setAttribute('aria-label','News report video');
+  v.innerHTML='<div class="in"><button class="x" aria-label="Close">×</button><div class="fr">'+(vidBlocked?'':'<iframe allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" title="Floods: Lamontville family mourns loss of three children (Newzroom Afrika)" src="https://www.youtube.com/embed/'+VID+'?autoplay=1&playsinline=1&rel=0"></iframe>')+
+    '<div class="fb"><b>This page cannot open YouTube here.</b><span>Copy the link and paste it into a new browser tab:</span><input readonly value="'+YTW+'"><button class="cta" id="ytcopy" style="justify-self:start;align-self:flex-start">Copy link</button></div></div>'+
+    '<p class="cap">"Floods: Lamontville family mourns loss of three children" · Newzroom Afrika, 26 Feb 2025</p></div>';
+  document.body.appendChild(v); const close=()=>v.remove(); v.querySelector('.x').onclick=close; v.onclick=e=>{ if(e.target===v) close(); };
+  document.addEventListener('keydown',function k(e){ if(e.key==='Escape'){ close(); document.removeEventListener('keydown',k); } });
+  const inp=v.querySelector('input'); $('ytcopy').onclick=()=>{ inp.select(); try{ navigator.clipboard.writeText(YTW).then(()=>$('ytcopy').textContent='Copied',()=>document.execCommand('copy')); }catch(e){ document.execCommand('copy'); } }; }
+document.addEventListener('click',e=>{ const a=e.target.closest&&e.target.closest('a.yt'); if(a&&location.protocol!=='file:'){ e.preventDefault(); openVideo(); } });
 function playVid(muted){ const m=$('hmedia'); if(!m||m.querySelector('iframe')) return;
-  if(vidBlocked){ window.open('https://www.youtube.com/watch?v='+VID,'_blank'); return; }
+  if(vidBlocked){ openVideo(); return; }
   const f=document.createElement('iframe'); f.title='Floods: Lamontville family mourns loss of three children (Newzroom Afrika)';
   f.allow='autoplay; encrypted-media; picture-in-picture'; f.allowFullscreen=true; f.referrerPolicy='strict-origin-when-cross-origin';
   f.src='https://www.youtube.com/embed/'+VID+'?autoplay=1&mute='+(muted?1:0)+'&playsinline=1&rel=0&modestbranding=1';
