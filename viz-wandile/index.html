@@ -176,7 +176,8 @@ table.cmp th{font:500 10px var(--mono);letter-spacing:.08em;text-transform:upper
 .facts b{font-size:13px;font-weight:600;color:var(--ink);line-height:1.25}
 .facts .hi b{font:700 26px/1 var(--sans);color:var(--amber)}
 .facts .hi span{color:var(--txt);letter-spacing:.06em}
-.footrow{display:flex;justify-content:space-between;align-items:center;margin:-4px 20px 16px}
+.footrow{display:flex;justify-content:space-between;align-items:center;margin:0;padding:10px 20px 12px;border-top:1px solid var(--line)}
+.footrow a.sbtn{background:#fff;color:#0B0F19;border:0;border-radius:6px;padding:7px 12px;font-size:12.5px;font-weight:600}
 .footrow a{color:var(--ink);font-weight:500;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:1px}
 .footrow a:hover{border-bottom-color:#fff}
 .sthumbs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -505,8 +506,7 @@ function panel(){ const box=$('panel'), foot=$('panelfoot'), s=selected&&byId[se
     foot.innerHTML=''; $('toRep').onclick=()=>{view2='report';setNav();panel();}; box.querySelectorAll('button[data-id]').forEach(b=>b.onclick=()=>{view2='map';setNav();select(b.dataset.id,true);}); return; }
   if(view2==='about'){ box.innerHTML=aboutHTML(); foot.innerHTML=''; $('back').onclick=()=>{view2='map';setNav();panel();}; return; }
   if(view2==='report'){ box.innerHTML=reportHTML(); foot.innerHTML=''; $('rep').onsubmit=sendReport; return; }
-  if(!s){ box.innerHTML=storyHTML(); foot.innerHTML='<a class="explore" target="_blank" rel="noopener" href="'+LINK.lamontville+'">Explore this site <span aria-hidden="true">→</span></a><div class="footrow"><a target="_blank" rel="noopener" href="https://iol.co.za/news/south-africa/2025-02-26-a-mothers-plea-for-help-after-losing-her-three-children-in-kzn-floods/">Read the story ↗</a>'+ABOUTLINK+'</div>';
-    $('aboutb').onclick=()=>{view2='about';setNav();panel();};
+  if(!s){ box.innerHTML=storyHTML(); foot.innerHTML='<div class="footrow"><a target="_blank" rel="noopener" href="https://iol.co.za/news/south-africa/2025-02-26-a-mothers-plea-for-help-after-losing-her-three-children-in-kzn-floods/">Read the story ↗</a><a class="sbtn" target="_blank" rel="noopener" href="'+LINK.lamontville+'">Explore this site <span aria-hidden="true">→</span></a></div>';
     box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{stab=b.dataset.st;panel();});
     if($('sj')) $('sj').onclick=()=>{select('lamontville',true);setTimeout(()=>{tab='movement';toggleJourney();},950);};
     if($('bc2')) $('bc2').onclick=()=>{select('lamontville',true);setTimeout(()=>{tab='risk';toggleCut();},950);};
@@ -562,6 +562,7 @@ q.addEventListener('input',()=>{ const v=q.value.trim().toLowerCase(); if(!v){re
   if(/flood/.test(v)) items.push(['Sites that flooded: Lamontville riverside camp, 2022 and 2025','answer',()=>select('lamontville',true)]);
   if(/famil|journey|moved/.test(v)) items.push(['From uMlazi to Umbilo: four moves in six years','journey',()=>{select('lamontville',true);setTimeout(()=>{tab='movement';toggleJourney();},950);}]);
   if(/water|toilet|sanit|condition/.test(v)) items.push(['Conditions at every site','view',()=>{view2='conditions';setNav();panel();}]);
+  if(/about|project|data|method/.test(v)) items.push(['About this project','page',()=>{view2='about';setNav();panel();}]);
   if(/report|tell|complain/.test(v)) items.push(['Report conditions at your site','form',()=>{view2='report';setNav();panel();}]);
   res.innerHTML=items.length?items.slice(0,7).map((it,i)=>'<button data-i="'+i+'">'+esc(it[0])+'<small>'+it[1]+'</small></button>').join(''):'<button disabled>No match yet<small>try a site name</small></button>';
   res.hidden=false; res.querySelectorAll('button[data-i]').forEach(b=>b.onclick=()=>{res.hidden=true;q.value='';items[+b.dataset.i][2]();}); });
