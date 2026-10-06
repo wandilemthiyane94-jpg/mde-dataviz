@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gwala Street Flood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400&family=Barlow+Condensed:wght@700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#1E2A2A;--panel:#243232;--ink:#F3EBD8;--muted:#B9B19C;--water:#5BA3C9;--hit:#D9663F;color-scheme:dark}
+:root[data-theme="light"]{--bg:#EEE6D3;--panel:#E3D9C2;--ink:#1F2A2A;--muted:#5E5848;color-scheme:light}
+body{background:var(--bg);color:var(--ink);font:14px/1.45 "IBM Plex Mono",monospace;margin:0;padding:24px 16px 32px;box-sizing:border-box}
+main{max-width:1180px;margin:0 auto}
+h1{font:700 clamp(28px,4.4vw,48px)/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.01em;margin:0 0 6px}
+.kick{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
+.tabs{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}
+.tabs button,.bar button{font:500 12px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--muted);background:transparent;color:var(--ink);padding:10px 14px;border-radius:3px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tabs button:disabled{opacity:.35;cursor:default}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.map{position:relative;background:#000;border-radius:3px;overflow:hidden}
+canvas{display:block;width:100%;height:auto}
+.bar{display:flex;gap:12px;align-items:center;margin-top:10px}
+#scrub{flex:1;accent-color:var(--water)}
+#clock{min-width:150px;color:var(--muted);font-variant-numeric:tabular-nums}
+aside{background:var(--panel);border-radius:3px;padding:16px}
+aside h2{font:700 20px/1.1 "Barlow Condensed",sans-serif;text-transform:uppercase;margin:0 0 4px}
+.big{font:700 54px/1 "Barlow Condensed",sans-serif;margin:6px 0 2px}
+.lab{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.row{margin:0 0 16px}
+.note{font-size:12px;color:var(--muted);margin-top:16px}
+.src{font-size:12px;color:var(--muted);margin-top:18px;max-width:1180px}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+<p class="kick">Who Owns the Flood · Hollie and Wandile · simulation, not a record</p>
+<h1>Gwala Street, Lamontville, under the storm</h1>
+<div class="tabs" role="group" aria-label="Storm">
+  <button type="button" data-s="2025" aria-pressed="true">February 2025</button>
+  <button type="button" data-s="2022" aria-pressed="false">April 2022</button>
+</div>
+<div class="grid">
+  <div>
+    <div class="map"><canvas id="c" aria-label="Simulated flood depth over the terrain around Gwala Street"></canvas></div>
+    <div class="bar"><button type="button" id="play">Play</button><input type="range" id="scrub" min="0" max="0" value="0" aria-label="Time"><span id="clock"></span></div>
+  </div>
+  <aside>
+    <div class="row"><h2>Lamontville riverside camp</h2><div class="lab">water depth at the camp now</div><div class="big" id="d1">–</div><div class="lab" id="p1"></div></div>
+    <div class="row"><h2>Larger Gwala Street camp</h2><div class="lab">water depth at the camp now</div><div class="big" id="d2">–</div><div class="lab" id="p2"></div></div>
+    <div class="row"><div class="lab">rain this hour</div><div class="big" id="rn">–</div></div>
+    <canvas id="chart" width="560" height="220" aria-label="Rain and camp depth over time"></canvas>
+    <p class="note">Blue is water deeper than 15 cm. The lighter blue under it is the deepest the water reached during the storm.</p>
+  </aside>
+</div>
+<p class="src" id="src"></p>
+</main>
+<script>
+const cv=document.getElementById("c"),ctx=cv.getContext("2d"),ch=document.getElementById("chart"),cx=ch.getContext("2d");
+let S=null,base=null,sprite=null,spx=null,f=0,playing=false,last=0,cur="2025";
+const load=src=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src;});
+async function open(s){cur=s;playing=false;document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.s===s));
+  try{S=await (await fetch("rem/fine_"+s+".json")).json();}catch(e){document.getElementById("src").textContent="This storm hasn't been simulated yet.";return;}
+  [base,sprite]=await Promise.all([load("rem/fine_"+s+"_max.png"),load("rem/fine_"+s+"_frames.png")]);
+  const [W,H]=S.grid;cv.width=W*2;cv.height=H*2;const t=document.createElement("canvas");t.width=sprite.width;t.height=sprite.height;const tc=t.getContext("2d");tc.drawImage(sprite,0,0);spx=tc.getImageData(0,0,t.width,t.height);
+  const sc=document.getElementById("scrub");sc.max=S.frames-1;f=Math.min(f,S.frames-1);sc.value=f;
+  document.getElementById("p1").textContent="peak "+S.lamontville_camp.peak_m.toFixed(2)+" m · ground "+S.lamontville_camp.ground_m+" m above sea";
+  document.getElementById("p2").textContent="peak "+S.gwala_camp.peak_m.toFixed(2)+" m · ground "+S.gwala_camp.ground_m+" m above sea";
+  document.getElementById("src").textContent="Terrain: eThekwini Municipality 2 m contours (LiDAR-derived, Open GIS Data) gridded to "+S.cell_m+" m; river reaches from eThekwini Rivers carved in. Rain: ERA5 hourly reanalysis (Open-Meteo), 70% runoff. Upstream uMlazi and northern-stream inflow from terrain-traced catchments. Camp positions from Hollie's site map. A simplified overland-flow model for illustration: storm-water pipes, culverts, canal walls and buildings are not modelled, so depths are indicative, not measured.";
+  draw();}
+function draw(){if(!S)return;const [W,H]=S.grid;ctx.imageSmoothingEnabled=true;ctx.drawImage(base,0,0,W*2,H*2);
+  const cols=S.cols,ox=(f%cols)*W,oy=Math.floor(f/cols)*H,im=ctx.createImageData(W,H);
+  for(let y=0;y<H;y++)for(let x=0;x<W;x++){const v=spx.data[((oy+y)*spx.width+ox+x)*4]/S.depth_scale,i=(y*W+x)*4;if(v>0.15){const a=Math.min(.9,.35+v/2.2);im.data[i]=20;im.data[i+1]=Math.max(60,130-v*30);im.data[i+2]=Math.max(140,215-v*20);im.data[i+3]=a*255;}}
+  const t=document.createElement("canvas");t.width=W;t.height=H;t.getContext("2d").putImageData(im,0,0);ctx.drawImage(t,0,0,W*2,H*2);
+  [[S.lamontville_camp,"Lamontville camp"],[S.gwala_camp,"Gwala St camp"]].forEach(([c,n],k)=>{const px=(c.lonlat[0]-S.box[0])/(S.box[2]-S.box[0])*W*2,py=(S.box[3]-c.lonlat[1])/(S.box[3]-S.box[1])*H*2;ctx.strokeStyle="#D9663F";ctx.lineWidth=3;ctx.beginPath();ctx.arc(px,py,9,0,6.283);ctx.stroke();ctx.fillStyle="#F3EBD8";ctx.font="500 15px 'IBM Plex Mono'";ctx.fillText(n.toUpperCase(),px+16,py+(k?34:-20));});
+  const h=Math.floor(f*S.frame_minutes/60),[dd,tm]=S.start.split("T"),[Y,M,D]=dd.split("-").map(Number),[hh,mm]=tm.split(":").map(Number),tt=new Date(Date.UTC(Y,M-1,D,hh,mm)+f*S.frame_minutes*60000),p=n=>String(n).padStart(2,"0");
+  document.getElementById("clock").textContent=tt.getUTCDate()+" "+["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][tt.getUTCMonth()]+" "+tt.getUTCFullYear()+" · "+p(tt.getUTCHours())+":"+p(tt.getUTCMinutes())+" SAST";
+  document.getElementById("d1").textContent=S.lamontville_camp.depth_m[f].toFixed(2)+" m";document.getElementById("d2").textContent=S.gwala_camp.depth_m[f].toFixed(2)+" m";
+  document.getElementById("rn").textContent=(S.rain_mm_per_hour[h]||0).toFixed(1)+" mm";chart();}
+function chart(){const w=ch.width,h=ch.height,css=getComputedStyle(document.documentElement);cx.clearRect(0,0,w,h);const n=S.frames,rmax=Math.max(...S.rain_mm_per_hour,1),dmax=Math.max(S.lamontville_camp.peak_m,S.gwala_camp.peak_m,0.5);
+  S.rain_mm_per_hour.forEach((r,i)=>{const x=i/S.rain_mm_per_hour.length*w,bw=w/S.rain_mm_per_hour.length-2;cx.fillStyle="rgba(150,140,120,.55)";cx.fillRect(x,h*.42-(r/rmax)*h*.38,bw,(r/rmax)*h*.38);});
+  [[S.lamontville_camp.depth_m,"#D9663F"],[S.gwala_camp.depth_m,"#5BA3C9"]].forEach(([d,c])=>{cx.strokeStyle=c;cx.lineWidth=3;cx.beginPath();d.forEach((v,i)=>{const x=i/(n-1)*w,y=h-8-(v/dmax)*h*.5;i?cx.lineTo(x,y):cx.moveTo(x,y);});cx.stroke();});
+  cx.strokeStyle=css.getPropertyValue("--ink");cx.lineWidth=2;const x=f/(n-1)*w;cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,h);cx.stroke();
+  cx.fillStyle=css.getPropertyValue("--muted");cx.font="20px 'IBM Plex Mono'";cx.fillText("RAIN",6,22);cx.fillText("CAMP DEPTH",6,h*.5+16);}
+function loop(n){if(playing&&S&&n-last>120){f=(f+1)%S.frames;document.getElementById("scrub").value=f;draw();last=n;}requestAnimationFrame(loop);}
+document.getElementById("play").onclick=e=>{playing=!playing;e.target.textContent=playing?"Pause":"Play";};
+document.getElementById("scrub").oninput=e=>{playing=false;document.getElementById("play").textContent="Play";f=+e.target.value;draw();};
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>open(b.dataset.s));
+open("2025");requestAnimationFrame(loop);
+</script>
+</body>
+</html>
