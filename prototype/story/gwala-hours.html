@@ -26,7 +26,7 @@ input[type=range]{position:relative;width:100%;accent-color:var(--amber);margin:
 @media (max-width:700px){.bar{grid-template-columns:auto 1fr auto}.bar .ghost{display:none}.clock{font-size:20px;min-width:96px}.ticks span:nth-child(even){display:none}}
 </style>
 
-<div class="w stage"><img id="frame" src="gwala-night/f00.jpg" alt="Gwala Street, Lamontville, on 11 April 2022 at 09:00"></div>
+<div class="w stage"><img id="frame" src="gwala-clean/f00.jpg" alt="Gwala Street, Lamontville, on 11 April 2022 at 09:00"></div>
 <div class="w bar">
   <button type="button" id="play">Play</button>
   <button type="button" class="ghost" id="step">+30 min</button>
@@ -37,12 +37,11 @@ input[type=range]{position:relative;width:100%;accent-color:var(--amber);margin:
   </div>
   <div class="clock" id="clock">11 APR 09:00</div>
 </div>
-<p class="w note">Layers, bottom to top: our simulation of the 2022 storm on eThekwini LiDAR with satellite imagery; your ArcGIS Pro run (timing approximate); the LiDAR topography as a wireframe. Shaded band on the slider: night, 17:30 to 06:15. Depths indicative.</p>
 
 <script>
 const N=61, H0=9, STEP=0.5;                      // index 0 = 11 April 09:00, every 30 minutes to 12 April 15:00
 const img=document.getElementById("frame"), t=document.getElementById("t"), clock=document.getElementById("clock"), play=document.getElementById("play");
-const src=k=>`gwala-night/f${String(k).padStart(2,"0")}.jpg`;
+const src=k=>`gwala-clean/f${String(k).padStart(2,"0")}.jpg`;
 const at=k=>{const h=H0+k*STEP, day=11+Math.floor(h/24), hh=Math.floor(h%24), mm=(h%1)?"30":"00"; return {day,hh,mm,night:(h%24)>=17.5||(h%24)<6.25};};
 for(let k=0;k<N;k++){const p=new Image();p.src=src(k);}
 const pct=k=>k/(N-1)*100;
