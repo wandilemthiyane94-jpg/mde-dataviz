@@ -1,0 +1,139 @@
+<title>Gwala Street in 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* One dark stage, the block floating in it; a slim time bar along the bottom. Single dark look by design. */
+:root{--bg:#0B0F19;--fg:#F8FAFC;--mut:#A0ACBE;--amber:#F5A524;--night:#AABEFF;--line:rgba(248,250,252,.14);
+  --disp:"Barlow Condensed","Arial Narrow",Arial,sans-serif;--mono:"IBM Plex Mono",Consolas,monospace;color-scheme:dark}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font:13px/1.4 var(--mono);overflow:hidden}
+#view{position:fixed;inset:0;cursor:grab}
+#view:active{cursor:grabbing}
+.bar{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;max-width:1100px;margin:0 auto}
+button{font:600 14px var(--disp);letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--amber);border:0;border-radius:3px;padding:8px 14px;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.track{position:relative;min-width:0}
+.nightband{position:absolute;top:2px;height:16px;background:rgba(80,100,170,.32);border-radius:2px;pointer-events:none}
+input[type=range]{position:relative;width:100%;margin:0;height:20px;accent-color:var(--amber)}
+.clock{font:700 24px/1 var(--disp);min-width:132px;text-align:right;font-variant-numeric:tabular-nums}
+.clock.night{color:var(--night)}
+.hint{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:0;right:0;text-align:center;color:#5F6C80;font-size:11px;pointer-events:none}
+#loading{position:fixed;inset:0;display:grid;place-items:center;color:var(--mut)}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script src="gwala-orbit-data.js"></script>
+
+<div id="view" aria-label="3D model of Gwala Street, Lamontville, flooding in the April 2022 storm. Drag to turn it."></div>
+<div id="loading">Loading…</div>
+<div class="hint">Drag to turn · scroll to zoom · right-drag to move</div>
+<div class="bar">
+  <button type="button" id="play">Play</button>
+  <div class="track"><div class="nightband" id="band" aria-hidden="true"></div><input type="range" id="t" min="0" max="60" step="1" value="0" aria-label="Time in the storm"></div>
+  <div class="clock" id="clock">11 APR 09:00</div>
+</div>
+
+<script type="module">
+import * as THREE from "three";
+import {OrbitControls} from "three/addons/controls/OrbitControls.js";
+const D=window.ORBIT, w=D.w, h=D.h, CELL=D.cell, EX=4.8, N=w*h;
+const raw=atob(D.d), DEP=new Uint8Array(raw.length); for(let i=0;i<raw.length;i++) DEP[i]=raw.charCodeAt(i);
+const Z=D.z, zmin=D.zmin, zmax=D.zmax, GAP=170, BASE=40;
+const X=j=>(j-(w-1)/2)*CELL, Zp=i=>(i-(h-1)/2)*CELL, Y=z=>(z-zmin)*EX;
+
+const host=document.getElementById("view"), renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(2,devicePixelRatio)); renderer.setSize(innerWidth,innerHeight); host.appendChild(renderer.domElement);
+const scene=new THREE.Scene(); scene.background=new THREE.Color("#0B0F19");
+const cam=new THREE.PerspectiveCamera(32,innerWidth/innerHeight,10,40000);
+const controls=new OrbitControls(cam,renderer.domElement); controls.enableDamping=true; controls.dampingFactor=.08;
+controls.minDistance=900; controls.maxDistance=9000; controls.maxPolarAngle=Math.PI*.49;
+const hemi=new THREE.HemisphereLight(0xf2ecd8,0x141a26,0.55); scene.add(hemi);
+const sun=new THREE.DirectionalLight(0xfff6e6,1.25); sun.position.set(-1600,2600,-900); scene.add(sun);
+
+// terrain: faceted, coloured by height (the original palette)
+function facetGeom(heightAt, colorAt){
+  const pos=[], col=[];
+  for(let i=0;i<h-1;i++)for(let j=0;j<w-1;j++){
+    const v=[[i,j],[i,j+1],[i+1,j+1],[i+1,j]].map(([a,b])=>[X(b),heightAt(a,b),Zp(a)]);
+    const c=colorAt(i,j);
+    for(const tri of [[0,3,1],[1,3,2]]) for(const k of tri){pos.push(...v[k]); col.push(...c);}
+  }
+  const g=new THREE.BufferGeometry(); g.setAttribute("position",new THREE.Float32BufferAttribute(pos,3)); g.setAttribute("color",new THREE.Float32BufferAttribute(col,3)); g.computeVertexNormals(); return g;
+}
+const tcol=(i,j)=>{const t=((Z[i*w+j]+Z[i*w+j+1]+Z[(i+1)*w+j]+Z[(i+1)*w+j+1])/4-zmin)/(zmax-zmin); return [(58+72*t)/255,(80+56*t)/255,(54+40*t)/255];};
+const terrainMat=new THREE.MeshLambertMaterial({vertexColors:true,flatShading:true});
+const terrain=new THREE.Mesh(facetGeom((a,b)=>Y(Z[a*w+b]),tcol),terrainMat); scene.add(terrain);
+
+// dark sides of the block
+{const sideMat=new THREE.MeshBasicMaterial({color:0x1a2232,side:THREE.DoubleSide}), pts=[];
+ const ring=[];for(let j=0;j<w;j++)ring.push([0,j]);for(let i=1;i<h;i++)ring.push([i,w-1]);for(let j=w-2;j>=0;j--)ring.push([h-1,j]);for(let i=h-2;i>=0;i--)ring.push([i,0]);
+ const fl=-BASE*EX/2;
+ for(let k=0;k<ring.length-1;k++){const [a1,b1]=ring[k],[a2,b2]=ring[k+1];const p=[X(b1),Y(Z[a1*w+b1]),Zp(a1)],q=[X(b2),Y(Z[a2*w+b2]),Zp(a2)];
+   pts.push(...p,...q,q[0],fl,q[2], ...p,q[0],fl,q[2],p[0],fl,p[2]);}
+ const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.Float32BufferAttribute(pts,3));scene.add(new THREE.Mesh(g,sideMat));
+ const bot=new THREE.Mesh(new THREE.PlaneGeometry((w-1)*CELL,(h-1)*CELL),sideMat);bot.rotation.x=-Math.PI/2;bot.position.y=fl;scene.add(bot);}
+
+// water: faceted tiles that rise with the flood
+const wpos=new Float32Array((w-1)*(h-1)*6*3), walpha=new Float32Array((w-1)*(h-1)*6);
+const wg=new THREE.BufferGeometry(); wg.setAttribute("position",new THREE.BufferAttribute(wpos,3)); wg.setAttribute("alpha",new THREE.BufferAttribute(walpha,1));
+const wmat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,uniforms:{night:{value:0}},
+  vertexShader:`attribute float alpha;varying float a;varying vec3 p;void main(){a=alpha;p=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`,
+  fragmentShader:`uniform float night;varying float a;varying vec3 p;void main(){if(a<.05)discard;vec3 c=mix(vec3(.27,.66,.86),vec3(.08,.33,.66),clamp(a,0.,1.));c*=mix(1.,.75,night);gl_FragColor=vec4(c,.92);}`});
+const water=new THREE.Mesh(wg,wmat); water.renderOrder=2; scene.add(water);
+
+// wireframe of the topography, floating above
+{const pos=[];const yv=(a,b)=>Y(Z[a*w+b])+Y(zmax)*0.9+GAP;
+ for(let i=0;i<h;i++)for(let j=0;j<w-1;j++)pos.push(X(j),yv(i,j),Zp(i),X(j+1),yv(i,j+1),Zp(i));
+ for(let j=0;j<w;j++)for(let i=0;i<h-1;i++)pos.push(X(j),yv(i,j),Zp(i),X(j),yv(i+1,j),Zp(i+1));
+ const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
+ scene.add(new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:0xe8ecf2,transparent:true,opacity:.32})));}
+const TOP=Y(zmax)*1.9+GAP*2.6;
+// dot grid on top + corner posts
+{const pos=[];for(let i=0;i<h;i+=2)for(let j=0;j<w;j+=2)pos.push(X(j),TOP,Zp(i));
+ const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
+ scene.add(new THREE.Points(g,new THREE.PointsMaterial({color:0xe8ecf2,size:2.2,sizeAttenuation:false,transparent:true,opacity:.6})));
+ const post=[];for(const [a,b] of [[0,0],[0,w-1],[h-1,0],[h-1,w-1]])post.push(X(b),-BASE*EX/2,Zp(a),X(b),TOP,Zp(a));
+ const pg=new THREE.BufferGeometry();pg.setAttribute("position",new THREE.Float32BufferAttribute(post,3));
+ scene.add(new THREE.LineSegments(pg,new THREE.LineBasicMaterial({color:0xe8ecf2,transparent:true,opacity:.16})));}
+// drops
+const NDROP=900, dpos=new Float32Array(NDROP*6), drops=[];
+for(let k=0;k<NDROP;k++){const i=Math.random()*(h-1),j=Math.random()*(w-1);drops.push({x:X(j),zz:Zp(i),floor:Y(Z[Math.round(i)*w+Math.round(j)]),y:Math.random()*TOP,v:900+Math.random()*500});}
+const dg=new THREE.BufferGeometry(); dg.setAttribute("position",new THREE.BufferAttribute(dpos,3));
+const dropMat=new THREE.LineBasicMaterial({color:0x8fcdf0,transparent:true,opacity:.7}); const dropLines=new THREE.LineSegments(dg,dropMat); scene.add(dropLines);
+// camp pins
+for(const c of D.camps){const [cj,ci]=c.c,x=X(cj),zz=Zp(ci),y0=Y(Z[Math.round(ci)*w+Math.round(cj)]);
+  const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(x,y0,zz),new THREE.Vector3(x,y0+GAP*.9,zz)]);
+  scene.add(new THREE.Line(g,new THREE.LineBasicMaterial({color:c.col})));
+  const s=new THREE.Mesh(new THREE.SphereGeometry(9,12,12),new THREE.MeshBasicMaterial({color:c.col}));s.position.set(x,y0,zz);scene.add(s);}
+
+// time
+const tEl=document.getElementById("t"), clock=document.getElementById("clock"), play=document.getElementById("play");
+const H0=9; const info=k=>{const hh=H0+k*.5,day=11+Math.floor(hh/24),hr=Math.floor(hh%24),mm=(hh%1)?"30":"00";return {lab:`${day} APR ${String(hr).padStart(2,"0")}:${mm}`,night:(hh%24)>=17.5||(hh%24)<6.25};};
+const band=document.getElementById("band"),pc=k=>k/60*100,kh=hh=>(hh-H0)/.5; band.style.left=pc(kh(17.5))+"%"; band.style.width=(pc(kh(30.25))-pc(kh(17.5)))+"%";
+let fpos=0, playing=false, nightK=0;
+function setWater(f){const f0=Math.floor(f),f1=Math.min(D.frames-1,f0+1),a=f-f0,o0=f0*N,o1=f1*N;let p=0,q=0;
+  const dep=(i,j)=>(DEP[o0+i*w+j]*(1-a)+DEP[o1+i*w+j]*a)/D.depth_scale;
+  for(let i=0;i<h-1;i++)for(let j=0;j<w-1;j++){const d=dep(i,j), wet=d>.08, base=Y(Z[i*w+j]);
+    const v=[[i,j],[i,j+1],[i+1,j+1],[i+1,j]].map(([r,c])=>[X(c),(wet?Math.max(Y(Z[r*w+c]),base)+d*EX:Y(Z[r*w+c])-5)+1.5,Zp(r)]);
+    for(const tri of [[0,3,1],[1,3,2]])for(const k of tri){wpos[p++]=v[k][0];wpos[p++]=v[k][1];wpos[p++]=v[k][2];walpha[q++]=wet?Math.min(1,.25+d/3):0;}}
+  wg.attributes.position.needsUpdate=true; wg.attributes.alpha.needsUpdate=true; wg.computeBoundingSphere();}
+function show(k){k=Math.max(0,Math.min(60,k)); fpos=k; tEl.value=Math.round(k); const n=info(Math.round(k)); clock.textContent=n.lab; clock.classList.toggle("night",n.night); setWater(k);}
+tEl.addEventListener("input",()=>{playing=false;play.textContent="Play";show(+tEl.value);});
+play.onclick=()=>{playing=!playing;play.textContent=playing?"Pause":"Play";if(playing&&fpos>=60)fpos=0;};
+addEventListener("keydown",e=>{if(e.target.tagName==="INPUT")return;if(e.key===" "){e.preventDefault();play.click();}});
+addEventListener("resize",()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+
+cam.position.set(4200,3600,4500); controls.target.set(0,Y(zmax)*.9,0); controls.update();
+show(0); document.getElementById("loading").remove();
+let last=performance.now();
+renderer.setAnimationLoop(now=>{const dt=Math.min(.05,(now-last)/1000);last=now;
+  if(playing){fpos+=dt*2.2; if(fpos>=60){fpos=60;playing=false;play.textContent="Play";} show(fpos);}
+  const n=info(Math.round(fpos)), target=n.night?1:0; nightK+=(target-nightK)*Math.min(1,dt*3);
+  sun.intensity=1.25-0.7*nightK; hemi.intensity=0.55-0.25*nightK; wmat.uniforms.night.value=nightK;
+  const rain=D.rain[Math.min(D.frames-1,Math.round(fpos))]||0, active=Math.round(NDROP*Math.min(1,rain/12));
+  for(let k=0;k<NDROP;k++){const d=drops[k];let o=k*6;
+    if(k>=active){dpos[o+1]=dpos[o+4]=-1e5;continue;}
+    d.y-=d.v*dt; if(d.y<d.floor){d.y=TOP;}
+    dpos[o]=d.x;dpos[o+1]=d.y;dpos[o+2]=d.zz;dpos[o+3]=d.x;dpos[o+4]=d.y+38;dpos[o+5]=d.zz;}
+  dg.attributes.position.needsUpdate=true;
+  controls.update(); renderer.render(scene,cam);});
+</script>
