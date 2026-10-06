@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moved Into the Water</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
+<style>
+:root{--bg:#0B0F19;--rail:#0d1220;--ink:#F8FAFC;--txt:#E2E8F0;--mut:#94A3B8;--dim:#64748B;--line:rgba(255,255,255,.1);--amber:#F5A524;--site:#FBC900;--flood:#2D5384;
+ --mono:"JetBrains Mono","Roboto Mono","SF Mono",Menlo,Consolas,monospace;--serif:Charter,"Bitstream Charter",Georgia,serif}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--mut);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;display:flex;overflow:hidden}
+.mono{font-family:var(--mono);letter-spacing:.12em;font-size:10px;color:var(--dim);text-transform:uppercase}
+aside{width:385px;flex:none;height:100%;padding:22px 26px 28px;border-right:1px solid var(--line);background:var(--rail);overflow-y:auto}
+aside::-webkit-scrollbar{width:8px}aside::-webkit-scrollbar-thumb{background:#1e293b}
+h1{font-size:28px;font-weight:700;margin:10px 0 8px;letter-spacing:-.025em;color:var(--ink)}
+.q{font-family:var(--serif);font-size:15.5px;line-height:1.3;color:var(--mut);margin:0 0 12px}
+hr{border:0;border-top:1px solid var(--line);margin:0 0 12px}
+h3{font-size:11.5px;letter-spacing:.16em;margin:0 0 8px;font-weight:700;color:var(--txt)}
+.lg{display:grid;gap:5px;margin-bottom:6px}
+.lg button{font:inherit;font-size:12.5px;color:var(--txt);background:none;border:0;padding:3px 0;display:grid;grid-template-columns:30px 1fr 30px;gap:10px;align-items:center;text-align:left;cursor:pointer}
+.lg button.off{color:var(--dim)}.lg button.off .sw{opacity:.3}
+.sw{width:30px;height:12px;display:block}
+.tg{width:28px;height:15px;border-radius:8px;background:var(--amber);position:relative;transition:background .15s}
+.tg:after{content:"";position:absolute;right:2px;top:2px;width:11px;height:11px;border-radius:50%;background:#0B0F19;transition:right .15s}
+.off .tg{background:#334155}.off .tg:after{right:15px}
+.lg .plain{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:center;font-size:12.5px;color:var(--mut);padding:3px 0}
+.sub{font-size:11px;font-weight:700;margin:8px 0 5px;color:var(--mut)}
+.ramp{display:grid;gap:3px}.ramp i{height:9px;display:block}
+.rl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9.5px;color:var(--dim);margin-top:3px}
+.d{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
+.d.red{background:#ff5a4d}.d.yellow{background:#F5A524}.d.grey{background:#475569}.d.green{background:#4ade80}
+#details{margin-top:16px}
+.photo{height:170px;background:repeating-linear-gradient(135deg,#131a2a,#131a2a 8px,#182033 8px,#182033 16px);margin:8px 0 12px;display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:11.5px;overflow:hidden;border-radius:6px}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+h2{font-size:19px;margin:0 0 3px;line-height:1.15;color:var(--ink);letter-spacing:-.01em}
+.addr{color:var(--mut);font-size:12px;margin:0}
+.lead{margin:12px 0 0;border:1px solid rgba(245,165,36,.45);background:rgba(245,165,36,.08);border-left:3px solid var(--amber);border-radius:6px;padding:10px 12px}
+.lead b{display:block;color:var(--amber);font-size:19px;letter-spacing:-.01em;line-height:1.15}
+.lead span{display:block;color:var(--txt);font-family:var(--serif);font-size:13.5px;line-height:1.3;margin-top:3px}
+.timer{margin:10px 0 12px;border:1px solid var(--line);padding:9px 11px 10px;background:rgba(255,255,255,.03);border-radius:6px}
+.cnt{display:flex;align-items:baseline;gap:8px;margin-top:3px;flex-wrap:wrap}
+.cnt b{font-size:24px;color:var(--site);letter-spacing:-.01em}
+.cnt span{font-family:var(--serif);font-size:14px;color:var(--mut)}
+.yrs{display:flex;gap:3px;margin-top:7px;flex-wrap:wrap}
+.yrs i{font-style:normal;font-family:var(--mono);font-size:9px;background:var(--site);color:#0B0F19;padding:2px 4px;border-radius:2px}
+.yrs i.now{background:none;color:var(--site);border:1px dashed var(--site);padding:1px 5px}
+.yrs i.end{background:none;color:var(--mut);border:1px solid #475569;padding:1px 5px}
+dl{display:grid;grid-template-columns:92px 1fr;gap:6px 8px;margin:0 0 10px;font-size:12.5px;line-height:1.3;color:var(--txt)}dd{margin:0;font-family:var(--mono);font-size:11.5px}dt{padding-top:2px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.card{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:6px;padding:8px 9px;font-size:11.8px;line-height:1.3;color:var(--txt)}
+.card b{display:flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:4px;font-family:var(--mono);font-weight:400}
+.card.grey{color:var(--dim)}.card.red{border-color:rgba(255,90,77,.35)}.card.wide{grid-column:1/3}
+.stopnote{font-family:var(--serif);font-size:13.5px;color:var(--mut);line-height:1.35;margin:4px 0 0}
+.btns{display:grid;gap:8px;margin:14px 0 0}
+.btns button{font:inherit;color:var(--txt);background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:9px 11px;font-size:12.5px;font-weight:700;display:flex;justify-content:space-between;cursor:pointer;text-align:left}
+.btns button:hover{border-color:var(--amber)}
+.btns button.on{background:var(--amber);color:#0B0F19;border-color:var(--amber)}
+.jl{display:grid;grid-template-columns:38px 1fr;gap:8px 8px;font-size:12.3px;line-height:1.28;margin:10px 0 2px;color:var(--txt)}
+.jl b{font-family:var(--mono);font-weight:400;font-size:10.5px;color:var(--amber);padding-top:1px}
+.jl span i{font-style:normal;color:var(--mut);display:block;font-size:11.2px}
+.jh{font-size:14px;font-weight:700;margin:12px 0 0;color:var(--ink)}.jh small{display:block;font-weight:400;color:var(--mut);font-size:11.5px;margin-top:1px}
+.vid{margin-top:14px;height:150px;background:#111827 center/cover no-repeat;border:1px solid var(--line);border-radius:6px;position:relative;display:flex;align-items:flex-end;padding:7px 9px;font-size:11px;color:#ddd;text-decoration:none;overflow:hidden}
+.vid:before{content:"";position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:50px;height:34px;background:#e5262b;border-radius:8px}
+.vid:after{content:"";position:absolute;left:50%;top:44%;transform:translate(-35%,-50%);border-left:14px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent}
+.vid.none:before{background:#334155}.vid span{background:rgba(0,0,0,.6);padding:1px 4px}
+.srcs{margin-top:12px;font-size:11px;color:var(--dim);line-height:1.5}.srcs a{color:var(--mut)}
+.list{display:grid;gap:1px;margin-top:8px}
+.list button{font:inherit;font-size:12.5px;color:var(--txt);background:none;border:0;border-bottom:1px solid rgba(255,255,255,.06);padding:6px 0;text-align:left;cursor:pointer;display:flex;justify-content:space-between;gap:8px}
+.list button:hover{color:var(--site)}.list button span{color:var(--dim);font-family:var(--mono);font-size:10.5px}
+.list button.off{opacity:.4}
+.hint{font-family:var(--serif);color:var(--mut);font-size:14px;line-height:1.35;margin:0 0 6px}
+.back{font:inherit;font-size:11.5px;color:var(--mut);background:none;border:0;padding:0;cursor:pointer;margin-bottom:2px}.back:hover{color:#fff}
+
+main{position:relative;flex:1;height:100%;background:var(--bg);overflow:hidden;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+main.drag{cursor:grabbing}
+#tiles,#ov,#svg,#cv,#rain{position:absolute;left:0;top:0;width:100%;height:100%}
+#tiles img{position:absolute;max-width:none;pointer-events:none}
+#cv,#rain,#svg,#ov{pointer-events:none}
+.site{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none}
+.site .sq{position:absolute;left:-11px;top:-11px;width:22px;height:22px;background:none;border:0;cursor:pointer;pointer-events:auto;padding:0;border-radius:4px}
+.site .sq svg{display:block;width:22px;height:22px;filter:drop-shadow(0 0 4px rgba(251,201,0,.45))}
+.site .sq:hover{outline:2px solid #fff}
+.site.sel .sq{outline:2px solid #fff;outline-offset:3px}
+.site .bar{display:none;position:absolute;left:-10px;top:14px;height:3px;background:var(--site);border-radius:2px}
+.site .nm{position:absolute;left:17px;top:-11px;white-space:nowrap;font-size:12.5px;font-weight:700;color:var(--ink);background:rgba(13,17,23,.8);padding:3px 7px;border-radius:4px;display:none}
+.site.lab .nm,.site.sel .nm{display:block}
+.site.closed .sq{opacity:.5}
+.site.flood:before,.site.flood:after{content:"";position:absolute;left:-14px;top:-14px;width:28px;height:28px;border:2px solid #fff;border-radius:50%;animation:ring 1.6s ease-out infinite}
+.site.flood:after{animation-delay:.8s}
+@keyframes ring{from{transform:scale(.6);opacity:1}to{transform:scale(4.2);opacity:0}}
+.dot{position:absolute;left:0;top:0;width:0;height:0}
+.dot i{position:absolute;left:-5px;top:-5px;width:10px;height:10px;border-radius:50%;background:#fff;border:1.5px solid #0B0F19;box-shadow:0 0 8px rgba(255,255,255,.7)}
+.dot span{position:absolute;right:10px;top:-10px;white-space:nowrap;font-size:12px;font-weight:700;color:var(--ink);background:rgba(13,17,23,.8);padding:3px 7px;border-radius:4px}
+.dot.below span{right:auto;left:-20px;top:12px}
+.num{position:absolute;left:0;top:0;width:0;height:0}
+.num b{position:absolute;transform:translate(-50%,-50%);font-family:var(--mono);font-weight:700;font-size:10.5px;color:var(--amber);background:rgba(13,17,23,.85);border:1px solid rgba(245,165,36,.5);border-radius:10px;padding:2px 6px;white-space:nowrap}
+.endp{position:absolute;left:0;top:0;width:0;height:0}
+.endp b{position:absolute;left:-10px;top:-10px;width:20px;height:20px;border-radius:50%;background:#fff;color:#000;border:1.5px solid #000;font-size:12px;display:flex;align-items:center;justify-content:center}
+.ui{position:absolute;pointer-events:auto;cursor:default}
+.glass{background:rgba(13,17,23,.75);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#E2E8F0}
+.pill{right:66px;padding:8px 14px;font-size:12.5px;font-family:inherit;cursor:pointer}
+.pill:hover{border-color:rgba(255,255,255,.4)}
+.zoom{right:20px;top:22px;width:34px;display:grid;overflow:hidden}
+.zoom button{font:inherit;font-weight:700;font-size:18px;line-height:34px;height:34px;color:#E2E8F0;background:none;border:0;cursor:pointer}.zoom button:hover{background:rgba(255,255,255,.1)}
+.seg{right:20px;top:112px;display:flex;font-size:12px;overflow:hidden}
+.seg button{font:inherit;color:#94A3B8;background:none;border:0;border-left:1px solid rgba(255,255,255,.1);padding:9px 12px;cursor:pointer;letter-spacing:.04em}
+.seg button:first-child{border-left:0}.seg button.on{background:rgba(255,255,255,.14);color:#F8FAFC;font-weight:700}
+.time{left:50%;transform:translateX(-50%);width:min(880px,calc(100% - 60px));bottom:34px;padding:12px 20px 10px;display:grid;grid-template-columns:40px 96px 1fr 30px;gap:0 10px;align-items:center}
+.time>button{font:inherit;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:none;color:#E2E8F0;cursor:pointer;font-size:13px}.time>button:hover{border-color:#fff}
+.yr{font-family:var(--mono);font-weight:700;font-size:25px;color:var(--ink)}
+.trk{position:relative;height:30px;margin:0 16px}
+.trk .rail{position:absolute;left:0;right:0;top:16px;height:4px;background:rgba(255,255,255,.14);border-radius:2px}
+.trk .fill{position:absolute;left:0;top:16px;height:4px;background:linear-gradient(90deg,rgba(245,165,36,.2),var(--amber));border-radius:2px}
+.trk input{position:absolute;left:-16px;right:-16px;width:calc(100% + 32px);top:0;height:34px;margin:0;opacity:0;cursor:grab;z-index:3}
+#boat{position:absolute;top:18px;width:0;height:0;z-index:2;pointer-events:none}
+#boat svg{position:absolute;left:-30px;top:-22px;width:60px;height:40px;filter:drop-shadow(0 0 7px rgba(255,140,50,.85))}
+#boat i{position:absolute;left:-12px;top:-12px;width:24px;height:24px;border:1.5px solid rgba(180,215,255,.9);border-radius:50%;opacity:0}
+#boat.rip i{animation:rip 1.8s ease-out infinite}#boat.rip i:nth-child(2){animation-delay:.6s}#boat.rip i:nth-child(3){animation-delay:1.2s}
+@keyframes rip{from{transform:scale(.4) scaleY(.55);opacity:.95}to{transform:scale(5) scaleY(.55);opacity:0}}
+.ticks{position:relative;height:20px;font-family:var(--mono);font-size:10.5px;color:var(--dim);margin:0 16px}
+.ticks span{position:absolute;top:6px;transform:translateX(-50%)}
+.ticks span.fl{color:#ff8a5c}.ticks span.fl:before{content:"";position:absolute;left:50%;top:-22px;width:2px;height:8px;background:#ff8a5c;margin-left:-1px}
+.tip{position:absolute;width:270px;background:#fff;color:#111;padding:11px 13px;font-size:12px;line-height:1.3;box-shadow:0 6px 24px rgba(0,0,0,.6);pointer-events:none;display:none;z-index:5;border-radius:6px}
+.tip b.t{display:block;font-size:14px;margin-bottom:1px}.tip .s{color:#666;font-size:11px;margin-bottom:7px}
+.tip .r{display:grid;grid-template-columns:11px 72px 1fr;gap:6px;margin-top:4px}.tip .d{margin-top:3px}.tip .nr{color:#888}.tip .d.grey{background:#aaa}
+.cut{left:22px;top:22px;width:476px;padding:12px 14px 10px;display:none;background:rgba(13,17,23,.62)}
+.cut h4{margin:3px 0 2px;font-size:14.5px;color:var(--ink)}.cut p{margin:0 0 4px;font-size:11px;color:var(--mut)}
+.cut svg{display:block}.cut button{position:absolute;right:8px;top:6px;background:none;border:0;color:#E2E8F0;font-size:18px;cursor:pointer}
+.big{left:50%;transform:translateX(-50%);width:min(880px,calc(100% - 60px));bottom:124px;padding:10px 16px 12px;font-size:30px;font-weight:700;letter-spacing:-.02em;color:var(--ink);display:none;pointer-events:none}
+.big small{display:block;font-family:var(--serif);font-weight:400;font-size:15px;color:#cbd5e1;letter-spacing:0;margin-top:3px;line-height:1.3}
+.attr{right:8px;bottom:6px;font-size:9.5px;color:var(--dim);background:rgba(11,15,25,.6);padding:2px 6px;pointer-events:none}
+</style>
+
+</head>
+<body>
+<aside>
+  <div class="mono">MDE Project 2</div>
+  <h1>Moved Into the Water</h1>
+  <p class="q">Is government relocating flood victims to safe places?</p>
+  <hr>
+  <h3>LAYERS</h3>
+  <div class="lg">
+    <button data-l="sites"><i class="sw" style="width:14px;height:14px;background:#FBC900;border-radius:2px;margin-left:8px"></i><span>Temporary sites</span><i class="tg"></i></button>
+    <button data-l="flood"><i class="sw" id="lgflood" style="background:rgba(45,83,132,.55);border:1.5px solid #2D5384"></i><span>Official flood line (1-in-100-year)</span><i class="tg"></i></button>
+    <button data-l="water"><i class="sw" style="background:linear-gradient(90deg,#d5fff6 0 33%,#4fd6c4 33% 66%,#0f9488 66%)"></i><span>Seen under water by satellite</span><i class="tg"></i></button>
+  </div>
+  <div id="lgwater">
+    <div class="sub">Share of the time under water</div>
+    <div class="ramp" style="grid-template-columns:repeat(3,1fr)"><i style="background:#d5fff6"></i><i style="background:#4fd6c4"></i><i style="background:#0f9488"></i></div>
+    <div class="rl"><span>1–4%</span><span>5–24%</span><span>25–74%</span></div>
+  </div>
+  <div id="lgrelief" style="display:none">
+    <div class="sub">Height above the nearest river</div>
+    <div class="ramp" style="grid-template-columns:1fr"><i style="background:linear-gradient(90deg,#2f4a69,#566572,#77828e,#a5a79d,#d0c4a0,#e0c594,#d39a5a,#b56f3c)"></i></div>
+    <div class="rl"><span>river level</span><span>about 40 m</span><span>100 m+</span></div>
+  </div>
+  <div id="details"></div>
+</aside>
+<main id="map">
+  <div id="tiles"></div>
+  <canvas id="cv"></canvas>
+  <svg id="svg"></svg>
+  <div id="ov"></div>
+  <canvas id="rain"></canvas>
+  <div class="tip" id="tip"></div>
+  <div class="ui glass cut" id="cut"><button id="cutx" aria-label="Close">×</button><div class="mono">Side-cut · A to B</div><h4>In the flood the city plans for, the camp is under water</h4><p>A slice through the ground from the far bank (A), across the river, to the camp and uphill (B).</p><svg viewBox="0 0 446 194" width="446" height="194"><defs><clipPath id="sky"><path d="M34.0 69.0 L39.0 69.0 L44.0 69.0 L48.9 69.0 L53.9 69.0 L58.9 69.0 L63.9 69.0 L68.8 69.0 L73.8 69.1 L78.8 69.8 L83.8 71.9 L88.7 77.0 L93.7 85.8 L98.7 97.5 L103.7 110.0 L108.6 119.9 L113.6 125.1 L118.6 126.8 L123.6 127.0 L128.5 127.5 L133.5 128.8 L138.5 131.4 L143.5 134.4 L148.4 137.6 L153.4 140.4 L158.4 142.2 L163.4 143.2 L168.3 143.8 L173.3 144.0 L178.3 144.0 L183.3 144.0 L188.2 144.0 L193.2 144.0 L198.2 144.0 L203.2 144.0 L208.1 144.0 L213.1 144.0 L218.1 144.0 L223.1 144.0 L228.0 144.0 L233.0 143.6 L238.0 142.2 L243.0 139.2 L248.0 134.6 L252.9 129.6 L257.9 124.0 L262.9 116.1 L267.9 106.1 L272.8 97.6 L277.8 92.9 L282.8 90.6 L287.8 89.1 L292.7 87.9 L297.7 86.5 L302.7 85.3 L307.7 84.1 L312.6 82.9 L317.6 81.8 L322.6 80.8 L327.6 79.6 L332.5 78.6 L337.5 77.6 L342.5 76.6 L347.5 75.8 L352.4 74.8 L357.4 73.8 L362.4 72.8 L367.4 71.8 L372.3 70.9 L377.3 70.0 L382.3 69.5 L387.3 69.1 L392.2 69.0 L397.2 69.0 L402.2 69.0 L407.2 69.0 L412.1 69.0 L417.1 69.0 L422.1 69.0 L427.1 69.0 L432.0 69.0 L437.0 69.1 L442.0 69.4 L442 0 L34 0 Z"/></clipPath><linearGradient id="earth" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#8b7355" stop-opacity=".85"/><stop offset="1" stop-color="#3b3025" stop-opacity=".25"/></linearGradient><linearGradient id="wat" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#658db1" stop-opacity=".62"/><stop offset="1" stop-color="#2D5384" stop-opacity=".5"/></linearGradient></defs><line x1="34" x2="442" y1="144.0" y2="144.0" stroke="rgba(255,255,255,.07)"/><text x="28" y="147.5" fill="#94A3B8" font-size="9.5" text-anchor="end" font-family="JetBrains Mono,Menlo,monospace">0 m</text><line x1="34" x2="442" y1="119.0" y2="119.0" stroke="rgba(255,255,255,.07)"/><text x="28" y="122.5" fill="#94A3B8" font-size="9.5" text-anchor="end" font-family="JetBrains Mono,Menlo,monospace">+2 m</text><line x1="34" x2="442" y1="94.0" y2="94.0" stroke="rgba(255,255,255,.07)"/><text x="28" y="97.5" fill="#94A3B8" font-size="9.5" text-anchor="end" font-family="JetBrains Mono,Menlo,monospace">+4 m</text><line x1="34" x2="442" y1="69.0" y2="69.0" stroke="rgba(255,255,255,.07)"/><text x="28" y="72.5" fill="#94A3B8" font-size="9.5" text-anchor="end" font-family="JetBrains Mono,Menlo,monospace">+6 m</text><rect x="34" y="140.9" width="408" height="23.1" fill="#3f6f95" clip-path="url(#sky)"/><path d="M276.8 89.1 V59.1 L287.8 50.1 L298.8 59.1 V89.1 Z" fill="#FBC900" stroke="#0B0F19" stroke-width="1"/><rect x="34" y="69.0" width="408" height="95.0" fill="url(#wat)" clip-path="url(#sky)"/><path d="M34.0 69.0 L39.0 69.0 L44.0 69.0 L48.9 69.0 L53.9 69.0 L58.9 69.0 L63.9 69.0 L68.8 69.0 L73.8 69.1 L78.8 69.8 L83.8 71.9 L88.7 77.0 L93.7 85.8 L98.7 97.5 L103.7 110.0 L108.6 119.9 L113.6 125.1 L118.6 126.8 L123.6 127.0 L128.5 127.5 L133.5 128.8 L138.5 131.4 L143.5 134.4 L148.4 137.6 L153.4 140.4 L158.4 142.2 L163.4 143.2 L168.3 143.8 L173.3 144.0 L178.3 144.0 L183.3 144.0 L188.2 144.0 L193.2 144.0 L198.2 144.0 L203.2 144.0 L208.1 144.0 L213.1 144.0 L218.1 144.0 L223.1 144.0 L228.0 144.0 L233.0 143.6 L238.0 142.2 L243.0 139.2 L248.0 134.6 L252.9 129.6 L257.9 124.0 L262.9 116.1 L267.9 106.1 L272.8 97.6 L277.8 92.9 L282.8 90.6 L287.8 89.1 L292.7 87.9 L297.7 86.5 L302.7 85.3 L307.7 84.1 L312.6 82.9 L317.6 81.8 L322.6 80.8 L327.6 79.6 L332.5 78.6 L337.5 77.6 L342.5 76.6 L347.5 75.8 L352.4 74.8 L357.4 73.8 L362.4 72.8 L367.4 71.8 L372.3 70.9 L377.3 70.0 L382.3 69.5 L387.3 69.1 L392.2 69.0 L397.2 69.0 L402.2 69.0 L407.2 69.0 L412.1 69.0 L417.1 69.0 L422.1 69.0 L427.1 69.0 L432.0 69.0 L437.0 69.1 L442.0 69.4 L442 170 L34 170 Z" fill="url(#earth)"/><path d="M34.0 69.0 L39.0 69.0 L44.0 69.0 L48.9 69.0 L53.9 69.0 L58.9 69.0 L63.9 69.0 L68.8 69.0 L73.8 69.1 L78.8 69.8 L83.8 71.9 L88.7 77.0 L93.7 85.8 L98.7 97.5 L103.7 110.0 L108.6 119.9 L113.6 125.1 L118.6 126.8 L123.6 127.0 L128.5 127.5 L133.5 128.8 L138.5 131.4 L143.5 134.4 L148.4 137.6 L153.4 140.4 L158.4 142.2 L163.4 143.2 L168.3 143.8 L173.3 144.0 L178.3 144.0 L183.3 144.0 L188.2 144.0 L193.2 144.0 L198.2 144.0 L203.2 144.0 L208.1 144.0 L213.1 144.0 L218.1 144.0 L223.1 144.0 L228.0 144.0 L233.0 143.6 L238.0 142.2 L243.0 139.2 L248.0 134.6 L252.9 129.6 L257.9 124.0 L262.9 116.1 L267.9 106.1 L272.8 97.6 L277.8 92.9 L282.8 90.6 L287.8 89.1 L292.7 87.9 L297.7 86.5 L302.7 85.3 L307.7 84.1 L312.6 82.9 L317.6 81.8 L322.6 80.8 L327.6 79.6 L332.5 78.6 L337.5 77.6 L342.5 76.6 L347.5 75.8 L352.4 74.8 L357.4 73.8 L362.4 72.8 L367.4 71.8 L372.3 70.9 L377.3 70.0 L382.3 69.5 L387.3 69.1 L392.2 69.0 L397.2 69.0 L402.2 69.0 L407.2 69.0 L412.1 69.0 L417.1 69.0 L422.1 69.0 L427.1 69.0 L432.0 69.0 L437.0 69.1 L442.0 69.4" fill="none" stroke="#c9b48a" stroke-width="1.6"/><line x1="34" x2="442" y1="69.0" y2="69.0" stroke="#cfe0ff" stroke-width="1.4" stroke-dasharray="6 4"/><path d="M34 64.0 l8 5 l-8 5 z" fill="#cfe0ff"/><text x="46.0" y="62.0" fill="#dbe7ff" font-size="9.5" text-anchor="start" font-weight="700" font-family="JetBrains Mono,Menlo,monospace">FLOOD LEVEL · 1-in-100-year</text><line x1="125.2" x2="249.6" y1="140.9" y2="140.9" stroke="#9ec5e8" stroke-width="1.2"/><text x="188.2" y="153.9" fill="#bcd9ee" font-size="9.5" text-anchor="middle" font-weight="400" font-family="JetBrains Mono,Menlo,monospace">RIVER LEVEL · uMlazi</text><path d="M305.8 69.0 h5 V89.1 h-5" fill="none" stroke="#F5A524" stroke-width="1.5"/><text x="315.8" y="83.1" fill="#F5A524" font-size="11.5" text-anchor="start" font-weight="700" font-family="Helvetica Neue,Arial">1–2 m of water</text><text x="287.8" y="44.1" fill="#FBC900" font-size="11" text-anchor="middle" font-weight="700" font-family="Helvetica Neue,Arial">Camp</text><line x1="34" x2="34" y1="51.5" y2="170" stroke="#64748B"/><line x1="34" x2="442" y1="176" y2="176" stroke="#475569"/><line x1="34.0" x2="34.0" y1="173" y2="179" stroke="#475569"/><text x="34.0" y="190" fill="#F8FAFC" font-size="10" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,Menlo,monospace">A</text><line x1="116.9" x2="116.9" y1="173" y2="179" stroke="#475569"/><text x="116.9" y="190" fill="#94A3B8" font-size="9.5" font-weight="400" text-anchor="middle" font-family="JetBrains Mono,Menlo,monospace">50 m</text><line x1="199.9" x2="199.9" y1="173" y2="179" stroke="#475569"/><text x="199.9" y="190" fill="#94A3B8" font-size="9.5" font-weight="400" text-anchor="middle" font-family="JetBrains Mono,Menlo,monospace">100 m</text><line x1="282.8" x2="282.8" y1="173" y2="179" stroke="#475569"/><text x="282.8" y="190" fill="#94A3B8" font-size="9.5" font-weight="400" text-anchor="middle" font-family="JetBrains Mono,Menlo,monospace">150 m</text><line x1="365.7" x2="365.7" y1="173" y2="179" stroke="#475569"/><text x="365.7" y="190" fill="#94A3B8" font-size="9.5" font-weight="400" text-anchor="middle" font-family="JetBrains Mono,Menlo,monospace">200 m</text><line x1="442.0" x2="442.0" y1="173" y2="179" stroke="#475569"/><text x="437.0" y="190" fill="#F8FAFC" font-size="10" font-weight="700" text-anchor="middle" font-family="JetBrains Mono,Menlo,monospace">B</text><text x="34" y="32.8" fill="#94A3B8" font-size="9" text-anchor="start" font-family="JetBrains Mono,Menlo,monospace">HEIGHT ABOVE RIVER · VERTICAL ×7</text></svg></div>
+  <button class="ui glass pill" id="home" style="top:22px">‹ Whole city</button>
+  <button class="ui glass pill" id="mute" style="top:66px">Sound on</button>
+  <div class="ui glass zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button></div>
+  <div class="ui glass seg" id="seg"><button data-m="map" class="on">MAP</button><button data-m="sat">SATELLITE</button><button data-m="relief">RELIEF</button></div>
+  <div class="ui glass big" id="big"></div>
+  <div class="ui glass time"><button id="play" aria-label="Play">▶</button><div><div class="mono">Time</div><div class="yr" id="yr">2026</div></div>
+    <div><div class="trk"><div class="rail"></div><div class="fill" id="fill"></div>
+      <div id="boat"><i></i><i></i><i></i><svg viewBox="0 0 60 40"><g transform="translate(30 21) rotate(-24) skewX(-28)"><rect x="-21" y="-9.5" width="42" height="19" rx="9" fill="#b8551c" transform="translate(0 3.2)"/><rect x="-21" y="-9.5" width="42" height="19" rx="9" fill="#f29a5e"/><rect x="-14.5" y="-4.6" width="29" height="9.2" rx="4.4" fill="#10161f"/><rect x="-3" y="-4.6" width="5" height="9.2" fill="#2a3442"/><path d="M-17 -6.2 Q-10 -8.4 6 -8.2" stroke="#ffd2ae" stroke-width="1.5" fill="none" stroke-linecap="round"/></g></svg></div>
+      <input type="range" id="year" min="2007" max="2026" step="1" value="2026" aria-label="Year"></div><div class="ticks" id="ticks"></div></div><span></span></div>
+  <div class="ui attr" id="attr"></div>
+</main>
+<audio id="snd" loop preload="auto" src="assets/flood_sound.mp3"></audio>
+
+<script src="data/sites.js"></script>
+<script src="data/map-data.js"></script>
+<script>
+/* Site facts live in data/sites.js. Map geometry lives in data/map-data.js. */
+const OX=V.o[0], OY=V.o[1], U=V.o[2];
+const mx=lon=>(lon+180)/360, my=lat=>(1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2;
+const $=id=>document.getElementById(id);
+const map=$('map'), cv=$('cv'), ctx=cv.getContext('2d'), rain=$('rain'), rctx=rain.getContext('2d');
+const IM={relief:new Image(), wnear:new Image(), wfar:new Image()};
+IM.relief.src='assets/relief.jpg'; IM.wnear.src='assets/water_near.png'; IM.wfar.src='assets/water_far.png';
+for(const k in IM) IM[k].onload=()=>draw();
+
+const LAY={sites:true,flood:true,water:true};
+let W=0,H=0,DPR=1, mode='map', year=2026, selected=null, hover=null, journeyOn=false, cutOn=false, muted=false;
+let pulse=null, journeyT0=0, anim=null, playing=null, raf=0;
+const HOME={x:mx(30.915), y:my(-29.865)};
+const view={x:HOME.x, y:HOME.y, z:11};
+const ZMIN=9.8, ZMAX=18.4, BX=[mx(30.25),mx(31.4)], BY=[my(-29.3),my(-30.5)];
+const S=()=>256*Math.pow(2,view.z);
+const scr=(X,Y)=>{const s=S(); return [(X-view.x)*s+W/2,(Y-view.y)*s+H/2]};
+const homeZoom=()=>Math.max(ZMIN,10.95+Math.log2(Math.max(W,400)/1071));
+
+/* ---------- vector paths (built once) ---------- */
+const P={};
+for(const k of ['river','boundary','ocean','dam','flood']){
+  const p=new Path2D();
+  for(const a of V[k]){ p.moveTo(a[0],a[1]); for(let i=2;i<a.length;i+=2) p.lineTo(a[i],a[i+1]); if(k!=='river'&&k!=='boundary') p.closePath(); }
+  P[k]=p;
+}
+/* coastline only: the ocean outline without the straight edges of the map frame */
+{ const p=new Path2D(); for(const a of V.ocean){ let x0=1e18,x1=-1e18,y0=1e18,y1=-1e18; for(let i=0;i<a.length;i+=2){x0=Math.min(x0,a[i]);x1=Math.max(x1,a[i]);y0=Math.min(y0,a[i+1]);y1=Math.max(y1,a[i+1]);}
+  const T=60, edge=(x,y)=>(Math.abs(x-x0)<T||Math.abs(x-x1)<T||Math.abs(y-y0)<T||Math.abs(y-y1)<T); let pen=false;
+  for(let i=0;i<a.length-2;i+=2){ if(edge(a[i],a[i+1])&&edge(a[i+2],a[i+3])){pen=false;continue;} if(!pen){p.moveTo(a[i],a[i+1]);pen=true;} p.lineTo(a[i+2],a[i+3]); } }
+  P.coast=p; }
+
+/* ---------- sites ---------- */
+const ICON={camp:'<svg viewBox="0 0 22 22"><path d="M11 2.5 L21 19 H1 Z" fill="#FBC900" stroke="#0B0F19" stroke-width="1.4" stroke-linejoin="round"/><path d="M11 9.5 L14.6 19 H7.4 Z" fill="#0B0F19"/></svg>',
+ building:'<svg viewBox="0 0 22 22"><rect x="4" y="2.5" width="14" height="17" fill="#FBC900" stroke="#0B0F19" stroke-width="1.4"/><path d="M7.5 6h2.6v2.6H7.5zM11.9 6h2.6v2.6h-2.6zM7.5 10.6h2.6v2.6H7.5zM11.9 10.6h2.6v2.6h-2.6zM9.6 15.4h2.8v4.1H9.6z" fill="#0B0F19"/></svg>',
+ stop:'<svg viewBox="0 0 22 22"><rect x="6" y="6" width="10" height="10" fill="#FBC900" stroke="#0B0F19" stroke-width="1.4" transform="rotate(45 11 11)"/></svg>'};
+const byId={}; SITES.forEach(s=>{byId[s.id]=s; s.X=mx(s.lon); s.Y=my(s.lat)});
+const ov=$('ov');
+SITES.forEach(s=>{
+  const el=document.createElement('div'); el.className='site';
+  el.innerHTML='<i class="bar"></i><button class="sq" aria-label="'+s.name+'">'+ICON[s.kind]+'</button><span class="nm">'+s.name+'</span>';
+  const b=el.querySelector('.sq');
+  b.addEventListener('pointerdown',e=>e.stopPropagation());
+  b.addEventListener('click',()=>select(s.id,true));
+  b.addEventListener('mouseenter',()=>{hover=s.id; draw()});
+  b.addEventListener('mouseleave',()=>{hover=null; draw()});
+  ov.appendChild(el); s.el=el;
+});
+const extra=document.createElement('div'); ov.appendChild(extra);
+const isOpen=(s,y)=>s.yin<=y && (s.yclosed==null || y<=s.yclosed);
+const yearsOpen=(s,y)=>Math.max(0,Math.min(y,s.yclosed==null?y:s.yclosed)-s.yin);
+
+/* ---------- drawing ---------- */
+function resize(){
+  const r=map.getBoundingClientRect(); W=r.width; H=r.height; DPR=Math.min(2,window.devicePixelRatio||1);
+  for(const c of [cv,rain]){ c.width=Math.round(W*DPR); c.height=Math.round(H*DPR); }
+  $('svg').setAttribute('viewBox','0 0 '+W+' '+H);
+  draw();
+}
+function draw(){ if(!raf) raf=requestAnimationFrame(render); }
+function drawImg(img,b,smooth){
+  if(!img.complete||!img.naturalWidth) return;
+  const s=S(), x0=(b[0]-view.x)*s+W/2, y0=(b[1]-view.y)*s+H/2, w=(b[2]-b[0])*s, h=(b[3]-b[1])*s;
+  const vx0=Math.max(0,x0), vx1=Math.min(W,x0+w), vy0=Math.max(0,y0), vy1=Math.min(H,y0+h);
+  if(vx1<=vx0||vy1<=vy0) return;
+  ctx.imageSmoothingEnabled=smooth;
+  ctx.drawImage(img,(vx0-x0)/w*img.naturalWidth,(vy0-y0)/h*img.naturalHeight,(vx1-vx0)/w*img.naturalWidth,(vy1-vy0)/h*img.naturalHeight,vx0,vy0,vx1-vx0,vy1-vy0);
+}
+function render(){
+  raf=0;
+  view.z=Math.max(ZMIN,Math.min(ZMAX,view.z)); view.x=Math.max(BX[0],Math.min(BX[1],view.x)); view.y=Math.max(BY[0],Math.min(BY[1],view.y));
+  const s=S(), now=performance.now();
+  ctx.setTransform(DPR,0,0,DPR,0,0); ctx.clearRect(0,0,W,H);
+  if(mode!=='sat'){ ctx.fillStyle='#0B0F19'; ctx.fillRect(0,0,W,H); }
+  if(mode==='relief'){ drawImg(IM.relief,META.relief,true); const g=ctx.createRadialGradient(W/2,H/2,Math.min(W,H)*.38,W/2,H/2,Math.hypot(W,H)*.56); g.addColorStop(0,'rgba(11,15,25,0)'); g.addColorStop(1,'rgba(11,15,25,.92)'); ctx.fillStyle=g; ctx.fillRect(0,0,W,H); }
+  const k=s/U, tx=(OX-view.x)*s+W/2, ty=(OY-view.y)*s+H/2, lw=px=>px/k, zf=Math.max(0,view.z-11);
+  ctx.setTransform(DPR*k,0,0,DPR*k,DPR*tx,DPR*ty); ctx.lineJoin='round'; ctx.lineCap='round';
+  const coast=()=>{ ctx.save(); ctx.shadowColor='rgba(200,212,230,.75)'; ctx.shadowBlur=14*DPR; ctx.strokeStyle='rgba(200,212,230,.55)'; ctx.lineWidth=lw(1.1); ctx.stroke(P.coast); ctx.stroke(P.coast); ctx.restore(); };
+  if(mode==='map'){
+    ctx.fillStyle='#0d1626'; ctx.fill(P.ocean); coast();
+    ctx.strokeStyle='rgba(148,163,184,.22)'; ctx.lineWidth=lw(1.1); ctx.stroke(P.boundary);
+    ctx.strokeStyle='rgba(88,128,184,.75)'; ctx.lineWidth=lw(.7+zf*.45); ctx.stroke(P.river);
+    ctx.fillStyle='#22406a'; ctx.fill(P.dam);
+    if(LAY.flood){ ctx.fillStyle='rgba(45,83,132,.5)'; ctx.fill(P.flood,'evenodd'); ctx.strokeStyle='#2D5384'; ctx.lineWidth=lw(.9+zf*.3); ctx.stroke(P.flood); }
+  } else if(mode==='sat'){
+    ctx.strokeStyle='rgba(120,165,235,.5)'; ctx.lineWidth=lw(.8+zf*.4); ctx.stroke(P.river);
+    if(LAY.flood){ ctx.fillStyle='rgba(45,83,132,.42)'; ctx.fill(P.flood,'evenodd'); ctx.strokeStyle='rgba(255,255,255,.55)'; ctx.lineWidth=lw(1.6+zf*.3); ctx.stroke(P.flood); ctx.strokeStyle='#2D5384'; ctx.lineWidth=lw(.9+zf*.3); ctx.stroke(P.flood); }
+  } else {
+    coast();
+    if(LAY.flood){ ctx.fillStyle='rgba(45,83,132,.38)'; ctx.fill(P.flood,'evenodd'); ctx.strokeStyle='#2D5384'; ctx.lineWidth=lw(1+zf*.3); ctx.stroke(P.flood); }
+  }
+  /* flood pulse */
+  let pa=0;
+  if(pulse){
+    const t=(now-pulse.t0)/1000, D=7;
+    if(t>=D){ endPulse(); } else { const env=Math.min(1,t/.5)*Math.min(1,(D-t)/1.5); pa=env*(.62+.38*Math.sin(t*4.2)); }
+  }
+  if(pa>0){
+    ctx.strokeStyle='#ff7a3a';
+    ctx.globalAlpha=.22*pa; ctx.lineWidth=lw(9+zf*2); ctx.stroke(P.river);
+    ctx.globalAlpha=.5*pa; ctx.lineWidth=lw(4+zf); ctx.stroke(P.river);
+    ctx.globalAlpha=.5*pa; ctx.fillStyle='#ff7a3a'; ctx.fill(P.flood,'evenodd');
+    ctx.globalAlpha=pa; ctx.strokeStyle='#ffe6cf'; ctx.lineWidth=lw(1+zf*.3); ctx.stroke(P.river);
+    ctx.globalAlpha=1;
+  }
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  if(mode!=='relief'&&LAY.water){ ctx.globalAlpha=view.z>13.5?.85:1; drawImg(view.z<12.5?IM.wfar:IM.wnear,META.water,false); ctx.globalAlpha=1; }
+  drawRain(pa,now);
+  if(mode==='sat') tiles(); else $('tiles').style.display='none';
+  place(now);
+  if(pulse || journeyOn) draw();
+}
+const DROPS=[]; for(let i=0;i<520;i++) DROPS.push([Math.random(),Math.random(),520+Math.random()*300,14+Math.random()*18]);
+function drawRain(pa,now){
+  rctx.setTransform(DPR,0,0,DPR,0,0); rctx.clearRect(0,0,W,H);
+  if(pa<=0) return;
+  rctx.strokeStyle='rgba(205,225,255,'+(.5*Math.min(1,pa*1.6))+')'; rctx.lineWidth=1.1; rctx.beginPath();
+  const n=Math.min(DROPS.length,Math.round(W*H/2600)), t=now/1000;
+  for(let i=0;i<n;i++){
+    const d=DROPS[i], y=((d[1]*(H+60)+t*d[2])%(H+60))-30, x=d[0]*(W+H*.3)-y*.28;
+    rctx.moveTo(x,y); rctx.lineTo(x-d[3]*.28,y+d[3]);
+  }
+  rctx.stroke();
+}
+
+/* ---------- satellite tiles ---------- */
+const tileEls=new Map();
+function tiles(){
+  const box=$('tiles'); box.style.display='block';
+  const tz=Math.max(0,Math.min(18,Math.round(view.z))), n=Math.pow(2,tz), ts=256*Math.pow(2,view.z-tz), s=S();
+  const x0=Math.floor((view.x-W/2/s)*n), x1=Math.floor((view.x+W/2/s)*n), y0=Math.floor((view.y-H/2/s)*n), y1=Math.floor((view.y+H/2/s)*n);
+  const want=new Set();
+  for(let x=x0;x<=x1;x++) for(let y=y0;y<=y1;y++){
+    if(y<0||y>=n) continue; const key=tz+'/'+y+'/'+x; want.add(key);
+    let im=tileEls.get(key);
+    if(!im){ im=new Image(); im.draggable=false; im.alt=''; im.onerror=()=>{im.style.visibility='hidden'};
+      im.src='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/'+key; box.appendChild(im); tileEls.set(key,im); }
+    const st=im.style; st.left=Math.round((x/n-view.x)*s+W/2)+'px'; st.top=Math.round((y/n-view.y)*s+H/2)+'px'; st.width=st.height=Math.ceil(ts)+1+'px';
+  }
+  for(const [key,im] of tileEls) if(!want.has(key)){ im.remove(); tileEls.delete(key); }
+}
+
+/* ---------- markers, arcs, labels ---------- */
+function curve(a,b,bend){ const dx=b[0]-a[0], dy=b[1]-a[1], L=Math.hypot(dx,dy)||1; return [(a[0]+b[0])/2-dy/L*bend*L,(a[1]+b[1])/2+dx/L*bend*L]; }
+function jpts(j){ return j.pts.map(p=>p.site?{n:byId[p.site].name,X:byId[p.site].X,Y:byId[p.site].Y,site:p.site}:{n:p.n,X:mx(p.lon),Y:my(p.lat)}); }
+function place(now){
+  const fl=pulse?FLOODS[pulse.year].sites:[]; const sel0=selected&&byId[selected]; const route=(journeyOn&&sel0&&sel0.journey)?JOURNEYS[sel0.journey].pts.map(p=>p.site):[];
+  for(const s of SITES){
+    const el=s.el, open=isOpen(s,year)&&(LAY.sites||route.includes(s.id)||selected===s.id);
+    if(!open){ el.style.display='none'; continue; }
+    const [x,y]=scr(s.X,s.Y); el.style.display='block'; el.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px)';
+    el.classList.toggle('sel',selected===s.id); el.classList.toggle('lab',view.z>=13||hover===s.id||route.includes(s.id));
+    el.classList.toggle('closed',s.yclosed!=null&&year>=s.yclosed&&s.yclosed>s.yin); el.classList.toggle('flood',fl.includes(s.id));
+    el.querySelector('.bar').style.width=Math.max(3,yearsOpen(s,year)*2.6)+'px';
+  }
+  /* hover box */
+  const tip=$('tip'), hs=hover&&byId[hover];
+  if(hs && isOpen(hs,year)){
+    const [x,y]=scr(hs.X,hs.Y);
+    tip.innerHTML='<b class="t">'+hs.name+'</b><div class="s">'+hs.addr+' · since '+hs.yin+'</div>'+(hs.kind==='stop'?'<div class="nr">A stop on a journey</div>':condRows(hs,'r'));
+    tip.style.display='block';
+    const tw=270, th=tip.offsetHeight; let L=x+20, T=y-24;
+    if(L+tw>W-10) L=x-20-tw; if(T+th>H-10) T=H-10-th; if(T<10) T=10;
+    tip.style.left=L+'px'; tip.style.top=T+'px';
+  } else tip.style.display='none';
+  /* journey arcs + side-cut line */
+  let svg='<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#FFE27A"/></marker><filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5"/></filter></defs>', html='';
+  const sel=selected&&byId[selected];
+  if(journeyOn && sel && sel.journey){
+    const j=JOURNEYS[sel.journey], pts=jpts(j).map(p=>({...p,p:scr(p.X,p.Y)})), prog=(now-journeyT0)/700, flow=-(now/28)%22;
+    for(let i=0;i<pts.length-1;i++){
+      const f=Math.max(0,Math.min(1,prog-i)); if(f<=0) continue;
+      const a=pts[i].p, b=pts[i+1].p, c=curve(a,b,(i%2?-.28:.28));
+      const d='M'+a[0].toFixed(1)+' '+a[1].toFixed(1)+' Q'+c[0].toFixed(1)+' '+c[1].toFixed(1)+' '+b[0].toFixed(1)+' '+b[1].toFixed(1);
+      svg+='<path d="'+d+'" fill="none" stroke="#FBC900" stroke-width="9" opacity="'+(.42*f)+'" filter="url(#glow)" stroke-linecap="round"/>';
+      svg+='<path d="'+d+'" fill="none" stroke="#FFE27A" stroke-width="2.6" opacity="'+f+'" stroke-dasharray="12 10" stroke-dashoffset="'+flow.toFixed(1)+'" stroke-linecap="round" marker-end="url(#ah)"/>';
+      const mxp=(a[0]+2*c[0]+b[0])/4, myp=(a[1]+2*c[1]+b[1])/4;
+      html+='<div class="num" style="transform:translate('+mxp.toFixed(1)+'px,'+myp.toFixed(1)+'px);opacity:'+f+'"><b>'+j.legs[i][2]+'</b></div>';
+    }
+    pts.forEach((p,i)=>{ if(!p.site) html+='<div class="dot '+(i%2?'below':'')+'" style="transform:translate('+p.p[0].toFixed(1)+'px,'+p.p[1].toFixed(1)+'px)"><i></i><span>'+p.n+'</span></div>';
+      else if(!isOpen(byId[p.site],year)) html+='<div class="dot" style="transform:translate('+p.p[0].toFixed(1)+'px,'+p.p[1].toFixed(1)+'px)"><i style="background:#FBC900"></i><span>'+p.n+'</span></div>'; });
+  }
+  if(cutOn && sel && sel.cut){
+    const A=scr(mx(CUT.A[1]),my(CUT.A[0])), B=scr(mx(CUT.B[1]),my(CUT.B[0]));
+    svg+='<line x1="'+A[0]+'" y1="'+A[1]+'" x2="'+B[0]+'" y2="'+B[1]+'" stroke="#000" stroke-width="5" opacity=".55"/><line x1="'+A[0]+'" y1="'+A[1]+'" x2="'+B[0]+'" y2="'+B[1]+'" stroke="#fff" stroke-width="2" stroke-dasharray="9 6"/>';
+    html+='<div class="endp" style="transform:translate('+A[0]+'px,'+(A[1]+14)+'px)"><b>A</b></div><div class="endp" style="transform:translate('+B[0]+'px,'+(B[1]-14)+'px)"><b>B</b></div>';
+  }
+  $('svg').innerHTML=svg; extra.innerHTML=html;
+}
+const CUT={"A": [-29.95499188810791, 30.945257104154543], "B": [-29.95284859641847, 30.945917847798384]};
+
+/* ---------- sidebar ---------- */
+const LAB={water:'Water',san:'Sanitation',safe:'Safety',crowd:'Crowding'};
+function condRows(s,cls){
+  let h='';
+  for(const k of ['water','san','safe','crowd']){ const c=s[k]; h+='<div class="'+cls+'"><i class="d '+c[0]+'"></i><b>'+LAB[k]+'</b><span class="'+(c[0]==='grey'?'nr':'')+'">'+c[1]+'</span></div>'; }
+  if(s.extra) h+='<div class="'+cls+'"><i class="d '+s.extra[1]+'"></i><b>'+s.extra[0]+'</b><span>'+s.extra[2]+'</span></div>';
+  return h;
+}
+function condCards(s){
+  let h='<div class="cards">';
+  for(const k of ['water','san','safe','crowd']){ const c=s[k]; h+='<div class="card '+c[0]+'"><b><i class="d '+c[0]+'"></i>'+LAB[k]+'</b>'+c[1]+'</div>'; }
+  if(s.extra) h+='<div class="card wide '+s.extra[1]+'"><b><i class="d '+s.extra[1]+'"></i>'+s.extra[0]+'</b>'+s.extra[2]+'</div>';
+  return h+'</div>';
+}
+function ytId(u){ const m=/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/.exec(u||''); return m?m[1]:null; }
+function timerBox(s){
+  const closed=s.yclosed!=null && year>=s.yclosed, n=yearsOpen(s,year);
+  let tiles=''; for(let i=0;i<n;i++){ const y=s.yin+i; tiles+='<i>'+(n>7?'’'+String(y).slice(2):y)+'</i>'; }
+  tiles+=closed?'<i class="end">closed '+s.yclosed+'</i>':'<i class="now">'+(year<2026?year:'now')+' ›</i>';
+  const big=n<1?'Under 1 year':(n+(n===1?' year':' years'));
+  return '<div class="timer"><div class="mono">“Temporary” since '+s.yin+'</div><div class="cnt"><b>'+big+'</b><span>'+(closed?'then closed':'and counting')+'</span></div><div class="yrs">'+tiles+'</div></div>';
+}
+function details(){
+  const box=$('details'), s=selected&&byId[selected];
+  if(!s){
+    let h='<h3>SITE DETAILS</h3><p class="hint">Click a yellow site on the map, or pick one here. Drag the year to see sites open and close; red years are floods.</p><div class="list">';
+    for(const x of SITES) h+='<button data-id="'+x.id+'" class="'+(isOpen(x,year)?'':'off')+'">'+x.name+'<span>'+x.yin+(x.yclosed?'–'+x.yclosed:'–')+'</span></button>';
+    box.innerHTML=h+'</div>';
+    box.querySelectorAll('.list button').forEach(b=>b.onclick=()=>select(b.dataset.id,true));
+    return;
+  }
+  let h='<button class="back" id="back">‹ All sites</button><h3 style="margin-top:6px">SITE DETAILS</h3>';
+  h+='<div class="photo">'+(s.photo?'<img src="'+s.photo+'" alt="'+s.name+'">':'photo to be added')+'</div>';
+  h+='<h2>'+s.name+'</h2><p class="addr">'+s.addr+' · '+s.type+'</p>';
+  if(s.lead) h+='<div class="lead"><b>'+s.lead[0]+'</b><span>'+s.lead[1]+'</span></div>';
+  h+=timerBox(s);
+  if(s.kind==='stop') h+='<dl><dt class="mono">Households</dt><dd>'+s.hh+'</dd></dl><p class="stopnote">A stop on a journey. Open “Journey of the people” to see how families got here.</p>';
+  else { h+='<dl><dt class="mono">Households</dt><dd>'+s.hh+'</dd><dt class="mono">Flooded</dt><dd>'+s.flooded+'</dd></dl>'; h+=condCards(s); }
+  if(s.journey||s.cut){
+    h+='<div class="btns">';
+    if(s.journey) h+='<button id="bj" class="'+(journeyOn?'on':'')+'">Journey of the people<span>'+(journeyOn?'×':'›')+'</span></button>';
+    if(s.journey&&journeyOn){ const j=JOURNEYS[s.journey]; h+='<div><div class="jh">'+j.title+'<small>'+j.sub+'</small></div><div class="jl">'+j.legs.map((l,i)=>'<b>'+l[2]+'</b><span>'+l[0]+'<i>'+l[1]+'</i></span>').join('')+'</div></div>'; }
+    if(s.cut) h+='<button id="bc" class="'+(cutOn?'on':'')+'">Side-cut through the site<span>'+(cutOn?'×':'›')+'</span></button>';
+    h+='</div>';
+  }
+  const id=ytId(s.video);
+  if(s.video) h+='<a class="vid" target="_blank" rel="noopener" href="'+s.video+'"'+(id?' style="background-image:url(https://img.youtube.com/vi/'+id+'/hqdefault.jpg)"':'')+'><span>Watch the video ↗</span></a>';
+  else h+='<div class="vid none"><span>Video to be added</span></div>';
+  if(s.src.length) h+='<div class="srcs">Sources: '+s.src.map(x=>'<a target="_blank" rel="noopener" href="'+x[1]+'">'+x[0]+'</a>').join(' · ')+'</div>';
+  box.innerHTML=h;
+  $('back').onclick=()=>{ select(null); };
+  if($('bj')) $('bj').onclick=()=>toggleJourney();
+  if($('bc')) $('bc').onclick=()=>toggleCut();
+}
+function select(id,fly){
+  selected=id; journeyOn=false; cutOn=false; $('cut').style.display='none';
+  details(); document.querySelector('aside').scrollTop=0;
+  if(id&&fly){ const s=byId[id]; if(!isOpen(s,year)) setYear(s.yclosed||s.yin,true); flyTo(s.X,s.Y,Math.max(view.z,15.6)); }
+  draw();
+}
+function toggleJourney(){
+  const s=byId[selected]; journeyOn=!journeyOn; if(journeyOn){ cutOn=false; $('cut').style.display='none'; }
+  details();
+  if(journeyOn){
+    const pts=jpts(JOURNEYS[s.journey]); let x0=1,x1=0,y0=1,y1=0; for(const p of pts){ x0=Math.min(x0,p.X); x1=Math.max(x1,p.X); y0=Math.min(y0,p.Y); y1=Math.max(y1,p.Y); }
+    const z=Math.min(14.5,Math.log2(Math.min(W*.5/Math.max(x1-x0,1e-9),H*.42/Math.max(y1-y0,1e-9))/256));
+    journeyT0=performance.now()+900; flyTo((x0+x1)/2,(y0+y1)/2,z);
+  } else flyTo(s.X,s.Y,15.6);
+  draw();
+}
+function toggleCut(){
+  const s=byId[selected]; cutOn=!cutOn; if(cutOn) journeyOn=false;
+  $('cut').style.display=cutOn?'block':'none'; details();
+  if(cutOn){ const cxm=(mx(CUT.A[1])+mx(CUT.B[1]))/2, cym=(my(CUT.A[0])+my(CUT.B[0]))/2, sc=256*Math.pow(2,16.8); flyTo(cxm-Math.min(120,W*.12)/sc,cym-Math.min(110,H*.14)/sc,16.8); }
+  draw();
+}
+$('cutx').onclick=()=>{ if(cutOn) toggleCut(); };
+
+/* ---------- time ---------- */
+function setYear(y,quiet){
+  y=+y; const prev=year; year=y; $('year').value=y; $('yr').textContent=y; const pc=(y-2007)/19*100; $('boat').style.left=pc+'%'; $('fill').style.width=pc+'%';
+  details();
+  const f=FLOODS[y];
+  if(f && y!==prev && !quiet) startPulse(y); else if(!f){ endPulse(); }
+  draw();
+}
+function startPulse(y){
+  pulse={year:y,t0:performance.now()};
+  const f=FLOODS[y], big=$('big'); big.innerHTML=f.when+'<small>'+f.text+'</small>'; big.style.display='block';
+  $('boat').classList.add('rip');
+  const a=$('snd'); if(!muted){ try{ a.currentTime=0; a.volume=.8; const p=a.play(); if(p&&p.catch) p.catch(()=>{}); }catch(e){} }
+  draw();
+}
+function endPulse(){
+  if(pulse){ pulse=null; fade(); }
+  $('boat').classList.remove('rip');
+  if(!FLOODS[year]) $('big').style.display='none';
+}
+function fade(){ const a=$('snd'); const t=setInterval(()=>{ if(a.volume>.06) a.volume=Math.max(0,a.volume-.06); else { a.pause(); clearInterval(t); } },60); }
+$('year').addEventListener('input',e=>{ stopPlay(); setYear(e.target.value); });
+$('year').addEventListener('pointerdown',e=>e.stopPropagation());
+function stopPlay(){ if(playing){ clearTimeout(playing); playing=null; $('play').textContent='▶'; } }
+$('play').onclick=()=>{
+  if(playing){ stopPlay(); return; }
+  $('play').textContent='❚❚'; let y=year>=2026?2007:year+1;
+  const step=()=>{ setYear(y); if(y>=2026){ stopPlay(); return; } const wait=FLOODS[y]?7200:650; y++; playing=setTimeout(step,wait); };
+  step();
+};
+$('mute').onclick=()=>{ muted=!muted; $('mute').textContent=muted?'Sound off':'Sound on'; if(muted) $('snd').pause(); else if(pulse){ $('snd').volume=.8; $('snd').play().catch(()=>{}); } };
+(function(){ const t=$('ticks'); let h=''; for(let y=2007;y<=2026;y++){ const fl=!!FLOODS[y]; if(fl||y===2007||(y%5===0&&!FLOODS[y-1]&&!FLOODS[y+1])) h+='<span class="'+(fl?'fl':'')+'" style="left:'+((y-2007)/19*100)+'%">'+y+'</span>'; } t.innerHTML=h; })();
+
+/* ---------- view control ---------- */
+function flyTo(x,y,z,ms){
+  if(anim) cancelAnimationFrame(anim);
+  const a={x:view.x,y:view.y,z:view.z}, t0=performance.now(), D=ms||900;
+  const step=now=>{ let t=Math.min(1,(now-t0)/D); const e=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+    const sA=Math.pow(2,a.z), sB=Math.pow(2,z), w=(Math.pow(2,a.z+(z-a.z)*e)-sA)/((sB-sA)||1);
+    const m=(sA===sB)?e:Math.max(0,Math.min(1,w*sB/Math.pow(2,a.z+(z-a.z)*e)));
+    view.z=a.z+(z-a.z)*e; view.x=a.x+(x-a.x)*m; view.y=a.y+(y-a.y)*m; draw();
+    if(t<1) anim=requestAnimationFrame(step); else anim=null; };
+  anim=requestAnimationFrame(step);
+}
+function zoomAt(px,py,dz){
+  const s0=S(), X=view.x+(px-W/2)/s0, Y=view.y+(py-H/2)/s0;
+  view.z=Math.max(ZMIN,Math.min(ZMAX,view.z+dz)); const s1=S();
+  view.x=X-(px-W/2)/s1; view.y=Y-(py-H/2)/s1; draw();
+}
+let dragP=null;
+map.addEventListener('pointerdown',e=>{ if(e.target.closest('.ui')) return; if(anim){cancelAnimationFrame(anim);anim=null} dragP={x:e.clientX,y:e.clientY}; map.classList.add('drag'); map.setPointerCapture(e.pointerId); });
+map.addEventListener('pointermove',e=>{ if(!dragP) return; const s=S(); view.x-=(e.clientX-dragP.x)/s; view.y-=(e.clientY-dragP.y)/s; dragP={x:e.clientX,y:e.clientY}; draw(); });
+const endDrag=()=>{ dragP=null; map.classList.remove('drag'); };
+map.addEventListener('pointerup',endDrag); map.addEventListener('pointercancel',endDrag);
+map.addEventListener('wheel',e=>{ if(e.target.closest('.ui')) return; e.preventDefault(); const r=map.getBoundingClientRect(); zoomAt(e.clientX-r.left,e.clientY-r.top,-e.deltaY*(e.ctrlKey?.012:.0028)); },{passive:false});
+map.addEventListener('dblclick',e=>{ if(e.target.closest('.ui')) return; const r=map.getBoundingClientRect(); const s0=S(); flyTo(view.x+(e.clientX-r.left-W/2)/s0/2,view.y+(e.clientY-r.top-H/2)/s0/2,view.z+1,350); });
+$('zin').onclick=()=>flyTo(view.x,view.y,view.z+1,300);
+$('zout').onclick=()=>flyTo(view.x,view.y,view.z-1,300);
+$('home').onclick=()=>{ select(null); flyTo(HOME.x,HOME.y,homeZoom()); };
+document.querySelectorAll('#seg button').forEach(b=>b.onclick=()=>{
+  mode=b.dataset.m; document.querySelectorAll('#seg button').forEach(x=>x.classList.toggle('on',x===b));
+  $('lgwater').style.display=mode==='relief'?'none':'block'; $('lgrelief').style.display=mode==='relief'?'block':'none';
+  
+  attr(); draw();
+});
+function attr(){ $('attr').textContent='Flood line and rivers: eThekwini Municipality · Water record: JRC Global Surface Water · Heights: Copernicus DEM'+(mode==='sat'?' · Imagery: Esri, Maxar, Earthstar Geographics':''); }
+document.querySelectorAll('.lg button').forEach(b=>b.onclick=()=>{ const k=b.dataset.l; LAY[k]=!LAY[k]; b.classList.toggle('off',!LAY[k]); draw(); });
+window.addEventListener('resize',resize);
+setYear(2026,true);
+attr(); details(); resize(); view.z=homeZoom(); draw();
+</script>
+</body>
+</html>
