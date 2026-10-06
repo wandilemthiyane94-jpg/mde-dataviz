@@ -146,6 +146,27 @@ table.cmp{width:100%;border-collapse:collapse;font-size:12px}
 table.cmp th,table.cmp td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--line);vertical-align:top}
 table.cmp th{font:500 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
 
+/* story, accordion, report */
+.story .quote{font:italic 16px/1.4 var(--serif);color:var(--ink);border-left:3px solid var(--amber);padding:2px 0 2px 12px;margin:0}
+.story .quote small{display:block;font:500 11px var(--sans);font-style:normal;color:var(--mut);margin-top:4px}
+.story .note{font-size:11.5px;color:var(--dim);margin:0}
+.story .btns{display:flex;flex-wrap:wrap;gap:8px}
+.story .btns .cta{padding:10px 14px;font-size:13px}
+.ghostb{background:none;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:10px 14px;font-size:13px;cursor:pointer}
+details.acc{margin-top:16px;border-top:1px solid var(--line)}
+details.acc summary{cursor:pointer;padding:12px 0;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary:after{content:"+";color:var(--mut);font-weight:400}
+details.acc[open] summary:after{content:"−"}
+.rep{display:grid;gap:12px}
+.rep label{display:grid;gap:4px;font-size:12.5px;color:var(--txt)}
+.rep select,.rep input[type=number],.rep textarea{font:14px var(--sans);color:var(--ink);background:#0B0F19;border:1px solid var(--line);border-radius:6px;padding:8px}
+.rep textarea{min-height:84px;resize:vertical}
+.rep .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rep .chk{grid-template-columns:18px 1fr;align-items:start;font-size:12px;color:var(--mut)}
+.rep .msg{font-size:13px;color:var(--amber);margin:0}
+.rep .msg.ok{color:#4ade80}
+
 /* bottom timeline */
 .time{position:fixed;left:22px;right:22px;bottom:18px;height:82px;z-index:10;display:grid;grid-template-columns:56px 150px 1fr;gap:18px;align-items:center;padding:0 22px}
 .time>button{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:none;cursor:pointer;font-size:16px}
@@ -177,11 +198,11 @@ table.cmp th{font:500 10px var(--mono);letter-spacing:.08em;text-transform:upper
     <button type="button" data-v="map" aria-current="page">Map</button>
     <button type="button" data-v="stories">Stories</button>
     <button type="button" data-v="conditions">Conditions</button>
-    <button type="button" data-v="about">About</button>
+    <button type="button" data-v="report">Report</button>
   </nav>
   <div class="search">
     <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="none" stroke="#9AA6B8" stroke-width="1.6"/><path d="M11 11L15 15" stroke="#9AA6B8" stroke-width="1.6"/></svg>
-    <input id="q" type="search" autocomplete="off" placeholder="Search sites, places or keywords…" aria-label="Search sites, places or keywords">
+    <input id="q" type="search" autocomplete="off" placeholder="Search your TRA site" aria-label="Search your TRA site">
     <div class="results glass" id="res" hidden></div>
   </div>
 </header>
@@ -368,13 +389,60 @@ function condCards(s){ let h='<div class="cards">'; for(const k of ['water','san
   const ex=s.extra; h+=ex?'<div class="card '+ex[1]+'"><b><i class="d '+ex[1]+'"></i>'+esc(ex[0])+'</b>'+esc(ex[2])+'</div>':'<div class="card grey"><b><i class="d grey"></i>Power</b>Not reported</div>'; return h+'</div>'; }
 const distTxt=d=>d<=250?`${d} m from the line`:(d>=1000?(d/1000).toFixed(1)+' km away':d+' m away');
 const near=d=>d<=60?'At the line':d<=250?'Near':d<=1000?'Within 1 km':'Beyond 1 km';
+
+/* The default panel: one family's story, from published reports only. */
+function storyHTML(){ const j=JOURNEYS.j1;
+  return '<div class="story"><div class="kick">Gwala Street, Lamontville · 25 February 2025</div><h2 style="margin-top:6px">She lost three children to the water</h2>'+
+  '<p class="sub">A camp the government called temporary</p><div class="pane">'+
+  '<p>On the night of Tuesday 25 February 2025, a mother living in the Gwala Street transit camp lost three of her children: two girls, aged 5 and 16, and a boy aged 11. They were swept away as the family fled the floodwater.</p>'+
+  '<p>She, her husband and their seven children lived in a one-room tin house. They were brought to the camp in 2021 after a flood in uMlazi. The camp sits beside a stream that residents say was blocked with debris, and it had already flooded in April 2022.</p>'+
+  '<p>Five people from the camp died that night: two women aged 56 and 60, and the three children. Afterwards she asked to be moved somewhere safe.</p>'+
+  '<p class="quote">"We have been moved from one place to another and we are tired now."<small>Another mother in the same camp, speaking to GroundUp in June 2022</small></p>'+
+  '<p><b>Moved, and moved again.</b> The path reporting traces for families from this camp:</p>'+
+  '<div class="jl">'+j.legs.map(l=>'<b>'+l[2]+'</b><span>'+esc(l[0])+'<i>'+esc(l[1])+'</i></span>').join('')+'</div>'+
+  '<p class="note">We have not named her. Reports do not say whether her family made every one of these moves.</p>'+
+  '<div class="btns"><button class="cta" id="sj">Show the journey on the map</button><button class="ghostb" id="ss">Open the camp</button></div>'+
+  '<p class="note srcs">Sources: <a target="_blank" rel="noopener" href="https://iol.co.za/news/south-africa/2025-02-26-a-mothers-plea-for-help-after-losing-her-three-children-in-kzn-floods/">IOL, 26 Feb 2025 ↗</a> · <a target="_blank" rel="noopener" href="https://www.amnesty.org/en/documents/afr53/0369/2025/en/">Amnesty International, 2025 ↗</a> · <a target="_blank" rel="noopener" href="https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/">GroundUp, Jun 2022 ↗</a></p>'+
+  '</div></div>'+
+  '<details class="acc" id="acc"><summary>All 12 mapped sites</summary><div class="list">'+SITES.map(x=>'<button data-id="'+x.id+'">'+esc(x.name)+'<span>'+x.yin+(x.yclosed?'–'+x.yclosed:'–')+'</span></button>').join('')+'</div></details>'; }
+
+/* Community reports. On claude.ai they go to the artifact's database, in each reporter's own space,
+   readable only by the project owner until reviewed. Copies without a backend keep them on the device. */
+const RATE=[['','Choose'],['ok','Fine'],['some','Some problems'],['bad','Bad'],['none','None at all'],['dk','Don\'t know']];
+const rsel=(id,lab)=>'<label>'+lab+'<select id="'+id+'">'+RATE.map(o=>'<option value="'+o[0]+'">'+o[1]+'</option>').join('')+'</select></label>';
+function reportHTML(){
+  return '<div class="kick">Report</div><h2 style="margin-top:6px">Tell us about your site</h2><p class="sub">Live in a temporary relocation site? Report what conditions are like. Do not write your name or anyone else\'s. Reports are reviewed before anything appears on the map.</p>'+
+  '<form class="rep" id="rep"><label>Your site<select id="r_site" required><option value="">Choose your site</option><optgroup label="Mapped sites">'+SITES.map(x=>'<option value="'+x.id+'">'+esc(x.name)+'</option>').join('')+'</optgroup><optgroup label="Other TRAs">'+OTHER_TRA.map(o=>'<option value="tra'+o.id+'">'+esc(o.name)+'</option>').join('')+'</optgroup><option value="other">Not listed</option></select></label>'+
+  '<div class="two">'+rsel('r_water','Water')+rsel('r_san','Toilets and washing')+rsel('r_power','Electricity')+rsel('r_safe','Safety')+rsel('r_crowd','Space and crowding')+
+  '<label>Has it flooded since you arrived?<select id="r_flood"><option value="">Choose</option><option value="yes">Yes</option><option value="no">No</option><option value="dk">Don\'t know</option></select></label></div>'+
+  '<div class="two"><label>Year you arrived<input type="number" id="r_year" min="1990" max="2026" placeholder="e.g. 2022"></label><label>Times your household has been moved<input type="number" id="r_moves" min="0" max="20" placeholder="e.g. 3"></label></div>'+
+  '<label>Anything else (no names, please)<textarea id="r_text" maxlength="1000"></textarea></label>'+
+  '<label class="chk"><input type="checkbox" id="r_ok" required><span>I agree that Hollie and Wandile may use this report, without any names, in this research project.</span></label>'+
+  '<button class="cta" type="submit" style="justify-self:start">Send report</button><p class="msg" id="r_msg" aria-live="polite"></p></form>'; }
+let DB=null, ME=null;
+(async()=>{ try{ if(window.claude&&claude.use){ DB=await claude.use('db'); const u=await claude.use('user'); if(u) ME=await u.id(); } }catch(e){ DB=null; } })();
+async function sendReport(e){ e.preventDefault(); const g=id=>$(id).value, msg=$('r_msg'), btn=e.target.querySelector('button[type=submit]');
+  const rec={site:g('r_site'),water:g('r_water'),san:g('r_san'),power:g('r_power'),safe:g('r_safe'),crowd:g('r_crowd'),flood:g('r_flood'),
+    year:g('r_year')?+g('r_year'):null,moves:g('r_moves')?+g('r_moves'):null,text:g('r_text').slice(0,1000),t:Date.now(),status:'new'};
+  if(!rec.site){ msg.className='msg'; msg.textContent='Please choose your site.'; return; }
+  btn.disabled=true; msg.className='msg'; msg.textContent='Sending…';
+  if(DB&&ME){ try{ await DB.collection('reports/'+ME+'/items').add(rec); msg.className='msg ok'; msg.textContent='Thank you. Your report was sent and will be reviewed before it appears.'; e.target.reset(); }
+    catch(err){ msg.textContent=err&&err.code==='invalid_argument'?'This link only lets you read. Ask the project team for a link that lets you report.':'Could not send just now. Please try again.'; }
+    btn.disabled=false; return; }
+  try{ const k='mitw-reports', a=JSON.parse(localStorage.getItem(k)||'[]'); a.push(rec); localStorage.setItem(k,JSON.stringify(a)); }catch(err){}
+  msg.className='msg ok'; msg.textContent='Saved on this device. This copy of the site cannot send reports yet; open the online version to send it.'; e.target.reset(); btn.disabled=false; }
+function aboutHTML(){ return '<div class="top"><button class="back" id="back">← Back</button></div><div class="kick">About</div><h2 style="margin-top:6px">Moved Into the Water</h2><p class="sub">MDE Project 2 · Hollie and Wandile · Harvard GSD</p><div class="pane"><p>When floods destroy homes in Durban, families are moved to "temporary" sites. This map asks whether those sites are safe: it puts them over the city\'s own 1-in-100-year flood line and 38 years of satellite water records.</p><p><b>Data.</b> Flood line and rivers: eThekwini Municipality. Water record: JRC Global Surface Water (1984–2021). Heights: Copernicus DEM and AWS Terrain Tiles. Imagery: Esri World Imagery. Site facts: the news reports listed on each site.</p><p><b>Limits.</b> Site pins are approximate; the 18 other TRAs come from our compiled list and are placed to within about 1–3 km. Flood-line distances are measured from the pin.</p></div>'; }
+const ABOUTLINK='<button class="ghostb" id="aboutb" style="margin:0 20px 16px;padding:7px 12px;font-size:12px">About this project</button>';
 function panel(){ const box=$('panel'), foot=$('panelfoot'), s=selected&&byId[selected];
-  if(view2==='conditions'){ box.innerHTML='<div class="kick">Conditions</div><h2 style="margin-top:6px">Daily life at every site</h2><p class="sub">From news reports and official statements. Grey means nobody has reported it.</p><table class="cmp"><thead><tr><th>Site</th><th>Water</th><th>Toilets</th><th>Safety</th><th>Crowding</th></tr></thead><tbody>'+SITES.map(x=>'<tr><td><button class="back" data-id="'+x.id+'">'+esc(x.name)+'</button></td>'+['water','san','safe','crowd'].map(k=>'<td><i class="d '+x[k][0]+'"></i></td>').join('')+'</tr>').join('')+'</tbody></table><p class="sub" style="margin-top:12px">21 of 48 ratings are not reported, and electricity isn\'t recorded at most sites.</p>';
-    foot.innerHTML=''; box.querySelectorAll('button[data-id]').forEach(b=>b.onclick=()=>{view2='map';setNav();select(b.dataset.id,true);}); return; }
-  if(view2==='about'){ box.innerHTML='<div class="kick">About</div><h2 style="margin-top:6px">Moved Into the Water</h2><p class="sub">MDE Project 2 · Hollie and Wandile · Harvard GSD</p><div class="pane"><p>When floods destroy homes in Durban, families are moved to "temporary" sites. This map asks whether those sites are safe: it puts them over the city\'s own 1-in-100-year flood line and 38 years of satellite water records.</p><p><b>Data.</b> Flood line and rivers: eThekwini Municipality. Water record: JRC Global Surface Water (1984–2021). Heights: Copernicus DEM and AWS Terrain Tiles. Imagery: Esri World Imagery. Site facts: the news reports listed on each site.</p><p><b>Limits.</b> Site pins are approximate; the 18 other TRAs come from our compiled list and are placed to within about 1–3 km. Flood-line distances are measured from the pin.</p></div>';
-    foot.innerHTML=''; return; }
-  if(!s){ box.innerHTML='<div class="kick">Temporary relocation sites</div><h2 style="margin-top:6px">12 sites, mapped</h2><p class="sub">Click a yellow site on the map, or pick one here. Drag the year to see sites open and close; amber years are floods.</p><div class="list">'+SITES.map(x=>'<button data-id="'+x.id+'">'+esc(x.name)+'<span>'+x.yin+(x.yclosed?'–'+x.yclosed:'–')+'</span></button>').join('')+'</div>';
-    foot.innerHTML=''; box.querySelectorAll('.list button').forEach(b=>b.onclick=()=>select(b.dataset.id,true)); return; }
+  if(view2==='conditions'){ box.innerHTML='<div class="kick">Conditions</div><h2 style="margin-top:6px">Daily life at every site</h2><p class="sub">From news reports and official statements. Grey means nobody has reported it.</p><table class="cmp"><thead><tr><th>Site</th><th>Water</th><th>Toilets</th><th>Safety</th><th>Crowding</th></tr></thead><tbody>'+SITES.map(x=>'<tr><td><button class="back" data-id="'+x.id+'">'+esc(x.name)+'</button></td>'+['water','san','safe','crowd'].map(k=>'<td><i class="d '+x[k][0]+'"></i></td>').join('')+'</tr>').join('')+'</tbody></table><p class="sub" style="margin-top:12px">21 of 48 ratings are not reported, and electricity isn\'t recorded at most sites.</p><button class="cta" id="toRep" style="margin-top:4px">Live at one of these sites? Report your conditions</button>';
+    foot.innerHTML=''; $('toRep').onclick=()=>{view2='report';setNav();panel();}; box.querySelectorAll('button[data-id]').forEach(b=>b.onclick=()=>{view2='map';setNav();select(b.dataset.id,true);}); return; }
+  if(view2==='about'){ box.innerHTML=aboutHTML(); foot.innerHTML=''; $('back').onclick=()=>{view2='map';setNav();panel();}; return; }
+  if(view2==='report'){ box.innerHTML=reportHTML(); foot.innerHTML=''; $('rep').onsubmit=sendReport; return; }
+  if(!s){ box.innerHTML=storyHTML(); foot.innerHTML=ABOUTLINK;
+    $('aboutb').onclick=()=>{view2='about';setNav();panel();};
+    $('sj').onclick=()=>{select('lamontville',true);setTimeout(()=>{tab='movement';toggleJourney();},950);};
+    $('ss').onclick=()=>select('lamontville',true);
+    box.querySelectorAll('.list button').forEach(b=>b.onclick=()=>select(b.dataset.id,true)); return; }
   const i=SITES.indexOf(s), d=DIST[s.id], n=yearsOpen(s,2026);
   let h='<div class="top"><button class="back" id="back">← Back to all sites</button><div class="nav2"><button id="prev" aria-label="Previous site">‹</button><button id="next" aria-label="Next site">›</button></div></div>';
   h+='<h2>'+esc(s.name)+'</h2><p class="sub">'+esc(s.type)+' · '+esc(s.addr)+'</p>';
@@ -426,6 +494,7 @@ q.addEventListener('input',()=>{ const v=q.value.trim().toLowerCase(); if(!v){re
   if(/flood/.test(v)) items.push(['Sites that flooded: Lamontville riverside camp, 2022 and 2025','answer',()=>select('lamontville',true)]);
   if(/famil|journey|moved/.test(v)) items.push(['From uMlazi to Umbilo: four moves in six years','journey',()=>{select('lamontville',true);setTimeout(()=>{tab='movement';toggleJourney();},950);}]);
   if(/water|toilet|sanit|condition/.test(v)) items.push(['Conditions at every site','view',()=>{view2='conditions';setNav();panel();}]);
+  if(/report|tell|complain/.test(v)) items.push(['Report conditions at your site','form',()=>{view2='report';setNav();panel();}]);
   res.innerHTML=items.length?items.slice(0,7).map((it,i)=>'<button data-i="'+i+'">'+esc(it[0])+'<small>'+it[1]+'</small></button>').join(''):'<button disabled>No match yet<small>try a site name</small></button>';
   res.hidden=false; res.querySelectorAll('button[data-i]').forEach(b=>b.onclick=()=>{res.hidden=true;q.value='';items[+b.dataset.i][2]();}); });
 q.addEventListener('keydown',e=>{ if(e.key==='Enter'){const b=res.querySelector('button[data-i]'); if(b) b.click();} if(e.key==='Escape') res.hidden=true; });
