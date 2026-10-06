@@ -10,7 +10,7 @@
 #   Missing : storm-water pipes, culvert capacity, canal walls narrower than a cell, buildings
 # Outputs  : prototype/story/rem/fine_<Suffix>.json (camp depth series, flooded area), fine_<Suffix>_max.png (max depth
 #            over hillshade), fine_<Suffix>_frames.png (sprite, depth*60 in grey), fine_dem.png (hillshade check)
-param([string]$Suffix = '2025', [double]$Cell = 10, [double]$Dt = 2.0)
+param([string]$Suffix = '2025', [double]$Cell = 10, [double]$Dt = 2.0, [switch]$DemOnly)
 $ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue'
 $root = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 $out = "$root\prototype\story\rem"
@@ -94,6 +94,7 @@ $z = [FINE]::Dem($cj, $GW, $GH, $W0, $N0, $kx, $ky, $Cell, [ref]$fixed)
 $rj = [IO.File]::ReadAllText("$root\data\raw\ethekwini_rivers_lamontville.geojson")
 $carved = [FINE]::Carve($rj, $z, $GW, $GH, $W0, $N0, $kx, $ky, $Cell)
 $z = [FINE]::Fill($z, $GW, $GH)
+if ($DemOnly) { $sb = New-Object Text.StringBuilder; for ($i = 0; $i -lt $z.Length; $i++) { if ($i) { [void]$sb.Append(",") }; [void]$sb.Append([int][math]::Round($z[$i] * 10)) }; [IO.File]::WriteAllText("$out\fine_dem.json", "{""grid"":[$GW,$GH],""cell_m"":$Cell,""box"":[$W0,$S0,$E0,$N0],""dm"":[" + $sb.ToString() + "]}"); "dem written"; return }
 function Cell([double]$lon, [double]$lat) { @([int](($lon - $W0) * $kx / $Cell), [int](($N0 - $lat) * $ky / $Cell)) }
 # inflow: uMlazi at the lowest west-edge cell; northern stream at the lowest north-edge cell within 800 m of lon 30.9447
 $srcI = @(); $srcQ = @(); $srcLen = $up.entries[0].inflow_m3s.Count
