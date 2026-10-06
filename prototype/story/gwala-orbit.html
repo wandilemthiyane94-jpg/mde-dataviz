@@ -35,7 +35,7 @@ input[type=range]{position:relative;width:100%;margin:0;height:20px;accent-color
 <div class="hint">Drag to turn · scroll to zoom · right-drag to move</div>
 <div class="bar">
   <button type="button" id="play">Play</button>
-  <div class="track"><div class="nightband" id="band" aria-hidden="true"></div><input type="range" id="t" min="0" max="60" step="1" value="0" aria-label="Time in the storm"></div>
+  <div class="track"><div class="nightband" id="band" aria-hidden="true"></div><input type="range" id="t" min="0" max="33" step="1" value="0" aria-label="Time in the storm"></div>
   <div class="clock" id="clock">11 APR 09:00</div>
 </div>
 
@@ -134,7 +134,7 @@ function stepFlow(dt){
 // time
 const tEl=document.getElementById("t"), clock=document.getElementById("clock"), play=document.getElementById("play");
 const H0=9; const info=k=>{const hh=H0+k*.5,day=11+Math.floor(hh/24),hr=Math.floor(hh%24),mm=(hh%1)?"30":"00";return {lab:`${day} APR ${String(hr).padStart(2,"0")}:${mm}`,night:(hh%24)>=17.5||(hh%24)<6.25};};
-const band=document.getElementById("band"),pc=k=>k/60*100,kh=hh=>(hh-H0)/.5; band.style.left=pc(kh(17.5))+"%"; band.style.width=(pc(kh(30.25))-pc(kh(17.5)))+"%";
+const KMAX=33, band=document.getElementById("band"),pc=k=>k/KMAX*100,kh=hh=>(hh-H0)/.5; band.style.left=pc(kh(17.5))+"%"; band.style.width=(pc(KMAX)-pc(kh(17.5)))+"%";
 let fpos=0, playing=false, nightK=0;
 function setWater(f){const f0=Math.floor(f),f1=Math.min(D.frames-1,f0+1),a=f-f0,o0=f0*N,o1=f1*N;let p=0,q=0;
   const dep=(i,j)=>(DEP[o0+i*w+j]*(1-a)+DEP[o1+i*w+j]*a)/D.depth_scale;
@@ -143,9 +143,9 @@ function setWater(f){const f0=Math.floor(f),f1=Math.min(D.frames-1,f0+1),a=f-f0,
     for(const tri of [[0,3,1],[1,3,2]])for(const k of tri){wpos[p++]=v[k][0];wpos[p++]=v[k][1];wpos[p++]=v[k][2];walpha[q++]=wet?Math.min(1,.25+d/3):0;}}
   wg.attributes.position.needsUpdate=true; wg.attributes.alpha.needsUpdate=true; wg.computeBoundingSphere();
   wetCells.length=0; for(let i=0;i<h;i++)for(let j=0;j<w;j++){const d=dep(Math.min(h-2,i),Math.min(w-2,j)); DEPN[i*w+j]=d; SURF[i*w+j]=Z[i*w+j]+(d>.08?d:0); if(d>.15)wetCells.push(i*w+j);}}
-function show(k){k=Math.max(0,Math.min(60,k)); fpos=k; tEl.value=Math.round(k); const n=info(Math.round(k)); clock.textContent=n.lab; clock.classList.toggle("night",n.night); setWater(k); arcImg.src=`gwala-arcfull/a${String(Math.round(k)).padStart(2,"0")}.jpg`;}
+function show(k){k=Math.max(0,Math.min(KMAX,k)); fpos=k; tEl.value=Math.round(k); const n=info(Math.round(k)); clock.textContent=n.lab; clock.classList.toggle("night",n.night); setWater(k); arcImg.src=`gwala-arcfull/a${String(Math.round(k*60/KMAX)).padStart(2,"0")}.jpg`;}
 tEl.addEventListener("input",()=>{playing=false;play.textContent="Play";show(+tEl.value);});
-play.onclick=()=>{playing=!playing;play.textContent=playing?"Pause":"Play";if(playing&&fpos>=60)fpos=0;};
+play.onclick=()=>{playing=!playing;play.textContent=playing?"Pause":"Play";if(playing&&fpos>=KMAX)fpos=0;};
 addEventListener("keydown",e=>{if(e.target.tagName==="INPUT")return;if(e.key===" "){e.preventDefault();play.click();}});
 addEventListener("resize",()=>{cam.aspect=VW()/VH();cam.updateProjectionMatrix();renderer.setSize(VW(),VH());});
 
@@ -153,7 +153,7 @@ cam.position.set(4600,4100,4900); controls.target.set(0,Y(zmax)*.9,0); controls.
 show(0); document.getElementById("loading").remove();
 let last=performance.now();
 renderer.setAnimationLoop(now=>{const dt=Math.min(.05,(now-last)/1000);last=now;
-  if(playing){fpos+=dt*2.2; if(fpos>=60){fpos=60;playing=false;play.textContent="Play";} show(fpos);}
+  if(playing){fpos+=dt*2.2; if(fpos>=KMAX){fpos=KMAX;playing=false;play.textContent="Play";} show(fpos);}
   const n=info(Math.round(fpos)), target=n.night?1:0; nightK+=(target-nightK)*Math.min(1,dt*3);
   sun.intensity=1.25-0.7*nightK; hemi.intensity=0.55-0.25*nightK; wmat.uniforms.night.value=nightK;
   const rain=D.rain[Math.min(D.frames-1,Math.round(fpos))]||0, active=Math.round(NDROP*Math.min(1,rain/12));
