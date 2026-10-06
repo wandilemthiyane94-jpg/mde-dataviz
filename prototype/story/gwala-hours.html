@@ -3,47 +3,60 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Single dark look to match the frames: one stage, one hour slider beneath. */
-:root{--bg:#0B0F19;--panel:#111827;--fg:#F8FAFC;--mut:#A0ACBE;--amber:#F5A524;--line:rgba(248,250,252,.14);
+/* Single dark look to match the frames: one stage, one time slider beneath, night shaded on the track. */
+:root{--bg:#0B0F19;--fg:#F8FAFC;--mut:#A0ACBE;--amber:#F5A524;--night:#AABEFF;--line:rgba(248,250,252,.14);
   --disp:"Barlow Condensed","Arial Narrow",Arial,sans-serif;--mono:"IBM Plex Mono",Consolas,monospace;color-scheme:dark}
 html,body{height:100%}
 body{background:var(--bg);color:var(--fg);font:14px/1.4 var(--mono);margin:0;padding-inline:16px;padding-block:16px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:12px}
-.stage{width:min(100%,calc((100vh - 130px)*16/9));aspect-ratio:16/9;max-width:100%;position:relative;background:#000;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.w{width:min(100%,calc((100vh - 140px)*16/9));max-width:100%}
+.stage{aspect-ratio:16/9;position:relative;background:#000;border:1px solid var(--line);border-radius:4px;overflow:hidden}
 .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-.bar{width:min(100%,calc((100vh - 130px)*16/9));display:grid;grid-template-columns:auto auto 1fr auto;gap:14px;align-items:center}
+.bar{display:grid;grid-template-columns:auto auto 1fr auto;gap:14px;align-items:center}
 button{font:600 15px var(--disp);letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--amber);border:0;border-radius:3px;padding:9px 14px;cursor:pointer}
 button.ghost{color:var(--fg);background:none;border:1px solid var(--line)}
 button:focus-visible,input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
-.hr{font:700 30px/1 var(--disp);letter-spacing:.02em;min-width:110px;text-align:right;font-variant-numeric:tabular-nums}
-.track{display:grid;gap:4px;min-width:0}
-input[type=range]{width:100%;accent-color:var(--amber)}
-.ticks{display:flex;justify-content:space-between;color:var(--mut);font-size:11px}
-.note{width:min(100%,calc((100vh - 130px)*16/9));color:var(--mut);font-size:11px;margin:0}
-@media (max-width:640px){.bar{grid-template-columns:auto 1fr auto}.bar .ghost{display:none}.hr{font-size:22px;min-width:80px}}
+.clock{font:700 28px/1 var(--disp);letter-spacing:.02em;min-width:150px;text-align:right;font-variant-numeric:tabular-nums}
+.clock.night{color:var(--night)}
+.track{position:relative;display:grid;gap:4px;min-width:0}
+.nightband{position:absolute;top:2px;height:16px;background:rgba(80,100,170,.35);border-radius:2px;pointer-events:none}
+input[type=range]{position:relative;width:100%;accent-color:var(--amber);margin:0;height:20px}
+.ticks{position:relative;height:16px;color:var(--mut);font-size:11px}
+.ticks span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.note{color:var(--mut);font-size:11px;margin:0}
+@media (max-width:700px){.bar{grid-template-columns:auto 1fr auto}.bar .ghost{display:none}.clock{font-size:20px;min-width:96px}.ticks span:nth-child(even){display:none}}
 </style>
 
-<div class="stage"><img id="frame" src="gwala-hours/h01.jpg" alt="Gwala Street, Lamontville, at hour 1 of the April 2022 storm"></div>
-<div class="bar">
+<div class="w stage"><img id="frame" src="gwala-night/f00.jpg" alt="Gwala Street, Lamontville, on 11 April 2022 at 09:00"></div>
+<div class="w bar">
   <button type="button" id="play">Play</button>
-  <button type="button" class="ghost" id="step">Next hour</button>
+  <button type="button" class="ghost" id="step">+30 min</button>
   <div class="track">
-    <input type="range" id="hour" min="1" max="25" step="1" value="1" aria-label="Storm hour">
-    <div class="ticks"><span>1 h</span><span>5 h</span><span>10 h</span><span>15 h</span><span>20 h</span><span>25 h</span></div>
+    <div class="nightband" id="nightband" aria-hidden="true"></div>
+    <input type="range" id="t" min="0" max="60" step="1" value="0" aria-label="Time in the storm">
+    <div class="ticks" id="ticks"></div>
   </div>
-  <div class="hr" id="label">HOUR 1</div>
+  <div class="clock" id="clock">11 APR 09:00</div>
 </div>
-<p class="note">Hour 1 is 11 April 2022, 07:00; hour 25 is 12 April, 07:00. Our simplified rain-and-river model on eThekwini LiDAR; depths indicative. Drag the slider or use the arrow keys.</p>
+<p class="w note">Layers, bottom to top: our simulation of the 2022 storm on eThekwini LiDAR with satellite imagery; your ArcGIS Pro run (timing approximate); the LiDAR topography as a wireframe. Shaded band on the slider: night, 17:30 to 06:15. Depths indicative.</p>
 
 <script>
-const img=document.getElementById("frame"), hour=document.getElementById("hour"), label=document.getElementById("label"), play=document.getElementById("play");
-const src=h=>`gwala-hours/h${String(h).padStart(2,"0")}.jpg`;
-for(let h=1;h<=25;h++){const p=new Image();p.src=src(h);}           // preload every hour
-function show(h){h=Math.max(1,Math.min(25,h));hour.value=h;img.src=src(h);img.alt=`Gwala Street, Lamontville, at hour ${h} of the April 2022 storm`;label.textContent="HOUR "+h;}
-hour.addEventListener("input",()=>show(+hour.value));
-document.getElementById("step").onclick=()=>show(+hour.value>=25?1:+hour.value+1);
-let t=null;
-play.onclick=()=>{if(t){clearInterval(t);t=null;play.textContent="Play";return;}
-  if(+hour.value>=25)show(1); play.textContent="Pause";
-  t=setInterval(()=>{if(+hour.value>=25){clearInterval(t);t=null;play.textContent="Play";return;}show(+hour.value+1);},700);};
-addEventListener("keydown",e=>{if(e.target.tagName==="INPUT")return;if(e.key==="ArrowRight")show(+hour.value+1);if(e.key==="ArrowLeft")show(+hour.value-1);if(e.key===" "){e.preventDefault();play.click();}});
+const N=61, H0=9, STEP=0.5;                      // index 0 = 11 April 09:00, every 30 minutes to 12 April 15:00
+const img=document.getElementById("frame"), t=document.getElementById("t"), clock=document.getElementById("clock"), play=document.getElementById("play");
+const src=k=>`gwala-night/f${String(k).padStart(2,"0")}.jpg`;
+const at=k=>{const h=H0+k*STEP, day=11+Math.floor(h/24), hh=Math.floor(h%24), mm=(h%1)?"30":"00"; return {day,hh,mm,night:(h%24)>=17.5||(h%24)<6.25};};
+for(let k=0;k<N;k++){const p=new Image();p.src=src(k);}
+const pct=k=>k/(N-1)*100;
+const kOf=h=>(h-H0)/STEP;
+const band=document.getElementById("nightband"); band.style.left=pct(kOf(17.5))+"%"; band.style.width=(pct(kOf(30.25))-pct(kOf(17.5)))+"%";
+document.getElementById("ticks").innerHTML=[0,6,12,18,24,30,36,42,48,54,60].map(k=>{const a=at(k);return `<span style="left:${pct(k)}%">${a.day} Apr ${String(a.hh).padStart(2,"0")}:00</span>`;}).join("");
+function show(k){k=Math.max(0,Math.min(N-1,k));t.value=k;img.src=src(k);const a=at(k),lab=`${a.day} APR ${String(a.hh).padStart(2,"0")}:${a.mm}`;
+  clock.textContent=lab;clock.classList.toggle("night",a.night);img.alt=`Gwala Street, Lamontville, on ${a.day} April 2022 at ${String(a.hh).padStart(2,"0")}:${a.mm}${a.night?", at night":""}`;}
+t.addEventListener("input",()=>show(+t.value));
+document.getElementById("step").onclick=()=>show(+t.value>=N-1?0:+t.value+1);
+let timer=null;
+play.onclick=()=>{if(timer){clearInterval(timer);timer=null;play.textContent="Play";return;}
+  if(+t.value>=N-1)show(0); play.textContent="Pause";
+  timer=setInterval(()=>{if(+t.value>=N-1){clearInterval(timer);timer=null;play.textContent="Play";return;}show(+t.value+1);},450);};
+addEventListener("keydown",e=>{if(e.target.tagName==="INPUT")return;if(e.key==="ArrowRight")show(+t.value+1);if(e.key==="ArrowLeft")show(+t.value-1);if(e.key===" "){e.preventDefault();play.click();}});
+show(0);
 </script>
