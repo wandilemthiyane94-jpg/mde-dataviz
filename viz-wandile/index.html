@@ -169,13 +169,11 @@ table.cmp th{font:500 10px var(--mono);letter-spacing:.08em;text-transform:upper
 .story h2{font-size:34px;line-height:1.02}
 .story .sub{margin:8px 0 16px}
 .story .dek{font:17px/1.45 Georgia,'Times New Roman',serif;color:var(--txt);margin:14px 0 0}
-.facts{display:grid;grid-template-columns:1.45fr 1fr 1fr .9fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:16px 0 4px}
-.facts div{padding:11px 10px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:3px;justify-content:center}
+.facts{display:grid;grid-template-columns:1.35fr 1.05fr .9fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:16px 0 4px}
+.facts div{padding:11px 10px 12px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:5px;justify-content:flex-start}
 .facts div:first-child{border-left:0;padding-left:0}
-.facts span{font:500 9.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.facts span{font:500 9.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
 .facts b{font-size:13px;font-weight:600;color:var(--ink);line-height:1.25}
-.facts .hi b{font:700 26px/1 var(--sans);color:var(--amber)}
-.facts .hi span{color:var(--txt);letter-spacing:.06em}
 .footrow{display:flex;justify-content:space-between;align-items:center;margin:0;padding:10px 20px 12px;border-top:1px solid var(--line)}
 .footrow a.sbtn{background:#fff;color:#0B0F19;border:0;border-radius:6px;padding:7px 12px;font-size:12.5px;font-weight:600}
 .footrow a{color:var(--ink);font-weight:500;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:1px}
@@ -436,7 +434,7 @@ function storyHTML(){ const j=JOURNEYS.j1, L=byId.lamontville;
     '<button class="play" id="vplay" aria-label="Play the news report">▶</button><i class="bar" id="vbar"></i></div>'+
     '<p class="vsrc">Video: <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v='+VID+'">Newzroom Afrika, 26 Feb 2025 ↗</a></p>'+
     '<p class="dek">At the Gwala Street transit camp in Lamontville, Lulama Dingiswayo lost three children during the February 2025 floods.</p>';
-  h+='<div class="facts"><div><span>Camp</span><b>Gwala Street transit camp</b></div><div><span>Area</span><b>Lamontville</b></div><div><span>Date</span><b>25 Feb 2025</b></div><div class="hi"><b>3</b><span>children lost</span></div></div>';
+  h+='<div class="facts"><div><span>Camp</span><b>Gwala Street transit camp</b></div><div><span>Area</span><b>Lamontville</b></div><div><span>Date</span><b>25 Feb 2025</b></div><div><span>Loss</span><b>3 children</b></div></div>';
   const T=[['story','Her story'],['moves','Movement'],['conditions','Conditions'],['risk','Flood Risk'],['evidence','Evidence']];
   h+='<div class="tabs" role="tablist">'+T.map(t=>'<button role="tab" data-st="'+t[0]+'" aria-selected="'+(stab===t[0])+'">'+t[1]+'</button>').join('')+'</div><div class="pane">';
   if(stab==='story'){ h+='<p class="sec">About her story</p>'+
