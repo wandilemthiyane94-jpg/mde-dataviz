@@ -219,6 +219,48 @@ details.acc[open] summary:after{content:"−"}
  .story h2{font-size:28px}
  .story .dek{font-size:16px}
 }
+/* conditions view */
+body.cond .left{bottom:350px}
+body.cond .left .stat,body.cond .left .scale{display:none}
+.cstrip{position:fixed;left:22px;right:474px;bottom:118px;height:220px;z-index:10;display:none;grid-template-columns:330px repeat(5,minmax(0,1fr));grid-template-rows:minmax(0,1fr);gap:10px;padding:12px}
+body.cond .cstrip{display:grid}
+.cinfo{padding:4px 8px 0 6px;display:flex;flex-direction:column;min-width:0;border-right:1px solid var(--line)}
+.cinfo h3{margin:0;font:700 17px/1.15 var(--sans);color:var(--ink)}
+.cinfo .lg{display:flex;gap:14px;font-size:11px;color:var(--mut);margin:6px 0 2px}
+.cinfo .lg i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:0}
+.cinfo svg{display:block;width:100%;height:auto;flex:1;min-height:0}
+.cinfo .src{font-size:9.5px;color:var(--dim);margin:2px 0 0;line-height:1.3}
+.ccard{min-height:0;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.02);display:flex;flex-direction:column;overflow:hidden;cursor:pointer;text-align:left;padding:0;color:inherit;min-width:0}
+.ccard:hover{border-color:rgba(255,255,255,.3)}
+.ccard[aria-pressed="true"]{border:2px solid var(--site)}
+.ccard .ch{display:flex;align-items:center;gap:6px;padding:7px 9px;font-size:12px;font-weight:600;color:var(--ink)}
+.ccard .ch span{margin-left:auto;color:var(--mut);font-weight:400}
+.ccard img{width:100%;height:78px;object-fit:cover;display:block}
+.ccard .cb{overflow:hidden;padding:7px 9px 8px;font-size:11.5px;line-height:1.3;color:var(--txt)}
+.ccard .cb b{display:flex;align-items:center;gap:5px;font-size:12.5px;margin-bottom:2px}
+.st-red{color:#ff6b5e}.st-yellow{color:#F5A524}.st-green{color:#4ade80}.st-grey{color:#94A3B8}
+.clist{display:grid;gap:4px;align-content:start}
+.clist button{display:grid;grid-template-columns:18px 1fr;gap:4px 8px;align-items:center;background:none;border:1px solid transparent;border-radius:7px;padding:7px 8px;cursor:pointer;text-align:left;font-size:12.5px;color:var(--ink)}
+.clist button[aria-pressed="true"]{background:rgba(255,255,255,.06);border-color:var(--line);box-shadow:inset 3px 0 0 #ff6b5e}
+.clist .pill{grid-column:2;justify-self:start;font-size:10.5px;padding:1px 7px;border-radius:999px;border:1px solid currentColor}
+.cgrid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:10px;margin-top:12px;align-items:start}
+.cdet{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:rgba(255,255,255,.02);display:flex;flex-direction:column}
+.cdet .k{font:600 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#ff6b5e;padding:8px 10px 6px}
+.cdet img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.cdet .t{padding:8px 10px 4px;font-weight:700;font-size:13.5px;line-height:1.3;color:var(--ink)}
+.cdet .cdd{padding:0 10px 8px;font-size:11.5px;color:var(--mut);line-height:1.35}
+.cdet .cr{padding:0 10px 4px;font:9.5px var(--mono);color:var(--dim)}
+.cdet a{margin:4px 10px 10px;background:#fff;color:#0B0F19;border-radius:6px;padding:7px 10px;text-align:center;font-weight:600;font-size:12px;text-decoration:none}
+.cmpb{display:none;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:8px;padding:10px 14px;cursor:pointer;font-weight:600;white-space:nowrap}
+body.cond .time{grid-template-columns:56px 150px 1fr auto}
+body.cond .cmpb{display:flex}
+body.cond .attr{bottom:344px}
+.time>.cmpb{width:auto;height:auto;border-radius:8px;font-size:13px}
+body.cond .right .photo{aspect-ratio:16/7}
+.cinfo .gap2{font-size:11px;color:#ff6b5e;font-weight:600;margin:0}
+@media (max-width:1100px){.cstrip{right:402px;grid-template-columns:280px repeat(5,minmax(0,1fr))}}
+@media (max-width:820px){body.cond .cstrip{display:none}body.cond .left{bottom:auto}}
+
 /* bottom timeline */
 .time{position:fixed;left:22px;right:22px;bottom:18px;height:82px;z-index:10;display:grid;grid-template-columns:56px 150px 1fr;gap:18px;align-items:center;padding:0 22px}
 .time>button{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:none;cursor:pointer;font-size:16px}
@@ -300,13 +342,15 @@ details.acc[open] summary:after{content:"−"}
 
 <aside class="glass right" id="right" aria-live="polite"><div class="scroll" id="panel"></div><div id="panelfoot"></div></aside>
 
+<div class="glass cstrip" id="cstrip" aria-label="Conditions at the site compared with the government standard"></div>
 <div class="glass big" id="big"></div>
 <div class="glass cut" id="cut" role="dialog" aria-label="Cross-section through Lamontville riverside camp"><button id="cutx" aria-label="Close">×</button><div class="cuthd"><b>A — B</b><span>Cross-section: Lamontville Riverside Camp</span></div><p>A slice through the ground from the far bank (A), across the river, to the camp and uphill (B).</p><svg viewBox="0 0 760 232" width="100%" role="img" aria-label="Cross-section from A, the far bank, across the uMlazi River to the camp and uphill to B. The 1-in-100-year flood level sits about 1.6 m above the camp ground."><defs><linearGradient id="csky" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#0d1a2b"/><stop offset="1" stop-color="#1d3550"/></linearGradient><linearGradient id="cearth" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#7a5a3c"/><stop offset=".55" stop-color="#4a3624"/><stop offset="1" stop-color="#241a12"/></linearGradient><linearGradient id="criver" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#4fb3ea"/><stop offset="1" stop-color="#1c5f9c"/></linearGradient><clipPath id="cair"><path d="M58.0 -4.0 L58.0 62.4 66.4 62.4 74.8 62.4 83.0 62.4 91.4 62.4 99.7 62.4 108.1 62.4 116.3 62.4 124.7 62.5 133.1 63.4 141.5 66.2 149.7 72.9 158.1 84.6 166.5 100.1 174.9 116.6 183.1 129.7 191.4 136.6 199.8 138.8 208.2 139.1 216.4 139.7 224.8 141.4 233.2 144.9 241.6 148.9 249.8 153.1 258.2 156.8 266.6 159.2 274.9 160.5 283.2 161.3 291.5 161.6 299.9 161.6 308.3 161.6 316.5 161.6 324.9 161.6 333.3 161.6 341.7 161.6 349.9 161.6 358.3 161.6 366.6 161.6 375.0 161.6 383.2 161.6 391.6 161.0 400.0 159.2 408.4 155.2 416.8 149.1 425.0 142.5 433.4 135.1 441.7 124.7 450.1 111.4 458.3 100.2 466.7 94.0 475.1 90.9 483.5 88.9 491.7 87.4 500.1 85.5 508.5 83.9 516.8 82.3 525.1 80.7 533.4 79.3 541.8 78.0 550.2 76.4 558.4 75.1 566.8 73.7 575.2 72.4 583.6 71.4 591.8 70.0 600.2 68.7 608.6 67.4 616.9 66.1 625.2 64.9 633.5 63.7 641.9 63.0 650.3 62.5 658.5 62.4 666.9 62.4 675.3 62.4 683.7 62.4 691.9 62.4 700.3 62.4 708.6 62.4 717.0 62.4 725.2 62.4 733.6 62.5 742.0 62.9 L742.0 -4.0 Z"/></clipPath></defs><rect x="58" y="6" width="684" height="182" fill="url(#csky)"/><line x1="58" x2="742" y1="161.6" y2="161.6" stroke="rgba(255,255,255,.07)"/><text x="50" y="165.1" fill="#cbd5e1" font-size="11" text-anchor="end">0</text><line x1="58" x2="742" y1="128.5" y2="128.5" stroke="rgba(255,255,255,.07)"/><text x="50" y="132.0" fill="#cbd5e1" font-size="11" text-anchor="end">+2</text><line x1="58" x2="742" y1="95.4" y2="95.4" stroke="rgba(255,255,255,.07)"/><text x="50" y="98.9" fill="#cbd5e1" font-size="11" text-anchor="end">+4</text><line x1="58" x2="742" y1="62.4" y2="62.4" stroke="rgba(255,255,255,.07)"/><text x="50" y="65.9" fill="#cbd5e1" font-size="11" text-anchor="end">+6</text><rect x="58" y="62.4" width="684" height="125.6" fill="rgba(110,170,235,.20)" clip-path="url(#cair)"/><rect x="58" y="157.4" width="684" height="30.6" fill="url(#criver)" clip-path="url(#cair)"/><path d="M58.0 190 L58.0 62.4 66.4 62.4 74.8 62.4 83.0 62.4 91.4 62.4 99.7 62.4 108.1 62.4 116.3 62.4 124.7 62.5 133.1 63.4 141.5 66.2 149.7 72.9 158.1 84.6 166.5 100.1 174.9 116.6 183.1 129.7 191.4 136.6 199.8 138.8 208.2 139.1 216.4 139.7 224.8 141.4 233.2 144.9 241.6 148.9 249.8 153.1 258.2 156.8 266.6 159.2 274.9 160.5 283.2 161.3 291.5 161.6 299.9 161.6 308.3 161.6 316.5 161.6 324.9 161.6 333.3 161.6 341.7 161.6 349.9 161.6 358.3 161.6 366.6 161.6 375.0 161.6 383.2 161.6 391.6 161.0 400.0 159.2 408.4 155.2 416.8 149.1 425.0 142.5 433.4 135.1 441.7 124.7 450.1 111.4 458.3 100.2 466.7 94.0 475.1 90.9 483.5 88.9 491.7 87.4 500.1 85.5 508.5 83.9 516.8 82.3 525.1 80.7 533.4 79.3 541.8 78.0 550.2 76.4 558.4 75.1 566.8 73.7 575.2 72.4 583.6 71.4 591.8 70.0 600.2 68.7 608.6 67.4 616.9 66.1 625.2 64.9 633.5 63.7 641.9 63.0 650.3 62.5 658.5 62.4 666.9 62.4 675.3 62.4 683.7 62.4 691.9 62.4 700.3 62.4 708.6 62.4 717.0 62.4 725.2 62.4 733.6 62.5 742.0 62.9 L742.0 190 Z" fill="url(#cearth)"/><path d="M58.0 62.4 66.4 62.4 74.8 62.4 83.0 62.4 91.4 62.4 99.7 62.4 108.1 62.4 116.3 62.4 124.7 62.5 133.1 63.4 141.5 66.2 149.7 72.9 158.1 84.6 166.5 100.1 174.9 116.6 183.1 129.7 191.4 136.6 199.8 138.8 208.2 139.1 216.4 139.7 224.8 141.4 233.2 144.9 241.6 148.9 249.8 153.1 258.2 156.8 266.6 159.2 274.9 160.5 283.2 161.3 291.5 161.6 299.9 161.6 308.3 161.6 316.5 161.6 324.9 161.6 333.3 161.6 341.7 161.6 349.9 161.6 358.3 161.6 366.6 161.6 375.0 161.6 383.2 161.6 391.6 161.0 400.0 159.2 408.4 155.2 416.8 149.1 425.0 142.5 433.4 135.1 441.7 124.7 450.1 111.4 458.3 100.2 466.7 94.0 475.1 90.9 483.5 88.9 491.7 87.4 500.1 85.5 508.5 83.9 516.8 82.3 525.1 80.7 533.4 79.3 541.8 78.0 550.2 76.4 558.4 75.1 566.8 73.7 575.2 72.4 583.6 71.4 591.8 70.0 600.2 68.7 608.6 67.4 616.9 66.1 625.2 64.9 633.5 63.7 641.9 63.0 650.3 62.5 658.5 62.4 666.9 62.4 675.3 62.4 683.7 62.4 691.9 62.4 700.3 62.4 708.6 62.4 717.0 62.4 725.2 62.4 733.6 62.5 742.0 62.9" fill="none" stroke="#6f9a45" stroke-width="3" stroke-linejoin="round"/><rect x="70.7" y="53.4" width="2.4" height="9" fill="#3b2a1c"/><circle cx="71.9" cy="48.4" r="7" fill="#2f5d34"/><circle cx="75.9" cy="51.4" r="5" fill="#3d7040"/><rect x="651.8" y="53.5" width="2.4" height="9" fill="#3b2a1c"/><circle cx="653.0" cy="48.5" r="7" fill="#2f5d34"/><circle cx="657.0" cy="51.5" r="5" fill="#3d7040"/><rect x="713.0" y="53.4" width="2.4" height="9" fill="#3b2a1c"/><circle cx="714.2" cy="48.4" r="7" fill="#2f5d34"/><circle cx="718.2" cy="51.4" r="5" fill="#3d7040"/><path d="M550.5 75.1 V65.1 L558.5 58.1 L566.5 65.1 V75.1 Z" fill="#b8c2cc" stroke="#0B0F19" stroke-width=".8"/><rect x="556.5" y="69.1" width="4" height="6" fill="#0B0F19"/><path d="M592.2 68.7 V58.7 L600.2 51.7 L608.2 58.7 V68.7 Z" fill="#b8c2cc" stroke="#0B0F19" stroke-width=".8"/><rect x="598.2" y="62.7" width="4" height="6" fill="#0B0F19"/><path d="M667.3 62.4 V52.4 L675.3 45.4 L683.3 52.4 V62.4 Z" fill="#b8c2cc" stroke="#0B0F19" stroke-width=".8"/><rect x="673.3" y="56.4" width="4" height="6" fill="#0B0F19"/><line x1="58" x2="742" y1="62.4" y2="62.4" stroke="#f1f5f9" stroke-width="1.6" stroke-dasharray="7 5"/><text x="98" y="55.4" fill="#f8fafc" font-size="12.5" font-weight="600">1-in-100-year flood level</text><line x1="66" x2="92" y1="51.4" y2="51.4" stroke="#f8fafc" stroke-width="1.2"/><text x="315.2" y="178.9" fill="#e0f2fe" font-size="11" text-anchor="middle" font-weight="600" letter-spacing=".04em">RIVER LEVEL · uMlazi</text><line x1="483.5" x2="483.5" y1="88.9" y2="82.9" stroke="#F5A524" stroke-width="2"/><path d="M472.5 82.9 V66.9 L483.5 55.9 L494.5 66.9 V82.9 Z" fill="#FBC900" stroke="#0B0F19" stroke-width="1.2"/><rect x="480.5" y="74.9" width="6" height="8" fill="#0B0F19"/><text x="483.5" y="48.9" fill="#FBC900" font-size="14" font-weight="700" text-anchor="middle">Camp</text><path d="M502.5 62.4 H507.5 V88.9 H502.5" fill="none" stroke="#F5A524" stroke-width="1.6"/><text x="514.5" y="86.9" fill="#F5A524" font-size="13" font-weight="700">1–2 m of water</text><line x1="58" x2="742" y1="194" y2="194" stroke="#64748B"/><line x1="197.0" x2="197.0" y1="191" y2="197" stroke="#64748B"/><text x="197.0" y="210" fill="#cbd5e1" font-size="11" text-anchor="middle">50</text><line x1="336.0" x2="336.0" y1="191" y2="197" stroke="#64748B"/><text x="336.0" y="210" fill="#cbd5e1" font-size="11" text-anchor="middle">100</text><line x1="475.1" x2="475.1" y1="191" y2="197" stroke="#64748B"/><text x="475.1" y="210" fill="#cbd5e1" font-size="11" text-anchor="middle">150</text><line x1="614.1" x2="614.1" y1="191" y2="197" stroke="#64748B"/><text x="614.1" y="210" fill="#cbd5e1" font-size="11" text-anchor="middle">200</text><text x="58" y="212" fill="#fff" font-size="15" font-weight="800" text-anchor="middle">A</text><text x="742" y="212" fill="#fff" font-size="15" font-weight="800" text-anchor="middle">B</text><text x="400.0" y="228" fill="#94A3B8" font-size="11" text-anchor="middle">Distance (m)</text><text x="14" y="14" fill="#cbd5e1" font-size="11" font-weight="600" letter-spacing=".05em">HEIGHT ABOVE RIVER (m)</text></svg><p class="cutnote">Ground profile measured by Hollie from the Copernicus DEM; vertical scale exaggerated about ×6. Trees and houses are drawn for scale.</p></div>
 <div class="glass time">
   <button type="button" id="play" aria-label="Play">▶</button>
   <div class="yrlab"><small>Sites open in</small><b id="yr">2026</b></div>
-  <div class="trk"><div class="rail"></div><div class="fill" id="fill"></div><div class="knob" id="knob"></div>
+  <div class="trk" id="trkwrap"><div class="rail"></div><div class="fill" id="fill"></div><div class="knob" id="knob"></div>
     <input type="range" id="year" min="2007" max="2026" step="1" value="2026" aria-label="Year"><div class="ticks" id="ticks"></div></div>
+  <button type="button" class="cmpb" id="cmpb"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 14V8M6 14V3M10 14V6M14 14V10" stroke="#fff" stroke-width="2"/></svg>Compare sites</button>
 </div>
 <div class="attr" id="attr"></div>
 <audio id="snd" loop preload="auto" src="assets/flood_sound.mp3"></audio>
@@ -539,9 +583,95 @@ async function sendReport(e){ e.preventDefault(); const g=id=>$(id).value, msg=$
   msg.className='msg ok'; msg.textContent='Saved on this device. This copy of the site cannot send reports yet; open the online version to send it.'; e.target.reset(); btn.disabled=false; }
 function aboutHTML(){ return '<div class="top"><button class="back" id="back">← Back</button></div><div class="kick">About</div><h2 style="margin-top:6px">Moved Into the Water</h2><p class="sub">MDE Project 2 · Hollie and Wandile · Harvard GSD</p><div class="pane"><p>When floods destroy homes in Durban, families are moved to "temporary" sites. This map asks whether those sites are safe: it puts them over the city\'s own 1-in-100-year flood line and 38 years of satellite water records.</p><p><b>Data.</b> Flood line and rivers: eThekwini Municipality. Water record: JRC Global Surface Water (1984–2021). Heights: Copernicus DEM and AWS Terrain Tiles. Imagery: Esri World Imagery. Site facts: the news reports listed on each site.</p><p><b>Limits.</b> Site pins are approximate; the 18 other TRAs come from our compiled list and are placed to within about 1–3 km. Flood-line distances are measured from the pin.</p></div>'; }
 const ABOUTLINK='<button class="ghostb" id="aboutb" style="padding:6px 11px;font-size:12px">About this project</button>';
+
+/* ---------- conditions: what residents live with vs the government's own standard ----------
+   Standard: National Housing Code 2009, Vol 4, Part 3 (Emergency Housing Programme), Part B: municipal engineering services in
+   temporary settlements. Lamontville figures: GroundUp, 8 Jun 2022 (about 100 households; one standpipe tap and 16 portable
+   toilets; no water, toilets or electricity on arrival) and IOL, 26 Feb 2025 (a family of nine in one tin room). */
+const HC='https://www.dhs.gov.za/sites/default/files/documents/2%20Volume%204%20Emergency%20Housing%20Programme.pdf';
+const GU22='https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/';
+const IOL25='https://iol.co.za/news/south-africa/2025-02-26-a-mothers-plea-for-help-after-losing-her-three-children-in-kzn-floods/';
+const CK=[['water','Water'],['san','Sanitation'],['power','Power'],['crowd','Housing'],['safe','Safety']];
+const STD={water:'1 tap per 25 families',san:'1 VIP toilet per 5 families',power:'High-mast lighting only; no household supply required',crowd:'A shelter of at least 24 m² per household',safe:'People on land "prone to dangerous flooding" qualify to be moved'};
+const STDP={water:'Housing Code 2009, Emergency Housing, Part B',san:'Housing Code 2009, Emergency Housing, Part B',power:'Housing Code 2009, Emergency Housing, Part B',crowd:'Housing Code 2009, Emergency Housing, Part B',safe:'Housing Code 2009, Emergency Housing, Part A'};
+const CLAB={red:'Severe',yellow:'Strained',green:'Adequate',grey:'Not reported'};
+const LAMC={water:{c:'red',pill:'Below standard',t:'One standpipe for about 100 households',d:'The Housing Code asks for a tap for every 25 families, so the camp would need 4. It has 1.',src:GU22,img:'assets/photos/gu_lamontville_camp_2022.jpg',cr:'Photo: Nokulunga Majola / GroundUp'},
+  san:{c:'red',pill:'Inadequate',t:'16 portable toilets, rarely cleaned; nowhere to wash',d:'At one toilet per five families, about 100 households need 20.',src:GU22,img:'assets/sites/lamontville.jpg',cr:'Satellite view · Esri'},
+  power:{c:'yellow',pill:'None on arrival',t:'No electricity when residents arrived',d:'The programme only pays for high-mast lighting, so there is no household standard to fall short of.',src:GU22,img:'assets/sites/lamontville.jpg',cr:'Satellite view · Esri'},
+  crowd:{c:'red',pill:'Overcrowded',t:'A family of nine in one tin room',d:'The code sets a shelter of at least 24 m² per household. The room\'s size was not reported.',src:IOL25,img:'assets/photos/gu_lamontville_relocation_2025.jpg',cr:'Photo: Tsoanelo Sefoloko / GroundUp'},
+  safe:{c:'red',pill:'At risk',t:'Flooded twice; homes under 10 m from the river',d:'The pin sits 2 m from the 1-in-100-year flood line. It flooded in April 2022 and February 2025.',src:IOL25,img:'assets/sites/lamontville_flood.jpg',cr:'Official flood map · eThekwini'}};
+function condOf(x,k){ if(x.id==='lamontville') return LAMC[k];
+  let c,t; if(k==='power'){ const ex=x.extra; if(ex&&/power|electric/i.test(ex[0])){ c=ex[1]; t=ex[2]; } else { c='grey'; t='Not reported'; } } else { c=x[k][0]; t=x[k][1]; }
+  return {c,pill:CLAB[c]||'Not reported',t,d:'Standard: '+STD[k]+'.',src:(x.src[0]||[])[1]||'',img:'assets/sites/'+x.id+(k==='safe'?'_flood':'')+'.jpg',cr:k==='safe'?'Official flood map · eThekwini':'Satellite view · Esri'}; }
+const GAPS={water:'The camp would need 4 taps. It has 1.',san:'The camp would need 20 toilets. It has 16.',crowd:'Room size not reported, so 24 m² can’t be checked.',safe:'The city’s own flood line runs 2 m from the camp.'};
+let condSite='lamontville', condK='water', condCmp=false;
+const CIC={water:'<svg width="15" height="15" viewBox="0 0 16 16"><path d="M8 1C5 6 3.5 8.2 3.5 10.2a4.5 4.5 0 009 0C12.5 8.2 11 6 8 1z" fill="#ff6b5e"/></svg>',
+  san:'<svg width="15" height="15" viewBox="0 0 16 16"><path d="M3 2h4v5h6v2a5 5 0 01-4 4.9V15H6v-2.4A4 4 0 013 9z" fill="#e2e8f0"/></svg>',
+  power:'<svg width="15" height="15" viewBox="0 0 16 16"><path d="M9 1L3 9h4l-1 6 6-8H8z" fill="#e2e8f0"/></svg>',
+  crowd:'<svg width="15" height="15" viewBox="0 0 16 16"><path d="M1 8l7-6 7 6v7H1z" fill="#e2e8f0"/></svg>',
+  safe:'<svg width="15" height="15" viewBox="0 0 16 16"><path d="M8 1l6 2v5c0 3.5-2.6 6-6 7-3.4-1-6-3.5-6-7V3z" fill="#e2e8f0"/></svg>'};
+/* small pictograms for the infographic */
+const PIC={house:(x,y,c)=>`<path d="M${x} ${y+6}l6-5 6 5v7h-12z" fill="${c}"/>`,
+  person:(x,y,c)=>`<circle cx="${x+4}" cy="${y+2.5}" r="2.5" fill="${c}"/><path d="M${x} ${y+15}v-6a4 4 0 018 0v6z" fill="${c}"/>`,
+  tap:(x,y,c,h)=>`<path d="M${x} ${y+h}V${y+8}a6 6 0 016-6h10v5h-9a2 2 0 00-2 2v${h-9}z" fill="${c}"/><path d="M${x+16} ${y+7}v4" stroke="${c}" stroke-width="3"/>`,
+  loo:(x,y,c,dash)=>`<rect x="${x}" y="${y}" width="11" height="16" rx="2" fill="${dash?'none':c}" stroke="${c}" stroke-width="1.3" ${dash?'stroke-dasharray="2 2"':''}/><rect x="${x+3}" y="${y+4}" width="5" height="1.6" fill="${dash?c:'#0B0F19'}"/>`,
+  wave:(x,y,c)=>`<path d="M${x} ${y+6}q4-6 8 0t8 0t8 0M${x} ${y+13}q4-6 8 0t8 0t8 0" fill="none" stroke="${c}" stroke-width="2.4"/>`};
+const RED='#ff6b5e', GRY='#cbd5e1';
+function infoSVG(x,k){ const L=x.id==='lamontville', o=[]; const T=(tx,ty,t,c,sz,w,a)=>`<text x="${tx}" y="${ty}" fill="${c||'#e2e8f0'}" font-size="${sz||11}" font-weight="${w||400}" text-anchor="${a||'start'}" font-family="Inter,Arial">${t}</text>`;
+  o.push('<line x1="158" x2="158" y1="6" y2="126" stroke="rgba(255,255,255,.12)"/>'+T(158,74,'VS','#64748B',11,600,'middle'));
+  if(!L){ o.push(T(4,24,'At this site',RED,11,700)); const w=(condOf(x,k).t||'').match(/.{1,26}(\s|$)/g)||['Not reported']; w.slice(0,5).forEach((l,i)=>o.push(T(4,44+i*15,esc(l.trim()),'#f8fafc',12,600)));
+    o.push(T(172,24,'Government standard','#94A3B8',11,700)); (STD[k].match(/.{1,24}(\s|$)/g)||[]).slice(0,5).forEach((l,i)=>o.push(T(172,44+i*15,esc(l.trim()),'#f8fafc',12,600)));
+    o.push(T(4,124,'Numbers are not reported for this site.','#64748B',9.5)); return o.join(''); }
+  if(k==='water'){ o.push(PIC.tap(6,14,RED,58)); for(let i=0;i<20;i++) o.push(PIC.house(36+(i%5)*20,26+Math.floor(i/5)*17,RED));
+    o.push(T(6,104,'1 tap','#f8fafc',13,700)+T(6,119,'for ~100 households','#cbd5e1',11)+T(36,20,'each ⌂ = 5 households','#94A3B8',9));
+    o.push(PIC.tap(172,14,GRY,58)); for(let i=0;i<5;i++) o.push(PIC.house(202+(i%3)*20,26+Math.floor(i/3)*17,GRY));
+    o.push(T(172,104,'1 tap','#f8fafc',13,700)+T(172,119,'per 25 families','#cbd5e1',11)); }
+  if(k==='san'){ for(let i=0;i<20;i++) o.push(PIC.loo(6+(i%7)*20,16+Math.floor(i/7)*22,RED,i>=16));
+    o.push(T(6,104,'16 toilets','#f8fafc',13,700)+T(6,119,'dashed: the 4 missing','#cbd5e1',11));
+    o.push(PIC.loo(176,16,GRY)+[0,1,2,3,4].map(i=>PIC.house(196+i*18,17,GRY)).join(''));
+    o.push(T(172,104,'1 toilet','#f8fafc',13,700)+T(172,119,'per 5 families → 20','#cbd5e1',11)); }
+  if(k==='power'){ o.push(`<path d="M44 14L24 52h14l-4 30 22-40H42z" fill="none" stroke="${RED}" stroke-width="2.4"/><line x1="18" y1="86" x2="64" y2="12" stroke="${RED}" stroke-width="3"/>`);
+    o.push(T(6,104,'No electricity','#f8fafc',13,700)+T(6,119,'when residents arrived','#cbd5e1',11));
+    o.push(`<path d="M200 90V22h18" fill="none" stroke="${GRY}" stroke-width="3"/><rect x="214" y="18" width="16" height="7" fill="${GRY}"/><path d="M216 28l6 14M228 28l-2 14" stroke="#FBC900" stroke-width="1.5" opacity=".7"/>`);
+    o.push(T(172,104,'Street lighting only','#f8fafc',13,700)+T(172,119,'no household standard','#cbd5e1',11)); }
+  if(k==='crowd'){ o.push(`<rect x="6" y="14" width="86" height="72" fill="none" stroke="${RED}" stroke-width="1.6" stroke-dasharray="4 3"/>`); for(let i=0;i<9;i++) o.push(PIC.person(14+(i%5)*15,24+Math.floor(i/5)*26,RED));
+    o.push(T(98,54,'size not','#94A3B8',9.5)+T(98,66,'reported','#94A3B8',9.5));
+    o.push(T(6,104,'9 people','#f8fafc',13,700)+T(6,119,'in one tin room','#cbd5e1',11));
+    o.push(`<rect x="176" y="14" width="72" height="72" fill="rgba(203,213,225,.08)" stroke="${GRY}" stroke-width="1.6"/>`+T(212,55,'24 m²','#f8fafc',14,700,'middle')+T(212,68,'≈ 4.9 × 4.9 m','#94A3B8',9,400,'middle'));
+    o.push(T(172,104,'At least 24 m²','#f8fafc',13,700)+T(172,119,'per household shelter','#cbd5e1',11)); }
+  if(k==='safe'){ o.push(PIC.wave(6,22,RED)+T(36,33,'April 2022','#f8fafc',11,600)+PIC.wave(6,50,RED)+T(36,61,'February 2025','#f8fafc',11,600));
+    o.push(T(6,104,'2 m','#f8fafc',13,700)+T(32,104,'from the flood line','#cbd5e1',11)+T(6,119,'homes under 10 m from the river','#cbd5e1',11));
+    o.push(T(172,30,'Emergency housing is for','#cbd5e1',11)+T(172,45,'people who live on land','#cbd5e1',11)+T(172,60,'"prone to dangerous','#f8fafc',12,700)+T(172,75,'flooding"','#f8fafc',12,700));
+    o.push(T(172,104,'Move people off','#f8fafc',13,700)+T(172,119,'flood-prone land','#cbd5e1',11)); }
+  return o.join(''); }
+function stripHTML(){ const x=byId[condSite], lab=(CK.find(c=>c[0]===condK)||[])[1];
+  let h='<div class="cinfo"><h3>'+esc(lab)+' at '+esc(x.name.replace(/ camp$/i,'').replace(/^Larger /,''))+'<br>vs government standard</h3><div class="lg"><span><i style="background:#ff6b5e"></i>Actual at site</span><span><i style="background:#cbd5e1"></i>Government standard</span></div>'+
+    '<svg viewBox="0 0 330 128" role="img" aria-label="'+esc(lab)+': '+esc(condOf(x,condK).t)+' compared with the standard: '+esc(STD[condK])+'">'+infoSVG(x,condK)+'</svg>'+(x.id==='lamontville'&&GAPS[condK]?'<p class="gap2">'+GAPS[condK]+'</p>':'')+'<p class="src">Standard: <a class="srcs" style="color:var(--dim)" target="_blank" rel="noopener" href="'+HC+'">'+STDP[condK]+' ↗</a></p></div>';
+  h+=CK.map(([k,l])=>{ const c=condOf(x,k); return '<button class="ccard" data-k="'+k+'" aria-pressed="'+(k===condK)+'"><div class="ch"><i class="d '+c.c+'"></i>'+l+'<span>→</span></div><img src="'+c.img+'" alt=""><div class="cb"><b class="st-'+c.c+'">'+esc(c.pill)+'</b>'+esc(c.t)+'</div></button>'; }).join('');
+  return h; }
+function condPanelHTML(){ const x=byId[condSite], d=DIST[x.id], c=condOf(x,condK), lab=(CK.find(q=>q[0]===condK)||[])[1];
+  let h='<div class="top"><button class="back" id="cback">← Back to the map</button><div class="nav2"><button id="cprev" aria-label="Previous site">‹</button><button id="cnext" aria-label="Next site">›</button></div></div>';
+  h+='<h2>'+esc(x.name)+'</h2><p class="sub">'+esc(x.type)+' · '+esc(x.addr)+'</p>';
+  h+='<div class="photo"><img src="'+(x.id==='lamontville'?'assets/photos/gu_lamontville_camp_2022.jpg':'assets/sites/'+x.id+'.jpg')+'" alt="'+esc(x.name)+'"><span>'+(x.id==='lamontville'?'Photo: Nokulunga Majola / GroundUp':'Satellite view · Esri')+'</span></div>';
+  h+='<div class="stats3"><div><b>'+esc((x.hh.match(/[\d,]+\+?/)||['—'])[0])+'</b><span>'+(/famil/i.test(x.hh)?'families':/people|residents/i.test(x.hh)?'people':/household/i.test(x.hh)?'households':'not reported')+'</span></div><div><b>'+x.yin+'</b><span>moved here</span></div><div><b>'+(d<=60?'Yes':near(d))+'</b><span>'+(d<=60?'at the flood line':distTxt(d))+'</span></div></div>';
+  h+='<div class="cgrid"><div class="clist">'+CK.map(([k,l])=>{ const q=condOf(x,k); return '<button data-k="'+k+'" aria-pressed="'+(k===condK)+'">'+CIC[k]+'<span>'+l+'</span><span class="pill st-'+q.c+'">'+esc(q.pill)+'</span></button>'; }).join('')+'</div>';
+  h+='<div class="cdet"><div class="k">'+esc(lab)+'</div><img src="'+c.img+'" alt=""><div class="cr">'+esc(c.cr)+'</div><div class="t">'+esc(c.t)+'</div><div class="cdd">'+esc(c.d)+'</div>'+(c.src?'<a target="_blank" rel="noopener" href="'+esc(c.src)+'">View evidence →</a>':'')+'</div></div>';
+  h+='<button class="ghostb" id="toRep" style="margin-top:12px;width:100%">Live here? Report your conditions</button>';
+  return h; }
+function compareHTML(){ return '<div class="top"><button class="back" id="cmpback">← Back to '+esc(byId[condSite].name)+'</button></div><div class="kick">Compare sites</div><h2 style="margin-top:6px">Daily life at every site</h2><p class="sub">From news reports and official statements. Grey means nobody has reported it.</p><table class="cmp"><thead><tr><th>Site</th><th>Water</th><th>Toilets</th><th>Safety</th><th>Crowding</th></tr></thead><tbody>'+SITES.map(x=>'<tr><td><button class="back" data-id="'+x.id+'">'+esc(x.name)+'</button></td>'+['water','san','safe','crowd'].map(k=>'<td><i class="d '+x[k][0]+'"></i></td>').join('')+'</tr>').join('')+'</tbody></table><p class="sub" style="margin-top:12px">21 of 48 ratings are not reported, and electricity isn\'t recorded at most sites.</p>'; }
+function condFly(){ const x=byId[condSite], z=14.8, k=256*Math.pow(2,z); flyTo(x.X+(W>820?170:0)/k, x.Y+(W>820?110:0)/k, z); }
+function setCond(id,k){ if(id) condSite=id; if(k) condK=k; condCmp=false; panel(); }
+function renderCond(){ const box=$('panel'), foot=$('panelfoot'); foot.innerHTML='';
+  $('cstrip').innerHTML=stripHTML(); $('cstrip').querySelectorAll('.ccard').forEach(b=>b.onclick=()=>setCond(null,b.dataset.k));
+  if(condCmp){ box.innerHTML=compareHTML(); $('cmpback').onclick=()=>{condCmp=false;panel();}; box.querySelectorAll('button[data-id]').forEach(b=>b.onclick=()=>{setCond(b.dataset.id);condFly();}); return; }
+  box.innerHTML=condPanelHTML(); box.scrollTop=0;
+  box.querySelectorAll('.clist button').forEach(b=>b.onclick=()=>setCond(null,b.dataset.k));
+  const i=SITES.findIndex(q=>q.id===condSite);
+  $('cprev').onclick=()=>{setCond(SITES[(i-1+SITES.length)%SITES.length].id);condFly();}; $('cnext').onclick=()=>{setCond(SITES[(i+1)%SITES.length].id);condFly();};
+  $('cback').onclick=()=>{view2='map';setNav();panel();flyTo(HOME.x,HOME.y,homeZoom());};
+  $('toRep').onclick=()=>{view2='report';setNav();panel();}; }
 function panel(){ const box=$('panel'), foot=$('panelfoot'), s=selected&&byId[selected];
-  if(view2==='conditions'){ box.innerHTML='<div class="kick">Conditions</div><h2 style="margin-top:6px">Daily life at every site</h2><p class="sub">From news reports and official statements. Grey means nobody has reported it.</p><table class="cmp"><thead><tr><th>Site</th><th>Water</th><th>Toilets</th><th>Safety</th><th>Crowding</th></tr></thead><tbody>'+SITES.map(x=>'<tr><td><button class="back" data-id="'+x.id+'">'+esc(x.name)+'</button></td>'+['water','san','safe','crowd'].map(k=>'<td><i class="d '+x[k][0]+'"></i></td>').join('')+'</tr>').join('')+'</tbody></table><p class="sub" style="margin-top:12px">21 of 48 ratings are not reported, and electricity isn\'t recorded at most sites.</p><button class="cta" id="toRep" style="margin-top:4px">Live at one of these sites? Report your conditions</button>';
-    foot.innerHTML=''; $('toRep').onclick=()=>{view2='report';setNav();panel();}; box.querySelectorAll('button[data-id]').forEach(b=>b.onclick=()=>{view2='map';setNav();select(b.dataset.id,true);}); return; }
+  if(view2==='conditions'){ renderCond(); return; }
   if(view2==='about'){ box.innerHTML=aboutHTML(); foot.innerHTML=''; $('back').onclick=()=>{view2='map';setNav();panel();}; return; }
   if(view2==='report'){ box.innerHTML=reportHTML(); foot.innerHTML=''; $('rep').onsubmit=sendReport; return; }
   if(!s){ box.innerHTML=storyHTML(); foot.innerHTML='';
@@ -575,7 +705,7 @@ function panel(){ const box=$('panel'), foot=$('panelfoot'), s=selected&&byId[se
 function showOther(o){ selected=null; view2='map'; setNav(); const box=$('panel');
   box.innerHTML='<div class="top"><button class="back" id="back">← Back to all sites</button></div><div class="kick">From our compiled TRA list</div><h2 style="margin-top:6px">'+esc(o.name)+'</h2><p class="sub">'+esc(o.status)+(o.est?' · since '+o.est:'')+'</p><div class="pane"><p><b>Size:</b> '+esc(o.size||'Not reported')+'</p><p><b>Flood line:</b> '+({inside:'inside the 1-in-100-year line',within_250m:'within 250 m of the line',within_1km:'within 1 km of the line',beyond_1km:'more than 1 km from the line'}[o.fp]||'not tested')+'.</p><p class="gap">Location is approximate ('+esc(o.conf)+', about 1–3 km), so the distance is indicative. Not yet researched in the same depth as the 12 detailed sites.</p></div>';
   $('panelfoot').innerHTML=''; $('back').onclick=()=>select(null); flyTo(o.X,o.Y,Math.max(view.z,13.5)); }
-function select(id,fly){ selected=id; journeyOn=false; cutOn=false; tab='overview'; $('cut').style.display='none'; if(view2!=='map'){view2='map';setNav();}
+function select(id,fly){ if(view2==='conditions'&&id){ setCond(id); condFly(); return; } selected=id; journeyOn=false; cutOn=false; tab='overview'; $('cut').style.display='none'; if(view2!=='map'){view2='map';setNav();}
   panel(); $('panel').scrollTop=0;
   if(id&&fly){ const s=byId[id]; if(!isOpen(s,year)) setYear(s.yclosed||s.yin,true); flyTo(s.X-(W>820?160:0)/S()*Math.pow(2,view.z-15.4),s.Y,Math.max(view.z,15.4)); }
   draw(); }
@@ -587,10 +717,10 @@ function toggleCut(){ cutOn=!cutOn; if(cutOn) journeyOn=false; $('cut').style.di
   if(cutOn){ const cxm=(mx(CUT.A[1])+mx(CUT.B[1]))/2, cym=(my(CUT.A[0])+my(CUT.B[0]))/2; flyTo(cxm,cym+(W>820?156:0)/(256*Math.pow(2,17)),17); } draw(); }
 
 /* ---------- nav and search ---------- */
-function setNav(){ document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===view2?'page':'false')); }
+function setNav(){ document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===view2?'page':'false')); document.body.classList.toggle('cond',view2==='conditions'); }
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{ const v=b.dataset.v;
   if(v==='stories'){ location.href='stories/intro-31.html'; return; }
-  view2=v; selected=null; setNav(); panel(); if(v==='map') flyTo(HOME.x,HOME.y,homeZoom()); });
+  view2=v; selected=null; setNav(); panel(); if(v==='map') flyTo(HOME.x,HOME.y,homeZoom()); if(v==='conditions') condFly(); });
 const q=$('q'), res=$('res');
 q.addEventListener('input',()=>{ const v=q.value.trim().toLowerCase(); if(!v){res.hidden=true;return;} const items=[];
   SITES.filter(s=>(s.name+' '+s.addr+' '+s.type).toLowerCase().includes(v)).forEach(s=>items.push([s.name,'site',()=>select(s.id,true)]));
@@ -598,12 +728,13 @@ q.addEventListener('input',()=>{ const v=q.value.trim().toLowerCase(); if(!v){re
   PLACES.filter(p=>p[0].toLowerCase().includes(v)).forEach(p=>items.push([p[0],'place',()=>flyTo(p.X,p.Y,13.2)]));
   if(/flood/.test(v)) items.push(['Sites that flooded: Lamontville riverside camp, 2022 and 2025','answer',()=>select('lamontville',true)]);
   if(/famil|journey|moved/.test(v)) items.push(['From uMlazi to Umbilo: four moves in six years','journey',()=>{select('lamontville',true);setTimeout(()=>{tab='movement';toggleJourney();},950);}]);
-  if(/water|toilet|sanit|condition/.test(v)) items.push(['Conditions at every site','view',()=>{view2='conditions';setNav();panel();}]);
+  if(/water|toilet|sanit|condition/.test(v)) items.push(['Conditions at every site','view',()=>{view2='conditions';setNav();panel();condFly();}]);
   if(/about|project|data|method/.test(v)) items.push(['About this project','page',()=>{view2='about';setNav();panel();}]);
   if(/report|tell|complain/.test(v)) items.push(['Report conditions at your site','form',()=>{view2='report';setNav();panel();}]);
   res.innerHTML=items.length?items.slice(0,7).map((it,i)=>'<button data-i="'+i+'">'+esc(it[0])+'<small>'+it[1]+'</small></button>').join(''):'<button disabled>No match yet<small>try a site name</small></button>';
   res.hidden=false; res.querySelectorAll('button[data-i]').forEach(b=>b.onclick=()=>{res.hidden=true;q.value='';items[+b.dataset.i][2]();}); });
 q.addEventListener('keydown',e=>{ if(e.key==='Enter'){const b=res.querySelector('button[data-i]'); if(b) b.click();} if(e.key==='Escape') res.hidden=true; });
+$('cmpb').onclick=()=>{ condCmp=true; panel(); };
 $('explore').onclick=()=>{ select('lamontville',true); };
 
 /* ---------- time ---------- */
