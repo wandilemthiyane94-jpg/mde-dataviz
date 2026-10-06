@@ -9,8 +9,9 @@
 html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font:13px/1.4 var(--mono);overflow:hidden}
 #view{position:fixed;inset:0;cursor:grab}
 #view:active{cursor:grabbing}
-.bar{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;max-width:1100px;margin:0 auto}
+.bar{position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:auto auto 1fr auto;gap:14px;align-items:center;max-width:1100px;margin:0 auto}
 button{font:600 14px var(--disp);letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--amber);border:0;border-radius:3px;padding:8px 14px;cursor:pointer}
+button.ghost{color:var(--fg);background:none;border:1px solid var(--line)}
 button:focus-visible,input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 .track{position:relative;min-width:0}
 .nightband{position:absolute;top:2px;height:16px;background:rgba(80,100,170,.32);border-radius:2px;pointer-events:none}
@@ -19,6 +20,7 @@ input[type=range]{position:relative;width:100%;margin:0;height:20px;accent-color
 .clock.night{color:var(--night)}
 .hint{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:0;right:0;text-align:center;color:#5F6C80;font-size:11px;pointer-events:none}
 #loading{position:fixed;inset:0;display:grid;place-items:center;color:var(--mut)}
+@media (max-width:640px){.bar{grid-template-columns:auto 1fr auto}.bar .ghost{display:none}.clock{font-size:18px;min-width:96px}}
 </style>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <script src="gwala-orbit-data.js"></script>
@@ -28,6 +30,7 @@ input[type=range]{position:relative;width:100%;margin:0;height:20px;accent-color
 <div class="hint">Drag to turn · scroll to zoom · right-drag to move</div>
 <div class="bar">
   <button type="button" id="play">Play</button>
+  <button type="button" class="ghost" id="arc" aria-pressed="true">ArcGIS layer on</button>
   <div class="track"><div class="nightband" id="band" aria-hidden="true"></div><input type="range" id="t" min="0" max="60" step="1" value="0" aria-label="Time in the storm"></div>
   <div class="clock" id="clock">11 APR 09:00</div>
 </div>
@@ -45,7 +48,7 @@ renderer.setPixelRatio(Math.min(2,devicePixelRatio)); renderer.setSize(innerWidt
 const scene=new THREE.Scene(); scene.background=new THREE.Color("#0B0F19");
 const cam=new THREE.PerspectiveCamera(32,innerWidth/innerHeight,10,40000);
 const controls=new OrbitControls(cam,renderer.domElement); controls.enableDamping=true; controls.dampingFactor=.08;
-controls.minDistance=900; controls.maxDistance=9000; controls.maxPolarAngle=Math.PI*.49;
+controls.minDistance=900; controls.maxDistance=12000; controls.maxPolarAngle=Math.PI*.49;
 const hemi=new THREE.HemisphereLight(0xf2ecd8,0x141a26,0.55); scene.add(hemi);
 const sun=new THREE.DirectionalLight(0xfff6e6,1.25); sun.position.set(-1600,2600,-900); scene.add(sun);
 
@@ -81,12 +84,12 @@ const wmat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,uniforms:
 const water=new THREE.Mesh(wg,wmat); water.renderOrder=2; scene.add(water);
 
 // wireframe of the topography, floating above
-{const pos=[];const yv=(a,b)=>Y(Z[a*w+b])+Y(zmax)*0.9+GAP;
+{const pos=[];const yv=(a,b)=>Y(Z[a*w+b])+Y(zmax)*0.9+GAP*2.3;
  for(let i=0;i<h;i++)for(let j=0;j<w-1;j++)pos.push(X(j),yv(i,j),Zp(i),X(j+1),yv(i,j+1),Zp(i));
  for(let j=0;j<w;j++)for(let i=0;i<h-1;i++)pos.push(X(j),yv(i,j),Zp(i),X(j),yv(i+1,j),Zp(i+1));
  const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
  scene.add(new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:0xe8ecf2,transparent:true,opacity:.32})));}
-const TOP=Y(zmax)*1.9+GAP*2.6;
+const TOP=Y(zmax)*1.9+GAP*3.7;
 // dot grid on top + corner posts
 {const pos=[];for(let i=0;i<h;i+=2)for(let j=0;j<w;j+=2)pos.push(X(j),TOP,Zp(i));
  const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
@@ -99,13 +102,38 @@ const NDROP=900, dpos=new Float32Array(NDROP*6), drops=[];
 for(let k=0;k<NDROP;k++){const i=Math.random()*(h-1),j=Math.random()*(w-1);drops.push({x:X(j),zz:Zp(i),floor:Y(Z[Math.round(i)*w+Math.round(j)]),y:Math.random()*TOP,v:900+Math.random()*500});}
 const dg=new THREE.BufferGeometry(); dg.setAttribute("position",new THREE.BufferAttribute(dpos,3));
 const dropMat=new THREE.LineBasicMaterial({color:0x8fcdf0,transparent:true,opacity:.7}); const dropLines=new THREE.LineSegments(dg,dropMat); scene.add(dropLines);
+// ArcGIS Pro run: a floating image plate that changes with the slider
+const ARC=[], loader=new THREE.TextureLoader();
+for(let k=0;k<61;k++){const t=loader.load(`gwala-arc/a${String(k).padStart(2,"0")}.jpg`); t.colorSpace=THREE.SRGBColorSpace; ARC.push(t);}
+const plateY=Y(zmax)*1.02+GAP*0.95;
+const plate=new THREE.Mesh(new THREE.PlaneGeometry((w-1)*CELL,(h-1)*CELL),new THREE.MeshBasicMaterial({map:ARC[0],transparent:true,opacity:.93,side:THREE.DoubleSide}));
+plate.rotation.x=-Math.PI/2; plate.position.y=plateY; scene.add(plate);
+{const e=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry((w-1)*CELL,(h-1)*CELL)),new THREE.LineBasicMaterial({color:0xe8ecf2,transparent:true,opacity:.5}));e.rotation.x=-Math.PI/2;e.position.y=plateY+1;e.userData.arcEdge=true;scene.add(e);}
 // camp pins
 for(const c of D.camps){const [cj,ci]=c.c,x=X(cj),zz=Zp(ci),y0=Y(Z[Math.round(ci)*w+Math.round(cj)]);
-  const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(x,y0,zz),new THREE.Vector3(x,y0+GAP*.9,zz)]);
+  const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(x,y0,zz),new THREE.Vector3(x,plateY,zz)]);
   scene.add(new THREE.Line(g,new THREE.LineBasicMaterial({color:c.col})));
   const s=new THREE.Mesh(new THREE.SphereGeometry(9,12,12),new THREE.MeshBasicMaterial({color:c.col}));s.position.set(x,y0,zz);scene.add(s);}
 
+// how the water flows: particles that follow the slope of the water surface
+const NP=1400, fpos3=new Float32Array(NP*6), parts=[]; let SURF=new Float32Array(N), DEPN=new Float32Array(N);
+const fg=new THREE.BufferGeometry(); fg.setAttribute("position",new THREE.BufferAttribute(fpos3,3));
+const flowMat=new THREE.LineBasicMaterial({color:0xe6f6ff,transparent:true,opacity:.85}); const flowLines=new THREE.LineSegments(fg,flowMat); flowLines.renderOrder=3; scene.add(flowLines);
+const wetCells=[];
+function respawn(p){ if(!wetCells.length){p.alive=false;return;} const c=wetCells[(Math.random()*wetCells.length)|0]; p.i=Math.floor(c/w)+Math.random(); p.j=c%w+Math.random(); p.life=1+Math.random()*2.5; p.alive=true; p.pi=p.i; p.pj=p.j; }
+for(let k=0;k<NP;k++){parts.push({alive:false});}
+const at=(A,i,j)=>A[Math.max(0,Math.min(h-1,Math.round(i)))*w+Math.max(0,Math.min(w-1,Math.round(j)))];
+function stepFlow(dt){
+  for(let k=0;k<NP;k++){const p=parts[k]; let o=k*6;
+    if(!p.alive||p.life<=0||at(DEPN,p.i,p.j)<.08){respawn(p);} if(!p.alive){fpos3[o+1]=fpos3[o+4]=-1e5;continue;}
+    const gi=(at(SURF,p.i+1,p.j)-at(SURF,p.i-1,p.j))/2, gj=(at(SURF,p.i,p.j+1)-at(SURF,p.i,p.j-1))/2, m=Math.hypot(gi,gj)+1e-6;
+    const sp=Math.min(3.2,0.6+m*1.6)*dt*2.4; p.pi=p.i; p.pj=p.j; p.i-=gi/m*sp; p.j-=gj/m*sp; p.life-=dt;
+    if(p.i<0||p.j<0||p.i>h-1||p.j>w-1){p.life=0;fpos3[o+1]=fpos3[o+4]=-1e5;continue;}
+    const y=Y(at(SURF,p.i,p.j))+4, ti=p.i+(p.i-p.pi)*6, tj=p.j+(p.j-p.pj)*6;
+    fpos3[o]=X(p.j);fpos3[o+1]=y;fpos3[o+2]=Zp(p.i);fpos3[o+3]=X(tj);fpos3[o+4]=y;fpos3[o+5]=Zp(ti);}
+  fg.attributes.position.needsUpdate=true; fg.computeBoundingSphere();}
 // time
+document.getElementById("arc").onclick=e=>{const on=e.target.getAttribute("aria-pressed")!=="true";e.target.setAttribute("aria-pressed",on);e.target.textContent=on?"ArcGIS layer on":"ArcGIS layer off";plate.visible=on;scene.children.forEach(o=>{if(o.userData.arcEdge)o.visible=on;});};
 const tEl=document.getElementById("t"), clock=document.getElementById("clock"), play=document.getElementById("play");
 const H0=9; const info=k=>{const hh=H0+k*.5,day=11+Math.floor(hh/24),hr=Math.floor(hh%24),mm=(hh%1)?"30":"00";return {lab:`${day} APR ${String(hr).padStart(2,"0")}:${mm}`,night:(hh%24)>=17.5||(hh%24)<6.25};};
 const band=document.getElementById("band"),pc=k=>k/60*100,kh=hh=>(hh-H0)/.5; band.style.left=pc(kh(17.5))+"%"; band.style.width=(pc(kh(30.25))-pc(kh(17.5)))+"%";
@@ -115,14 +143,15 @@ function setWater(f){const f0=Math.floor(f),f1=Math.min(D.frames-1,f0+1),a=f-f0,
   for(let i=0;i<h-1;i++)for(let j=0;j<w-1;j++){const d=dep(i,j), wet=d>.08, base=Y(Z[i*w+j]);
     const v=[[i,j],[i,j+1],[i+1,j+1],[i+1,j]].map(([r,c])=>[X(c),(wet?Math.max(Y(Z[r*w+c]),base)+d*EX:Y(Z[r*w+c])-5)+1.5,Zp(r)]);
     for(const tri of [[0,3,1],[1,3,2]])for(const k of tri){wpos[p++]=v[k][0];wpos[p++]=v[k][1];wpos[p++]=v[k][2];walpha[q++]=wet?Math.min(1,.25+d/3):0;}}
-  wg.attributes.position.needsUpdate=true; wg.attributes.alpha.needsUpdate=true; wg.computeBoundingSphere();}
-function show(k){k=Math.max(0,Math.min(60,k)); fpos=k; tEl.value=Math.round(k); const n=info(Math.round(k)); clock.textContent=n.lab; clock.classList.toggle("night",n.night); setWater(k);}
+  wg.attributes.position.needsUpdate=true; wg.attributes.alpha.needsUpdate=true; wg.computeBoundingSphere();
+  wetCells.length=0; for(let i=0;i<h;i++)for(let j=0;j<w;j++){const d=dep(Math.min(h-2,i),Math.min(w-2,j)); DEPN[i*w+j]=d; SURF[i*w+j]=Z[i*w+j]+(d>.08?d:0); if(d>.15)wetCells.push(i*w+j);}}
+function show(k){k=Math.max(0,Math.min(60,k)); fpos=k; tEl.value=Math.round(k); const n=info(Math.round(k)); clock.textContent=n.lab; clock.classList.toggle("night",n.night); setWater(k); plate.material.map=ARC[Math.round(k)]; plate.material.needsUpdate=true;}
 tEl.addEventListener("input",()=>{playing=false;play.textContent="Play";show(+tEl.value);});
 play.onclick=()=>{playing=!playing;play.textContent=playing?"Pause":"Play";if(playing&&fpos>=60)fpos=0;};
 addEventListener("keydown",e=>{if(e.target.tagName==="INPUT")return;if(e.key===" "){e.preventDefault();play.click();}});
 addEventListener("resize",()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
 
-cam.position.set(4200,3600,4500); controls.target.set(0,Y(zmax)*.9,0); controls.update();
+cam.position.set(4600,4100,4900); controls.target.set(0,Y(zmax)*.9,0); controls.update();
 show(0); document.getElementById("loading").remove();
 let last=performance.now();
 renderer.setAnimationLoop(now=>{const dt=Math.min(.05,(now-last)/1000);last=now;
@@ -135,5 +164,6 @@ renderer.setAnimationLoop(now=>{const dt=Math.min(.05,(now-last)/1000);last=now;
     d.y-=d.v*dt; if(d.y<d.floor){d.y=TOP;}
     dpos[o]=d.x;dpos[o+1]=d.y;dpos[o+2]=d.zz;dpos[o+3]=d.x;dpos[o+4]=d.y+38;dpos[o+5]=d.zz;}
   dg.attributes.position.needsUpdate=true;
+  stepFlow(dt);
   controls.update(); renderer.render(scene,cam);});
 </script>
