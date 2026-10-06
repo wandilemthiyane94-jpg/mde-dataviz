@@ -1,0 +1,49 @@
+<title>Gwala Street Storm Hours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Single dark look to match the frames: one stage, one hour slider beneath. */
+:root{--bg:#0B0F19;--panel:#111827;--fg:#F8FAFC;--mut:#A0ACBE;--amber:#F5A524;--line:rgba(248,250,252,.14);
+  --disp:"Barlow Condensed","Arial Narrow",Arial,sans-serif;--mono:"IBM Plex Mono",Consolas,monospace;color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font:14px/1.4 var(--mono);margin:0;padding-inline:16px;padding-block:16px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:12px}
+.stage{width:min(100%,calc((100vh - 130px)*16/9));aspect-ratio:16/9;max-width:100%;position:relative;background:#000;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bar{width:min(100%,calc((100vh - 130px)*16/9));display:grid;grid-template-columns:auto auto 1fr auto;gap:14px;align-items:center}
+button{font:600 15px var(--disp);letter-spacing:.1em;text-transform:uppercase;color:var(--bg);background:var(--amber);border:0;border-radius:3px;padding:9px 14px;cursor:pointer}
+button.ghost{color:var(--fg);background:none;border:1px solid var(--line)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.hr{font:700 30px/1 var(--disp);letter-spacing:.02em;min-width:110px;text-align:right;font-variant-numeric:tabular-nums}
+.track{display:grid;gap:4px;min-width:0}
+input[type=range]{width:100%;accent-color:var(--amber)}
+.ticks{display:flex;justify-content:space-between;color:var(--mut);font-size:11px}
+.note{width:min(100%,calc((100vh - 130px)*16/9));color:var(--mut);font-size:11px;margin:0}
+@media (max-width:640px){.bar{grid-template-columns:auto 1fr auto}.bar .ghost{display:none}.hr{font-size:22px;min-width:80px}}
+</style>
+
+<div class="stage"><img id="frame" src="gwala-hours/h01.jpg" alt="Gwala Street, Lamontville, at hour 1 of the April 2022 storm"></div>
+<div class="bar">
+  <button type="button" id="play">Play</button>
+  <button type="button" class="ghost" id="step">Next hour</button>
+  <div class="track">
+    <input type="range" id="hour" min="1" max="25" step="1" value="1" aria-label="Storm hour">
+    <div class="ticks"><span>1 h</span><span>5 h</span><span>10 h</span><span>15 h</span><span>20 h</span><span>25 h</span></div>
+  </div>
+  <div class="hr" id="label">HOUR 1</div>
+</div>
+<p class="note">Hour 1 is 11 April 2022, 07:00; hour 25 is 12 April, 07:00. Our simplified rain-and-river model on eThekwini LiDAR; depths indicative. Drag the slider or use the arrow keys.</p>
+
+<script>
+const img=document.getElementById("frame"), hour=document.getElementById("hour"), label=document.getElementById("label"), play=document.getElementById("play");
+const src=h=>`gwala-hours/h${String(h).padStart(2,"0")}.jpg`;
+for(let h=1;h<=25;h++){const p=new Image();p.src=src(h);}           // preload every hour
+function show(h){h=Math.max(1,Math.min(25,h));hour.value=h;img.src=src(h);img.alt=`Gwala Street, Lamontville, at hour ${h} of the April 2022 storm`;label.textContent="HOUR "+h;}
+hour.addEventListener("input",()=>show(+hour.value));
+document.getElementById("step").onclick=()=>show(+hour.value>=25?1:+hour.value+1);
+let t=null;
+play.onclick=()=>{if(t){clearInterval(t);t=null;play.textContent="Play";return;}
+  if(+hour.value>=25)show(1); play.textContent="Pause";
+  t=setInterval(()=>{if(+hour.value>=25){clearInterval(t);t=null;play.textContent="Play";return;}show(+hour.value+1);},700);};
+addEventListener("keydown",e=>{if(e.target.tagName==="INPUT")return;if(e.key==="ArrowRight")show(+hour.value+1);if(e.key==="ArrowLeft")show(+hour.value-1);if(e.key===" "){e.preventDefault();play.click();}});
+</script>
