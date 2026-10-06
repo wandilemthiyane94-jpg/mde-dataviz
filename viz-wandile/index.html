@@ -334,7 +334,9 @@ const scr=(X,Y)=>{const s=S(); return [(X-view.x)*s+W/2,(Y-view.y)*s+H/2]};
 const homeZoom=()=>Math.max(ZMIN,10.55+Math.log2(Math.max(W,400)/1536));
 // distance of each site's pin to the 1-in-100-year flood line (metres), from our point-in-polygon test
 const DIST={lamontville:2,kwadimba:37,gwala:56,lindelani:59,crystal:60,frazer:160,umbilo:347,congo:581,montclair:909,astra:3345,bayside:4024,point:5190};
-const LINK={lamontville:'https://claude.ai/artifact/EjTmb8t2QXAc2WZKjD2ufo', gwala:'https://claude.ai/artifact/EjTmb8t2QXAc2WZKjD2ufo'};
+/* The story film and the 3D model are published inside this site (stories/), so they open in the same window:
+   claude.ai pages refuse to open other claude.ai pages from inside an artifact. */
+const LINK={lamontville:'stories/gwala-orbit.html', gwala:'stories/gwala-orbit.html'};
 const PLACES=[["Ntuzuma",30.94,-29.735],["KwaMashu",30.99,-29.745],["Umlazi",30.88,-29.97],["Durban",31.02,-29.86],["Pinetown",30.86,-29.815],["Lamontville",30.935,-29.94],["oThongathi",31.12,-29.57],["Inanda",30.94,-29.69]];
 
 /* ---------- vector paths ---------- */
@@ -493,6 +495,7 @@ function openVideo(){ if(location.protocol==='file:'){ window.open(YTW,'_blank')
   document.body.appendChild(v); const close=()=>v.remove(); v.querySelector('.x').onclick=close; v.onclick=e=>{ if(e.target===v) close(); };
   document.addEventListener('keydown',function k(e){ if(e.key==='Escape'){ close(); document.removeEventListener('keydown',k); } });
   const inp=v.querySelector('input'); $('ytcopy').onclick=()=>{ inp.select(); try{ navigator.clipboard.writeText(YTW).then(()=>$('ytcopy').textContent='Copied',()=>document.execCommand('copy')); }catch(e){ document.execCommand('copy'); } }; }
+document.addEventListener('click',e=>{ const l=e.target.closest&&e.target.closest('a[href^="stories/"]'); if(l){ e.preventDefault(); location.href=l.getAttribute('href'); return; } });
 document.addEventListener('click',e=>{ const a=e.target.closest&&e.target.closest('a.yt'); if(a&&location.protocol!=='file:'){ e.preventDefault(); openVideo(); } });
 function playVid(muted){ const m=$('hmedia'); if(!m||m.querySelector('iframe')) return;
   if(vidBlocked){ openVideo(); return; }
@@ -586,7 +589,7 @@ function toggleCut(){ cutOn=!cutOn; if(cutOn) journeyOn=false; $('cut').style.di
 /* ---------- nav and search ---------- */
 function setNav(){ document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===view2?'page':'false')); }
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{ const v=b.dataset.v;
-  if(v==='stories'){ window.open('https://claude.ai/artifact/KWHzzeDkHyji1ay7hn1BDX','_blank'); return; }
+  if(v==='stories'){ location.href='stories/intro-31.html'; return; }
   view2=v; selected=null; setNav(); panel(); if(v==='map') flyTo(HOME.x,HOME.y,homeZoom()); });
 const q=$('q'), res=$('res');
 q.addEventListener('input',()=>{ const v=q.value.trim().toLowerCase(); if(!v){res.hidden=true;return;} const items=[];
