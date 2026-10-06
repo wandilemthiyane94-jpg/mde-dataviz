@@ -3,320 +3,465 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a planning board. One big node map (story spine above, explore hub below), a detail rail beside it,
-   then screen sketches, the data-readiness grid and the build order. Dark-first, in the project's own type system. */
+/* Layout: the map is the stage. A search bar and a sentence bar sit over it, tabs re-draw it, a side panel explains it.
+   Below: what we borrow from the references, data readiness, build order. Dark-first in the project type system. */
 :root{
   --bg:#0B0F19; --panel:#111827; --raise:#172033; --fg:#E8ECF2; --mut:#9AA6B8; --dim:#5F6C80; --line:rgba(232,236,242,.12);
-  --amber:#F5A524; --site:#FBC900; --water:#4FB6D8; --risk:#E2603F; --ok:#5CC98A; --gap:#7C8798;
+  --amber:#F5A524; --site:#FBC900; --risk:#E2603F; --ok:#5CC98A; --gap:#7C8798;
   --disp:"Barlow Condensed","Arial Narrow",Arial,sans-serif; --serif:"Newsreader",Georgia,serif; --mono:"IBM Plex Mono",Consolas,monospace;
   color-scheme:dark;
 }
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
   --bg:#F3F1EC; --panel:#FFFFFF; --raise:#ECE8DF; --fg:#18202C; --mut:#4F5A6A; --dim:#7D8796; --line:rgba(24,32,44,.14);
-  --amber:#B86E00; --site:#9A7400; --water:#1F7EA6; --risk:#B5432A; --ok:#2E8B57; --gap:#6B7585; color-scheme:light}}
+  --amber:#B86E00; --site:#9A7400; --risk:#B5432A; --ok:#2E8B57; --gap:#6B7585; color-scheme:light}}
 :root[data-theme="light"]{
   --bg:#F3F1EC; --panel:#FFFFFF; --raise:#ECE8DF; --fg:#18202C; --mut:#4F5A6A; --dim:#7D8796; --line:rgba(24,32,44,.14);
-  --amber:#B86E00; --site:#9A7400; --water:#1F7EA6; --risk:#B5432A; --ok:#2E8B57; --gap:#6B7585; color-scheme:light}
+  --amber:#B86E00; --site:#9A7400; --risk:#B5432A; --ok:#2E8B57; --gap:#6B7585; color-scheme:light}
 :root[data-theme="dark"]{
   --bg:#0B0F19; --panel:#111827; --raise:#172033; --fg:#E8ECF2; --mut:#9AA6B8; --dim:#5F6C80; --line:rgba(232,236,242,.12);
-  --amber:#F5A524; --site:#FBC900; --water:#4FB6D8; --risk:#E2603F; --ok:#5CC98A; --gap:#7C8798; color-scheme:dark}
+  --amber:#F5A524; --site:#FBC900; --risk:#E2603F; --ok:#5CC98A; --gap:#7C8798; color-scheme:dark}
 body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--serif)}
-.wrap{max-width:1280px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:grid;gap:56px}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:grid;gap:52px}
 .kick{font:500 11px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:0}
 h1,h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.01em;text-wrap:balance;margin:0}
-h1{font-size:clamp(38px,6vw,68px);line-height:.95}
+h1{font-size:clamp(36px,5.6vw,64px);line-height:.95}
 h2{font-size:clamp(26px,3.4vw,36px);line-height:1}
 h3{font:600 20px/1.1 var(--disp);text-transform:uppercase;letter-spacing:.02em;margin:0}
 p{margin:0;max-width:68ch}
-.lede{font-size:19px;color:var(--fg)}
+.lede{font-size:19px}
 .mut{color:var(--mut)}
-header{display:grid;gap:14px}
-.ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px}
-.ladder span{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:8px 10px;border:1px solid var(--line);border-radius:3px}
-.ladder b{color:var(--amber);font-weight:400}
-section{display:grid;gap:18px}
-.sechead{display:grid;gap:8px}
+header,section{display:grid;gap:14px}
 
-/* node map */
-.board{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:start}
-@media (max-width:980px){.board{grid-template-columns:1fr}}
-.mapbox{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow-x:auto}
-svg.flow{display:block;min-width:900px;width:100%;height:auto}
-.flow .tier{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;fill:var(--mut)}
-.flow .bracket{stroke:var(--dim);stroke-width:1.2;fill:none}
-.flow .edge{stroke:var(--mut);stroke-width:1.6;fill:none}
-.flow .edge.feed{stroke-dasharray:5 5;stroke:var(--dim)}
-.flow .node{cursor:pointer}
-.flow .node rect.box{fill:var(--raise);stroke:var(--line);stroke-width:1.2;transition:stroke .15s}
-.flow .node:hover rect.box,.flow .node:focus rect.box{stroke:var(--fg)}
-.flow .node.sel rect.box{stroke:var(--amber);stroke-width:2.4}
-.flow .node:focus{outline:none}
-.flow .node rect.stat{stroke:none}
-.flow .num{font:500 11px var(--mono);fill:var(--mut);letter-spacing:.08em}
-.flow .ttl{font:700 19px var(--disp);fill:var(--fg);text-transform:uppercase}
-.flow .sub{font:400 13px var(--serif);fill:var(--mut)}
-.flow .note{font:italic 13px var(--serif);fill:var(--mut)}
-.s-built{fill:var(--ok)} .s-hollie{fill:var(--site)} .s-part{fill:var(--amber)} .s-miss{fill:var(--risk)} .s-todo{fill:var(--gap)}
-.legend{display:flex;flex-wrap:wrap;gap:14px 20px;padding:12px 16px;border-top:1px solid var(--line);font:12px var(--mono);color:var(--mut)}
-.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:7px;vertical-align:-1px}
-.lg-built{background:var(--ok)} .lg-hollie{background:var(--site)} .lg-part{background:var(--amber)} .lg-miss{background:var(--risk)} .lg-todo{background:var(--gap)}
+/* app mock: a single dark map look in both themes, colors set explicitly */
+.app{background:#0A0E17;border:1px solid var(--line);border-radius:8px;overflow:hidden;display:grid;color:#E8ECF2}
+.topbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.08);background:#0d1220}
+.brand{font:700 20px var(--disp);text-transform:uppercase;letter-spacing:.04em;color:#F8FAFC;margin-right:6px}
+.search{position:relative;flex:1 1 320px;min-width:0}
+.search input{width:100%;box-sizing:border-box;font:15px var(--serif);color:#F8FAFC;background:#151c2c;border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:10px 16px 10px 38px}
+.search input::placeholder{color:#8090a6}
+.search input:focus{outline:2px solid #F5A524;outline-offset:1px}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%)}
+.results{position:absolute;left:0;right:0;top:calc(100% + 6px);background:#151c2c;border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:6px;z-index:5;display:grid;gap:2px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.results button{font:14px var(--serif);color:#E2E8F0;background:none;border:0;text-align:left;padding:8px 10px;border-radius:6px;cursor:pointer;display:flex;justify-content:space-between;gap:10px}
+.results button:hover,.results button:focus{background:#1f2940;outline:none}
+.results small{font:11px var(--mono);color:#8090a6;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.tabs{display:flex;gap:4px;overflow-x:auto;padding:0 10px;background:#0d1220;border-bottom:1px solid rgba(255,255,255,.08)}
+.tabs button{font:600 15px var(--disp);text-transform:uppercase;letter-spacing:.06em;color:#94A3B8;background:none;border:0;border-bottom:3px solid transparent;padding:11px 12px 9px;cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:#F8FAFC;border-bottom-color:#F5A524}
+.tabs button:focus-visible{outline:2px solid #F5A524}
+.stage{display:grid;grid-template-columns:minmax(0,1fr) 330px}
+@media (max-width:900px){.stage{grid-template-columns:1fr}}
+.mapwrap{position:relative;min-width:0;max-height:760px;overflow:hidden}
+.sentence{position:absolute;left:14px;top:12px;right:14px;z-index:3;display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;background:rgba(248,250,252,.96);color:#1E293B;border-radius:4px;padding:10px 14px;font:600 16px var(--disp);letter-spacing:.02em;box-shadow:0 6px 18px rgba(0,0,0,.35);max-width:620px}
+.sentence .pill{font:inherit;border:1px solid #E2603F;color:#C2410C;background:#fff;border-radius:3px;padding:3px 8px;text-transform:uppercase;font-size:13px;letter-spacing:.06em}
+.sentence .sel{color:#C2410C;border-bottom:1px dashed #C2410C;padding:0 2px;font-weight:600}
+.sentence select{font:inherit;color:#C2410C;background:#fff;border:1px solid #E2603F;border-radius:3px;padding:2px 4px;cursor:pointer}
+svg.map{display:block;width:100%;height:auto}
+.legend{position:absolute;right:12px;bottom:12px;z-index:3;background:rgba(248,250,252,.96);color:#1E293B;border-radius:4px;padding:10px 12px;font:12px var(--mono);display:grid;gap:6px;max-width:270px}
+.legend b{font:600 13px var(--disp);text-transform:uppercase;letter-spacing:.06em}
+.legend .row{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:4px;vertical-align:-1px}
+.timebar{display:flex;gap:12px;align-items:center;padding:10px 14px;border-top:1px solid rgba(255,255,255,.08);background:#0d1220;font:12px var(--mono);color:#94A3B8}
+.timebar button{font:600 13px var(--disp);text-transform:uppercase;letter-spacing:.08em;color:#0B0F19;background:#F5A524;border:0;border-radius:3px;padding:7px 12px;cursor:pointer}
+.timebar input{flex:1;accent-color:#F5A524;min-width:0}
+.timebar output{font:700 24px var(--disp);color:#F8FAFC;min-width:56px;text-align:right}
+.side{border-left:1px solid rgba(255,255,255,.08);background:#0f1524;padding:18px;display:grid;gap:14px;align-content:start;min-width:0}
+@media (max-width:900px){.side{border-left:0;border-top:1px solid rgba(255,255,255,.08)}}
+.side .k{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#94A3B8}
+.side h3{font-size:24px;color:#F8FAFC}
+.side p{font-size:15px;color:#CBD5E1}
+.side .big{font:700 40px/1 var(--disp);color:#FBC900}
+.side .tiles{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.side .tile{border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:7px 8px;font:12px/1.3 var(--mono);color:#CBD5E1}
+.side .tile i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.side .cta{font:600 14px var(--disp);text-transform:uppercase;letter-spacing:.08em;color:#0B0F19;background:#FBC900;border:0;border-radius:4px;padding:10px 12px;cursor:pointer;justify-self:start}
+.side .ghost{font:600 13px var(--disp);text-transform:uppercase;letter-spacing:.08em;color:#F8FAFC;background:none;border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:8px 12px;cursor:pointer;justify-self:start}
+.side .story{display:grid;gap:10px;border-left:2px solid #FBC900;padding-left:12px}
+.side .story p{font-size:16px;color:#E2E8F0}
+.side .note{font:11px/1.5 var(--mono);color:#64748B}
+.site{cursor:pointer}
+.site:focus{outline:none}
+.site:focus circle.hit{stroke:#F8FAFC;stroke-width:2}
+.mocknote{font:12px var(--mono);color:var(--dim)}
 
-/* detail rail */
-.rail{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px;display:grid;gap:14px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);min-width:0}
-@media (max-width:980px){.rail{position:static}}
-.rail .chip{justify-self:start;font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:5px 8px;border-radius:3px;color:var(--bg)}
-.rail h3{font-size:26px}
-.rail dl{display:grid;gap:12px;margin:0}
-.rail dt{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
-.rail dd{margin:3px 0 0;font-size:15px}
-.rail ul{margin:4px 0 0;padding-left:18px;display:grid;gap:4px}
-.rail .hint{font:12px var(--mono);color:var(--dim)}
-
-/* screens */
-.screens{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
-.scr{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px;display:grid;gap:10px;align-content:start}
-.scr svg{width:100%;height:auto;display:block;border-radius:3px;background:var(--bg)}
-.scr .cap{font-size:14px;color:var(--mut)}
-.scr .k{font:500 11px var(--mono);letter-spacing:.14em;color:var(--amber)}
-.wf-line{stroke:var(--dim);fill:none;stroke-width:1.2}
-.wf-fill{fill:var(--raise)} .wf-water{fill:var(--water);opacity:.55} .wf-site{fill:var(--site)} .wf-risk{fill:var(--risk)}
-.wf-txt{fill:var(--fg);font:700 13px var(--disp);text-transform:uppercase} .wf-small{fill:var(--mut);font:9px var(--mono)}
-
-/* readiness grid */
+.refs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.ref{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px;display:grid;gap:8px;align-content:start}
+.ref b{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
 .tablebox{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:6px}
 table{border-collapse:collapse;width:100%;min-width:860px;font-size:14px}
 th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--line)}
 th{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);background:var(--raise)}
 td.t{font:600 17px/1.1 var(--disp);text-transform:uppercase;white-space:nowrap}
-.pill{display:inline-block;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:3px;color:var(--bg);white-space:nowrap}
-.p-have{background:var(--ok)} .p-part{background:var(--amber)} .p-miss{background:var(--risk)} .p-todo{background:var(--gap)}
+.p{display:inline-block;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:3px;color:var(--bg);white-space:nowrap}
+.p-part{background:var(--amber)} .p-miss{background:var(--risk)} .p-todo{background:var(--gap)}
 .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
-
-/* build order */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;counter-reset:s}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
 .step{border-top:2px solid var(--amber);padding-top:12px;display:grid;gap:6px}
 .step b{font:500 11px var(--mono);letter-spacing:.14em;color:var(--amber)}
-.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 28px}
-.rules p{border-left:2px solid var(--line);padding-left:12px}
-.rules p strong{font:600 16px/1.2 var(--disp);text-transform:uppercase;display:block;color:var(--fg);letter-spacing:.02em}
 footer{font:12px var(--mono);color:var(--dim)}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* landing hero: exploded block of the Gwala Street simulation, single dark look */
+.hero{position:relative;background:#0B0F19;border:1px solid var(--line);border-radius:8px;overflow:hidden;color:#E8ECF2}
+.hero canvas{display:block;width:100%;height:clamp(440px,58vw,660px)}
+.hero .copy{position:absolute;left:clamp(16px,3vw,36px);top:clamp(16px,3vw,36px);max-width:min(400px,42%);display:grid;gap:12px}
+.hero .copy .k{font:500 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#94A3B8}
+.hero .copy h2{font-size:clamp(28px,3.4vw,44px);line-height:.95;color:#F8FAFC}
+.hero .copy p{font-size:17px;color:#CBD5E1}
+.hero .copy .go{justify-self:start;font:600 14px var(--disp);text-transform:uppercase;letter-spacing:.1em;color:#0B0F19;background:#FBC900;border-radius:4px;padding:10px 14px;text-decoration:none}
+.hero .read{position:absolute;left:clamp(16px,3vw,36px);bottom:clamp(26px,3vw,34px);display:flex;flex-wrap:wrap;gap:22px;font:12px var(--mono);color:#94A3B8}
+.hero .read b{display:block;font:700 30px/1 var(--disp);color:#F8FAFC;letter-spacing:.02em}
+.hero .read .hot b{color:#4FB6D8}
+.hero .src{position:absolute;right:16px;bottom:8px;font:10px var(--mono);color:#5F6C80}
+@media (max-width:700px){.hero .copy{max-width:none;right:16px}.hero .copy p{display:none}.hero .read{gap:14px}.hero .read b{font-size:22px}}
+/* layer stack inside the mock */
+.tabs .stackbtn{margin-left:auto;color:#0B0F19;background:#FBC900;border-radius:3px;border-bottom:0;margin-block:6px;padding:6px 12px}
+.stack{position:absolute;inset:0;z-index:4;background:#0A0E17;perspective:1600px;overflow:hidden}
+.stack .inner{position:absolute;left:50%;top:52%;width:min(46%,330px);aspect-ratio:600/783;transform:translate(-50%,-50%);transform-style:preserve-3d}
+.sheet{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(60deg) rotateZ(-40deg) translateZ(var(--z,0px));transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .4s;cursor:pointer}
+.sheet svg{display:block;width:100%;height:100%;border:1px solid rgba(232,236,242,.35)}
+.sheet .tag{position:absolute;left:102%;top:0;white-space:nowrap;font:600 15px var(--disp);text-transform:uppercase;letter-spacing:.06em;color:#E8ECF2;transform:rotateZ(40deg) rotateX(-60deg);transform-origin:left top}
+.sheet .tag small{display:block;font:11px var(--mono);letter-spacing:.08em;color:#94A3B8;text-transform:none}
+.stack.dim .sheet{opacity:.22}
+.stack.dim .sheet.on{opacity:1}
+.stack .card{position:absolute;left:14px;top:14px;max-width:300px;background:rgba(248,250,252,.96);color:#1E293B;border-radius:4px;padding:12px 14px;display:grid;gap:8px;font:14px/1.4 var(--serif);z-index:6}
+.stack .card b{font:600 18px var(--disp);text-transform:uppercase;letter-spacing:.04em}
+.stack .card button{justify-self:start;font:600 13px var(--disp);text-transform:uppercase;letter-spacing:.08em;color:#fff;background:#C2410C;border:0;border-radius:3px;padding:7px 11px;cursor:pointer}
+.stack .card .hint{font:11px var(--mono);color:#64748B}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 
 <div class="wrap">
 <header>
-  <p class="kick">Who Owns the Flood · Hollie and Wandile · site plan, 6 Oct 2026</p>
+  <p class="kick">Who Owns the Flood · Hollie and Wandile · site plan v2, 6 Oct 2026</p>
   <h1>Moved Into the Water<br>Site Flow</h1>
-  <p class="lede">The site walks people down a ladder of scale: one family, one camp, every camp, the world, then you. The story leads, because the professors asked us to open with the family. Explore mode sits under it, so anyone can leave the story and open the map at any point.</p>
-  <div class="ladder" aria-label="Scale ladder">
-    <span>Person</span><b>→</b><span>Place</span><b>→</b><span>City</span><b>→</b><span>World</span><b>→</b><span>You</span>
-  </div>
+  <p class="lede">The map is the stage. Everything else is a way into it: a search bar for a site or a family, a sentence that says what the map is showing, tabs that re-draw it, and a "Place me here" button on every site that tells its story to you, in the second person, from the record.</p>
 </header>
 
 <section>
-  <div class="sechead">
-    <p class="kick">01 · The node map</p>
-    <h2>Story spine, explore hub, five lenses</h2>
-    <p class="mut">Click any node to see what the visitor sees, what they should learn, which data drives it and which piece we already have.</p>
+  <p class="kick">01 · Landing</p>
+  <div class="hero" id="hero">
+    <canvas id="hc" aria-label="Exploded 3D block of Gwala Street, Lamontville: rain above, a terrain wireframe, and the ground flooding during the February 2025 storm"></canvas>
+    <div class="copy">
+      <span class="k">Lamontville, Durban · 26 February 2025</span>
+      <h2>A small storm. A camp the city built on the riverbank.</h2>
+      <p>About 35 mm of rain fell in four hours. The riverside camp flooded; the camp beside it, five metres higher, stayed dry. Three children were swept away.</p>
+      <a class="go" href="#explore">Explore the map</a>
+    </div>
+    <div class="read"><div><b id="hclock">22:00</b>simulated time</div><div class="hot"><b id="hd1">0.00 m</b>riverside camp</div><div><b id="hd2">0.00 m</b>camp next door</div><div><b id="hrain">0.6 mm</b>rain this hour</div></div>
+    <div class="src">Terrain: eThekwini 2 m LiDAR contours · Rain: ERA5 · Water: our simulation, depths indicative</div>
   </div>
-  <div class="board">
-    <div class="mapbox">
-      <svg class="flow" viewBox="0 0 1240 720" role="group" aria-label="Site flow diagram">
-        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--mut)"/></marker></defs>
-        <!-- scale brackets -->
-        <path class="bracket" d="M24 62 V52 H594 V62"/><text class="tier" x="309" y="40" text-anchor="middle">Person · one family</text>
-        <path class="bracket" d="M632 62 V52 H802 V62"/><text class="tier" x="717" y="40" text-anchor="middle">City · 12 sites</text>
-        <path class="bracket" d="M836 62 V52 H1006 V62"/><text class="tier" x="921" y="40" text-anchor="middle">World · 64 cases</text>
-        <path class="bracket" d="M1040 62 V52 H1210 V62"/><text class="tier" x="1125" y="40" text-anchor="middle">You · community</text>
-        <text class="tier" x="24" y="96">Story mode · scroll</text>
-        <!-- spine edges -->
-        <path class="edge" marker-end="url(#ar)" d="M194 145 H220"/><path class="edge" marker-end="url(#ar)" d="M398 145 H424"/>
-        <path class="edge" marker-end="url(#ar)" d="M602 145 H628"/><path class="edge" marker-end="url(#ar)" d="M806 145 H832"/>
-        <path class="edge" marker-end="url(#ar)" d="M1010 145 H1036"/>
-        <!-- hub edges -->
-        <path class="edge" marker-end="url(#ar)" d="M717 184 V316"/>
-        <text class="note" x="728" y="258">Explore</text><text class="note" x="728" y="276">the map</text>
-        <path class="edge" marker-end="url(#ar)" d="M717 396 C 717 440, 130 440, 130 494"/>
-        <path class="edge" marker-end="url(#ar)" d="M717 396 C 717 440, 366 440, 366 494"/>
-        <path class="edge" marker-end="url(#ar)" d="M717 396 C 717 440, 602 440, 602 494"/>
-        <path class="edge" marker-end="url(#ar)" d="M717 396 C 717 440, 838 440, 838 494"/>
-        <path class="edge" marker-end="url(#ar)" d="M717 396 C 717 440, 1074 440, 1074 494"/>
-        <!-- feeds -->
-        <path class="edge feed" marker-end="url(#ar)" d="M309 184 C 309 300, 366 380, 366 494"/>
-        <path class="edge feed" marker-end="url(#ar)" d="M800 494 C 560 430, 470 300, 513 186"/>
-        <path class="edge feed" marker-end="url(#ar)" d="M1120 494 C 1180 380, 1150 260, 1130 186"/>
-        <text class="tier" x="24" y="476">Explore mode · open a site, switch lens</text>
-        <text class="note" x="1150" y="340">gaps feed</text><text class="note" x="1150" y="356">the portal</text>
-        <text class="note" x="400" y="330">the simulation</text><text class="note" x="400" y="346">answers "how"</text>
+</section>
 
-        <g id="nodes"></g>
-        <text class="note" x="24" y="676">Escape hatch on every story screen: "Skip to the map" jumps to node 04 with the current site already selected.</text>
-      </svg>
-      <div class="legend">
-        <span><i class="lg-built"></i>Built by us</span><span><i class="lg-hollie"></i>Built by Hollie</span>
-        <span><i class="lg-part"></i>Data partly there</span><span><i class="lg-miss"></i>Data missing</span><span><i class="lg-todo"></i>To design and build</span>
+<section>
+  <p class="kick" id="explore">02 · Working mock-up</p>
+  <h2>Try it: search, stack the layers, place yourself</h2>
+  <p class="mut">Real coastline, rivers and the city's 1-in-100-year flood plain, with Hollie's 12 sites at their real positions and their real data. Try typing "Lamontville", "flooded" or "family", then click a site and press Place me here.</p>
+  <div class="app">
+    <div class="topbar">
+      <span class="brand">Moved Into the Water</span>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="none" stroke="#8090a6" stroke-width="1.6"/><path d="M11 11 L15 15" stroke="#8090a6" stroke-width="1.6"/></svg>
+        <input id="q" type="search" autocomplete="off" placeholder="Search a site, a family's journey, or ask: which sites flooded?" aria-label="Search sites and journeys">
+        <div class="results" id="res" hidden></div>
       </div>
     </div>
-    <aside class="rail" id="rail" aria-live="polite"></aside>
+    <div class="tabs" role="tablist" aria-label="Map views" id="tabs"></div>
+    <div class="stage">
+      <div class="mapwrap">
+        <div class="sentence" id="sentence"></div>
+        <div class="stack" id="stack" hidden><div class="card" id="scard"></div><div class="inner" id="sinner"></div></div>
+        <svg class="map" id="map" role="img" aria-label="Map of Durban's temporary relocation sites"></svg>
+        <div class="legend" id="legend"></div>
+      </div>
+      <aside class="side" id="side" aria-live="polite"></aside>
+    </div>
+    <div class="timebar">
+      <button type="button" id="play">Play</button>
+      <span>2007</span><input id="yr" type="range" min="2007" max="2026" value="2026" aria-label="Year"><span>2026</span>
+      <output id="yro">2026</output>
+    </div>
+  </div>
+  <p class="mocknote">Mock-up for planning. Site pins are approximate. Household counts mix units (households, families, people) exactly as the sources report them.</p>
+</section>
+
+<section>
+  <p class="kick">03 · What we borrow</p>
+  <h2>Five references, one interface</h2>
+  <div class="refs">
+    <div class="ref"><b>Eviction Lab</b><h3>A map you read as a sentence</h3><p>"Show conditions at 12 temporary sites in 2026." The orange words are the controls. Their grey "No data" swatch becomes our honest grey.</p></div>
+    <div class="ref"><b>Manhattan, hour by hour</b><h3>Time as the animation</h3><p>Their map breathes through a day. Ours plays 2007 to 2026: sites appear, close, and their "temporary" bars keep growing.</p></div>
+    <div class="ref"><b>Manhattan in 3D bars</b><h3>Height means something</h3><p>In the Time tab, bar height is years spent "temporary". Gwala Street, since 2008, towers over the rest.</p></div>
+    <div class="ref"><b>Anti-Eviction Mapping Project</b><h3>Layers that lift apart</h3><p>Flood plain, temporary sites, people and missing data are separate sheets of one map. Stack them, click one, and it tells its part of the story.</p></div>
+    <div class="ref"><b>First Street</b><h3>Open on the flood itself</h3><p>The landing is the Gwala Street simulation, already raining and rising, drawn as an exploded block: rain, terrain, ground and water.</p></div>
+    <div class="ref"><b>A chat-style search bar</b><h3>Start from a name</h3><p>Type a site, a family's route or a question. Version one matches our own data; a later version could answer in sentences, quoting sources.</p></div>
   </div>
 </section>
 
 <section>
-  <div class="sechead">
-    <p class="kick">02 · Screens</p>
-    <h2>What each story beat looks like</h2>
-    <p class="mut">Rough sketches. One idea per screen, one transition between them, and the map never disappears: each beat is the same map at a different scale.</p>
-  </div>
-  <div class="screens" id="screens"></div>
-</section>
-
-<section>
-  <div class="sechead">
-    <p class="kick">03 · Data readiness</p>
-    <h2>Your five tiers against what we hold</h2>
-    <p class="mut">Counted from Hollie's site file (12 sites) and our own analyses. Grey cells on her map are the honest version of "we don't know", and they become the portal's to-do list.</p>
-  </div>
+  <p class="kick">04 · Data readiness</p>
+  <h2>Your five tiers against what we hold</h2>
   <div class="tablebox"><table>
-    <thead><tr><th>Tier</th><th>Fields</th><th>What we hold</th><th>Status</th><th>How to fill it</th></tr></thead>
+    <thead><tr><th>Tab</th><th>What it shows</th><th>What we hold</th><th>Status</th><th>How to fill it</th></tr></thead>
     <tbody>
-      <tr><td class="t">1 · Who lives there</td><td>Demographics, income, education, language</td><td>Household counts for 10 of 12 sites. Language for the surrounding wards (Census). Nothing on income or education for camp residents.</td><td><span class="pill p-miss">Missing</span></td><td>Census 2011 and 2022 small-area data for the ward around each site, labelled as the neighbourhood, never as the residents. Resident figures only from the portal or partner surveys.</td></tr>
-      <tr><td class="t">2 · Time &amp; moves</td><td>Years temporary, times moved</td><td>Start year for all 12 sites (the oldest, Gwala Street, since 2008). Moves for the 4 traced journeys only: 4, 2, 1 and 1.</td><td><span class="pill p-part">Partial</span></td><td>Years are ready to show as counters. Moves per household need the portal or interviews; until then, show only the 4 journeys.</td></tr>
-      <tr><td class="t">3 · Conditions</td><td>Water, sanitation, safety, crowding, electricity</td><td>48 ratings across 12 sites: <span class="num">21</span> are "not reported". Water unknown at 7 sites, sanitation at 7. Electricity not coded anywhere.</td><td><span class="pill p-part">Partial</span></td><td>Add an electricity field from existing articles (IOL, June 2024: "No power for the forgotten flood victims"). The rest: portal.</td></tr>
-      <tr><td class="t">4 · Flood risk</td><td>Flood line, satellite record, flood history, likelihood</td><td>City flood line and 38 years of satellite water for every site. By pin, 6 of 12 sites sit within 250 m of the 1-in-100-year line. One recorded flood history (Lamontville, 2022 and 2025). Street-level simulation for Gwala Street only.</td><td><span class="pill p-part">Partial</span></td><td>Likelihood: say what the city's own line means (inside it, at least a 1% chance a year, about 10% over a decade) and show the simulation where we have it. We can't predict when; we say so.</td></tr>
-      <tr><td class="t">5 · What's missing</td><td>Gaps, corrections, new sites</td><td>Every grey cell, every "not reported", every site without a polygon.</td><td><span class="pill p-todo">To build</span></td><td>Community portal: phone-first, isiZulu and English, no names, reviewed before it shows. Built on a form tool such as KoBoToolbox, run with a local partner.</td></tr>
+      <tr><td class="t">People</td><td>Who lives there, income, education, language</td><td>Household counts for 10 of 12 sites, in mixed units. Nothing on income or education for residents.</td><td><span class="p p-miss">Missing</span></td><td>Census small-area data for the surrounding ward, labelled as the neighbourhood. Resident data only from the portal or partner surveys.</td></tr>
+      <tr><td class="t">Time</td><td>Years temporary, times moved</td><td>Start year for all 12 sites. Moves for 4 traced journeys (4, 2, 1, 1).</td><td><span class="p p-part">Partial</span></td><td>Years are ready. Moves per household need the portal.</td></tr>
+      <tr><td class="t">Conditions</td><td>Water, sanitation, safety, crowding, electricity</td><td>48 ratings, 21 not reported. Electricity not recorded anywhere.</td><td><span class="p p-part">Partial</span></td><td>Code electricity from existing articles; the rest from the portal.</td></tr>
+      <tr><td class="t">Flood risk</td><td>Flood line, satellite record, flood history, simulation</td><td>Line and satellite record for all 12; 6 of 12 within 250 m of the line by pin. Flood history for 1 site. Simulation for Gwala Street.</td><td><span class="p p-part">Partial</span></td><td>Explain the line in plain terms (inside it: at least a 1% chance a year). We can't predict when.</td></tr>
+      <tr><td class="t">Gaps</td><td>What nobody has recorded</td><td>Every grey value on the map.</td><td><span class="p p-todo">To build</span></td><td>Phone-first portal in isiZulu and English, no names, reviewed before showing, with a local partner.</td></tr>
     </tbody>
   </table></div>
 </section>
 
 <section>
-  <div class="sechead">
-    <p class="kick">04 · Design rules</p>
-    <h2>How it should feel</h2>
-  </div>
-  <div class="rules">
-    <p><strong>One map, many scales</strong>Every story beat is the same map zoomed to a new scale. Visitors never lose their place.</p>
-    <p><strong>People before points</strong>A site opens on its people (households, years waiting) before its flood risk.</p>
-    <p><strong>Grey means unknown</strong>Missing data stays visible as grey, never hidden and never guessed.</p>
-    <p><strong>Restraint at the loss</strong>The three children are named only as the record names them: no faces, no reconstruction beyond the film.</p>
-    <p><strong>Two gates, two questions</strong>The "why" screen ends on the two questions from the world test: who decides, and what can stop an unsafe move.</p>
-    <p><strong>Phone first for the portal</strong>The people who can fill the gaps use phones and WhatsApp, and mostly isiZulu.</p>
-  </div>
-</section>
-
-<section>
-  <div class="sechead">
-    <p class="kick">05 · Build order</p>
-    <h2>Four steps in our working copy</h2>
-    <p class="mut">All of this happens in <span class="num">viz-wandile/</span>, so Hollie's map stays untouched until we both agree to merge.</p>
-  </div>
+  <p class="kick">05 · Build order</p>
+  <h2>Four steps in our working copy</h2>
+  <p class="mut">All in <span class="num">viz-wandile/</span>. Hollie's map stays untouched until we merge.</p>
   <div class="steps">
-    <div class="step"><b>STEP 1</b><h3>Story shell</h3><p>Scroll container over Hollie's map: film (01), journey (02), pull-back to 12 sites (04). Reuses her journey j1 and her map.</p></div>
-    <div class="step"><b>STEP 2</b><h3>The night</h3><p>Drop the 3D Gwala Street flood into beat 03, with the 2025 storm playing and both camp depths shown.</p></div>
-    <div class="step"><b>STEP 3</b><h3>Lenses</h3><p>Turn her site panel into five tabs: People, Time, Conditions, Flood risk, Gaps. Grey cells counted live.</p></div>
-    <div class="step"><b>STEP 4</b><h3>Why and you</h3><p>World-test screen (05) and a portal mock (06) with the real form fields, ready to wire to a partner.</p></div>
+    <div class="step"><b>STEP 1</b><h3>Tabs and sentence bar</h3><p>Add the tab strip and sentence bar to Hollie's map. Each tab re-styles her existing layers.</p></div>
+    <div class="step"><b>STEP 2</b><h3>Search and Place me</h3><p>Search over sites and journeys; a "Place me here" story for every site, built only from its sourced facts.</p></div>
+    <div class="step"><b>STEP 3</b><h3>The family tab</h3><p>The film opens it; the route plays stop by stop; at Lamontville the 3D flood takes over.</p></div>
+    <div class="step"><b>STEP 4</b><h3>Gaps and portal</h3><p>Live gap counts per site and a portal mock with the real form fields.</p></div>
   </div>
 </section>
-
-<footer>Sources behind the counts: Hollie's data/sites.js (12 sites, 6 Oct 2026); eThekwini 1-in-100-year flood plain; JRC Global Surface Water 1984–2021; 64-case world relocation test (this project); Gwala Street simulation on eThekwini 2 m contours.</footer>
+<footer>Sources: Hollie's data/sites.js and map-data.js (6 Oct 2026); eThekwini 1-in-100-year flood plain and rivers; flood-line distances from our pin test; Gwala Street simulation on eThekwini 2 m contours.</footer>
 </div>
 
+<script src="site-flow-geo.js"></script>
 <script>
-const N={
- n01:{x:24,y:106,num:"01",t:"The film",s:"31 s painted intro",st:"built",
-  sees:"The painted film: the ordinary day, three floods, the rope moving the family, the three children, ending on the question.",
-  learns:"This is about real people, flooded and moved again and again by the state.",
-  data:"Family timeline from news reports and Amnesty 2025; ERA5 rain for each storm.",
-  have:"Built: 14, 22, 27 and 31 second cuts, and PowerPoint slides.",gap:"None for the story. Decide which cut opens the site."},
- n02:{x:228,y:106,num:"02",t:"The family's road",s:"4 moves in 6 years",st:"hollie",
-  sees:"The map wakes up on Mega Village and draws the family's route stop by stop, with a counter: moved 1, 2, 3, 4 times; flooded 1, 2, 3 times.",
-  learns:"The family didn't drift into danger. They were placed there, again and again.",
-  data:"Journey j1 in Hollie's sites.js (5 stops with dates).",
-  have:"Built by Hollie: the journey layer. Ours to add: a scroll trigger per stop.",gap:"Exact camp outlines; pins are approximate."},
- n03:{x:432,y:106,num:"03",t:"The night",s:"26 Feb 2025, Gwala St",st:"built",
-  sees:"The camera drops into 3D Gwala Street. Rain starts, the streams fill, water rises around the riverside camp while the camp next door stays dry.",
-  learns:"How it happened: a small storm, a camp on the lowest ground, five metres below its neighbour.",
-  data:"eThekwini 2 m contours, building footprints, ERA5 rain, uMlazi inflow estimate; ArcGIS Pro run.",
-  have:"Built: 3D web flood (2025 and 2022) and the ArcGIS Pro simulation.",gap:"Depths are modelled, not measured; label them so."},
- n04:{x:636,y:106,num:"04",t:"Not one family",s:"Pull back: 12 sites",st:"hollie",
-  sees:"The camera lifts off Gwala Street to the whole city. Twelve sites light up over the flood line and 38 years of satellite water. The time slider plays 2007 to 2026.",
-  learns:"This is a pattern. Half the sites sit within 250 m of the city's own flood line.",
-  data:"Hollie's 12 sites, flood line, JRC satellite water.",
-  have:"Built by Hollie: the whole map, slider, layers and site list.",gap:"Recount the flood-line figure on her 12 sites before quoting (by pin: 6 of 12 within 250 m)."},
- n05:{x:840,y:106,num:"05",t:"Why it repeats",s:"The world test",st:"todo",
-  sees:"A small world map of 64 relocations. Two filters light up: did people choose the site, could a hazard check stop it. Durban fails both.",
-  learns:"Money doesn't explain the outcome. Having a say does (43% vs 92% fell short), and a binding flood check points the same way.",
-  data:"64-case world relocation test; 11-case comparison.",
-  have:"Data ready. Screen not designed yet.",gap:"Keep the p-values and small-sample note on screen."},
- n06:{x:1044,y:106,num:"06",t:"Add what's missing",s:"Community portal",st:"todo",
-  sees:"The grey cells from every site, and a short phone form to fill them: water, toilets, power, safety, crowding, how many moves.",
-  learns:"The record is incomplete, and the people living it can fix it.",
-  data:"Grey cells from the Gaps lens; form fields mirror tiers 2 and 3.",
-  have:"Nothing yet.",gap:"Needs a partner organisation, consent rules, moderation and a form tool."},
- hub:{x:597,y:316,w:240,num:"HUB",t:"Site dossier",s:"Open any of the 12 sites",st:"hollie",
-  sees:"Click a site on the map. A panel opens with its name, the years it has been temporary, the lead fact, and five lens tabs.",
-  learns:"Each site is a place with people in it, not a dot.",
-  data:"Hollie's site panel (sites.js).",
-  have:"Built by Hollie: the panel with conditions, timer, sources, video slot.",gap:"Reorganise into the five lenses below."},
- l1:{x:30,y:494,w:200,num:"LENS 1",t:"Who lives there",s:"People, income, education",st:"miss",
-  sees:"Household count, then the neighbourhood around the site: language, income band, schooling.",
-  learns:"Who carries the risk.",
-  data:"Household counts (10 of 12); Census small-area data for the ward.",
-  have:"Household counts only.",gap:"Census figures describe the area, not camp residents. Label them that way."},
- l2:{x:266,y:494,w:200,num:"LENS 2",t:"Time & moves",s:"Years waiting, moves",st:"part",
-  sees:"A ticking counter of years 'temporary' and, where traced, the household's route.",
-  learns:"Temporary has become permanent: Gwala Street since 2008.",
-  data:"Start year for all 12 sites; 4 traced journeys.",
-  have:"Years: all 12. Moves: 4 journeys.",gap:"Moves per household for the other sites."},
- l3:{x:502,y:494,w:200,num:"LENS 3",t:"Conditions",s:"Water, toilets, power, safety",st:"part",
-  sees:"Five tiles coloured red, amber, green or grey, each with its sourced sentence.",
-  learns:"What daily life is like there.",
-  data:"48 ratings, 21 not reported; electricity not yet coded.",
-  have:"Water, sanitation, safety, crowding for 12 sites.",gap:"Electricity everywhere; 21 grey ratings."},
- l4:{x:738,y:494,w:200,num:"LENS 4",t:"Flood risk",s:"Line, satellite, record, model",st:"part",
-  sees:"The site against the flood line, the satellite water record, any recorded floods, and the simulation where we have one.",
-  learns:"How likely it is to flood again, in the city's own terms.",
-  data:"Flood line, JRC water (all sites); floods recorded (1 site); simulation (Gwala St).",
-  have:"Line and satellite for all 12.",gap:"Flood history for 11 sites; simulations beyond Gwala St."},
- l5:{x:974,y:494,w:200,num:"LENS 5",t:"What's missing",s:"Gaps, counted live",st:"todo",
-  sees:"A count of what nobody has recorded at this site, with a button to add it.",
-  learns:"Missing data is part of the story: nobody follows up after a move.",
-  data:"Every grey cell and 'not reported' field.",
-  have:"The grey cells already exist on Hollie's map.",gap:"Build the count and link it to the portal."}
-};
-const ST={built:["Built by us","s-built","var(--ok)"],hollie:["Built by Hollie","s-hollie","var(--site)"],part:["Data partly there","s-part","var(--amber)"],miss:["Data missing","s-miss","var(--risk)"],todo:["To design and build","s-todo","var(--gap)"]};
-const g=document.getElementById("nodes"),NS="http://www.w3.org/2000/svg";
-const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||g).appendChild(e);return e;};
-let sel="n03";
-for(const id in N){const n=N[id],w=n.w||170,h=id.startsWith("n")?78:80;
-  const gr=el("g",{class:"node",tabindex:"0",role:"button","aria-label":n.t,"data-id":id});
-  el("rect",{class:"box",x:n.x,y:n.y,width:w,height:h,rx:4},gr);
-  el("rect",{class:"stat "+ST[n.st][1],x:n.x,y:n.y,width:5,height:h,rx:2},gr);
-  const tx=(c,x,y,s)=>{const t=el("text",{class:c,x,y},gr);t.textContent=s;};
-  tx("num",n.x+16,n.y+20,n.num);tx("ttl",n.x+16,n.y+44,n.t);tx("sub",n.x+16,n.y+64,n.s);
-  gr.addEventListener("click",()=>pick(id));gr.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(id);}});}
-function pick(id){sel=id;document.querySelectorAll(".node").forEach(x=>x.classList.toggle("sel",x.dataset.id===id));const n=N[id],s=ST[n.st];
-  document.getElementById("rail").innerHTML=`<span class="chip" style="background:${s[2]}">${s[0]}</span><p class="kick">${n.num}</p><h3>${n.t}</h3>
-  <dl><div><dt>The visitor sees</dt><dd>${n.sees}</dd></div><div><dt>They learn</dt><dd>${n.learns}</dd></div>
-  <div><dt>Data behind it</dt><dd>${n.data}</dd></div><div><dt>What we have</dt><dd>${n.have}</dd></div><div><dt>Still needed</dt><dd>${n.gap}</dd></div></dl>
-  <p class="hint">Click another node to compare.</p>`;}
-pick(sel);
+(function(){
+const G=window.GEO||(typeof GEO!=="undefined"?GEO:null); if(!G) return;
+const W=G.w,H=G.h, svg=document.getElementById("map"), NS="http://www.w3.org/2000/svg";
+svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+const mx=lon=>(lon+180)/360, my=lat=>(1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2;
+const X0=mx(30.74),X1=mx(31.19),Y0=my(-29.49),Y1=my(-30.0);
+const P=(lat,lon)=>[(mx(lon)-X0)/(X1-X0)*W,(my(lat)-Y0)/(Y1-Y0)*H];
+const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+const defs=el("defs",{}); const lg=el("linearGradient",{id:"bar",x1:0,y1:0,x2:0,y2:1},defs);
+el("stop",{offset:0,"stop-color":"#FBC900"},lg); el("stop",{offset:1,"stop-color":"#C2410C"},lg);
+el("rect",{x:0,y:0,width:W,height:H,fill:"#121a2a"});
+el("path",{d:G.ocean,fill:"#0A0E17",stroke:"#5d7a99","stroke-width":1});
+const floodL=el("path",{d:G.flood,fill:"#1f4f7a","fill-opacity":.4,stroke:"#3d78a8","stroke-width":.6});
+el("path",{d:G.rivers,fill:"none",stroke:"#2a5f86","stroke-width":.8,"stroke-opacity":.9});
+const overlay=el("g",{}), sitesG=el("g",{});
 
-// screen sketches
-const S=[
- ["01","The film","Full-bleed painted film. One button: skip to the map.",
-  `<rect class="wf-fill" x="10" y="10" width="260" height="140" rx="3"/><path class="wf-water" d="M10 112 Q70 100 140 112 T270 108 V150 H10 Z"/><rect class="wf-site" x="118" y="70" width="44" height="34"/><path class="wf-line" d="M110 70 L140 52 L170 70"/><text class="wf-txt" x="20" y="34">Why does the water keep</text><text class="wf-txt" x="20" y="50">finding the same people?</text><rect class="wf-line" x="196" y="128" width="66" height="16" rx="2"/><text class="wf-small" x="203" y="139">SKIP TO MAP</text>`],
- ["02","The family's road","The route draws as you scroll. The counter on the right ticks up.",
-  `<rect class="wf-fill" x="10" y="10" width="260" height="140" rx="3"/><path class="wf-line" d="M30 120 C70 60, 110 130, 150 80 S 220 50, 240 40" stroke-dasharray="4 4"/><circle class="wf-site" cx="30" cy="120" r="5"/><circle class="wf-site" cx="88" cy="96" r="5"/><circle class="wf-risk" cx="150" cy="80" r="6"/><circle class="wf-site" cx="205" cy="56" r="5"/><circle class="wf-site" cx="240" cy="40" r="5"/><text class="wf-txt" x="176" y="118">Moved 3</text><text class="wf-txt" x="176" y="134">Flooded 2</text>`],
- ["03","The night","3D Gwala Street. Water rises with a clock and a depth gauge per camp.",
-  `<path class="wf-fill" d="M10 60 L120 30 L270 50 V150 H10 Z"/><path class="wf-water" d="M10 118 Q90 96 150 112 T270 104 V150 H10 Z"/><rect class="wf-site" x="104" y="96" width="14" height="12"/><rect class="wf-site" x="146" y="76" width="14" height="12"/><text class="wf-small" x="86" y="90">RIVERSIDE 1.4 M</text><text class="wf-small" x="150" y="70">GWALA ST 0.0 M</text><text class="wf-small" x="18" y="24">26 FEB 2025 · 05:45</text>`],
- ["04","Not one family","The camera lifts to the city. Twelve sites light up over the flood line.",
-  `<rect class="wf-fill" x="10" y="10" width="260" height="140" rx="3"/><path class="wf-water" d="M40 20 C80 60, 60 90, 120 110 S 200 120, 230 150 L250 150 C220 112, 160 100, 140 90 S 100 50, 60 20 Z"/>${[[70,40],[96,74],[130,96],[150,60],[176,110],[200,84],[222,126],[60,100],[110,128],[240,60],[184,40],[86,120]].map(p=>`<rect class="wf-site" x="${p[0]}" y="${p[1]}" width="7" height="7"/>`).join("")}<text class="wf-txt" x="18" y="140">6 of 12 near the line</text>`],
- ["HUB","Site dossier","Panel slides in. Five lens tabs. Grey tiles stay grey.",
-  `<rect class="wf-fill" x="10" y="10" width="150" height="140" rx="3"/><rect class="wf-line" x="168" y="10" width="102" height="140" rx="3"/><text class="wf-txt" x="176" y="30">Lamontville</text><text class="wf-small" x="176" y="44">TEMPORARY 5 YEARS</text>${["P","T","C","R","?"].map((l,i)=>`<rect class="wf-line" x="${176+i*18}" y="52" width="15" height="12"/><text class="wf-small" x="${180+i*18}" y="61">${l}</text>`).join("")}<rect class="wf-risk" x="176" y="74" width="40" height="28"/><rect class="wf-risk" x="222" y="74" width="40" height="28"/><rect class="wf-fill" x="176" y="108" width="40" height="28"/><rect class="wf-fill" x="222" y="108" width="40" height="28"/><circle class="wf-site" cx="80" cy="80" r="7"/>`],
- ["05","Why","Two gates. Durban's sites drop out at both.",
-  `<rect class="wf-fill" x="10" y="10" width="260" height="140" rx="3"/><rect class="wf-line" x="80" y="36" width="10" height="92"/><rect class="wf-line" x="180" y="36" width="10" height="92"/><text class="wf-small" x="54" y="30">A SAY?</text><text class="wf-small" x="150" y="30">CAN RISK STOP IT?</text>${[30,50,70,90,110].map(y=>`<circle class="wf-site" cx="40" cy="${y+8}" r="4"/>`).join("")}<circle class="wf-risk" cx="100" cy="64" r="5"/><circle class="wf-risk" cx="100" cy="98" r="5"/><circle class="wf-site" cx="224" cy="80" r="5"/><text class="wf-small" x="18" y="144">43% VS 92% FELL SHORT</text>`],
- ["06","Add what's missing","Phone form in isiZulu and English. Reviewed before it appears.",
-  `<rect class="wf-fill" x="10" y="10" width="260" height="140" rx="3"/><rect class="wf-line" x="96" y="16" width="88" height="128" rx="10"/><text class="wf-small" x="106" y="36">AMANZI / WATER</text>${[44,62,80,98].map(y=>`<rect class="wf-line" x="106" y="${y}" width="68" height="12" rx="2"/>`).join("")}<rect class="wf-site" x="106" y="120" width="68" height="14" rx="2"/><text class="wf-small" x="22" y="40">21 GAPS</text><text class="wf-small" x="22" y="54">AT 12 SITES</text>`]
+const DIST={lamontville:2,kwadimba:37,gwala:56,lindelani:59,crystal:60,frazer:160,umbilo:347,congo:581,montclair:909,astra:3345,bayside:4024,point:5190};
+const COUNT={lamontville:[100,"households"],congo:[250,"people"],astra:[285,"families"],crystal:[300,"families"],point:[100,"families"],bayside:[64,"families"],kwadimba:[40,"people"],frazer:[118,"families"],montclair:[84,"families"]};
+const COL={red:"#ff5a4d",yellow:"#F5A524",green:"#4ade80",grey:"#64748B"};
+const CN=["Water","Sanitation","Safety","Crowding"];
+const S=G.sites.map(s=>({...s,x:s.x+(s.id==="gwala"?9:0),y:s.y+(s.id==="gwala"?-6:0)}));
+const byId=Object.fromEntries(S.map(s=>[s.id,s]));
+const gaps=s=>s.c.filter(c=>c==="grey").length+1+(/not reported/i.test(s.hh)?1:0)+(/not reported|not confirmed/i.test(s.flooded)?1:0);
+const JOURNEY=[{n:"Mega Village, uMlazi",p:P(-29.966,30.905),d:"April 2019 · homes flooded"},{n:"Tents at Tehuis Hostel",p:P(-29.966,30.924),d:"2019 to 2021 · two years in tents"},{n:"Lamontville riverside camp",p:[byId.lamontville.x,byId.lamontville.y],d:"2021 · flooded April 2022 and February 2025"},{n:"Bayside Hotel",p:[byId.bayside.x,byId.bayside.y],d:"February 2025 · evicted July 2025"},{n:"Umbilo residence",p:[byId.umbilo.x,byId.umbilo.y],d:"July 2025 · still temporary"}];
+
+let tab="family", cond=0, year=2026, focus=null, placed=false;
+const open=s=>s.yin<=year&&(!s.yclosed||s.yclosed>=year);
+const yrs=s=>Math.max(0,Math.min(year,s.yclosed||year)-s.yin);
+const TABS={
+ family:{label:"The family",sent:()=>`Follow <span class="pill">one family</span> from <span class="sel">Mega Village</span> to <span class="sel">Umbilo</span>, <span class="sel">2019 to 2025</span>`},
+ people:{label:"People",sent:()=>`Show <span class="pill">households</span> at <span class="sel">12 temporary sites</span> in <span class="sel">${year}</span>`},
+ time:{label:"Time",sent:()=>`Show <span class="pill">years temporary</span> at <span class="sel">12 temporary sites</span> in <span class="sel">${year}</span>`},
+ conditions:{label:"Conditions",sent:()=>`Show <select id="condsel" aria-label="Condition">${["Water","Sanitation","Safety","Crowding","Electricity"].map((c,i)=>`<option value="${i}"${i===cond?" selected":""}>${c}</option>`).join("")}</select> at <span class="sel">12 temporary sites</span> in <span class="sel">${year}</span>`},
+ risk:{label:"Flood risk",sent:()=>`Show <span class="pill">distance to the flood line</span> for <span class="sel">12 temporary sites</span>`},
+ gaps:{label:"Gaps",sent:()=>`Show <span class="pill">what nobody has recorded</span> at <span class="sel">12 temporary sites</span>`}
+};
+const tabsEl=document.getElementById("tabs");
+tabsEl.innerHTML=Object.entries(TABS).map(([k,t])=>`<button role="tab" type="button" data-t="${k}" aria-selected="${k===tab}">${t.label}</button>`).join("");
+tabsEl.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;tab=b.dataset.t;placed=false;render();});
+const riskCol=d=>d<=60?"#ff5a4d":d<=250?"#F5A524":d<=1000?"#93c5fd":"#64748B";
+
+function render(){
+  tabsEl.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.t===tab));
+  document.getElementById("sentence").innerHTML=TABS[tab].sent();
+  const cs=document.getElementById("condsel"); if(cs) cs.onchange=()=>{cond=+cs.value;render();};
+  floodL.setAttribute("fill-opacity",tab==="risk"?.85:.35);
+  overlay.innerHTML=""; sitesG.innerHTML="";
+  if(tab==="family"){
+    el("path",{d:"M"+JOURNEY.map(j=>j.p.join(" ")).join(" L"),fill:"none",stroke:"#FBC900","stroke-width":2.2,"stroke-dasharray":"6 5"},overlay);
+    JOURNEY.forEach((j,i)=>{el("circle",{cx:j.p[0],cy:j.p[1],r:9,fill:i===2?"#ff5a4d":"#FBC900",stroke:"#0A0E17","stroke-width":2},overlay);
+      const t=el("text",{x:j.p[0],y:j.p[1]+4,"text-anchor":"middle","font-family":"IBM Plex Mono, monospace","font-size":10,"font-weight":500,fill:"#0A0E17"},overlay);t.textContent=i+1;});
+  }
+  S.forEach(s=>{
+    if(tab!=="family"&&!open(s)) return;
+    const g=el("g",{class:"site",tabindex:"0",role:"button","aria-label":s.name},sitesG);
+    let r=6, fill="#FBC900", op=tab==="family"?.35:1;
+    if(tab==="people"){const c=COUNT[s.id]; r=c?4+Math.sqrt(c[0])*0.85:6; fill=c?"#FBC900":"none";}
+    if(tab==="conditions") fill=cond===4?COL.grey:COL[s.c[cond]];
+    if(tab==="risk") fill=riskCol(DIST[s.id]);
+    if(tab==="gaps"){r=4+gaps(s)*2.2; fill="#64748B";}
+    if(tab==="time"){const h=yrs(s)*11;
+      el("rect",{x:s.x-5,y:s.y-h,width:10,height:h,fill:"url(#bar)"},g);
+      el("ellipse",{cx:s.x,cy:s.y-h,rx:5,ry:2.4,fill:"#FFE08A"},g);
+      if(yrs(s)>=4){const t=el("text",{x:s.x+8,y:s.y-h+4,"font-family":"IBM Plex Mono, monospace","font-size":10,fill:"#E8ECF2"},g);t.textContent=yrs(s)+" yrs";}
+      r=4;}
+    el("circle",{class:"hit",cx:s.x,cy:s.y,r:Math.max(r,8),fill:"transparent"},g);
+    el("circle",{cx:s.x,cy:s.y,r,fill:fill==="none"?"#0A0E17":fill,"fill-opacity":fill==="none"?0:op,stroke:fill==="none"?"#94A3B8":"#0A0E17","stroke-width":fill==="none"?1.4:1.2,"stroke-dasharray":fill==="none"?"2 2":"0"},g);
+    if(focus===s.id) el("circle",{cx:s.x,cy:s.y,r:r+6,fill:"none",stroke:"#F8FAFC","stroke-width":1.6},g);
+    const pick=()=>{focus=s.id;placed=false;render();};
+    g.addEventListener("click",pick); g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pick();}});
+  });
+  legend(); side();
+}
+function legend(){
+  const dot=c=>`<i style="background:${c}"></i>`;
+  const m={
+    family:`<b>The family's road</b><div class="row"><span>${dot("#FBC900")}stop</span><span>${dot("#ff5a4d")}flooded camp</span></div>`,
+    people:`<b>Households</b><div class="row"><span>${dot("#FBC900")}size = count reported</span><span><i style="border:1.4px dashed #64748B;background:none"></i>no data</span></div><div>Income, education: no data at site level</div>`,
+    time:`<b>Years temporary</b><div>bar height = years since the site opened, to ${year}</div>`,
+    conditions:cond===4?`<b>Electricity</b><div class="row"><span>${dot(COL.grey)}not recorded at any site</span></div>`:`<b>${CN[cond]}</b><div class="row"><span>${dot(COL.red)}poor</span><span>${dot(COL.yellow)}mixed</span><span>${dot(COL.green)}adequate</span><span>${dot(COL.grey)}no data</span></div>`,
+    risk:`<b>Distance to the 1-in-100-year line</b><div class="row"><span>${dot("#ff5a4d")}0–60 m</span><span>${dot("#F5A524")}60–250 m</span><span>${dot("#93c5fd")}250 m–1 km</span><span>${dot("#64748B")}over 1 km</span></div>`,
+    gaps:`<b>Unrecorded facts</b><div class="row"><span>${dot("#64748B")}size = number of gaps</span></div>`
+  }; document.getElementById("legend").innerHTML=m[tab];
+}
+function storyFor(s){
+  const y=Math.max(0,2026-s.yin), c=s.c, rate={red:"poor",yellow:"mixed",green:"adequate"};
+  const L=[`You live at <b>${s.name}</b>. It opened as a temporary site in ${s.yin}${s.yclosed?` and closed in ${s.yclosed}.`:`, ${y} year${y===1?"":"s"} ago, and it is still temporary.`}`];
+  L.push(/not reported/i.test(s.hh)?`Nobody has published how many people live here with you.`:`Around you: ${s.hh.replace(/^About/,"about")}.`);
+  const known=CN.filter((n,i)=>c[i]!=="grey"), unknown=CN.filter((n,i)=>c[i]==="grey");
+  if(known.length) L.push(`Reports rate ${known.map(n=>`${n.toLowerCase()} as ${rate[c[CN.indexOf(n)]]}`).join(", ")}.`);
+  L.push(`No one has recorded ${unknown.length?`your ${unknown.map(n=>n.toLowerCase()).join(", ")}, or `:""}whether you have electricity.`);
+  const d=DIST[s.id]; L.push(d<=250?`Your home sits about ${d} m from the city's own 1-in-100-year flood line.`:`The city's 1-in-100-year flood line is about ${d>=1000?(d/1000).toFixed(1)+" km":d+" m"} away.`);
+  L.push(/^(April|February)/.test(s.flooded)?`<b>This site flooded in ${s.flooded}.</b>`:`No flood has been reported here. That may mean it hasn't flooded, or that nobody checked.`);
+  return L;
+}
+function side(){
+  const A=document.getElementById("side");
+  if(focus){const s=byId[focus];
+    if(placed){A.innerHTML=`<span class="k">Place me here · told from the record</span><h3>${s.name}</h3><div class="story">${storyFor(s).map(l=>`<p>${l}</p>`).join("")}</div>
+      ${s.id==="lamontville"?`<button class="cta" type="button" id="sim">Watch the night of 26 Feb 2025</button>`:""}
+      <button class="ghost" type="button" id="add">Live here? Add what's missing</button><button class="ghost" type="button" id="back">Back to the site</button>
+      <p class="note">Every sentence comes from this site's sourced facts. No person is invented.</p>`;}
+    else{A.innerHTML=`<span class="k">${s.kind==="camp"?"Transit camp":s.kind==="building"?"Rented building":"Journey stop"} · since ${s.yin}</span><h3>${s.name}</h3>
+      <div><div class="big">${Math.max(0,(s.yclosed||2026)-s.yin)} yrs</div><p>temporary${s.yclosed?`, closed ${s.yclosed}`:" and counting"}</p></div>
+      <p>${s.hh}</p>
+      <div class="tiles">${CN.map((n,i)=>`<div class="tile"><i style="background:${COL[s.c[i]]}"></i>${n}</div>`).join("")}<div class="tile"><i style="background:${COL.grey}"></i>Electricity</div><div class="tile">${DIST[s.id]} m to flood line</div></div>
+      <button class="cta" type="button" id="place">Place me here</button><button class="ghost" type="button" id="clear">All sites</button>`;}
+    const on=(id,f)=>{const b=document.getElementById(id);if(b)b.onclick=f;};
+    on("place",()=>{placed=true;side();}); on("back",()=>{placed=false;side();}); on("clear",()=>{focus=null;render();});
+    on("add",()=>{tab="gaps";placed=false;render();}); on("sim",()=>{document.getElementById("sim").textContent="Opens the 3D Gwala Street flood";});
+    return;}
+  const T={
+    family:`<span class="k">Start here</span><h3>Four moves in six years</h3><div class="story">${JOURNEY.map((j,i)=>`<p><b>${i+1}. ${j.n}</b><br>${j.d}</p>`).join("")}</div><p class="note">Opens with the film. At stop 3 the 3D flood takes over.</p>`,
+    people:`<span class="k">People</span><h3>Who carries the risk</h3><p>Household counts where they're reported, as reported. Two sites publish no count at all.</p><p class="note">Income and education would come from the Census for the surrounding ward and be labelled as the neighbourhood, never as the residents.</p>`,
+    time:`<span class="k">Time</span><h3>Temporary for how long?</h3><p>Press Play to watch 2007 to 2026. The Larger Gwala Street camp has been "temporary" since 2008.</p>`,
+    conditions:`<span class="k">Conditions</span><h3>Daily life, by the record</h3><p>Switch the condition in the sentence above the map. Grey means no one has reported it. Of 48 ratings, 21 are grey; electricity isn't recorded anywhere.</p>`,
+    risk:`<span class="k">Flood risk</span><h3>Half sit at the line</h3><p>By pin, 6 of the 12 sites sit within 250 m of the city's own 1-in-100-year flood line. Inside that line, the city's map implies at least a 1% chance of flooding every year.</p><p class="note">Pins are approximate; site outlines would make this exact.</p>`,
+    gaps:`<span class="k">Gaps</span><h3>What nobody wrote down</h3><p>Bigger circle, more unknowns. This tab feeds the community portal: the people who live there can fill it in.</p>`
+  }; A.innerHTML=T[tab]+`<p class="note">Click any site, or search above.</p>`;
+}
+const q=document.getElementById("q"), res=document.getElementById("res");
+q.addEventListener("input",()=>{const v=q.value.trim().toLowerCase(); if(!v){res.hidden=true;return;}
+  const items=[];
+  S.filter(s=>s.name.toLowerCase().includes(v)||s.id.includes(v)).forEach(s=>items.push([s.name,"site",()=>{focus=s.id;}]));
+  if(/fam|journey|umlazi|umbilo|mega|child|kid/.test(v)) items.push(["From uMlazi to Umbilo: the family's four moves","journey",()=>{tab="family";focus=null;}]);
+  if(/flood/.test(v)) items.push(["Which sites flooded? Lamontville riverside camp, 2022 and 2025","answer",()=>{focus="lamontville";tab="risk";}]);
+  if(/old|long|year/.test(v)) items.push(["Temporary the longest: Larger Gwala Street camp, since 2008","answer",()=>{tab="time";focus="gwala";}]);
+  if(/water|toilet|sanit|power|electric/.test(v)) items.push(["See conditions at every site","view",()=>{tab="conditions";cond=/toilet|sanit/.test(v)?1:/power|electric/.test(v)?4:0;focus=null;}]);
+  if(/miss|gap|unknown/.test(v)) items.push(["What nobody has recorded","view",()=>{tab="gaps";focus=null;}]);
+  res.innerHTML=items.length?items.slice(0,6).map((it,i)=>`<button type="button" data-i="${i}">${it[0]}<small>${it[1]}</small></button>`).join(""):`<button type="button" disabled>No match in our data yet<small>try a site name</small></button>`;
+  res.hidden=false; res.querySelectorAll("button[data-i]").forEach(b=>b.onclick=()=>{res.hidden=true;q.value="";placed=false;items[+b.dataset.i][2]();render();});
+});
+q.addEventListener("keydown",e=>{if(e.key==="Enter"){const b=res.querySelector("button[data-i]");if(b)b.click();}if(e.key==="Escape")res.hidden=true;});
+const yr=document.getElementById("yr"), yro=document.getElementById("yro"), play=document.getElementById("play"); let timer=null;
+yr.oninput=()=>{year=+yr.value;yro.textContent=year;render();};
+play.onclick=()=>{ if(timer){clearInterval(timer);timer=null;play.textContent="Play";return;}
+  if(tab==="family")tab="time"; year=2007; play.textContent="Pause";
+  timer=setInterval(()=>{yr.value=year;yro.textContent=year;render(); if(year>=2026){clearInterval(timer);timer=null;play.textContent="Play";} else year++;},450);};
+render();
+})();
+</script>
+<script src="site-flow-hero.js"></script>
+<script>
+/* Landing: exploded block of the Gwala Street simulation (rain grid, terrain wireframe, ground + water) */
+(function(){
+const D=window.HERO||(typeof HERO!=="undefined"?HERO:null), cv=document.getElementById("hc"); if(!D||!cv) return;
+const ctx=cv.getContext("2d"), w=D.w, h=D.h, Z=D.z, raw=atob(D.d), N=w*h;
+const depth=new Uint8Array(raw.length); for(let i=0;i<raw.length;i++) depth[i]=raw.charCodeAt(i);
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const C=Math.cos(Math.PI/6), Sn=Math.sin(Math.PI/6);
+let W=0,H=0,s=1,ox=0,oy=0,zs=1,gap=1,narrow=false;
+function size(){const r=cv.getBoundingClientRect(), dpr=Math.min(2,devicePixelRatio||1); W=r.width;H=r.height; cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr); ctx.setTransform(dpr,0,0,dpr,0,0);
+  narrow=W<700; s=Math.min(W*(narrow?0.9:0.5)/((w+h)*C), H*(narrow?0.36:0.42)/((w+h)*Sn)); zs=s*0.16; gap=Math.min(H*0.18,s*30);
+  ox=narrow?W*0.5-(w-h)*C*s/2:W*0.6-(w-h)*C*s/2; oy=(narrow?H*0.3:H*0.08)+2*gap+(D.zmax-D.zmin)*zs;}
+const pt=(i,j,z,layer)=>[ox+(j-i)*C*s, oy+(j+i)*Sn*s-(z-D.zmin)*zs-layer*gap];
+const SH=new Float32Array(N);
+for(let i=0;i<h;i++)for(let j=0;j<w;j++){const a=Z[i*w+Math.min(w-1,j+1)]-Z[i*w+Math.max(0,j-1)], b=Z[Math.min(h-1,i+1)*w+j]-Z[Math.max(0,i-1)*w+j]; SH[i*w+j]=Math.max(0.4,Math.min(1.2,0.85-(a*0.9+b*0.5)/D.cell_m*2.2));}
+let t0=performance.now(), drops=[];
+const set=(id,v)=>{const e=document.getElementById(id); if(e) e.textContent=v;};
+function frame(now){
+  const cyc=D.frames+8, fpos=reduce?16:((now-t0)/380)%cyc, fi=Math.min(D.frames-1,Math.floor(fpos)), a=fpos>=D.frames-1?0:fpos-fi;
+  ctx.clearRect(0,0,W,H);
+  ctx.strokeStyle="rgba(232,236,242,.16)"; ctx.lineWidth=1;
+  [[0,0],[0,w-1],[h-1,0],[h-1,w-1]].forEach(([i,j])=>{const b=pt(i,j,D.zmin-12,0), t=pt(i,j,D.zmax,2); ctx.beginPath();ctx.moveTo(b[0],b[1]);ctx.lineTo(t[0],t[1]);ctx.stroke();});
+  const hour=Math.min(D.rain.length-1,Math.floor(fi*D.frame_minutes/60)), rain=D.rain[hour]||0;
+  ctx.fillStyle="rgba(232,236,242,.5)";
+  for(let i=0;i<h;i+=3)for(let j=0;j<w;j+=3){const p=pt(i,j,D.zmax,2);ctx.fillRect(p[0]-.8,p[1]-.8,1.6,1.6);}
+  if(!reduce){const want=Math.round(rain*12); while(drops.length<want) drops.push({i:Math.random()*(h-1),j:Math.random()*(w-1),k:Math.random()}); drops.length=Math.min(drops.length,want);
+    ctx.strokeStyle="rgba(120,190,230,.6)"; ctx.beginPath();
+    drops.forEach(d=>{d.k+=0.03; if(d.k>1){d.k=0;d.i=Math.random()*(h-1);d.j=Math.random()*(w-1);} const top=pt(d.i,d.j,D.zmax,2), bot=pt(d.i,d.j,Z[(d.i|0)*w+(d.j|0)],0), y=top[1]+(bot[1]-top[1])*d.k; ctx.moveTo(top[0],y);ctx.lineTo(top[0],y+8);}); ctx.stroke();}
+  ctx.strokeStyle="rgba(232,236,242,.3)"; ctx.lineWidth=.7; ctx.beginPath();
+  for(let i=0;i<h;i+=2)for(let j=0;j<w;j++){const p=pt(i,j,Z[i*w+j],1); j?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);}
+  for(let j=0;j<w;j+=2)for(let i=0;i<h;i++){const p=pt(i,j,Z[i*w+j],1); i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);}
+  ctx.stroke();
+  ctx.fillStyle="#1a2232"; ctx.beginPath();
+  for(let j=0;j<w;j++){const p=pt(h-1,j,Z[(h-1)*w+j],0); j?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);} for(let j=w-1;j>=0;j--){const p=pt(h-1,j,D.zmin-12,0);ctx.lineTo(p[0],p[1]);} ctx.fill();
+  ctx.fillStyle="#131a27"; ctx.beginPath();
+  for(let i=0;i<h;i++){const p=pt(i,w-1,Z[i*w+w-1],0); i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);} for(let i=h-1;i>=0;i--){const p=pt(i,w-1,D.zmin-12,0);ctx.lineTo(p[0],p[1]);} ctx.fill();
+  const o0=fi*N, o1=Math.min(D.frames-1,fi+1)*N;
+  for(let k=0;k<=h+w-4;k++){for(let i=Math.max(0,k-(w-2));i<=Math.min(h-2,k);i++){const j=k-i;
+    const id=i*w+j, dep=(depth[o0+id]*(1-a)+depth[o1+id]*a)/D.depth_scale, wet=dep>0.08, add=wet?dep:0;
+    const p1=pt(i,j,Z[id]+add,0),p2=pt(i,j+1,Z[id+1]+add,0),p3=pt(i+1,j+1,Z[id+w+1]+add,0),p4=pt(i+1,j,Z[id+w]+add,0);
+    const t=(Z[id]-D.zmin)/(D.zmax-D.zmin), sh=SH[id]; let r=(58+72*t)*sh, g=(80+56*t)*sh, b=(54+40*t)*sh;
+    if(wet){const q=Math.min(1,0.5+dep/2); r=r*(1-q)+38*q; g=g*(1-q)+(156-Math.min(80,dep*30))*q; b=b*(1-q)+(224-Math.min(60,dep*14))*q;}
+    ctx.fillStyle=`rgb(${r|0},${g|0},${b|0})`; ctx.beginPath();ctx.moveTo(p1[0],p1[1]);ctx.lineTo(p2[0],p2[1]);ctx.lineTo(p3[0],p3[1]);ctx.lineTo(p4[0],p4[1]);ctx.closePath();ctx.fill();ctx.strokeStyle=ctx.fillStyle;ctx.lineWidth=.6;ctx.stroke();}}
+  D.camps.forEach((c,ci)=>{const i=c.c[1],j=c.c[0], g=Z[Math.round(i)*w+Math.round(j)], b=pt(i,j,g,0), t=pt(i,j,g,0.75); const lift=ci?40:0;
+    ctx.strokeStyle=ci?"#E8ECF2":"#FBC900"; ctx.lineWidth=1.4; ctx.beginPath();ctx.moveTo(b[0],b[1]);ctx.lineTo(t[0],t[1]-lift);ctx.stroke();
+    ctx.fillStyle=ci?"#E8ECF2":"#FBC900"; ctx.beginPath();ctx.arc(b[0],b[1],3,0,7);ctx.fill();
+    ctx.font="500 11px 'IBM Plex Mono', monospace"; ctx.fillText(ci?"CAMP NEXT DOOR":"RIVERSIDE CAMP",t[0]+6,t[1]-lift+4);});
+  if(!narrow){ctx.font="500 10px 'IBM Plex Mono', monospace"; ctx.fillStyle="#94A3B8";
+    [["RAIN · ERA5 HOURLY",2,D.zmax],["TERRAIN · eTHEKWINI LIDAR",1,D.zmin+20],["GROUND + WATER · SIMULATED",0,D.zmin-6]].forEach(([l,ly,z])=>{const p=pt(0,w-1,z,ly);ctx.fillText(l,p[0]+14,p[1]);});}
+  const tm=D.start.split("T")[1].split(":").map(Number), mins=tm[0]*60+tm[1]+fi*D.frame_minutes, pad=n=>String(n).padStart(2,"0");
+  set("hclock",pad(Math.floor(mins/60)%24)+":"+pad(mins%60)); set("hd1",D.camps[0].d[fi].toFixed(2)+" m"); set("hd2",D.camps[1].d[fi].toFixed(2)+" m"); set("hrain",rain.toFixed(1)+" mm");
+  if(!reduce) requestAnimationFrame(frame);
+}
+size(); addEventListener("resize",()=>{size(); if(reduce) requestAnimationFrame(frame);}); requestAnimationFrame(frame);
+})();
+</script>
+<script>
+/* Layer stack: the same map as five floating sheets; click one to read its story, open it flat */
+(function(){
+const G=window.GEO||(typeof GEO!=="undefined"?GEO:null), stack=document.getElementById("stack"), inner=document.getElementById("sinner"), card=document.getElementById("scard"), tabs=document.getElementById("tabs");
+if(!G||!stack||!tabs) return;
+const W=G.w,H=G.h, NS="http://www.w3.org/2000/svg";
+const S=G.sites.map(s=>({...s,x:s.x+(s.id==="gwala"?9:0),y:s.y+(s.id==="gwala"?-6:0)}));
+const COUNT={lamontville:100,congo:250,astra:285,crystal:300,point:100,bayside:64,kwadimba:40,frazer:118,montclair:84};
+const gaps=s=>s.c.filter(c=>c==="grey").length+1+(/not reported/i.test(s.hh)?1:0)+(/not reported|not confirmed/i.test(s.flooded)?1:0);
+const L=[
+ {k:"ground",t:"Ground",z:0,tab:null,story:"The city underneath: the coast and the rivers that drain into it. Every other layer sits on this.",
+  draw:`<rect width="${W}" height="${H}" fill="#121a2a"/><path d="${G.ocean}" fill="#0A0E17" stroke="#5d7a99"/><path d="${G.rivers}" fill="none" stroke="#2a5f86" stroke-width="1.2"/>`},
+ {k:"flood",t:"Flood plain",z:1,tab:"risk",story:"The city's own 1-in-100-year flood line. By pin, 6 of the 12 temporary sites sit within 250 m of it.",
+  draw:`<rect width="${W}" height="${H}" fill="rgba(18,26,42,.18)"/><path d="${G.flood}" fill="#3d8fd0" fill-opacity=".85"/>`},
+ {k:"sites",t:"Temporary sites",z:2,tab:"time",story:"Where the families were placed: 12 sites, the oldest 'temporary' since 2008. Stacked on the flood plain, the overlap shows itself.",
+  draw:`<rect width="${W}" height="${H}" fill="rgba(18,26,42,.18)"/>`+S.map(s=>`<circle cx="${s.x}" cy="${s.y}" r="10" fill="#FBC900" stroke="#0A0E17" stroke-width="2"/>`).join("")},
+ {k:"people",t:"People",z:3,tab:"people",story:"Household counts where sources give them. Dashed rings: nobody has published a count. Income and education aren't recorded for residents at all.",
+  draw:`<rect width="${W}" height="${H}" fill="rgba(18,26,42,.18)"/>`+S.map(s=>COUNT[s.id]?`<circle cx="${s.x}" cy="${s.y}" r="${6+Math.sqrt(COUNT[s.id])*1.3}" fill="#F5A524" fill-opacity=".85"/>`:`<circle cx="${s.x}" cy="${s.y}" r="12" fill="none" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4 4"/>`).join("")},
+ {k:"gaps",t:"Missing data",z:4,tab:"gaps",story:"What nobody has written down, site by site. This is the layer the community portal would fill.",
+  draw:`<rect width="${W}" height="${H}" fill="rgba(18,26,42,.18)"/>`+S.map(s=>`<circle cx="${s.x}" cy="${s.y}" r="${6+gaps(s)*3.2}" fill="#94A3B8" fill-opacity=".7"/>`).join("")}
 ];
-document.getElementById("screens").innerHTML=S.map(s=>`<div class="scr"><span class="k">${s[0]}</span><h3>${s[1]}</h3><svg viewBox="0 0 280 160" role="img" aria-label="Sketch of ${s[1]}">${s[3]}</svg><p class="cap">${s[2]}</p></div>`).join("");
+inner.innerHTML=L.map(l=>`<div class="sheet" data-k="${l.k}" style="--z:0px" role="button" tabindex="0" aria-label="${l.t} layer"><svg viewBox="0 0 ${W} ${H}" aria-hidden="true">${l.draw}<text x="18" y="44" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="34" fill="#F8FAFC" letter-spacing="1">${l.t.toUpperCase()}</text></svg></div>`).join("");
+let sel=null;
+function cardFor(){
+  if(!sel){card.innerHTML=`<b>Five layers, one map</b><span>Ground, flood plain, temporary sites, people, missing data. Click a layer to lift it out.</span><span class="hint">Click "Flat map" to go back.</span>`;return;}
+  const l=L.find(x=>x.k===sel);
+  card.innerHTML=`<b>${l.t}</b><span>${l.story}</span>${l.tab?`<button type="button" id="openlayer">Open this layer on the map</button>`:""}<span class="hint">Click another layer to compare.</span>`;
+  const b=document.getElementById("openlayer"); if(b) b.onclick=()=>{flat(); const t=tabs.querySelector(`button[data-t="${l.tab}"]`); if(t) t.click();};
+}
+function layout(){inner.querySelectorAll(".sheet").forEach(el=>{const l=L.find(x=>x.k===el.dataset.k); const base=l.z*62, lift=sel===l.k?46:0; el.style.setProperty("--z",(base+lift)+"px"); el.classList.toggle("on",sel===l.k);}); stack.classList.toggle("dim",!!sel); cardFor();}
+inner.addEventListener("click",e=>{const el=e.target.closest(".sheet"); if(!el) return; sel=sel===el.dataset.k?null:el.dataset.k; layout();});
+inner.addEventListener("keydown",e=>{if(e.key!=="Enter"&&e.key!==" ") return; const el=e.target.closest(".sheet"); if(!el) return; e.preventDefault(); sel=el.dataset.k; layout();});
+const btn=document.createElement("button"); btn.type="button"; btn.className="stackbtn"; btn.textContent="Stack layers"; tabs.appendChild(btn);
+function flat(){stack.hidden=true; btn.textContent="Stack layers"; inner.querySelectorAll(".sheet").forEach(el=>el.style.setProperty("--z","0px"));}
+btn.addEventListener("click",e=>{e.stopPropagation(); if(!stack.hidden){flat();return;} stack.hidden=false; btn.textContent="Flat map"; sel=null; cardFor(); requestAnimationFrame(()=>requestAnimationFrame(layout));});
+if(location.hash==="#layers"){btn.click(); setTimeout(()=>{sel="flood";layout();},900);}
+})();
 </script>
