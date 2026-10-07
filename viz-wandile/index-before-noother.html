@@ -415,7 +415,7 @@ body.cond .time{grid-template-columns:34px minmax(0,1fr) auto auto}
   </div>
   <div class="glass layers" id="layers">
     <button type="button" data-l="sites"><i class="sw" style="width:12px;height:12px;border-radius:50%;background:#FBC900;box-shadow:0 0 8px #FBC900"></i><span>Temporary relocation sites</span><i class="tg"></i></button>
-    
+    <button type="button" data-l="other"><i class="sw" style="width:11px;height:11px;border-radius:50%;border:2px solid #FBC900;background:rgba(251,201,0,.25)"></i><span>Other TRAs (approx. location)</span><i class="tg"></i></button>
     <button type="button" data-l="flood"><i class="sw" style="width:20px;height:10px;background:#2E7FE0;border-radius:2px"></i><span>1-in-100-year floodplain</span><i class="tg"></i></button>
     <button type="button" data-l="water" class="off"><i class="sw" style="width:20px;height:10px;background:linear-gradient(90deg,#d5fff6,#4fd6c4,#0f9488);border-radius:2px"></i><span>Satellite water record</span><i class="tg"></i></button>
     <button type="button" data-l="rivers"><i class="sw" style="width:20px;height:3px;background:#7CC8FF"></i><span>Rivers</span><i class="tg"></i></button>
@@ -462,7 +462,7 @@ const map=$('map'), cv=$('cv'), ctx=cv.getContext('2d'), rain=$('rain'), rctx=ra
 const IM={base:new Image(), relief:new Image(), wnear:new Image(), wfar:new Image()};
 IM.base.src='assets/basemap.jpg'; IM.relief.src='assets/relief.jpg'; IM.wnear.src='assets/water_near.png'; IM.wfar.src='assets/water_far.png';
 for(const k in IM) IM[k].onload=()=>draw();
-const LAY={sites:true,other:false,flood:true,water:false,rivers:true};
+const LAY={sites:true,other:true,flood:true,water:false,rivers:true};
 let W=0,H=0,DPR=1, mode='map', year=2026, selected=null, hover=null, journeyOn=false, cutOn=false, muted=false, tab='overview', view2='map';
 let pulse=null, journeyT0=0, anim=null, playing=null, raf=0;
 const HOME={x:mx(30.99), y:my(-29.79)};
@@ -930,6 +930,7 @@ document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{ const v=b.dat
 const q=$('q'), res=$('res');
 q.addEventListener('input',()=>{ const v=q.value.trim().toLowerCase(); if(!v){res.hidden=true;return;} const items=[];
   SITES.filter(s=>(s.name+' '+s.addr+' '+s.type).toLowerCase().includes(v)).forEach(s=>items.push([s.name,'site',()=>select(s.id,true)]));
+  OTHER_TRA.filter(o=>o.name.toLowerCase().includes(v)).forEach(o=>items.push([o.name,'other TRA',()=>showOther(o)]));
   PLACES.filter(p=>p[0].toLowerCase().includes(v)).forEach(p=>items.push([p[0],'place',()=>flyTo(p.X,p.Y,13.2)]));
   if(/flood/.test(v)) items.push(['Sites that flooded: Lamontville riverside camp, 2022 and 2025','answer',()=>select('lamontville',true)]);
   if(/famil|journey|moved/.test(v)) items.push(['From uMlazi to Umbilo: four moves in six years','journey',()=>{select('lamontville',true);setTimeout(()=>{tab='movement';toggleJourney();},950);}]);
