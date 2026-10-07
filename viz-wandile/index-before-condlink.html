@@ -770,8 +770,6 @@ function condPanelHTML(){ const x=byId[condSite], d=DIST[x.id], c=condOf(x,condK
   return h; }
 function compareHTML(){ return '<div class="top"><button class="back" id="cmpback">← Back to '+esc(byId[condSite].name)+'</button></div><div class="kick">Compare sites</div><h2 style="margin-top:6px">Daily life at every site</h2><p class="sub">From news reports and official statements. Grey means nobody has reported it.</p><table class="cmp"><thead><tr><th>Site</th><th>Water</th><th>Toilets</th><th>Safety</th><th>Crowding</th></tr></thead><tbody>'+SITES.map(x=>'<tr><td><button class="back" data-id="'+x.id+'">'+esc(x.name)+'</button></td>'+['water','san','safe','crowd'].map(k=>'<td><i class="d '+x[k][0]+'"></i></td>').join('')+'</tr>').join('')+'</tbody></table><p class="sub" style="margin-top:12px">21 of 48 ratings are not reported, and electricity isn\'t recorded at most sites.</p>'; }
 function condFly(){ const x=byId[condSite], z=14.8, k=256*Math.pow(2,z); flyTo(x.X+(W>820?170:0)/k, x.Y+(W>820?110:0)/k, z); }
-/* the Conditions tab in a site's panel opens the full comparison for that site */
-function openCond(id){ condSite=id; condK='water'; condCmp=false; selected=null; view2='conditions'; setNav(); panel(); condFly(); }
 function setCond(id,k){ if(id) condSite=id; if(k) condK=k; condCmp=false; panel(); }
 function renderCond(){ const box=$('panel'), foot=$('panelfoot'); foot.innerHTML='';
   $('cstrip').innerHTML=stripHTML(); $('cstrip').querySelectorAll('.cpills button').forEach(b=>b.onclick=()=>setCond(null,b.dataset.k));
@@ -787,7 +785,7 @@ function panel(){ const box=$('panel'), foot=$('panelfoot'), s=selected&&byId[se
   if(view2==='about'){ box.innerHTML=aboutHTML(); foot.innerHTML=''; $('back').onclick=()=>{view2='map';setNav();panel();}; return; }
   if(view2==='report'){ box.innerHTML=''; foot.innerHTML=''; return; } /* the Report page (report/report.js) holds the form */
   if(!s){ box.innerHTML=storyHTML(); foot.innerHTML='';
-    box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{ if(b.dataset.st==='conditions'){ openCond('lamontville'); return; } stab=b.dataset.st;panel();});
+    box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{stab=b.dataset.st;panel();});
     if($('sj')) $('sj').onclick=()=>{select('lamontville',true);setTimeout(()=>{tab='movement';toggleJourney();},950);};
     box.querySelectorAll('.list button').forEach(b=>b.onclick=()=>select(b.dataset.id,true)); startArc(); startVid(); return; }
   const i=SITES.indexOf(s), d=DIST[s.id], n=yearsOpen(s,2026);
@@ -811,7 +809,7 @@ function panel(){ const box=$('panel'), foot=$('panelfoot'), s=selected&&byId[se
   foot.innerHTML=LINK[s.id]?'<a class="explore" target="_blank" rel="noopener" href="'+LINK[s.id]+'">Explore this site in 3D: the 2022 storm <span aria-hidden="true">→</span></a>':'<button class="explore" id="zoomsite">Zoom in on this site <span aria-hidden="true">→</span></button>';
   $('back').onclick=()=>select(null);
   $('prev').onclick=()=>select(SITES[(i-1+SITES.length)%SITES.length].id,true); $('next').onclick=()=>select(SITES[(i+1)%SITES.length].id,true);
-  box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{ if(b.dataset.t==='conditions'){ openCond(s.id); return; } tab=b.dataset.t;panel();});
+  box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;panel();});
   if($('bj')) $('bj').onclick=()=>toggleJourney(); if($('bc')) $('bc').onclick=()=>toggleCut();
   if($('zoomsite')) $('zoomsite').onclick=()=>flyTo(s.X,s.Y,16.6); }
 function showOther(o){ selected=null; view2='map'; setNav(); const box=$('panel');
