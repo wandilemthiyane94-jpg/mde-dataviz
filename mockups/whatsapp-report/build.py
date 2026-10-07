@@ -16,7 +16,7 @@ CSS = """
 .wa-av{width:38px;height:38px;border-radius:50%;background:#FBC900;display:grid;place-items:center}
 .wa-av svg{width:22px;height:26px}
 .wa-name{font-weight:600;font-size:16px}.wa-sub{font-size:12px;color:#8696A0}
-.wa-body{flex:1;padding:12px 10px;display:flex;flex-direction:column;gap:6px;overflow:hidden;background:#0B141A radial-gradient(rgba(255,255,255,.025) 1px,transparent 1px) 0 0/18px 18px}
+.wa-body{flex:1;padding:12px 10px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;overflow:hidden;background:#0B141A radial-gradient(rgba(255,255,255,.025) 1px,transparent 1px) 0 0/18px 18px}
 .b{max-width:82%;padding:7px 9px 18px;border-radius:8px;font-size:14px;line-height:1.38;color:#E9EDEF;position:relative;white-space:pre-line}
 .b.in{background:#202C33;align-self:flex-start;border-top-left-radius:2px}
 .b.out{background:#005C4B;align-self:flex-end;border-top-right-radius:2px}
@@ -45,7 +45,7 @@ def qr(size=220, seed=7):
             if r.random() < .48: cells.append(f'<rect x="{j*c:.2f}" y="{i*c:.2f}" width="{c+.3:.2f}" height="{c+.3:.2f}" fill="#0B0F19"/>')
     return f'<svg width="{size}" height="{size}" viewBox="0 0 {size} {size}"><rect width="{size}" height="{size}" fill="#fff"/>{"".join(cells)}{finder(0,0)}{finder(n-7,0)}{finder(0,n-7)}</svg>'
 def phone(chat, note):
-    return page(f'<div class="wa"><div class="wa-top"><span style="font-size:20px">‹</span><div class="wa-av">{PIN}</div><div><div class="wa-name">Moved Into the Water</div><div class="wa-sub">Report line · research project</div></div></div><div class="wa-body">{chat}</div><div class="wa-in"><span>Message</span><i></i></div></div><div class="note" style="bottom:72px;right:auto;left:10px">{note}</div>', 390, 844)
+    return page(f'<div class="wa"><div class="wa-top"><span style="font-size:20px">‹</span><div class="wa-av">{PIN}</div><div><div class="wa-name">Moved Into the Water</div><div class="wa-sub">Report line · research project</div></div></div><div class="wa-body">{chat}</div><div class="wa-in"><span>Message</span><i></i></div></div>', 390, 844)
 B = lambda side, txt, t="10:42": f'<div class="b {side}">{txt}<time>{t}</time></div>'
 
 F = {}
@@ -82,7 +82,7 @@ F["03-chat-report"] = (phone(
  B("in", "Tell us what is happening, in your own words. You can send a voice note too.", "10:43") +
  B("out", "[Example message] The tap has not worked since Monday. We are carrying water from the next street.", "10:45") +
  B("in", "Thank you. Do you have a photo or video? (Please avoid faces.)", "10:45") +
- '<div class="b out" style="padding:4px 4px 18px"><div class="ph">PHOTO · EXAMPLE</div><time>10:46</time></div>',
+ '<div class="b out" style="padding:4px 4px 18px"><div style="position:relative;width:230px;height:154px;border-radius:6px;overflow:hidden;margin-bottom:4px;background:url(../img/gu_lamontville_camp_2022.jpg) center/cover"><span style="position:absolute;left:5px;bottom:5px;font:500 8.5px var(--mono);background:rgba(0,0,0,.6);color:#ddd;padding:1px 5px;border-radius:3px">Example photo · Nokulunga Majola / GroundUp</span></div><time>10:46</time></div>' + B("out", "[Example] This is our part of the camp", "10:46"),
  "03 · Topic, words, photo"), (390, 844))
 
 F["04-chat-done"] = (phone(
