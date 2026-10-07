@@ -69,3 +69,6 @@
 @keyframes ixdrop{0%{transform:translate(-50%,-260%) scale(1.25);opacity:0}15%{opacity:1}70%{transform:translate(-50%,-100%) scale(1)}82%{transform:translate(-50%,-112%)}100%{transform:translate(-50%,-100%)}}
 @media (max-width:820px){.ix-dragcard{display:none}.ix-prog span{display:none}.ix-counter{top:70px}.ix-chrome .ix-brand{display:none}.ix-chrome{gap:10px}.ix-prog{margin:0}.ix-skip{margin-left:auto}}
 @media (prefers-reduced-motion:reduce){.ix-red,.ix-ring,.ix-rain{animation:none}#intro{transition:opacity .4s}}
+/* yellow points on the flood-plain trace */
+.ix-yd{position:absolute;width:max(14px,1.1cqw);height:max(14px,1.1cqw);border-radius:50%;background:#FBC900;box-shadow:0 0 0 4px rgba(251,201,0,.25),0 0 18px rgba(251,201,0,.6);transform:translate(-50%,-50%) scale(0);transition:transform .35s cubic-bezier(.3,1.6,.5,1);z-index:4}
+.ix-yd.on{transform:translate(-50%,-50%) scale(1)}

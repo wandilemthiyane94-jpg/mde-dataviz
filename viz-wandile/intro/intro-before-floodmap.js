@@ -5,7 +5,7 @@
 (function(){
 if (window.INTRO_ON === false || location.hash === '#map') return;
 const BASE='intro/', FPS=4, NF=244, fr=i=>BASE+'film8/f'+String(i).padStart(3,'0')+'.jpg';
-const PTS={bg_drop:{mega:[50.02,50.06]},bg_mapA:{mega:[13.15,65.7],tehuis:[47.73,65.7],lamont:[86.88,24.35]},bg_mapB:{lamont:[30.18,91.15],bayside:[69.86,9.05],umbilo:[48.02,35.56]},bg_flood:{mega:[29.63,82.5],tehuis:[35.67,82.5],lamont:[42.5,75.29],bayside:[70.43,17.5],umbilo:[55.05,36.16]}};
+const PTS={bg_drop:{mega:[50.02,50.06]},bg_mapA:{mega:[13.15,65.7],tehuis:[47.73,65.7],lamont:[86.88,24.35]},bg_mapB:{lamont:[30.18,91.15],bayside:[69.86,9.05],umbilo:[48.02,35.56]}};
 const PIN='<svg viewBox="0 0 56 70" aria-hidden="true"><path d="M28 68C28 68 4 42 4 26a24 24 0 0148 0c0 16-24 42-24 42z" fill="#FBC900"/><circle cx="21" cy="19" r="4" fill="#0B0F19"/><circle cx="35" cy="19" r="4" fill="#0B0F19"/><circle cx="28" cy="31" r="3" fill="#0B0F19"/><path d="M14 38v-6a7 7 0 0114 0v6zM28 38v-6a7 7 0 0114 0v6z" fill="#0B0F19"/><path d="M23 44v-4a5 5 0 0110 0v4z" fill="#0B0F19"/></svg>';
 const CRED='Illustration from our animation · the moves follow GroundUp\'s reporting on families from this camp (June 2022)';
 const TOWNS=[['uMlazi','where this story starts'],['Lamontville',''],['Isipingo',''],['KwaMashu',''],['Inanda',''],['Umbilo',''],['Durban central',''],['Chatsworth',''],['Pinetown','']];
@@ -24,10 +24,9 @@ const SC=[
  {id:'back',type:'film',fps:2.5,a:100,b:122,moves:2,auto:2500,card:{w:'380px',pos:'right:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'2022',t:'They\'re sent back.',d:'The rope lifts them, and puts them down in the same camp.'}},
  {id:'night',type:'film',a:122,b:150,moves:2,rain:true,auto:500,card:{w:'380px',pos:'left:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'25 February 2025',t:'It floods again, at night.',d:'Residents say the stream beside the camp was blocked with debris.'}},
  {id:'loss',type:'film',a:150,b:158,moves:2,dim:true,card:{cls:'loss',w:'460px',pos:'right:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'Gwala Street camp · 25 Feb 2025',t:'Three children are swept away.',d:'Lulama Dingiswayo lost her children that night: two girls, aged 5 and 16, and a boy aged 11. Five people from the camp died. (IOL; Amnesty International, 2025)'},cta:{btn:'Continue',kind:'quiet',delay:4500}},
- {id:'hotel',type:'film',fps:2.5,a:158,b:200,moves:4,auto:2500,card:{w:'400px',pos:'left:max(16px,3.5cqw);bottom:max(48px,5cqw)',k:'Moves 3 and 4 · 2025',t:'A hotel. Evicted. A student residence.',d:'March 2025: the province puts the families in Bayside Hotel. It does not pay the bill, and in July they are evicted onto the pavement. Then a student residence in Umbilo.'}},
+ {id:'hotel',type:'film',fps:2.5,a:158,b:200,moves:4,auto:2500,card:{w:'400px',pos:'left:max(16px,3.5cqw);bottom:max(48px,5cqw)',k:'Moves 3 and 4 · 2025',t:'A hotel. Evicted. A student residence.',d:'March 2025: Bayside Hotel. July 2025: Umbilo.'}},
  {id:'map34',type:'map',bg:'bg_mapB',from:'lamont',to:'bayside',to2:'umbilo',moves:4,auto:1900,labels:{lamont:'Lamontville camp',bayside:'Bayside Hotel',umbilo:'Umbilo residence'}},
- {id:'sum',type:'film',a:200,b:210,moves:4,auto:1800},
- {id:'trace',type:'trace',moves:4,auto:2600},
+ {id:'sum',type:'film',a:200,b:226,moves:4,auto:1400},
  {id:'question',type:'question'}
 ];
 const root=document.createElement('div'); root.id='intro'; root.setAttribute('role','dialog'); root.setAttribute('aria-label','Story: one family\'s four moves'); document.body.appendChild(root);
@@ -50,9 +49,6 @@ function render(){ const s=SC[cur]; let h='';
     h+='<div class="ix-credit">Imagery: Esri, Maxar · pin placement approximate</div>'; }
   if(s.type==='film') h+='<div class="ix-film'+(s.dim?' dim':'')+'"><img id="ixf" src="'+fr(s.a)+'" alt=""></div>'+(s.rain?'<div class="ix-rain"></div>':'')+(s.cta?'<div class="ix-shade"></div>':'')+'<div class="ix-credit">'+CRED+'</div>';
   if(s.type==='map') h+=mapHTML(s)+'<div class="ix-counter"><b>'+s.moves+'<span>/4</span></b><div>moves</div></div><div class="ix-credit">Imagery: Esri, Maxar · routes join reported places; they are not surveyed paths</div>';
-  if(s.type==='trace'){ const P=PTS.bg_flood, O=['mega','tehuis','lamont','bayside','umbilo'];
-    h+='<div class="ix-cover"><div class="ix-bg" style="background-image:url('+BASE+'bg_flood.jpg)"></div><svg class="ix-route" viewBox="0 0 1600 1000" preserveAspectRatio="none"><polyline id="ixtr" points="'+O.map(k=>P[k][0]*16+','+P[k][1]*10).join(' ')+'" fill="none" stroke="#FBC900" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/></svg>'+
-      O.map((k,i)=>'<i class="ix-yd" id="ixd'+i+'" style="left:'+P[k][0]+'%;top:'+P[k][1]+'%"></i>').join('')+'</div><div class="ix-credit">Blue: eThekwini 1-in-100-year flood plain · imagery: Esri, Maxar</div>'; }
   if(s.type==='question') h+='<div class="ix-film"><img src="'+fr(238)+'" alt="Why does the water keep finding the same people?"></div><div class="ix-cta" style="bottom:max(48px,9vh)"><div class="ix-stats"><span><b>4</b>moves</span><span><b class="ix-r">3</b>floods</span><span><b>6</b>years</span></div><button class="ix-white" data-done>Explore the map <span aria-hidden="true">→</span></button></div>';
   if(s.type!=='open') h+=chrome(s.type==='question'?null:s.moves);
   if(s.type==='question') h+='<div class="ix-chrome" style="background:none"><button class="ix-skip" data-done>Skip to the map →</button></div>';
@@ -61,7 +57,6 @@ function render(){ const s=SC[cur]; let h='';
   if(s.type==='drop'){ setTimeout(()=>{ const z=document.getElementById('ixzb'); if(z) z.style.transform='scale(1.18)'; },1200); after(s,0); }
   if(s.type==='film') playFilm(s);
   if(s.type==='map') playMap(s);
-  if(s.type==='trace') playTrace(s);
   if(s.type==='question') setTimeout(()=>{ const b=root.querySelector('[data-done].ix-white'); if(b) b.focus({preventScroll:true}); },300);
 }
 function openHTML(){ return '<div class="ix-bg" style="background-image:url('+BASE+'city.jpg);background-size:cover;background-position:center;filter:saturate(.85) brightness(.82)"></div><div class="ix-open"></div>'+
@@ -99,13 +94,6 @@ function playMap(s){ const segs=['ixr1','ixr2'].map(id=>document.getElementById(
     const lab=document.getElementById('ixl_'+stops[si]); if(lab) lab.style.opacity=1;
     if(si<segs.length-1){ si++; t0=null; timer=setTimeout(()=>raf=requestAnimationFrame(step),PAUSE); } };
   raf=requestAnimationFrame(step); after(s,segs.length*DUR+(segs.length-1)*PAUSE); }
-function playTrace(s){ const pl=document.getElementById('ixtr'), L=pl.getTotalLength(), pts=pl.points, N=pts.numberOfItems; const cum=[0];
-  for(let i=1;i<N;i++){ const a=pts.getItem(i-1), b=pts.getItem(i); cum.push(cum[i-1]+Math.hypot(b.x-a.x,b.y-a.y)); }
-  pl.style.strokeDasharray=L; pl.style.strokeDashoffset=L; const D=2600; let t0=null; document.getElementById('ixd0').classList.add('on');
-  const step=ts=>{ if(t0==null) t0=ts; const u=Math.min(1,(ts-t0)/D), d=L*u; pl.style.strokeDashoffset=L-d;
-    for(let i=1;i<N;i++) if(d>=cum[i]-1) document.getElementById('ixd'+i).classList.add('on');
-    if(u<1) raf=requestAnimationFrame(step); };
-  raf=requestAnimationFrame(step); after(s,D); }
 /* hand-over: the story fades out while the real map flies from the camp out to the city */
 function done(){ clear(); try{ if(typeof view!=='undefined'&&typeof flyTo==='function'){ view.x=mx(30.9455); view.y=my(-29.9537); view.z=15.2; draw(); flyTo(HOME.x,HOME.y,homeZoom(),2600); } }catch(e){}
   root.classList.add('out'); setTimeout(()=>root.remove(),1500); }
