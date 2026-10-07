@@ -1,0 +1,194 @@
+<title>Story Intro Prototype</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: a 16:10 stage that plays the story scene by scene (film flipbooks, animated map moves, click points), with a scene index and notes under it. Single dark look on purpose. */
+:root{--bg:#0A0E15;--panel:#111824;--ink:#F4F6FA;--txt:#D5DCE6;--mut:#8C98AA;--dim:#64748B;--line:rgba(255,255,255,.12);--amber:#F5A524;--site:#FBC900;--red:#E5484D;
+ --sans:Inter,"Helvetica Neue",Arial,sans-serif;--serif:Newsreader,Georgia,serif;--mono:"IBM Plex Mono",Consolas,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font:15px/1.5 var(--sans);margin:0}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:20px;padding-block:24px 56px;display:grid;gap:18px}
+header{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
+h1{font:800 clamp(24px,3.6vw,36px)/1.05 var(--sans);letter-spacing:-.03em;color:var(--ink);margin:0;text-wrap:balance}
+.kick{font:500 11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin:0 0 8px}
+.tag{font:500 12px var(--mono);color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+
+/* stage: everything inside scales with the stage width (container units) */
+.stage{position:relative;width:100%;max-width:100%;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:#05080d;border:1px solid var(--line);container-type:inline-size;user-select:none}
+.layer{position:absolute;inset:0}
+.bgimg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 3.2s ease}
+.film{position:absolute;inset:0;background:#1B2626;display:grid;place-items:center}
+.film img{width:100%;height:auto;display:block}
+.film.dim img{filter:brightness(.55) saturate(.8)}
+.shade{position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(5,8,14,.85));pointer-events:none}
+.chrome{position:absolute;left:0;right:0;top:0;height:6cqw;display:flex;align-items:center;gap:2cqw;padding:0 2.2cqw;background:linear-gradient(rgba(5,8,14,.75),transparent);z-index:6}
+.brand{font:700 1.15cqw var(--sans);color:#fff}
+.prog{margin:0 auto;display:flex;align-items:center;gap:.6cqw;font:500 .72cqw var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.prog i{width:2cqw;height:.28cqw;border-radius:.2cqw;background:rgba(255,255,255,.22)}
+.prog i.on{background:var(--amber)}
+.skip{font:500 .85cqw var(--sans);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:.4cqw 1cqw;background:rgba(5,8,14,.4);cursor:pointer}
+.card{position:absolute;background:rgba(10,15,24,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:1cqw;padding:1.4cqw 1.6cqw;z-index:5;animation:rise .6s ease both}
+.card .k{font:600 .72cqw var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+.card .t{font:500 2cqw/1.12 var(--serif);color:#fff;margin:.6cqw 0 .4cqw}
+.card .d{font-size:1cqw;color:var(--mut);line-height:1.4}
+.card .big{font:800 4.2cqw/1 var(--sans);color:#fff;letter-spacing:-.03em;margin:.6cqw 0 .2cqw}
+.card.loss{border-color:rgba(229,72,77,.5)}
+.card.loss .k{color:#ff7b75}
+.cta{position:absolute;left:0;right:0;bottom:7cqw;text-align:center;z-index:7;animation:rise .5s ease both}
+.cta .line{font:italic 500 2.5cqw/1.15 var(--serif);color:#fff;margin-bottom:2cqw;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.btnred{display:inline-flex;align-items:center;gap:.9cqw;background:var(--red);color:#fff;font:700 1.4cqw var(--sans);padding:1.25cqw 2.2cqw;border-radius:999px;border:0;cursor:pointer;box-shadow:0 0 0 .6cqw rgba(229,72,77,.2),0 0 0 1.4cqw rgba(229,72,77,.08);animation:pulse 1.8s ease-in-out infinite}
+.btnw{display:inline-flex;align-items:center;gap:.8cqw;background:#fff;color:#0B0F19;font:600 1.15cqw var(--sans);padding:1cqw 1.8cqw;border-radius:.8cqw;border:0;cursor:pointer}
+.btnq{display:inline-flex;align-items:center;gap:.8cqw;background:rgba(255,255,255,.1);color:#fff;font:500 1cqw var(--sans);padding:.8cqw 1.6cqw;border-radius:999px;border:1px solid rgba(255,255,255,.3);cursor:pointer}
+.cta .sub{color:rgba(255,255,255,.65);font-size:.9cqw;margin-top:1.6cqw}
+.credit{position:absolute;left:2.2cqw;bottom:1.2cqw;font:.66cqw var(--mono);color:rgba(255,255,255,.6);z-index:6;max-width:70%}
+.counter{position:absolute;left:3.4cqw;top:7cqw;z-index:6;animation:rise .5s ease both}
+.counter b{font:800 7.5cqw/0.9 var(--sans);color:#fff;letter-spacing:-.05em}.counter b span{color:rgba(255,255,255,.3)}
+.counter div{font:600 .75cqw var(--mono);letter-spacing:.2em;color:var(--amber);text-transform:uppercase;margin-top:.6cqw}
+svg.route{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+.pin{position:absolute;width:3.5cqw;height:4.4cqw;transform:translate(-50%,-100%);z-index:4;filter:drop-shadow(0 .4cqw .4cqw rgba(0,0,0,.45))}
+.place{position:absolute;transform:translate(-50%,.8cqw);font:600 .8cqw var(--sans);color:#0B0F19;background:var(--site);padding:.2cqw .6cqw;border-radius:.3cqw;white-space:nowrap;z-index:4}
+.place.g{background:rgba(10,15,24,.85);color:#fff;border:1px solid var(--line)}
+.dot{position:absolute;width:1.2cqw;height:1.2cqw;border-radius:50%;border:2px solid #fff;background:rgba(255,255,255,.25);transform:translate(-50%,-50%);z-index:3}
+.ring{position:absolute;border:2px solid var(--site);border-radius:50%;transform:translate(-50%,-50%);z-index:3;animation:ring 1.6s ease-out infinite}
+.rain{position:absolute;inset:0;z-index:2;pointer-events:none;background-image:linear-gradient(104deg,transparent 49.4%,rgba(220,235,255,.35) 50%,transparent 50.6%);background-size:3cqw 6cqw;animation:rain .5s linear infinite;opacity:.8}
+.hot{position:absolute;z-index:8;cursor:pointer;border-radius:1cqw}
+.hot::after{content:"";position:absolute;inset:-.4cqw;border:2px solid var(--amber);border-radius:1.2cqw;animation:pulse2 1.6s ease-in-out infinite}
+.zoom{position:absolute;inset:0;background-size:cover;background-position:center}
+.loader{position:absolute;right:1.4cqw;bottom:1.2cqw;font:.7cqw var(--mono);color:var(--mut);z-index:9}
+@keyframes rise{from{opacity:0;transform:translateY(1cqw)}to{opacity:1;transform:none}}
+@keyframes pulse{50%{box-shadow:0 0 0 1cqw rgba(229,72,77,.25),0 0 0 2.2cqw rgba(229,72,77,.06)}}
+@keyframes pulse2{50%{opacity:.25}}
+@keyframes ring{from{width:1cqw;height:1cqw;opacity:1}to{width:9cqw;height:9cqw;opacity:0}}
+@keyframes rain{to{background-position:-1.4cqw 6cqw}}
+@keyframes drop{0%{transform:translate(-50%,-260%) scale(1.25);opacity:0}15%{opacity:1}70%{transform:translate(-50%,-100%) scale(1)}82%{transform:translate(-50%,-112%)}100%{transform:translate(-50%,-100%)}}
+@keyframes zoomout{from{transform:scale(3.2);filter:blur(6px) brightness(.7)}to{transform:scale(1);filter:none}}
+@media (prefers-reduced-motion:reduce){.btnred,.hot::after,.ring,.rain{animation:none}}
+
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.controls button{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 14px;font:500 13px var(--sans);cursor:pointer}
+.controls button:focus-visible,.idx button:focus-visible,.stage button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.controls .now{font:500 12px var(--mono);color:var(--mut);margin-left:auto}
+.idx{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+.idx button{text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 10px;color:var(--txt);font:13px var(--sans);cursor:pointer;min-width:0}
+.idx button b{display:block;font:600 10px var(--mono);letter-spacing:.12em;color:var(--mut)}
+.idx button[aria-current="true"]{border-color:var(--amber)}
+.idx button.click b{color:var(--red)}
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.note h3{margin:0 0 6px;font:600 14.5px var(--sans);color:var(--ink)}
+.note p{margin:0;font-size:13.5px}
+.foot{font-size:12px;color:var(--mut)}
+@media (max-width:900px){.notes{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div><p class="kick">Moved Into the Water · clickable prototype · design only</p><h1>Story intro: four moves, then the map</h1></div>
+    <span class="tag">Not the live site</span>
+  </header>
+
+  <div class="stage" id="stage" aria-live="polite"></div>
+
+  <div class="controls">
+    <button type="button" id="restart">↺ Restart</button>
+    <button type="button" id="back">‹ Previous scene</button>
+    <button type="button" id="fwd">Next scene ›</button>
+    <span class="now" id="now"></span>
+  </div>
+  <nav class="idx" id="idx" aria-label="Scenes"></nav>
+
+  <section class="notes">
+    <div class="note"><h3>How it plays</h3><p>Film sections play by themselves. Red buttons are the reader's clicks. Every move shows the film's rope lifting the family, then the route on the real map.</p></div>
+    <div class="note"><h3>Whose story is whose</h3><p>The drawn family stands for families of the Gwala Street camp; their moves follow GroundUp's reporting. The children who died were Lulama Dingiswayo's, at that camp, and the loss slide names her.</p></div>
+    <div class="note"><h3>No phone number</h3><p>"They called for help" moves the story on. A page that looks like a help service must not show a number that doesn't work.</p></div>
+  </section>
+  <p class="foot">Hollie and Wandile · Harvard GSD MDE. Illustration: our animation. Satellite imagery: Esri, Maxar. Routes join reported places; they are not surveyed paths.</p>
+</div>
+
+<script>
+const PTS={"bg_drop":{"mega":[50.02,50.06]},"bg_mapA":{"mega":[13.15,65.7],"tehuis":[47.73,65.7],"lamont":[86.88,24.35]},"bg_mapB":{"lamont":[30.18,91.15],"bayside":[69.86,9.05],"umbilo":[48.02,35.56]}};
+const FPS=8, NF=244, fr=i=>'film8/f'+String(i).padStart(3,'0')+'.jpg';
+const PIN='<svg viewBox="0 0 56 70"><path d="M28 68C28 68 4 42 4 26a24 24 0 0148 0c0 16-24 42-24 42z" fill="#FBC900"/><circle cx="21" cy="19" r="4" fill="#0B0F19"/><circle cx="35" cy="19" r="4" fill="#0B0F19"/><circle cx="28" cy="31" r="3" fill="#0B0F19"/><path d="M14 38v-6a7 7 0 0114 0v6zM28 38v-6a7 7 0 0114 0v6z" fill="#0B0F19"/><path d="M23 44v-4a5 5 0 0110 0v4z" fill="#0B0F19"/></svg>';
+const CRED='Illustration from our animation · the moves follow GroundUp\'s reporting on families from this camp (June 2022)';
+/* Scene types: img (still), film [a,b] (flipbook, plays once then holds, or loops), map (animated route), zoom (final hand-over). */
+const SC=[
+ {id:'landing',name:'Landing',type:'img',src:'web/01-question.jpg',hot:{l:5.6,t:50.3,w:35.8,h:7.2,go:1},moves:null},
+ {id:'drop',name:'The drop',type:'drop',moves:0,auto:3400,card:{pos:'left:3.5cqw;bottom:5cqw;width:30cqw',k:'uMlazi, Durban',t:'This is where one family\'s story starts.',d:'Mega Village sits on low ground beside a river.'},credit:'Imagery: Esri, Maxar · pin placement approximate'},
+ {id:'home',name:'Home',type:'film',a:0,b:14,loop:true,moves:0,auto:3600,card:{pos:'right:3.5cqw;top:7.5cqw;width:22cqw',k:'Ordinary life · 2019',t:'Washing on the line, the dog in the yard.',d:'Nothing yet tells you this ground floods.'}},
+ {id:'rain',name:'The rain',type:'film',a:14,b:40,moves:0,rain:true,card:{pos:'left:3.5cqw;top:7.5cqw;width:22cqw',k:'April 2019',big:'245 mm',d:'of rain in three days · ERA5 daily (Open-Meteo)'},cta:{line:'The water is at the roof.',btn:'They called for help',sub:'Click to see where the city sent them.'}},
+ {id:'lift1',name:'Lifted · move 1',type:'film',a:40,b:56,moves:1,auto:400,card:{pos:'left:3.5cqw;bottom:5cqw;width:24cqw',k:'Move 1 of 4 · 2019',t:'The rope comes down.',d:'The family is lifted out of Mega Village.'}},
+ {id:'map1',name:'Route · move 1',type:'map',bg:'bg_mapA',from:'mega',to:'tehuis',next:'lamont',moves:1,auto:900,labels:{mega:'Mega Village · flooded',tehuis:'Tents at Tehuis Hostel',lamont:'Lamontville camp'},credit:'Imagery: Esri, Maxar · route joins reported places'},
+ {id:'tents',name:'Tents',type:'film',a:56,b:66,moves:1,card:{pos:'right:3.5cqw;top:7.5cqw;width:24cqw',k:'2019 · Tehuis Hostel',t:'Tents. "Temporary." Two years.',d:'The sun comes back. For now, everything is fine.'},cta:{btn:'Two years later',kind:'w'}},
+ {id:'lift2',name:'Lifted · move 2',type:'film',a:66,b:80,moves:2,auto:400,card:{pos:'left:3.5cqw;bottom:5cqw;width:24cqw',k:'Move 2 of 4 · 2021',t:'The rope comes again.',d:'From the tents to a camp on the riverbank.'}},
+ {id:'map2',name:'Route · move 2',type:'map',bg:'bg_mapA',from:'tehuis',to:'lamont',done:'mega',moves:2,auto:900,labels:{mega:'Mega Village',tehuis:'Tehuis Hostel',lamont:'Lamontville riverside camp'},credit:'Imagery: Esri, Maxar · route joins reported places'},
+ {id:'camp',name:'The camp floods',type:'film',a:80,b:106,moves:2,rain:true,card:{pos:'left:3.5cqw;top:7.5cqw;width:24cqw',k:'April 2022',t:'The camp floods.',d:'Lamontville riverside camp, Gwala Street.'},cta:{btn:'They called for help again',sub:'Each loop is shorter. By now you know what is coming.'}},
+ {id:'back',name:'Sent back',type:'film',a:106,b:122,moves:2,auto:1600,card:{pos:'right:3.5cqw;top:7.5cqw;width:24cqw',k:'2022',t:'They\'re sent back.',d:'The rope lifts them, and puts them down in the same camp.'}},
+ {id:'night',name:'Night flood',type:'film',a:122,b:150,moves:2,rain:true,auto:300,card:{pos:'left:3.5cqw;top:7.5cqw;width:24cqw',k:'25 February 2025',t:'It floods again, at night.',d:'The stream beside the camp, blocked with debris, overflows.'}},
+ {id:'loss',name:'The loss',type:'film',a:150,b:169,moves:2,dim:true,card:{cls:'loss',pos:'right:3.5cqw;top:7.5cqw;width:30cqw',k:'Gwala Street camp · 25 Feb 2025',t:'Three children are swept away.',d:'Lulama Dingiswayo lost her children that night: two girls, aged 5 and 16, and a boy aged 11. Five people from the camp died. (IOL; Amnesty International, 2025)'},cta:{btn:'Continue',kind:'q',delay:3000}},
+ {id:'hotel',name:'Lifted · moves 3–4',type:'film',a:170,b:200,moves:4,auto:500,card:{pos:'left:3.5cqw;bottom:5cqw;width:26cqw',k:'Moves 3 and 4 · 2025',t:'A hotel. Evicted. A student residence.',d:'March 2025: Bayside Hotel. July 2025: Umbilo.'}},
+ {id:'map34',name:'Route · moves 3–4',type:'map',bg:'bg_mapB',from:'lamont',to:'bayside',to2:'umbilo',moves:4,auto:1200,labels:{lamont:'Lamontville camp',bayside:'Bayside Hotel',umbilo:'Umbilo residence'},credit:'Imagery: Esri, Maxar · routes join reported places'},
+ {id:'sum',name:'Four moves',type:'film',a:200,b:226,moves:4,auto:900},
+ {id:'question',name:'The question',type:'img',src:'web/08-question.jpg',moves:null,hot:{l:47.6,t:90.2,w:4.8*1.0+0,h:4,go:1,wide:true}},
+ {id:'map',name:'Into the map',type:'zoom',moves:null}
+];
+SC.find(s=>s.id==='question').hot={l:43.4,t:76.2,w:13.2,h:6.4,go:1};
+const stage=document.getElementById('stage'); let cur=0, timer=null, raf=null;
+// preload film frames in the background
+const IM=[]; let loaded=0; for(let i=0;i<NF;i++){ const im=new Image(); im.onload=im.onerror=()=>loaded++; im.src=fr(i); IM.push(im); }
+function chrome(m){ if(m==null) return ''; const bars=[0,1,2,3].map(i=>'<i class="'+(i<m?'on':'')+'"></i>').join('');
+  return '<div class="chrome"><div class="brand">Moved Into the Water</div><div class="prog">'+bars+'<span>'+(m?('Move '+m+' of 4'):'Before')+'</span></div><button class="skip" data-skip>Skip story →</button></div>'; }
+function cardHTML(c){ if(!c) return ''; return '<div class="card '+(c.cls||'')+'" style="'+c.pos+'"><div class="k">'+c.k+'</div>'+(c.big?'<div class="big">'+c.big+'</div>':'')+(c.t?'<div class="t">'+c.t+'</div>':'')+(c.d?'<div class="d">'+c.d+'</div>':'')+'</div>'; }
+function ctaHTML(c){ const cls=c.kind==='w'?'btnw':c.kind==='q'?'btnq':'btnred';
+  return '<div class="cta">'+(c.line?'<div class="line">'+c.line+'</div>':'')+'<button class="'+cls+'" data-next>'+c.btn+' <span>→</span></button>'+(c.sub?'<div class="sub">'+c.sub+'</div>':'')+'</div>'; }
+function clear(){ clearTimeout(timer); cancelAnimationFrame(raf); timer=null; }
+function go(i){ clear(); cur=Math.max(0,Math.min(SC.length-1,i)); render(); }
+function next(){ go(cur+1); }
+function after(s, ms){ if(s.cta){ const show=()=>{ stage.insertAdjacentHTML('beforeend',ctaHTML(s.cta)); }; timer=setTimeout(show,(s.cta.delay||0)+ms); } else if(s.auto!=null){ timer=setTimeout(next,ms+s.auto); } }
+function render(){ const s=SC[cur]; let h='';
+  if(s.type==='img') h+='<div class="bgimg" style="background-image:url('+s.src+')"></div>';
+  if(s.type==='drop'){ const p=PTS.bg_drop.mega; h+='<div class="bgimg" id="zb" style="background-image:url(img/bg_drop.jpg)"></div><div class="ring" style="left:'+p[0]+'%;top:'+p[1]+'%"></div><div class="pin" style="left:'+p[0]+'%;top:'+p[1]+'%;animation:drop 1.1s cubic-bezier(.3,.7,.4,1) both">'+PIN+'</div><div class="place" style="left:'+p[0]+'%;top:'+p[1]+'%">Mega Village, uMlazi</div>'; }
+  if(s.type==='film') h+='<div class="film'+(s.dim?' dim':'')+'"><img id="fimg" src="'+fr(s.a)+'" alt="'+s.name+'"></div>'+(s.rain?'<div class="rain"></div>':'')+(s.cta?'<div class="shade"></div>':'');
+  if(s.type==='map') h+=mapHTML(s);
+  if(s.type==='zoom') h+='<div class="zoom" style="background-image:url(img/landing_now.png);animation:zoomout 2.6s cubic-bezier(.2,.7,.2,1) both"></div><div class="card" style="left:50%;top:2cqw;transform:translateX(-50%);padding:.8cqw 1.4cqw;animation-delay:2.4s"><div class="d" style="color:#fff">You\'re on the interactive map. This is the current landing page.</div></div>';
+  h+=chrome(s.moves)+cardHTML(s.card);
+  if(s.moves&&s.type==='map') h+='<div class="counter"><b>'+s.moves+'<span>/4</span></b><div>moves</div></div>';
+  if(s.type==='film'||s.type==='drop'||s.type==='map') h+='<div class="credit">'+(s.credit||CRED)+'</div>';
+  if(s.hot) h+='<button class="hot" aria-label="Continue" data-next style="left:'+s.hot.l+'%;top:'+s.hot.t+'%;width:'+s.hot.w+'%;height:'+s.hot.h+'%;background:none;border:0"></button>';
+  if(loaded<NF) h+='<div class="loader">loading film '+Math.round(loaded/NF*100)+'%</div>';
+  stage.innerHTML=h; idxSync();
+  if(s.type==='drop'){ setTimeout(()=>{ const z=document.getElementById('zb'); if(z) z.style.transform='scale(1.18)'; },900); after(s,0); }
+  else if(s.type==='film') playFilm(s);
+  else if(s.type==='map') playMap(s);
+  else if(s.type==='zoom'){}
+}
+function playFilm(s){ const el=document.getElementById('fimg'), n=s.b-s.a; let t0=null;
+  const step=ts=>{ if(t0==null) t0=ts; let k=Math.floor((ts-t0)/1000*FPS);
+    if(s.loop) k%= (n+1); else k=Math.min(k,n);
+    el.src=fr(s.a+k); if(s.loop||k<n) raf=requestAnimationFrame(step); };
+  raf=requestAnimationFrame(step); after(s, s.loop?0:(n/FPS*1000)); }
+function mapHTML(s){ const P=PTS[s.bg]; let h='<div class="bgimg" style="background-image:url(img/'+s.bg+'.jpg)"></div><svg class="route" viewBox="0 0 1600 1000" preserveAspectRatio="none">';
+  const seg=(a,b,id,dash)=>{ const A=P[a],B=P[b]; const x1=A[0]*16,y1=A[1]*10,x2=B[0]*16,y2=B[1]*10, mx=(x1+x2)/2, my=Math.min(y1,y2)-140;
+    return '<path id="'+id+'" d="M'+x1+' '+y1+' Q'+mx+' '+my+' '+x2+' '+y2+'" fill="none" stroke="'+(dash?'rgba(255,255,255,.35)':'#F5A524')+'" stroke-width="'+(dash?3:6)+'" stroke-linecap="round" '+(dash?'stroke-dasharray="4 12"':'')+'/>'; };
+  if(s.done) h+=seg(s.done,s.from,'r0',true);
+  h+=seg(s.from,s.to,'r1'); if(s.to2) h+=seg(s.to,s.to2,'r2'); if(s.next) h+=seg(s.to,s.next,'rn',true);
+  h+='</svg>';
+  for(const k in P){ const p=P[k], lab=(s.labels||{})[k]; if(!lab) continue; const isFrom=k===s.from||k===s.done;
+    h+=(isFrom?'<div class="dot" style="left:'+p[0]+'%;top:'+p[1]+'%"></div><div class="place g" style="left:'+p[0]+'%;top:'+p[1]+'%">'+lab+'</div>':'<div class="place '+(k===s.next?'g':'')+'" id="lab_'+k+'" style="left:'+p[0]+'%;top:'+p[1]+'%;opacity:'+(k===s.next?.6:0)+'">'+lab+'</div>'); }
+  h+='<div class="pin" id="mpin" style="left:'+P[s.from][0]+'%;top:'+P[s.from][1]+'%">'+PIN+'</div>';
+  return h; }
+function playMap(s){ const segs=[document.getElementById('r1'),document.getElementById('r2')].filter(Boolean), pin=document.getElementById('mpin'), stops=[s.to,s.to2].filter(Boolean);
+  segs.forEach(p=>{ const L=p.getTotalLength(); p.style.strokeDasharray=L; p.style.strokeDashoffset=L; });
+  const DUR=1900, PAUSE=500; let si=0, t0=null;
+  const step=ts=>{ if(t0==null) t0=ts; const p=segs[si], L=p.getTotalLength(), u=Math.min(1,(ts-t0)/DUR), e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;
+    p.style.strokeDashoffset=L*(1-e); const pt=p.getPointAtLength(L*e); pin.style.left=(pt.x/16)+'%'; pin.style.top=(pt.y/10)+'%';
+    if(u<1){ raf=requestAnimationFrame(step); return; }
+    const lab=document.getElementById('lab_'+stops[si]); if(lab){ lab.style.opacity=1; lab.style.transition='opacity .4s'; }
+    if(si<segs.length-1){ si++; t0=null; setTimeout(()=>raf=requestAnimationFrame(step),PAUSE); } };
+  raf=requestAnimationFrame(step); after(s, segs.length*DUR+(segs.length-1)*PAUSE); }
+stage.addEventListener('click',e=>{ if(e.target.closest('[data-next]')) next(); else if(e.target.closest('[data-skip]')) go(SC.length-1); });
+document.getElementById('restart').onclick=()=>go(0); document.getElementById('back').onclick=()=>go(cur-1); document.getElementById('fwd').onclick=()=>next();
+document.getElementById('idx').innerHTML=SC.map((s,i)=>'<button data-i="'+i+'" class="'+((s.cta&&s.cta.kind!=='q'&&s.cta.kind!=='w')||s.hot?'click':'')+'"><b>'+String(i+1).padStart(2,'0')+((s.cta&&!s.cta.kind)||s.hot?' · CLICK':'')+'</b>'+s.name+'</button>').join('');
+document.getElementById('idx').addEventListener('click',e=>{ const b=e.target.closest('button'); if(b) go(+b.dataset.i); });
+function idxSync(){ document.querySelectorAll('#idx button').forEach((b,i)=>b.setAttribute('aria-current',i===cur)); document.getElementById('now').textContent='Scene '+(cur+1)+' of '+SC.length+' · '+SC[cur].name; }
+document.addEventListener('keydown',e=>{ if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') go(cur-1); });
+const startAt=Math.max(0,SC.findIndex(s=>'#'+s.id===location.hash)); go(startAt);
+</script>

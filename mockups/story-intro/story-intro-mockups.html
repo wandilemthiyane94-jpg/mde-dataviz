@@ -1,0 +1,86 @@
+<title>Story Intro Mockups</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one large frame at a time like a storyboard projector, a numbered filmstrip under it, notes beneath. Single dark look on purpose (matches the site). */
+:root{--bg:#0A0E15;--panel:#111824;--ink:#F4F6FA;--txt:#D5DCE6;--mut:#8C98AA;--line:rgba(255,255,255,.1);--amber:#F5A524;--red:#E5484D;
+ --sans:Inter,"Helvetica Neue",Arial,sans-serif;--serif:Newsreader,Georgia,serif;--mono:"IBM Plex Mono",Consolas,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font:15px/1.5 var(--sans);margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:20px;padding-block:28px 56px;display:grid;gap:22px}
+header{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
+h1{font:800 clamp(26px,4vw,40px)/1.05 var(--sans);letter-spacing:-.03em;color:var(--ink);margin:0;text-wrap:balance}
+.kick{font:500 11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin:0 0 8px}
+.tag{font:500 12px var(--mono);color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.stage{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start}
+.view{position:relative;border-radius:12px;overflow:hidden;background:#000;border:1px solid var(--line)}
+.view img{display:block;width:100%;height:auto}
+.view.phone{max-width:390px;margin:0 auto;border-radius:28px}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(10,14,21,.7);color:#fff;font-size:20px;cursor:pointer}
+.nav:focus-visible,.strip button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.prev{left:12px}.next{right:12px}
+.side{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:10px;min-width:0}
+.side .n{font:500 11px var(--mono);letter-spacing:.14em;color:var(--mut);text-transform:uppercase}
+.side h2{font:600 22px/1.2 var(--serif);color:var(--ink);margin:0}
+.side p{margin:0;font-size:14px}
+.side .act{font:500 12px var(--mono);color:var(--amber);border-top:1px solid var(--line);padding-top:10px}
+.strip{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:8px}
+.strip button{padding:0;border:2px solid transparent;border-radius:8px;overflow:hidden;background:#000;cursor:pointer;position:relative}
+.strip button[aria-current="true"]{border-color:var(--amber)}
+.strip img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.strip .ph img{object-fit:contain;background:#05070b}
+.strip span{position:absolute;left:4px;top:3px;font:600 10px var(--mono);color:#fff;text-shadow:0 1px 3px #000}
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0}
+.note h3{margin:0 0 6px;font:600 15px var(--sans);color:var(--ink)}
+.note p{margin:0;font-size:13.5px;color:var(--txt)}
+.note.warn{border-color:rgba(229,72,77,.5)}
+.foot{font-size:12px;color:var(--mut)}
+@media (max-width:900px){.stage{grid-template-columns:1fr}.strip{grid-template-columns:repeat(6,minmax(0,1fr))}.notes{grid-template-columns:1fr}}
+@media (max-width:480px){.strip{grid-template-columns:repeat(4,minmax(0,1fr))}.nav{width:36px;height:36px}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div><p class="kick">Moved Into the Water · design only</p><h1>Story intro: from one family to the map</h1></div>
+    <span class="tag">Mockups · not the live site</span>
+  </header>
+
+  <div class="stage">
+    <div class="view" id="view"><img id="big" src="web/01-question.jpg" alt=""><button class="nav prev" id="prev" aria-label="Previous frame">‹</button><button class="nav next" id="next" aria-label="Next frame">›</button></div>
+    <aside class="side" aria-live="polite"><div class="n" id="n"></div><h2 id="h"></h2><p id="d"></p><div class="act" id="a"></div></aside>
+  </div>
+
+  <nav class="strip" id="strip" aria-label="Frames"></nav>
+
+  <section class="notes">
+    <div class="note"><h3>No phone number in the story</h3><p>The red button reads "They called for help" and only moves the story on. A page that looks like a flood-help service must never show a number that doesn't work. A checked helpline can go on a final card later.</p></div>
+    <div class="note"><h3>Our own figure, real moves</h3><p>The yellow family pin replaces Google's Pegman. The four moves are the ones GroundUp reported for families from Mega Village (2019 to 2025), with their real dates. The family is drawn, not named.</p></div>
+    <div class="note warn"><h3>Fix in the film before using it</h3><p>At 20 s the animation says "Three children are swept away" inside this family's journey. That loss was Lulama Dingiswayo's, and reports don't say she made these moves. These mockups leave that frame out.</p></div>
+  </section>
+  <p class="foot">Hollie and Wandile · Harvard GSD MDE. Stills from our animation; satellite imagery Esri, Maxar; frame 09 is a screenshot of the current site.</p>
+</div>
+
+<script>
+const F=[
+ ["01-question","Landing","Where would the city move you?","The site opens on a quiet, dark Durban map. One question, one search box. Typing a township lists where the story can start; the family pin on the right can also be dragged onto the map.","Pick a township, or drag the family"],
+ ["02-drop","The drop","The pin falls on Mega Village","The yellow family pin drops onto the map with a short trail and a landing ring, and the camera dives toward uMlazi. A card says this is where one family's story starts.","Automatic · 2 s"],
+ ["03-home","Home","Ordinary life, 2019","The first scene of the animation plays: the house, the washing, the dog. The progress bar at the top shows four moves still to come.","Automatic, or scroll"],
+ ["04-rain","The rain","245 mm in three days","Rain builds over the scene and the film's gauge climbs. A data card gives the real storm total for April 2019.","Automatic"],
+ ["05-button","The button","They called for help","The water reaches the roof and the scene darkens. One red button. Clicking it is the reader asking for help on the family's behalf.","Click 1 of 4"],
+ ["06-move","The move","Move 1 of 4: tents at Tehuis Hostel","The camera lifts to the satellite map and the route draws from Mega Village to the hostel. The film's next scene slides in: tents, \"temporary\", two years. The sun is back, for now.","Automatic, then the loop repeats"],
+ ["07-again","Again","Move 2 of 4: the camp floods","The loop comes round. Lamontville camp floods in April 2022 and the button returns, now reading \"again\". Each loop is shorter, so by the fourth the reader expects the water.","Clicks 2, 3 and 4"],
+ ["08-question","The question","Why does the water keep finding the same people?","The film's own closing question, with the totals under it: 4 moves, 3 floods, 6 years. One white button leads into the tool.","Click: Explore the map"],
+ ["09-into-map","Into the tool","The camera pulls out to the city","The view zooms out from the camp to the whole city and settles on the current landing page, so the story hands over to the map without a cut.","Lands on the interactive map"],
+ ["m01-question","Phone","Landing on a phone","The same opening, stacked: question, short line, search box. The disclaimer stays on screen.","Phone · 390 × 844"],
+ ["m05-button","Phone","The button on a phone","The red button sits in thumb reach at the bottom, over the darkened scene.","Phone · 390 × 844"]];
+let k=0; const $=id=>document.getElementById(id);
+$('strip').innerHTML=F.map((f,i)=>`<button class="${f[0].startsWith('m')?'ph':''}" data-i="${i}" aria-label="Frame ${i+1}: ${f[2]}"><img src="web/${f[0]}.jpg" alt="" loading="lazy"><span>${f[0].startsWith('m')?f[0].toUpperCase().slice(0,3):String(i+1).padStart(2,'0')}</span></button>`).join('');
+function show(i){ k=(i+F.length)%F.length; const f=F[k];
+  $('big').src='web/'+f[0]+'.jpg'; $('big').alt=f[2]; $('view').classList.toggle('phone',f[0].startsWith('m'));
+  $('n').textContent=(f[0].startsWith('m')?'Phone':'Frame '+String(k+1).padStart(2,'0')+' of 09')+' · '+f[1]; $('h').textContent=f[2]; $('d').textContent=f[3]; $('a').textContent='→ '+f[4];
+  document.querySelectorAll('#strip button').forEach((b,j)=>b.setAttribute('aria-current',j===k)); }
+$('strip').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) show(+b.dataset.i);});
+$('prev').onclick=()=>show(k-1); $('next').onclick=()=>show(k+1);
+document.addEventListener('keydown',e=>{ if(e.key==='ArrowRight') show(k+1); if(e.key==='ArrowLeft') show(k-1); });
+show(0);
+</script>
