@@ -53,13 +53,7 @@ function render(){ const s=SC[cur]; let h='';
   if(s.type==='trace'){ const P=PTS.bg_flood, O=['mega','tehuis','lamont','bayside','umbilo'];
     h+='<div class="ix-cover"><div class="ix-bg" style="background-image:url('+BASE+'bg_flood.jpg)"></div><svg class="ix-route" viewBox="0 0 1600 1000" preserveAspectRatio="none"><polyline id="ixtr" points="'+O.map(k=>P[k][0]*16+','+P[k][1]*10).join(' ')+'" fill="none" stroke="#FBC900" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/></svg>'+
       O.map((k,i)=>'<i class="ix-yd" id="ixd'+i+'" style="left:'+P[k][0]+'%;top:'+P[k][1]+'%"></i>').join('')+'</div><div class="ix-credit">Blue: eThekwini 1-in-100-year flood plain · imagery: Esri, Maxar</div>'; }
-  if(s.type==='question'){ const P=PTS.bg_flood, O=['mega','tehuis','lamont','bayside','umbilo'];
-    h+='<div class="ix-cover ix-qmap"><div class="ix-bg" style="background-image:url('+BASE+'bg_flood.jpg)"></div><svg class="ix-route" viewBox="0 0 1600 1000" preserveAspectRatio="none"><polyline points="'+O.map(k=>P[k][0]*16+','+P[k][1]*10).join(' ')+'" fill="none" stroke="#FBC900" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/></svg>'+O.map(k=>'<i class="ix-yd on" style="left:'+P[k][0]+'%;top:'+P[k][1]+'%"></i>').join('')+'</div>'+
-      '<div class="ix-qscrim"></div><div class="ix-q"><div class="ix-qk">Durban · 2019 – 2025</div><h2>Why does the water keep finding the same people?</h2>'+
-      '<p class="ix-qline"><span>4 moves</span><i></i><span class="ix-r">3 floods</span><i></i><span>6 years</span><i></i><span>still “temporary”</span></p>'+
-      '<p class="ix-qsub">The map that follows puts every temporary relocation site we found over the city’s own flood line.</p>'+
-      '<button class="ix-white" data-done>Explore the map <span aria-hidden="true">→</span></button></div>'+
-      '<div class="ix-credit">Blue: eThekwini 1-in-100-year flood plain · yellow: the family’s five homes · imagery: Esri, Maxar</div>'; }
+  if(s.type==='question') h+='<div class="ix-film"><img src="'+fr(238)+'" alt="Why does the water keep finding the same people?"></div><div class="ix-cta" style="bottom:max(48px,9vh)"><div class="ix-stats"><span><b>4</b>moves</span><span><b class="ix-r">3</b>floods</span><span><b>6</b>years</span></div><button class="ix-white" data-done>Explore the map <span aria-hidden="true">→</span></button></div>';
   if(s.type!=='open') h+=chrome(s.type==='question'?null:s.moves);
   if(s.type==='question') h+='<div class="ix-chrome" style="background:none"><button class="ix-skip" data-done>Skip to the map →</button></div>';
   h+=card(s.card); root.innerHTML=h;
