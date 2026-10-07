@@ -24,9 +24,8 @@ const SC=[
  {id:'back',type:'film',fps:2.5,a:100,b:122,moves:2,auto:2500,card:{w:'380px',pos:'right:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'2022',t:'They\'re sent back.',d:'The rope lifts them, and puts them down in the same camp.'}},
  {id:'night',type:'film',a:122,b:150,moves:2,rain:true,auto:500,card:{w:'380px',pos:'left:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'25 February 2025',t:'It floods again, at night.',d:'Residents say the stream beside the camp was blocked with debris.'}},
  {id:'loss',type:'film',a:150,b:158,moves:2,dim:true,card:{cls:'loss',w:'460px',pos:'right:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'Gwala Street camp · 25 Feb 2025',t:'Three children are swept away.',d:'Lulama Dingiswayo lost her children that night: two girls, aged 5 and 16, and a boy aged 11. Five people from the camp died. (IOL; Amnesty International, 2025)'},cta:{btn:'Continue',kind:'quiet',delay:4500}},
- {id:'hotel',type:'film',fps:2.5,a:158,b:200,moves:4,auto:2500,card:{w:'400px',pos:'left:max(16px,3.5cqw);bottom:max(48px,5cqw)',k:'Moves 3 and 4 · 2025',t:'A hotel. Evicted. A student residence.',d:'March 2025: the province puts the families in Bayside Hotel. It does not pay the bill, and in July they are evicted onto the pavement. Then a student residence in Umbilo.'}},
- {id:'map34',type:'map',bg:'bg_mapB',from:'lamont',to:'bayside',to2:'umbilo',moves:4,auto:1900,labels:{lamont:'Lamontville camp',bayside:'Bayside Hotel',umbilo:'Umbilo residence'}},
- {id:'sum',type:'film',a:200,b:210,moves:4,auto:1800},
+ {id:'hotel',type:'film',fps:2.5,a:158,b:194,moves:4,auto:2500,card:{w:'400px',pos:'left:max(16px,3.5cqw);bottom:max(48px,5cqw)',k:'Moves 3 and 4 · 2025',t:'A hotel. Evicted. A student residence.',d:'March 2025: the province puts the families in Bayside Hotel. It does not pay the bill, and in July they are evicted onto the pavement. Then a student residence in Umbilo.'}},
+ {id:'map34',type:'map',tally:true,bg:'bg_mapB',from:'lamont',to:'bayside',to2:'umbilo',moves:4,auto:1900,labels:{lamont:'Lamontville camp',bayside:'Bayside Hotel',umbilo:'Umbilo residence'}},
  {id:'trace',type:'trace',moves:4,auto:2600},
  {id:'question',type:'question'}
 ];
@@ -49,6 +48,7 @@ function render(){ const s=SC[cur]; let h='';
     h+=card({w:'460px',pos:'left:max(16px,3.5cqw);bottom:max(48px,5cqw)',k:'uMlazi, Durban',t:chosen==='uMlazi'?'This is where one family\'s story starts.':'You chose '+chosen+'. This family\'s story starts in uMlazi.',d:'Mega Village sits on low ground beside a river.'});
     h+='<div class="ix-credit">Imagery: Esri, Maxar · pin placement approximate</div>'; }
   if(s.type==='film') h+='<div class="ix-film'+(s.dim?' dim':'')+'"><img id="ixf" src="'+fr(s.a)+'" alt=""></div>'+(s.rain?'<div class="ix-rain"></div>':'')+(s.cta?'<div class="ix-shade"></div>':'')+'<div class="ix-credit">'+CRED+'</div>';
+  if(s.tally) h+='<div class="ix-tally"><span>2019 – 2025</span><b>Moved 4 times</b><b class="ix-r">Flooded 3 times</b></div>';
   if(s.type==='map') h+=mapHTML(s)+'<div class="ix-counter"><b>'+s.moves+'<span>/4</span></b><div>moves</div></div><div class="ix-credit">Imagery: Esri, Maxar · routes join reported places; they are not surveyed paths</div>';
   if(s.type==='trace'){ const P=PTS.bg_flood, O=['mega','tehuis','lamont','bayside','umbilo'];
     h+='<div class="ix-cover"><div class="ix-bg" style="background-image:url('+BASE+'bg_flood.jpg)"></div><svg class="ix-route" viewBox="0 0 1600 1000" preserveAspectRatio="none"><polyline id="ixtr" points="'+O.map(k=>P[k][0]*16+','+P[k][1]*10).join(' ')+'" fill="none" stroke="#FBC900" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/></svg>'+
