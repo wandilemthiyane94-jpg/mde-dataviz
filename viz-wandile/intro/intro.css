@@ -90,3 +90,6 @@
 .ix-qsub{font:clamp(16px,1.3cqw,21px)/1.45 var(--serif);color:#cbd5e1;margin:0 0 28px;max-width:520px}
 @media (prefers-reduced-motion:reduce){.ix-qmap .ix-bg{animation:none}}
 .ix-qsub b{color:#fff;font-weight:600}
+/* presenter control */
+.ix-nextb{position:absolute;right:max(16px,3cqw);bottom:max(40px,4.5cqw);z-index:8;display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0B0F19!important;border:0;border-radius:999px;padding:12px 22px;font:600 max(15px,1.05cqw) var(--sans);cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.4);animation:ixrise .5s ease both}
+.ix-nextb:hover{background:#FBC900}
