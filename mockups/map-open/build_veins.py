@@ -3,8 +3,8 @@ import json, math, os, re
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageChops
 from scipy import ndimage
-H0 = os.path.dirname(os.path.abspath(__file__)); IMG = os.path.join(H0, "img"); OUT = os.path.join(H0, "veins"); os.makedirs(OUT, exist_ok=True)
-W, H = 1600, 1000
+H0 = os.path.dirname(os.path.abspath(__file__)); IMG = os.path.join(H0, "img"); OUT = os.environ.get("VEINS_OUT", os.path.join(H0, "veins")); os.makedirs(OUT, exist_ok=True)
+W, H = int(os.environ.get('VEINS_W', 1600)), int(os.environ.get('VEINS_H', 1000))
 mx = lambda lon: (lon + 180) / 360
 my = lambda lat: (1 - math.asinh(math.tan(math.radians(lat))) / math.pi) / 2
 md = open(os.path.join(IMG, "map-data.js"), encoding="utf8").read()
@@ -12,7 +12,7 @@ V, _ = json.JSONDecoder().raw_decode(md[md.index("{"):]); OX, OY, U = V["o"]
 META = json.loads(re.search(r"const META = (\{.*?\});", md).group(1))
 st = open(os.path.join(IMG, "sites.js"), encoding="utf8").read()
 SITES, _ = json.JSONDecoder().raw_decode(st[st.index("[", st.index("const SITES")):])
-CX, CY, Z = mx(30.93), my(-29.86), 11.65; S = 256 * 2 ** Z
+CX, CY, Z = mx(float(os.environ.get('VEINS_LON', 30.93))), my(float(os.environ.get('VEINS_LAT', -29.86))), float(os.environ.get('VEINS_Z', 11.65)); S = 256 * 2 ** Z
 sx = lambda X: (X - CX) * S + W / 2; sy = lambda Y: (Y - CY) * S + H / 2
 BOX = [0.584716796875, 0.585693359375, 0.58740234375, 0.588134765625]
 def place(im, b, size=(W, H)):
@@ -41,6 +41,7 @@ def poly_mask(rings, scale=2):
 ocean = np.asarray(poly_mask(V["ocean"]), np.float32) / 255
 # anything outside the dark tiles' land (very dark) east of the coast also counts as sea
 sea = np.maximum(ocean, ((D.mean(2) < .17) & (np.arange(W)[None, :] > W * .55)).astype(np.float32))
+sea = np.where(D.sum(2) < .01, 0, sea)  # outside the tiles is not sea
 sea = ndimage.binary_opening(sea > .5, iterations=3).astype(np.float32)
 yy = np.linspace(0, 1, H)[:, None, None]
 ocean_col = np.array([.035, .075, .13]) * (1 - .35 * yy) + np.array([.0, .02, .05]) * yy
@@ -123,3 +124,5 @@ for lat in np.arange(-30.1, -29.49, .1):
     Y = sy(my(lat)); d.line([(0, Y), (W, Y)], fill=(38, 38, 40), width=1); d.text((6, Y - 14), f"{abs(lat):.1f}°S", fill=(120, 120, 125))
 skim.save(os.path.join(OUT, "sketch.jpg"), quality=90)
 print("sketch ok")
+
+json.dump({"cx":CX,"cy":CY,"z":Z,"w":W,"h":H,"pins":pins}, open(os.path.join(OUT, "meta.json"), "w"))
