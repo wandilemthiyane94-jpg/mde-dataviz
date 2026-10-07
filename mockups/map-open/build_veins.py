@@ -21,11 +21,16 @@ def place(im, b, size=(W, H)):
     c = Image.new(im.mode, size, (0, 0, 0, 0) if im.mode == "RGBA" else 0); c.paste(big, (int(x0), int(y0))); return c
 # ---- base: dark canvas + relief (soft light) + deep ocean gradient + labels
 dark = place(Image.open(os.path.join(IMG, "dark.png")).convert("RGB"), BOX)
-rel = place(Image.open(os.path.join(IMG, "relief.jpg")).convert("RGB"), META["relief"])
+rel = place(Image.open(os.path.join(IMG, "hillshade.png")).convert("RGB"), BOX)  # fresh hillshade, AWS Terrain Tiles
 D = np.asarray(dark, np.float32) / 255; R = np.asarray(rel, np.float32) / 255; L = R.mean(2, keepdims=True)
-L = np.where(R.sum(2, keepdims=True) < .02, .5, L)
+
 soft = np.where(L < .5, D - (1 - 2 * L) * D * (1 - D), D + (2 * L - 1) * (np.sqrt(D) - D))
-base = np.clip(((soft - .5) * 1.25 + .5) * np.array([.86, .93, 1.0]) * .92, 0, 1)
+lum = np.clip((L - .55) * 1.6 + .5 + (D.mean(2, keepdims=True) - .3) * .4, 0, 1)
+# lush green ramp: deep valley green -> sunlit ridge green, shaded by the real terrain
+lo, mid, hi = np.array([.05, .17, .08]), np.array([.16, .40, .15]), np.array([.55, .74, .38])
+base = np.where(lum < .5, lo + (mid - lo) * (lum / .5), mid + (hi - mid) * ((lum - .5) / .5))
+base = np.clip(base, 0, 1)
+
 # ocean mask from the city's ocean polygons
 def poly_mask(rings, scale=2):
     m = Image.new("L", (W * scale, H * scale), 0); d = ImageDraw.Draw(m)
@@ -39,11 +44,11 @@ sea = np.maximum(ocean, ((D.mean(2) < .17) & (np.arange(W)[None, :] > W * .55)).
 sea = ndimage.binary_opening(sea > .5, iterations=3).astype(np.float32)
 yy = np.linspace(0, 1, H)[:, None, None]
 ocean_col = np.array([.035, .075, .13]) * (1 - .35 * yy) + np.array([.0, .02, .05]) * yy
-base = base * (1 - sea[..., None] * .85) + ocean_col * sea[..., None] * .85
+base = base * (1 - sea[..., None]) + ocean_col * sea[..., None]
 # soft coastline glow
 edge = ndimage.binary_dilation(sea > .5, iterations=2) ^ (sea > .5)
 glow = ndimage.gaussian_filter(edge.astype(np.float32), 3)[..., None]
-base = np.clip(base + glow * np.array([.25, .45, .6]) * .9, 0, 1)
+base = np.clip(base + glow * np.array([.55, .8, .75]) * .6, 0, 1)
 Image.fromarray((base * 255).astype(np.uint8)).save(os.path.join(OUT, "base.jpg"), quality=90)
 lab = place(Image.open(os.path.join(IMG, "labels.png")).convert("RGBA"), BOX); lab.save(os.path.join(OUT, "labels.png"))
 # ---- water layer: rivers (veins) and the flood plain, at 2x then down
@@ -82,6 +87,15 @@ g = np.clip(g / np.percentile(g[water], 99) , 0, 1)
 g16 = (g * 65535).astype(np.uint32)
 enc = np.zeros((H, W, 3), np.uint8); enc[..., 0] = g16 >> 8; enc[..., 1] = g16 & 255
 Image.fromarray(enc).save(os.path.join(OUT, "dist.png"))
-pins = [{"name": s["name"], "x": round(sx(mx(s["lon"])), 1), "y": round(sy(my(s["lat"])), 1), "g": float(g[min(H-1, max(0, int(sy(my(s["lat"]))))), min(W-1, max(0, int(sx(mx(s["lon"])))))])} for s in SITES]
+pins = [{"id": s["id"], "name": s["name"], "x": round(sx(mx(s["lon"])), 1), "y": round(sy(my(s["lat"])), 1), "g": float(g[min(H-1, max(0, int(sy(my(s["lat"]))))), min(W-1, max(0, int(sx(mx(s["lon"])))))])} for s in SITES]
 json.dump(pins, open(os.path.join(OUT, "pins.json"), "w"))
 print("ok", n, len(seaid), round(float(sea.mean()), 3))
+
+# satellite layer (real ground colour) for the final beat, from the landing basemap
+lm = open(os.path.join(H0, "..", "..", "viz-wandile", "data", "landing-meta.js"), encoding="utf8").read()
+BASEBOX = json.loads(re.search(r"const BASE = (\[[^\]]*\]);", lm).group(1))
+sat = place(Image.open(os.path.join(H0, "..", "..", "viz-wandile", "assets", "basemap.jpg")).convert("RGB"), BASEBOX)
+Sa = np.asarray(sat, np.float32) / 255
+Sa = Sa * (1 - sea[..., None]) + ocean_col * sea[..., None]
+Image.fromarray((np.clip(Sa, 0, 1) * 255).astype(np.uint8)).save(os.path.join(OUT, "sat.jpg"), quality=86)
+print("sat ok")
