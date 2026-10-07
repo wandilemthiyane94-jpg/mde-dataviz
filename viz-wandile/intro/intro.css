@@ -89,3 +89,4 @@
 .ix-qline .ix-r{color:#ff6b5e}
 .ix-qsub{font:clamp(16px,1.3cqw,21px)/1.45 var(--serif);color:#cbd5e1;margin:0 0 28px;max-width:520px}
 @media (prefers-reduced-motion:reduce){.ix-qmap .ix-bg{animation:none}}
+.ix-qsub b{color:#fff;font-weight:600}

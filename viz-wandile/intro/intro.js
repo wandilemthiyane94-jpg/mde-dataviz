@@ -57,7 +57,7 @@ function render(){ const s=SC[cur]; let h='';
     h+='<div class="ix-cover ix-qmap"><div class="ix-bg" style="background-image:url('+BASE+'bg_flood.jpg)"></div><svg class="ix-route" viewBox="0 0 1600 1000" preserveAspectRatio="none"><polyline points="'+O.map(k=>P[k][0]*16+','+P[k][1]*10).join(' ')+'" fill="none" stroke="#FBC900" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/></svg>'+O.map(k=>'<i class="ix-yd on" style="left:'+P[k][0]+'%;top:'+P[k][1]+'%"></i>').join('')+'</div>'+
       '<div class="ix-qscrim"></div><div class="ix-q"><div class="ix-qk">Durban · 2019 – 2025</div><h2>Why does the water keep finding the same people?</h2>'+
       '<p class="ix-qline"><span>4 moves</span><i></i><span class="ix-r">3 floods</span><i></i><span>6 years</span><i></i><span>still “temporary”</span></p>'+
-      '<p class="ix-qsub">The map that follows puts every temporary relocation site we found over the city’s own flood line.</p>'+
+      '<p class="ix-qsub">It is not one family. <b>11 of the 28</b> relocation sites we located in Durban sit inside or within 250 m of the city’s 1-in-100-year flood line.</p>'+
       '<button class="ix-white" data-done>Explore the map <span aria-hidden="true">→</span></button></div>'+
       '<div class="ix-credit">Blue: eThekwini 1-in-100-year flood plain · yellow: the family’s five homes · imagery: Esri, Maxar</div>'; }
   if(s.type!=='open') h+=chrome(s.type==='question'?null:s.moves);
