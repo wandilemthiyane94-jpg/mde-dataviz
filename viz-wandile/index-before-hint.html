@@ -343,7 +343,6 @@ body.cond .time{grid-template-columns:40px 118px 1fr auto}
 .ticks span:before{top:-11px;width:3px;height:3px;margin-left:-1.5px;opacity:.6}
 .ticks span.fl{color:#F5A524;font-weight:500}
 .time>.cmpb{padding:7px 12px;font-size:12px;border-radius:999px;background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)}
-.hero p.hint-yel,.hint-yel{margin:0;font:600 17px/1.3 var(--sans)!important;color:#FBC900!important;letter-spacing:.01em}
 </style>
 </head>
 <body>
@@ -373,7 +372,7 @@ body.cond .time{grid-template-columns:40px 118px 1fr auto}
     <div class="kick">Durban, South Africa</div>
     <h1>Moved Into<br>the Water</h1>
     <p>Is government relocating flood victims to safe places?</p>
-    <p class="hint-yel" id="explore">Click any site to inspect</p>
+    <button type="button" class="cta" id="explore">Explore the map <span aria-hidden="true">→</span></button>
   </div>
   <div class="glass layers" id="layers">
     <button type="button" data-l="sites"><i class="sw" style="width:12px;height:12px;border-radius:50%;background:#FBC900;box-shadow:0 0 8px #FBC900"></i><span>Temporary relocation sites</span><i class="tg"></i></button>
@@ -863,7 +862,7 @@ q.addEventListener('input',()=>{ const v=q.value.trim().toLowerCase(); if(!v){re
   res.hidden=false; res.querySelectorAll('button[data-i]').forEach(b=>b.onclick=()=>{res.hidden=true;q.value='';items[+b.dataset.i][2]();}); });
 q.addEventListener('keydown',e=>{ if(e.key==='Enter'){const b=res.querySelector('button[data-i]'); if(b) b.click();} if(e.key==='Escape') res.hidden=true; });
 $('cmpb').onclick=()=>{ condCmp=true; panel(); };
-
+$('explore').onclick=()=>{ select('lamontville',true); };
 
 /* ---------- time ---------- */
 function setYear(y,quiet){ y=+y; const prev=year; year=y; $('year').value=y; $('yr').textContent=y; const pc=(y-2007)/19*100; $('knob').style.left=pc+'%'; $('fill').style.width=pc+'%';
