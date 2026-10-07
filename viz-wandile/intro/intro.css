@@ -81,9 +81,9 @@
 .ix-qmap .ix-bg{animation:ixdrift 18s ease-out both}
 @keyframes ixdrift{from{transform:scale(1.04)}to{transform:scale(1.12) translate(-1.5%,1%)}}
 .ix-qscrim{position:absolute;inset:0;z-index:3;background:linear-gradient(90deg,rgba(5,8,14,.94) 0%,rgba(5,8,14,.78) 38%,rgba(5,8,14,.2) 70%,rgba(5,8,14,.05))}
-.ix-q{position:absolute;left:max(20px,6cqw);top:50%;transform:translateY(-50%);width:min(680px,calc(100vw - 40px));z-index:5;animation:ixrise .9s ease .2s both}
+.ix-q{position:absolute;left:max(20px,6cqw);top:max(64px,6vh);bottom:max(48px,6vh);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;width:min(680px,calc(100vw - 40px));z-index:5;animation:ixrise .9s ease .2s both}
 .ix-qk{font:600 max(11px,.75cqw) var(--mono);letter-spacing:.2em;text-transform:uppercase;color:#F5A524}
-.ix-q h2{font:800 clamp(38px,4.4cqw,76px)/1 var(--sans);letter-spacing:-.035em;color:#fff;margin:16px 0 22px;text-wrap:balance}
+.ix-q h2{font:800 clamp(34px,min(4.4cqw,8.5vh),76px)/1 var(--sans);letter-spacing:-.035em;color:#fff;margin:16px 0 22px;text-wrap:balance}
 .ix-qline{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 0 18px;font:500 max(12px,.85cqw) var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#E2E8F0}
 .ix-qline i{width:5px;height:5px;border-radius:50%;background:#FBC900}
 .ix-qline .ix-r{color:#ff6b5e}
