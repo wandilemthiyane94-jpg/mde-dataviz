@@ -344,18 +344,6 @@ body.cond .time{grid-template-columns:40px 118px 1fr auto}
 .ticks span.fl{color:#F5A524;font-weight:500}
 .time>.cmpb{padding:7px 12px;font-size:12px;border-radius:999px;background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)}
 .hero p.hint-yel,.hint-yel{margin:0;font:600 17px/1.3 var(--sans)!important;color:#FBC900!important;letter-spacing:.01em}
-.rk{position:absolute;left:0;top:0;pointer-events:none;padding:6px 10px;border-radius:8px;background:rgba(7,11,18,.78);border:1px solid rgba(245,165,36,.35);backdrop-filter:blur(4px)}
-.rk.l{text-align:right}
-.rk b{display:block;font:700 16px/1.15 var(--mono);color:#F5A524}
-.rk span{display:block;font:500 12px/1.3 var(--sans);color:#E2E8F0}
-.rk small{display:block;font:500 11px/1.3 var(--sans);color:#94A3B8}
-.rk.in b{color:#ff6b5e}
-.rkn{position:absolute;left:0;top:0;pointer-events:none;font:600 12.5px/24px var(--sans);color:#0B0F19;background:#FBC900;padding:0 9px;border-radius:5px;white-space:nowrap}
-body.risk .site .nm{display:none!important}
-.rkcap{position:fixed;left:410px;right:500px;bottom:146px;font:11.5px var(--sans);color:#cbd5e1;text-shadow:0 1px 4px #000;pointer-events:none}
-.trk{width:80%;justify-self:start;overflow:visible}
-.trhint{position:absolute;left:calc(100% + 24px);top:2px;width:22%;min-width:150px;max-width:230px;font:12px/1.35 var(--sans);color:#9AA6B8;pointer-events:none}
-@media (max-width:820px){.trk{width:100%}.trhint{display:none}}
 </style>
 </head>
 <body>
@@ -396,7 +384,7 @@ body.risk .site .nm{display:none!important}
   </div>
   <div class="scale">
     <svg id="scalebar" width="170" height="28" aria-hidden="true"></svg>
-    
+    <svg width="36" height="36" viewBox="0 0 36 36" aria-label="North"><circle cx="18" cy="18" r="16" fill="rgba(7,11,18,.6)" stroke="rgba(255,255,255,.4)"/><path d="M18 8l5 13-5-3-5 3z" fill="#fff"/><text x="18" y="31" fill="#fff" font-size="7" text-anchor="middle" font-family="Inter">N</text></svg>
   </div>
   <div class="glass stat"><b id="statn">28</b><span>temporary relocation sites identified in eThekwini</span><small id="statsm">12 mapped in detail · 84 found nationally</small></div>
 </div>
@@ -417,7 +405,7 @@ body.risk .site .nm{display:none!important}
 <div class="glass time">
   <button type="button" id="play" aria-label="Play">▶</button>
   <div class="yrlab"><small>Sites open in</small><b id="yr">2026</b></div>
-  <div class="trk" id="trkwrap"><span class="trhint">Press ▶ or drag to see which sites existed each year</span><div class="rail"></div><div class="fill" id="fill"></div><div class="knob" id="knob"></div>
+  <div class="trk" id="trkwrap"><div class="rail"></div><div class="fill" id="fill"></div><div class="knob" id="knob"></div>
     <input type="range" id="year" min="2007" max="2026" step="1" value="2026" aria-label="Year"><div class="ticks" id="ticks"></div></div>
   <button type="button" class="cmpb" id="cmpb"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 14V8M6 14V3M10 14V6M14 14V10" stroke="#fff" stroke-width="2"/></svg>Compare sites</button>
 </div>
@@ -474,19 +462,6 @@ OTHER_TRA.forEach(o=>{ o.X=mx(o.lon); o.Y=my(o.lat); const el=document.createEle
   ov.appendChild(el); o.el=el; });
 PLACES.forEach(p=>{ const el=document.createElement('div'); el.className='place'; el.innerHTML='<span>'+p[0]+'</span>'; ov.appendChild(el); p.el=el; p.X=mx(p[1]); p.Y=my(p[2]); });
 const extra=document.createElement('div'); ov.appendChild(extra);
-/* Flood Risk annotations: nearest point on the city's flood line and on the river network, measured from the pin */
-const RISK={};
-function nearestOn(rings,px,py,closed){ let best=[Infinity,0,0];
-  for(const r of rings){ const n=r.length/2; for(let i=0;i<n-(closed?0:1);i++){ const j=(i+1)%n, ax=r[2*i],ay=r[2*i+1],bx=r[2*j],by=r[2*j+1], dx=bx-ax, dy=by-ay, L=dx*dx+dy*dy;
-      let t=L?((px-ax)*dx+(py-ay)*dy)/L:0; t=Math.max(0,Math.min(1,t)); const qx=ax+t*dx, qy=ay+t*dy, d=(qx-px)**2+(qy-py)**2; if(d<best[0]) best=[d,qx,qy]; } }
-  return best; }
-function inside(rings,px,py){ let c=false; for(const r of rings){ const n=r.length/2; for(let i=0,j=n-1;i<n;j=i++){ const xi=r[2*i],yi=r[2*i+1],xj=r[2*j],yj=r[2*j+1]; if(((yi>py)!==(yj>py))&&(px<(xj-xi)*(py-yi)/(yj-yi)+xi)) c=!c; } } return c; }
-function riskOf(s){ if(RISK[s.id]) return RISK[s.id]; const px=(s.X-OX)*U, py=(s.Y-OY)*U, mpu=40075016.686*Math.cos(s.lat*Math.PI/180)/U;
-  const f=nearestOn(V.flood,px,py,true), w=nearestOn(V.river,px,py,false), inF=inside(V.flood,px,py);
-  return RISK[s.id]={inF, fd:inF?0:Math.sqrt(f[0])*mpu, fX:OX+f[1]/U, fY:OY+f[2]/U, rd:Math.sqrt(w[0])*mpu, rX:OX+w[1]/U, rY:OY+w[2]/U}; }
-function riskSite(){ if(view2!=='map'||condOverlay) return null; if(selected) return tab==='risk'?byId[selected]:null; return stab==='risk'?byId.lamontville:null; }
-function riskFly(id){ const s=byId[id], k=riskOf(s), d=Math.max(k.fd,k.rd,30), z=Math.max(14.8,Math.min(17.4,17.4-Math.log2(d/45))), sc=256*Math.pow(2,z), off=W>820?W/2-(400+(W-870)*0.5):0;
-  flyTo(s.X+off/sc, s.Y+40/sc, z, 1100); }
 const isOpen=(s,y)=>s.yin<=y && (s.yclosed==null || y<=s.yclosed);
 const yearsOpen=(s,y)=>Math.max(0,Math.min(y,s.yclosed==null?y:s.yclosed)-s.yin);
 
@@ -563,26 +538,6 @@ function place(now){
   if(cutOn && sel && sel.cut){ const A=scr(mx(CUT.A[1]),my(CUT.A[0])), B=scr(mx(CUT.B[1]),my(CUT.B[0]));
     svg+='<line x1="'+A[0]+'" y1="'+A[1]+'" x2="'+B[0]+'" y2="'+B[1]+'" stroke="#000" stroke-width="5" opacity=".55"/><line x1="'+A[0]+'" y1="'+A[1]+'" x2="'+B[0]+'" y2="'+B[1]+'" stroke="#fff" stroke-width="2" stroke-dasharray="9 6"/>';
     html+='<div class="endp" style="transform:translate('+A[0]+'px,'+(A[1]+14)+'px)"><b>A</b></div><div class="endp" style="transform:translate('+B[0]+'px,'+(B[1]-14)+'px)"><b>B</b></div>'; }
-  const rk=riskSite(); document.body.classList.toggle('risk',!!rk);
-  if(rk){ const fm=v=>'about '+(v<1000?Math.round(v)+' m':(v/1000).toFixed(1)+' km'), mpp=40075016.686*Math.cos(rk.lat*Math.PI/180);
-    const near=SITES.filter(x=>x===rk||(isOpen(x,year)&&Math.hypot(x.X-rk.X,x.Y-rk.Y)*mpp<600));
-    const boxes=[], hit=(b)=>boxes.some(o=>b.x<o.x+o.w&&b.x+b.w>o.x&&b.y<o.y+o.h&&b.y+b.h>o.y);
-    near.forEach(st=>{ const P0=scr(st.X,st.Y); boxes.push({x:P0[0]-14,y:P0[1]-14,w:28,h:28}); });
-    /* place a label box near (x,y) on the given side, nudging vertically until it collides with nothing */
-    const put=(x,y,w,h,right,dir)=>{ let b={x:right?x:x-w,y:y,w:w,h:h}, n=0; if(W>820){ b.x=Math.max(410,Math.min(W-490-w,b.x)); } while(hit(b)&&n<24){ b.y+=dir*(h/3); n++; } boxes.push(b); return b; };
-    near.forEach(st=>{ const k=riskOf(st), P0=scr(st.X,st.Y);
-      const nb=put(P0[0]+18,P0[1]-34,Math.max(120,st.name.length*7.6),24,true,-1);
-      html+='<div class="rkn" style="transform:translate('+nb.x.toFixed(1)+'px,'+nb.y.toFixed(1)+'px)">'+esc(st.name)+'</div>';
-      const leg=(X,Y,dist,lab,note)=>{ const Q=scr(X,Y), dx=Q[0]-P0[0], dy=Q[1]-P0[1], L=Math.hypot(dx,dy)||1, ux=dx/L, uy=dy/L;
-        svg+='<line x1="'+P0[0]+'" y1="'+P0[1]+'" x2="'+Q[0]+'" y2="'+Q[1]+'" stroke="#000" stroke-width="5" opacity=".45"/><line x1="'+P0[0]+'" y1="'+P0[1]+'" x2="'+Q[0]+'" y2="'+Q[1]+'" stroke="#F5A524" stroke-width="2.2"/><circle cx="'+Q[0]+'" cy="'+Q[1]+'" r="4.5" fill="#F5A524" stroke="#0B0F19" stroke-width="1.5"/>';
-        const right=ux>=-0.2, ax=Q[0]+ux*14+(right?8:-8), ay=Q[1]+uy*14-(uy<0?52:0), h=note?62:46, w=210;
-        const b=put(ax,ay,w,h,right,uy<0?-1:1), cx=right?b.x:b.x+b.w, cy=b.y+14;
-        svg+='<path d="M'+Q[0]+' '+Q[1]+' L'+(right?cx-4:cx+4)+' '+cy+'" stroke="rgba(245,165,36,.6)" stroke-width="1" fill="none"/>';
-        html+='<div class="rk'+(right?'':' l')+'" style="transform:translate('+b.x.toFixed(1)+'px,'+b.y.toFixed(1)+'px);width:'+w+'px"><b>'+dist+'</b><span>'+lab+'</span>'+(note?'<small>'+note+'</small>':'')+'</div>'; };
-      if(k.inF){ const b=put(P0[0]+18,P0[1]+14,220,46,true,1); html+='<div class="rk in" style="transform:translate('+b.x+'px,'+b.y+'px);width:220px"><b>Inside</b><span>the city’s 1-in-100-year flood line</span></div>'; }
-      else leg(k.fX,k.fY,fm(k.fd),'to the city’s flood line',k.fd<10?'(the pin is just outside it)':'');
-      leg(k.rX,k.rY,fm(k.rd),'to the nearest stream or river',''); });
-    html+='<div class="rkcap">Distances from each site’s pin to the city’s 1-in-100-year flood line and the nearest mapped stream. Pins are approximate.</div>'; }
   $('svg').innerHTML=svg; extra.innerHTML=html; }
 const CUT={"A":[-29.95499188810791,30.945257104154543],"B":[-29.95284859641847,30.945917847798384]};
 
@@ -852,7 +807,7 @@ function panel(){ const box=$('panel'), foot=$('panelfoot'), s=selected&&byId[se
   if(view2==='about'){ box.innerHTML=aboutHTML(); foot.innerHTML=''; $('back').onclick=()=>{view2='map';setNav();panel();}; return; }
   if(view2==='report'){ box.innerHTML=''; foot.innerHTML=''; return; } /* the Report page (report/report.js) holds the form */
   if(!s){ box.innerHTML=storyHTML(); foot.innerHTML='';
-    box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{ stab=b.dataset.st; if(stab==='conditions'){ openCond('lamontville'); return; } closeCond(); panel(); if(stab==='risk') riskFly('lamontville'); draw();});
+    box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{ stab=b.dataset.st; if(stab==='conditions'){ openCond('lamontville'); return; } closeCond(); panel();});
     if($('sj')) $('sj').onclick=()=>{select('lamontville',true);setTimeout(()=>{tab='movement';toggleJourney();},950);};
     box.querySelectorAll('.list button').forEach(b=>b.onclick=()=>select(b.dataset.id,true)); startArc(); startVid(); return; }
   const i=SITES.indexOf(s), d=DIST[s.id], n=yearsOpen(s,2026);
@@ -876,7 +831,7 @@ function panel(){ const box=$('panel'), foot=$('panelfoot'), s=selected&&byId[se
   foot.innerHTML=LINK[s.id]?'<a class="explore" target="_blank" rel="noopener" href="'+LINK[s.id]+'">Explore this site in 3D: the 2022 storm <span aria-hidden="true">→</span></a>':'<button class="explore" id="zoomsite">Zoom in on this site <span aria-hidden="true">→</span></button>';
   $('back').onclick=()=>select(null);
   $('prev').onclick=()=>select(SITES[(i-1+SITES.length)%SITES.length].id,true); $('next').onclick=()=>select(SITES[(i+1)%SITES.length].id,true);
-  box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{ tab=b.dataset.t; if(tab==='conditions'){ openCond(s.id); return; } closeCond(); panel(); if(tab==='risk') riskFly(s.id); draw();});
+  box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{ tab=b.dataset.t; if(tab==='conditions'){ openCond(s.id); return; } closeCond(); panel();});
   if($('bj')) $('bj').onclick=()=>toggleJourney(); if($('bc')) $('bc').onclick=()=>toggleCut();
   if($('zoomsite')) $('zoomsite').onclick=()=>flyTo(s.X,s.Y,16.6); }
 function showOther(o){ selected=null; view2='map'; setNav(); const box=$('panel');
@@ -930,7 +885,7 @@ $('play').onclick=()=>{ if(playing){ stopPlay(); return; } $('play').textContent
 
 /* ---------- view control ---------- */
 function flyTo(x,y,z,ms){ if(anim) cancelAnimationFrame(anim); const a={x:view.x,y:view.y,z:view.z}, t0=performance.now(), D=ms||900;
-  const step=()=>{ const now=performance.now(); let t=Math.max(0,Math.min(1,(now-t0)/D)); const e=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+  const step=now=>{ let t=Math.min(1,(now-t0)/D); const e=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
     const sA=Math.pow(2,a.z), sB=Math.pow(2,z), w=(Math.pow(2,a.z+(z-a.z)*e)-sA)/((sB-sA)||1); const m=(sA===sB)?e:Math.max(0,Math.min(1,w*sB/Math.pow(2,a.z+(z-a.z)*e)));
     view.z=a.z+(z-a.z)*e; view.x=a.x+(x-a.x)*m; view.y=a.y+(y-a.y)*m; draw(); if(t<1) anim=requestAnimationFrame(step); else anim=null; }; anim=requestAnimationFrame(step); }
 function zoomAt(px,py,dz){ const s0=S(), X=view.x+(px-W/2)/s0, Y=view.y+(py-H/2)/s0; view.z=Math.max(ZMIN,Math.min(ZMAX,view.z+dz)); const s1=S(); view.x=X-(px-W/2)/s1; view.y=Y-(py-H/2)/s1; draw(); }
