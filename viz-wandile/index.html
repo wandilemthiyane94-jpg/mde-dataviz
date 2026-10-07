@@ -378,7 +378,7 @@ const scr=(X,Y)=>{const s=S(); return [(X-view.x)*s+W/2,(Y-view.y)*s+H/2]};
 const homeZoom=()=>Math.max(ZMIN,10.55+Math.log2(Math.max(W,400)/1536));
 // distance of each site's pin to the 1-in-100-year flood line (metres), from our point-in-polygon test
 const DIST={lamontville:2,kwadimba:37,gwala:56,lindelani:59,crystal:60,frazer:160,umbilo:347,congo:581,montclair:909,astra:3345,bayside:4024,point:5190};
-/* The story film and the 3D model are published inside this site (stories/), so they open in the same window:
+/* The 3D model is published inside this site (stories/), so it opens in the same window:
    claude.ai pages refuse to open other claude.ai pages from inside an artifact. */
 const LINK={lamontville:'stories/gwala-orbit.html', gwala:'stories/gwala-orbit.html'};
 const PLACES=[["Ntuzuma",30.94,-29.735],["KwaMashu",30.99,-29.745],["Umlazi",30.88,-29.97],["Durban",31.02,-29.86],["Pinetown",30.86,-29.815],["Lamontville",30.935,-29.94],["oThongathi",31.12,-29.57],["Inanda",30.94,-29.69]];
@@ -719,7 +719,7 @@ function toggleCut(){ cutOn=!cutOn; if(cutOn) journeyOn=false; $('cut').style.di
 /* ---------- nav and search ---------- */
 function setNav(){ document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===view2?'page':'false')); document.body.classList.toggle('cond',view2==='conditions'); }
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{ const v=b.dataset.v;
-  if(v==='stories'){ location.href='stories/intro-31.html'; return; }
+  if(v==='stories'){ view2='stories'; selected=null; stab='story'; setNav(); panel(); $('panel').scrollTop=0; return; }
   view2=v; selected=null; setNav(); panel(); if(v==='map') flyTo(HOME.x,HOME.y,homeZoom()); if(v==='conditions') condFly(); });
 const q=$('q'), res=$('res');
 q.addEventListener('input',()=>{ const v=q.value.trim().toLowerCase(); if(!v){res.hidden=true;return;} const items=[];
