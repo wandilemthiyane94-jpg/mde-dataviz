@@ -43,7 +43,7 @@ h1{margin:0;font:800 clamp(24px,3.4vw,34px)/1.05 var(--sans);letter-spacing:-.03
     <div class="cr">Basemap: Esri, HERE, Garmin, © OpenStreetMap · flood line and rivers: eThekwini Municipality · relief: AWS Terrain Tiles</div>
   </div>
   <section class="notes">
-    <div class="note"><h3>How it moves</h3><p>It opens as a black-and-white survey sheet: 40 m contours, the coastline and a lat/long grid. The 12 relocation sites drop in, each labelled. Then the city's own rivers and 1-in-100-year flood plain grow inland from the coast like veins; each site within 250 m of the flood line pulses red as the water reaches it. Green terrain colour fades in, then real satellite colour last.</p></div>
+    <div class="note"><h3>How it moves</h3><p>It opens as a black-and-white survey sheet: 40 m contours, the coastline and a lat/long grid. The 12 relocation sites drop in, each labelled. Then the city's own rivers and 1-in-100-year flood plain grow inland from the coast like veins; each site within 250 m of the flood line pulses red as the water reaches it. Real satellite colour arrives last, straight from the sketch.</p></div>
     <div class="note"><h3>On or off</h3><p>The Animation switch turns motion off and shows the finished map at once (and it is off automatically for anyone whose device asks for reduced motion). Replay runs it again.</p></div>
     <div class="note"><h3>What is real</h3><p>Every pixel of water is the city's real flood plain and river network, and the sites are their real positions. The growth from the sea is an animation of the map appearing, not a flood simulation.</p></div>
   </section>
@@ -55,8 +55,7 @@ const BEATS=[[0,'Reading the land','A survey of the coast','Contours every 40 m:
  [.08,'Where people were moved','Temporary relocation sites','After each flood, families were moved to sites the city called temporary.'],
  [.22,'The water finds its way','The flood line grows in from the sea','The city’s own 1-in-100-year flood plain, spreading up every river valley.'],
  [.46,'Where they meet','Six of the 12 sites sit at the flood line','Within 250 m of the city’s own flood map. Each one pulses as the water reaches it.'],
- [.64,'The living landscape','Green hills, deep valleys','The same terrain, now in colour.'],
- [.8,'The ground itself','The real terrain','Satellite imagery: the land as it looks today.'],
+ [.66,'The ground itself','The real terrain','Satellite imagery: the land as it looks today.'],
  [.93,'Now you explore','Click any site to inspect','Every layer together: sites, flood line, rivers and terrain.']];
 const DUR=20000;
 /* sites within 250 m of the flood line (distance from the pin, see the site's Flood Risk tab) */
@@ -99,9 +98,8 @@ function frame(now){
   const sk=cv.width/W; x.setTransform(sk,0,0,sk,0,(cv.height-H*sk)/2);
   const z=1.06-.06*Math.min(1,p*1.3); x.translate(W/2,H/2); x.scale(z,z); x.translate(-W/2,-H/2);
   x.drawImage(sketch,0,0,W,H);
-  const ga=Math.max(0,Math.min(1,(p-.64)/.12)); if(ga>0){ x.globalAlpha=ga; x.drawImage(base,0,0,W,H); x.globalAlpha=1; }   // green terrain
-  const sa=Math.max(0,Math.min(1,(p-.8)/.12))*.85;                                     // real terrain last
-  if(sa>0){ x.globalAlpha=sa*.92; x.drawImage(sat,0,0,W,H); x.globalAlpha=1; }
+  const sa=Math.max(0,Math.min(1,(p-.66)/.18)), ga=sa;   // straight from the survey sketch to the real terrain                                     // real terrain last
+  if(sa>0){ x.globalAlpha=sa; x.drawImage(sat,0,0,W,H); x.globalAlpha=1; }
   // water revealed behind the front; a bright band rides it
   const s=WD.data, o=img.data, band=.045;
   if(g!==window._lg||sa!==window._ls){ window._lg=g; window._ls=sa;
