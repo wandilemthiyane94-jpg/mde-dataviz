@@ -65,7 +65,6 @@ function openHTML(){ return '<div class="ix-bg" style="background-image:url('+BA
   '<p>When floods take a home in Durban, families are sent to "temporary" camps. Pick a township to follow one family\'s journey.</p>'+
   '<form class="ix-search" id="ixform" autocomplete="off"><svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="none" stroke="#9AA6B8" stroke-width="1.6"/><path d="M11 11L15 15" stroke="#9AA6B8" stroke-width="1.6"/></svg><input id="ixq" type="text" placeholder="Type your township, e.g. uMlazi" aria-label="Your township"><button class="ix-white" type="submit" style="padding:12px 18px;font-size:15px">Follow →</button></form>'+
   '<div class="ix-sugg" id="ixsugg" hidden></div></div>'+
-  '<div class="ix-dragcard"><div class="ix-dragpin" id="ixdrag" role="button" tabindex="0" aria-label="Drag the family onto the map to start">'+PIN+'</div><div style="font-weight:600;color:#fff;margin-top:10px">Or drag the family</div><div style="font-size:13px;color:#9AA6B8">onto the map</div></div>'+
   '<div class="ix-disc">This is a story built from news reports, not an emergency service. If you are in danger now, contact your local emergency services.</div>'; }
 function wireOpen(){ const q=document.getElementById('ixq'), sg=document.getElementById('ixsugg'), form=document.getElementById('ixform');
   const show=()=>{ const v=q.value.trim().toLowerCase(); const list=TOWNS.filter(t=>!v||t[0].toLowerCase().includes(v)).slice(0,5);
@@ -73,11 +72,7 @@ function wireOpen(){ const q=document.getElementById('ixq'), sg=document.getElem
   q.addEventListener('focus',show); q.addEventListener('input',show);
   sg.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; chosen=b.dataset.t; next(); });
   form.addEventListener('submit',e=>{ e.preventDefault(); const v=q.value.trim(); const m=TOWNS.find(t=>t[0].toLowerCase()===v.toLowerCase()); chosen=m?m[0]:(v||'uMlazi'); next(); });
-  const pin=document.getElementById('ixdrag'); let drag=null;
-  pin.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); next(); } });
-  pin.addEventListener('pointerdown',e=>{ const r=pin.getBoundingClientRect(); drag={dx:e.clientX-r.left,dy:e.clientY-r.top,moved:false}; pin.setPointerCapture(e.pointerId); });
-  pin.addEventListener('pointermove',e=>{ if(!drag) return; drag.moved=true; pin.classList.add('dragging'); pin.style.left=(e.clientX-drag.dx)+'px'; pin.style.top=(e.clientY-drag.dy)+'px'; });
-  pin.addEventListener('pointerup',()=>{ if(drag&&drag.moved){ drag=null; next(); } else drag=null; }); }
+}
 function playFilm(s){ const el=document.getElementById('ixf'), n=s.b-s.a; let t0=null;
   const step=ts=>{ if(t0==null) t0=ts; let k=Math.floor((ts-t0)/1000*FPS); if(s.loop) k%=(n+1); else k=Math.min(k,n);
     el.src=fr(s.a+k); if(s.loop||k<n) raf=requestAnimationFrame(step); };
