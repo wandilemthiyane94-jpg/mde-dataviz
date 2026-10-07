@@ -38,20 +38,11 @@ const chrome=m=>{ if(m==null) return ''; const bars=[0,1,2,3].map(i=>'<i class="
 const card=c=>c?'<div class="ix-card '+(c.cls||'')+'" style="--w:'+c.w+';'+c.pos+'"><div class="ix-k">'+c.k+'</div>'+(c.big?'<div class="ix-big">'+c.big+'</div>':'')+(c.t?'<div class="ix-t">'+c.t+'</div>':'')+(c.d?'<div class="ix-d">'+c.d+'</div>':'')+'</div>':'';
 const cta=c=>'<div class="ix-cta">'+(c.line?'<div class="ix-line">'+c.line+'</div>':'')+'<button class="'+(c.kind==='white'?'ix-white':c.kind==='quiet'?'ix-quiet':'ix-red')+'" data-next>'+c.btn+' <span aria-hidden="true">→</span></button>'+(c.sub?'<div class="ix-sub">'+c.sub+'</div>':'')+'</div>';
 function clear(){ clearTimeout(timer); cancelAnimationFrame(raf); }
-/* scene clock: normally real time; pressing Next during an animation speeds it up so it finishes quickly, then moves on */
-let vt=0, vlast=0, SPEED=1, rush=false, sceneEnd=0, ended=false;
-function vnow(){ const t=performance.now(); vt+=(t-vlast)*SPEED; vlast=t; return vt; }
-function advance(){ const s=SC[cur]; if(s.type==='question'){ done(); return; } if(s.type==='open') return;
-  if(ended) { next(); return; } rush=true; SPEED=7; }
-function go(i){ clear(); cur=Math.max(0,Math.min(SC.length-1,i)); vt=0; vlast=performance.now(); SPEED=1; rush=false; ended=false; render(); }
+function go(i){ clear(); cur=Math.max(0,Math.min(SC.length-1,i)); render(); }
 const next=()=>go(cur+1);
 const SETTLE=1200; /* pause after the motion stops, before the Next control appears */
-function nextBtn(){ if(root.querySelector('.ix-nextb')) return; root.insertAdjacentHTML('beforeend','<button class="ix-nextb" data-next type="button">Next <span aria-hidden="true">→</span></button>'); }
-function after(s,ms){ sceneEnd=ms; if(s.type!=='question') nextBtn();
-  const poll=()=>{ if(vnow()<ms){ timer=setTimeout(poll,40); return; } ended=true;
-    if(rush){ next(); return; }                                   // presenter already asked to move on
-    timer=setTimeout(()=>{ if(s.cta){ const nb=root.querySelector('.ix-nextb'); if(nb) nb.remove(); root.insertAdjacentHTML('beforeend',cta(s.cta)); const b=root.querySelector('.ix-cta button'); if(b) b.focus({preventScroll:true}); } },SETTLE+((s.cta&&s.cta.delay)||0)); };
-  poll(); }
+function nextBtn(){ if(root.querySelector('.ix-cta,.ix-nextb')) return; root.insertAdjacentHTML('beforeend','<button class="ix-nextb" data-next type="button">Next <span aria-hidden="true">→</span></button>'); }
+function after(s,ms){ timer=setTimeout(()=>{ if(s.cta){ root.insertAdjacentHTML('beforeend',cta(s.cta)); const b=root.querySelector('.ix-cta button'); if(b) b.focus({preventScroll:true}); } else nextBtn(); },ms+SETTLE+((s.cta&&s.cta.delay)||0)); }
 function render(){ const s=SC[cur]; let h='';
   if(s.type==='open') h=openHTML();
   if(s.type==='drop'){ const p=PTS.bg_drop.mega;
@@ -95,8 +86,8 @@ function wireOpen(){ const q=document.getElementById('ixq'), sg=document.getElem
   sg.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; chosen=b.dataset.t; next(); });
   form.addEventListener('submit',e=>{ e.preventDefault(); const v=q.value.trim(); const m=TOWNS.find(t=>t[0].toLowerCase()===v.toLowerCase()); chosen=m?m[0]:(v||'uMlazi'); next(); });
 }
-function playFilm(s){ const el=document.getElementById('ixf'), n=s.b-s.a;
-  const step=()=>{ let k=Math.floor(vnow()/1000*(s.fps||FPS)); if(s.loop) k%=(n+1); else k=Math.min(k,n);
+function playFilm(s){ const el=document.getElementById('ixf'), n=s.b-s.a; let t0=null;
+  const step=ts=>{ if(t0==null) t0=ts; let k=Math.floor((ts-t0)/1000*(s.fps||FPS)); if(s.loop) k%=(n+1); else k=Math.min(k,n);
     el.src=fr(s.a+k); if(s.loop||k<n) raf=requestAnimationFrame(step); };
   raf=requestAnimationFrame(step); after(s,s.loop?0:n/(s.fps||FPS)*1000); }
 function mapHTML(s){ const P=PTS[s.bg]; let h='<div class="ix-cover"><div class="ix-bg" style="background-image:url('+BASE+s.bg+'.jpg)"></div><svg class="ix-route" viewBox="0 0 1600 1000" preserveAspectRatio="none">';
@@ -109,26 +100,26 @@ function mapHTML(s){ const P=PTS[s.bg]; let h='<div class="ix-cover"><div class=
   return h+'<div class="ix-pin" id="ixpin" style="left:'+P[s.from][0]+'%;top:'+P[s.from][1]+'%">'+PIN+'</div></div>'; }
 function playMap(s){ const segs=['ixr1','ixr2'].map(id=>document.getElementById(id)).filter(Boolean), pin=document.getElementById('ixpin'), stops=[s.to,s.to2].filter(Boolean);
   segs.forEach(p=>{ const L=p.getTotalLength(); p.style.strokeDasharray=L; p.style.strokeDashoffset=L; });
-  const DUR=3000, PAUSE=1100; let si=0, t0=0;
-  const step=()=>{ const now=vnow(); if(now<t0){ raf=requestAnimationFrame(step); return; } const p=segs[si], L=p.getTotalLength(), u=Math.min(1,(now-t0)/DUR), e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;
+  const DUR=3000, PAUSE=1100; let si=0, t0=null;
+  const step=ts=>{ if(t0==null) t0=ts; const p=segs[si], L=p.getTotalLength(), u=Math.min(1,(ts-t0)/DUR), e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;
     p.style.strokeDashoffset=L*(1-e); const pt=p.getPointAtLength(L*e); pin.style.left=(pt.x/16)+'%'; pin.style.top=(pt.y/10)+'%';
     if(u<1){ raf=requestAnimationFrame(step); return; }
     const lab=document.getElementById('ixl_'+stops[si]); if(lab) lab.style.opacity=1;
-    if(si<segs.length-1){ si++; t0=vnow()+PAUSE; raf=requestAnimationFrame(step); } };
+    if(si<segs.length-1){ si++; t0=null; timer=setTimeout(()=>raf=requestAnimationFrame(step),PAUSE); } };
   raf=requestAnimationFrame(step); after(s,segs.length*DUR+(segs.length-1)*PAUSE); }
 function playTrace(s){ const pl=document.getElementById('ixtr'), L=pl.getTotalLength(), pts=pl.points, N=pts.numberOfItems; const cum=[0];
   for(let i=1;i<N;i++){ const a=pts.getItem(i-1), b=pts.getItem(i); cum.push(cum[i-1]+Math.hypot(b.x-a.x,b.y-a.y)); }
-  pl.style.strokeDasharray=L; pl.style.strokeDashoffset=L; const D=2000; document.getElementById('ixd0').classList.add('on');
-  const step=()=>{ const u=Math.min(1,vnow()/D), d=L*u; pl.style.strokeDashoffset=L-d;
+  pl.style.strokeDasharray=L; pl.style.strokeDashoffset=L; const D=2000; let t0=null; document.getElementById('ixd0').classList.add('on');
+  const step=ts=>{ if(t0==null) t0=ts; const u=Math.min(1,(ts-t0)/D), d=L*u; pl.style.strokeDashoffset=L-d;
     for(let i=1;i<N;i++) if(d>=cum[i]-1) document.getElementById('ixd'+i).classList.add('on');
     if(u<1) raf=requestAnimationFrame(step); };
   raf=requestAnimationFrame(step); after(s,D); }
 /* hand-over: the story fades out while the real map flies from the camp out to the city */
 function done(){ clear(); try{ if(typeof view!=='undefined'&&typeof flyTo==='function'){ view.x=mx(30.9455); view.y=my(-29.9537); view.z=15.2; draw(); flyTo(HOME.x,HOME.y,homeZoom(),2600); } }catch(e){}
   root.classList.add('out'); setTimeout(()=>root.remove(),1500); }
-root.addEventListener('click',e=>{ if(e.target.closest('[data-next]')) advance(); else if(e.target.closest('[data-skip]')||e.target.closest('[data-done]')) done(); });
+root.addEventListener('click',e=>{ if(e.target.closest('[data-next]')) next(); else if(e.target.closest('[data-skip]')||e.target.closest('[data-done]')) done(); });
 document.addEventListener('keydown',function k(e){ if(!document.getElementById('intro')){ document.removeEventListener('keydown',k); return; } if(e.key==='Escape') done();
-  if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)&&!e.target.closest('input')&&!((e.key===' '||e.key==='Enter')&&e.target.closest('button'))){ e.preventDefault(); advance(); }
+  if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)&&!e.target.closest('input')){ e.preventDefault(); if(SC[cur].type==='question') done(); else if(SC[cur].type!=='open') next(); }
   if(['ArrowLeft','PageUp'].includes(e.key)&&cur>1){ e.preventDefault(); go(cur-1); } });
 const start=SC.findIndex(s=>'#story-'+s.id===location.hash); go(start>0?start:0);
 })();
