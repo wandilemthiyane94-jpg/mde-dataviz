@@ -17,7 +17,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-of
 #tm{color:var(--muted);min-width:90px;font-variant-numeric:tabular-nums}
 .src{width:min(100%,calc((100vh - 190px)*16/9));font-size:12px;color:var(--muted);max-height:4.4em;overflow-y:auto;margin:0}
 </style>
-<div id="stage"><canvas id="c" width="1920" height="1080" aria-label="Painted illustration: a family flooded and moved again and again, Durban 2019 to 2025"></canvas><div id="poster" hidden></div></div>
+<div id="stage"><canvas id="c" width="1920" height="1080" aria-label="Painted illustration: a family flooded and moved again and again, Durban 2019 to 2025"></canvas><div id="poster"><button type="button" id="go">Play</button></div></div>
 <div class="bar"><button type="button" id="play">Play</button><span id="tm"></span><input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Position"></div>
 <p class="src">Rain line: wettest 3-day total of each year, ERA5 daily (Open-Meteo), 1940–2025; dots mark the four heaviest 3-day storms on record (Sept 1987, 383 mm; May 2022, 270 mm; April 2019, 245 mm; April 2022, 233 mm) and the February 2025 storm (46 mm). Rain strip: wettest 3-day total of each year at the camp, ERA5 daily (Open-Meteo), 1940–2025; red marks the storms that flooded the family (April 2019, 245 mm; April 2022, 233 mm; February 2025, 46 mm over 3 days, 38 mm in the 6-hour downpour shown on the gauge). The grey 2022 and 2025 ticks are those years' wettest storms (May 2022, April 2025). Moved 4 times: Mega Village → Tehuis Hostel tents → Lamontville camp → Bayside Hotel → Umbilo residence (the 2022 evacuation and return to the camp is not counted). Flooded 3 times: April 2019, April 2022, February 2025. Illustration of one group of families' journey, 2019–2025 (people and buildings shown are illustrative, not portraits). Events: GroundUp (Jun 2022, Mar 2025), Mail &amp; Guardian (9 May 2022), The Witness (10 Jul 2025), Amnesty International (Nov 2025), Sunday Tribune (5 Oct 2025); our site map. Gauge: ERA5 hourly rain at the camp (Open-Meteo), which smooths short local downpours; "a normal month" = 82 mm (1991–2020); pools = rain on the uMlazi's 905 km² catchment, assuming the same rain fell across it (order of magnitude; 1 pool = 2,500 m³). <b>Water levels in the scene are illustrative.</b> We ran our rain-on-grid flood model for all three storms (2019, 2022, 2025), but at 33 m resolution it cannot resolve the camp: the camp's own cell sits above the modelled water while the neighbouring cells are the canal (up to 3.2 m deep in 2022). Only the rainfall on the gauge is measured data.</p>
 <script src="vendor/d3.v7.min.js"></script>
@@ -423,11 +423,10 @@ let t=0,playing=false,last=0;const sc=document.getElementById("scrub"),tm=docume
 const ui=()=>{sc.value=Math.round(t/OUT*1000);tm.textContent=t.toFixed(1)+" / "+OUT.toFixed(1)+" s";pb.textContent=playing?"Pause":"Play";};
 function loop(n){if(playing){t+=Math.min(.05,(n-last)/1000);if(t>=OUT){t=OUT;playing=false;}}frame(SRC(t));ui();last=n;loadSims().then(()=>requestAnimationFrame(loop));}
 function play(on){playing=on;document.getElementById("poster").hidden=true;if(on&&t>=OUT)t=0;last=performance.now();ui();}
-pb.onclick=()=>play(!playing);
+pb.onclick=()=>play(!playing);document.getElementById("go").onclick=()=>{t=0;play(true);};
 sc.oninput=()=>{playing=false;document.getElementById("poster").hidden=true;t=sc.value/1000*OUT;};
 addEventListener("keydown",e=>{if(e.key===" "&&e.target.tagName!=="INPUT"){e.preventDefault();play(!playing);}});
-const q=/[?&]t=([\d.]+)/.exec(location.search);if(q){t=+q[1];}else t=0;
-/* no Play cover: the film starts by itself (use ?t=seconds to open on a still) */
-loadSims().then(()=>{ if(!q) play(true); requestAnimationFrame(loop); });
+const q=/[?&]t=([\d.]+)/.exec(location.search);if(q){document.getElementById("poster").hidden=true;t=+q[1];}else t=12.8;
+loadSims().then(()=>requestAnimationFrame(loop));
 })();
 </script>
