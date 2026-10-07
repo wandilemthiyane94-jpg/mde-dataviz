@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="intro/intro.css"><!-- story intro (see INTRO_ON below) -->
-<link rel="stylesheet" href="news/news.css"><!-- Stories page -->
 <style>
 /* Landing = the map. Nav on top, hero + layers on the left, the site dossier on the right, time along the bottom.
    Built on Hollie's map engine (data/sites.js, data/map-data.js). Single dark look by design. */
@@ -774,9 +773,6 @@ $('cutx').onclick=()=>{ if(cutOn) toggleCut(); };
 window.addEventListener('resize',resize);
 setYear(2026,true); attr(); panel(); resize(); view.z=homeZoom(); draw();
 </script>
-<!-- STORIES PAGE: real reporting per site (data/stories.js). Remove these two lines and the news.css link to take it out. -->
-<script src="data/stories.js"></script>
-<script src="news/news.js"></script>
 <!-- STORY INTRO: plays one family's story over the map, then hands over to it.
      To switch it off, set INTRO_ON = false. To remove it entirely, delete the two script lines below and the intro.css link at the top.
      Backup of the page before the intro: index-before-intro.html (git tag: before-intro). -->
