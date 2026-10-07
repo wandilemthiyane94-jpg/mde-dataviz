@@ -16,18 +16,18 @@ CSS = """
 .av svg{width:20px;height:24px}
 .nm{font-weight:600;font-size:16px}.st{font-size:12px;color:#667781}
 .hd .call{margin-left:auto;display:flex;gap:20px;color:#007AFF;font-size:20px}
-.bd{flex:1;padding:10px 12px;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;overflow:hidden;
+.bd{flex:1;padding:12px 18px 14px;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;overflow:hidden;
  background:#EFEAE2 radial-gradient(rgba(0,0,0,.035) 1.2px,transparent 1.3px) 0 0/20px 20px}
 .day{align-self:center;background:#fff;color:#54656F;font-size:12px;padding:5px 12px;border-radius:8px;box-shadow:0 1px .5px rgba(11,20,26,.13);margin-bottom:4px}
 .enc{align-self:center;background:#FFEECD;color:#54656F;font-size:11.5px;line-height:1.35;padding:6px 10px;border-radius:8px;text-align:center;max-width:88%;margin-bottom:4px}
-.b{max-width:80%;padding:6px 8px 16px 9px;border-radius:8px;font-size:15px;line-height:1.32;color:#111B21;position:relative;box-shadow:0 1px .5px rgba(11,20,26,.13);white-space:pre-line}
+.b{max-width:76%;padding:8px 12px 18px 12px;border-radius:8px;font-size:15px;line-height:1.32;color:#111B21;position:relative;box-shadow:0 1px .5px rgba(11,20,26,.13);white-space:pre-line}
 .b.in{background:#fff;align-self:flex-start;border-top-left-radius:0}
 .b.out{background:#D9FDD3;align-self:flex-end;border-top-right-radius:0}
-.b time{position:absolute;right:7px;bottom:3px;font-size:11px;color:#667781}
+.b time{position:absolute;right:10px;bottom:4px;font-size:11px;color:#667781}
 .b.out time::after{content:" ✓✓";color:#53BDEB;letter-spacing:-3px}
-.bt{align-self:flex-start;width:80%;display:grid;gap:3px}
-.bt div{background:#fff;border-radius:8px;padding:9px;text-align:center;color:#027EB5;font-size:15px;box-shadow:0 1px .5px rgba(11,20,26,.13)}
-.pic{width:236px;height:160px;border-radius:6px;background:center/cover;margin-bottom:3px;position:relative}
+.bt{align-self:flex-start;width:76%;display:grid;gap:3px}
+.bt div{background:#fff;border-radius:8px;padding:10px 12px;text-align:center;color:#027EB5;font-size:15px;box-shadow:0 1px .5px rgba(11,20,26,.13)}
+.pic{width:220px;height:150px;border-radius:6px;background:center/cover;margin-bottom:3px;position:relative}
 .pic span{position:absolute;left:5px;bottom:5px;font-size:9px;background:rgba(0,0,0,.55);color:#fff;padding:1px 5px;border-radius:3px}
 .vn{display:flex;align-items:center;gap:8px;width:230px;padding:2px 0 4px}
 .vn b{width:30px;height:30px;border-radius:50%;background:#00A884;display:grid;place-items:center;color:#fff;font-size:12px}
