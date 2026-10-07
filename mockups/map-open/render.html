@@ -1,0 +1,74 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+html,body{margin:0;width:1600px;height:1000px;overflow:hidden;background:#0b0e14;font-family:Inter,Arial,sans-serif}
+canvas{position:absolute;inset:0}
+.cap{position:absolute;left:56px;bottom:56px;max-width:560px;color:#fff}
+.cap .k{font:600 12px "IBM Plex Mono";letter-spacing:.22em;text-transform:uppercase;color:#F5A524}
+.cap h1{font:800 54px/1 Inter;letter-spacing:-.03em;margin:12px 0 10px}
+.cap p{font:20px/1.45 Newsreader,Georgia,serif;color:#cfd6e0;margin:0}
+.step{position:absolute;right:40px;top:34px;display:flex;gap:8px}
+.step i{width:34px;height:4px;border-radius:2px;background:rgba(255,255,255,.18)}.step i.on{background:#F5A524}
+.note{position:absolute;right:40px;bottom:30px;font:600 10px "IBM Plex Mono";letter-spacing:.12em;text-transform:uppercase;color:#0b0e14;background:#FBC900;padding:4px 8px;border-radius:3px}
+.cr{position:absolute;left:56px;bottom:20px;font:10px "IBM Plex Mono";color:rgba(255,255,255,.45)}
+</style></head><body>
+<canvas id="c" width="3200" height="2000" style="width:1600px;height:1000px"></canvas>
+<div class="step" id="step"></div><div class="cap" id="cap"></div><div class="note" id="note"></div>
+<div class="cr">Basemap: Esri, HERE, Garmin, © OpenStreetMap contributors · flood line and rivers: eThekwini Municipality · relief: AWS Terrain Tiles</div>
+<script src="img/map-data.js"></script><script src="img/sites.js"></script>
+<script>
+const F=+(new URLSearchParams(location.search).get('f')||1);
+const BOX=[0.584716796875,0.585693359375,0.58740234375,0.588134765625];
+const mx=lon=>(lon+180)/360, my=lat=>(1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2;
+const OX=V.o[0],OY=V.o[1],U=V.o[2];
+const c=document.getElementById('c'), x=c.getContext('2d'); x.scale(2,2);
+// view: Durban metro, slightly offset so the coast sits right of centre
+const CX=mx(30.92), CY=my(-29.84), Z=11.75, S=256*Math.pow(2,Z);
+const sx=X=>(X-CX)*S+800, sy=Y=>(Y-CY)*S+500;
+const img=src=>new Promise(r=>{const i=new Image(); i.onload=()=>r(i); i.src=src;});
+const T=[
+ ['Durban, South Africa','A city of rivers','Twelve rivers run from the hills to the Indian Ocean through eThekwini.'],
+ ['Where people were moved','Temporary relocation sites','After each flood, families were moved to sites the city called temporary.'],
+ ['When the rain comes','The rivers rise','In April 2022, 233 mm fell in three days. Every valley carried water to the sea.'],
+ ['What the city already knew','The 1-in-100-year flood line','The municipality maps where floods are expected. The blue grows from the rivers.'],
+ ['Why the water goes there','The shape of the land','Steep hills funnel rain into narrow valleys, and the valleys are where the sites are.'],
+ ['Now you explore','Click any site to inspect','Every layer together: sites, flood line, rivers and terrain.']];
+document.getElementById('step').innerHTML=[1,2,3,4,5,6].map(i=>'<i class="'+(i<=F?'on':'')+'"></i>').join('');
+const t=T[F-1]; document.getElementById('cap').innerHTML='<div class="k">'+t[0]+'</div><h1>'+t[1]+'</h1><p>'+t[2]+'</p>';
+document.getElementById('note').textContent='Frame '+F+' of 6 · mockup';
+function path(rings,closed){ x.beginPath(); for(const r of rings){ for(let i=0;i<r.length;i+=2){ const X=sx(OX+r[i]/U), Y=sy(OY+r[i+1]/U); i?x.lineTo(X,Y):x.moveTo(X,Y);} if(closed) x.closePath(); } }
+(async()=>{
+  const [base,lab,rel]=await Promise.all([img('img/dark.png'),img('img/labels.png'),img('img/relief.jpg')]);
+  const drawB=(im,b,a)=>{ x.globalAlpha=a; x.drawImage(im,sx(b[0]),sy(b[1]),sx(b[2])-sx(b[0]),sy(b[3])-sy(b[1])); x.globalAlpha=1; };
+  // warm the dark basemap a touch so land reads, ocean stays deep
+  drawB(base,BOX,1);
+  x.globalCompositeOperation='multiply'; x.fillStyle='rgb(150,165,190)'; x.fillRect(0,0,1600,1000); x.globalCompositeOperation='source-over';
+  if(F>=5){ x.globalCompositeOperation='soft-light'; drawB(rel,META.relief,F===5?1:.75); x.globalCompositeOperation='source-over';
+    if(F===5){ x.fillStyle='rgba(10,14,22,.15)'; x.fillRect(0,0,1600,1000);} }
+  // rivers: faint in 1-2, bright and thicker in 3+
+  path(V.river,false); x.lineJoin='round'; x.lineCap='round';
+  if(F<=2){ x.strokeStyle='rgba(120,180,230,.35)'; x.lineWidth=.8; x.stroke(); }
+  else { x.save(); x.shadowColor='rgba(110,190,255,.9)'; x.shadowBlur=F===3?10:5; x.strokeStyle='rgba(140,205,255,.95)'; x.lineWidth=F===3?1.8:1.2; x.stroke(); x.restore(); }
+  // flood line: growing in 4 (clip to a widening band around Durban harbour), full in 6
+  if(F>=4){ x.save();
+    if(F===4){ const g=x.createRadialGradient(sx(mx(30.95)),sy(my(-29.93)),0,sx(mx(30.95)),sy(my(-29.93)),520); x.beginPath(); x.arc(sx(mx(30.95)),sy(my(-29.93)),520,0,7); x.clip(); }
+    path(V.flood,true); x.fillStyle=F===5?'rgba(40,130,240,.35)':'rgba(40,130,240,.62)'; x.shadowColor='rgba(60,150,255,.8)'; x.shadowBlur=8; x.fill('evenodd'); x.shadowBlur=0;
+    x.strokeStyle='rgba(170,215,255,.9)'; x.lineWidth=.8; x.stroke(); x.restore();
+    if(F===4){ x.strokeStyle='rgba(124,200,255,.5)'; x.setLineDash([4,6]); x.beginPath(); x.arc(sx(mx(30.95)),sy(my(-29.93)),520,0,7); x.stroke(); x.setLineDash([]); } }
+  // rain streaks in 3-4
+  if(F===3||F===4){ x.strokeStyle='rgba(210,230,255,.22)'; x.lineWidth=1; let r=7; const R=()=>(r=(r*16807)%2147483647)/2147483647; x.beginPath(); for(let i=0;i<900;i++){ const X=R()*1700-50, Y=R()*1000; x.moveTo(X,Y); x.lineTo(X-6,Y+22);} x.stroke(); }
+  // city labels on top (not over relief frame)
+  drawB(lab,BOX,F===5?.55:.9);
+  // sites
+  if(F>=2){ SITES.forEach((s,i)=>{ const X=sx(mx(s.lon)), Y=sy(my(s.lat)); const fall=F===2?[0,0,0,-60,0,-140,0,0,-30,-220,0,0][i%12]:0;
+      if(fall){ x.strokeStyle='rgba(251,201,0,.35)'; x.lineWidth=2; x.beginPath(); x.moveTo(X,Y+fall-30); x.lineTo(X,Y+fall); x.stroke(); }
+      x.fillStyle='rgba(0,0,0,.45)'; x.beginPath(); x.ellipse(X,Y+3,7*(fall?0.6:1),2.5,0,0,7); x.fill();
+      x.beginPath(); x.arc(X,Y+fall,F===6?6:7,0,7); x.fillStyle='#FBC900'; x.shadowColor='rgba(251,201,0,.9)'; x.shadowBlur=12; x.fill(); x.shadowBlur=0; x.lineWidth=2; x.strokeStyle='#0b0e14'; x.stroke();
+      if(F===2&&!fall){ x.strokeStyle='rgba(251,201,0,.6)'; x.lineWidth=1.5; x.beginPath(); x.arc(X,Y,16,0,7); x.stroke(); } }); }
+  if(F===6){ SITES.slice(0,4).forEach(s=>{ const X=sx(mx(s.lon)), Y=sy(my(s.lat)); x.font='600 12px Inter'; const w=x.measureText(s.name).width+14; x.fillStyle='#FBC900'; x.fillRect(X+12,Y-24,w,20); x.fillStyle='#0b0e14'; x.fillText(s.name,X+19,Y-10); }); }
+  // vignette
+  const v=x.createRadialGradient(800,500,300,800,500,950); v.addColorStop(0,'rgba(0,0,0,0)'); v.addColorStop(1,'rgba(0,0,0,.55)'); x.fillStyle=v; x.fillRect(0,0,1600,1000);
+  const lg=x.createLinearGradient(0,1000,0,560); lg.addColorStop(0,'rgba(8,11,17,.9)'); lg.addColorStop(1,'rgba(8,11,17,0)'); x.fillStyle=lg; x.fillRect(0,560,820,440);
+  document.title='done';
+})();
+</script></body></html>
