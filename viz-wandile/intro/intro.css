@@ -6,7 +6,7 @@
 #intro button:focus-visible,#intro input:focus-visible{outline:2px solid #FBC900;outline-offset:2px}
 /* a 16:10 box that covers the screen, so map pins keep their place at any window shape */
 .ix-cover{position:absolute;left:50%;top:50%;width:max(100vw,160vh);height:max(62.5vw,100vh);transform:translate(-50%,-50%)}
-.ix-bg{position:absolute;inset:0;background-size:100% 100%;transition:transform 3.2s ease}
+.ix-bg{position:absolute;inset:0;background-size:100% 100%;transition:transform 4.5s ease}
 .ix-film{position:absolute;inset:0;background:#1B2626;display:grid;place-items:center}
 .ix-film img{width:min(100vw,177.78vh);height:auto;display:block}
 .ix-film.dim img{filter:brightness(.55) saturate(.8)}

@@ -4,7 +4,7 @@
    The loss slide names Lulama Dingiswayo, whose three children died at that camp (IOL; Amnesty International, 2025). */
 (function(){
 if (window.INTRO_ON === false || location.hash === '#map') return;
-const BASE='intro/', FPS=8, NF=244, fr=i=>BASE+'film8/f'+String(i).padStart(3,'0')+'.jpg';
+const BASE='intro/', FPS=5, NF=244, fr=i=>BASE+'film8/f'+String(i).padStart(3,'0')+'.jpg';
 const PTS={bg_drop:{mega:[50.02,50.06]},bg_mapA:{mega:[13.15,65.7],tehuis:[47.73,65.7],lamont:[86.88,24.35]},bg_mapB:{lamont:[30.18,91.15],bayside:[69.86,9.05],umbilo:[48.02,35.56]}};
 const PIN='<svg viewBox="0 0 56 70" aria-hidden="true"><path d="M28 68C28 68 4 42 4 26a24 24 0 0148 0c0 16-24 42-24 42z" fill="#FBC900"/><circle cx="21" cy="19" r="4" fill="#0B0F19"/><circle cx="35" cy="19" r="4" fill="#0B0F19"/><circle cx="28" cy="31" r="3" fill="#0B0F19"/><path d="M14 38v-6a7 7 0 0114 0v6zM28 38v-6a7 7 0 0114 0v6z" fill="#0B0F19"/><path d="M23 44v-4a5 5 0 0110 0v4z" fill="#0B0F19"/></svg>';
 const CRED='Illustration from our animation · the moves follow GroundUp\'s reporting on families from this camp (June 2022)';
@@ -12,21 +12,21 @@ const TOWNS=[['uMlazi','where this story starts'],['Lamontville',''],['Isipingo'
 let chosen='uMlazi';
 const SC=[
  {id:'open',type:'open'},
- {id:'drop',type:'drop',moves:0,auto:3600},
- {id:'home',type:'film',a:0,b:14,loop:true,moves:0,auto:3600,card:{w:'360px',pos:'right:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'Ordinary life · 2019',t:'Washing on the line, the dog in the yard.',d:'Nothing yet tells you this ground floods.'}},
+ {id:'drop',type:'drop',moves:0,auto:5800},
+ {id:'home',type:'film',a:0,b:14,loop:true,moves:0,auto:5800,card:{w:'360px',pos:'right:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'Ordinary life · 2019',t:'Washing on the line, the dog in the yard.',d:'Nothing yet tells you this ground floods.'}},
  {id:'rain',type:'film',a:14,b:34,moves:0,rain:true,card:{w:'340px',pos:'left:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'April 2019',big:'245 mm',d:'of rain in three days · ERA5 daily (Open-Meteo)'},cta:{line:'The water is at the roof.',btn:'They called for help',sub:'Click to see where the city sent them.'}},
- {id:'lift1',type:'film',a:34,b:47,moves:1,auto:400,card:{w:'380px',pos:'left:max(16px,3.5cqw);bottom:max(48px,5cqw)',k:'Move 1 of 4 · 2019',t:'The rope comes down.',d:'The family is lifted out of Mega Village.'}},
- {id:'map1',type:'map',bg:'bg_mapA',from:'mega',to:'tehuis',next:'lamont',moves:1,auto:900,labels:{mega:'Mega Village · flooded',tehuis:'Tents at Tehuis Hostel',lamont:'Lamontville camp'}},
+ {id:'lift1',type:'film',a:34,b:47,moves:1,auto:600,card:{w:'380px',pos:'left:max(16px,3.5cqw);bottom:max(48px,5cqw)',k:'Move 1 of 4 · 2019',t:'The rope comes down.',d:'The family is lifted out of Mega Village.'}},
+ {id:'map1',type:'map',bg:'bg_mapA',from:'mega',to:'tehuis',next:'lamont',moves:1,auto:1400,labels:{mega:'Mega Village · flooded',tehuis:'Tents at Tehuis Hostel',lamont:'Lamontville camp'}},
  {id:'tents',type:'film',a:47,b:54,moves:1,card:{w:'380px',pos:'right:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'2019 · Tehuis Hostel',t:'Tents. "Temporary." Two years.',d:'The sun comes back. For now, everything is fine.'},cta:{btn:'Two years later',kind:'white'}},
- {id:'lift2',type:'film',a:54,b:72,moves:2,auto:400,card:{w:'380px',pos:'left:max(16px,3.5cqw);bottom:max(48px,5cqw)',k:'Move 2 of 4 · 2021',t:'The rope comes again.',d:'From the tents to a camp on the riverbank.'}},
- {id:'map2',type:'map',bg:'bg_mapA',from:'tehuis',to:'lamont',done:'mega',moves:2,auto:900,labels:{mega:'Mega Village',tehuis:'Tehuis Hostel',lamont:'Lamontville riverside camp'}},
+ {id:'lift2',type:'film',a:54,b:72,moves:2,auto:600,card:{w:'380px',pos:'left:max(16px,3.5cqw);bottom:max(48px,5cqw)',k:'Move 2 of 4 · 2021',t:'The rope comes again.',d:'From the tents to a camp on the riverbank.'}},
+ {id:'map2',type:'map',bg:'bg_mapA',from:'tehuis',to:'lamont',done:'mega',moves:2,auto:1400,labels:{mega:'Mega Village',tehuis:'Tehuis Hostel',lamont:'Lamontville riverside camp'}},
  {id:'camp',type:'film',a:72,b:100,moves:2,rain:true,card:{w:'380px',pos:'left:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'April 2022',t:'The camp floods.',d:'Lamontville riverside camp, Gwala Street.'},cta:{btn:'They called for help again',sub:'Each time, a little faster.'}},
- {id:'back',type:'film',a:100,b:122,moves:2,auto:1600,card:{w:'380px',pos:'right:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'2022',t:'They\'re sent back.',d:'The rope lifts them, and puts them down in the same camp.'}},
- {id:'night',type:'film',a:122,b:150,moves:2,rain:true,auto:300,card:{w:'380px',pos:'left:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'25 February 2025',t:'It floods again, at night.',d:'Residents say the stream beside the camp was blocked with debris.'}},
- {id:'loss',type:'film',a:150,b:158,moves:2,dim:true,card:{cls:'loss',w:'460px',pos:'right:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'Gwala Street camp · 25 Feb 2025',t:'Three children are swept away.',d:'Lulama Dingiswayo lost her children that night: two girls, aged 5 and 16, and a boy aged 11. Five people from the camp died. (IOL; Amnesty International, 2025)'},cta:{btn:'Continue',kind:'quiet',delay:3000}},
- {id:'hotel',type:'film',a:158,b:200,moves:4,auto:500,card:{w:'400px',pos:'left:max(16px,3.5cqw);bottom:max(48px,5cqw)',k:'Moves 3 and 4 · 2025',t:'A hotel. Evicted. A student residence.',d:'March 2025: Bayside Hotel. July 2025: Umbilo.'}},
- {id:'map34',type:'map',bg:'bg_mapB',from:'lamont',to:'bayside',to2:'umbilo',moves:4,auto:1200,labels:{lamont:'Lamontville camp',bayside:'Bayside Hotel',umbilo:'Umbilo residence'}},
- {id:'sum',type:'film',a:200,b:226,moves:4,auto:900},
+ {id:'back',type:'film',a:100,b:122,moves:2,auto:2600,card:{w:'380px',pos:'right:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'2022',t:'They\'re sent back.',d:'The rope lifts them, and puts them down in the same camp.'}},
+ {id:'night',type:'film',a:122,b:150,moves:2,rain:true,auto:500,card:{w:'380px',pos:'left:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'25 February 2025',t:'It floods again, at night.',d:'Residents say the stream beside the camp was blocked with debris.'}},
+ {id:'loss',type:'film',a:150,b:158,moves:2,dim:true,card:{cls:'loss',w:'460px',pos:'right:max(16px,3.5cqw);top:max(70px,7.5cqw)',k:'Gwala Street camp · 25 Feb 2025',t:'Three children are swept away.',d:'Lulama Dingiswayo lost her children that night: two girls, aged 5 and 16, and a boy aged 11. Five people from the camp died. (IOL; Amnesty International, 2025)'},cta:{btn:'Continue',kind:'quiet',delay:4500}},
+ {id:'hotel',type:'film',a:158,b:200,moves:4,auto:800,card:{w:'400px',pos:'left:max(16px,3.5cqw);bottom:max(48px,5cqw)',k:'Moves 3 and 4 · 2025',t:'A hotel. Evicted. A student residence.',d:'March 2025: Bayside Hotel. July 2025: Umbilo.'}},
+ {id:'map34',type:'map',bg:'bg_mapB',from:'lamont',to:'bayside',to2:'umbilo',moves:4,auto:1900,labels:{lamont:'Lamontville camp',bayside:'Bayside Hotel',umbilo:'Umbilo residence'}},
+ {id:'sum',type:'film',a:200,b:226,moves:4,auto:1400},
  {id:'question',type:'question'}
 ];
 const root=document.createElement('div'); root.id='intro'; root.setAttribute('role','dialog'); root.setAttribute('aria-label','Story: one family\'s four moves'); document.body.appendChild(root);
@@ -54,7 +54,7 @@ function render(){ const s=SC[cur]; let h='';
   if(s.type==='question') h+='<div class="ix-chrome" style="background:none"><button class="ix-skip" data-done>Skip to the map →</button></div>';
   h+=card(s.card); root.innerHTML=h;
   if(s.type==='open') wireOpen();
-  if(s.type==='drop'){ setTimeout(()=>{ const z=document.getElementById('ixzb'); if(z) z.style.transform='scale(1.18)'; },900); after(s,0); }
+  if(s.type==='drop'){ setTimeout(()=>{ const z=document.getElementById('ixzb'); if(z) z.style.transform='scale(1.18)'; },1200); after(s,0); }
   if(s.type==='film') playFilm(s);
   if(s.type==='map') playMap(s);
   if(s.type==='question') setTimeout(()=>{ const b=root.querySelector('[data-done].ix-white'); if(b) b.focus({preventScroll:true}); },300);
@@ -87,7 +87,7 @@ function mapHTML(s){ const P=PTS[s.bg]; let h='<div class="ix-cover"><div class=
   return h+'<div class="ix-pin" id="ixpin" style="left:'+P[s.from][0]+'%;top:'+P[s.from][1]+'%">'+PIN+'</div></div>'; }
 function playMap(s){ const segs=['ixr1','ixr2'].map(id=>document.getElementById(id)).filter(Boolean), pin=document.getElementById('ixpin'), stops=[s.to,s.to2].filter(Boolean);
   segs.forEach(p=>{ const L=p.getTotalLength(); p.style.strokeDasharray=L; p.style.strokeDashoffset=L; });
-  const DUR=1900, PAUSE=500; let si=0, t0=null;
+  const DUR=3200, PAUSE=900; let si=0, t0=null;
   const step=ts=>{ if(t0==null) t0=ts; const p=segs[si], L=p.getTotalLength(), u=Math.min(1,(ts-t0)/DUR), e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;
     p.style.strokeDashoffset=L*(1-e); const pt=p.getPointAtLength(L*e); pin.style.left=(pt.x/16)+'%'; pin.style.top=(pt.y/10)+'%';
     if(u<1){ raf=requestAnimationFrame(step); return; }
