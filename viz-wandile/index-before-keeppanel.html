@@ -787,10 +787,7 @@ function condPanelHTML(){ const x=byId[condSite], d=DIST[x.id], c=condOf(x,condK
 function compareHTML(){ return '<div class="top"><button class="back" id="cmpback">← Back to '+esc(byId[condSite].name)+'</button></div><div class="kick">Compare sites</div><h2 style="margin-top:6px">Daily life at every site</h2><p class="sub">From news reports and official statements. Grey means nobody has reported it.</p><table class="cmp"><thead><tr><th>Site</th><th>Water</th><th>Toilets</th><th>Safety</th><th>Crowding</th></tr></thead><tbody>'+SITES.map(x=>'<tr><td><button class="back" data-id="'+x.id+'">'+esc(x.name)+'</button></td>'+['water','san','safe','crowd'].map(k=>'<td><i class="d '+x[k][0]+'"></i></td>').join('')+'</tr>').join('')+'</tbody></table><p class="sub" style="margin-top:12px">21 of 48 ratings are not reported, and electricity isn\'t recorded at most sites.</p>'; }
 function condFly(){ const x=byId[condSite], z=14.8, k=256*Math.pow(2,z); flyTo(x.X+(W>820?170:0)/k, x.Y+(W>820?110:0)/k, z); }
 /* the Conditions tab in a site's panel opens the full comparison for that site */
-let condOverlay=false;
-function openCond(id){ condSite=id; condK='water'; condCmp=false; condOverlay=true; panel(); condFly(); }
-function closeCond(){ condOverlay=false; document.body.classList.toggle('cond',view2==='conditions'); }
-function drawStrip(){ document.body.classList.add('cond'); $('cstrip').innerHTML=stripHTML(); $('cstrip').querySelectorAll('.cpills button').forEach(b=>b.onclick=()=>{ condK=b.dataset.k; drawStrip(); }); }
+function openCond(id){ condSite=id; condK='water'; condCmp=false; selected=null; view2='conditions'; setNav(); panel(); condFly(); }
 function setCond(id,k){ if(id) condSite=id; if(k) condK=k; condCmp=false; panel(); }
 function renderCond(){ const box=$('panel'), foot=$('panelfoot'); foot.innerHTML='';
   $('cstrip').innerHTML=stripHTML(); $('cstrip').querySelectorAll('.cpills button').forEach(b=>b.onclick=()=>setCond(null,b.dataset.k));
@@ -802,12 +799,11 @@ function renderCond(){ const box=$('panel'), foot=$('panelfoot'); foot.innerHTML
   $('cback').onclick=()=>{view2='map';setNav();panel();flyTo(HOME.x,HOME.y,homeZoom());};
   $('toRep').onclick=()=>{view2='report';setNav();panel();}; }
 function panel(){ const box=$('panel'), foot=$('panelfoot'), s=selected&&byId[selected];
-  if(view2==='conditions'){ condOverlay=false; renderCond(); return; }
-  if(condOverlay) drawStrip(); else document.body.classList.remove('cond');
+  if(view2==='conditions'){ renderCond(); return; }
   if(view2==='about'){ box.innerHTML=aboutHTML(); foot.innerHTML=''; $('back').onclick=()=>{view2='map';setNav();panel();}; return; }
   if(view2==='report'){ box.innerHTML=''; foot.innerHTML=''; return; } /* the Report page (report/report.js) holds the form */
   if(!s){ box.innerHTML=storyHTML(); foot.innerHTML='';
-    box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{ stab=b.dataset.st; if(stab==='conditions'){ openCond('lamontville'); return; } closeCond(); panel();});
+    box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{ if(b.dataset.st==='conditions'){ openCond('lamontville'); return; } stab=b.dataset.st;panel();});
     if($('sj')) $('sj').onclick=()=>{select('lamontville',true);setTimeout(()=>{tab='movement';toggleJourney();},950);};
     box.querySelectorAll('.list button').forEach(b=>b.onclick=()=>select(b.dataset.id,true)); startArc(); startVid(); return; }
   const i=SITES.indexOf(s), d=DIST[s.id], n=yearsOpen(s,2026);
@@ -831,13 +827,13 @@ function panel(){ const box=$('panel'), foot=$('panelfoot'), s=selected&&byId[se
   foot.innerHTML=LINK[s.id]?'<a class="explore" target="_blank" rel="noopener" href="'+LINK[s.id]+'">Explore this site in 3D: the 2022 storm <span aria-hidden="true">→</span></a>':'<button class="explore" id="zoomsite">Zoom in on this site <span aria-hidden="true">→</span></button>';
   $('back').onclick=()=>select(null);
   $('prev').onclick=()=>select(SITES[(i-1+SITES.length)%SITES.length].id,true); $('next').onclick=()=>select(SITES[(i+1)%SITES.length].id,true);
-  box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{ tab=b.dataset.t; if(tab==='conditions'){ openCond(s.id); return; } closeCond(); panel();});
+  box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{ if(b.dataset.t==='conditions'){ openCond(s.id); return; } tab=b.dataset.t;panel();});
   if($('bj')) $('bj').onclick=()=>toggleJourney(); if($('bc')) $('bc').onclick=()=>toggleCut();
   if($('zoomsite')) $('zoomsite').onclick=()=>flyTo(s.X,s.Y,16.6); }
 function showOther(o){ selected=null; view2='map'; setNav(); const box=$('panel');
   box.innerHTML='<div class="top"><button class="back" id="back">← Back to all sites</button></div><div class="kick">From our compiled TRA list</div><h2 style="margin-top:6px">'+esc(o.name)+'</h2><p class="sub">'+esc(o.status)+(o.est?' · since '+o.est:'')+'</p><div class="pane"><p><b>Size:</b> '+esc(o.size||'Not reported')+'</p><p><b>Flood line:</b> '+({inside:'inside the 1-in-100-year line',within_250m:'within 250 m of the line',within_1km:'within 1 km of the line',beyond_1km:'more than 1 km from the line'}[o.fp]||'not tested')+'.</p><p class="gap">Location is approximate ('+esc(o.conf)+', about 1–3 km), so the distance is indicative. Not yet researched in the same depth as the 12 detailed sites.</p></div>';
   $('panelfoot').innerHTML=''; $('back').onclick=()=>select(null); flyTo(o.X,o.Y,Math.max(view.z,13.5)); }
-function select(id,fly){ if(view2==='conditions'&&id){ setCond(id); condFly(); return; } condOverlay=false; selected=id; journeyOn=false; cutOn=false; tab='overview'; $('cut').style.display='none'; if(view2!=='map'){view2='map';setNav();}
+function select(id,fly){ if(view2==='conditions'&&id){ setCond(id); condFly(); return; } selected=id; journeyOn=false; cutOn=false; tab='overview'; $('cut').style.display='none'; if(view2!=='map'){view2='map';setNav();}
   panel(); $('panel').scrollTop=0;
   if(id&&fly){ const s=byId[id]; if(!isOpen(s,year)) setYear(s.yclosed||s.yin,true); flyTo(s.X-(W>820?160:0)/S()*Math.pow(2,view.z-15.4),s.Y,Math.max(view.z,15.4)); }
   draw(); }
@@ -849,7 +845,7 @@ function toggleCut(){ cutOn=!cutOn; if(cutOn) journeyOn=false; $('cut').style.di
   if(cutOn){ const cxm=(mx(CUT.A[1])+mx(CUT.B[1]))/2, cym=(my(CUT.A[0])+my(CUT.B[0]))/2; flyTo(cxm,cym+(W>820?156:0)/(256*Math.pow(2,17)),17); } draw(); }
 
 /* ---------- nav and search ---------- */
-function setNav(){ document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===view2?'page':'false')); if(view2!=='map') condOverlay=false; document.body.classList.toggle('cond',view2==='conditions'||condOverlay); }
+function setNav(){ document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===view2?'page':'false')); document.body.classList.toggle('cond',view2==='conditions'); }
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{ const v=b.dataset.v;
   if(v==='stories'){ view2='stories'; selected=null; stab='story'; setNav(); panel(); $('panel').scrollTop=0; return; }
   view2=v; selected=null; setNav(); panel(); if(v==='map') flyTo(HOME.x,HOME.y,homeZoom()); if(v==='conditions') condFly(); });
