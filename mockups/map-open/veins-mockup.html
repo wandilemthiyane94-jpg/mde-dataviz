@@ -1,0 +1,112 @@
+<title>Flood Veins Opening</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: one living map that fills a 16:10 stage; the flood network grows inland from the coast like veins, then the sites land. Single dark look on purpose. */
+:root{--bg:#060a11;--ink:#F4F6FA;--mut:#93A0B3;--amber:#F5A524;--site:#FBC900;--line:rgba(255,255,255,.12);
+ --sans:Inter,"Helvetica Neue",Arial,sans-serif;--serif:Newsreader,Georgia,serif;--mono:"IBM Plex Mono",Consolas,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--sans)}
+.wrap{max-width:1300px;margin:0 auto;padding-inline:20px;padding-block:22px 48px;display:grid;gap:16px}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:end;justify-content:space-between}
+h1{margin:0;font:800 clamp(24px,3.4vw,34px)/1.05 var(--sans);letter-spacing:-.03em;text-wrap:balance}
+.kick{font:600 11px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin:0 0 8px}
+.tag{font:500 12px var(--mono);color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.stage{position:relative;width:100%;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#05080d;container-type:inline-size}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.cap{position:absolute;left:4cqw;bottom:6cqw;max-width:42cqw;pointer-events:none}
+.cap .k{font:600 max(10px,.8cqw) var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--amber)}
+.cap h2{margin:.8cqw 0 .6cqw;font:800 max(26px,3.8cqw)/1 var(--sans);letter-spacing:-.035em;text-shadow:0 2px 20px rgba(0,0,0,.6);transition:opacity .6s}
+.cap p{margin:0;font:max(14px,1.35cqw)/1.45 var(--serif);color:#d3dbe6;text-shadow:0 1px 10px rgba(0,0,0,.7);transition:opacity .6s}
+.bar{position:absolute;left:4cqw;right:4cqw;bottom:2.2cqw;height:3px;border-radius:2px;background:rgba(255,255,255,.12);pointer-events:none}
+.bar i{display:block;height:100%;width:0;border-radius:2px;background:linear-gradient(90deg,#4aa3ff,#9fd4ff)}
+.ctl{position:absolute;right:1.6cqw;top:1.6cqw;display:flex;gap:8px}
+.ctl button,.ctl label{display:flex;align-items:center;gap:8px;background:rgba(6,10,17,.72);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:999px;padding:7px 13px;color:var(--ink);font:500 12.5px var(--sans);cursor:pointer}
+.ctl input{appearance:none;width:30px;height:17px;border-radius:999px;background:#333c4a;position:relative;margin:0;cursor:pointer;transition:background .2s}
+.ctl input::after{content:"";position:absolute;left:2px;top:2px;width:13px;height:13px;border-radius:50%;background:#fff;transition:left .2s}
+.ctl input:checked{background:var(--amber)}.ctl input:checked::after{left:15px}
+.ctl :focus-visible{outline:2px solid var(--site);outline-offset:2px}
+.cr{position:absolute;right:1.6cqw;bottom:.6cqw;font:max(8px,.62cqw) var(--mono);color:rgba(255,255,255,.45);pointer-events:none}
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.note{background:#0e141f;border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.note h3{margin:0 0 6px;font:600 14.5px var(--sans)}.note p{margin:0;font-size:13.5px;color:#cbd5e1}
+@media (max-width:860px){.notes{grid-template-columns:1fr}.cap{max-width:70cqw}}
+@media (prefers-reduced-motion:reduce){.cap h2,.cap p{transition:none}}
+</style>
+
+<div class="wrap">
+  <header><div><p class="kick">Moved Into the Water · design only</p><h1>Opening: the flood line grows in from the sea</h1></div><span class="tag">Live mockup · not the site</span></header>
+  <div class="stage" id="stage">
+    <canvas id="c"></canvas>
+    <div class="ctl"><button type="button" id="replay">↺ Replay</button><label><input type="checkbox" id="anim" checked aria-label="Animation on or off">Animation</label></div>
+    <div class="cap" aria-live="polite"><div class="k" id="ck">Durban, South Africa</div><h2 id="ch">A coastal city</h2><p id="cp">Where twelve rivers meet the Indian Ocean.</p></div>
+    <div class="bar"><i id="bar"></i></div>
+    <div class="cr">Basemap: Esri, HERE, Garmin, © OpenStreetMap · flood line and rivers: eThekwini Municipality · relief: AWS Terrain Tiles</div>
+  </div>
+  <section class="notes">
+    <div class="note"><h3>How it moves</h3><p>The map opens still. Then the city's own rivers and 1-in-100-year flood plain spread inland from the coast, following the water, with a bright front like veins. The 12 relocation sites land as the water reaches them.</p></div>
+    <div class="note"><h3>On or off</h3><p>The Animation switch turns motion off and shows the finished map at once (and it is off automatically for anyone whose device asks for reduced motion). Replay runs it again.</p></div>
+    <div class="note"><h3>What is real</h3><p>Every pixel of water is the city's real flood plain and river network, and the sites are their real positions. The growth from the sea is an animation of the map appearing, not a flood simulation.</p></div>
+  </section>
+</div>
+
+<script>
+const PINS=[{"name": "Lamontville riverside camp", "x": 835.4, "y": 747.0, "g": 0.05367052280809434}, {"name": "Larger Gwala Street camp", "x": 837.0, "y": 745.2, "g": 0.12442040032722143}, {"name": "Lindelani camp", "x": 811.4, "y": 120.8, "g": 0.34763957513939786}, {"name": "Congo camp", "x": 812.1, "y": 62.5, "g": 0.3748291869283738}, {"name": "Astra Building", "x": 993.7, "y": 494.4, "g": 0.0630201793713017}, {"name": "Crystal Valley", "x": 891.9, "y": 363.4, "g": 0.1957089599283343}, {"name": "Point Road", "x": 1062.8, "y": 521.1, "g": 0.05293491610007834}, {"name": "Bayside Hotel", "x": 1036.3, "y": 487.3, "g": 0.06101900333819297}, {"name": "KwaDimba", "x": 555.5, "y": 481.6, "g": 0.2599619173219682}, {"name": "Frazer Compound", "x": 1268.5, "y": -355.0, "g": 0.04625208846375037}, {"name": "Montclair Lodge", "x": 897.6, "y": 656.1, "g": 0.1344377437204083}, {"name": "Umbilo residence", "x": 925.7, "y": 571.2, "g": 0.06829158325031658}];
+const BEATS=[[0,'Durban, South Africa','A coastal city','Where twelve rivers meet the Indian Ocean.'],
+ [.12,'The water finds its way','The flood line grows in from the sea','The city’s own 1-in-100-year flood plain, spreading up every river valley.'],
+ [.62,'Where people were moved','Temporary relocation sites','Families moved after floods, to sites the city called temporary.'],
+ [.9,'Now you explore','Click any site to inspect','Every layer together: sites, flood line, rivers and terrain.']];
+const DUR=14000, HOLD=0.08; // ms for the whole sequence; first 8% is the still opening shot
+const cv=document.getElementById('c'), x=cv.getContext('2d'), stage=document.getElementById('stage');
+const animEl=document.getElementById('anim'); let t0=performance.now(), raf=0, done=false;
+if(matchMedia('(prefers-reduced-motion: reduce)').matches) animEl.checked=false;
+const load=s=>new Promise(r=>{const i=new Image(); i.onload=()=>r(i); i.src=s;});
+let base,water,lab,G,WD,off,octx,img;
+const W=1600,H=1000;
+function size(){ const r=stage.getBoundingClientRect(), d=Math.min(2,devicePixelRatio||1); cv.width=Math.round(r.width*d); cv.height=Math.round(r.height*d); }
+(async()=>{
+  [base,water,lab]=await Promise.all([load('veins/base.jpg'),load('veins/water.png'),load('veins/labels.png')]);
+  const dimg=await load('veins/dist.png');
+  // decode the 16-bit growth field and the water layer once
+  const t=document.createElement('canvas'); t.width=W; t.height=H; const tc=t.getContext('2d');
+  tc.drawImage(dimg,0,0); const dd=tc.getImageData(0,0,W,H).data; G=new Float32Array(W*H); for(let i=0;i<W*H;i++) G[i]=(dd[i*4]*256+dd[i*4+1])/65535;
+  tc.clearRect(0,0,W,H); tc.drawImage(water,0,0); WD=tc.getImageData(0,0,W,H);
+  off=document.createElement('canvas'); off.width=W; off.height=H; octx=off.getContext('2d'); img=octx.createImageData(W,H);
+  size(); addEventListener('resize',()=>{size(); frame(performance.now());});
+  run();
+})();
+function run(){ cancelAnimationFrame(raf); done=false; t0=performance.now(); raf=requestAnimationFrame(frame); }
+function caption(p){ let b=BEATS[0]; for(const q of BEATS) if(p>=q[0]) b=q; const ch=document.getElementById('ch');
+  if(ch.textContent!==b[2]){ ['ck','ch','cp'].forEach(id=>document.getElementById(id).style.opacity=0);
+    setTimeout(()=>{ document.getElementById('ck').textContent=b[1]; ch.textContent=b[2]; document.getElementById('cp').textContent=b[3]; ['ck','ch','cp'].forEach(id=>document.getElementById(id).style.opacity=1); },350); } }
+function frame(now){
+  const p=animEl.checked?Math.min(1,(now-t0)/DUR):1;
+  const q=Math.max(0,Math.min(1,(p-HOLD)/(.62-HOLD))), g=Math.pow(q,1.7)*1.15;          // growth front, 0 → past 1 by 60% of the run
+  const sk=cv.width/W; x.setTransform(sk,0,0,sk,0,(cv.height-H*sk)/2);
+  // slow push-in: 1.06 → 1.0 over the run
+  const z=1.06-.06*Math.min(1,p*1.2); x.translate(W/2,H/2); x.scale(z,z); x.translate(-W/2,-H/2);
+  x.drawImage(base,0,0,W,H);
+  // water revealed where its distance from the sea is behind the front; a bright band rides the front
+  const s=WD.data, o=img.data, band=.045;
+  for(let i=0,j=0;i<W*H;i++,j+=4){ const a=s[j+3]; if(!a){ o[j+3]=0; continue; } const d=G[i], k=(g-d)/band;
+    if(k<=0){ o[j+3]=0; continue; }
+    const front=k<1?1-k:0, rev=Math.min(1,k);
+    o[j]=Math.min(255,s[j]+front*150); o[j+1]=Math.min(255,s[j+1]+front*120); o[j+2]=255; o[j+3]=Math.min(255,a*rev+front*120); }
+  octx.putImageData(img,0,0);
+  x.save(); x.shadowColor='rgba(80,170,255,.75)'; x.shadowBlur=10; x.drawImage(off,0,0); x.restore();
+  x.globalAlpha=.85; x.drawImage(lab,0,0,W,H); x.globalAlpha=1;
+  // sites land once the front has passed them (and not before 62%)
+  const sp=Math.max(0,(p-.6)/.25);
+  PINS.forEach((q,i)=>{ const local=Math.max(0,Math.min(1,sp*1.6-i*.05)); if(local<=0) return;
+    const e=1-Math.pow(1-local,3), drop=(1-e)*-120, ring=local<1?local:0;
+    x.fillStyle='rgba(0,0,0,'+(.45*e)+')'; x.beginPath(); x.ellipse(q.x,q.y+3,7*e,2.4*e,0,0,7); x.fill();
+    if(ring){ x.strokeStyle='rgba(251,201,0,'+(1-ring)+')'; x.lineWidth=2; x.beginPath(); x.arc(q.x,q.y,6+ring*24,0,7); x.stroke(); }
+    x.beginPath(); x.arc(q.x,q.y+drop,6.5,0,7); x.fillStyle='#FBC900'; x.shadowColor='rgba(251,201,0,.9)'; x.shadowBlur=14; x.fill(); x.shadowBlur=0; x.lineWidth=2; x.strokeStyle='#0b0e14'; x.stroke(); });
+  // vignette and caption shade
+  x.setTransform(sk,0,0,sk,0,(cv.height-H*sk)/2);
+  const v=x.createRadialGradient(W/2,H/2,H*.35,W/2,H/2,H*.95); v.addColorStop(0,'rgba(0,0,0,0)'); v.addColorStop(1,'rgba(0,0,0,.5)'); x.fillStyle=v; x.fillRect(0,0,W,H);
+  const lg=x.createLinearGradient(0,H,0,H*.5); lg.addColorStop(0,'rgba(5,8,13,.85)'); lg.addColorStop(1,'rgba(5,8,13,0)'); x.fillStyle=lg; x.fillRect(0,H*.5,W*.6,H*.5);
+  document.getElementById('bar').style.width=(p*100)+'%'; caption(p);
+  if(p<1) raf=requestAnimationFrame(frame); else done=true; }
+document.getElementById('replay').onclick=()=>{ animEl.checked=true; run(); };
+animEl.onchange=()=>{ if(animEl.checked) run(); else { cancelAnimationFrame(raf); frame(performance.now()); } };
+</script>
