@@ -38,12 +38,12 @@ h1{margin:0;font:800 clamp(24px,3.4vw,34px)/1.05 var(--sans);letter-spacing:-.03
   <div class="stage" id="stage">
     <canvas id="c"></canvas>
     <div class="ctl"><button type="button" id="replay">↺ Replay</button><label><input type="checkbox" id="anim" checked aria-label="Animation on or off">Animation</label></div>
-    <div class="cap" aria-live="polite"><div class="k" id="ck">Durban, South Africa</div><h2 id="ch">A coastal city</h2><p id="cp">Green hills running down to the Indian Ocean.</p></div>
+    <div class="cap" aria-live="polite"><div class="k" id="ck">Reading the land</div><h2 id="ch">A survey of the coast</h2><p id="cp">Contours every 40 m: hills, valleys and the line where Durban meets the sea.</p></div>
     <div class="bar"><i id="bar"></i></div>
     <div class="cr">Basemap: Esri, HERE, Garmin, © OpenStreetMap · flood line and rivers: eThekwini Municipality · relief: AWS Terrain Tiles</div>
   </div>
   <section class="notes">
-    <div class="note"><h3>How it moves</h3><p>A lush green coastal map opens. The 12 relocation sites drop in. Then the city's own rivers and 1-in-100-year flood plain grow inland from the coast like veins; each site within 250 m of the flood line pulses red as the water reaches it. Real satellite colour arrives last.</p></div>
+    <div class="note"><h3>How it moves</h3><p>It opens as a black-and-white survey sheet: 40 m contours, the coastline and a lat/long grid. The 12 relocation sites drop in, each labelled. Then the city's own rivers and 1-in-100-year flood plain grow inland from the coast like veins; each site within 250 m of the flood line pulses red as the water reaches it. Green terrain colour fades in, then real satellite colour last.</p></div>
     <div class="note"><h3>On or off</h3><p>The Animation switch turns motion off and shows the finished map at once (and it is off automatically for anyone whose device asks for reduced motion). Replay runs it again.</p></div>
     <div class="note"><h3>What is real</h3><p>Every pixel of water is the city's real flood plain and river network, and the sites are their real positions. The growth from the sea is an animation of the map appearing, not a flood simulation.</p></div>
   </section>
@@ -51,12 +51,13 @@ h1{margin:0;font:800 clamp(24px,3.4vw,34px)/1.05 var(--sans);letter-spacing:-.03
 
 <script>
 const PINS=[{"id": "lamontville", "name": "Lamontville riverside camp", "x": 835.4, "y": 747.0, "g": 0.05367052280809434}, {"id": "gwala", "name": "Larger Gwala Street camp", "x": 837.0, "y": 745.2, "g": 0.12442040032722143}, {"id": "lindelani", "name": "Lindelani camp", "x": 811.4, "y": 120.8, "g": 0.34763957513939786}, {"id": "congo", "name": "Congo camp", "x": 812.1, "y": 62.5, "g": 0.3748291869283738}, {"id": "astra", "name": "Astra Building", "x": 993.7, "y": 494.4, "g": 0.0630201793713017}, {"id": "crystal", "name": "Crystal Valley", "x": 891.9, "y": 363.4, "g": 0.1957089599283343}, {"id": "point", "name": "Point Road", "x": 1062.8, "y": 521.1, "g": 0.05293491610007834}, {"id": "bayside", "name": "Bayside Hotel", "x": 1036.3, "y": 487.3, "g": 0.06101900333819297}, {"id": "kwadimba", "name": "KwaDimba", "x": 555.5, "y": 481.6, "g": 0.2599619173219682}, {"id": "frazer", "name": "Frazer Compound", "x": 1268.5, "y": -355.0, "g": 0.04625208846375037}, {"id": "montclair", "name": "Montclair Lodge", "x": 897.6, "y": 656.1, "g": 0.1344377437204083}, {"id": "umbilo", "name": "Umbilo residence", "x": 925.7, "y": 571.2, "g": 0.06829158325031658}];
-const BEATS=[[0,'Durban, South Africa','A coastal city','Green hills running down to the Indian Ocean.'],
- [.07,'Where people were moved','Temporary relocation sites','After each flood, families were moved to sites the city called temporary.'],
+const BEATS=[[0,'Reading the land','A survey of the coast','Contours every 40 m: hills, valleys and the line where Durban meets the sea.'],
+ [.08,'Where people were moved','Temporary relocation sites','After each flood, families were moved to sites the city called temporary.'],
  [.22,'The water finds its way','The flood line grows in from the sea','The city’s own 1-in-100-year flood plain, spreading up every river valley.'],
- [.5,'Where they meet','Six of the 12 sites sit at the flood line','Within 250 m of the city’s own flood map. Each one pulses as the water reaches it.'],
- [.74,'The ground itself','The real terrain','Satellite imagery: the land as it looks today.'],
- [.92,'Now you explore','Click any site to inspect','Every layer together: sites, flood line, rivers and terrain.']];
+ [.46,'Where they meet','Six of the 12 sites sit at the flood line','Within 250 m of the city’s own flood map. Each one pulses as the water reaches it.'],
+ [.64,'The living landscape','Green hills, deep valleys','The same terrain, now in colour.'],
+ [.8,'The ground itself','The real terrain','Satellite imagery: the land as it looks today.'],
+ [.93,'Now you explore','Click any site to inspect','Every layer together: sites, flood line, rivers and terrain.']];
 const DUR=20000;
 /* sites within 250 m of the flood line (distance from the pin, see the site's Flood Risk tab) */
 const NEAR={lamontville:'2 m',kwadimba:'37 m',gwala:'56 m',lindelani:'59 m',crystal:'60 m',frazer:'160 m'}; // ms for the whole sequence; first 8% is the still opening shot
@@ -64,11 +65,11 @@ const cv=document.getElementById('c'), x=cv.getContext('2d'), stage=document.get
 const animEl=document.getElementById('anim'); let t0=performance.now(), raf=0, done=false;
 if(matchMedia('(prefers-reduced-motion: reduce)').matches) animEl.checked=false;
 const load=s=>new Promise(r=>{const i=new Image(); i.onload=()=>r(i); i.src=s;});
-let base,water,lab,sat,G,WD,off,octx,img;
+let base,water,lab,sat,sketch,G,WD,off,octx,img,LAYOUT=null;
 const W=1600,H=1000;
 function size(){ const r=stage.getBoundingClientRect(), d=Math.min(2,devicePixelRatio||1); cv.width=Math.round(r.width*d); cv.height=Math.round(r.height*d); }
 (async()=>{
-  [base,water,lab,sat]=await Promise.all([load('veins/base.jpg'),load('veins/water.png'),load('veins/labels.png'),load('veins/sat.jpg')]);
+  [base,water,lab,sat,sketch]=await Promise.all([load('veins/base.jpg'),load('veins/water.png'),load('veins/labels.png'),load('veins/sat.jpg'),load('veins/sketch.jpg')]);
   const dimg=await load('veins/dist.png');
   // decode the 16-bit growth field and the water layer once
   const t=document.createElement('canvas'); t.width=W; t.height=H; const tc=t.getContext('2d');
@@ -78,6 +79,16 @@ function size(){ const r=stage.getBoundingClientRect(), d=Math.min(2,devicePixel
   size(); addEventListener('resize',()=>{size(); frame(performance.now());});
   run();
 })();
+/* place all 12 labels once, trying positions around each pin until nothing overlaps */
+function layout(){ x.save(); x.font='600 11.5px Inter'; const boxes=PINS.map(q=>({x:q.x-9,y:q.y-9,w:18,h:18})), out=[];
+  boxes.push({x:0,y:H*.5,w:W*.47,h:H*.5});
+  const hit=b=>boxes.some(o=>b.x<o.x+o.w+4&&b.x+b.w+4>o.x&&b.y<o.y+o.h+4&&b.y+b.h+4>o.y);
+  PINS.forEach(q=>{ const w=Math.max(x.measureText(q.name).width,NEAR[q.id]?x.measureText(NEAR[q.id]+' from the flood line').width:0)+14, h=NEAR[q.id]?34:20;
+    const C=[[14,-h/2],[14,-h-8],[14,8],[-w-14,-h/2],[-w-14,-h-8],[-w-14,8],[-w/2,-h-16],[-w/2,16]];
+    let pick=null; for(let ring=0;ring<10&&!pick;ring++) for(const c of C){ const dx=c[0]+(c[0]>0?ring*26:-ring*26), dy=c[1]+(c[1]<0?-ring*22:ring*22), b={x:q.x+dx,y:q.y+dy,w,h};
+      if(b.x<8||b.x+w>W-8||b.y<44||b.y+h>H-120) continue; if(!hit(b)){ pick={...b,lead:ring>0,ax:dx>0?b.x:b.x+w,ay:b.y+h/2}; break; } }
+    if(!pick) pick={x:q.x+14,y:q.y-h/2,w,h,lead:false};
+    boxes.push(pick); out.push(pick); }); x.restore(); return out; }
 function run(){ cancelAnimationFrame(raf); done=false; window._lg=-1; t0=performance.now(); raf=requestAnimationFrame(frame); }
 function caption(p){ let b=BEATS[0]; for(const q of BEATS) if(p>=q[0]) b=q; const ch=document.getElementById('ch');
   if(ch.textContent!==b[2]){ ['ck','ch','cp'].forEach(id=>document.getElementById(id).style.opacity=0);
@@ -87,8 +98,9 @@ function frame(now){
   const q=Math.max(0,Math.min(1,(p-.22)/(.7-.22))), g=Math.pow(q,1.6)*1.15;   // flood front
   const sk=cv.width/W; x.setTransform(sk,0,0,sk,0,(cv.height-H*sk)/2);
   const z=1.06-.06*Math.min(1,p*1.3); x.translate(W/2,H/2); x.scale(z,z); x.translate(-W/2,-H/2);
-  x.drawImage(base,0,0,W,H);
-  const sa=Math.max(0,Math.min(1,(p-.74)/.14));                                     // real terrain last
+  x.drawImage(sketch,0,0,W,H);
+  const ga=Math.max(0,Math.min(1,(p-.64)/.12)); if(ga>0){ x.globalAlpha=ga; x.drawImage(base,0,0,W,H); x.globalAlpha=1; }   // green terrain
+  const sa=Math.max(0,Math.min(1,(p-.8)/.12))*.85;                                     // real terrain last
   if(sa>0){ x.globalAlpha=sa*.92; x.drawImage(sat,0,0,W,H); x.globalAlpha=1; }
   // water revealed behind the front; a bright band rides it
   const s=WD.data, o=img.data, band=.045;
@@ -99,9 +111,9 @@ function frame(now){
     o[j]=Math.min(255,s[j]+front*150); o[j+1]=Math.min(255,s[j+1]+front*120); o[j+2]=255; o[j+3]=Math.min(255,(a*rev+front*120)*(1-sa*.25)); }
   octx.putImageData(img,0,0); }
   x.save(); x.shadowColor='rgba(80,170,255,.75)'; x.shadowBlur=10; x.drawImage(off,0,0); x.restore();
-  x.globalAlpha=.85; x.drawImage(lab,0,0,W,H); x.globalAlpha=1;
+  x.globalAlpha=.85*Math.max(.35,ga); x.drawImage(lab,0,0,W,H); x.globalAlpha=1;
   // sites drop first (7%–20%), then pulse once the flood front reaches them
-  const sp=Math.max(0,(p-.07)/.13);
+  const sp=Math.max(0,(p-.08)/.12);
   PINS.forEach((q,i)=>{ const local=Math.max(0,Math.min(1,sp*1.7-i*.06)); if(local<=0) return;
     const e=1-Math.pow(1-local,3), drop=(1-e)*-140, ring=local<1?local:0;
     x.fillStyle='rgba(0,0,0,'+(.45*e)+')'; x.beginPath(); x.ellipse(q.x,q.y+3,7*e,2.4*e,0,0,7); x.fill();
@@ -110,11 +122,13 @@ function frame(now){
     if(hit){ const age=(now/1000)%1.6/1.6; for(const ph of [0,.5]){ const k2=(age+ph)%1; x.strokeStyle='rgba(255,107,94,'+(.85*(1-k2))+')'; x.lineWidth=2.5; x.beginPath(); x.arc(q.x,q.y,8+k2*42,0,7); x.stroke(); }
       x.fillStyle='rgba(255,107,94,.18)'; x.beginPath(); x.arc(q.x,q.y,14,0,7); x.fill(); }
     x.beginPath(); x.arc(q.x,q.y+drop,6.5,0,7); x.fillStyle=hit?'#ff6b5e':'#FBC900'; x.shadowColor=hit?'rgba(255,107,94,.9)':'rgba(251,201,0,.9)'; x.shadowBlur=14; x.fill(); x.shadowBlur=0; x.lineWidth=2; x.strokeStyle='#0b0e14'; x.stroke(); });
-  // labels for the pulsing sites, placed so they do not overlap
-  const used=[]; PINS.filter(q=>NEAR[q.id]&&g>=q.g).forEach(q=>{ let lx=q.x+18, ly=q.y-10; while(used.some(u=>Math.abs(u[1]-ly)<30&&Math.abs(u[0]-lx)<190)) ly-=30; used.push([lx,ly]);
-    const t1=NEAR[q.id]+' from the flood line'; x.font='600 12px Inter'; const w=Math.max(x.measureText(q.name).width,x.measureText(t1).width)+16;
-    x.fillStyle='rgba(6,10,17,.82)'; x.strokeStyle='rgba(255,107,94,.6)'; x.lineWidth=1; x.beginPath(); x.roundRect(lx,ly-14,w,34,6); x.fill(); x.stroke();
-    x.fillStyle='#fff'; x.fillText(q.name,lx+8,ly+1); x.font='500 11px Inter'; x.fillStyle='#ff9b90'; x.fillText(t1,lx+8,ly+15); });
+  // every site labelled once it lands; the flood-line sites add their distance in red
+  if(!LAYOUT) LAYOUT=layout();
+  PINS.forEach((q,i)=>{ const local=Math.max(0,Math.min(1,sp*1.7-i*.06)); if(local<1) return; const L=LAYOUT[i], hit=NEAR[q.id]&&g>=q.g;
+    if(L.lead){ x.strokeStyle='rgba(255,255,255,.45)'; x.lineWidth=1; x.beginPath(); x.moveTo(q.x,q.y); x.lineTo(L.ax,L.ay); x.stroke(); }
+    x.fillStyle='rgba(6,10,17,.84)'; x.strokeStyle=hit?'rgba(255,107,94,.7)':'rgba(255,255,255,.22)'; x.lineWidth=1; x.beginPath(); x.roundRect(L.x,L.y,L.w,hit?34:20,5); x.fill(); x.stroke();
+    x.font='600 11.5px Inter'; x.fillStyle='#fff'; x.fillText(q.name,L.x+7,L.y+14);
+    if(hit){ x.font='500 10.5px Inter'; x.fillStyle='#ff9b90'; x.fillText(NEAR[q.id]+' from the flood line',L.x+7,L.y+28); } });
   // vignette and caption shade
   x.setTransform(sk,0,0,sk,0,(cv.height-H*sk)/2);
   const v=x.createRadialGradient(W/2,H/2,H*.35,W/2,H/2,H*.95); v.addColorStop(0,'rgba(0,0,0,0)'); v.addColorStop(1,'rgba(0,0,0,.5)'); x.fillStyle=v; x.fillRect(0,0,W,H);

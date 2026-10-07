@@ -99,3 +99,27 @@ Sa = np.asarray(sat, np.float32) / 255
 Sa = Sa * (1 - sea[..., None]) + ocean_col * sea[..., None]
 Image.fromarray((np.clip(Sa, 0, 1) * 255).astype(np.uint8)).save(os.path.join(OUT, "sat.jpg"), quality=86)
 print("sat ok")
+
+# ---- analytical sketch base: contours + coastline + graticule on near-black
+E = np.load(os.path.join(IMG, "elev.npy")); E = ndimage.gaussian_filter(E, 1.2)
+Ev = np.asarray(place(Image.fromarray(np.clip(E, -50, 1100).astype(np.float32), mode="F"), BOX), np.float32)
+band = np.floor(np.maximum(Ev, 0) / 40)                       # 40 m contours
+c40 = (band != np.roll(band, 1, 0)) | (band != np.roll(band, 1, 1))
+b200 = np.floor(np.maximum(Ev, 0) / 200)
+c200 = (b200 != np.roll(b200, 1, 0)) | (b200 != np.roll(b200, 1, 1))
+land = sea < .5
+sk = np.full((H, W), 11.0)                                     # near-black paper
+sk = np.where(land & c40, 95, sk); sk = np.where(land & c200, 170, sk)
+coast = ndimage.binary_dilation(sea > .5, iterations=1) ^ (sea > .5)
+sk = np.where(coast, 235, sk)
+# hatch the sea lightly, like a survey sheet
+yy2, xx2 = np.mgrid[0:H, 0:W]
+sk = np.where((sea > .5) & (((xx2 + yy2) % 14) == 0), 30, sk)
+skim = Image.fromarray(sk.astype(np.uint8)).convert("RGB"); d = ImageDraw.Draw(skim)
+# graticule every 0.1 degree with tick labels
+for lon in np.arange(30.6, 31.31, .1):
+    X = sx(mx(lon)); d.line([(X, 0), (X, H)], fill=(38, 38, 40), width=1); d.text((X + 4, 6), f"{lon:.1f}°E", fill=(120, 120, 125))
+for lat in np.arange(-30.1, -29.49, .1):
+    Y = sy(my(lat)); d.line([(0, Y), (W, Y)], fill=(38, 38, 40), width=1); d.text((6, Y - 14), f"{abs(lat):.1f}°S", fill=(120, 120, 125))
+skim.save(os.path.join(OUT, "sketch.jpg"), quality=90)
+print("sketch ok")
