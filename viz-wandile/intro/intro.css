@@ -11,7 +11,7 @@
 .ix-film img{width:min(100vw,177.78vh);height:auto;display:block}
 .ix-film.dim img{filter:brightness(.55) saturate(.8)}
 .ix-shade{position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(5,8,14,.85));pointer-events:none}
-.ix-rain{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(104deg,transparent 49.4%,rgba(220,235,255,.35) 50%,transparent 50.6%);background-size:max(28px,3cqw) max(56px,6cqw);animation:ixrain .5s linear infinite;opacity:.8}
+.ix-rain{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(104deg,transparent 49.4%,rgba(220,235,255,.35) 50%,transparent 50.6%);background-size:max(28px,3cqw) max(56px,6cqw);animation:ixrain .8s linear infinite;opacity:.8}
 .ix-chrome{position:absolute;left:0;right:0;top:0;height:max(56px,5cqw);display:flex;align-items:center;gap:16px;padding:0 max(16px,2cqw);background:linear-gradient(rgba(5,8,14,.8),transparent);z-index:6}
 .ix-brand{font:700 max(15px,1.15cqw) var(--sans);color:#fff;white-space:nowrap}
 .ix-prog{margin:0 auto;display:flex;align-items:center;gap:6px;font:500 max(10px,.72cqw) var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85)}

@@ -4,7 +4,7 @@
    The loss slide names Lulama Dingiswayo, whose three children died at that camp (IOL; Amnesty International, 2025). */
 (function(){
 if (window.INTRO_ON === false || location.hash === '#map') return;
-const BASE='intro/', FPS=5, NF=244, fr=i=>BASE+'film8/f'+String(i).padStart(3,'0')+'.jpg';
+const BASE='intro/', FPS=4, NF=244, fr=i=>BASE+'film8/f'+String(i).padStart(3,'0')+'.jpg';
 const PTS={bg_drop:{mega:[50.02,50.06]},bg_mapA:{mega:[13.15,65.7],tehuis:[47.73,65.7],lamont:[86.88,24.35]},bg_mapB:{lamont:[30.18,91.15],bayside:[69.86,9.05],umbilo:[48.02,35.56]}};
 const PIN='<svg viewBox="0 0 56 70" aria-hidden="true"><path d="M28 68C28 68 4 42 4 26a24 24 0 0148 0c0 16-24 42-24 42z" fill="#FBC900"/><circle cx="21" cy="19" r="4" fill="#0B0F19"/><circle cx="35" cy="19" r="4" fill="#0B0F19"/><circle cx="28" cy="31" r="3" fill="#0B0F19"/><path d="M14 38v-6a7 7 0 0114 0v6zM28 38v-6a7 7 0 0114 0v6z" fill="#0B0F19"/><path d="M23 44v-4a5 5 0 0110 0v4z" fill="#0B0F19"/></svg>';
 const CRED='Illustration from our animation · the moves follow GroundUp\'s reporting on families from this camp (June 2022)';
@@ -87,7 +87,7 @@ function mapHTML(s){ const P=PTS[s.bg]; let h='<div class="ix-cover"><div class=
   return h+'<div class="ix-pin" id="ixpin" style="left:'+P[s.from][0]+'%;top:'+P[s.from][1]+'%">'+PIN+'</div></div>'; }
 function playMap(s){ const segs=['ixr1','ixr2'].map(id=>document.getElementById(id)).filter(Boolean), pin=document.getElementById('ixpin'), stops=[s.to,s.to2].filter(Boolean);
   segs.forEach(p=>{ const L=p.getTotalLength(); p.style.strokeDasharray=L; p.style.strokeDashoffset=L; });
-  const DUR=3200, PAUSE=900; let si=0, t0=null;
+  const DUR=4000, PAUSE=1100; let si=0, t0=null;
   const step=ts=>{ if(t0==null) t0=ts; const p=segs[si], L=p.getTotalLength(), u=Math.min(1,(ts-t0)/DUR), e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;
     p.style.strokeDashoffset=L*(1-e); const pt=p.getPointAtLength(L*e); pin.style.left=(pt.x/16)+'%'; pin.style.top=(pt.y/10)+'%';
     if(u<1){ raf=requestAnimationFrame(step); return; }
