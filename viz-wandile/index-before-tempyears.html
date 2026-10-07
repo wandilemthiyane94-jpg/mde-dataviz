@@ -390,7 +390,6 @@ body.cond .time{grid-template-columns:34px minmax(0,1fr) auto auto}
 .time>.cmpb,.cmpb{background:#FBC900!important;color:#0B0F19!important;border-color:#FBC900!important}
 .cmpb svg path{stroke:#0B0F19!important}
 .time>.cmpb:hover{background:#ffd633!important}
-.stats3 b{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -632,8 +631,6 @@ function condCards(x){ const c=condOf(x,condK), lab=(CK.find(q=>q[0]===condK)||[
 /* clicking a condition card shows that condition's comparison in the main area, keeping the panel */
 document.addEventListener('click',e=>{ const b=e.target.closest&&e.target.closest('#panel [data-ck]'); if(!b) return; condK=b.dataset.ck; condSite=selected||'lamontville'; condCmp=false; condOverlay=true; const sc=$('panel').scrollTop; panel(); $('panel').scrollTop=sc; });
 const distTxt=d=>d<=250?`${d} m from the line`:(d>=1000?(d/1000).toFixed(1)+' km away':d+' m away');
-/* how long a 'temporary' site has been in use: open sites counted to now (Oct 2026) */
-const tempYears=s=>{ const y=s.yclosed?s.yclosed-s.yin:Math.round(2026.75-s.yin); return y<1?'under a year, “temporary”':(s.yclosed?'':'about ')+y+' year'+(y===1?'':'s')+' “temporary”'; };
 const near=d=>d<=60?'At the line':d<=250?'Near':d<=1000?'Within 1 km':'Beyond 1 km';
 
 /* The default panel: one family's story, from published reports only. */
@@ -901,7 +898,7 @@ function panel(){ const box=$('panel'), foot=$('panelfoot'), s=selected&&byId[se
   let h='<div class="top"><button class="back" id="back">← Back to all sites</button><div class="nav2"><button id="prev" aria-label="Previous site">‹</button><button id="next" aria-label="Next site">›</button></div></div>';
   h+='<h2>'+esc(s.name)+'</h2><p class="sub">'+esc(s.type)+' · '+esc(s.addr)+'</p>';
   h+='<div class="photo"><img src="assets/sites/'+s.id+'.jpg" alt="Satellite view of '+esc(s.name)+'"><span>Satellite view · Esri</span></div>';
-  h+='<div class="stats3"><div><b>'+esc((s.hh.match(/[\d,]+\+?/)||['—'])[0])+'</b><span>'+(/famil/i.test(s.hh)?'families':/people|residents/i.test(s.hh)?'people':/household/i.test(s.hh)?'households':'not reported')+'</span></div><div><b>'+s.yin+'–'+(s.yclosed||2026)+'</b><span>'+tempYears(s)+'</span></div><div><b>'+near(d)+'</b><span>'+distTxt(d)+'</span></div></div>';
+  h+='<div class="stats3"><div><b>'+esc((s.hh.match(/[\d,]+\+?/)||['—'])[0])+'</b><span>'+(/famil/i.test(s.hh)?'families':/people|residents/i.test(s.hh)?'people':/household/i.test(s.hh)?'households':'not reported')+'</span></div><div><b>'+s.yin+'</b><span>temporary since</span></div><div><b>'+near(d)+'</b><span>'+distTxt(d)+'</span></div></div>';
   const T=[['overview','Overview'],['people','People'],['movement','Movement'],['conditions','Conditions'],['risk','Flood Risk'],['evidence','Evidence']];
   h+='<div class="tabs" role="tablist">'+T.map(t=>'<button role="tab" data-t="'+t[0]+'" aria-selected="'+(tab===t[0])+'">'+t[1]+'</button>').join('')+'</div><div class="pane">';
   if(tab==='overview'){ if(s.lead) h+='<div class="lead"><b>'+esc(s.lead[0])+'</b>'+esc(s.lead[1])+'</div>';
