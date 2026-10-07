@@ -38,6 +38,10 @@ input[type=range]{position:relative;width:100%;margin:0;height:20px;accent-color
 .panel .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .panel .res{font:500 12px var(--mono);color:var(--fg)}
 .panel .res b{color:#4FB6D8;font-weight:500}
+.rs{display:grid;gap:4px;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em}
+.rs span{text-transform:none;letter-spacing:0;font:500 13px var(--mono);color:var(--fg)}
+.rs span b{color:#4FB6D8;font-weight:500}.rs span i{font-style:normal;color:var(--mut)}
+.rs input{width:100%;accent-color:#4FB6D8}
 .panel .note{font-size:10.5px;color:var(--mut);margin:0}
 .toggle{position:fixed;left:16px;top:calc(8px + env(safe-area-inset-top,0px));z-index:4}
 .status{font-size:11px;color:var(--amber)}
@@ -54,12 +58,12 @@ input[type=range]{position:relative;width:100%;margin:0;height:20px;accent-color
 <button type="button" class="ghost toggle" id="ptoggle" aria-expanded="false" aria-controls="panel">Change the rain</button>
 <div class="panel" id="panel" hidden>
   <h2>What if it rained differently?</h2>
-  <div class="grid" id="rgrid"></div>
-  <div class="row"><label style="flex:1">uMlazi river flow (x)<input type="number" id="river" min="0" max="3" step="0.1" value="1"></label>
-    <button type="button" class="ghost" id="reset">Reset to 2022</button></div>
+  <label class="rs">How long it rains<span><b id="durv">17 hours</b> from 09:00</span><input type="range" id="dur" min="1" max="17" step="1" value="17"></label>
+  <label class="rs">Rain per minute<span><b id="ratev">0.13 mm</b> a minute · <i id="rateh">7.9 mm an hour</i></span><input type="range" id="rate" min="0.01" max="1" step="0.01" value="0.13"></label>
+  <div class="row"><span class="res" id="tot"></span><button type="button" class="ghost" id="reset" style="margin-left:auto">Real 2022 storm</button></div>
   <div class="res" id="res"></div>
   <span class="status" id="status" aria-live="polite"></span>
-  <p class="note">Rain in mm for each hour. Changes re-run a simplified flood model in your browser on the LiDAR terrain (30 m grid). The ArcGIS panel shows your original run.</p>
+  <p class="note">Steady rain at the chosen rate, starting 09:00 on 11 April. "Real 2022 storm" uses the measured hourly rain (ERA5). Changes re-run a simplified flood model in your browser on the LiDAR terrain (30 m grid). The ArcGIS panel shows your original run.</p>
 </div>
 <div class="hint">Drag to turn · scroll to zoom · right-drag to move</div>
 <div class="bar">
@@ -197,10 +201,13 @@ function setWater(f){const f0=Math.min(KMAX,Math.floor(f)),f1=Math.min(KMAX,f0+1
   wg.attributes.position.needsUpdate=true; wg.attributes.alpha.needsUpdate=true; wg.computeBoundingSphere();
   wetCells.length=0; for(let i=0;i<h;i++)for(let j=0;j<w;j++){const d=dep(Math.min(h-2,i),Math.min(w-2,j)); DEPN[i*w+j]=d; SURF[i*w+j]=Z[i*w+j]+(d>.08?d:0); if(d>.15)wetCells.push(i*w+j);}}
 // rain inputs, bars and time-of-day labels
-const rgrid=document.getElementById("rgrid"), riverEl=document.getElementById("river"), resEl=document.getElementById("res"), statusEl=document.getElementById("status");
+const durEl=document.getElementById("dur"), rateEl=document.getElementById("rate"), resEl=document.getElementById("res"), statusEl=document.getElementById("status");
 const hourLab=i=>{const hh=(9+i)%24;return String(hh).padStart(2,"0")+":00";};
-rgrid.innerHTML=DEF_RAIN.map((v,i)=>`<label>${hourLab(i)}<input type="number" min="0" max="200" step="0.5" value="${v}" data-i="${i}"></label>`).join("");
-const rainNow=()=>[...rgrid.querySelectorAll("input")].map(e=>Math.max(0,+e.value||0));
+let REAL=true; /* the measured 2022 hours until the viewer moves a slider */
+const rainNow=()=>REAL?DEF_RAIN.slice():DEF_RAIN.map((_,i)=>i<+durEl.value?+rateEl.value*60:0);
+function labels(){ const d=+durEl.value, m=+rateEl.value; document.getElementById("durv").textContent=d+(d===1?" hour":" hours"); document.getElementById("ratev").textContent=m.toFixed(2)+" mm";
+  document.getElementById("rateh").textContent=(m*60).toFixed(1)+" mm an hour"; const tot=rainNow().reduce((a,b)=>a+b,0);
+  document.getElementById("tot").innerHTML=(REAL?"Real 2022 storm · ":"")+"<b>"+Math.round(tot)+" mm</b> in total"; }
 const bars=document.getElementById("rainbars"), tod=document.getElementById("tod");
 function drawBars(){const rn=rainNow(), mx=Math.max(20,...rn); bars.innerHTML=rn.map((v,i)=>{const x0=pc(i*2), wd=pc(Math.min(KMAX,i*2+2))-x0;
   return `<i class="${i*2<fpos?"past":""}" style="left:${x0}%;width:calc(${wd}% - 2px);height:${Math.max(1,v/mx*40)}px"><b>${v>=10?Math.round(v):v}</b></i>`;}).join("");}
@@ -209,9 +216,9 @@ const campDepth=(c,k)=>{if(!SNAP)return 0;const [cj,ci]=c.c,I=Math.round(ci),J=M
 function results(){const k=Math.round(fpos);let wet=0;if(SNAP)for(let c=0;c<N;c++)if(SNAP[k*N+c]>.1)wet++;
   resEl.innerHTML=`Riverside camp <b>${campDepth(D.camps[0],k).toFixed(2)} m</b> · camp next door <b>${campDepth(D.camps[1],k).toFixed(2)} m</b><br>Flooded area <b>${(wet*CELL*CELL/1e6).toFixed(2)} km2</b> at this time`;}
 let timer=null;
-function rerun(){statusEl.textContent="Running the flood…"; clearTimeout(timer); timer=setTimeout(()=>{SNAP=runModel(rainNow(),Math.max(0,+riverEl.value||0)); statusEl.textContent=""; show(fpos); drawBars();},60);}
-rgrid.addEventListener("input",()=>{drawBars();rerun();}); riverEl.addEventListener("input",rerun);
-document.getElementById("reset").onclick=()=>{rgrid.querySelectorAll("input").forEach((e,i)=>e.value=DEF_RAIN[i]); riverEl.value=1; drawBars(); rerun();};
+function rerun(){statusEl.textContent="Running the flood…"; clearTimeout(timer); timer=setTimeout(()=>{SNAP=runModel(rainNow(),1); statusEl.textContent=""; show(fpos); drawBars();},60);}
+[durEl,rateEl].forEach(e=>e.addEventListener("input",()=>{REAL=false;labels();drawBars();rerun();})); labels();
+document.getElementById("reset").onclick=()=>{REAL=true; durEl.value=17; rateEl.value=0.13; labels(); drawBars(); rerun();};
 const ptoggle=document.getElementById("ptoggle"), panel=document.getElementById("panel");
 ptoggle.onclick=()=>{const open=panel.hidden; panel.hidden=!open; ptoggle.setAttribute("aria-expanded",open);};
 function show(k){k=Math.max(0,Math.min(KMAX,k)); fpos=k; tEl.value=Math.round(k); const n=info(Math.round(k)); clock.textContent=n.lab; clock.classList.toggle("night",n.night); setWater(k); results(); drawBars(); arcImg.src=`gwala-arcfull/a${String(Math.round(k*60/KMAX)).padStart(2,"0")}.jpg`;}
