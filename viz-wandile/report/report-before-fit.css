@@ -40,28 +40,3 @@
 .rp-form .box .kick,.rp-form .box h2,.rp-form .box>p.sub{display:none}
 @media (max-width:1100px){.rp-top{grid-template-columns:1fr}.rp-top .bg{right:0}.rp-help{grid-template-columns:repeat(3,minmax(0,1fr))}.rp-help h2{grid-column:1/-1}}
 @media (max-width:760px){.rp-steps{grid-template-columns:1fr}.rp-wa{grid-template-columns:1fr}.rp-feats{border:0;padding:0}.rp-form{grid-template-columns:1fr}.rp-help{grid-template-columns:repeat(2,minmax(0,1fr))}}
-/* one-screen fit: hero, steps and the advocacy band share the viewport; the web form opens below on request */
-#rp{display:block}
-.rp-screen{min-height:calc(100vh - 64px);display:grid;grid-template-rows:minmax(0,1fr) auto;gap:clamp(10px,1.8vh,20px);padding-bottom:clamp(12px,2vh,22px)}
-.rp-top{padding:clamp(16px,3vh,36px) max(20px,4vw) 0;gap:clamp(20px,3vw,40px);align-items:center}
-.rp-l{gap:clamp(10px,1.8vh,18px)}
-.rp-l h1{font-size:clamp(30px,min(4.2vw,6.6vh),62px)}
-.rp-l .lede{font-size:clamp(15px,min(1.25vw,2.2vh),19px)}
-.rp-wa{padding:clamp(14px,2vh,20px);gap:16px;align-items:center}
-.rp-wa h2{font-size:clamp(17px,2.4vh,21px)}
-.rp-qrrow{display:flex;gap:14px;align-items:center;margin-top:12px}
-.rp-qr{margin:0;flex:none;width:clamp(96px,15vh,132px);height:auto;aspect-ratio:1;padding:8px}
-.rp-qr svg{width:100%;height:100%}
-.rp-soon{margin:0;max-width:140px;line-height:1.5}
-.rp-feats{gap:clamp(8px,1.4vh,14px)}
-.rp-feats small{display:block;line-height:1.35}
-.rp-steps{gap:clamp(12px,1.4vw,20px);align-items:start}
-.rp-step p{min-height:0;margin-bottom:10px}
-.rp-phone{aspect-ratio:auto;height:clamp(240px,calc(100vh - 64px - 330px),520px);width:auto;max-width:100%;margin:0 auto;border-width:7px}
-.rp-phone img{height:auto}
-.rp-help{padding:clamp(12px,2vh,20px) 24px;grid-template-columns:260px repeat(5,minmax(0,1fr)) auto}
-.rp-help h2{font-size:clamp(16px,2.3vh,19px)}
-.rp-help i{width:38px;height:38px;font-size:16px}
-.rp-formbtn{background:#fff;color:#0B0F19;border:0;border-radius:10px;padding:11px 16px;font-weight:600;cursor:pointer;white-space:nowrap}
-.rp-form[hidden]{display:none}
-@media (max-width:1100px){.rp-screen{min-height:0}.rp-phone{height:auto;aspect-ratio:390/700}.rp-help{grid-template-columns:repeat(3,minmax(0,1fr))}}
