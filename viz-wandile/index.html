@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="intro/intro.css"><!-- story intro (see INTRO_ON below) -->
 <link rel="stylesheet" href="news/news.css"><!-- Stories page -->
+<link rel="stylesheet" href="report/report.css"><!-- Report page -->
 <style>
 /* Landing = the map. Nav on top, hero + layers on the left, the site dossier on the right, time along the bottom.
    Built on Hollie's map engine (data/sites.js, data/map-data.js). Single dark look by design. */
@@ -748,7 +749,7 @@ function renderCond(){ const box=$('panel'), foot=$('panelfoot'); foot.innerHTML
 function panel(){ const box=$('panel'), foot=$('panelfoot'), s=selected&&byId[selected];
   if(view2==='conditions'){ renderCond(); return; }
   if(view2==='about'){ box.innerHTML=aboutHTML(); foot.innerHTML=''; $('back').onclick=()=>{view2='map';setNav();panel();}; return; }
-  if(view2==='report'){ box.innerHTML=reportHTML(); foot.innerHTML=''; $('rep').onsubmit=sendReport; return; }
+  if(view2==='report'){ box.innerHTML=''; foot.innerHTML=''; return; } /* the Report page (report/report.js) holds the form */
   if(!s){ box.innerHTML=storyHTML(); foot.innerHTML='';
     box.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{stab=b.dataset.st;panel();});
     if($('sj')) $('sj').onclick=()=>{select('lamontville',true);setTimeout(()=>{tab='movement';toggleJourney();},950);};
@@ -850,6 +851,7 @@ setYear(2026,true); attr(); panel(); resize(); view.z=homeZoom(); draw();
 <!-- STORIES PAGE: real reporting per site (data/stories.js). Remove these two lines and the news.css link to take it out. -->
 <script src="data/stories.js"></script>
 <script src="news/news.js"></script>
+<script src="report/report.js"></script><!-- REPORT PAGE: remove this line and report.css to take it out -->
 <!-- STORY INTRO: plays one family's story over the map, then hands over to it.
      To switch it off, set INTRO_ON = false. To remove it entirely, delete the two script lines below and the intro.css link at the top.
      Backup of the page before the intro: index-before-intro.html (git tag: before-intro). -->

@@ -1,0 +1,42 @@
+/* Report page: WhatsApp reporting (preview) plus the working web form. Opens from the Report tab. */
+#rp{position:fixed;left:0;right:0;top:64px;bottom:0;z-index:15;background:#070B12;overflow-y:auto;overflow-x:hidden;color:#E2E8F0;font:14px/1.45 var(--sans)}
+#rp[hidden]{display:none}
+#rp *{box-sizing:border-box}
+#rp button,#rp input,#rp select,#rp textarea{font:inherit}
+#rp :focus-visible{outline:2px solid #FBC900;outline-offset:2px}
+.rp-top{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;padding:40px max(20px,4vw) 30px;overflow:hidden}
+.rp-top .bg{position:absolute;left:0;right:55%;bottom:0;height:300px;background:url(../assets/photos/gu_lamontville_camp_2022.jpg) center/cover;opacity:.32;-webkit-mask-image:linear-gradient(transparent,#000 60%);mask-image:linear-gradient(transparent,#000 60%)}
+.rp-l{position:relative;display:flex;flex-direction:column;gap:20px}
+.rp-k{font:600 11px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:#F5A524}
+.rp-l h1{font:800 clamp(38px,4.4vw,66px)/0.98 var(--sans);letter-spacing:-.035em;color:#fff;margin:0;text-wrap:balance}
+.rp-l .lede{font:clamp(16px,1.3vw,20px)/1.45 var(--serif);color:#cbd5e1;margin:0;max-width:560px}
+.rp-wa{background:rgba(15,22,34,.86);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;backdrop-filter:blur(10px)}
+.rp-wa h2{font:700 22px var(--sans);color:#fff;margin:0 0 6px}
+.rp-wa p{margin:0;color:#9AA6B8}
+.rp-qr{margin-top:14px;width:150px;height:150px;border-radius:12px;background:#fff;display:grid;place-items:center;position:relative;overflow:hidden}
+.rp-qr svg{width:136px;height:136px;opacity:.18}
+.rp-qr span{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font:700 12px/1.3 var(--sans);color:#0B0F19;padding:12px}
+.rp-soon{margin-top:10px;font:600 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#F5A524}
+.rp-feats{display:grid;gap:14px;align-content:start;border-left:1px solid rgba(255,255,255,.1);padding-left:20px}
+.rp-feats div{display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:center}
+.rp-feats i{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;font-style:normal;font-size:16px}
+.rp-feats b{display:block;color:#fff;font-size:13.5px}
+.rp-feats small{color:#9AA6B8;font-size:12px}
+.rp-steps{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-content:start}
+.rp-step h3{display:flex;align-items:center;gap:10px;font:700 15px var(--sans);color:#fff;margin:0 0 4px}
+.rp-step h3 b{width:28px;height:28px;border-radius:50%;background:#F8FAFC;color:#0B0F19;display:grid;place-items:center;font-size:13px;flex:none}
+.rp-step p{margin:0 0 12px 38px;font-size:12.5px;color:#9AA6B8;min-height:36px}
+.rp-phone{border:8px solid #1b1f26;border-radius:30px;overflow:hidden;background:#0B141A;box-shadow:0 20px 50px rgba(0,0,0,.45);aspect-ratio:390/700}
+.rp-phone img{width:100%;display:block}
+.rp-help{margin:0 max(20px,4vw);border:1px solid rgba(255,255,255,.12);border-radius:16px;background:#0C121C;padding:22px 26px;display:grid;grid-template-columns:240px repeat(5,minmax(0,1fr));gap:18px;align-items:center}
+.rp-help h2{font:700 20px/1.2 var(--sans);color:#fff;margin:0}
+.rp-help h2 span{display:block;font:400 14px/1.4 var(--serif);color:#9AA6B8;margin-top:6px}
+.rp-help div{text-align:center;font-size:13.5px;color:#E2E8F0;display:grid;justify-items:center;gap:8px}
+.rp-help i{width:44px;height:44px;border-radius:50%;background:rgba(245,165,36,.14);border:1px solid rgba(245,165,36,.5);display:grid;place-items:center;font-style:normal;font-size:18px}
+.rp-form{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px;padding:36px max(20px,4vw) 60px}
+.rp-form .side h2{font:700 24px var(--sans);color:#fff;margin:8px 0 8px}
+.rp-form .side p{color:#9AA6B8;margin:0 0 10px;max-width:420px}
+.rp-form .box{background:#0C121C;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:20px}
+.rp-form .box .kick,.rp-form .box h2,.rp-form .box>p.sub{display:none}
+@media (max-width:1100px){.rp-top{grid-template-columns:1fr}.rp-top .bg{right:0}.rp-help{grid-template-columns:repeat(3,minmax(0,1fr))}.rp-help h2{grid-column:1/-1}}
+@media (max-width:760px){.rp-steps{grid-template-columns:1fr}.rp-wa{grid-template-columns:1fr}.rp-feats{border:0;padding:0}.rp-form{grid-template-columns:1fr}.rp-help{grid-template-columns:repeat(2,minmax(0,1fr))}}
