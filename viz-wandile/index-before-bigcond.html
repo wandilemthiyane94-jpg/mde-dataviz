@@ -291,17 +291,6 @@ body.cond .right .photo{aspect-ratio:16/7}
 @keyframes axsway{50%{transform:rotate(-3deg)}}
 @media (prefers-reduced-motion:reduce){.ax-drop,.ax-ghost,.ax-flick,.ax-glow,.ax-wave,.ax-sway{animation:none}}
 
-/* conditions, full section */
-body.cond .left,body.cond .scrim,body.cond .ctrl,body.cond .attr{display:none!important}
-body.cond #map{filter:brightness(.28) saturate(.6) blur(1.5px);transition:filter .8s}
-body.cond .cstrip{top:84px;bottom:118px;height:auto;grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:8px;padding:16px 22px 12px;background:rgba(9,13,21,.72)}
-body.cond .cinfo{border-right:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"t p" "v s";gap:6px 20px;align-items:center}
-body.cond .cinfo h3{grid-area:t;font-size:22px}
-body.cond .cinfo h3 br{display:none}
-body.cond .cinfo .cpills{grid-area:p;margin:0;justify-content:flex-end}
-body.cond .cinfo .cverd{grid-area:v;font-size:15px}
-body.cond .cinfo .src{grid-area:s;margin:0!important;text-align:right}
-body.cond .canim svg{height:100%}
 /* bottom timeline */
 .time{position:fixed;left:22px;right:22px;bottom:18px;height:82px;z-index:10;display:grid;grid-template-columns:56px 150px 1fr;gap:18px;align-items:center;padding:0 22px}
 .time>button{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:none;cursor:pointer;font-size:16px}
@@ -685,79 +674,63 @@ function infoSVG(x,k){ const L=x.id==='lamontville', o=[]; const T=(tx,ty,t,c,sz
     o.push(T(172,30,'Emergency housing is for','#cbd5e1',11)+T(172,45,'people who live on land','#cbd5e1',11)+T(172,60,'"prone to dangerous','#f8fafc',12,700)+T(172,75,'flooding"','#f8fafc',12,700));
     o.push(T(172,104,'Move people off','#f8fafc',13,700)+T(172,119,'flood-prone land','#cbd5e1',11)); }
   return o.join(''); }
-/* one condition at a time, animated: red = what residents have, grey = the standard. Drawn on a 960 x 420 canvas. */
-function animSVG(x,k){ const L=x.id==='lamontville', o=[], W=960, H=420, MID=480;
-  const dl=t=>' style="animation-delay:'+t.toFixed(2)+'s"';
-  const T=(tx,ty,t,c,sz,w,a,cls,del)=>'<text x="'+tx+'" y="'+ty+'" fill="'+(c||'#e2e8f0')+'" font-size="'+(sz||14)+'" font-weight="'+(w||400)+'" text-anchor="'+(a||'start')+'" font-family="Inter,Arial"'+(cls?' class="'+cls+'"':'')+(del!=null?dl(del):'')+'>'+t+'</text>';
-  const house=(hx,hy,c,sc)=>'<path d="M'+hx+' '+(hy+9*sc)+'l'+(9*sc)+' -'+(8*sc)+' '+(9*sc)+' '+(8*sc)+'v'+(10*sc)+'h-'+(18*sc)+'z" fill="'+c+'"/>';
-  const tap=(tx,ty,sc,c,ghost)=>'<g transform="translate('+tx+' '+ty+') scale('+sc+')"'+(ghost?' class="ax-ghost"':'')+'><path d="M0 70V14a12 12 0 0 1 12-12h26v10H14a4 4 0 0 0-4 4v54z" fill="'+(ghost?'none':c)+'" stroke="'+c+'" stroke-width="'+(ghost?2:0)+'"'+(ghost?' stroke-dasharray="4 3"':'')+'/><rect x="36" y="10" width="6" height="8" fill="'+(ghost?'none':c)+'" stroke="'+c+'" stroke-width="'+(ghost?1.5:0)+'"/></g>';
-  const drops=(cx,cy,n,sp)=>{ let h=''; for(let i=0;i<n;i++) h+='<circle class="ax-drop" cx="'+cx+'" cy="'+cy+'" r="4" fill="#7CC8FF"'+dl(i*sp)+'/>'; return h; };
-  const person=(px,py,c,sc)=>'<circle cx="'+px+'" cy="'+(py-26*sc)+'" r="'+(6*sc)+'" fill="'+c+'"/><path d="M'+(px-8*sc)+' '+py+'v-'+(12*sc)+'a8 8 0 0 1 '+(16*sc)+' 0v'+(12*sc)+'z" fill="'+c+'"/>';
-  const head=(side,big,sub,c)=>{ const X=side?MID+36:24; return T(X,30,side?'GOVERNMENT STANDARD':'AT THE SITE',side?'#94A3B8':RED,12,700)+T(X,74,big,c||'#f8fafc',36,800,'start','ax-fade',side?1.4:0)+T(X,98,sub,'#94A3B8',14,400,'start','ax-fade',side?1.5:.1); };
-  o.push('<line x1="'+MID+'" x2="'+MID+'" y1="20" y2="'+(H-14)+'" stroke="rgba(255,255,255,.1)"/><circle cx="'+MID+'" cy="'+(H/2)+'" r="18" fill="#0B0F19" stroke="rgba(255,255,255,.15)"/>'+T(MID,H/2+5,'VS','#64748B',12,700,'middle'));
-  if(!L){ o.push(head(0,'Reported','what residents and reporters describe')+head(1,'Standard','Housing Code 2009 and Sphere'));
-    const a=(condOf(x,k).t||'Not reported').match(/.{1,30}(\s|$)/g)||[]; a.slice(0,6).forEach((l,i)=>o.push(T(24,160+i*32,esc(l.trim()),'#f8fafc',24,600,'start','ax-fade',.2+i*.12)));
-    (STD[k].match(/.{1,30}(\s|$)/g)||[]).slice(0,6).forEach((l,i)=>o.push(T(MID+36,160+i*32,esc(l.trim()),'#f8fafc',24,600,'start','ax-fade',1.6+i*.12)));
-    o.push(T(24,H-16,'No counts were reported for this site, so there is nothing to draw to scale yet.','#64748B',12)); return o.join(''); }
-  if(k==='water'){
-    o.push(head(0,'1 tap','for about 100 households'));
-    o.push(tap(30,150,2.2,RED)+drops(30+2.2*38,150+2.2*18,4,.28)+'<ellipse cx="'+(30+2.2*38)+'" cy="'+(150+2.2*70)+'" rx="22" ry="4" fill="#7CC8FF" opacity=".5"/>');
-    for(let i=0;i<20;i++){ const c=i%5, rw=Math.floor(i/5); o.push('<g class="ax-pop"'+dl(.25+i*.07)+'>'+house(180+c*52,150+rw*48,RED,1.9)+'</g>'); }
-    o.push(T(180,H-36,'each ⌂ = 5 households · all queue at one tap','#94A3B8',12));
-    o.push(head(1,'4 taps','one per 25 families · what 100 households need'));
-    for(let t=0;t<4;t++){ const tx=MID+40+t*105, ghost=t>0; o.push('<g class="ax-fade"'+dl(1.6+t*.35)+'>'+tap(tx,150,1.25,ghost?RED:GRY,ghost)+(ghost?'':drops(tx+1.25*38,150+1.25*18,2,.5))+'</g>');
-      for(let h=0;h<5;h++) o.push('<g class="ax-pop"'+dl(1.8+t*.35+h*.05)+'>'+house(tx+(h%2)*26,262+Math.floor(h/2)*34,GRY,1.3)+'</g>'); }
-    o.push(T(MID+36,H-36,'dashed taps: the 3 the camp does not have','#ff6b5e',13,600,'start','ax-fade',3.2)); }
-  if(k==='san'){
-    o.push(head(0,'16 toilets','portable, rarely cleaned · nowhere to wash'));
-    for(let i=0;i<20;i++){ const c=i%5, rw=Math.floor(i/5), miss=i>=16, xx=40+c*80, yy=126+rw*68;
-      o.push('<g class="'+(miss?'ax-fade':'ax-pop')+'"'+dl(miss?2+(i-16)*.2:.15+i*.07)+'><g'+(miss?' class="ax-ghost"':'')+'><rect x="'+xx+'" y="'+yy+'" width="44" height="58" rx="6" fill="'+(miss?'none':RED)+'" stroke="'+RED+'" stroke-width="2"'+(miss?' stroke-dasharray="5 4"':'')+'/><rect x="'+(xx+14)+'" y="'+(yy+12)+'" width="16" height="4" fill="'+(miss?RED:'#0B0F19')+'"/></g></g>'); }
-    o.push(T(40,H-16,'dashed: 4 toilets short of the standard','#ff6b5e',13,600,'start','ax-fade',2.6));
-    o.push(head(1,'20 toilets','one VIP toilet per 5 families'));
-    for(let i=0;i<4;i++){ const yy=130+i*66; o.push('<g class="ax-pop"'+dl(1.8+i*.2)+'><rect x="'+(MID+40)+'" y="'+yy+'" width="40" height="52" rx="6" fill="'+GRY+'"/><rect x="'+(MID+52)+'" y="'+(yy+11)+'" width="16" height="4" fill="#0B0F19"/></g>');
-      o.push(T(MID+96,yy+33,'=','#64748B',18,700));
-      for(let h=0;h<5;h++) o.push('<g class="ax-pop"'+dl(2+i*.2+h*.05)+'>'+house(MID+124+h*44,yy+12,GRY,1.6)+'</g>'); }
-    o.push(T(MID+36,H-16,'…and so on, for every 5 families','#94A3B8',13)); }
-  if(k==='power'){
-    o.push(head(0,'None','no electricity when residents arrived'));
-    o.push('<g transform="translate(170 140) scale(2.1)"><path d="M30 0a30 30 0 0 1 18 54v14h-36v-14A30 30 0 0 1 30 0z" fill="none" stroke="'+RED+'" stroke-width="2"/><path class="ax-flick" d="M30 4a26 26 0 0 1 15 47v12h-30v-12A26 26 0 0 1 30 4z" fill="#FBC900"/><rect x="14" y="72" width="32" height="8" rx="2" fill="'+RED+'"/><line class="ax-fade" style="animation-delay:1.8s" x1="-8" y1="96" x2="70" y2="-8" stroke="'+RED+'" stroke-width="3"/></g>');
-    for(let i=0;i<5;i++) o.push(house(60+i*70,H-70,'#2a3442',2));
-    o.push(head(1,'Street lights','the programme funds high-mast lighting only'));
-    o.push('<g transform="translate('+(MID+190)+' 120)"><path d="M0 240V10h50" fill="none" stroke="'+GRY+'" stroke-width="5"/><rect x="44" y="2" width="34" height="13" rx="3" fill="'+GRY+'"/><path class="ax-glow" d="M50 18l-60 210h150l-60-210z" fill="#FBC900" opacity=".22"/></g>');
-    for(let i=0;i<5;i++) o.push(house(MID+70+i*70,H-70,'#2a3442',2));
-    o.push(T(MID+36,H-16,'No household supply is required, so homes stay dark either way','#94A3B8',13)); }
-  if(k==='crowd'){
-    o.push(head(0,'9 people','one tin room · room size not reported'));
-    o.push('<rect x="40" y="128" width="380" height="240" fill="none" stroke="'+RED+'" stroke-width="2" stroke-dasharray="7 5"/>');
-    for(let i=0;i<9;i++){ const c=i%5, rw=Math.floor(i/5); o.push('<g class="ax-pop"'+dl(.2+i*.16)+'>'+person(86+c*72,226+rw*104,RED,2.1)+'</g>'); }
-    o.push(head(1,'2.7 m² each','if nine share the code’s 24 m² shelter'));
-    const X0=MID+40, Yb=H-24, S31=Math.round(Math.sqrt(31.5)*48), S24=Math.round(Math.sqrt(24)*48);
-    o.push('<rect class="ax-fade" style="animation-delay:1.6s" x="'+X0+'" y="'+(Yb-S31)+'" width="'+S31+'" height="'+S31+'" fill="none" stroke="#F5A524" stroke-width="2.5" stroke-dasharray="7 5"/>');
-    o.push('<rect class="ax-rise" style="animation-delay:1.9s" x="'+X0+'" y="'+(Yb-S24)+'" width="'+S24+'" height="'+S24+'" fill="rgba(203,213,225,.10)" stroke="'+GRY+'" stroke-width="2.5"/>');
-    for(let i=1;i<3;i++) o.push('<g class="ax-fade"'+dl(2.5+i*.1)+'><line x1="'+(X0+i*S24/3)+'" x2="'+(X0+i*S24/3)+'" y1="'+(Yb-S24)+'" y2="'+Yb+'" stroke="'+GRY+'" stroke-opacity=".55"/><line x1="'+X0+'" x2="'+(X0+S24)+'" y1="'+(Yb-i*S24/3)+'" y2="'+(Yb-i*S24/3)+'" stroke="'+GRY+'" stroke-opacity=".55"/></g>');
-    for(let i=0;i<9;i++){ const c=i%3, rw=Math.floor(i/3); o.push(T(X0+S24/6+c*S24/3,Yb-S24+S24/6+rw*S24/3+5,'2.7 m²','#e2e8f0',12,600,'middle','ax-fade',2.8+i*.05)); }
-    const LX=X0+S31+22; o.push(T(LX,Yb-S31+18,'31.5 m²','#F5A524',22,800,'start','ax-fade',1.7)+T(LX,Yb-S31+38,'what 9 people need at','#94A3B8',12,400,'start','ax-fade',1.8)+T(LX,Yb-S31+54,'3.5 m² each (Sphere minimum)','#94A3B8',12,400,'start','ax-fade',1.8));
-    o.push(T(LX,Yb-S24/2,'24 m²','#f8fafc',22,800,'start','ax-fade',2.3)+T(LX,Yb-S24/2+20,'the code’s shelter','#94A3B8',12,400,'start','ax-fade',2.4)+T(LX,Yb-S24/2+36,'per household','#94A3B8',12,400,'start','ax-fade',2.4)); }
-  if(k==='safe'){ const wl=230;
-    o.push(head(0,'2 m','from the city’s 1-in-100-year flood line'));
-    o.push('<defs><clipPath id="axc"><rect x="0" y="0" width="'+(MID-6)+'" height="'+H+'"/></clipPath></defs><g clip-path="url(#axc)"><rect x="0" y="330" width="'+MID+'" height="100" fill="#4a3b2a"/>');
-    for(let i=0;i<4;i++) o.push('<g class="ax-sway"'+dl(i*.2)+'>'+house(80+i*96,262,RED,3.6)+'</g>');
+/* one condition at a time, animated: red = what residents have, grey = the Housing Code standard */
+function animSVG(x,k){ const L=x.id==='lamontville', o=[], d=(i,st)=>' style="animation-delay:'+(st+i).toFixed(2)+'s"';
+  const T=(tx,ty,t,c,sz,w,a,cls,dl)=>'<text x="'+tx+'" y="'+ty+'" fill="'+(c||'#e2e8f0')+'" font-size="'+(sz||13)+'" font-weight="'+(w||400)+'" text-anchor="'+(a||'start')+'" font-family="Inter,Arial"'+(cls?' class="'+cls+'"':'')+(dl||'')+'>'+t+'</text>';
+  const house=(hx,hy,c,s)=>'<path d="M'+hx+' '+(hy+9*s)+'l'+(9*s)+' -'+(8*s)+' '+(9*s)+' '+(8*s)+'v'+(10*s)+'h-'+(18*s)+'z" fill="'+c+'"/>';
+  const tap=(tx,ty,c,dash)=>'<g'+(dash?' class="ax-ghost"':'')+'><path d="M'+tx+' '+(ty+70)+'V'+(ty+14)+'a12 12 0 0 1 12 -12h26v10h-24a4 4 0 0 0 -4 4v56z" fill="'+(dash?'none':c)+'" stroke="'+c+'" stroke-width="'+(dash?1.6:0)+'"'+(dash?' stroke-dasharray="4 3"':'')+'/><rect x="'+(tx+36)+'" y="'+(ty+10)+'" width="6" height="8" fill="'+(dash?'none':c)+'" stroke="'+c+'" stroke-width="'+(dash?1.4:0)+'"/></g>';
+  const person=(px,py,c,s)=>'<circle cx="'+px+'" cy="'+(py-26*s)+'" r="'+(6*s)+'" fill="'+c+'"/><path d="M'+(px-8*s)+' '+py+'v-'+(12*s)+'a8 8 0 0 1 '+(16*s)+' 0v'+(12*s)+'z" fill="'+c+'"/>';
+  const W=960,H=190,MID=520;
+  o.push('<line x1="'+MID+'" x2="'+MID+'" y1="16" y2="'+(H-10)+'" stroke="rgba(255,255,255,.12)"/>'+T(MID,H/2+5,'VS','#64748B',12,700,'middle'));
+  o.push(T(10,18,'AT THE SITE',RED,11,700)+T(MID+30,18,'GOVERNMENT STANDARD','#94A3B8',11,700));
+  if(!L){ const a=(condOf(x,k).t||'Not reported').match(/.{1,40}(\s|$)/g)||[]; a.slice(0,4).forEach((l,i)=>o.push(T(10,60+i*24,esc(l.trim()),'#f8fafc',18,600,'start','ax-fade',d(i*.15,0))));
+    (STD[k].match(/.{1,34}(\s|$)/g)||[]).slice(0,4).forEach((l,i)=>o.push(T(MID+30,60+i*24,esc(l.trim()),'#f8fafc',18,600,'start','ax-fade',d(i*.15,.6))));
+    o.push(T(10,H-8,'Counts are not reported for this site, so there is nothing to animate yet.','#64748B',11)); return o.join(''); }
+  if(k==='water'){ o.push(tap(14,40,RED)); for(let i=0;i<3;i++) o.push('<circle class="ax-drop" cx="56" cy="62" r="3.2" fill="#7CC8FF" style="animation-delay:'+(i*.37)+'s"/>');
+    o.push('<ellipse cx="56" cy="112" rx="14" ry="3" fill="#7CC8FF" opacity=".5"/>');
+    for(let i=0;i<20;i++){ const c=i%10, rw=Math.floor(i/10); o.push('<g class="ax-pop"'+d(i*.07,.2)+'>'+house(96+c*38,52+rw*36,RED,1.25)+'</g>'); }
+    o.push(T(96,140,'each ⌂ = 5 households','#94A3B8',11)+T(10,174,'1 tap · about 100 households','#f8fafc',17,700));
+    o.push(tap(MID+30,40,GRY)); for(let i=0;i<2;i++) o.push('<circle class="ax-drop" cx="'+(MID+72)+'" cy="62" r="3.2" fill="#7CC8FF" style="animation-delay:'+(i*.55)+'s"/>');
+    for(let i=0;i<5;i++) o.push('<g class="ax-pop"'+d(i*.1,1.8)+'>'+house(MID+112+i*38,70,GRY,1.25)+'</g>');
+    o.push(T(MID+30,174,'1 tap per 25 families','#f8fafc',17,700)+T(W-10,174,'The camp needs 3 more','#ff6b5e',14,600,'end','ax-fade',d(0,2.6))); }
+  if(k==='san'){ for(let i=0;i<20;i++){ const c=i%10, rw=Math.floor(i/10), miss=i>=16, xx=12+c*46, yy=32+rw*58;
+      o.push('<g class="'+(miss?'ax-fade':'ax-pop')+'"'+d(miss?(i-16)*.2:i*.08,miss?1.9:.1)+'><g'+(miss?' class="ax-ghost"':'')+'><rect x="'+xx+'" y="'+yy+'" width="30" height="44" rx="4" fill="'+(miss?'none':RED)+'" stroke="'+RED+'" stroke-width="1.6"'+(miss?' stroke-dasharray="4 3"':'')+'/><rect x="'+(xx+9)+'" y="'+(yy+10)+'" width="12" height="3" fill="'+(miss?RED:'#0B0F19')+'"/></g></g>'); }
+    o.push(T(10,174,'16 portable toilets · 4 missing (dashed)','#f8fafc',17,700));
+    o.push('<g class="ax-pop"'+d(0,2.4)+'><rect x="'+(MID+30)+'" y="58" width="34" height="50" rx="4" fill="'+GRY+'"/><rect x="'+(MID+41)+'" y="70" width="12" height="3" fill="#0B0F19"/></g>');
+    for(let i=0;i<5;i++) o.push('<g class="ax-pop"'+d(i*.1,2.6)+'>'+house(MID+86+i*40,80,GRY,1.3)+'</g>');
+    o.push(T(MID+30,174,'1 toilet per 5 families → about 20','#f8fafc',17,700)); }
+  if(k==='power'){ o.push('<g transform="translate(170 26)"><path d="M30 0a30 30 0 0 1 18 54v14h-36v-14A30 30 0 0 1 30 0z" fill="none" stroke="'+RED+'" stroke-width="2.4"/><path class="ax-flick" d="M30 4a26 26 0 0 1 15 47v12h-30v-12A26 26 0 0 1 30 4z" fill="#FBC900"/><rect x="14" y="72" width="32" height="8" rx="2" fill="'+RED+'"/><line class="ax-fade" style="animation-delay:1.8s" x1="-8" y1="96" x2="70" y2="-8" stroke="'+RED+'" stroke-width="3"/></g>');
+    o.push(T(10,174,'No electricity when residents arrived','#f8fafc',17,700));
+    o.push('<g transform="translate('+(MID+160)+' 20)"><path d="M0 130V10h40" fill="none" stroke="'+GRY+'" stroke-width="4"/><rect x="34" y="4" width="26" height="10" rx="2" fill="'+GRY+'"/><path class="ax-glow" d="M38 16l-26 80h80l-26 -80z" fill="#FBC900" opacity=".3"/></g>');
+    o.push(T(MID+30,174,'Street lighting only · no household standard','#f8fafc',17,700)); }
+  if(k==='crowd'){ o.push('<rect x="60" y="26" width="200" height="124" fill="none" stroke="'+RED+'" stroke-width="2" stroke-dasharray="6 4"/>');
+    for(let i=0;i<9;i++){ const c=i%5, rw=Math.floor(i/5); o.push('<g class="ax-pop"'+d(i*.18,.2)+'>'+person(88+c*38,86+rw*52,RED,1.3)+'</g>'); }
+    o.push(T(280,80,'room size','#94A3B8',12)+T(280,96,'not reported','#94A3B8',12)+T(10,180,'9 people in one tin room','#f8fafc',17,700));
+    /* same family, per person: the 24 m² code shelter split nine ways vs the 3.5 m²-a-person humanitarian minimum (to scale: 1 m² = 640 px²) */
+    const X0=MID+40, Yb=158, S24=124, S31=142;
+    o.push('<rect class="ax-fade" style="animation-delay:1.6s" x="'+X0+'" y="'+(Yb-S31)+'" width="'+S31+'" height="'+S31+'" fill="none" stroke="#F5A524" stroke-width="2" stroke-dasharray="6 4"/>');
+    o.push('<rect class="ax-rise" style="animation-delay:1.9s" x="'+X0+'" y="'+(Yb-S24)+'" width="'+S24+'" height="'+S24+'" fill="rgba(203,213,225,.10)" stroke="'+GRY+'" stroke-width="2"/>');
+    for(let i=1;i<3;i++){ o.push('<line class="ax-fade" style="animation-delay:'+(2.5+i*.1)+'s" x1="'+(X0+i*S24/3)+'" x2="'+(X0+i*S24/3)+'" y1="'+(Yb-S24)+'" y2="'+Yb+'" stroke="'+GRY+'" stroke-opacity=".6"/><line class="ax-fade" style="animation-delay:'+(2.5+i*.1)+'s" x1="'+X0+'" x2="'+(X0+S24)+'" y1="'+(Yb-i*S24/3)+'" y2="'+(Yb-i*S24/3)+'" stroke="'+GRY+'" stroke-opacity=".6"/>'); }
+    for(let i=0;i<9;i++){ const c=i%3, rw=Math.floor(i/3); o.push(T(X0+S24/6+c*S24/3,Yb-S24+S24/6+rw*S24/3+4,'2.7','#e2e8f0',11,600,'middle','ax-fade',d(i*.05,2.8))); }
+    o.push(T(X0+S31+18,52,'31.5 m² needed','#F5A524',15,700,'start','ax-fade',d(0,1.7))+T(X0+S31+18,68,'9 people × 3.5 m² (humanitarian minimum)','#94A3B8',11,400,'start','ax-fade',d(0,1.8)));
+    o.push(T(X0+S31+18,108,'24 m² code shelter','#f8fafc',15,700,'start','ax-fade',d(0,2.3))+T(X0+S31+18,124,'shared by 9 = 2.7 m² each','#94A3B8',11,400,'start','ax-fade',d(0,2.4)));
+    o.push(T(MID+30,180,'Even the code shelter is too small for nine','#f8fafc',17,700)); }
+  if(k==='safe'){ const wl=100; o.push('<defs><clipPath id="axc"><rect x="0" y="0" width="'+(MID-10)+'" height="'+H+'"/></clipPath></defs><g clip-path="url(#axc)">');
+    o.push('<rect x="0" y="140" width="'+MID+'" height="60" fill="#5a4a36"/>');
+    for(let i=0;i<4;i++) o.push('<g class="ax-sway" style="animation-delay:'+(i*.2)+'s">'+house(150+i*70,102,RED,2.2)+'</g>');
     o.push('<rect class="ax-rise" style="animation-delay:.4s" x="0" y="'+wl+'" width="'+MID+'" height="'+(H-wl)+'" fill="rgba(46,127,224,.55)"/>');
-    let wp='M0 '+wl; for(let i=0;i<16;i++) wp+=' q20 -9 40 0'; o.push('<path class="ax-wave" d="'+wp+'" fill="none" stroke="#7CC8FF" stroke-width="3"/></g>');
-    o.push('<line x1="0" x2="'+(MID-6)+'" y1="'+(wl-22)+'" y2="'+(wl-22)+'" stroke="#f1f5f9" stroke-dasharray="7 5"/>'+T(24,wl-30,'1-in-100-year flood line','#f1f5f9',12,600));
-    o.push(T(24,140,'Flooded April 2022 and February 2025','#f8fafc',18,700,'start','ax-fade',1.4)+T(24,164,'Five people from the camp died in 2025','#ff6b5e',14,600,'start','ax-fade',1.8));
-    o.push(head(1,'Move them off it','emergency housing is for people on flood land'));
-    o.push(T(MID+36,170,'The programme exists for people living on land','#cbd5e1',17)+T(MID+36,198,'“prone to dangerous flooding”.','#f8fafc',22,700));
-    o.push('<g class="ax-fade"'+dl(2.2)+'><path d="M'+(MID+60)+' 300h240" stroke="'+GRY+'" stroke-width="3" marker-end="url(#axa)"/><defs><marker id="axa" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="'+GRY+'"/></marker></defs>'+house(MID+40,270,GRY,2.2)+house(MID+330,270,GRY,2.2)+T(MID+60,340,'flood land','#7CC8FF',12)+T(MID+330,340,'safe ground','#94A3B8',12)+'</g>');
-    o.push(T(MID+36,H-16,'The camp was built on the kind of land the programme moves people away from','#ff6b5e',13,600,'start','ax-fade',2.8)); }
+    let wp='M0 '+wl; for(let i=0;i<16;i++) wp+=' q20 -8 40 0'; o.push('<path class="ax-wave" d="'+wp+'" fill="none" stroke="#7CC8FF" stroke-width="2.4"/></g>');
+    o.push('<line x1="0" x2="'+(MID-10)+'" y1="'+(wl-16)+'" y2="'+(wl-16)+'" stroke="#f1f5f9" stroke-dasharray="6 4"/>'+T(10,wl-22,'1-in-100-year flood line · 2 m from the camp','#f1f5f9',11,600));
+    o.push(T(10,40,'Flooded April 2022 and February 2025','#f8fafc',17,700,'start','ax-fade',d(0,1.6)));
+    o.push(T(MID+30,64,'Emergency housing is for people','#cbd5e1',15)+T(MID+30,88,'living on land “prone to','#f8fafc',17,700)+T(MID+30,110,'dangerous flooding”','#f8fafc',17,700)+T(MID+30,174,'The programme moves people off flood land, not onto it','#ff6b5e',14,600,'start','ax-fade',d(0,2.2))); }
   return o.join(''); }
 function stripHTML(){ const x=byId[condSite], lab=(CK.find(c=>c[0]===condK)||[])[1];
   const c=condOf(x,condK);
-  let h='<div class="cinfo"><h3>'+esc(lab)+' at '+esc(x.name.replace(/ camp$/i,'').replace(/^Larger /,''))+' <br>vs government standard</h3>'+
+  let h='<div class="cinfo"><h3>'+esc(lab)+' at '+esc(x.name.replace(/ camp$/i,'').replace(/^Larger /,''))+'<br>vs government standard</h3>'+
     '<div class="cpills" role="group" aria-label="Condition">'+CK.map(([k,l])=>'<button data-k="'+k+'" aria-pressed="'+(k===condK)+'"><i class="d '+condOf(x,k).c+'"></i>'+l+'</button>').join('')+'</div>'+
     '<p class="cverd">'+esc(x.id==='lamontville'&&GAPS[condK]?GAPS[condK]:c.pill+': '+c.t)+'</p>'+
     '<p class="src" style="margin-top:auto">Standard: <a class="srcs" style="color:var(--dim)" target="_blank" rel="noopener" href="'+HC+'">'+STDP[condK]+' ↗</a></p></div>';
-  h+='<div class="canim"><svg viewBox="0 0 960 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="'+esc(lab)+': '+esc(c.t)+' compared with the standard: '+esc(STD[condK])+'">'+animSVG(x,condK)+'</svg></div>';
+  h+='<div class="canim"><svg viewBox="0 0 960 190" preserveAspectRatio="xMidYMid meet" role="img" aria-label="'+esc(lab)+': '+esc(c.t)+' compared with the standard: '+esc(STD[condK])+'">'+animSVG(x,condK)+'</svg></div>';
   return h; }
 function condPanelHTML(){ const x=byId[condSite], d=DIST[x.id], c=condOf(x,condK), lab=(CK.find(q=>q[0]===condK)||[])[1];
   let h='<div class="top"><button class="back" id="cback">← Back to the map</button><div class="nav2"><button id="cprev" aria-label="Previous site">‹</button><button id="cnext" aria-label="Next site">›</button></div></div>';
