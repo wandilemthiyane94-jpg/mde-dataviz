@@ -28,12 +28,15 @@ function render(){
     '<button class="sm-play" id="smgo" type="button">▶ Play simulation</button>'+
     '<h4 style="margin-top:4px">Or try a scenario</h4><div class="sm-sc" id="smsc">'+SC.map((s,i)=>'<button type="button" data-i="'+i+'" aria-pressed="'+(s[1]===total&&s[2]===dur)+'"><i></i><b>'+s[0]+'</b><small>'+s[1]+' mm · '+s[2]+' hours</small></button>').join('')+'</div>'+
     '<p class="sm-note">A simplified model on the LiDAR terrain (30 m grid), starting 09:00 on 11 April. The rain follows the shape of the real 2022 storm, scaled to your amount and length. Results are indicative.</p></div>'+
-   '<div class="sm-stage"><div class="sm-cap"><span class="sm-k">What the water reaches</span><h2>Homes and streets around Gwala Street</h2></div>'+
+   '<div class="sm-panel"><div class="sm-ph"><span class="n">1</span><h3>What the water reaches<small>Homes and streets</small></h3><div class="q"><b>What gets flooded?</b>The real 2022 storm, run in ArcGIS Pro</div></div>'+
     '<div class="sm-view"><img id="smarc" src="stories/gwala-arcfull/a00.jpg" alt="ArcGIS Pro flood simulation of Gwala Street in the 2022 storm">'+
-    '<div class="sm-time"><b id="smt1">09:00</b><span id="smd1">11 Apr 2022</span></div>'+
-    '<div class="sm-read"><div><small>Water at the camp</small><b id="smdep">0.00 m</b></div><i></i><div><small>Area under water</small><b id="smarea">0.00<em>km²</em></b></div></div>'+
-    '<span class="sm-src">Imagery: ArcGIS Pro run of the 2022 storm · numbers: model with your rain</span></div>'+
-    '<iframe id="smframe" class="sm-model" title="Flood model (runs in the background)" aria-hidden="true" tabindex="-1" src="stories/gwala-orbit.html#embed"></iframe></div>'+
+    '<div class="sm-chip" style="left:12px;top:12px"><small>Simulation time</small><b id="smt1">09:00</b><em id="smd1" style="font-style:normal;font-size:12px;color:#94A3B8;margin-left:6px">11 Apr 2022</em></div>'+
+    '<span class="sm-tag">ArcGIS Pro · 2022 storm</span>'+
+    '<div class="sm-chip" style="left:12px;bottom:12px"><small>Modelled water depth at the camp, your rain</small><b id="smdep">0.00 m</b></div>'+
+    '<div class="sm-chip" style="right:12px;bottom:12px"><small>Flooded area in the model</small><b id="smarea">0.00<em>km²</em></b></div></div></div>'+
+   '<div class="sm-panel"><div class="sm-ph"><span class="n">2</span><h3>How the water moves<small>Terrain and rain</small></h3><div class="q"><b>Where does water go?</b>Drag to explore the terrain</div></div>'+
+    '<div class="sm-view"><iframe id="smframe" title="3D flood model of Gwala Street, Lamontville" src="stories/gwala-orbit.html#embed" loading="lazy"></iframe>'+
+    '<div class="sm-chip sm-legend"><small>Water depth (m)</small><i></i><div><span>0</span><span>0.5</span><span>1</span><span>2</span><span>3+</span></div></div></div></div>'+
   '</div>'+
   '<div class="sm-foot"><button class="sm-pbtn" id="smpb" type="button" aria-label="Play">▶</button>'+
    '<div class="sm-clock"><b id="smt2">09:00</b><small id="smd2">11 Apr 2022</small></div>'+

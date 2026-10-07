@@ -63,29 +63,3 @@
 .sm-stat{border-left:1px solid rgba(255,255,255,.1);padding-left:18px}
 .sm-stat small{display:block;color:#94A3B8;font-size:12px}.sm-stat b{font:700 22px var(--sans);color:#fff;font-variant-numeric:tabular-nums}
 @media (max-width:1100px){#sim{overflow-y:auto;display:block}.sm-body{grid-template-columns:1fr}.sm-panel{height:420px}.sm-head{flex-wrap:wrap}.sm-foot{grid-template-columns:auto auto minmax(0,1fr);}.sm-stat{display:none}}
-/* clean v2: one image, no boxes */
-.sm-body{grid-template-columns:280px minmax(0,1fr);gap:36px;padding:4px 28px 16px}
-.sm-ctl{background:none;border:0;border-radius:0;padding:4px 0 0;gap:14px}
-.sm-ctl h4{font:600 11px var(--mono);letter-spacing:.16em;color:#94A3B8}
-.sm-num{background:none;border:0;border-bottom:1px solid rgba(255,255,255,.16);border-radius:0;padding:2px 0}
-.sm-num input{text-align:left;font-size:34px;letter-spacing:-.02em}
-.sm-sc button{border:0;border-radius:8px;padding:8px 6px}
-.sm-sc button[aria-pressed="true"]{background:rgba(245,165,36,.1)}
-.sm-stage{display:flex;flex-direction:column;gap:12px;min-height:0;position:relative}
-.sm-cap{display:flex;align-items:baseline;gap:14px}
-.sm-cap h2{margin:0;font:600 18px var(--sans);color:#fff;letter-spacing:-.01em}
-.sm-stage .sm-view{flex:1;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45)}
-.sm-stage .sm-view::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,8,13,.55),transparent 22%,transparent 62%,rgba(5,8,13,.8));pointer-events:none}
-.sm-time{position:absolute;left:24px;top:20px;z-index:2;color:#fff}
-.sm-time b{display:block;font:700 44px/1 var(--sans);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.sm-time span{font-size:13px;color:#cbd5e1}
-.sm-read{position:absolute;left:24px;bottom:22px;z-index:2;display:flex;align-items:flex-end;gap:28px;color:#fff}
-.sm-read i{width:1px;height:46px;background:rgba(255,255,255,.25)}
-.sm-read small{display:block;font:500 12px var(--sans);color:#cbd5e1;margin-bottom:2px}
-.sm-read b{font:700 40px/1 var(--sans);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.sm-read b em{font-style:normal;font-size:15px;color:#cbd5e1;margin-left:6px;font-weight:500}
-.sm-src{position:absolute;right:20px;bottom:18px;z-index:2;font:11px var(--mono);color:rgba(255,255,255,.6)}
-.sm-model{position:absolute;right:0;bottom:0;width:320px;height:200px;border:0;opacity:0;pointer-events:none}
-.sm-foot{background:none;border-top:1px solid rgba(255,255,255,.06)}
-@media (max-width:1100px){.sm-stage .sm-view{height:440px;flex:none}}
-#sim .sm-num input{font:700 34px/1.1 var(--sans);letter-spacing:-.02em;color:#fff}
