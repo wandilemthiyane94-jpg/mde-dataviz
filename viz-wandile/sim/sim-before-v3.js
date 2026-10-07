@@ -16,31 +16,35 @@ function series(){ if(total===REAL_TOTAL&&dur===17) return REAL.slice(); const o
   const sum=out.reduce((x,y)=>x+y,0)||1; return out.map(v=>+(v*total/sum).toFixed(2)); }
 function render(){
   root.innerHTML=
-  '<div class="sv-wrap">'+
-  '<div class="sv-head"><div class="sv-k">Flood simulation · Gwala Street, Lamontville</div><h1>What if it rained differently?</h1>'+
-   '<p>Choose how much rain falls and for how long. See how deep the water gets at the camp.</p></div>'+
-  '<div class="sv-body">'+
-   '<aside class="sv-in">'+
-    '<label class="sv-f"><span>Rainfall</span><div class="sv-v"><input id="smtot" type="number" min="0" max="300" value="'+total+'" aria-label="Rainfall in millimetres"><em>mm</em></div><input id="smtotr" type="range" min="0" max="300" value="'+total+'" aria-label="Rainfall"></label>'+
-    '<label class="sv-f"><span>Duration</span><div class="sv-v"><input id="smdur" type="number" min="1" max="17" value="'+dur+'" aria-label="Duration in hours"><em>hours</em></div><input id="smdurr" type="range" min="1" max="17" value="'+dur+'" aria-label="Duration"></label>'+
-    '<div class="sv-f"><span>Or try</span><div class="sv-sc" id="smsc">'+SC.map((x,i)=>'<button type="button" data-i="'+i+'" aria-pressed="'+(x[1]===total&&x[2]===dur)+'">'+x[0].replace(' storm','')+'<small>'+x[1]+' mm · '+x[2]+' h</small></button>').join('')+'</div></div>'+
-    '<p class="sv-note">A simplified model on LiDAR terrain (30 m grid), from 09:00 on 11 April. The rain follows the shape of the real 2022 storm, scaled to your choice. Indicative only.</p>'+
-   '</aside>'+
-   '<section class="sv-stage"><div class="sm-view"><img id="smarc" src="stories/gwala-arcfull/a00.jpg" alt="ArcGIS Pro flood simulation of Gwala Street in the 2022 storm">'+
-    '<div class="sv-time"><b id="smt1">09:00</b><span id="smd1">11 Apr 2022</span></div>'+
-    '<div class="sv-read"><div><small>Water at the camp</small><b id="smdep">0.00 m</b></div><div><small>Area under water</small><b id="smarea">0.00<em>km²</em></b></div></div>'+
-    '<span class="sv-src">ArcGIS Pro run of the 2022 storm · numbers from the model with your rain</span></div>'+
-    '<div class="sv-tl"><button class="sv-pb" id="smpb" type="button" aria-label="Play">▶</button>'+
-     '<div class="sm-tl"><div class="sm-bars" id="smbars"></div><input id="smk" type="range" min="0" max="'+KMAX+'" step="0.1" value="0" aria-label="Time in the storm"><div class="sm-ticks" id="smticks"></div></div>'+
-     '<div class="sv-so"><small>Rain so far</small><b id="smsofar">0 mm</b></div></div>'+
-    '<iframe id="smframe" class="sm-model" title="Flood model (runs in the background)" aria-hidden="true" tabindex="-1" src="stories/gwala-orbit.html#embed"></iframe>'+
-   '</section></div></div>';
+  '<div class="sm-head"><div class="bg"></div><div><div class="sm-k">Flood simulation</div><h1>What if it rained differently?</h1>'+
+  '<p>Set how much rain falls and for how long, and see how the water moves across the land and how deep it gets at the camp.</p>'+
+  '<label class="sm-site">Site <select id="smsite"><option>Gwala Street, Lamontville</option><option disabled>Other sites: coming soon</option></select></label></div>'+
+  '<button class="sm-card" id="smreal" type="button"><svg width="44" height="40" viewBox="0 0 44 40" aria-hidden="true"><path d="M12 22a8 8 0 010-16 11 11 0 0121 3 7 7 0 011 13z" fill="#cbd5e1"/><path d="M14 27l-2 6M22 27l-2 6M30 27l-2 6" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/></svg><span><b>2022 Durban flood</b><span>'+REAL_TOTAL+' mm over 17 hours</span><small>Use this as a starting point.</small></span><span aria-hidden="true">›</span></button></div>'+
+  '<div class="sm-body">'+
+   '<div class="sm-ctl"><h4>1. Rainfall amount</h4><div class="sm-num"><input id="smtot" type="number" min="0" max="300" value="'+total+'" aria-label="Rainfall amount in millimetres"><span>mm</span></div>'+
+    '<div class="sm-range"><input id="smtotr" type="range" min="0" max="300" value="'+total+'" aria-label="Rainfall amount"><div><span>0</span><span>300</span></div></div>'+
+    '<h4>2. Duration</h4><div class="sm-num"><input id="smdur" type="number" min="1" max="17" value="'+dur+'" aria-label="Duration in hours"><span>hours</span></div>'+
+    '<div class="sm-range"><input id="smdurr" type="range" min="1" max="17" value="'+dur+'" aria-label="Duration"><div><span>1</span><span>17</span></div></div>'+
+    '<button class="sm-play" id="smgo" type="button">▶ Play simulation</button>'+
+    '<h4 style="margin-top:4px">Or try a scenario</h4><div class="sm-sc" id="smsc">'+SC.map((s,i)=>'<button type="button" data-i="'+i+'" aria-pressed="'+(s[1]===total&&s[2]===dur)+'"><i></i><b>'+s[0]+'</b><small>'+s[1]+' mm · '+s[2]+' hours</small></button>').join('')+'</div>'+
+    '<p class="sm-note">A simplified model on the LiDAR terrain (30 m grid), starting 09:00 on 11 April. The rain follows the shape of the real 2022 storm, scaled to your amount and length. Results are indicative.</p></div>'+
+   '<div class="sm-stage"><div class="sm-cap"><span class="sm-k">What the water reaches</span><h2>Homes and streets around Gwala Street</h2></div>'+
+    '<div class="sm-view"><img id="smarc" src="stories/gwala-arcfull/a00.jpg" alt="ArcGIS Pro flood simulation of Gwala Street in the 2022 storm">'+
+    '<div class="sm-time"><b id="smt1">09:00</b><span id="smd1">11 Apr 2022</span></div>'+
+    '<div class="sm-read"><div><small>Water at the camp</small><b id="smdep">0.00 m</b></div><i></i><div><small>Area under water</small><b id="smarea">0.00<em>km²</em></b></div></div>'+
+    '<span class="sm-src">Imagery: ArcGIS Pro run of the 2022 storm · numbers: model with your rain</span></div>'+
+    '<iframe id="smframe" class="sm-model" title="Flood model (runs in the background)" aria-hidden="true" tabindex="-1" src="stories/gwala-orbit.html#embed"></iframe></div>'+
+  '</div>'+
+  '<div class="sm-foot"><button class="sm-pbtn" id="smpb" type="button" aria-label="Play">▶</button>'+
+   '<div class="sm-clock"><b id="smt2">09:00</b><small id="smd2">11 Apr 2022</small></div>'+
+   '<div class="sm-tl"><div class="sm-bars" id="smbars"></div><input id="smk" type="range" min="0" max="'+KMAX+'" step="0.1" value="0" aria-label="Time in the storm"><div class="sm-ticks" id="smticks"></div></div>'+
+   '<div style="display:flex;gap:18px"><div class="sm-stat"><small>Total rainfall so far</small><b id="smsofar">0 mm</b></div><div class="sm-stat"><small>Current time</small><b id="smt3">09:00</b></div></div></div>';
   wire(); bars(); ticks(); show(k); send();
 }
-function bars(){ const mx=Math.max(...rain,1); document.getElementById('smbars').innerHTML=rain.map((v,i)=>'<i style="height:'+Math.max(2,v/mx*26)+'px" class="'+(i*2<k?'past':'')+'" title="'+hh(i*2)+' · '+v+' mm"></i>').join(''); }
+function bars(){ const mx=Math.max(...rain,1); document.getElementById('smbars').innerHTML=rain.map((v,i)=>'<i style="height:'+Math.max(2,v/mx*34)+'px" class="'+(i*2<k?'past':'')+'" title="'+hh(i*2)+' · '+v+' mm"></i>').join(''); }
 function ticks(){ document.getElementById('smticks').innerHTML=[0,6,12,18,24,30].map(t=>'<span style="left:'+(t/KMAX*100)+'%">'+hh(t)+'</span>').join(''); }
 function show(kk){ k=Math.max(0,Math.min(KMAX,kk)); const t=hh(Math.round(k)), d=day(Math.round(k));
-  ['smt1'].forEach(id=>document.getElementById(id).textContent=t); ['smd1'].forEach(id=>document.getElementById(id).textContent=d);
+  ['smt1','smt2','smt3'].forEach(id=>document.getElementById(id).textContent=t); ['smd1','smd2'].forEach(id=>document.getElementById(id).textContent=d);
   document.getElementById('smk').value=k; document.getElementById('smarc').src='stories/gwala-arcfull/a'+String(Math.round(k*60/KMAX)).padStart(2,'0')+'.jpg';
   let so=0; for(let i=0;i<17;i++){ const f=Math.max(0,Math.min(1,(k/2)-i)); so+=rain[i]*f; } document.getElementById('smsofar').textContent=Math.round(so)+' mm';
   document.querySelectorAll('#smbars i').forEach((b,i)=>b.classList.toggle('past',i*2<k));
@@ -53,9 +57,10 @@ function wire(){ const $=id=>document.getElementById(id);
   $('smtot').oninput=e=>setInputs(+e.target.value,dur); $('smtotr').oninput=e=>setInputs(+e.target.value,dur);
   $('smdur').oninput=e=>setInputs(total,+e.target.value); $('smdurr').oninput=e=>setInputs(total,+e.target.value);
   $('smsc').onclick=e=>{ const b=e.target.closest('button'); if(b){ const s=SC[+b.dataset.i]; setInputs(s[1],s[2]); } };
+  $('smreal').onclick=()=>setInputs(REAL_TOTAL,17);
   $('smk').oninput=e=>{ playing=false; $('smpb').textContent='▶'; show(+e.target.value); };
   const toggle=()=>{ playing=!playing; $('smpb').textContent=playing?'❚❚':'▶'; if(playing&&k>=KMAX) show(0); last=performance.now(); if(playing) requestAnimationFrame(tick); };
-  $('smpb').onclick=toggle;
+  $('smpb').onclick=toggle; $('smgo').onclick=()=>{ send(); show(0); if(!playing) toggle(); };
   $('smframe').addEventListener('load',()=>{ frameReady=true; setTimeout(send,600); setTimeout(()=>show(k),900); }); }
 function tick(now){ if(!playing||root.hidden) return; const dt=Math.min(.1,(now-last)/1000); last=now; show(k+dt*1.6); if(k>=KMAX){ playing=false; const b=document.getElementById('smpb'); if(b) b.textContent='▶'; return; } requestAnimationFrame(tick); }
 addEventListener('message',e=>{ const m=e.data||{}; if(m.type!=='gwala-state'||root.hidden) return; frameReady=true;
