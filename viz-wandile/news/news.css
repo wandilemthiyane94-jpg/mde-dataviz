@@ -59,3 +59,7 @@
 .nw-empty{border:1px dashed rgba(255,255,255,.2);border-radius:12px;padding:30px;text-align:center;color:#9AA6B8}
 .nw-note{margin-top:26px;font-size:12px;color:#64748B;max-width:760px;line-height:1.5}
 @media (max-width:900px){.nw-body{grid-template-columns:1fr}.nw-sites{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}.nw-feat{grid-template-columns:1fr}.nw-feat .nw-img{min-height:220px}.nw-hero .bg{inset:0}.nw-hero .bg::after{background:linear-gradient(0deg,#070B12 10%,rgba(7,11,18,.55))}}
+.nw-list{display:grid;gap:4px}
+.nw-list[hidden]{display:none}
+.nw-chev{display:inline-block;transition:transform .25s;font-size:16px;line-height:1}
+.nw-allbtn[aria-expanded="false"] .nw-chev{transform:rotate(-90deg)}
