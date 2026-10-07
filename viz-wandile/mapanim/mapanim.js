@@ -4,7 +4,7 @@
    Nothing else on the page changes. Turn off with window.MAPANIM_ON = false (index.html). Layers: assets/mapanim/. */
 (function(){
 if (window.MAPANIM_ON === false || typeof view === 'undefined' || typeof scr !== 'function') return;
-if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+if (matchMedia('(prefers-reduced-motion: reduce)').matches || location.hash === '#return' || location.hash === '#simulation') return;
 const B = 'assets/mapanim/', DUR = 18000;
 const NEAR = {lamontville:'2 m',kwadimba:'37 m',gwala:'56 m',lindelani:'59 m',crystal:'60 m',frazer:'160 m'};
 const load = s => new Promise((ok, no) => { const i = new Image(); i.onload = () => ok(i); i.onerror = no; i.src = s; });

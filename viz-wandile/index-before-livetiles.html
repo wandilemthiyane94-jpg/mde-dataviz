@@ -43,9 +43,9 @@ nav button:hover{color:var(--ink)}
 /* map */
 main{position:fixed;inset:0;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
 main.drag{cursor:grabbing}
-#cvbg,#tiles,#ov,#svg,#cv,#rain{position:absolute;left:0;top:0;width:100%;height:100%}
+#tiles,#ov,#svg,#cv,#rain{position:absolute;left:0;top:0;width:100%;height:100%}
 #tiles img{position:absolute;max-width:none;pointer-events:none}
-#cvbg,#cv,#rain,#svg,#ov{pointer-events:none}
+#cv,#rain,#svg,#ov{pointer-events:none}
 .site{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none}
 .site .sq{position:absolute;left:-11px;top:-11px;width:22px;height:22px;background:none;border:0;cursor:pointer;pointer-events:auto;padding:0;border-radius:50%}
 .site .sq i{position:absolute;inset:3px;border-radius:50%;background:var(--site);border:2px solid #1a1405;box-shadow:0 0 0 3px rgba(251,201,0,.25),0 0 14px rgba(251,201,0,.6)}
@@ -409,7 +409,7 @@ body.cond .time{grid-template-columns:34px minmax(0,1fr) auto auto}
 </header>
 
 <main id="map" aria-label="Map of Durban's temporary relocation sites over the city's flood line">
-  <canvas id="cvbg"></canvas><div id="tiles"></div><canvas id="cv"></canvas><svg id="svg"></svg><div id="ov"></div><canvas id="rain"></canvas>
+  <div id="tiles"></div><canvas id="cv"></canvas><svg id="svg"></svg><div id="ov"></div><canvas id="rain"></canvas>
   <div class="tip" id="tip"></div>
 </main>
 
@@ -436,8 +436,8 @@ body.cond .time{grid-template-columns:34px minmax(0,1fr) auto auto}
 </div>
 
 <div class="glass ctrl mode" role="group" aria-label="Base map">
-  <button type="button" data-m="sat" aria-pressed="true"><i style="background-image:url(assets/sites/lamontville.jpg)"></i>Satellite</button>
-  <button type="button" data-m="map" aria-pressed="false"><i style="background:linear-gradient(135deg,#2d4a2a,#6b7f4a)"></i>Map</button>
+  <button type="button" data-m="map" aria-pressed="true"><i style="background-image:url(assets/sites/lamontville.jpg)"></i>Satellite</button>
+  <button type="button" data-m="sat" aria-pressed="false"><i style="background:linear-gradient(135deg,#2d4a2a,#6b7f4a)"></i>Map</button>
   <button type="button" data-m="relief" aria-pressed="false"><i style="background:linear-gradient(135deg,#2f4a69,#d0c4a0)"></i>Relief</button>
 </div>
 <div class="glass ctrl zoom"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">−</button></div>
@@ -466,12 +466,12 @@ body.cond .time{grid-template-columns:34px minmax(0,1fr) auto auto}
 const OX=V.o[0], OY=V.o[1], U=V.o[2];
 const mx=lon=>(lon+180)/360, my=lat=>(1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2;
 const $=id=>document.getElementById(id);
-const map=$('map'), cv=$('cv'), ctx=cv.getContext('2d'), cvbg=$('cvbg'), bgctx=cvbg.getContext('2d'), rain=$('rain'), rctx=rain.getContext('2d');
+const map=$('map'), cv=$('cv'), ctx=cv.getContext('2d'), rain=$('rain'), rctx=rain.getContext('2d');
 const IM={base:new Image(), relief:new Image(), wnear:new Image(), wfar:new Image()};
 IM.base.src='assets/basemap.jpg'; IM.relief.src='assets/relief.jpg'; IM.wnear.src='assets/water_near.png'; IM.wfar.src='assets/water_far.png';
 for(const k in IM) IM[k].onload=()=>draw();
 const LAY={sites:true,other:false,flood:true,water:false,rivers:true};
-let W=0,H=0,DPR=1, mode='sat', year=2026, selected=null, hover=null, journeyOn=false, cutOn=false, muted=false, tab='overview', view2='map';
+let W=0,H=0,DPR=1, mode='map', year=2026, selected=null, hover=null, journeyOn=false, cutOn=false, muted=false, tab='overview', view2='map';
 let pulse=null, journeyT0=0, anim=null, playing=null, raf=0;
 const HOME={x:mx(30.99), y:my(-29.79)};
 const view={x:HOME.x, y:HOME.y, z:11};
@@ -526,19 +526,17 @@ const yearsOpen=(s,y)=>Math.max(0,Math.min(y,s.yclosed==null?y:s.yclosed)-s.yin)
 
 /* ---------- drawing ---------- */
 function resize(){ W=innerWidth; H=innerHeight; DPR=Math.min(2,window.devicePixelRatio||1);
-  for(const c of [cv,rain,cvbg]){ c.width=Math.round(W*DPR); c.height=Math.round(H*DPR); } $('svg').setAttribute('viewBox','0 0 '+W+' '+H); draw(); }
+  for(const c of [cv,rain]){ c.width=Math.round(W*DPR); c.height=Math.round(H*DPR); } $('svg').setAttribute('viewBox','0 0 '+W+' '+H); draw(); }
 function draw(){ if(!raf) raf=requestAnimationFrame(render); }
-function drawImg(img,b,smooth,c){ c=c||ctx; if(!img.complete||!img.naturalWidth) return;
+function drawImg(img,b,smooth){ if(!img.complete||!img.naturalWidth) return;
   const s=S(), x0=(b[0]-view.x)*s+W/2, y0=(b[1]-view.y)*s+H/2, w=(b[2]-b[0])*s, h=(b[3]-b[1])*s;
   const vx0=Math.max(0,x0), vx1=Math.min(W,x0+w), vy0=Math.max(0,y0), vy1=Math.min(H,y0+h); if(vx1<=vx0||vy1<=vy0) return;
-  c.imageSmoothingEnabled=smooth; c.imageSmoothingQuality='high';
-  c.drawImage(img,(vx0-x0)/w*img.naturalWidth,(vy0-y0)/h*img.naturalHeight,(vx1-vx0)/w*img.naturalWidth,(vy1-vy0)/h*img.naturalHeight,vx0,vy0,vx1-vx0,vy1-vy0); }
+  ctx.imageSmoothingEnabled=smooth; ctx.imageSmoothingQuality='high';
+  ctx.drawImage(img,(vx0-x0)/w*img.naturalWidth,(vy0-y0)/h*img.naturalHeight,(vx1-vx0)/w*img.naturalWidth,(vy1-vy0)/h*img.naturalHeight,vx0,vy0,vx1-vx0,vy1-vy0); }
 function render(){ raf=0;
   view.z=Math.max(ZMIN,Math.min(ZMAX,view.z)); view.x=Math.max(BX[0],Math.min(BX[1],view.x)); view.y=Math.max(BY[0],Math.min(BY[1],view.y));
   const s=S(), now=performance.now();
-  ctx.setTransform(DPR,0,0,DPR,0,0); ctx.clearRect(0,0,W,H); bgctx.setTransform(DPR,0,0,DPR,0,0); bgctx.clearRect(0,0,W,H);
-  if(mode==='sat'){ bgctx.fillStyle='#061019'; bgctx.fillRect(0,0,W,H); drawImg(IM.base,BASE,true,bgctx); }   /* live Esri tiles sit above this; the picture shows only where a tile is missing */
-  else { ctx.fillStyle='#061019'; ctx.fillRect(0,0,W,H); }
+  ctx.setTransform(DPR,0,0,DPR,0,0); ctx.clearRect(0,0,W,H); ctx.fillStyle='#061019'; ctx.fillRect(0,0,W,H);
   if(mode==='map') drawImg(IM.base,BASE,true);
   if(mode==='relief') drawImg(IM.relief,META.relief,true);
   const k=s/U, tx=(OX-view.x)*s+W/2, ty=(OY-view.y)*s+H/2, lw=px=>px/k, zf=Math.max(0,view.z-11);

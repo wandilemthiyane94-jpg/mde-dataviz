@@ -1,7 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>html,body{margin:0;padding:0}html.embed #view{left:0;top:0;right:0;bottom:0;width:100%}
-html.embed .arc,html.embed .toggle,html.embed #panel,html.embed .bar,html.embed .hint,html.embed #backmap{display:none!important}
-html.embed body{background:#05080d}
-</style></head><body><title>Gwala Street in 3D</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>html,body{margin:0;padding:0}</style></head><body><title>Gwala Street in 3D</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -206,9 +203,8 @@ function setWater(f){const f0=Math.min(KMAX,Math.floor(f)),f1=Math.min(KMAX,f0+1
 // rain inputs, bars and time-of-day labels
 const durEl=document.getElementById("dur"), rateEl=document.getElementById("rate"), resEl=document.getElementById("res"), statusEl=document.getElementById("status");
 const hourLab=i=>{const hh=(9+i)%24;return String(hh).padStart(2,"0")+":00";};
-const EMBED=location.hash==='#embed'; if(EMBED) document.documentElement.classList.add('embed'); let EXT=null;
 let REAL=true; /* the measured 2022 hours until the viewer moves a slider */
-const rainNow=()=>EXT?EXT.slice():REAL?DEF_RAIN.slice():DEF_RAIN.map((_,i)=>i<+durEl.value?+rateEl.value*60:0);
+const rainNow=()=>REAL?DEF_RAIN.slice():DEF_RAIN.map((_,i)=>i<+durEl.value?+rateEl.value*60:0);
 function labels(){ const d=+durEl.value, m=+rateEl.value; document.getElementById("durv").textContent=d+(d===1?" hour":" hours"); document.getElementById("ratev").textContent=m.toFixed(2)+" mm";
   document.getElementById("rateh").textContent=(m*60).toFixed(1)+" mm an hour"; const tot=rainNow().reduce((a,b)=>a+b,0);
   document.getElementById("tot").innerHTML=(REAL?"Real 2022 storm · ":"")+"<b>"+Math.round(tot)+" mm</b> in total"; }
@@ -225,12 +221,7 @@ function rerun(){statusEl.textContent="Running the flood…"; clearTimeout(timer
 document.getElementById("reset").onclick=()=>{REAL=true; durEl.value=17; rateEl.value=0.13; labels(); drawBars(); rerun();};
 const ptoggle=document.getElementById("ptoggle"), panel=document.getElementById("panel");
 ptoggle.onclick=()=>{const open=panel.hidden; panel.hidden=!open; ptoggle.setAttribute("aria-expanded",open);};
-/* embed mode: the Simulation page sends rain and time, and gets the model's numbers back */
-function report(k){ if(!EMBED||!SNAP) return; const kk=Math.round(k); let wet=0; for(let c=0;c<N;c++) if(SNAP[kk*N+c]>.1) wet++;
-  parent.postMessage({type:'gwala-state',k:k,camp:campDepth(D.camps[0],kk),next:campDepth(D.camps[1],kk),area:wet*CELL*CELL/1e6},'*'); }
-addEventListener('message',e=>{ const m=e.data||{}; if(m.type==='gwala-rain'){ EXT=m.rain.slice(0,17); while(EXT.length<17) EXT.push(0); SNAP=runModel(EXT,1); show(fpos); }
-  if(m.type==='gwala-time'){ playing=false; show(m.k); } });
-function show(k){k=Math.max(0,Math.min(KMAX,k)); fpos=k; tEl.value=Math.round(k); const n=info(Math.round(k)); clock.textContent=n.lab; clock.classList.toggle("night",n.night); setWater(k); results(); drawBars(); arcImg.src=`gwala-arcfull/a${String(Math.round(k*60/KMAX)).padStart(2,"0")}.jpg`; report(k);}
+function show(k){k=Math.max(0,Math.min(KMAX,k)); fpos=k; tEl.value=Math.round(k); const n=info(Math.round(k)); clock.textContent=n.lab; clock.classList.toggle("night",n.night); setWater(k); results(); drawBars(); arcImg.src=`gwala-arcfull/a${String(Math.round(k*60/KMAX)).padStart(2,"0")}.jpg`;}
 tEl.addEventListener("input",()=>{playing=false;play.textContent="Play";show(+tEl.value);});
 play.onclick=()=>{playing=!playing;play.textContent=playing?"Pause":"Play";if(playing&&fpos>=KMAX)fpos=0;};
 addEventListener("keydown",e=>{if(e.target.tagName==="INPUT")return;if(e.key===" "){e.preventDefault();play.click();}});
@@ -252,5 +243,5 @@ renderer.setAnimationLoop(now=>{const dt=Math.min(.05,(now-last)/1000);last=now;
   stepFlow(dt);
   controls.update(); renderer.render(scene,cam);});
 </script>
-<a href="../index.html#return" id="backmap" style="position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:9999;background:rgba(11,15,25,.85);color:#F8FAFC;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 14px;font:600 12.5px Inter,Helvetica Neue,Arial,sans-serif;text-decoration:none">&larr; Back to the map</a>
+<a href="../index.html" id="backmap" style="position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:9999;background:rgba(11,15,25,.85);color:#F8FAFC;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 14px;font:600 12.5px Inter,Helvetica Neue,Arial,sans-serif;text-decoration:none">&larr; Back to the map</a>
 </body></html>
