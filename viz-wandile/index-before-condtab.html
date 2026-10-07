@@ -597,11 +597,10 @@ function place(now){
 const CUT={"A":[-29.95499188810791,30.945257104154543],"B":[-29.95284859641847,30.945917847798384]};
 
 /* ---------- right panel ---------- */
-const LAB={water:'Water',san:'Toilets',safe:'Safety',crowd:'Crowding'};
+const LAB={water:'Water',san:'Sanitation',safe:'Safety',crowd:'Crowding'};
 const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-function condCards(x){ const c=condOf(x,condK), lab=(CK.find(q=>q[0]===condK)||[])[1];
-  return '<div class="cgrid"><div class="clist">'+CK.map(([k,l])=>{ const q=condOf(x,k); return '<button type="button" data-ck="'+k+'" aria-pressed="'+(k===condK)+'">'+CIC[k]+'<span>'+l+'</span><span class="pill st-'+q.c+'">'+esc(q.pill)+'</span></button>'; }).join('')+'</div>'+
-    '<div class="cdet"><div class="k">'+esc(lab)+'</div><img src="'+c.img+'" alt=""><div class="cr">'+esc(c.cr)+'</div><div class="t">'+esc(c.t)+'</div><div class="cdd">'+esc(c.d)+'</div>'+(c.src?'<a target="_blank" rel="noopener" href="'+esc(c.src)+'">View evidence →</a>':'')+'</div></div>'; }
+function condCards(s){ let h='<div class="cards">'; for(const k of ['water','san','safe','crowd']){ const c=s[k]; h+='<button type="button" class="card ck '+c[0]+'" data-ck="'+k+'" aria-pressed="'+(condOverlay&&condK===k)+'"><b><i class="d '+c[0]+'"></i>'+LAB[k]+'</b>'+esc(c[1])+'</button>'; }
+  const ex=s.extra; const pk='power', pp=' data-ck="power" aria-pressed="'+(condOverlay&&condK===pk)+'"'; h+=ex?'<button type="button" class="card ck '+ex[1]+'"'+pp+'><b><i class="d '+ex[1]+'"></i>'+esc(ex[0])+'</b>'+esc(ex[2])+'</button>':'<button type="button" class="card ck grey"'+pp+'><b><i class="d grey"></i>Power</b>Not reported</button>'; return h+'</div>'; }
 /* clicking a condition card shows that condition's comparison in the main area, keeping the panel */
 document.addEventListener('click',e=>{ const b=e.target.closest&&e.target.closest('#panel [data-ck]'); if(!b) return; condK=b.dataset.ck; condSite=selected||'lamontville'; condCmp=false; condOverlay=true; const sc=$('panel').scrollTop; panel(); $('panel').scrollTop=sc; });
 const distTxt=d=>d<=250?`${d} m from the line`:(d>=1000?(d/1000).toFixed(1)+' km away':d+' m away');
@@ -706,7 +705,7 @@ const ABOUTLINK='<button class="ghostb" id="aboutb" style="padding:6px 11px;font
 const HC='https://www.dhs.gov.za/sites/default/files/documents/2%20Volume%204%20Emergency%20Housing%20Programme.pdf';
 const GU22='https://groundup.org.za/article/we-have-been-moved-from-one-place-to-another-says-durban-flood-victim/';
 const IOL25='https://iol.co.za/news/south-africa/2025-02-26-a-mothers-plea-for-help-after-losing-her-three-children-in-kzn-floods/';
-const CK=[['water','Water'],['san','Toilets'],['power','Power'],['crowd','Housing'],['safe','Safety']];
+const CK=[['water','Water'],['san','Sanitation'],['power','Power'],['crowd','Housing'],['safe','Safety']];
 const STD={water:'1 tap per 25 families',san:'1 VIP toilet per 5 families',power:'High-mast lighting only; no household supply required',crowd:'A 24 m² shelter per household (Housing Code); 3.5 m² a person is the humanitarian minimum (Sphere)',safe:'People on land "prone to dangerous flooding" qualify to be moved'};
 const STDP={water:'Housing Code 2009, Emergency Housing, Part B',san:'Housing Code 2009, Emergency Housing, Part B',power:'Housing Code 2009, Emergency Housing, Part B',crowd:'Housing Code 2009, Emergency Housing, Part B (24 m²) · Sphere Handbook 2018 (3.5 m² per person)',safe:'Housing Code 2009, Emergency Housing, Part A'};
 const CLAB={red:'Severe',yellow:'Strained',green:'Adequate',grey:'Not reported'};
