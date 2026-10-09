@@ -38,6 +38,7 @@ def cursor_at(f):
 
 ARROW = [(0, 0), (0, 25), (6.5, 19.5), (11, 29), (15, 27), (10.5, 18), (19, 18)]
 def draw_cursor(im, f):
+    if os.environ.get("NOCURSOR"): return
     p = cursor_at(f)
     if not p: return
     d = ImageDraw.Draw(im, "RGBA"); x, y = p[0] * K, p[1] * K

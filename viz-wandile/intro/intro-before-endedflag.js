@@ -43,12 +43,12 @@ let vt=0, vlast=0, SPEED=1, rush=false, sceneEnd=0, ended=false;
 function vnow(){ const t=performance.now(); vt+=(t-vlast)*SPEED; vlast=t; return vt; }
 function advance(){ const s=SC[cur]; if(s.type==='question'){ done(); return; } if(s.type==='open') return;
   if(ended) { next(); return; } rush=true; SPEED=7; }
-function go(i){ clear(); delete root.dataset.ended; cur=Math.max(0,Math.min(SC.length-1,i)); vt=0; vlast=performance.now(); SPEED=1; rush=false; ended=false; render(); }
+function go(i){ clear(); cur=Math.max(0,Math.min(SC.length-1,i)); vt=0; vlast=performance.now(); SPEED=1; rush=false; ended=false; render(); }
 const next=()=>go(cur+1);
 const SETTLE=1200; /* pause after the motion stops, before the Next control appears */
 function nextBtn(){ if(root.querySelector('.ix-nextb')) return; root.insertAdjacentHTML('beforeend','<button class="ix-nextb" data-next type="button">Next <span aria-hidden="true">→</span></button>'); }
 function after(s,ms){ sceneEnd=ms; if(s.type!=='question') nextBtn();
-  const poll=()=>{ if(vnow()<ms){ timer=setTimeout(poll,40); return; } ended=true; root.dataset.ended="1";
+  const poll=()=>{ if(vnow()<ms){ timer=setTimeout(poll,40); return; } ended=true;
     if(rush){ next(); return; }                                   // presenter already asked to move on
     timer=setTimeout(()=>{ if(s.cta){ const nb=root.querySelector('.ix-nextb'); if(nb) nb.remove(); root.insertAdjacentHTML('beforeend',cta(s.cta)); const b=root.querySelector('.ix-cta button'); if(b) b.focus({preventScroll:true}); } },SETTLE+((s.cta&&s.cta.delay)||0)); };
   poll(); }

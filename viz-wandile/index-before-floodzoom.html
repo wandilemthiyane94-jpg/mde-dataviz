@@ -546,7 +546,7 @@ function render(){ raf=0;
   ctx.setTransform(DPR*k,0,0,DPR*k,DPR*tx,DPR*ty); ctx.lineJoin='round'; ctx.lineCap='round';
   if(mode!=='sat'){ ctx.save(); ctx.shadowColor='rgba(200,225,255,.6)'; ctx.shadowBlur=10*DPR; ctx.strokeStyle='rgba(200,225,255,.45)'; ctx.lineWidth=lw(1); ctx.stroke(P.coast); ctx.restore(); }
   if(LAY.rivers){ ctx.strokeStyle='rgba(150,215,255,'+Math.min(.85,.28+zf*.2)+')'; ctx.lineWidth=lw(.6+zf*.5); ctx.stroke(P.river); }
-  if(LAY.flood){ const near=view.z>=15; ctx.save(); ctx.shadowColor='rgba(40,140,255,.9)'; ctx.shadowBlur=near?0:(view.z<12.5?10:4)*DPR; ctx.fillStyle=near?'rgba(30,120,240,.36)':'rgba(30,120,240,.72)';   /* close in: lighter fill, no glow, so the satellite shows through */ ctx.fill(P.flood,'evenodd'); ctx.restore(); ctx.strokeStyle='rgba(150,205,255,.95)'; ctx.lineWidth=lw(.9+zf*.35); ctx.stroke(P.flood); }
+  if(LAY.flood){ ctx.save(); ctx.shadowColor='rgba(40,140,255,.9)'; ctx.shadowBlur=(view.z<12.5?10:4)*DPR; ctx.fillStyle='rgba(30,120,240,.72)'; ctx.fill(P.flood,'evenodd'); ctx.restore(); ctx.strokeStyle='rgba(150,205,255,.95)'; ctx.lineWidth=lw(.9+zf*.35); ctx.stroke(P.flood); }
   ctx.strokeStyle='rgba(255,255,255,.35)'; ctx.setLineDash([lw(5),lw(5)]); ctx.lineWidth=lw(1); ctx.stroke(P.boundary); ctx.setLineDash([]);
   let pa=0; if(pulse){ const t=(now-pulse.t0)/1000, D=7; if(t>=D) endPulse(); else { const env=Math.min(1,t/.5)*Math.min(1,(D-t)/1.5); pa=env*(.62+.38*Math.sin(t*4.2)); } }
   if(pa>0){ ctx.strokeStyle='#ff7a3a'; ctx.globalAlpha=.25*pa; ctx.lineWidth=lw(9+zf*2); ctx.stroke(P.river); ctx.globalAlpha=.45*pa; ctx.fillStyle='#ff7a3a'; ctx.fill(P.flood,'evenodd'); ctx.globalAlpha=1; }
